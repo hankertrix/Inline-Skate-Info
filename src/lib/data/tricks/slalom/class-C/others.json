@@ -1,0 +1,40 @@
+{
+  "Heel-Heel Special": {
+    "description": "",
+    "videos": [
+      ["InMove Skates", "https://youtu.be/bE05dHkXoHI?t=522"]
+    ]
+  },
+  
+  "Z-Eagle": {
+    "description": "",
+    "videos": [
+      ["Learn Slalom (turn on captions)", "https://youtu.be/unVDS_tM9N4"],
+      ["Aluna Playtime", "https://youtu.be/cyPlnwf9YLQ"],
+      ["World Slalom Skaters Association [WSSA]", "https://youtu.be/BIQv2fTWnQY?t=10"]
+    ]
+  },
+  
+  "Heel Wheeling Eagle": {
+    "description": "",
+    "videos": [
+      ["World Slalom Skaters Association [WSSA]", "https://youtu.be/330lNF7tZIs?t=10"]
+    ]
+  },
+  
+  "Reverse Eagle": {
+    "description": "",
+    "videos": [
+      ["World Slalom Skaters Association [WSSA]", "https://youtu.be/ys22ecLV1AE?t=10"]
+    ]
+  },
+  
+  "Cobra": {
+    "description": "",
+    "videos": [
+      ["Lorenzo Guslandi", "https://youtu.be/rCorLxOBaaU?t=12"],
+      ["Sinead Howick", "https://youtu.be/3qMxCTHOtJU"],
+      ["World Slalom Skaters Association [WSSA]", "https://youtu.be/Tf_qq0z9lIc?t=10"]
+    ]
+  }
+}

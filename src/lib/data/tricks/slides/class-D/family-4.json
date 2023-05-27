@@ -1,0 +1,46 @@
+{
+  "Fast Wheel 4 Wheels Toe Slide": {
+    "description": "",
+    "videos": [
+      ["Pride Crew", "https://youtu.be/bpwkJE3ekGY?t=9"],
+      ["InMove Skates", "https://youtu.be/bys2c3oJfRI?t=77"],
+      ["Slide Academy", "https://youtu.be/sdhEik36TNw?t=7"],
+      ["ReKiL.ru Team", "https://youtu.be/1iponwvie_k"],
+      ["ROEX", "https://youtu.be/2KAjqxG8H1U?t=58"],
+      ["EZ Action", "https://youtu.be/BELKbdGmO9Y?t=90"],
+      ["Team Some What There", "https://youtu.be/wT5mKGiMul4"]
+    ]
+  },
+
+  "Magic 8 Wheels Slide": {
+    "description": "",
+    "videos": [
+      ["Airgy (turn on captions)", "https://youtu.be/FjNdJWrwYbY?t=53"],
+      ["Flow Skate", "https://youtu.be/5LjwV3CzEpM"],
+      ["Skatefresh Asha", "https://youtu.be/-BdrRnpE_6A"],
+      ["Bladerz Official", "https://youtu.be/nvhjiJa4HA0?t=118"],
+      ["RollerLine (turn on captions)", "https://youtu.be/pJoyS7Ev_tA?t=146"],
+      ["Greg Mirzoyan", "https://youtu.be/11PwEdhIllk?t=19"],
+      ["Niko", "https://youtu.be/m7Mjxscixa4"],
+      ["Deez Skates", "https://youtu.be/w7YqUxIY12U?t=40"],
+      ["Natan Lakonishok", "https://youtu.be/u136pEMN5eU"],
+      ["Nikolay Mushkov", "https://youtu.be/lkxMeGes1eo"],
+      ["InMove Skates", "https://youtu.be/6B-G4yTohLo?t=43"],
+      ["Slide Academy", "https://youtu.be/ze7g_9qwHSA?t=7"],
+      ["Danny Aldridge", "https://youtu.be/LX1NPQDwXuw?t=114"],
+      ["Inline Skates School", "https://youtu.be/hBVjS3V2LOE"],
+      ["ReKiL.ru Team", "https://youtu.be/SQlKWW1iE6Y"],
+      ["EZ Action", "https://youtu.be/BELKbdGmO9Y?t=143"],
+      ["Team Some What There", "https://youtu.be/E5wC9YbmbPI"]
+    ]
+  },
+
+  "Fakie Magic Slide": {
+    "description": "",
+    "videos": [
+      ["RollerLine (turn on captions)", "https://youtu.be/pJoyS7Ev_tA?t=4"],
+      ["Ricardo Lino", "https://youtu.be/GrjMuu7YQV4?t=15"],
+      ["Slide Academy", "https://youtu.be/ze7g_9qwHSA?t=31"]
+    ]
+  }
+}

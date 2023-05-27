@@ -1,0 +1,66 @@
+{
+  "Sewing Machine": {
+    "description": "",
+    "videos": [
+      ["Lorenzo Guslandi", "https://youtu.be/ZAR2NraW2C4?t=18"],
+      ["ROOL (turn on captions)", "https://youtu.be/1NG-Et3RBPs?t=5"],
+      ["Dante the Skater254", "https://youtu.be/8jd8vOqZgYo?t=1"],
+      ["World Slalom Skaters Association [WSSA]", "https://youtu.be/U7C-bHw51nE?t=10"]
+    ]
+  },
+  
+  "Internal Sewing Machine": {
+    "description": "",
+    "videos": [
+      ["Team Some What There", "https://youtu.be/CM1Amor241Q"]
+    ]
+  },
+  
+  "Heel Sewing Machine Back": {
+    "description": "",
+    "videos": [
+      ["Team Some What There", "https://youtu.be/q8VSa-PxV9k"]
+    ]
+  },
+  
+  "Toe Rekil": {
+    "description": "",
+    "videos": [
+      ["ROOL (turn on captions)", "https://youtu.be/jKWWqSlXY1w?t=5"],
+      ["Escola Rodats", "https://youtu.be/s2WTlbPYYVg?t=7"],
+      ["ReKiL.ru Team", "https://youtu.be/qfCMTJvb-V0?t=250"]
+    ]
+  },
+  
+  "Heel Rekil": {
+    "description": "",
+    "videos": [
+      ["Lorenzo Guslandi", "https://youtu.be/jGXbQNDfhSs?t=15"],
+      ["slalomskating", "https://youtu.be/q_Fpun9q2Qg?t=7"]
+    ]
+  },
+  
+  "Back Toe Rekil": {
+    "description": "",
+    "videos": [
+      ["Team Some What There", "https://youtu.be/L909WHg1zU4?t=7"]
+    ]
+  },
+  
+  "Toe Daynight": {
+    "description": "",
+    "videos": [
+      ["Lorenzo Guslandi", "https://youtu.be/O6FuyRMFopk?t=15"],
+      ["ReKiL.ru Team", "https://youtu.be/qfCMTJvb-V0?t=250"]
+    ]
+  },
+  
+  "Daynight": {
+    "description": "",
+    "videos": [
+      ["World Slalom Skaters Association [WSSA]", "https://youtu.be/XA9iRT0xf60?t=10"],
+      ["ReKiL.ru Team", "https://youtu.be/qfCMTJvb-V0?t=192"],
+      ["slalomskating", "https://youtu.be/vRb0PAeBe2g?t=7"]
+    ]
+  }
+}

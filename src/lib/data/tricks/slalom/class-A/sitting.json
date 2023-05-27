@@ -1,0 +1,58 @@
+{
+  "Tea Pot": {
+    "description": "",
+    "videos": [
+      ["Learn Slalom (turn on captions)", "https://youtu.be/4YvA_QwLIUI"],
+      ["Lorenzo Guslandi", "https://youtu.be/lp5Zi_aPEDg?t=27"]
+    ]
+  },
+  
+  "Superman": {
+    "description": "",
+    "videos": [
+      ["Lorenzo Guslandi", "https://youtu.be/Kscot9T75Q0?t=14"]
+    ]
+  },
+  
+  "Toe Footgun Back": {
+    "description": "",
+    "videos": [
+      ["Lorenzo Guslandi", "https://youtu.be/qaHbwQsGrks?t=9"],
+      ["World Slalom Skaters Association [WSSA]", "https://youtu.be/3s_GExp2F-E?t=10"],
+      ["Sinead Howick", "https://youtu.be/d2tjjv-zT0A"]
+    ]
+  },
+  
+  "Back Tea Pot": {
+    "description": "",
+    "videos": [
+      ["Lorenzo Guslandi", "https://youtu.be/T4ev4hgLJmY?t=8"]
+    ]
+  },
+  
+  "Back Superman": {
+    "description": "",
+    "videos": [
+      ["Lorenzo Guslandi", "https://youtu.be/KpekdW94M8Y?t=7"]
+    ]
+  },
+  
+  "Toe Christie": {
+    "description": "",
+    "videos": [
+      ["Lorenzo Guslandi", "https://youtu.be/elRJMmiIF4I?t=17"],
+      ["Lorenzo Guslandi", "https://youtu.be/7M4h0EMa6z8?t=14"],
+      ["World Slalom Skaters Association [WSSA]", "https://youtu.be/yioZcT3SFaM?t=10"],
+      ["zero13cool", "https://youtu.be/oKrNhE4fIjA"]
+    ]
+  },
+  
+  "Toe Christie Back": {
+    "description": "",
+    "videos": [
+      ["Lorenzo Guslandi", "https://youtu.be/AFA5mpQATao?t=8"],
+      ["World Slalom Skaters Association [WSSA]", "https://youtu.be/-UV3xIeGqZg?t=10"],
+      ["zero13cool", "https://youtu.be/cK-ALp-gQ0A"]
+    ]
+  }
+}

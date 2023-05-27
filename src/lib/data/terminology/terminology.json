@@ -1,0 +1,166 @@
+{
+  "General terms": {
+    
+    "Inline skates": "A type of shoe that has wheels attached to the bottom, in a line, hence the inline descriptor.",
+    
+    "Skates": "In inline skating, this refers to inline skates. Outside of inline skating, it refers to all skate sports in general like skateboarding, longboarding and roller skating in addition to inline skating.",
+
+    "Skater": "In inline skating, this refers to a person who does inline skating. Outside of inline skating, it refers to anyone who does skate sports, like skateboarding, longboarding and roller skating in addition to inline skating.",
+
+    "Skating": "In inline skating, this means using inline skates to move around.",
+
+    "Triskate": "An inline skate with 3 wheels. It normally refers to a speed skate, which often has 3 wheels, but it can also refer to any kind of inline skate with 3 wheels.",
+    
+    "Quads / Quad skates / Roller skates": "Quad skates are shoes that have 4 wheels attached to the bottom and the layout of the wheels is similar to that of a car, unlike inline skates that have their wheels in a single line. The shoes are normally of the soft boot variety.",
+    
+    "Rollerblade (RB)": "Rollerblade refers to a brand that sells inline skates, but it has become so popular that its name is now synonymous with inline skating. A rollerblade refers to an inline skate, and rollerblading refers to inline skating.",
+
+    "Urban / Urban skating": "This means going on long-distance trips on inline skates, typically in urban areas where the ground is more conducive to inline skating. Rural areas are impossible to skate in due to the sandy or muddy ground.",
+  
+    "Soft boot": "Skates that do not have a hard outer shell to support your feet and ankles. They normally just look like running shoes or sneakers with wheels attached at the bottom.",
+  
+    "Hard boot": "Hard boots are the opposite of soft boots, these skates have a hard outer shell to provide support for your feet and ankles.",
+
+    "Carbon skates": "Carbon skates are hard-boot inline skates that have some parts of the hard outer shell made of carbon fibre. They are usually pretty stiff and uncomfortable at first as carbon fibre is much more rigid than plastic, but they will eventually fit your feet just right as most carbon skates are heat moldable.",
+
+    "Modular": "This means an inline skate's design has parts that can be easily changed using a screwdriver or an Allen key. A skate that isn't modular would likely have parts that are riveted, which makes them much harder to replace.",
+
+    "Flat": "Inline skates with this configuration have all wheels touching the ground and the wheels are all of the same size.",
+
+    "Rockered": "Inline skates with this configuration don't have all their wheels touching the ground or the wheels are not of the same size. There are a lot of different rocker configurations, so check out <a href=\"https://skating.thierstein.net/Knowledge/Inline_Skating_Rollerblading_Knowledge_Rockering.html\">this site</a> for an explanation of all of them. The most popular style of rocker, and the one that people refer to most often when they use the term 'rocker' is the banana rocker, which is when both the front and back wheels are elevated above the other wheels.",
+
+    "Anti-rocker": "Inline skates with this configuration have their outer wheels (the very first wheel and the very last wheel) touching the ground while the inner wheels aren't. This setup is the norm for aggressive skates as there is more space in the middle of the skate for grinds.",
+
+    "Wheelbase": "The wheelbase is the horizontal distance between the centres of the first and last wheel that is in contact with the ground on an inline skate.",
+
+    "Durometer": "The durometer is a standardised way of measuring the hardness of materials. This generally only shows up in skate wheels in a number with a capital A behind it, like '84A'. Skate wheels usually range in hardness from 68A - 90A. Wheels with a hardness of 68A - 77A are considered soft, while those with a hardness of 78A - 85A are considered medium and wheels with a hardness of 86A - 90A are considered hard. You should only use wheels with a hardness of 82A - 90A for the outdoors as the ground is rough and will eat up softer wheels in no time. Most skates have wheels of medium hardness, save for aggressive skates, which have hard wheels.",
+
+    "Break in": "This term refers to skating a pair of skates for a substantial amount of time, usually to wear the wheel down a bit so slides are easier, or to compress the liner so that the liner wouldn't be too tight.",
+
+    "P-rail": "This refers to a practice rail, which is usually just a metal bar on the floor without any inclination or angle. These are mostly used by aggressive skaters to practice their grinds.",
+
+    "Edges": "Edges refer to how the inline skate is tilted with respect to your body. Being on the inside edge of your skates means that your skates are tilted inwards, towards your body. You should see the outside part of your skates when you're on the inside edge. Likewise, being on the outisde edge means that your skates are tilted outwards, away from your body. You should see the inside part of your skates when you're on the outside edge. Being on the centre edge just means that your skates are straight and aren't tilted in any direction."
+
+  },
+
+
+
+  
+  "Styles of inline skates": {
+
+    "Casual / Leisure / Fitness / Recreational": "This style of skate is made for the general public to enjoy skating. The skate design usually maximises comfort and skimps on performance. Good for rolling around once in a while, but not great if you want to get serious and do more advanced things like tricks and long-distance skating. They are typically not modular and the parts of the skate cannot be replaced easily. These often have a flat set-up, 4x80mm wheels and will normally have a heel brake attached to the right foot. Most of such skates have soft boots for comfort, but some have hard boots.",
+
+    "Urban / Freestyle": "This style of skate is made for travelling a distance, typically in places like the city or urban landscapes where the ground is rough and there are obstacles like potholes and drains. These skates are usually more expensive than casual or leisure skates, but they are normally modular, making them last longer and cost less in the long run. These are great if you want to travel long distances on inline skates. Generally, these skates also have a flat set-up, 4x80mm wheels and a hard boot. Some of these skates also come with abrasive pads to protect the hard boot when sliding.",
+
+    "Aggressive": "This style of skate is made for skate parks and is pretty hardy and has lots of padding. As such, aggressive skate boots are usually heavier than regular skates as they are built to be both durable and sturdy to protect and support your legs when you do tricks like jumps and grinds. The price of these skates is mostly quite similar to the urban and freestyle skates and is more expensive than the casual or leisure skates. Similarly, the skates are modular, and almost everything on the skate can be switched out. Most (but not all) aggressive skates come with the universal frame system (UFS) so their frames and soul plates can be easily swapped out. Aggressive skates will normally come with 4x60mm wheels as smaller wheels are better for aggressive style tricks and will often come with an anti-rocker set-up (some will only have 2 wheels as well). However, with UFS, you can convert aggressive skates to urban or freestyle skates, but this is generally not recommended as the skates will still be heavier than urban skates and it is a lot of work to change the frames and wheels.",
+
+    "Slalom": "This style of skate is made for tricks that weave in between cones. They are very similar to urban and freestyle skates, and many urban and freestyle skates can be used as slalom skates. These skates often come with 4x80mm wheels and are normally rockered with the banana rocker for better manoeuvrability. These skates sometimes come with reduced cuff support for additional flexibility and mobility to do slalom tricks. These are not meant for long-distance skating, but they don't fare too terribly either if you decide to use them for that purpose.",
+
+    "Figure": "This style of skate is made to simulate ice skating and is therefore designed for ice skating tricks, which usually consist of lots of spins and jumps. Basically, it's ice skating but on normal ground. The skates are generally very similar to ice skates, but with wheels instead of a metal blade. This style of skate is the only style of skate that comes with a toe stopper attached at the front of the skate. They typically have 3 wheels with a diameter ranging from 68mm to 72mm depending on the frame and those wheels have a hardness ranging from 76A to 84A. Higher hardness numbers, like 86A and 89A, are found on wheels that are made for skating outside instead of at the rink. The wheels are also rockered to allow for easier spins and greater manoeuvrability. These are very rare and only a few specialised manufacturers sell them, hence a lot of the information here will not apply to this style of skates.",
+
+    "Speed": "This style of skate is made for competitive long-distance skating, like skate marathons, or for sprint skating around the track without many obstacles to deal with. They are also used in downhill skating where the path is mostly free of obstacles. These skates require proper training and good ankle strength to be able to use them effectively and avoid injury as they are normally soft boot skates without much ankle support. More often than not, these skates also don't have cuffs for greater flexibility around the ankles. As such, these skates are not recommended for a beginner as they will likely lead to a lot of injuries, especially ankle-related ones. Specialised speed skates are usually custom-made to fit an individual's feet for maximum comfort, which is very important in extreme long-distance skating, like marathons. These skates will often come with 3 to 4 wheels, usually in one of these diameters: 90mm, 100mm, 110mm or 125mm. The frames on speed skates are generally quite long to accommodate the large wheels and also make it easier to maintain high speeds. These long frames also provide more stability. More expensive speed skates will have shells of carbon fibre to make them lighter, increasing speed and performance.",
+
+    "Wizard skating / Mushroom blading": "This style of skate is made to be the jack of all trades, master of none. Wizard skates allow the user to do all the styles of inline skating easily, like recreation, urban, freestyle, aggressive, slalom, figure and speed. Wizard skates are somewhat similar to urban skates, but they differ in the frame and boot used. Wizard skates use a wizard frame instead of regular skate frames. These wizard frames are usually pretty expensive as they are made from a solid block of aluminium. They are shaped like a trapezium and are built to support 4 to 5 large wheels, with wheel set-ups like 4x90mm, 4x100mm, 4x110mm, 5x80mm and 5x90mm. The most common set-ups are the ones that have 5 wheels, which are the 5x80mm and the 5x90mm set-up. The frames also have the front and back wheels elevated by 1mm, giving wizard skates what is normally called a natural rocker. This natural rocker can apparently also be attained by skating with a flat set-up for a decent amount of time, or by breaking in skates with a flat set-up. The boot used in wizard skates are not regular urban skating boots but are instead aggressive skating boots to allow for grind tricks on the base of the skate. This frame and boot setup makes it easier to do wizard tricks, which are tricks that take inspiration from all the tricks in the various styles of inline skating, but with a huge emphasis on flow. Watch this <a href=\"https://youtu.be/gWsZYBCc56Q\">video</a> if you want to find out more about wizard skating."
+    
+  },
+
+
+
+
+  "Parts of an inline skate": {
+
+    "Boot": "The main part of the skate, which is the shoe that you put your foot in. It can be either a soft boot or a hard boot.",
+
+    "Shell": "On hard boot skates, the shell refers to the hard plastic or carbon fibre covering the entire skate. On soft boot skates, the shell refers to the hard plastic or carbon fibre part that is at the bottom of the boot that the frame attaches to.",
+
+    "Carry loop": "A loop at the back of each skate to aid in carrying the skates. It also functions as a pull tab to facilitate pulling the back of the skate up and over your heel.",
+
+    "Liner": "This generally only comes with hard boot skates, because the shells are very rigid so they will need cushioning to conform to your feet. It is the cushion inside the hard shell of hard boot skates. Usually, these liners are also pretty rigid, but have a good amount of padding and cushioning to make skating more comfortable.",
+
+    "Fasteners": "A general term to refer to all kinds of things that are used to tighten up the skates. It includes buckles, velcros and ratchets.",
+
+    "Receiver": "A ratcheting mechanism that you feed the strap into. This mechanism can either be standalone or integrated into a buckle. A buckle with a receiver is typically called a ratchet buckle.",
+
+    "Strap": "Self-explanatory, it is a piece of plastic that you feed into the receiver to tighten your skates. Straps can also be made of velcro, in which case they would not need a receiver but they would be more difficult to tighten properly.",
+
+    "Top strap": "Self-explanatory, refers to the topmost strap on a skate.",
+
+    "Mid strap": "This refers to the middle strap on a skate which is normally also the 45° strap going around the front of your ankles, but this isn't always the case.",
+
+    "Buckle": "Self-explanatory, the buckle that you use with the strap to tighten your skates. There are two types, one that you feed the strap into your skate with the receiver on the opposite side of the buckle, and another that you feed the strap into the buckle itself with the buckle having the ratcheting mechanism. The former is more common, cheaper and easier to find a replacement for. The latter is usually called a ratchet buckle.",
+
+    "Cuff / Spoiler": "This is the part of the skate that covers your ankle bone to your shin. It is normally attached with a large circular screw that is near your ankle bone. It provides support for your leg and prevents your ankle from bending too much. More expensive skates will have their cuff made of carbon fibre to reduce weight while still providing ample amounts of support and being very durable.",
+
+    "Cuff screw / Spoiler screw": "The large circular screw near your ankle bone that holds the cuff in place.",
+
+    "Laces": "This should be self-explanatory, but it is the string used to tighten up the boots. On hard boot skates, the laces are usually on the hard shell to prevent the plastic from expanding over time. They can also be removed for washing.",
+
+    "Power strap": "This is the 45° strap that goes in front of your ankles on your skate. Most hard boot skates, if not all, will come with this strap. This strap is also usually the mid strap.",
+
+    "Sliders / Slider pads / Abrasive pads": "This refers to the small pieces of plastic on the outside of some skates (usually urban or freestyle skates) that wear out instead of the hard boot shell when doing slides. Do note that sliders can also refer to skaters who specialise in doing slide tricks.",
+
+    "Toe cap": "A piece of plastic or carbon fibre at the very front of your skate that covers and protects your toes. On hard boot skates, the toe cap doesn't exist because the shell already covers your toes. On soft boot skates, the toe cap is usually ventilated for better airflow and to keep your feet cool.",
+
+    "Frame / Chassis": "This is the part of the skate at the bottom of the boot to which your wheels are attached. More expensive skates will have frames made of aluminium instead of plastic and some are rockerable.",
+
+    "Wizard frame / Wizard chassis": "A wizard frame is simply a frame made out of a solid block of aluminium, in the shape of a trapezium. The frame is also usually made to handle 4 to 5 large wheels usually ranging in diameter from 80mm - 110mm, which ends up making the frame much longer than most other styles of skates. The most common set-ups are the 5-wheel set-ups like the 5x80mm and the 5x90mm set-ups, which are called progressive rocker or PR, with the others being 4x90mm, 4x100mm, 4x110mm, which are called natural rocker or NR. This means that the frame is pretty heavy and clunky due to it being so large to accommodate so many large wheels. The frame also has its front wheels and back wheels elevated by 1mm, giving the skates what is commonly called a natural rocker. These frames are usually very expensive and are used for a style of skating called wizard skating. Watch this <a href=\"https://youtu.be/gWsZYBCc56Q\">video</a> if you want to find out more about wizard skating.",
+    
+    "Mounting bolts": "This refers to the bolts, screws or rivets that attach the frame to the bottom of the boot.",
+    
+    "Axle": "A rod that attaches the wheel to the frame so that the wheel can spin freely. Rockerable frames will normally come with special axles that have more material on one half than the other, allowing you to turn the axle 180° to move the wheels upwards by 1 - 2mm.",
+    
+    "Wheels": "Self-explanatory. Inline skate wheels are usually made of urethane. Generally, skates will describe their wheel set-up with a phrase like '4x80mm'. The first number refers to the number of wheels a skate has and the size afterwards refers to the diameter of the wheels in millimetres, hence the mm. 4x80mm is the recommended set-up for a beginner.",
+    
+    "Grind wheels": "These are wheels made specifically for aggressive skates. They are normally made of plastic instead of urethane so they are more slippery and grind better. These wheels are also very much smaller than even the 57mm - 60mm wheels that usually come with aggressive skates. They replace the inner wheels (the two wheels closest to the middle of the frame) to provide more space in the middle for grinds and to decrease the friction when grinding, which results in an anti-rocker set-up.",
+
+    "Bearings": "Self-explanatory. All inline skate wheels come with bearings inside them to help the wheels spin longer and more smoothly.",
+
+    "Bearing shield / Bearing seal": "This is a piece of metal or rubber covering the sides of the bearing to prevent dirt from getting into the bearing. Having a metal shield is usually more durable and dirt resistant compared to having a rubber shield, but it's more difficult to remove. The metal shield is normally held by a C-clip to keep it in place and has to be removed when maintaining the bearing. Having a rubber shield is easier to remove, but it's far less durable and dirt resistant. The rubber shield is usually held in place by grooves on the inner race of the bearing (the innermost circular metal piece on the bearing).",
+
+    "C-clip / Snap ring": "The C-clip is just a flexible piece of metal wire, usually made of stainless steel, that goes between the outer race of the bearing (the outermost circular part of the bearing) and the bearing shield. It only comes with bearing shields made of metal, bearing shields made of rubber do not have a C-clip.",
+
+    "Spacer": "The spacer is a piece of aluminium or plastic that sits between the bearing, the axle and the frame to precisely align all of them for better glide speed and a freer spin. It also reduces the pressure exerted on the bearing by the axle.",
+
+    "Brake / Heel brake / Heel stop": "A brake that is attached to the back of an inline skate. This is often included with cheaper recreational and fitness skates and the brake is normally attached to the right skate. Pricier urban, freestyle and slalom skates don't normally come with a heel brake attached but can be added if it is desired. Aggressive skates never have a heel brake and generally don't support adding one either. The heel brake is great to have when you're just starting out, but it will come in the way of doing some tricks, especially slalom tricks and a trick called crossover.",
+
+    "Toe stop / Toe brake": "This is a brake that is attached to the front of an inline skate or quad skate. On inline skates, toe stops are only ever seen on skates for figure skating which are difficult to come by. Every other type of inline skate will not have a toe stop and will not have the option to add one either. On quad skates, toe stops are almost always included with the skates.",
+
+    "Universal Frame System (UFS)": "This is a frame mounting system that normally only comes with aggressive skates. It is the mounting system that most aggressive skates use so that their parts are easily swappable.",
+
+    "H-block": "This refers to the groove in the middle of the frame of aggressive skates. The H-block facilitate grinds by locking the skates in place on grind rails or edges so the skates only move forward.",
+    
+    "Baseplate / Soulplate / Soulframe": "These terms refer to the plastic plate attached to the bottom of the boot of aggressive skates. This plate is typically mounted using the Universal Frame System to prevent the boot from wearing out during grinds. It also serves as the attachment point for other plates like the backslide plate and the side sliders for increased durability. Soulframe can sometimes refer to a one-piece baseplate design that includes both the baseplate and the frame, such as the <a href=\"https://www.inlinex.com.sg/products/kizer-soulframe-60\">Kizer Soulframe</a>.",
+
+    "Soul kit": "This refers to a baseplate that comes with mounting screws. Sometimes, the nuts for the mounting screws are included as well. Technically, a soulframe like the <a href=\"https://www.inlinex.com.sg/products/kizer-soulframe-60\">Kizer Soulframe</a>, which has a one-piece baseplate design that includes both the baseplate and the frame, is also considered a soul kit as almost all of them will come with mounting screws.",
+
+    "Backslide plate": "This refers to the small plastic plate on aggressive skates that are attached to the bottom of the boot on the outer edge, or the outer edge of the baseplate. It is usually positioned in the middle of the skate and is aligned to the H-block on the frame. It is used to provide more traction on grinds by further locking the skate onto the grind rail or edge. It also protects the boot from wearing out when doing grinds.",
+
+    "Side sliders": "These refer to two small plastic plates on aggressive skates attached to the bottom of the boot on the outer edge, or the outer edge of the baseplate. These wear out on grinds instead of the boot. They are positioned on both sides of the backslide plate, which is in the middle of the skate. Their function is similar to that of abrasive pads. They are confusingly called soul plates at times."
+    
+  },
+
+
+
+
+  "Tricks": {
+
+    "Grinds": "Grinds are almost exclusively aggressive skate tricks where either the bottom of the skate boot or the frame is touching the ground instead of the wheels. Usually, grinds are done on rails and edges where the H-block in the frame can lock onto and the skates can slide. Sometimes, aggressive skaters will wax the rail or edge that they are going to grind on to make the area more slippery and hence easier to grind on. Examples of grinds include Soul Grind, Frontside and Makio.",
+
+    "Slides": "Slides are tricks where the wheels are sliding across the ground. Slides are quite similar to grinds, just that the skates are sliding on the ground rather than sliding on a rail or edge. Slides are also often used to stop very quickly as these tricks cause a lot of friction between the wheels and the ground. Some examples of slides are Parallel Slide, Magic Slide and the Soul Slide.",
+
+    "Stops": "Stops are just tricks that help you slow down or stop on skates. A lot of slide tricks can be considered stops, as they can quickly stop or slow you down by a lot, but they're still called slides. Examples of stops include the T-stop, Plow (Plough) Stop and Power Stop.",
+
+    "Hard stop": "This term simply means a trick (usually a stop) that is powerful enough to bring you to a complete stop almost instantaneously from nearly any speed. Examples of such tricks include the Power Stop, Parallel Slide and Magic Slide.",
+    
+    "Carving": "This term simply means a very sharp or tight turn on inline skates. Usually, the turn will result in the wheels scraping the ground, which sounds similar to carving something out of wood. Skatefresh Asha calls it a lunge turn.",
+
+    "Fakie": "This simply means moving backwards. If it is used as an adjective to describe a trick, like 'fakie magic slide', then the trick in question, magic slide, is done while moving backwards.",
+
+    "Switch": "Like the term 'fakie', this simply means moving backwards. If it is used as an adjective to describe a trick, like 'switch magic slide', then the trick in question, magic slide, is done while moving backwards.",
+    
+    "Transition": "In inline skating, a transition usually refers to a trick done to change from forward skating to backwards skating, or vice versa.",
+
+    "Pumping": "This refers to the ability to gain momentum on a ramp instead of slowing down. Usually, skaters will go up and down a ramp in a cycle, gaining speed on each cycle by shifting their body weight forwards and backwards appropriately."
+    
+  }
+}

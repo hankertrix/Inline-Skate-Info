@@ -1,0 +1,130 @@
+{
+  "Fish": {
+    "description": "",
+    "videos": [
+      ["Learn Slalom (turn on captions)", "https://youtu.be/berhTRv2nZc"],
+      ["Carolin Vi (turn on captions)", "https://youtu.be/DAsg3uDbC5A?t=17"],
+      ["Sinead Howick", "https://youtu.be/QF3nPpMeh40?t=130"],
+      ["SkateWeaver", "https://youtu.be/oNnKvRakOGA"],
+      ["Mango & McSoggy Freestyle", "https://youtu.be/PSm-c8Ccuv8?t=6"],
+      ["Style Slalom Tutorials", "https://youtu.be/CoTcgVYeyd4?t=21"],
+      ["N'sness Hunt", "https://youtu.be/gaWTcNist14?t=11"],
+      ["Charlotte Qiao", "https://youtu.be/27bE34uZbQ0"],
+      ["World Slalom Skaters Association [WSSA]", "https://youtu.be/9ZIGmWcbJ0A?t=10"],
+      ["SkateIA", "https://youtu.be/x2x1pLEaH7c"]
+    ]
+  },
+  
+  "Snake": {
+    "description": "",
+    "videos": [
+      ["Learn Slalom (turn on captions)", "https://youtu.be/8B9cVPSajG4"],
+      ["Lorenzo Guslandi", "https://youtu.be/eeGshwLWtug?t=8"],
+      ["SkateWeaver", "https://youtu.be/VQP_bpJ8Hl4"],
+      ["InMove Skates", "https://youtu.be/CGMfmxka6Bg?t=6"],
+      ["Style Slalom Tutorials", "https://youtu.be/ZnewsRiAL3Y?t=21"],
+      ["Dante the Skater254", "https://youtu.be/izu1DYkLQ8k"],
+      ["Mango & McSoggy Freestyle", "https://youtu.be/PSm-c8Ccuv8?t=38"],
+      ["Carolin Vi (turn on captions)", "https://youtu.be/8yP_kb185UQ?t=76"],
+      ["Tenth Empire", "https://youtu.be/BKul5QWUqyo?t=8"],
+      ["World Slalom Skaters Association [WSSA]", "https://youtu.be/4Hd4z-k4saA?t=10"],
+      ["SkateIA", "https://youtu.be/qHNsUh6Z1qU"]
+    ]
+  },
+  
+  "Cross": {
+    "description": "",
+    "videos": [
+      ["Naomi Grigg", "https://youtu.be/YL05Pt2RULs"],
+      ["Aprenda Slalom - In English", "https://youtu.be/eMce8DWfH1c"],
+      ["Learn Slalom (turn on captions)", "https://youtu.be/yeNtjPBNZ08"],
+      ["Lorenzo Guslandi", "https://youtu.be/8FJsuhU8o_k?t=7"],
+      ["SkateWeaver", "https://youtu.be/Xk732hL01p4"],
+      ["InMove Skates", "https://youtu.be/CGMfmxka6Bg?t=29"],
+      ["Mango & McSoggy Freestyle", "https://youtu.be/PSm-c8Ccuv8?t=62"],
+      ["World Slalom Skaters Association [WSSA]", "https://youtu.be/Eehh8qnzFgc?t=10"],
+      ["SkateIA", "https://youtu.be/4KAiDenOuXY"]
+    ]
+  },
+  
+  "Back Fish": {
+    "description": "",
+    "videos": [
+      ["Learn Slalom (turn on captions)", "https://youtu.be/YxhrNDVFI0I"],
+      ["Learn Slalom (turn on captions)", "https://youtu.be/EAYKC4LDWS0"],
+      ["SkateWeaver", "https://youtu.be/8lENtPaD8f8"],
+      ["Style Slalom Tutorials", "https://youtu.be/eWL5iV4YGHc?t=24"],
+      ["Jon Larrucea", "https://youtu.be/wmIdYOMe5ZY"],
+      ["World Slalom Skaters Association [WSSA]", "https://youtu.be/OOyas_yjd_I?t=10"]
+    ]
+  },
+  
+  "Back Snake": {
+    "description": "",
+    "videos": [
+      ["Naomi Grigg", "https://youtu.be/mxcttRftOCo"],
+      ["Learn Slalom", "https://youtu.be/8yF18R27efQ"],
+      ["Lorenzo Guslandi", "https://youtu.be/VGGsV8Foj-I?t=7"],
+      ["SkateWeaver", "https://youtu.be/VsQdzPY74Mw"],
+      ["Style Slalom Tutorials", "https://youtu.be/pGckoFN59JI?t=24"],
+      ["World Slalom Skaters Association [WSSA]", "https://youtu.be/AAuqMvg46jk?t=10"],
+      ["SkateIA", "https://youtu.be/RBPoFlX-pPg"]
+    ]
+  },
+  
+  "Back Alternating Snake": {
+    "description": "",
+    "videos": [
+      ["Sinead Howick", "https://youtu.be/haVxgCg5u70"]
+    ]
+  },
+  
+  "Back Cross": {
+    "description": "",
+    "videos": [
+      ["Naomi Grigg", "https://youtu.be/_qSGLlFQEP4"],
+      ["Skatefresh Asha", "https://youtu.be/YrKgkuyc8uk?t=489"],
+      ["Brandon Drummond", "https://youtu.be/fy9ewm6vzUo?t=421"],
+      ["Aprenda Slalom - In English", "https://youtu.be/eIksDUMcd_g"],
+      ["Learn Slalom (turn on captions)", "https://youtu.be/4gNjIXIKdv4"],
+      ["Lorenzo Guslandi", "https://youtu.be/R9qicE2AbKE?t=7"],
+      ["SkateWeaver", "https://youtu.be/2nFBxMQ0oUU"],
+      ["SkaMiDan", "https://youtu.be/pXj8NZfAhSo?t=336"],
+      ["Dante the Skater254", "https://youtu.be/f8Rp8CMQVFI?t=5"],
+      ["Tiago", "https://youtu.be/q4IBx41FuuI?t=132"],
+      ["Sports And Outdoors", "https://youtu.be/4-7dTbJYMlQ?t=64"],
+      ["World Slalom Skaters Association [WSSA]", "https://youtu.be/Iao3qFEKlVQ?t=10"],
+      ["SkateIA", "https://youtu.be/r_YChaNK1C8"]
+    ]
+  },
+  
+  "One Foot": {
+    "description": "",
+    "videos": [
+      ["Naomi Grigg", "https://youtu.be/xXvWL161TYU"],
+      ["EZ Action (turn on captions)", "https://youtu.be/FLBdyxhG6ds?t=2"],
+      ["Lorenzo Guslandi", "https://youtu.be/S0gKtZ3BdTo?t=7"],
+      ["SkateWeaver", "https://youtu.be/mzA573nx7W8"],
+      ["Style Slalom Tutorials", "https://youtu.be/TMQyn5chkdk?t=21"],
+      ["Patricia Leazier", "https://youtu.be/zML09VZykPA"],
+      ["Eagle Slalom", "https://youtu.be/PYaUN7rXPJI"],
+      ["World Slalom Skaters Association [WSSA]", "https://youtu.be/2LyFlrcKwYQ?t=10"],
+      ["SkateIA", "https://youtu.be/YDZ9AuKETs0"]
+    ]
+  },
+  
+  "One Foot Back": {
+    "description": "",
+    "videos": [
+      ["InMove Skates", "https://youtu.be/mTIZZ3THxdI?t=21"],
+      ["Learn Slalom (turn on captions)", "https://youtu.be/vgIrW5UK7jY"],
+      ["Naomi Grigg", "https://youtu.be/o7CPngmmgZw"],
+      ["SkateWeaver", "https://youtu.be/VmmxzabJ_vk"],
+      ["Lorenzo Guslandi", "https://youtu.be/NpQrDxXwew4?t=9"],
+      ["Sinead Howick", "https://youtu.be/yedX7zhwYFo?t=3"],
+      ["Dante the Skater254", "https://youtu.be/JYuI2P8qiFM"],
+      ["World Slalom Skaters Association [WSSA]", "https://youtu.be/DIX0jYtIbis?t=10"],
+      ["SkateIA", "https://youtu.be/1ccHOKUXPyc"]
+    ]
+  }
+}

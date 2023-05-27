@@ -1,0 +1,23 @@
+# Desktop Services Store file (for MacOS)
+.DS_Store
+
+# Dependency files
+/node_modules
+/.upm
+/package
+
+# Build directories
+/build
+/.svelte-kit
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Replit files
+.replit
+replit.nix
+
+# Config files
+/.config

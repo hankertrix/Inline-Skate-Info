@@ -1,0 +1,75 @@
+{
+  "Unity 8 Wheels Slide": {
+    "description": "",
+    "videos": [
+      ["Pablo Soller", "https://youtu.be/J4oQjF8k_6c"],
+      ["EZ Action (turn on captions)", "https://youtu.be/F_2yDSi6xL0?t=5"],
+      ["InMove Skates", "https://youtu.be/sgqweZVKZAw?t=22"],
+      ["Slide Academy", "https://youtu.be/dPlcE111nMA?t=7"],
+      ["Inline Skates School", "https://youtu.be/QMSWvY5RGqM"],
+      ["ReKiL.ru Team", "https://youtu.be/rXmplvqF7Gs"],
+      ["EZ Action", "https://youtu.be/BELKbdGmO9Y?t=149"],
+      ["Team Some What There", "https://youtu.be/TD5VBIxA0VM"]
+    ]
+  },
+  
+  "Savannah 8 Wheels Slide": {
+    "description": "",
+    "videos": [
+      ["InMove Skates", "https://youtu.be/sgqweZVKZAw?t=88"],
+      ["Slide Academy", "https://youtu.be/7OKQKNNAqEA?t=7"],
+      ["EZ Action (turn on captions)", "https://youtu.be/iwKRYs1VHg8?t=2"],
+      ["Inline Skates School", "https://youtu.be/5isaq8V1rYg"],
+      ["ReKiL.ru Team", "https://youtu.be/quKOtUJ8tus"],
+      ["EZ Action", "https://youtu.be/BELKbdGmO9Y?t=161"],
+      ["Flying Eagle Skates", "https://youtu.be/GF6FYrT1QWs?t=85"]
+    ]
+  },
+  
+  "Parallel Heel-Heel Slide": {
+    "description": "",
+    "videos": [
+      ["ReKiL.ru Team", "https://youtu.be/bXXLDRbfJ8w"],
+      ["EZ Action", "https://youtu.be/BELKbdGmO9Y?t=123"],
+      ["Zen Nguyen", "https://youtu.be/3R6pV4hBccI?t=57"],
+      ["Slide Academy", "https://youtu.be/AgX98iK6fOI?t=108"],
+      ["Albert", "https://youtu.be/OOBMKNEU0aE?t=7"],
+      ["sk8.vn", "https://youtu.be/7EwWCQBK5m4?t=8"]
+    ]
+  },
+  
+  "Parallel Heel-Toe Slide": {
+    "description": "",
+    "videos": [
+      ["ReKiL.ru Team", "https://youtu.be/h1drX_7arAk"],
+      ["ReKiL.ru Team", "https://youtu.be/EjXEFvOz8to"],
+      ["EZ Action", "https://youtu.be/BELKbdGmO9Y?t=131"],
+      ["Slide Academy", "https://youtu.be/AgX98iK6fOI?t=105"],
+      ["sk8.vn", "https://youtu.be/c_16CT-B5sA?t=7"],
+      ["Kann Veasna", "https://youtu.be/y7YD9TzcwR4"]
+    ]
+  },
+  
+  "Parallel Toe-Heel Slide": {
+    "description": "",
+    "videos": [
+      ["EZ Action", "https://youtu.be/BELKbdGmO9Y?t=135"]
+    ]
+  },
+  
+  "Parallel Toe-Toe Slide": {
+    "description": "",
+    "videos": [
+      ["Inline Skates School", "https://youtu.be/CCpd0adP7Gg"],
+      ["ReKiL.ru Team", "https://youtu.be/n7kGo1K2WWo"],
+      ["EZ Action", "https://youtu.be/BELKbdGmO9Y?t=112"],
+      ["Zen Nguyen", "https://youtu.be/nmcd_IDcE2M?t=67"],
+      ["Slide Academy", "https://youtu.be/AgX98iK6fOI?t=100"],
+      ["Kann Veasna", "https://youtu.be/AAUci27kgTs"],
+      ["Albert", "https://youtu.be/OOBMKNEU0aE?t=22"],
+      ["sk8.vn", "https://youtu.be/E8aHg1bS5l4?t=8"],
+      ["Nepal Free Style Slider", "https://youtu.be/FSz74Tn4OXI"],
+      ["Ziyi Kuek", "https://youtu.be/3tcysJBW8qI"]
+    ]
+  }
+}
