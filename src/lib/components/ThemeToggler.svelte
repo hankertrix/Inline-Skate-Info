@@ -10,9 +10,6 @@
 
     // Sets the current theme to be opposite of the previous theme
     $theme = $theme === "light" ? "dark" : "light";
-
-    // Sets the theme as a class on the body
-    document.body.className = $theme;
   }
   
 </script>
@@ -57,7 +54,7 @@
     stroke-linecap: round;
   }
 
-  :global(body.light) .theme-toggle {
+  :global(.light) .theme-toggle {
     --icon-fill: var(--light-fill);
     --icon-fill-hover: var(--light-fill-hover);
   }
@@ -186,7 +183,7 @@
 <button on:click={handleClick} class="theme-toggle" title="Toggles light & dark theme" aria-label="auto" aria-live="polite">
 
   <!-- The SVG of the sun and moon icon -->
-  <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24">
+  <svg class="sun-and-moon" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24">
     <mask class="moon" id="moon-mask">
       <rect x="0" y="0" width="100%" height="100%" fill="white"></rect>
       <circle cx="24" cy="10" r="6" fill="black"></circle>
