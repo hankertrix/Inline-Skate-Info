@@ -19,21 +19,18 @@
     const mq = window.matchMedia("(prefers-color-scheme: dark)");
 
     // The function to run when the user's theme changes
-    function whenThemeChanges(mq: MediaQueryListEvent) {
+    function whenUserThemeChanges(mq: MediaQueryListEvent) {
 
       // Sets the theme
       $theme = mq.matches ? "dark" : "light";
     }
 
     // Adds the media query listener to the window
-    mq.addListener(whenThemeChanges);
+    mq.addListener(whenUserThemeChanges);
 
     // Returns the function to remove the media query listener
-    return () => mq.removeListener(whenThemeChanges);
+    return () => mq.removeListener(whenUserThemeChanges);
   });
-
-  // Every time the theme changes, change the class on the body to match the theme
-  $: if (browser) window.document.body.className = $theme;
 
 </script>
 

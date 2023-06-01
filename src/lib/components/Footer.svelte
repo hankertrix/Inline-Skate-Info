@@ -30,7 +30,7 @@
 
 <!-- The main HTML for the footer -->
 <footer class="footer">
-  <a class="copyleft" title="Copyright notice and License" rel="noopener noreferrer">
+  <a href="https://github.com/hankertrix/Inline-Skate-Info/LICENSE.txt" class="copyleft" title="Copyright notice and License" rel="noopener noreferrer">
     <div>
       Copyleft&nbsp;<span class="symbol">©</span>&nbsp;Hankertrix 2023.&nbsp;
       <div>All Wrongs Reserved.</div>

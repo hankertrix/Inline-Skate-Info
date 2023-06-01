@@ -13,6 +13,10 @@
       margin: 0;
       font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
       scroll-behavior: smooth;
+
+      /* Colours */
+      background-color: var(--background-colour);
+      color: var(--text-colour);
     }
 
     * {
@@ -23,22 +27,18 @@
     .light {
       --text-colour: black;
       --text-opacity: 1;
-
-      background-color: white;
-      color: var(--text-colour);
+      --background-colour: white;
     }
     
     /* The colours for the dark theme */
     .dark {
       --text-colour: white;
       --text-opacity: 0.87;
-      
-      background-color: navy;
-      color: var(--text-colour);
+      --background-colour: navy;
     }
     
   </style>
-	<body>
+	<body class="light">
 		<div>%sveltekit.body%</div>
 	</body>
 </html>
