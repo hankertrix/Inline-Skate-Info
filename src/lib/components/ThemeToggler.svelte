@@ -62,7 +62,7 @@
     --icon-fill-hover: var(--light-fill-hover);
   }
 
-  :global(body.dark) .theme-toggle {
+  :global(.dark) .theme-toggle {
     --icon-fill: var(--dark-fill);
     --icon-fill-hover: var(--dark-fill-hover);
   }
@@ -101,17 +101,17 @@
   }
 
   /* Makes the sun icon become 1.75x larger after transitioning from light theme to dark theme */
-  :global(body.dark) .theme-toggle .sun-and-moon > .sun {
+  :global(.dark) .theme-toggle .sun-and-moon > .sun {
     transform: scale(1.75);
   }
 
   /* Makes the sun beams invisible after transitioning from light theme to dark theme */
-  :global(body.dark) .theme-toggle .sun-and-moon > .sun-beams {
+  :global(.dark) .theme-toggle .sun-and-moon > .sun-beams {
     opacity: 0;
   }
 
   /* Moves the circlular mask for the moon 7 pixels to the left as the mask starts at the right side of the icon */
-  :global(body.dark) .theme-toggle .sun-and-moon > .moon > circle {
+  :global(.dark) .theme-toggle .sun-and-moon > .moon > circle {
     transform: translate(-7px);
   }
 
@@ -119,7 +119,7 @@
   @supports (cx: 1) {
 
     /* If it can, then put the mask in the correct place without any transformation */
-    :global(body.dark) .theme-toggle .sun-and-moon > .moon > circle {
+    :global(.dark) .theme-toggle .sun-and-moon > .moon > circle {
       transform: translate(0);
       cx: 17;
     }
@@ -161,20 +161,20 @@
 
 
     /* Make the sun grow by 1.75x in a quarter of a second */
-    :global(body.dark) .theme-toggle .sun-and-moon > .sun {
+    :global(.dark) .theme-toggle .sun-and-moon > .sun {
       transform: scale(1.75);
       transition-timing-function: cubic-bezier(.25, 0, .3, 1);
       transition-duration: .25s
     }
 
     /* Make the sun beams rotate 25 degrees to the right in 0.15s */
-    :global(body.dark) .theme-toggle .sun-and-moon > .sun-beams {
+    :global(.dark) .theme-toggle .sun-and-moon > .sun-beams {
       transform: rotate(-25deg);
       transition-duration: .15s
     }
 
     /* Delay the transition of the mask by a quarter of a second and animate it for half a second */
-    :global(body.dark) .theme-toggle .sun-and-moon > .moon > circle {
+    :global(.dark) .theme-toggle .sun-and-moon > .moon > circle {
       transition-delay: .25s;
       transition-duration: .5s
     }
