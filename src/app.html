@@ -19,6 +19,30 @@
       color: var(--text-colour);
     }
 
+    a:link {
+      color: var(--link-colour);
+    }
+
+    a:link:hover {
+      color: var(--link-hover-colour);
+    }
+
+    a:link:active {
+      color: var(--link-active-colour);
+    }
+
+    a:visited {
+      color: var(--link-visited-colour);
+    }
+
+    a:visited:hover {
+      color: var(--link-visited-hover-colour);
+    }
+
+    a:visited:active {
+      color: var(--link-visited-active-colour);
+    }
+
     * {
       box-sizing: border-box;
     }
@@ -28,13 +52,29 @@
       --text-colour: black;
       --text-opacity: 1;
       --background-colour: white;
+      --link-colour: hotpink;
+      --link-hover-colour: magenta;
+      --link-active-colour: magenta;
+      --link-visited-colour: #E75480;
+      --link-visited-hover-colour: revert;
+      --link-visited-active-colour: revert;
+      --icon-colour: black;
+      --icon-opacity: 1;
     }
     
     /* The colours for the dark theme */
     .dark {
       --text-colour: white;
       --text-opacity: 0.87;
-      --background-colour: navy;
+      --background-colour: midnightblue;
+      --link-colour: orange;
+      --link-hover-colour: revert;
+      --link-active-colour: revert;
+      --link-visited-colour: revert;
+      --link-visited-hover-colour: revert;
+      --link-visited-active-colour: revert;
+      --icon-colour: white;
+      --icon-opacity: 0.87;
     }
     
   </style>
