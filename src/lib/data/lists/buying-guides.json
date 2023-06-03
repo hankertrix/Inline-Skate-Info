@@ -1,0 +1,12 @@
+{
+  "heading": "Here are some guides to help you with buying your first pair of skates:",
+
+  "links": [
+    ["", "https://www.reddit.com/r/rollerblading/comments/v4al05/beginners_guide_to_skating_equipment/"],
+    ["", "https://www.reddit.com/r/rollerblading/wiki/buyers_guide/"],
+  ],
+
+  "files": [
+    "./static/pdfs/skate-buying-guide.pdf"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "heading": "Here are some guides to help you with maintaining your skates:",
+
+  "links": [
+    ["Cleaning bearings (Inline Warehouse)", "https://youtu.be/iTb448Kq3fs"],
+    ["Cleaning bearings (Powerslide Inline Skates)", "https://youtu.be/B4TKr9zAUjc"],
+    ["Cleaning bearings (Back to Blading)", "https://youtu.be/ftBDpkIeBgM"],
+    ["Removing bearings (Tiago)", "https://youtu.be/SIBf_v-CLIk"],
+    ["Cleaning bearings (Tiago)", "https://youtu.be/foPrRcgtJf4"],
+    ["Cleaning bearings (Hockey Tutorial)", "https://youtu.be/KhRAXrMGzWY"],
+    ["Cleaning bearings (Top Puck)", "https://youtu.be/5aFOVREhrwM"]
+  ],
+
+  "files": [
+    "./static/pdfs/skate-maintenance-guide.pdf"
+  ]
+}

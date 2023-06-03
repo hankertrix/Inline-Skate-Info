@@ -28,7 +28,7 @@ export const maintenanceItemsRegex = /^\/?\bmain(?:tenance|tain(?:[ea]nce|ing)?)
 // The function to generate the text for the products
 export async function generateProductsText(productType: ProductTypes) {
 
-  // Asynchronously load the JSON data for the accessories or the protective gear
+  // Asynchronously load the JSON data for the products
   const data = await utils.loadJsonData(`/products/${productType}.json`) as Dict<Product>;
 
   // The list containing the final message

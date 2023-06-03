@@ -1,0 +1,19 @@
+{
+  "heading": "Here are a few trick lists for inline skating:",
+
+  "links": [
+    ["SkaMiDan's Trick List of Inline Skating", "https://www.skamidan.com/skatetutorials/basic-knowledge-and-facts-about-inline-skating/skamidans-trick-list-of-inline-skating/?lang=en"],
+    ["SkaMiDan's Trick List of Freestyle Slalom Skating", "https://www.skamidan.com/skatetutorials/basic-knowledge-and-facts-about-freestyle-slalom-skating-rules-inline-freestyle-slalom/skamidans-trick-list-of-freestyle-slalom-skating/?lang=en"],
+    ["SkaMiDan's Trick List of Aggressive Inline Skating", "https://www.skamidan.com/skatetutorials/basic-knowledge-and-facts-about-aggressive-inline-skating-stunt-skating-park-skating/skamidans-trick-list-of-aggressive-inline-skating/?lang=en"],
+    ["Book of Grinds", "https://skateyeg.com/bog/"],
+    ["Toxboe.net Aggressive Trick Guide", "https://toxboe.net/tricks/"],
+    ["Encyclopedia of aggressive inline tricks", "https://tricks-encyclopedia.blogspot.com/"],
+    ["Freshie Slalom Move List", "https://docs.google.com/spreadsheets/d/1mlcrdTsm2diQmZmCiKyPAYYEiifcwMmYmDhykprUNHI/edit#gid=0"],
+    ["Freestyle slalom moves and levels", "https://pagophilia.com/slalom/freestyle-slalom-moves-and-levels/"],
+    ["Aprenda Slalom A-Z Trick List", "https://aprendaslalom.com.br/en/a-z/"]
+  ],
+
+  "files": [
+    "./static/pdfs/world-skate-slalom-and-slides-trick-list.pdf"
+  ]
+}
