@@ -57,7 +57,7 @@ export async function generateListsText(lists: Lists) {
     let processedLink;
     
     // If the first item in the link list exists, hyperlink the link
-    if (linkTitle.length === 0) processedLink = utils.hyperlink(linkTitle, link);
+    if (linkTitle.length !== 0) processedLink = utils.hyperlink(linkTitle, link);
 
     // Otherwise, set the processed link to the website link without hyperlinking
     else processedLink = link;
