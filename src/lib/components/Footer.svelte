@@ -14,14 +14,6 @@
     font-family: Helvetica;
     padding: 5px 20px;
   }
-
-  :global(.light) .footer {
-    background-color: teal;
-  }
-  
-  :global(.dark) .footer {
-    background-color: darkorange;
-  }
   
   .symbol {
     display: inline-block;
