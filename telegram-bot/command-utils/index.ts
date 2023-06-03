@@ -4,7 +4,7 @@ export * as bootTypes from "./boot-types";
 export * as brands from "./brands";
 export * as discountInfo from "./discount-info";
 export * as frDiff from "./fr-diff";
-export * as guides from "./guides";
+export * as lists from "./lists";
 export * as help from "./help";
 export * as places from "./places";
 export * as poll from "./poll";

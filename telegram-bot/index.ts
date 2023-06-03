@@ -3,7 +3,7 @@
 import { Telegraf, Scenes, session } from "telegraf";
 import type { Context } from "telegraf";
 import type { InlineQueryResult, InlineKeyboardButton, CallbackQuery, Message } from "telegraf/types";
-import { DEV, SPACING } from "../constants";
+import { SPACING } from "../constants";
 import * as utils from "./utils";
 import { ctxReply, answerInlineQuery, isAdmin, deleteMessages, messageAndFileCommandHandler, messageAndFileInlineQueryHandler, wrapCallbackWithMessageDeleter } from "./bot-utils";
 import * as scenes from "./bot-scenes";
@@ -183,15 +183,15 @@ bot.command([
 ], async ctx => {
 
   // Use the general handler for this command as the function to generate a the data returns a message and a list of paths to the files
-  await messageAndFileCommandHandler(ctx, commandUtils.guides.generateTrickLists);
+  await messageAndFileCommandHandler(ctx, commandUtils.lists.generateTrickLists);
 });
 
 
 // The inline query handler for the trick lists command
-bot.inlineQuery(commandUtils.guides.trickListsRegex, async ctx => {
+bot.inlineQuery(commandUtils.lists.trickListsRegex, async ctx => {
   
   // Use the general handler for this inline query as the function to generate a the data returns a message and a list of paths to the files
-  await messageAndFileInlineQueryHandler(ctx, commandUtils.guides.generateTrickLists);
+  await messageAndFileInlineQueryHandler(ctx, commandUtils.lists.generateTrickLists);
 });
 
 
@@ -214,15 +214,15 @@ bot.command([
 ], async ctx => {
 
   // Use the general handler for this command as the function to generate a the data returns a message and a list of paths to the files
-  await messageAndFileCommandHandler(ctx, commandUtils.guides.generateRulebooks);
+  await messageAndFileCommandHandler(ctx, commandUtils.lists.generateRulebooks);
 });
 
 
 // The inline query handler for the rulebooks command
-bot.inlineQuery(commandUtils.guides.rulebooksRegex, async ctx => {
+bot.inlineQuery(commandUtils.lists.rulebooksRegex, async ctx => {
   
   // Use the general handler for this inline query as the function to generate a the data returns a message and a list of paths to the files
-  await messageAndFileInlineQueryHandler(ctx, commandUtils.guides.generateRulebooks);
+  await messageAndFileInlineQueryHandler(ctx, commandUtils.lists.generateRulebooks);
 });
 
 
@@ -245,15 +245,15 @@ bot.command([
 ], async ctx => {
 
   // Use the general handler for this command as the function to generate a the data returns a message and a list of paths to the files
-  await messageAndFileCommandHandler(ctx, commandUtils.guides.generateBuyingGuides);
+  await messageAndFileCommandHandler(ctx, commandUtils.lists.generateBuyingGuides);
 });
 
 
 // The inline query handler for the buying guides command
-bot.inlineQuery(commandUtils.guides.buyingGuidesRegex, async ctx => {
+bot.inlineQuery(commandUtils.lists.buyingGuidesRegex, async ctx => {
   
   // Use the general handler for this inline query as the function to generate a the data returns a message and a list of paths to the files
-  await messageAndFileInlineQueryHandler(ctx, commandUtils.guides.generateBuyingGuides, false);
+  await messageAndFileInlineQueryHandler(ctx, commandUtils.lists.generateBuyingGuides, false);
 });
 
 
@@ -284,15 +284,15 @@ bot.command([
 ], async ctx => {
 
   // Use the general handler for this command as the function to generate a the data returns a message and a list of paths to the files
-  await messageAndFileCommandHandler(ctx, commandUtils.guides.generateMaintenanceGuides);
+  await messageAndFileCommandHandler(ctx, commandUtils.lists.generateMaintenanceGuides);
 });
 
 
 // The inline query handler for the maintenance guides command
-bot.inlineQuery(commandUtils.guides.maintenanceGuidesRegex, async ctx => {
+bot.inlineQuery(commandUtils.lists.maintenanceGuidesRegex, async ctx => {
   
   // Use the general handler for this inline query as the function to generate a the data returns a message and a list of paths to the files
-  await messageAndFileInlineQueryHandler(ctx, commandUtils.guides.generateMaintenanceGuides);
+  await messageAndFileInlineQueryHandler(ctx, commandUtils.lists.generateMaintenanceGuides);
 });
 
 
@@ -315,15 +315,15 @@ bot.command([
 ], async ctx => {
 
   // Use the general handler for this command as the function to generate a the data returns a message and a list of paths to the files
-  await messageAndFileCommandHandler(ctx, commandUtils.guides.generateGlossaries);
+  await messageAndFileCommandHandler(ctx, commandUtils.lists.generateGlossaries);
 });
 
 
 // The inline query handler for the glossaries command
-bot.inlineQuery(commandUtils.guides.glossariesRegex, async ctx => {
+bot.inlineQuery(commandUtils.lists.glossariesRegex, async ctx => {
   
   // Use the general handler for this inline query as the function to generate a the data returns a message and a list of paths to the files
-  await messageAndFileInlineQueryHandler(ctx, commandUtils.guides.generateGlossaries);
+  await messageAndFileInlineQueryHandler(ctx, commandUtils.lists.generateGlossaries);
 });
 
 
@@ -350,15 +350,15 @@ bot.command([
 ], async ctx => {
 
   // Use the general handler for this command as the function to generate a the data returns a message and a list of paths to the files
-  await messageAndFileCommandHandler(ctx, commandUtils.guides.generateMiscResources);
+  await messageAndFileCommandHandler(ctx, commandUtils.lists.generateMiscResources);
 });
 
 
 // The inline query handler for the miscellaneous resources command
-bot.inlineQuery(commandUtils.guides.miscResourcesRegex, async ctx => {
+bot.inlineQuery(commandUtils.lists.miscResourcesRegex, async ctx => {
   
   // Use the general handler for this inline query as the function to generate a the data returns a message and a list of paths to the files
-  await messageAndFileInlineQueryHandler(ctx, commandUtils.guides.generateMiscResources);
+  await messageAndFileInlineQueryHandler(ctx, commandUtils.lists.generateMiscResources);
 });
 
 
