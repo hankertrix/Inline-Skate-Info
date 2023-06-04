@@ -370,7 +370,9 @@ bot.command([
 ], async ctx => {
 
   // Use the general handler for this command as the function to generate a the data returns a message and a list of paths to the files
-  await messageAndFileCommandHandler(ctx, commandUtils.lists.generateMiscResources);
+  await messageAndFileCommandHandler(ctx, () => commandUtils.lists.generateListsText(
+    commandUtils.lists.Lists.MiscResources
+  ));
 });
 
 
@@ -378,7 +380,9 @@ bot.command([
 bot.inlineQuery(commandUtils.lists.miscResourcesRegex, async ctx => {
   
   // Use the general handler for this inline query as the function to generate a the data returns a message and a list of paths to the files
-  await messageAndFileInlineQueryHandler(ctx, commandUtils.lists.generateMiscResources);
+  await messageAndFileInlineQueryHandler(ctx, () => commandUtils.lists.generateListsText(
+    commandUtils.lists.Lists.MiscResources
+  ));
 });
 
 

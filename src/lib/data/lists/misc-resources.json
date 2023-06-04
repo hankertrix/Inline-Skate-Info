@@ -1,0 +1,14 @@
+{
+  "heading": "Here is a list of miscellaneous resources that you can check out:",
+
+  "links": [
+    ["Roller School iOS App (Paid)", "https://apps.apple.com/us/app/rollerschool/id962573665"],
+    ["Roller School Android App (Paid)", "https://play.google.com/store/apps/details?id=dv.rollerschool"]
+  ],
+
+  "files": [
+    "./static/pdfs/the-art-of-falling-by-naomi-grigg.pdf",
+    "./static/pdfs/lets-skate-by-asha-kirkby-2017-version.pdf",
+    "./static/images/slalom-skill-tree.png"
+  ]
+}

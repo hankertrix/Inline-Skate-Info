@@ -9,7 +9,8 @@ export enum Lists {
   Rulebooks = "rulebooks",
   BuyingGuides = "buying-guides",
   MaintenanceGuides = "maintenance-guides",
-  Glossaries = "glossaries"
+  Glossaries = "glossaries",
+  MiscResources = "misc-resources"
 };
 
 // The type of the data in the JSON file for the lists
