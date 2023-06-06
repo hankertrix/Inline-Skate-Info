@@ -71,25 +71,25 @@
 
 <!-- The main HTML for the footer -->
 <footer class="footer">
-  <a href="https://github.com/hankertrix/Inline-Skate-Info/blob/main/LICENSE.txt" class="copyleft" title="Copyright notice and License" rel="noopener noreferrer">
-    <div>
+  <a href="https://github.com/hankertrix/Inline-Skate-Info/blob/main/LICENSE.txt" class="copyleft" title="Copyright notice and license" rel="noopener noreferrer">
+    <div class="text">
       Copyleft&nbsp;<span class="symbol">©</span>&nbsp;Hankertrix 2023.&nbsp;
       <div>All Wrongs Reserved.</div>
     </div>
   </a>
   <div class="source-wrapper">
-    <a href="https://github.com/hankertrix/Inline-Skate-Info" target="_blank" class="source" title="View source code on GitHub" rel="noopener noreferrer">Source:</a>
+    <a href="https://github.com/hankertrix/Inline-Skate-Info" target="_blank" class="source" title="View the source code on GitHub" rel="noopener noreferrer">Source:</a>
     <div class="icon-wrapper">
-      <a href="https://github.com/hankertrix/Inline-Skate-Info" target="_blank" title="View source code on Github" rel="noopener noreferrer">
-        <img src="/images/GitHub-Invertocat-Logo.svg" alt="View source code on GitHub" />
+      <a href="https://github.com/hankertrix/Inline-Skate-Info" target="_blank" title="View the source code on GitHub" rel="noopener noreferrer">
+        <img src="/images/github-invertocat-logo.svg" alt="View the source code on GitHub" />
       </a>
-      <a href="https://replit.com/@hankertrix/Inline-Skate-Info?v=1" target="_blank" title="View source code on Replit" rel="noopener noreferrer">
-        <img src="/images/Replit-Logo.svg" alt="View source code on Replit" />
+      <a href="https://replit.com/@hankertrix/Inline-Skate-Info?v=1" target="_blank" title="View the source code on Replit" rel="noopener noreferrer">
+        <img src="/images/replit-logo.svg" alt="View the source code on Replit" />
       </a>
     </div>
   </div>
   <a href="https://t.me/inlineskatebot" target="_blank" rel="noopener noreferrer" title="Chat with the Telegram bot" class="telegram-bot-wrapper">
-    <img src="/images/Telegram-Logo.svg" alt="Telegram Logo" />
-    <div>Telegram Bot</div>
+    <img src="/images/telegram-logo.svg" alt="Telegram Logo" />
+    <div><b>Telegram Bot</b></div>
   </a>
 </footer>
