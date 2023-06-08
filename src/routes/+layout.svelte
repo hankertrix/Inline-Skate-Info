@@ -39,11 +39,11 @@
   
   .page-container {
     position: relative;
-    min-height: 100vh;
+    min-height: 100svh;
   }
 
   .wrapper {
-    padding-bottom: 3.5rem;
+    padding-bottom: var(--footer-height);
   }
   
 </style>

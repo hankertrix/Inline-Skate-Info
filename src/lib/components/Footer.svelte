@@ -4,13 +4,13 @@
 <style>
   
   .footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: var(--footer-height);
     display: grid;
     align-items: center;
     grid-template-columns: 1fr 1fr 1fr;
-    position: absolute;
-    bottom: 0;
-    width: 100vw;
-    height: 3.5rem;
     font-family: Helvetica;
     padding: 5px 20px;
   }
@@ -56,6 +56,7 @@
     gap: 0.5em;
     text-decoration: none;
     color: #229ED9;
+    text-align: center;
   }
 
   .telegram-bot-wrapper:is(:link, :hover, :visited, :active) {
@@ -73,7 +74,7 @@
 <footer class="footer">
   <a href="https://github.com/hankertrix/Inline-Skate-Info/blob/main/LICENSE.txt" class="copyleft" title="Copyright notice and license" rel="noopener noreferrer">
     <div class="text">
-      Copyleft&nbsp;<span class="symbol">©</span>&nbsp;Hankertrix 2023.&nbsp;
+      Copyleft&nbsp;<span class="symbol">©</span>&#32;Hankertrix 2023.
       <div>All Wrongs Reserved.</div>
     </div>
   </a>
