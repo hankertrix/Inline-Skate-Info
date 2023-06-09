@@ -1,5 +1,19 @@
 <!-- The main icon for the website -->
 
+<!-- The styles for the main icon -->
+<style>
+
+  svg {
+    --size: 100%;
+    
+    inline-size: var(--size);
+    block-size: var(--size);
+    aspect-ratio: 1;
+  }
+  
+</style>
+
+<!-- The HTML for the main icon -->
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 307.72 249.05">
   <defs>
     <style>

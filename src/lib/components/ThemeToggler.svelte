@@ -14,6 +14,7 @@
   
 </script>
 
+<!-- The styles for the theme toggler -->
 <style>
 
   /* Styles for the button to toggle between light and dark mode */
@@ -27,10 +28,10 @@
   /* The styles for the theme toggle button */
   .theme-toggle {
     --size: 100%;
-    --light-fill: hsl(210 10% 30%);
-    --light-fill-hover: hsl(210 10% 15%);
-    --dark-fill: hsl(210 10% 70%);
-    --dark-fill-hover: hsl(210 15% 90%);
+    --light-fill: hsl(210 10% 15%);
+    --light-fill-hover: hsl(210 10% 30%);
+    --dark-fill: hsl(210 15% 90%);
+    --dark-fill-hover: hsl(210 10% 85%);
 
     background: none;
     border: none;
@@ -180,7 +181,7 @@
 </style>
 
 <!-- The HTML for the component -->
-<button on:click={handleClick} class="theme-toggle" title="Toggles light & dark theme" aria-label="auto" aria-live="polite">
+<button on:click={handleClick} class="theme-toggle" title="Toggles between light & dark theme" aria-label="auto" aria-live="polite">
 
   <!-- The SVG of the sun and moon icon -->
   <svg class="sun-and-moon" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24">
