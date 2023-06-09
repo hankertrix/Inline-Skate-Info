@@ -54,12 +54,13 @@
   }
 
   .website-info {
-    font-size: 2rem;
+    font-family: Oleo Script;
+    font-size: 2.5rem;
     text-decoration: none;
   }
 
   .main-icon {
-    --icon-size: 2.5em;
+    --icon-size: 2em;
     
     display: flex;
     align-items: center;
