@@ -30,8 +30,8 @@
     --size: 100%;
     --light-fill: hsl(210 10% 15%);
     --light-fill-hover: hsl(210 10% 30%);
-    --dark-fill: hsl(210 15% 90%);
-    --dark-fill-hover: hsl(210 10% 85%);
+    --dark-fill: hsl(210 15% 85%);
+    --dark-fill-hover: hsl(210 10% 95%);
 
     background: none;
     border: none;
