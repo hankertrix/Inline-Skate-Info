@@ -7,7 +7,7 @@
 
   // Import all the required components
   import Footer from "$lib/components/Footer.svelte";
-  import NavBar from "$lib/components/NavBar.svelte";
+  import NavBar from "$lib/components/nav-bar/NavBar.svelte";
 
   // Other imports
   import { onMount } from "svelte";

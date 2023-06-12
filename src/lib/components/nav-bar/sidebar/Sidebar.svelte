@@ -1,6 +1,6 @@
 <!-- The side bar that the hamburger menu opens up -->
 <script lang="ts">
-  import TableOfContents from "$lib/components/TableOfContents.svelte";
+  import TableOfContents from "$lib/components/nav-bar/sidebar/table-of-contents/TableOfContents.svelte";
 </script>
 
 <!-- The styles for the side bar -->

@@ -1,8 +1,6 @@
 <!-- The main page of the website -->
 <script lang="ts">
-  import ThemeToggler from "$lib/components/ThemeToggler.svelte";
-  import MainIcon from "$lib/components/MainIcon.svelte";
-  import NavBar from "$lib/components/NavBar.svelte";
+  
 </script>
 
 <!-- The HTML for the main page -->

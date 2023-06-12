@@ -78,7 +78,7 @@
 <!-- Iterates over all the titles in the given table of contents -->
 {#each [...tableOfContents.entries()] as [title, child]}
   {@const urlFriendlyTitle = makeUrlFriendlyString(title)}
-  {@const checkboxId = `${urlFriendlyTitle}-menu`}
+  {@const checkboxId = `${urlFriendlyTitle}-table-of-contents`}
 
   <!-- If the current title has any children -->
   {#if titleHasChildren(child)}
@@ -90,7 +90,7 @@
     <!-- If the title is actually the table of contents -->
     {#if title === "Table Of Contents"}
 
-      <label class="menu" for={checkboxId} title="Opens or closes the table of contents">
+      <label class="menu" for={checkboxId} title="Show or hide the table of contents">
         <div class="text">{title}</div>
         <div class="menu-toggler"></div>
       </label>
@@ -99,8 +99,8 @@
     {:else}
       
       <div class="menu">
-        <a href={`#${urlFriendlyTitle}`} title={`Go to the "${title}" section`}>{title}</a>
-        <label class="menu-toggler" for={checkboxId} title={`Opens or closes the sections under "${title}"`}></label>
+        <a href={`#${urlFriendlyTitle}`} title={`Go to the section called '${title}'`}>{title}</a>
+        <label class="menu-toggler" for={checkboxId} title={`Show or hide the sections under '${title}'`}></label>
       </div>
 
     {/if}
@@ -115,7 +115,7 @@
 
     <!-- Displays the current title as a list element -->
     <li>
-      <a href={`#${urlFriendlyTitle}`} title={`Go to the "${title}" section`}>{title}</a>
+      <a href={`#${urlFriendlyTitle}`} title={`Go to the section called '${title}'`}>{title}</a>
     </li>
     
   {/if}
