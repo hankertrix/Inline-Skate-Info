@@ -46,6 +46,7 @@
     top: 0;
     width: 100vw;
     height: var(--nav-bar-height);
+    z-index: 2;
   }
   
   .nav-bar, .website-info {
