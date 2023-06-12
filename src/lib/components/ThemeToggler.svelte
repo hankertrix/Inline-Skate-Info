@@ -55,15 +55,11 @@
     stroke-linecap: round;
   }
 
-  :global(.light) .theme-toggle {
-    --icon-fill: var(--light-fill);
-    --icon-fill-hover: var(--light-fill-hover);
+  .theme-toggle {
+    --icon-fill: var(--icon-colour);
+    --icon-fill-hover: var(--icon-hover-colour);
   }
 
-  :global(.dark) .theme-toggle {
-    --icon-fill: var(--dark-fill);
-    --icon-fill-hover: var(--dark-fill-hover);
-  }
 
 
 

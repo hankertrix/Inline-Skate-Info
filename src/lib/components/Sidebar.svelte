@@ -1,27 +1,31 @@
 <!-- The side bar that the hamburger menu opens up -->
 <script lang="ts">
-  
-  import type { JsonPageData } from "$lib/types";
-  
-  // The page data in JSON to pass to the table of contents element
-  export let jsonPageData: JsonPageData = {};
-  
+  import TableOfContents from "$lib/components/TableOfContents.svelte";
 </script>
 
 <!-- The styles for the side bar -->
 <style>
 
   ul {
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
+    --sidebar-list-style-type: none;
+
+    margin: 0 8px;
+    padding: 0 0 8px 0;
+    list-style-type: var(--sidebar-list-style-type);
+  }
+
+  a {
+    color: var(--text-colour);
+    opacity: var(--text-opacity);
+    text-decoration: none;
   }
   
 </style>
 
 <!-- The HTML for the side bar -->
 <nav>
-  <ul class="text">
+  <ul>
+    <TableOfContents />
     <li>A</li>
     <li>Side</li>
     <li>Bar</li>

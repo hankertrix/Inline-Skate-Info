@@ -7,6 +7,7 @@
 
   // Import all the required components
   import Footer from "$lib/components/Footer.svelte";
+  import NavBar from "$lib/components/NavBar.svelte";
 
   // Other imports
   import { onMount } from "svelte";
@@ -43,6 +44,7 @@
   }
 
   .wrapper {
+    padding-top: var(--nav-bar-height);
     padding-bottom: var(--footer-height);
   }
   
@@ -50,6 +52,7 @@
 
 <div class="page-container">
   <div class="wrapper">
+    <NavBar />
     <slot />
   </div>
   <Footer />

@@ -83,7 +83,7 @@ ${details}
   // The list of paths to the PDF files containing the discount info
   // The paths are with respect to the root directory
   const pdfFiles = [
-    "./static/pdfs/hyper-sport-discount-catalogue.pdf",
+    "./static/pdfs/hvper-sport-discount-catalogue.pdf",
     "./static/pdfs/ernsports-discount-catalogue.pdf"
   ];
 

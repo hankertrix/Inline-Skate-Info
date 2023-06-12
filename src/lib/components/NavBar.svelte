@@ -1,13 +1,9 @@
 <!-- The hamburger menu for the website -->
 <script lang="ts">
   
-  import type { JsonPageData } from "$lib/types";
   import Sidebar from "$lib/components/Sidebar.svelte";
   import MainIcon from "$lib/components/MainIcon.svelte";
   import ThemeToggler from "$lib/components/ThemeToggler.svelte";
-  
-  // The page data in JSON to pass to the table of contents element
-  export let jsonPageData: JsonPageData = {};
 
   // The javascript function to add a "checked" class to the nav bar (fallback for firefox which doesn't support the :has selector)
   function addCheckedClass(e: MouseEvent & { currentTarget: HTMLInputElement }) {
@@ -45,6 +41,11 @@
     /* The width of the "X" when the hamburger menu is open */
     /* 1.41421356237 is root 2 */
     --x-width: calc(var(--hamburger-height) * 1.41421356237);
+
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: var(--nav-bar-height);
   }
   
   .nav-bar, .website-info {
@@ -53,9 +54,13 @@
     align-items: center;
   }
 
+  .nav-bar {
+    padding: 5px;
+  }
+
   .website-info {
     font-family: Oleo Script;
-    font-size: 2.5rem;
+    font-size: 2rem;
     text-decoration: none;
   }
 
@@ -104,9 +109,16 @@
     outline: none;
     pointer-events: none;
   }
+
+  .hamburger-icon:hover::before,
+  .hamburger-icon:hover::after,
+  .hamburger-icon:hover > input {
+    background-color: var(--icon-hover-colour);
+  }
   
   .sidebar {
     translate: -100%;
+    width: max-content;
     transition: translate var(--animation-timing);
   }
 
@@ -135,6 +147,15 @@
 
   :is(.nav-bar:has(.hamburger-icon > input:checked), .nav-bar.checked) + .sidebar {
     translate: 0;
+  }
+
+  /* Don't animate when the user prefers reduced motion */
+  @media (prefers-reduced-motion) {
+
+    .top-menu {
+      --animation-timing: 0;
+    }
+    
   }
 
 </style>
