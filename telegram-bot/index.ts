@@ -1192,8 +1192,14 @@ bot.command([
   "src"
 ], async ctx => {
 
+  // The list of hyperlinks to where the source of the bot is hosted
+  const sources = [
+    utils.hyperlink("GitHub", "https://github.com/hankertrix/Inline-Skate-Info"),
+    utils.hyperlink("Replit", "https://replit.com/@hankertrix/Inline-Skate-Info?v=1")
+  ];
+
   // The message to send to the user
-  const msg = `View the source code of the bot on:\n\n${utils.hyperlink("Replit", "https://replit.com/@hankertrix/Inline-Skate-Info?v=1")}`;
+  const msg = `View the source code of the bot on:\n\n${sources.join("\n")}`;
 
   // Sends the message to the user
   await ctxReply(ctx, msg);

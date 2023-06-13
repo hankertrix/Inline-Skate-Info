@@ -13,12 +13,6 @@
     padding: 0 0 8px 0;
     list-style-type: var(--sidebar-list-style-type);
   }
-
-  a {
-    color: var(--text-colour);
-    opacity: var(--text-opacity);
-    text-decoration: none;
-  }
   
 </style>
 

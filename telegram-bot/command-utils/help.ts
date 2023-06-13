@@ -89,7 +89,7 @@ function getCommandDict() {
     },
 
     "where_to_rent": {
-      explanation: "Displays information about the places where you can rent inline skates."
+      explanation: "Displays information about the places where you can rent inline skates in Singapore."
     },
 
     "skateparks": {
@@ -149,7 +149,7 @@ function getCommandDict() {
     },
 
     "qr_code": {
-      explanation: "Gets the bot to turn your text into a QR code. The whole point of this command is so that you'll use this instead of going to an ad-ridden site to get a QR code that redirects users to an ad-filled page before displaying the actual content of the QR code.",
+      explanation: "Gets the bot to turn your text into a QR code.",
       usage: "<text that you want to convert to a QR code>"
     },
 
