@@ -1,6 +1,154 @@
 <!-- The side bar that the hamburger menu opens up -->
 <script lang="ts">
   import TableOfContents from "$lib/components/nav-bar/sidebar/table-of-contents/TableOfContents.svelte";
+  import SidebarCollapsibleMenu from "$lib/components/nav-bar/sidebar/SidebarCollapsibleMenu.svelte";
+
+  // The pages in the website
+  const pages = {
+    
+    "Tricks": {
+      "Basics": "",
+      "Fundamentals": "",
+      "Turns": "",
+      "Stops": "",
+      "Jumps": "",
+      
+      "Slalom": {
+        
+        "Class A": {
+          "Others": "",
+          "Sitting": "",
+          "Jumps": "",
+          "Wheelings": "",
+          "Spins": "",
+        },
+        
+        "Class B": {
+          "Others": "",
+          "Sitting": "",
+          "Jumps": "",
+          "Wheelings": "",
+          "Spins": "",
+        },
+        
+        "Class C": {
+          "Others": "",
+          "Sitting": "",
+          "Jumps": "",
+          "Wheelings": "",
+          "Spins": "",
+        },
+        
+        "Class D": {
+          "Others": "",
+          "Sitting": "",
+          "Jumps": "",
+          "Wheelings": "",
+          "Spins": "",
+        },
+        
+        "Class E": {
+          "Others": "",
+          "Sitting": "",
+          "Jumps": "",
+          "Wheelings": "",
+          "Spins": "",
+        }
+        
+      },
+
+      "Slides": {
+        
+        "Class A": {
+          "Family 1": "",
+          "Family 2": "",
+          "Family 3": "",
+          "Family 4": "",
+          "Family 5": "",
+        },
+        
+        "Class B": {
+          "Family 1": "",
+          "Family 2": "",
+          "Family 3": "",
+          "Family 4": "",
+          "Family 5": "",
+        },
+        
+        "Class C": {
+          "Family 1": "",
+          "Family 2": "",
+          "Family 4": "",
+          "Family 5": "",
+        },
+        
+        "Class D": {
+          "Family 1": "",
+          "Family 2": "",
+          "Family 4": "",
+          "Family 5": "",
+        },
+        
+        "Class E": {
+          "Family 1": "",
+          "Family 2": "",
+          "Family 4": "",
+        },
+        
+      },
+
+      "Aggressive": {
+
+        "Basics": "",
+
+        "Class A": {
+          "Spins": "",
+          "Others": "",
+        },
+
+        "Class B": {
+          "Stalls": "",
+          "Grinds": "",
+          "Airs": "",
+          "Spins": "",
+          "Others": "",
+        },
+
+        "Class C": {
+          "Stalls": "",
+          "Grinds": "",
+          "Airs": "",
+          "Grabs": "",
+          "Spins": "",
+          "Others": "",
+        },
+
+        "Class D": {
+          "Stalls": "",
+          "Grinds": "",
+          "Airs": "",
+          "Grabs": "",
+          "Spins": "",
+          "Others": "",
+        },
+
+        "Class E": {
+          "Stalls": "",
+          "Grinds": "",
+          "Airs": "",
+          "Grabs": "",
+          "Spins": "",
+          "Others": "",
+        },
+        
+      },
+
+      "Wizard": "",
+      "Misc": "",
+    },
+    
+  } as const;
+  
 </script>
 
 <!-- The styles for the side bar -->
@@ -10,8 +158,12 @@
     --sidebar-list-style-type: none;
 
     margin: 0 8px;
-    padding: 0 0 8px 0;
+    padding: 0 8px 8px 0;
     list-style-type: var(--sidebar-list-style-type);
+    max-height: calc(100svh - var(--nav-bar-height));
+    overflow-x: hidden;
+    overflow-y: auto;
+    scrollbar-gutter: stable;
   }
   
 </style>
@@ -20,8 +172,6 @@
 <nav>
   <ul>
     <TableOfContents />
-    <li>A</li>
-    <li>Side</li>
-    <li>Bar</li>
+    <SidebarCollapsibleMenu pages={pages} />
   </ul>
 </nav>

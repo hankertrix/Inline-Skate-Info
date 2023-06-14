@@ -1,5 +1,4 @@
 <!-- The collapsible menu that is to be created as part of the sidebar -->
-
 <script lang="ts">
 
   // The pages type for the pages variable
@@ -13,6 +12,9 @@
   // The start of the url to add on to, defaults to the main page
   export let urlStart: string = "/";
 
+  // The parent titles that are url friendly to create the ID
+  export let parentUrlTitles: string = "";
+
   // Function to change the title into a url friendly string
   function makeUrlFriendlyString(str: string) {
     return str.replace(" ", "-").toLowerCase();
@@ -20,7 +22,7 @@
   
   // Function to check if a title has any children
   function titleHasChildren(obj: any) {
-    return obj instanceof Map && obj.size > 0;
+    return (typeof obj !== "string" || obj instanceof String) && Object.keys(obj).length > 0;
   }
   
 </script>
@@ -83,10 +85,12 @@
 </style>
 
 <!-- The HTML for the collapsible menu -->
-<!-- Iterates over all the titles in the given table of contents -->
-{#each [...tableOfContents.entries()] as [title, child]}
+<!-- Iterates over all the titles in the pages object given -->
+{#each Object.entries(pages) as [title, child]}
   {@const urlFriendlyTitle = makeUrlFriendlyString(title)}
-  {@const checkboxId = `${urlFriendlyTitle}-table-of-contents`}
+  {@const currentUrl = `${urlStart}${urlFriendlyTitle}/`}
+  {@const checkboxIdFragment = `${parentUrlTitles}-${urlFriendlyTitle}`}
+  {@const checkboxId = `${checkboxIdFragment}-sidebar`}
 
   <!-- If the current title has any children -->
   {#if titleHasChildren(child)}
@@ -95,27 +99,14 @@
     <input type="checkbox" id={checkboxId} />
 
     <!-- The label to open and close the collapsible menu -->
-    <!-- If the title is actually the table of contents -->
-    {#if title === "Table Of Contents"}
-
-      <label class="menu" for={checkboxId} title="Show or hide the table of contents">
-        <div class="text">{title}</div>
-        <div class="menu-toggler"></div>
-      </label>
-
-    <!-- If the title is a regular heading in the page -->
-    {:else}
-      
-      <div class="menu">
-        <a href={`#${urlFriendlyTitle}`} title={`Go to the section called '${title}'`}>{title}</a>
-        <label class="menu-toggler" for={checkboxId} title={`Show or hide the sections under '${title}'`}></label>
-      </div>
-
-    {/if}
+    <div class="menu">
+      <a href={currentUrl} title={`Go to the page called '${title}'`}>{title}</a>
+      <label class="menu-toggler" for={checkboxId} title={`Show or hide the pages under '${title}'`}></label>
+    </div>
 
     <!-- The collapsible menu to open and close -->
     <ul>
-      <svelte:self tableOfContents={child} />
+      <svelte:self pages={child} urlStart={currentUrl} parentUrlTitles={checkboxIdFragment} />
     </ul>
 
   <!-- If the cuurent title has no children -->
@@ -123,7 +114,7 @@
 
     <!-- Displays the current title as a list element -->
     <li>
-      <a href={`#${urlFriendlyTitle}`} title={`Go to the section called '${title}'`}>{title}</a>
+      <a href={currentUrl} title={`Go to the page called '${title}'`}>{title}</a>
     </li>
     
   {/if}
