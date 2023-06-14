@@ -1,0 +1,16 @@
+{
+  "title": "Information about the student discount",
+
+  "messageParts": [
+    "You can only use the student discount at 3 skate shops, namely Hvper Sport / HiRoller, Ernsports, and Inlinex. Hvper Sport / HiRoller and Ernsports only have discounts for skates on their catalogue, while Inlinex provides a 15% discount on all non-discounted skates. To obtain the student discount, it's quite likely that simply telling the shops the name of your inline skating club president would be sufficient, but you should still ask your club's president for the exact details. For NUS skaters, you'll have to bring your NUS student card for verification.",
+    "Before heading down to the shops to buy your skates, do call them to check if they have the skates in your size. For Inlinex, you can check the stock on their website before heading down.",
+    "Here are the details of the 3 places:"
+  ],
+
+  "pdfFiles": [
+    "./static/pdfs/hvper-sport-discount-catalogue.pdf",
+    "./static/pdfs/ernsports-discount-catalogue.pdf"
+  ],
+
+  "listSlice": [0, 4]
+}

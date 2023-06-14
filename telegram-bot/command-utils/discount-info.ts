@@ -5,12 +5,20 @@ import { SPACING } from "../../constants";
 import type { Dict, Place } from "../types";
 
 
+// The type of the discount info JSON data
+type DiscountInfo = {
+  title: string,
+  messageParts: string[],
+  pdfFiles: string[],
+  listSlice: number[]
+};
+
 // The regex to check for the discount info command
 export const regex = /^\/?\bdiscount[ _\-]?(?:info(?:rmation)?)?\b/i;
 
 
 // Function to get the stores that have a student discount
-async function getDiscountApplicableStoresDetails() {
+async function getDiscountApplicableStoresDetails(listSlice: number[]) {
 
   // Loads the JSON data for the retailers in Singapore
   const data = await utils.loadJsonData("places/singapore-retailers") as Dict<Place>;
@@ -18,8 +26,8 @@ async function getDiscountApplicableStoresDetails() {
   // The list of strings to make up the final string containing all the stores' details
   const detailStrList: string[] = [];
 
-  // Iterates over the first 3 items of the data (Hvper Sport / HiRoller and Ernsports)
-  for (const [store, info] of Object.entries(data).slice(0, 4) as Array<[string, Place]>) {
+  // Iterates over the relevant portion of the data (Hvper Sport / HiRoller, Ernsports and Inlinex)
+  for (const [store, info] of Object.entries(data).slice(...listSlice) as Array<[string, Place]>) {
 
     // Initialise the list to store the information for the store
     const infoStrList: string[] = [];
@@ -62,31 +70,15 @@ async function getDiscountApplicableStoresDetails() {
 // Function to generate the discount info message as well as the files needed
 export async function generateDiscountInfo() {
 
+  // Loads the JSON data containing the discount info
+  const { title, messageParts, pdfFiles, listSlice } = await utils.loadJsonData("misc/discount-info") as DiscountInfo;
+
   // Gets the details of the stores with the student discount
-  const details = await getDiscountApplicableStoresDetails();
+  const details = await getDiscountApplicableStoresDetails(listSlice);
 
   // The discount info message
-  const message = `
-
-${utils.bold("Information about the student discount")}
-
-
-You can only use the student discount at 3 skate shops, namely Hvper Sport / HiRoller, Ernsports, and Inlinex. Hvper Sport / HiRoller and Ernsports only have discounts for skates on their catalogue, while Inlinex provides a 15% discount on all non-discounted skates. To obtain the student discount, it's quite likely that simply telling the shops the name of your inline skating club president would be sufficient, but you should still ask your club's president for the exact details.
-
-Here are the details of the 3 places:
-
-
-${details}
-
-  `.trim();
-
-  // The list of paths to the PDF files containing the discount info
-  // The paths are with respect to the root directory
-  const pdfFiles = [
-    "./static/pdfs/hvper-sport-discount-catalogue.pdf",
-    "./static/pdfs/ernsports-discount-catalogue.pdf"
-  ];
-
+  const message = `${utils.bold(title)}\n\n\n${messageParts.join("\n\n")}\n\n\n${details}`.trim();
+  
   // Returns the discount info message and the list of paths to pdf files
   return [message, pdfFiles];
 }
