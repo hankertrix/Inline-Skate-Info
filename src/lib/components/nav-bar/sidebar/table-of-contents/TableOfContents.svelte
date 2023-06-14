@@ -2,7 +2,7 @@
 <script lang="ts">
 
   import { browser } from "$app/environment";
-  import CollapsibleMenu from "$lib/components/nav-bar/sidebar/table-of-contents/CollapsibleMenu.svelte";
+  import TableOfContentsCollapsibleMenu from "$lib/components/nav-bar/sidebar/table-of-contents/TableOfContentsCollapsibleMenu.svelte";
 
   // Initialise the headings variable to store all the heading elements
   let headings: NodeListOf<Element>;
@@ -117,5 +117,5 @@
 <!-- The HTML for the table of contents -->
 <!-- Displays the table of contents only when the number of headings on the page is greater than 2 -->
 {#if headings && headings.length > 1}
-  <CollapsibleMenu tableOfContents={tableOfContents} />
+  <TableOfContentsCollapsibleMenu tableOfContents={tableOfContents} />
 {/if}
