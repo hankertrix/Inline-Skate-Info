@@ -74,6 +74,13 @@
     height: var(--icon-size);
   }
 
+  .theme-toggler {
+    --theme-toggler-size: calc(var(--hamburger-width) - 10px);
+
+    width: var(--theme-toggler-size);
+    height: var(--theme-toggler-size);
+  }
+
 
 
 

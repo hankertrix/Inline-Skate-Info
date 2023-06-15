@@ -149,6 +149,19 @@
       "Misc": "",
     },
 
+    "Resources": {
+      "Buying Guides": "",
+      "Maintenance Guides": "",
+      "Trick Lists": "",
+      "Glossaries": "",
+      "Rulebooks": "",
+      "Misc": "",
+    },
+
+    "Discount Info": "",
+    
+    "Skate Recommendations": "",
+
     "Retailers": {
       "Retailers In Singapore": "",
       "Online Retailers": "",
