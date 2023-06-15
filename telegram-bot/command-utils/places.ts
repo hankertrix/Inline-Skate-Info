@@ -7,7 +7,7 @@ import type { ObjectValues, Dict, Place } from "../types";
 
 // The enum representing the various places
 export const PLACES = {
-  SingaporeRetailers: "singapore-retailers",
+  RetailersInSingapore: "retailers-in-singapore",
   SingaporeRentalShops: "places-to-rent",
   OverseasRetailers: "overseas-retailers",
   OnlineRetailers: "online-retailers",
@@ -122,7 +122,7 @@ export async function whereToBuyHandler(message: string) {
   
   // If the msg is all
   if (msg === "all") jsonFiles = [
-    PLACES.SingaporeRetailers,
+    PLACES.RetailersInSingapore,
     PLACES.OverseasRetailers,
     PLACES.OnlineRetailers
   ];
@@ -142,7 +142,7 @@ export async function whereToBuyHandler(message: string) {
     if (category) jsonFiles = [category];
   
     // Otherwise, load the data for the retailers in Singapore
-    else jsonFiles = [PLACES.SingaporeRetailers];
+    else jsonFiles = [PLACES.RetailersInSingapore];
   }
 
   // Converts all the JSON files into a list of text

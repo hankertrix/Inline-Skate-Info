@@ -31,7 +31,7 @@ type BootTypesJson = {
 export async function generateMsg() {
 
   // Loads the JSON data
-  const data = await utils.loadJsonData("misc/boot-types") as BootTypesJson;
+  const data = await utils.loadJsonData("differences/boot-types") as BootTypesJson;
 
   // Initialise the list to contain the message
   const msgList: string[] = [];

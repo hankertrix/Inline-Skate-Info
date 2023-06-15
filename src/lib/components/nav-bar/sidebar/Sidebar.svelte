@@ -5,6 +5,8 @@
 
   // The pages in the website
   const pages = {
+
+    "Terminology": "",
     
     "Tricks": {
       "Basics": "",
@@ -146,7 +148,39 @@
       "Wizard": "",
       "Misc": "",
     },
-    
+
+    "Retailers": {
+      "Retailers In Singapore": "",
+      "Online Retailers": "",
+      "Overseas Retailers": "",
+    },
+
+    "Places to Rent": "",
+
+    "Places to Skate": {
+      "Skating Rinks": "",
+      "Skate Parks": "",
+    },
+
+    "Brands": {
+      "Skate Brands": "",
+      "Wheel Brands": "",
+      "Frame Brands": "",
+      "Liner Brands": "",
+    },
+
+    "Differences": {
+      "Tri-skates": "",
+      "FR Skates": "",
+      "Boot Types": "",
+    },
+
+    "Products": {
+      "Protective Gear": "",
+      "Accessories": "",
+      "Maintenance Items": "",
+      "Clothing": "",
+    },
   } as const;
   
 </script>
