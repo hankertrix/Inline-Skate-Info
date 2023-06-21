@@ -28,10 +28,6 @@
   /* The styles for the theme toggle button */
   .theme-toggle {
     --size: 100%;
-    --light-fill: hsl(210 10% 15%);
-    --light-fill-hover: hsl(210 10% 30%);
-    --dark-fill: hsl(210 15% 85%);
-    --dark-fill-hover: hsl(210 10% 95%);
 
     background: none;
     border: none;
