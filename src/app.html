@@ -29,6 +29,48 @@
       --nav-bar-height: 74px;
     }
     
+    /* The colours for the light theme */
+    .light {
+      --text-colour: black;
+      --text-opacity: 1;
+      --background-colour: white;
+      --nav-and-footer-background-colour: #41E3E5;
+      
+      /* TODO: The mark colours */
+      --mark-text-colour: black;
+      --mark-background-colour: yellow;
+      --link-colour: #FC0FC0;
+      --link-hover-colour: #FF66CC;
+      --link-active-colour: #EE13A8;
+      --link-visited-colour: #D41590;
+      --link-visited-hover-colour: #E1149C;
+      --link-visited-active-colour: #C71585;
+      --icon-colour: black;
+      --icon-hover-colour: hsl(210 10% 30%);
+      --icon-opacity: 1;
+    }
+    
+    /* The colours for the dark theme */
+    .dark {
+      --text-colour: white;
+      --text-opacity: 0.87;
+      --background-colour: #121212;
+      --nav-and-footer-background-colour: #002DFF;
+
+      /* TODO: The mark colours */
+      --mark-text-colour: white;
+      --mark-background-colour: yellow;
+      --link-colour: #FF8E00;
+      --link-hover-colour: #FFA200;
+      --link-active-colour: #FF7A00;
+      --link-visited-colour: #FF5200;
+      --link-visited-hover-colour: #FF6600;
+      --link-visited-active-colour: #FF4000;
+      --icon-colour: #DEE3FF;
+      --icon-hover-colour: hsl(210 10% 95%);
+      --icon-opacity: 1;
+    }
+    
     html, body {
       padding: 0;
       margin: 0;
@@ -80,48 +122,6 @@
 
     *, *::after, *::before {
       box-sizing: border-box;
-    }
-    
-    /* The colours for the light theme */
-    .light {
-      --text-colour: black;
-      --text-opacity: 1;
-      --background-colour: white;
-      --nav-and-footer-background-colour: #41E3E5;
-      
-      /* TODO: The mark colours */
-      --mark-text-colour: black;
-      --mark-background-colour: yellow;
-      --link-colour: #FC0FC0;
-      --link-hover-colour: #FF66CC;
-      --link-active-colour: #EE13A8;
-      --link-visited-colour: #D41590;
-      --link-visited-hover-colour: #E1149C;
-      --link-visited-active-colour: #C71585;
-      --icon-colour: black;
-      --icon-hover-colour: hsl(210 10% 30%);
-      --icon-opacity: 1;
-    }
-    
-    /* The colours for the dark theme */
-    .dark {
-      --text-colour: white;
-      --text-opacity: 0.87;
-      --background-colour: #121212;
-      --nav-and-footer-background-colour: #002DFF;
-
-      /* TODO: The mark colours */
-      --mark-text-colour: white;
-      --mark-background-colour: yellow;
-      --link-colour: #FF8E00;
-      --link-hover-colour: #FFA200;
-      --link-active-colour: #FF7A00;
-      --link-visited-colour: #FF5200;
-      --link-visited-hover-colour: #FF6600;
-      --link-visited-active-colour: #FF4000;
-      --icon-colour: #DEE3FF;
-      --icon-hover-colour: hsl(210 10% 95%);
-      --icon-opacity: 1;
     }
     
   </style>

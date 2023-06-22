@@ -66,7 +66,7 @@
   }
 
   .main-icon {
-    --icon-size: 2em;
+    /* --icon-size: 2em; */
     
     display: flex;
     align-items: center;
