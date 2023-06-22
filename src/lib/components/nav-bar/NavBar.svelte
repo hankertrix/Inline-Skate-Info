@@ -58,7 +58,7 @@
   }
 
   .nav-bar {
-    padding: 5px 15px 5px 10px;
+    padding: 5px 10px;
     gap: 10px;
   }
 
@@ -81,6 +81,10 @@
     align-items: center;
     width: var(--icon-size);
     height: var(--icon-size);
+  }
+
+  .theme-toggler-wrapper {
+    padding: 5px;
   }
 
   .theme-toggler {
@@ -218,8 +222,10 @@
     </div>
 
     <!-- The theme toggler -->
-    <div class="theme-toggler">
-      <ThemeToggler />
+    <div class="theme-toggler-wrapper">
+      <div class="theme-toggler">
+        <ThemeToggler />
+      </div>
     </div>
 
   </nav>

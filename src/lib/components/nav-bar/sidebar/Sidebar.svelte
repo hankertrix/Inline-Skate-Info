@@ -14,7 +14,7 @@
       "Turns": "",
       "Stops": "",
       "Jumps": "",
-      
+
       "Slalom": {
         
         "Class A": {
@@ -99,51 +99,52 @@
         
       },
 
-      "Aggressive": {
+      // Re-enable the aggressive tricks once the data for it is complete
+      // "Aggressive": {
 
-        "Basics": "",
+      //   "Basics": "",
 
-        "Class A": {
-          "Spins": "",
-          "Others": "",
-        },
+      //   "Class A": {
+      //     "Spins": "",
+      //     "Others": "",
+      //   },
 
-        "Class B": {
-          "Stalls": "",
-          "Grinds": "",
-          "Airs": "",
-          "Spins": "",
-          "Others": "",
-        },
+      //   "Class B": {
+      //     "Stalls": "",
+      //     "Grinds": "",
+      //     "Airs": "",
+      //     "Spins": "",
+      //     "Others": "",
+      //   },
 
-        "Class C": {
-          "Stalls": "",
-          "Grinds": "",
-          "Airs": "",
-          "Grabs": "",
-          "Spins": "",
-          "Others": "",
-        },
+      //   "Class C": {
+      //     "Stalls": "",
+      //     "Grinds": "",
+      //     "Airs": "",
+      //     "Grabs": "",
+      //     "Spins": "",
+      //     "Others": "",
+      //   },
 
-        "Class D": {
-          "Stalls": "",
-          "Grinds": "",
-          "Airs": "",
-          "Grabs": "",
-          "Spins": "",
-          "Others": "",
-        },
+      //   "Class D": {
+      //     "Stalls": "",
+      //     "Grinds": "",
+      //     "Airs": "",
+      //     "Grabs": "",
+      //     "Spins": "",
+      //     "Others": "",
+      //   },
 
-        "Class E": {
-          "Stalls": "",
-          "Grinds": "",
-          "Airs": "",
-          "Grabs": "",
-          "Spins": "",
-          "Others": "",
-        },
+      //   "Class E": {
+      //     "Stalls": "",
+      //     "Grinds": "",
+      //     "Airs": "",
+      //     "Grabs": "",
+      //     "Spins": "",
+      //     "Others": "",
+      //   },
         
-      },
+      // },
 
       "Wizard": "",
       "Misc": "",
