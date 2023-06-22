@@ -3,6 +3,7 @@
   
   import Sidebar from "$lib/components/nav-bar/sidebar/Sidebar.svelte";
   import MainIcon from "$lib/components/nav-bar/MainIcon.svelte";
+  import SearchBar from "$lib/components/nav-bar/SearchBar.svelte";
   import ThemeToggler from "$lib/components/nav-bar/ThemeToggler.svelte";
 
   // The javascript function to add a "checked" class to the nav bar (fallback for firefox which doesn't support the :has selector)
@@ -36,7 +37,7 @@
     --hamburger-gap: 4px;
     --animation-timing: 200ms ease-in-out;
     --hamburger-height: calc(var(--bar-height) * 3 + var(--hamburger-gap) * 2);
-    --hamburger-width: calc(var(--bar-width) + var(--bar-height));
+    --hamburger-width: calc(var(--bar-width) + 2 * var(--bar-height));
     
     /* The width of the "X" when the hamburger menu is open */
     /* 1.41421356237 is root 2 */
@@ -44,7 +45,8 @@
 
     position: fixed;
     top: 0;
-    width: 100vw;
+    left: 0;
+    width: 100%;
     height: var(--nav-bar-height);
     z-index: 2;
   }
@@ -56,17 +58,24 @@
   }
 
   .nav-bar {
-    padding: 5px;
+    padding: 5px 15px 5px 10px;
+    gap: 10px;
   }
 
   .website-info {
     font-family: Oleo Script;
     font-size: 2rem;
     text-decoration: none;
+    gap: 5px;
+  }
+
+  .search-bar {
+    margin: 0 10px;
+    flex: 1;
   }
 
   .main-icon {
-    /* --icon-size: 2em; */
+    --icon-size: 2em;
     
     display: flex;
     align-items: center;
@@ -157,6 +166,19 @@
     translate: 0;
   }
 
+  /* Styles for mobile */
+  @media only screen and (max-width: 700px) {
+
+    .search-bar {
+      margin: 0;
+    }
+
+    .website-name {
+      display: none;
+    }
+    
+  }
+
   /* Don't animate when the user prefers reduced motion */
   @media (prefers-reduced-motion) {
 
@@ -192,7 +214,7 @@
 
     <!-- The search bar to search the website -->
     <div class="search-bar">
-      
+      <SearchBar />
     </div>
 
     <!-- The theme toggler -->

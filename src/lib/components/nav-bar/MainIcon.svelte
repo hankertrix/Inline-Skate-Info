@@ -17,79 +17,79 @@
     
     /* The colours for the first wheel */
     --wheel-1-outer-colour: black;
-    --wheel-1-inner-colour: #FC0FC0;
-    --wheel-1-core-colour: white;
+    --wheel-1-inner-colour: hotpink;
+    --wheel-1-core-colour: #E5E5E3;
     --wheel-1-accent-colour: black;
 
     /* The colours for the second wheel */
     --wheel-2-outer-colour: black;
     --wheel-2-inner-colour: teal;
-    --wheel-2-core-colour: #FC0FC0;
+    --wheel-2-core-colour: hotpink;
     --wheel-2-accent-colour: black;
 
     /* The colours for the third wheel */
     --wheel-3-outer-colour: black;
-    --wheel-3-inner-colour: #FC0FC0;
-    --wheel-3-core-colour: white;
+    --wheel-3-inner-colour: hotpink;
+    --wheel-3-core-colour: #E5E5E3;
     --wheel-3-accent-colour: black;
 
     /* The colours for the fourth wheel */
     --wheel-4-outer-colour: black;
     --wheel-4-inner-colour: teal;
-    --wheel-4-core-colour: #FC0FC0;
+    --wheel-4-core-colour: hotpink;
     --wheel-4-accent-colour: black;
 
 
     /* The colours for the outer wings */
-    --outer-wings-body-colour: white;
+    --outer-wings-body-colour: #FC0FC0;
     --outer-wings-accent-colour: black;
 
     /* The colours for the inner wings */
-    --inner-wings-body-colour: white;
+    --inner-wings-body-colour: hotpink;
     --inner-wings-accent-colour: black;
 
     
     /* The colours for the frame */
-    --frame-colour: white;
-    --frame-spacing-colour: white;
+    --frame-colour: #E5E4E3;
+    --frame-spacing-colour: none;
 
     /* The colours for the first frame bolt */
-    --frame-bolt-1-outer-colour: white;
-    --frame-bolt-1-inner-colour: white;
+    --frame-bolt-1-outer-colour: #2A3439;
+    --frame-bolt-1-inner-colour: black;
 
     /* The colours for the second frame bolt */
-    --frame-bolt-2-outer-colour: white;
-    --frame-bolt-2-inner-colour: white;
+    --frame-bolt-2-outer-colour: #2A3439;
+    --frame-bolt-2-inner-colour: black;
 
     /* The colours for the third frame bolt */
-    --frame-bolt-3-outer-colour: white;
-    --frame-bolt-3-inner-colour: white;
+    --frame-bolt-3-outer-colour: #2A3439;
+    --frame-bolt-3-inner-colour: black;
 
     /* The colours for the fourth frame bolt */
-    --frame-bolt-4-outer-colour: white;
-    --frame-bolt-4-inner-colour: white;
+    --frame-bolt-4-outer-colour: #2A3439;
+    --frame-bolt-4-inner-colour: black;
 
     
     /* The colours for the liner */
-    --liner-colour: white;
-    --liner-front-accent-colour: black;
-    --liner-middle-accent-colour: black;
-    --liner-back-accent-colour: black;
+    --liner-colour: #99E1BF;
+    --liner-front-accent-colour: #014D4E;
+    --liner-middle-accent-colour: #014D4E;
+    --liner-back-accent-colour: #014D4E;
 
     
     /* The colours for the cuff */
-    --cuff-colour: white;
-    --cuff-screw-colour: white;
-    --cuff-spacing-colour: white;
+    --cuff-colour: #419F90;
+    --cuff-screw-colour: black;
+    --cuff-spacing-colour: #014D4E;
 
     
     /* The colours for the straps and buckles */
-    --front-strap-1-colour: white;
-    --front-strap-2-colour: white;
-    --power-strap-colour: white;
+    --front-strap-1-colour: hotpink;
+    --front-strap-2-colour: hotpink;
+    --power-strap-colour: hotpink;
     --top-buckle-inner-colour: black;
-    --top-buckle-outer-colour: white;
-    --top-strap-colour: white;
+    --top-buckle-outer-colour: #E5E4E3;
+    --top-strap-colour: #E5E4E3;
   }
 
   /* The colours for the main icon in the dark theme */
@@ -131,8 +131,8 @@
 
     
     /* The colours for the frame */
-    --frame-colour: none;
-    --frame-spacing-colour: none;
+    --frame-colour: #0D1F36;
+    --frame-spacing-colour: #2A3439;
 
     /* The colours for the first frame bolt */
     --frame-bolt-1-outer-colour: none;
@@ -152,25 +152,25 @@
 
     
     /* The colours for the liner */
-    --liner-colour: none;
-    --liner-front-accent-colour: none;
-    --liner-middle-accent-colour: none;
-    --liner-back-accent-colour: none;
+    --liner-colour: #EB5A1F;
+    --liner-front-accent-colour: navy;
+    --liner-middle-accent-colour: navy;
+    --liner-back-accent-colour: navy;
 
     
     /* The colours for the cuff */
-    --cuff-colour: none;
-    --cuff-screw-colour: none;
-    --cuff-spacing-colour: none;
+    --cuff-colour: #EB5A1F;
+    --cuff-screw-colour: black;
+    --cuff-spacing-colour: navy;
 
     
     /* The colours for the straps and buckles */
-    --front-strap-1-colour: none;
-    --front-strap-2-colour: none;
-    --power-strap-colour: none;
-    --top-buckle-inner-colour: none;
-    --top-buckle-outer-colour: none;
-    --top-strap-colour: none;
+    --front-strap-1-colour: #2A3439;
+    --front-strap-2-colour: #2A3439;
+    --power-strap-colour: #2A3439;
+    --top-buckle-inner-colour: black;
+    --top-buckle-outer-colour: #36454F;
+    --top-strap-colour: #36454F;
   }
 
 

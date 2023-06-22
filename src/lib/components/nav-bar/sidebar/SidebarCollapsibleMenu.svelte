@@ -22,7 +22,7 @@
   
   // Function to check if a title has any children
   function titleHasChildren(obj: any) {
-    return (typeof obj !== "string" || obj instanceof String) && Object.keys(obj).length > 0;
+    return (obj instanceof String || typeof obj !== "string") && Object.keys(obj).length > 0;
   }
   
 </script>

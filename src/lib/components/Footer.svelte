@@ -68,14 +68,30 @@
     height: 1.85em;
   }
 
+  @media only screen and (max-width: 700px) {
+
+    .footer {
+      padding: 5px 10px;
+    }
+    
+  }
+
+  @media only screen and (max-width: 370px) {
+
+    .rights-notice {
+      display: none;
+    }
+    
+  }
+
 </style>
 
 <!-- The main HTML for the footer -->
 <footer class="footer">
   <a href="https://github.com/hankertrix/Inline-Skate-Info/blob/main/LICENSE.txt" class="copyleft" title="Copyright notice and license" rel="noopener noreferrer">
     <div class="text">
-      Copyleft&nbsp;<span class="symbol">©</span>&#32;Hankertrix 2023.
-      <div>All Wrongs Reserved.</div>
+      Copyleft&nbsp;<span class="symbol">©</span>&#32;2023 Hankertrix.
+      <div class="rights-notice">All Wrongs Reserved.</div>
     </div>
   </a>
   <div class="source-wrapper">
