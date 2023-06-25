@@ -10,6 +10,9 @@
 /build
 /.svelte-kit
 
+# Pagefind files
+/src/lib/.pagefind
+
 # Environment variables
 .env
 .env.*

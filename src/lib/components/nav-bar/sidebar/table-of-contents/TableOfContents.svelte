@@ -108,8 +108,6 @@
 
     // Create the table of contents from the page and add "Table Of Contents" as the top heading in the table of contents
     tableOfContents = tableOfContents.set("Table Of Contents", getTableOfContents(headings));
-
-    console.log(document.querySelectorAll(".sidebar ul").length)
   }
   
 </script>
