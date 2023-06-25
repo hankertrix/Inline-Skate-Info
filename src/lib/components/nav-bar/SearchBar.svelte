@@ -53,7 +53,7 @@
 
   form {
     font-size: 18px;
-    border-radius: 24px;
+    border-radius: 9999px;
     padding: 5px 12px;
     display: flex;
     flex-direction: row;
