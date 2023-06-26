@@ -2,7 +2,7 @@
 <script lang="ts">
 
   import { browser } from "$app/environment";
-  import TableOfContentsCollapsibleMenu from "$lib/components/nav-bar/sidebar/table-of-contents/TableOfContentsCollapsibleMenu.svelte";
+  import TableOfContentsCollapsibleMenu from "$lib/components/layout/nav-bar/sidebar/table-of-contents/TableOfContentsCollapsibleMenu.svelte";
 
   // Initialise the headings variable to store all the heading elements
   let headings: NodeListOf<Element>;

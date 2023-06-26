@@ -1,7 +1,7 @@
 <!-- The side bar that the hamburger menu opens up -->
 <script lang="ts">
-  import TableOfContents from "$lib/components/nav-bar/sidebar/table-of-contents/TableOfContents.svelte";
-  import SidebarCollapsibleMenu from "$lib/components/nav-bar/sidebar/SidebarCollapsibleMenu.svelte";
+  import TableOfContents from "$lib/components/layout/nav-bar/sidebar/table-of-contents/TableOfContents.svelte";
+  import SidebarCollapsibleMenu from "$lib/components/layout/nav-bar/sidebar/SidebarCollapsibleMenu.svelte";
 
   // The pages in the website
   const pages = {

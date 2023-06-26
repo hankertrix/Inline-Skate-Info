@@ -6,8 +6,8 @@
   import theme from "$lib/stores/theme";
 
   // Import all the required components
-  import Footer from "$lib/components/Footer.svelte";
-  import NavBar from "$lib/components/nav-bar/NavBar.svelte";
+  import Footer from "$lib/components/layout/Footer.svelte";
+  import NavBar from "$lib/components/layout/nav-bar/NavBar.svelte";
 
   // Other imports
   import { onMount } from "svelte";
