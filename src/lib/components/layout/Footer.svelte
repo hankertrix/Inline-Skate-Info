@@ -31,6 +31,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
   }
 
   .source {
@@ -39,13 +40,19 @@
   }
 
   .icon-wrapper {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    --icon-size: 25px;
+    
+    display: flex;
+    flex-direction: row;
   }
 
   .icon-wrapper img {
-    width: 25px;
-    height: 25px;
+    width: var(--icon-size);
+    height: var(--icon-size);
+  }
+
+  .codeberg-logo {
+    margin-right: 4px;
   }
 
   .telegram-bot-wrapper {
@@ -95,12 +102,15 @@
     </div>
   </a>
   <div class="source-wrapper">
-    <a href="https://github.com/hankertrix/Inline-Skate-Info" target="_blank" class="source" title="View the source code on GitHub" rel="noopener noreferrer">Source:</a>
+    <a class="source" href="https://codeberg.org/Hanker/Inline-Skate-Info" target="_blank" title="View the source code on Codeberg" rel="noopener noreferrer">Source:</a>
     <div class="icon-wrapper">
-      <a href="https://github.com/hankertrix/Inline-Skate-Info" target="_blank" title="View the source code on GitHub" rel="noopener noreferrer">
+      <a class="codeberg-logo" href="https://codeberg.org/Hanker/Inline-Skate-Info" target="_blank" title="View the source code on Codeberg" rel="noopener noreferrer">
+        <img src="/images/codeberg-logo.svg" alt="View the source code on Codeberg" />
+      </a>
+      <a class="github-logo" href="https://github.com/hankertrix/Inline-Skate-Info" target="_blank" title="View the source code on GitHub" rel="noopener noreferrer">
         <img src="/images/github-invertocat-logo.svg" alt="View the source code on GitHub" />
       </a>
-      <a href="https://replit.com/@hankertrix/Inline-Skate-Info?v=1" target="_blank" title="View the source code on Replit" rel="noopener noreferrer">
+      <a class="replit-logo" href="https://replit.com/@hankertrix/Inline-Skate-Info?v=1" target="_blank" title="View the source code on Replit" rel="noopener noreferrer">
         <img src="/images/replit-logo.svg" alt="View the source code on Replit" />
       </a>
     </div>

@@ -5,6 +5,7 @@
   import { page } from "$app/stores";
   import { browser } from "$app/environment";
   import { goto } from "$app/navigation";
+  import SearchResult from "$lib/components/pages/search/SearchResult.svelte";
 
   // Export the data variable
   export let data: {
@@ -14,14 +15,6 @@
 
   // Gets the search term and the results from the data
   const { searchTerm, results } = data;
-
-  // The regular expression to convert the URL given by pagefind to the actual website link
-  const convertUrlRegex = /.*pages/;
-
-  // Function to convert the URL given by pagefind to the actual website link
-  function convertPagefindUrl(url: string) {
-    return url.replace(convertUrlRegex, "");
-  }
 
 </script>
 
@@ -60,6 +53,7 @@
 
   <!-- Otherwise, display the results -->
   {#each results as result}
+    <SearchResult result={result} />
   {/each}
   
 {/if}

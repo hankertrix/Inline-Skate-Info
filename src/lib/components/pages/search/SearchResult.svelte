@@ -5,6 +5,14 @@
 
   // The search result passed in by the search page
   export let result: PagefindResult;
+
+  // The regular expression to convert the URL given by pagefind to the actual website link
+  const convertUrlRegex = /.*pages/;
+
+  // Function to convert the URL given by pagefind to the actual website link
+  function convertPagefindUrl(url: string) {
+    return url.replace(convertUrlRegex, "");
+  }
   
 </script>
 
