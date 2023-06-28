@@ -1,15 +1,16 @@
 <!-- The component to generate the table of contents for the side bar -->
 <script lang="ts">
 
+  import { page } from "$app/stores";
   import { browser } from "$app/environment";
   import TableOfContentsCollapsibleMenu from "$lib/components/layout/nav-bar/sidebar/table-of-contents/TableOfContentsCollapsibleMenu.svelte";
 
-  // Initialise the headings variable to store all the heading elements
+  // The variable to store the list of headings on the page
   let headings: NodeListOf<Element>;
 
-  // Initialise the table of contents variable
+  // The variable to store the table of contents object
   let tableOfContents: Map<string, any> = new Map();
-
+  
   // Function to get the table of contents
   function getTableOfContents(headings: NodeListOf<Element>) {
 
@@ -100,14 +101,21 @@
     return tableOfContents;
   }
 
-  // If the environment is the browser
-  if (browser) {
+  // Reactive block
+  $: {
 
-    // Gets all the headings in the document
-    headings = document.querySelectorAll("h2, h3, h4, h5, h6");
+    // This is just to force the component to re-render when the route changes
+    $page.url;
 
-    // Create the table of contents from the page and add "Table Of Contents" as the top heading in the table of contents
-    tableOfContents = tableOfContents.set("Table Of Contents", getTableOfContents(headings));
+    // If the environment is the browser
+    if (browser) {
+      
+      // Gets all the headings in the document
+      headings = document.querySelectorAll("h2, h3, h4, h5, h6");
+
+      // Gets the table of contents from the page
+      tableOfContents = tableOfContents.set("Table Of Contents", getTableOfContents(headings));
+    }
   }
   
 </script>
