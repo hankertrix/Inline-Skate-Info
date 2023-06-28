@@ -86,7 +86,7 @@
 {#each Object.entries(pages) as [title, child]}
   {@const urlFriendlyTitle = makeUrlFriendlyString(title)}
   {@const currentUrl = `${urlStart}${urlFriendlyTitle}/`}
-  {@const checkboxIdFragment = `${parentUrlTitles}-${urlFriendlyTitle}`}
+  {@const checkboxIdFragment = `${parentUrlTitles.trim() === "" ? parentUrlTitles : `${parentUrlTitles}-`}${urlFriendlyTitle}`}
   {@const checkboxId = `${checkboxIdFragment}-sidebar`}
 
   <!-- If the current title has any children -->
