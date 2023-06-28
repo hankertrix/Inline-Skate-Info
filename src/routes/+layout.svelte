@@ -40,7 +40,6 @@
 
   .page-container, .page-wrapper {
     display: flex;
-    flex-wrap: wrap;
   }
   
   .page-container {
@@ -56,6 +55,7 @@
   
 </style>
 
+<!-- The HTML for the layout -->
 <div class="page-container">
   <div class="page-wrapper">
     <NavBar />

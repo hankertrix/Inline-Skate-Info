@@ -43,6 +43,8 @@
     display: grid;
     grid-template-rows: repeat(5, 1fr);
     grid-template-columns: repeat(3, 1fr);
+    justify-content: center;
+    align-items: center;
     gap: 5px;
     font-family: Oleo Script;
     font-weight: bold;

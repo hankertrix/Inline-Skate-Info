@@ -25,7 +25,7 @@
 
 <!-- The HTML for the page -->
 <div class="error-page">
-  <h1>{$page.status}</h1>
-  <div>{$page.error.message}</div>
-  <p>Redirecting you to the landing page...</p>
+  <h1 class="text">{$page.status}</h1>
+  <div class="text">{$page.error.message}</div>
+  <p class="text">Redirecting you to the landing page...</p>
 </div>

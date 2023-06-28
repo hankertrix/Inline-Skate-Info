@@ -25,7 +25,7 @@ theme.subscribe(value => {
     window.localStorage.setItem("theme", value);
 
     // Changes the class name of the body to the current theme
-    window.document.body.className = value;
+    window.document.documentElement.className = value;
   }
 });
 
