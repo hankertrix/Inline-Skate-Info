@@ -8,10 +8,10 @@ import { browser } from "$app/environment";
 export const prerender = false;
 
 // The function to load the data before loading the page
-export async function load({ url }: LoadEvent) {
+export async function load({ url: { searchParams } }: LoadEvent) {
 
   // Gets the search query from search params
-  const searchQuery = url.searchParams.get("q")?.trim();
+  const searchQuery = searchParams.get("q")?.trim();
 
   // If the environment isn't the browser or if the search query isn't given, exit the function immediately and return an empty result
   if (!browser || (!searchQuery || searchQuery.length < 1)) return {

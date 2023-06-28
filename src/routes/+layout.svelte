@@ -37,13 +37,19 @@
 
 <!-- Styles for the layout file -->
 <style>
+
+  .page-container, .page-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+  }
   
   .page-container {
     position: relative;
     min-height: 100svh;
   }
 
-  .wrapper {
+  .page-wrapper {
+    flex: 1;
     padding-top: var(--nav-bar-height);
     padding-bottom: var(--footer-height);
   }
@@ -51,7 +57,7 @@
 </style>
 
 <div class="page-container">
-  <div class="wrapper">
+  <div class="page-wrapper">
     <NavBar />
     <slot />
   </div>

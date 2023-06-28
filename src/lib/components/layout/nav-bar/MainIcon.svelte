@@ -17,31 +17,31 @@
     
     /* The colours for the first wheel */
     --wheel-1-outer-colour: black;
-    --wheel-1-inner-colour: hotpink;
-    --wheel-1-core-colour: #E5E5E3;
+    --wheel-1-inner-colour: #F6C1E3;
+    --wheel-1-core-colour: #FF3BC2;
     --wheel-1-accent-colour: black;
 
     /* The colours for the second wheel */
     --wheel-2-outer-colour: black;
-    --wheel-2-inner-colour: teal;
-    --wheel-2-core-colour: hotpink;
+    --wheel-2-inner-colour: #F6C1E3;
+    --wheel-2-core-colour: #FF3BC2;
     --wheel-2-accent-colour: black;
 
     /* The colours for the third wheel */
     --wheel-3-outer-colour: black;
-    --wheel-3-inner-colour: hotpink;
-    --wheel-3-core-colour: #E5E5E3;
+    --wheel-3-inner-colour: #F6C1E3;
+    --wheel-3-core-colour: #FF3BC2;
     --wheel-3-accent-colour: black;
 
     /* The colours for the fourth wheel */
     --wheel-4-outer-colour: black;
-    --wheel-4-inner-colour: teal;
-    --wheel-4-core-colour: hotpink;
+    --wheel-4-inner-colour: #F6C1E3;
+    --wheel-4-core-colour: #FF3BC2;
     --wheel-4-accent-colour: black;
 
 
     /* The colours for the outer wings */
-    --outer-wings-body-colour: #FC0FC0;
+    --outer-wings-body-colour: #FF3BC2;
     --outer-wings-accent-colour: black;
 
     /* The colours for the inner wings */
@@ -50,23 +50,23 @@
 
     
     /* The colours for the frame */
-    --frame-colour: #E5E4E3;
-    --frame-spacing-colour: none;
+    --frame-colour: #D9D8D9;
+    --frame-spacing-colour: black;
 
     /* The colours for the first frame bolt */
-    --frame-bolt-1-outer-colour: #2A3439;
+    --frame-bolt-1-outer-colour: hotpink;
     --frame-bolt-1-inner-colour: black;
 
     /* The colours for the second frame bolt */
-    --frame-bolt-2-outer-colour: #2A3439;
+    --frame-bolt-2-outer-colour: hotpink;
     --frame-bolt-2-inner-colour: black;
 
     /* The colours for the third frame bolt */
-    --frame-bolt-3-outer-colour: #2A3439;
+    --frame-bolt-3-outer-colour: hotpink;
     --frame-bolt-3-inner-colour: black;
 
     /* The colours for the fourth frame bolt */
-    --frame-bolt-4-outer-colour: #2A3439;
+    --frame-bolt-4-outer-colour: hotpink;
     --frame-bolt-4-inner-colour: black;
 
     
@@ -76,9 +76,17 @@
     --liner-middle-accent-colour: #014D4E;
     --liner-back-accent-colour: #014D4E;
 
+    /* The colours for the liner flap */
+    --liner-flap-colour: #D9D8D9;
+
+    /* The colours for the toe flap and toe cap */
+    --toe-flap-colour: black;
+    --toe-cap-colour: #D9D8D9;
+
     
     /* The colours for the cuff */
     --cuff-colour: #419F90;
+    --cuff-inner-edge-colour: #99E1BF;
     --cuff-screw-colour: black;
     --cuff-spacing-colour: #014D4E;
 
@@ -86,91 +94,16 @@
     /* The colours for the straps and buckles */
     --front-strap-1-colour: hotpink;
     --front-strap-2-colour: hotpink;
-    --power-strap-colour: hotpink;
+    --power-strap-colour: black;
+    --power-strap-top-edge-colour: hotpink;
+    --power-strap-bottom-edge-colour: hotpink;
     --top-buckle-inner-colour: black;
-    --top-buckle-outer-colour: #E5E4E3;
-    --top-strap-colour: #E5E4E3;
+    --top-buckle-outer-colour: #D9D8D9;
+    --top-strap-colour: #D9D8D9;
   }
 
   /* The colours for the main icon in the dark theme */
   :global(.dark) svg {
-
-    
-    /* The colours for the first wheel */
-    --wheel-1-outer-colour: none;
-    --wheel-1-inner-colour: none;
-    --wheel-1-core-colour: none;
-    --wheel-1-accent-colour: none;
-
-    /* The colours for the second wheel */
-    --wheel-2-outer-colour: none;
-    --wheel-2-inner-colour: none;
-    --wheel-2-core-colour: none;
-    --wheel-2-accent-colour: none;
-
-    /* The colours for the third wheel */
-    --wheel-3-outer-colour: none;
-    --wheel-3-inner-colour: none;
-    --wheel-3-core-colour: none;
-    --wheel-3-accent-colour: none;
-
-    /* The colours for the fourth wheel */
-    --wheel-4-outer-colour: none;
-    --wheel-4-inner-colour: none;
-    --wheel-4-core-colour: none;
-    --wheel-4-accent-colour: none;
-
-
-    /* The colours for the outer wings */
-    --outer-wings-body-colour: none;
-    --outer-wings-accent-colour: none;
-
-    /* The colours for the inner wings */
-    --inner-wings-body-colour: none;
-    --inner-wings-accent-colour: none;
-
-    
-    /* The colours for the frame */
-    --frame-colour: #0D1F36;
-    --frame-spacing-colour: #2A3439;
-
-    /* The colours for the first frame bolt */
-    --frame-bolt-1-outer-colour: none;
-    --frame-bolt-1-inner-colour: none;
-
-    /* The colours for the second frame bolt */
-    --frame-bolt-2-outer-colour: none;
-    --frame-bolt-2-inner-colour: none;
-
-    /* The colours for the third frame bolt */
-    --frame-bolt-3-outer-colour: none;
-    --frame-bolt-3-inner-colour: none;
-
-    /* The colours for the fourth frame bolt */
-    --frame-bolt-4-outer-colour: none;
-    --frame-bolt-4-inner-colour: none;
-
-    
-    /* The colours for the liner */
-    --liner-colour: #EB5A1F;
-    --liner-front-accent-colour: navy;
-    --liner-middle-accent-colour: navy;
-    --liner-back-accent-colour: navy;
-
-    
-    /* The colours for the cuff */
-    --cuff-colour: #EB5A1F;
-    --cuff-screw-colour: black;
-    --cuff-spacing-colour: navy;
-
-    
-    /* The colours for the straps and buckles */
-    --front-strap-1-colour: #2A3439;
-    --front-strap-2-colour: #2A3439;
-    --power-strap-colour: #2A3439;
-    --top-buckle-inner-colour: black;
-    --top-buckle-outer-colour: #36454F;
-    --top-strap-colour: #36454F;
   }
 
 
@@ -183,15 +116,15 @@
     fill: var(--wheel-1-accent-colour);
   }
 
-  .wheel-1 > .outer-wheel {
+  .wheel-1 > .outer {
     fill: var(--wheel-1-outer-colour);
   }
 
-  .wheel-1 > .inner-wheel {
+  .wheel-1 > .inner {
     fill: var(--wheel-1-inner-colour);
   }
 
-  .wheel-1 > .wheel-core {
+  .wheel-1 > .core {
     fill: var(--wheel-1-core-colour);
   }
   
@@ -199,15 +132,15 @@
     fill: var(--wheel-2-accent-colour);
   }
 
-  .wheel-2 > .outer-wheel {
+  .wheel-2 > .outer {
     fill: var(--wheel-2-outer-colour);
   }
 
-  .wheel-2 > .inner-wheel {
+  .wheel-2 > .inner {
     fill: var(--wheel-2-inner-colour);
   }
 
-  .wheel-2 > .wheel-core {
+  .wheel-2 > .core {
     fill: var(--wheel-2-core-colour);
   }
 
@@ -215,15 +148,15 @@
     fill: var(--wheel-3-accent-colour);
   }
 
-  .wheel-3 > .outer-wheel {
+  .wheel-3 > .outer {
     fill: var(--wheel-3-outer-colour);
   }
 
-  .wheel-3 > .inner-wheel {
+  .wheel-3 > .inner {
     fill: var(--wheel-3-inner-colour);
   }
 
-  .wheel-3 > .wheel-core {
+  .wheel-3 > .core {
     fill: var(--wheel-3-core-colour);
   }
 
@@ -231,15 +164,15 @@
     fill: var(--wheel-4-accent-colour);
   }
 
-  .wheel-4 > .outer-wheel {
+  .wheel-4 > .outer {
     fill: var(--wheel-4-outer-colour);
   }
 
-  .wheel-4 > .inner-wheel {
+  .wheel-4 > .inner {
     fill: var(--wheel-4-inner-colour);
   }
 
-  .wheel-4 > .wheel-core {
+  .wheel-4 > .core {
     fill: var(--wheel-4-core-colour);
   }
 
@@ -279,35 +212,35 @@
     fill: var(--frame-spacing-colour);
   }
 
-  .outer-frame-bolt > .one {
+  .frame-bolt-outer > .one {
     fill: var(--frame-bolt-1-outer-colour);
   }
 
-  .outer-frame-bolt > .two {
+  .frame-bolt-outer > .two {
     fill: var(--frame-bolt-2-outer-colour);
   }
 
-  .outer-frame-bolt > .three {
+  .frame-bolt-outer > .three {
     fill: var(--frame-bolt-3-outer-colour);
   }
 
-  .outer-frame-bolt > .four {
+  .frame-bolt-outer > .four {
     fill: var(--frame-bolt-4-outer-colour);
   }
 
-  .inner-frame-bolt > .one {
+  .frame-bolt-inner > .one {
     fill: var(--frame-bolt-1-inner-colour);
   }
 
-  .inner-frame-bolt > .two {
+  .frame-bolt-inner > .two {
     fill: var(--frame-bolt-2-inner-colour);
   }
 
-  .inner-frame-bolt > .three {
+  .frame-bolt-inner > .three {
     fill: var(--frame-bolt-3-inner-colour);
   }
 
-  .inner-frame-bolt > .four {
+  .frame-bolt-inner > .four {
     fill: var(--frame-bolt-4-inner-colour);
   }
 
@@ -321,16 +254,27 @@
     fill: var(--liner-colour);
   }
 
-  .liner-front-accent {
+  .liner-accent > .front {
     fill: var(--liner-front-accent-colour);
   }
 
-  .liner-middle-accent {
+  .liner-accent > .middle {
     fill: var(--liner-middle-accent-colour);
   }
 
-  .liner-back-accent {
+  .liner-accent > .back {
     fill: var(--liner-back-accent-colour);
+  }
+
+
+  /* The styles for the liner flap */
+  
+  .liner-flap > :is(polygon, path) {
+    fill: var(--liner-flap-colour);
+  }
+
+  .liner-flap > .toe-flap {
+    fill: var(--toe-flap-colour);
   }
 
 
@@ -340,6 +284,10 @@
   /* The styles for the cuff */
   .cuff {
     fill: var(--cuff-colour);
+  }
+
+  .cuff-inner-edge {
+    fill: var(--cuff-inner-edge-colour);
   }
 
   .cuff-screw {
@@ -364,265 +312,406 @@
     fill: var(--front-strap-2-colour);
   }
 
-  .power-strap {
+  .power-strap > .strap {
     fill: var(--power-strap-colour);
   }
 
-  .cuff-screw {
-    fill: var(--cuff-screw-colour);
+  .power-strap > .top-edge {
+    fill: var(--power-strap-top-edge-colour);
   }
 
-  .top-buckle-outer {
+  .power-strap > .bottom-edge {
+    fill: var(--power-strap-bottom-edge-colour);
+  }
+
+  .top-buckle > .outer {
     fill: var(--top-buckle-outer-colour);
   }
 
-  .top-buckle-inner {
+  .top-buckle > .inner {
     fill: var(--top-buckle-inner-colour);
     mix-blend-mode: normal;
   }
 
-  .top-strap {
+  .top-buckle > .strap {
     fill: var(--top-strap-colour);
   }
   
 </style>
 
 <!-- The HTML for the main icon -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 307.72 249.05">
-  <defs>
-    <style>
-      .cls-1 {
-        stroke-width: 1.5px;
-      }
-
-      .cls-1, .cls-2, .cls-3, .cls-4, .cls-5, .cls-6, .cls-7, .cls-8, .cls-9, .cls-10 {
-        stroke: #000;
-        stroke-miterlimit: 10;
-      }
-
-      .cls-1, .cls-3, .cls-4, .cls-5, .cls-6, .cls-8, .cls-9 {
-        fill: #fff;
-      }
-
-      .cls-2, .cls-7, .cls-10 {
-        fill: none;
-      }
-
-      .cls-3, .cls-5, .cls-10 {
-        stroke-width: .5px;
-      }
-
-      .cls-11 {
-        isolation: isolate;
-      }
-
-      .cls-5, .cls-12 {
-        mix-blend-mode: multiply;
-      }
-
-      .cls-4, .cls-7, .cls-9 {
-        stroke-width: 2px;
-      }
-    </style>
-  </defs>
-  <g class="cls-11">
-    <g class="wheels">
-      <g class="wheel-1">
-        <ellipse class="cls-4 outer-wheel" cx="29.06" cy="220.95" rx="23.71" ry="30.97" transform="translate(-156.36 97.33) rotate(-48.82)"/>
-        <ellipse class="cls-6 inner-wheel" cx="29.06" cy="220.95" rx="20.86" ry="27.25" transform="translate(-156.36 97.33) rotate(-48.82)"/>
-        <ellipse class="cls-6 wheel-core" cx="29.2" cy="221.5" rx="15.49" ry="20.24" transform="translate(-156.73 97.63) rotate(-48.82)"/>
-        <polygon points="14.36 227.21 18 226.15 22.17 230.92 20.55 234.42 17.22 231.45 14.36 227.21"/>
-        <polygon points="25.34 237.13 26.42 233.6 32.44 234.92 34.01 239.21 30.03 238.91 25.34 237.13"/>
-        <polygon points="40.06 237.62 37.64 233.8 41.38 230.32 45.58 232.77 43.58 235.55 40.06 237.62"/>
-        <polygon points="10.72 214.67 14.87 216.39 15.57 222.15 11.53 222.92 10.47 219.01 10.72 214.67"/>
-        <polygon points="16.96 205.46 19.79 209.07 16.69 213.12 12.33 211.13 13.87 208.03 16.96 205.46"/>
-        <polygon points="43.86 214.44 40.53 216.02 35.86 211.69 36.91 207.87 40.52 210.48 43.86 214.44"/>
-        <polygon points="46.89 228.74 42.77 226.89 42.28 221.17 46.38 220.54 47.31 224.45 46.89 228.74"/>
-        <polygon points="31 204.72 30.73 208.58 24.86 208.38 22.51 204.25 26.27 203.8 31 204.72"/>
-      </g>
-      <g class="wheel-2">
-        <ellipse class="cls-4 outer-wheel" cx="87.81" cy="220.95" rx="23.71" ry="30.97" transform="translate(-136.3 141.54) rotate(-48.82)"/>
-        <ellipse class="cls-6 inner-wheel" cx="87.81" cy="220.95" rx="20.86" ry="27.25" transform="translate(-136.3 141.54) rotate(-48.82)"/>
-        <ellipse class="cls-6 wheel-core" cx="87.95" cy="221.5" rx="15.49" ry="20.24" transform="translate(-136.66 141.84) rotate(-48.82)"/>
-        <polygon points="73.11 227.21 76.75 226.15 80.92 230.92 79.3 234.42 75.97 231.45 73.11 227.21"/>
-        <polygon points="84.09 237.13 85.17 233.6 91.19 234.92 92.76 239.21 88.78 238.91 84.09 237.13"/>
-        <polygon points="98.81 237.62 96.39 233.8 100.13 230.32 104.33 232.77 102.33 235.55 98.81 237.62"/>
-        <polygon points="69.47 214.67 73.62 216.39 74.32 222.15 70.28 222.92 69.22 219.01 69.47 214.67"/>
-        <polygon points="75.71 205.46 78.54 209.07 75.44 213.12 71.08 211.13 72.62 208.03 75.71 205.46"/>
-        <polygon points="102.61 214.44 99.28 216.02 94.61 211.69 95.66 207.87 99.27 210.48 102.61 214.44"/>
-        <polygon points="105.64 228.74 101.52 226.89 101.03 221.17 105.13 220.54 106.06 224.45 105.64 228.74"/>
-        <polygon points="89.75 204.72 89.48 208.58 83.61 208.38 81.26 204.25 85.02 203.8 89.75 204.72"/>
-      </g>
-      <g class="wheel-3">
-        <ellipse class="cls-4 outer-wheel" cx="146.81" cy="220.95" rx="23.71" ry="30.97" transform="translate(-116.15 185.94) rotate(-48.82)"/>
-        <ellipse class="cls-6 inner-wheel" cx="146.81" cy="220.95" rx="20.86" ry="27.25" transform="translate(-116.15 185.94) rotate(-48.82)"/>
-        <ellipse class="cls-6 wheel-core" cx="146.95" cy="221.5" rx="15.49" ry="20.24" transform="translate(-116.52 186.24) rotate(-48.82)"/>
-        <polygon points="132.11 227.21 135.75 226.15 139.92 230.92 138.3 234.42 134.97 231.45 132.11 227.21"/>
-        <polygon points="143.09 237.13 144.17 233.6 150.19 234.92 151.76 239.21 147.78 238.91 143.09 237.13"/>
-        <polygon points="157.81 237.62 155.39 233.8 159.13 230.32 163.33 232.77 161.33 235.55 157.81 237.62"/>
-        <polygon points="128.47 214.67 132.62 216.39 133.32 222.15 129.28 222.92 128.22 219.01 128.47 214.67"/>
-        <polygon points="134.71 205.46 137.54 209.07 134.44 213.12 130.08 211.13 131.62 208.03 134.71 205.46"/>
-        <polygon points="161.61 214.44 158.28 216.02 153.61 211.69 154.66 207.87 158.27 210.48 161.61 214.44"/>
-        <polygon points="164.64 228.74 160.52 226.89 160.03 221.17 164.13 220.54 165.06 224.45 164.64 228.74"/>
-        <polygon points="148.75 204.72 148.48 208.58 142.61 208.38 140.26 204.25 144.02 203.8 148.75 204.72"/>
-      </g>
-      <g class="wheel-4">
-        <ellipse class="cls-4 outer-wheel" cx="206.31" cy="220.95" rx="23.71" ry="30.97" transform="translate(-95.83 230.72) rotate(-48.82)"/>
-        <ellipse class="cls-6 inner-wheel" cx="206.31" cy="220.95" rx="20.86" ry="27.25" transform="translate(-95.83 230.72) rotate(-48.82)"/>
-        <ellipse class="cls-6 wheel-core" cx="206.45" cy="221.5" rx="15.49" ry="20.24" transform="translate(-96.2 231.02) rotate(-48.82)"/>
-        <polygon points="191.61 227.21 195.25 226.15 199.42 230.92 197.8 234.42 194.47 231.45 191.61 227.21"/>
-        <polygon points="202.59 237.13 203.67 233.6 209.69 234.92 211.26 239.21 207.28 238.91 202.59 237.13"/>
-        <polygon points="217.31 237.62 214.89 233.8 218.63 230.32 222.83 232.77 220.83 235.55 217.31 237.62"/>
-        <polygon points="187.97 214.67 192.12 216.39 192.82 222.15 188.78 222.92 187.72 219.01 187.97 214.67"/>
-        <polygon points="194.21 205.46 197.04 209.07 193.94 213.12 189.58 211.13 191.12 208.03 194.21 205.46"/>
-        <polygon points="221.11 214.44 217.78 216.02 213.11 211.69 214.16 207.87 217.77 210.48 221.11 214.44"/>
-        <polygon points="224.14 228.74 220.02 226.89 219.53 221.17 223.63 220.54 224.56 224.45 224.14 228.74"/>
-        <polygon points="208.25 204.72 207.98 208.58 202.11 208.38 199.76 204.25 203.52 203.8 208.25 204.72"/>
-      </g>
-    </g>
-    <g class="wings">
-      <g class="outer-wings">
-        <path class="cls-9" d="M292.79,1.16c.02-.08,.03-.14,.03-.14-.07-.06-.08,0-.03,.14Z"/>
-        <path class="cls-9 body" d="M234.7,82.56c28.43,8.15,47.87,6.75,58.17,.75,15.91-9.27,13.76-30.78,13.76-30.78-1.22,2.19-8.3,18.48-58.84,13.83,5.01-.9,11.99-2.48,19.45-4.75,48.26-14.68,26.48-57.48,25.57-60.45-.41,1.83-6.01,23.45-46.37,39.57-17.95,7.17-40.65,7.56-52.35,6.22-11.7-1.34-31.56,8.91-31.56,8.91,0,0,14.33,52.63,25.52,70.8,1.37,2.22,6.95,9.04,15.41,11.49,9.47,2.74,16.75,.01,16.75,.01,0,0-9.3-3.46-14.45-8.6-5.16-5.15-11.83-18.6-11.83-18.6,0,0,5.54,8.22,13.74,14.8,8.91,7.15,21.41,8.52,26.84,8.52,7.88,0,16.16-3.56,16.16-3.56,0,0-16.46-2.15-24.3-7.6-6.82-4.75-9.87-10.41-9.87-10.41,0,0,6.18,5.79,16.57,9.63,8.62,3.19,20.89,4.81,28.17,2.65,8.94-2.66,13.24-10.14,13.24-10.14,0,0-9.05,2.06-28.35-4.29-6.9-2.27-19.23-8.82-25.41-12.2,4.28,2.05,12.81,5.47,28.53,9.53,39.35,10.15,47.56-16.8,47.56-16.8,0,0-13.5,9.22-51.64-3.77-15.5-5.28-42.55-13.95-10.43-4.74Z"/>
-        <path class="accent" d="M182.79,109.69l4.02-3.93s5.8,13.54,9.97,18.88c4.69,6,8.57,8.33,8.57,8.33,0,0-1.82,.18-10.02-8.58-2.67-2.85-6.18-9.82-6.14-7.2,.02,1.15,3.7,6.97,5.22,9.04,3,4.1,4.37,4.73,4.37,4.73,0,0-1.72-.49-5.34-4.99-3.52-4.38-10.67-16.29-10.67-16.29Z"/>
-        <path class="accent" d="M198.95,108.18l4.87-3.06s8.47,12.21,11.62,15.85c3.16,3.65,11.98,8.31,11.98,8.31,0,0-6.6-2.96-12.33-7.32-1.85-1.41-7.91-8.14-7.36-5.6,.24,1.12,2.81,4.49,4.46,6.02,2.79,2.59,5.62,4.79,5.62,4.79,0,0-3.53-2.15-7.05-5.52-3.9-3.74-11.8-13.46-11.8-13.46Z"/>
-        <path class="accent" d="M212.56,105.45l-3.81-7.86s23.52,14.02,28.9,16.25c10.78,4.45,17.33,4.05,17.33,4.05,0,0-6.6,1.13-18.84-3.25-2.97-1.06-13.86-6.93-11.88-3.66,.87,1.44,1.81,1.27,3.2,2.49,3.99,3.54,9.83,5.28,9.83,5.28,0,0,.2,.7-5.84-2.03-6.69-3.03-18.87-11.27-18.87-11.27Z"/>
-        <path class="accent" d="M234.26,93.22l2.52-2.21s16.16,5.96,24.91,7.19c10.97,1.54,17.94,1.27,17.94,1.27,0,0-10.53,1.41-19.87-.07-7.11-1.12-19.47-3.91-19.47-3.91,0,0-6.74-1.96-6.45-.94,.68,2.44,13.48,5.45,17.46,6.26,5.78,1.18,10.18,1.06,10.18,1.06,0,0-1.56,1.01-11.56-.51-7.07-1.08-15.29-3.42-20.5-4.91l4.85-3.23Z"/>
-        <path class="accent" d="M247.23,74.81l2.06-2.98s12.93,2.28,24.46,2.11,18.55-2.35,18.55-2.35c0,0-5.88,3.47-17.1,4.21-7.19,.47-21.6,.08-21.6,.08,0,0-6.93-.57-6.54,.47,1.76,4.63,28.41,3.95,28.81,3.26,0,0-9.05,3.71-32.81-.18l4.17-4.62Z"/>
-        <path class="accent" d="M240.83,55.19l3.57-8.26s9.07,.59,17.56-3.62c10.64-5.28,20.79-16.11,20.79-16.11,0,0-5.5,10.64-13.44,16.67-11.72,8.9-15.75,8.11-22.18,9.81-1.24,.33-5.09,2.49-3.95,3.07,1.82,.92,9.31-.41,16.23-2.14,9.49-2.37,16.73-9.52,17.31-9.76,0,0-7.66,8.6-17.98,11.41s-22.94,6.3-30.37,5.35l12.46-6.42Z"/>
-      </g>
-      <g class="inner-wings">
-        <path class="cls-7" d="M255.51,36.75c-.53-5.29-2.4-10.44-2.4-10.44,0,0-.78,11.46-26.39,15.77-18.36,3.09-24.99-3.15-45.49-2.89-20.51,.26-19.21,19.73-19.21,19.73"/>
-        <path class="cls-1 body" d="M162.02,58.92s-1.29-19.47,19.21-19.73c20.51-.26,27.13,5.98,45.49,2.89,25.61-4.31,26.23-14.88,26.23-14.88,0,0,9.11,26.68-11.42,32.89-18.68,5.65-34.25,2.98-34.25,2.98,0,0,8.56,3.85,20.54,4.22,20.12,.63,27.26-7.2,27.26-7.2,0,0,1.52,18.28-16.94,22.15-14.24,2.99-35.83-4.06-35.83-4.06,0,0,12.43,7.31,24.41,8.24,19.86,1.53,22.44-.96,22.44-.96,0,0-4.48,13.72-23.03,13.93-9.64,.11-26.84-7.39-26.84-7.39,0,0,12.01,8.36,23.26,11.04,14.31,3.4,14.54,2.08,14.54,2.08-6.87,7.56-14.07,9.38-26.2,6.88-11.56-2.38-20.2-9.65-20.2-9.65,0,0,2.88,3.9,7.17,6.86,9.81,6.79,25.15,7.26,25.15,7.26,0,0-4.69,7.09-21.15,4.03-4.08-.76-16.91-7.23-19.67-13.04-.56-1.18-.97-7.27-1.43-7.89-8.72-11.6-8.43-27.75-9.79-29.43-7.79-9.64-8.95-11.22-8.95-11.22Z"/>
-        <path class="accent" d="M180.66,96.62c3.35,.06,11.89,13.12,15.59,15.97,4.56,3.51,8.68,4.57,8.68,4.57,0,0-4.28-.79-9.79-4.21-5.08-3.15-10.74-9.77-11.09-10.14-6.94-7.34,.54,3.12,7.23,8.79,3.39,2.87,4.35,3.44,4.35,3.44,0,0-6.67-4.06-12.03-9.52-4.11-4.19-3.78-8.91-2.95-8.9Z"/>
-        <path class="accent" d="M173.79,80.6l.52-2.92s21.33,17.71,28.02,22.24c11.71,7.93,15.45,8.21,16.15,8.54,.64,.31-3.48,.81-17.62-7.88-9.14-5.62-17.08-12.41-17.84-12.85-2.72-1.57,.64,4.31,6.14,8.31,8.96,6.53,18.52,10.85,18.52,10.85,0,0-10.3-3.51-21.34-10.52-8.54-5.42-9.6-7.84-10.85-9.86l-1.69-5.91Z"/>
-        <path class="accent" d="M174.57,75.01c-.01,.06-4.54-10.45-.33-8.87,1.78,.67,6.37,3.8,9.82,6.16,7.33,5.03,25.69,12.85,27.3,13.49,13.69,5.41,25.42,5.23,25.42,5.23,0,0-11.57,2.13-27.35-3.81-11.75-4.42-17.64-6.59-22.48-9.39-3.84-2.22,.84,2,7.15,5.93,11.66,7.27,25.96,10.81,25.96,10.81,0,0-8.35-.64-23.24-7.71-8.45-4.01-17.42-7.5-22.25-11.84h0Z"/>
-        <path class="accent" d="M243.88,72.39s-19.78-.25-35.54-5.36c-3.57-1.16-8.99-4.5-16.87-5.15-5.86-.49-11.5,1.77-11.5,1.77,0,0,5.1-3.12,9.71-4.19s10.68-1.55,14.97-1.57c17.32-.08,25.93-2.63,25.93-2.63,0,0-9.53,1.9-27.8,.63-2.22-.16-6.17-1.07-13.42,.6-3.08,.71-8.04,3.65-8.04,3.65,0,0,5.02-7.36,25.59-7.36,7.07,0,26.17-3.11,36.13-6.72,0,0-17.34,3.92-35.95,3.62-8.26-.13-17.35-1.24-23.34,2.21-5.29,3.04-9.11,8.92-9.46,13.16,2.49-2.6,23.87,6.35,30.09,7.99,19.55,5.16,24.39,3.37,24.39,3.37-3.69,0-7.71,.5-23.97-5.41-5.9-2.14-9.15-4.51-20.26-6.99-2.84-.63-4.49,.86-4.49,.86,0,0,5.73-.68,12.34,.68,4.67,.96,12.17,3.36,15.02,3.97,21.91,4.72,36.47,2.87,36.47,2.87Z"/>
-      </g>
-    </g>
-    <g class="boot">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="307.7px" height="249.1px" viewBox="0 0 307.7 249.1" style="enable-background:new 0 0 307.7 249.1;" xml:space="preserve">
+  <style type="text/css">
+    .st0 {
+      fill: #FFFFFF;
+      stroke: #000000;
+      stroke-width: 2;
+      stroke-miterlimit:10;
+    }
+    .st1 {
+      fill: #FFFFFF;
+      stroke:#000000;
+      stroke-miterlimit:10;
+    }
+    .st2 {
+      fill: none;
+      stroke: #000000;
+      stroke-width: 2;
+      stroke-miterlimit: 10;
+    }
+    .st3 {
+      fill: #FFFFFF;
+      stroke: #000000;
+      stroke-width: 1.5;
+      stroke-miterlimit:10;
+    }
+    .st4 {
+      fill: #FFFFFF;
+      stroke: #000000;
+      stroke-width: 0.5;
+      stroke-miterlimit: 10;
+    }
+    .st5 {
+      fill: #FFFFFF;
+    }
+    .st6 {
+      fill: none;
+      stroke: #000000;
+      stroke-miterlimit: 10;
+    }
+    .st7 {
+      fill: none;
+      stroke: #000000;
+      stroke-width: 0.5;
+      stroke-miterlimit: 10;
+    }
+    .st8 {
+      fill: #FFBB00;
+    }
+  </style>
+  <g>
+    <g>
       <g>
-        <path class="cls-9 frame" d="M159.38,189.51c-6.74,.77-39.74,1.11-66.26,1.86-29.72,.84-52.88,2.05-52.88,2.05,0,0-11.69,13.82-16.39,17.3-9.65,7.13-4.49,20.85,7.75,17.36,18.14-5.18,23.43-9.03,38.58-3.94,15.15,5.08,14.21,4.83,21.2,4.83,10.38,0,15.09-8.11,26.48-8.11,13.37,0,19.15,7.99,30.42,8.46,13.3,.55,14.83-8.93,29.65-8.32,10.38,.43,21.61,4.67,26.48,6.71,2.58,1.08,5.29,1.54,7.77,1.14,2.19-.35,3.65-2.09,3.97-4.53,1.1-8.33-2.32-12.24-27.09-31.7-6.34-4.98-15.39-4.73-29.68-3.11Z"/>
-        <path class="cls-5" d="M176.89,190.61c-13.8-2.97-156.67,37.67-144.34,34.39,20-5.32,23.43-9.03,38.58-3.94s14.21,4.83,21.2,4.83c10.38,0,15.09-8.11,26.48-8.11,13.37,0,19.15,7.99,30.42,8.46,13.3,.55,14.83-8.93,29.65-8.32,10.38,.43,21.37,5.92,26.24,7.96"/>
-        <g class="outer-frame-bolt">
-          <ellipse class="cls-8 one" cx="29.09" cy="219.46" rx="3.73" ry="4.56" transform="translate(-153.24 93.9) rotate(-47.89)"/>
-          <ellipse class="cls-8 two" cx="87.97" cy="219.46" rx="3.73" ry="4.56" transform="translate(-133.84 137.58) rotate(-47.89)"/>
-          <ellipse class="cls-8 three" cx="146.84" cy="219.46" rx="3.73" ry="4.56" transform="translate(-114.44 181.26) rotate(-47.89)"/>
-          <ellipse class="cls-8 four" cx="205.59" cy="219.46" rx="3.73" ry="4.56" transform="translate(-95.08 224.85) rotate(-47.89)"/>
+        <g class="wheel-1">
+
+          <ellipse class="st0 outer" transform="matrix(0.6584 -0.7526 0.7526 0.6584 -151.1013 109.5204)" cx="45.1" cy="221.2" rx="21.6" ry="28.3"/>
+
+          <ellipse class="st1 inner" transform="matrix(0.6584 -0.7526 0.7526 0.6584 -151.1013 109.5204)" cx="45.1" cy="221.2" rx="19" ry="24.9"/>
+
+          <ellipse class="st1 core" transform="matrix(0.6584 -0.7526 0.7526 0.6584 -151.4412 109.7874)" cx="45.2" cy="221.7" rx="14.1" ry="18.5"/>
+          <polygon points="31.7,227 35,226 38.8,230.3 37.3,233.5 34.3,230.8"/>
+          <polygon points="41.7,236 42.7,232.8 48.2,234 49.6,237.9 46,237.6"/>
+          <polygon points="55.1,236.5 52.9,233 56.3,229.8 60.2,232 58.3,234.6"/>
+          <polygon points="28.4,215.5 32.2,217.1 32.8,222.3 29.1,223 28.1,219.5"/>
+          <polygon points="34.1,207.1 36.6,210.4 33.8,214.1 29.8,212.3 31.2,209.5"/>
+          <polygon points="58.6,215.3 55.6,216.7 51.3,212.8 52.3,209.3 55.6,211.7"/>
+          <polygon points="61.4,228.4 57.6,226.7 57.2,221.4 60.9,220.9 61.8,224.4"/>
+          <polygon points="46.9,206.4 46.6,210 41.3,209.8 39.1,206 42.6,205.6"/>
         </g>
-        <g class="inner-frame-bolt">
-          <polygon class="cls-3 one" points="27.2 217.98 26.97 220.1 28.74 221.61 30.97 221.2 31.28 219.11 29.26 217.32 27.2 217.98"/>
-          <polygon class="cls-3 two" points="86.07 217.98 85.84 220.1 87.61 221.61 89.84 221.2 90.15 219.11 88.14 217.32 86.07 217.98"/>
-          <polygon class="cls-3 three" points="144.95 217.98 144.72 220.1 146.49 221.61 148.72 221.2 149.03 219.11 147.01 217.32 144.95 217.98"/>
-          <polygon class="cls-3 four" points="203.7 217.98 203.47 220.1 205.24 221.61 207.47 221.2 207.78 219.11 205.76 217.32 203.7 217.98"/>
+        <g class="wheel-2">
+
+          <ellipse class="st0 outer" transform="matrix(0.6584 -0.7526 0.7526 0.6584 -132.7896 149.8552)" cx="98.7" cy="221.2" rx="21.6" ry="28.3"/>
+
+          <ellipse class="st1 inner" transform="matrix(0.6584 -0.7526 0.7526 0.6584 -132.7896 149.8552)" cx="98.7" cy="221.2" rx="19" ry="24.9"/>
+
+          <ellipse class="st1 core" transform="matrix(0.6584 -0.7526 0.7526 0.6584 -133.1264 150.129)" cx="98.8" cy="221.7" rx="14.1" ry="18.5"/>
+          <polygon points="85.3,227 88.6,226 92.4,230.3 90.9,233.5 87.9,230.8"/>
+          <polygon points="95.3,236 96.3,232.8 101.8,234 103.2,237.9 99.6,237.6"/>
+          <polygon points="108.7,236.5 106.5,233 109.9,229.8 113.8,232 111.9,234.6"/>
+          <polygon points="82,215.5 85.8,217.1 86.4,222.3 82.7,223 81.7,219.5"/>
+          <polygon points="87.7,207.1 90.2,210.4 87.4,214.1 83.4,212.3 84.8,209.5"/>
+          <polygon points="112.2,215.3 109.2,216.7 104.9,212.8 105.9,209.3 109.2,211.7"/>
+          <polygon points="115,228.4 111.2,226.7 110.8,221.4 114.5,220.9 115.4,224.4"/>
+          <polygon points="100.5,206.4 100.2,210 94.9,209.8 92.7,206 96.2,205.6"/>
         </g>
-        <g class="frame-spacing">
-          <path class="cls-9" d="M50.2,197.46l-15.06,16.19s-1.82,3.74,2.83,2.47,39.18-11.2,39.18-11.2c0,0,6.52-5.15,.94-5.15s-27.89-2.32-27.89-2.32Z"/>
-          <path class="cls-9" d="M84.8,197.18s2.14,6.59,9.61,5.96c7.47-.64,59.17-12.79,59.17-12.79l-68.78,6.83Z"/>
-          <path class="cls-9" d="M122.08,207.38s-4.2,1.3-3.61,3.04,17.4,1.98,17.4,1.98l54.79-.72s7.03-2.51-2.24-10.22c-9.27-7.71-14.43-5.48-19.15-4.48-4.71,1-47.18,10.4-47.18,10.4Z"/>
+        <g class="wheel-3">
+
+          <ellipse class="st0 outer" transform="matrix(0.6584 -0.7526 0.7526 0.6584 -114.3998 190.3653)" cx="152.5" cy="221.2" rx="21.6" ry="28.3"/>
+
+          <ellipse class="st1 inner" transform="matrix(0.6584 -0.7526 0.7526 0.6584 -114.3999 190.3653)" cx="152.5" cy="221.2" rx="19" ry="24.9"/>
+
+          <ellipse class="st1 core" transform="matrix(0.6584 -0.7526 0.7526 0.6584 -114.7397 190.6323)" cx="152.7" cy="221.7" rx="14.1" ry="18.5"/>
+          <polygon points="139.1,227 142.4,226 146.2,230.3 144.8,233.5 141.7,230.8"/>
+          <polygon points="149.1,236 150.1,232.8 155.6,234 157,237.9 153.4,237.6"/>
+          <polygon points="162.6,236.5 160.4,233 163.8,229.8 167.6,232 165.8,234.6"/>
+          <polygon points="135.8,215.5 139.6,217.1 140.2,222.3 136.5,223 135.6,219.5"/>
+          <polygon points="141.5,207.1 144.1,210.4 141.2,214.1 137.3,212.3 138.7,209.5"/>
+          <polygon points="166,215.3 163,216.7 158.7,212.8 159.7,209.3 163,211.7"/>
+          <polygon points="168.8,228.4 165,226.7 164.6,221.4 168.3,220.9 169.2,224.4"/>
+          <polygon points="154.3,206.4 154.1,210 148.7,209.8 146.6,206 150,205.6"/>
         </g>
-        <path d="M48.99,191.49l-12.93-1.14s.78,6.22,4.84,6.41c4.05,.19,40,3.25,40,3.25l93.4-10.84-28.19,.97-97.11,1.35Z"/>
+        <g class="wheel-4">
+
+          <ellipse class="st0 outer" transform="matrix(0.6584 -0.7526 0.7526 0.6584 -95.8571 231.2194)" cx="206.8" cy="221.2" rx="21.6" ry="28.3"/>
+
+          <ellipse class="st1 inner" transform="matrix(0.6584 -0.7526 0.7526 0.6584 -95.8571 231.2194)" cx="206.8" cy="221.2" rx="19" ry="24.9"/>
+
+          <ellipse class="st1 core" transform="matrix(0.6584 -0.7526 0.7526 0.6584 -96.197 231.4864)" cx="206.9" cy="221.7" rx="14.1" ry="18.5"/>
+          <polygon points="193.4,227 196.7,226 200.5,230.3 199.1,233.5 196,230.8"/>
+          <polygon points="203.4,236 204.4,232.8 209.9,234 211.3,237.9 207.7,237.6"/>
+          <polygon points="216.9,236.5 214.6,233 218.1,229.8 221.9,232 220.1,234.6"/>
+          <polygon points="190.1,215.5 193.9,217.1 194.5,222.3 190.8,223 189.9,219.5"/>
+          <polygon points="195.8,207.1 198.4,210.4 195.5,214.1 191.6,212.3 193,209.5"/>
+          <polygon points="220.3,215.3 217.3,216.7 213,212.8 214,209.3 217.3,211.7"/>
+          <polygon points="223.1,228.4 219.3,226.7 218.9,221.4 222.6,220.9 223.5,224.4"/>
+          <polygon points="208.6,206.4 208.3,210 203,209.8 200.8,206 204.3,205.6"/>
+        </g>
       </g>
       <g>
-        <path class="cls-9 liner" d="M18.22,157.8s-6.12,6.12-4.68,10.58c1.44,4.46-4.31,7.75,4.38,14.44,8.7,6.69,19.26,7.95,19.26,7.95l167.23-3.2s17.72-9.16-.2-33.49c-13.78-18.71-22.7-45.91-22.7-45.91,0,0-9.58-47.43-13.04-52.12-5.89-7.99-10.44-10.72-20.29-14.65-7.67-3.05-19.02-8.21-33.64-8.21-27.91,0-21.58,10.82-25.53,11.38-4.79,.67-12.69,10.78-12.69,10.78l2.03,4.6,7.94,29.87s7.43,26.21,3.5,31.69c-16.88,23.53-71.57,36.28-71.57,36.28Z"/>
-        <path class="liner-middle-accent" d="M45.22,164.67c.9,.16,20.25-3.16,19.19-10.01-1.06-6.85,3.05-5.03,3.05-5.03,0,0,8.31,5.33,10.72,7.58,5.68,5.28,14.54,16.09,14.54,16.09,0,0-13.77-20.05-22.25-25.96-3.58-2.49,2.09-.79,2.09-.79l11.97-5.52c.13,.13,12.14,3.94,17.87,8.69,6.56,5.44,14.61,15.85,14.61,15.85,0,0-7.52-19.65-28.9-27.56-.03-.01,.38-.29,2.87-2.37l10.69-9.05s8.69,2.03,14.7,4.59c5.6,2.38,17.95,9.67,17.95,9.67,0,0-16.22-14.63-30.91-16.94-1.91-.3,4.58-15.61,4.77-18.63,0,0,7.23,.56,12.66,2.6,4.85,1.82,19.85,10.31,19.85,10.31,0,0-17.15-13.45-32.3-16.72,0,0,.17-1.2,.08-2.52-.12-1.73-.21-3.11-.21-3.11-1.53-.63,8.59,3.53,11.76,5.15,3.76,1.92,14.57,8.8,14.57,8.8,0,0-11.48-9.89-26.46-15.81,0,0-1.4-5.11-2.07-8.41-.29-1.4,3.92,1.28,12.17,3.46,0,0,24.72,6.75,26.91,8.5,2.18,1.74,5.47,9.57,5.47,9.57l.13,7.87-2.46,14.52-2.38,13.39-2.42,8.24-15.59,16.68-22.75,14.67-8.14,3.58-3.38-6.2-6.77-5.47-6.27-2.27-35.39-7.44Z"/>
-        <path class="cls-2" d="M96.99,123.01s8.68-10.15,7.19-20.93c-1.49-10.78-15.02-57.37-15-57.23"/>
-        <path class="cls-2" d="M86.3,190.42s1.28-4.56-4.93-6.22c-15.8-4.23-49.54-10.22-64.11-12.24-2.77-.38-4.51-4.97-4.51-4.97"/>
-        <path class="cls-2" d="M18.04,159.2c.75,.1,2.19,1.22,3.03,1.34,15.59,2.29,45.74,7.63,60.73,11.65,6.21,1.66,12.76,7.46,14.66,11.54,.73,1.56,.92,6.46,.92,6.46"/>
-        <path class="cls-2" d="M17.94,161.65c.25,.22,.51,.45,.8,.62s.63,.26,.91,.21"/>
-        <path class="cls-2" d="M21.43,162.95l1.47,.4"/>
-        <path class="cls-2" d="M24.47,163.81c.49,.06,.98,.15,1.47,.28"/>
-        <path class="cls-2" d="M27.63,164.49c.5,.06,1,.15,1.5,.26"/>
-        <path class="cls-2" d="M30.8,165.09c.49,.13,.98,.22,1.47,.29"/>
-        <path class="cls-2" d="M34.19,165.67l1.42,.22"/>
-        <path class="cls-2" d="M36.84,166.18c.66,.1,1.32,.18,1.98,.23"/>
-        <path class="cls-2" d="M40.55,166.73c.45-.06,.94-.02,1.42,.11"/>
-        <path class="cls-2" d="M43.51,167.22c.57,0,1.14,.05,1.72,.16"/>
-        <path class="cls-2" d="M47.08,167.78l1.84,.2"/>
-        <path class="cls-2" d="M50.11,168.26l1.44,.19"/>
-        <path class="cls-2" d="M53.07,168.76c.57,.04,1.15,.13,1.73,.29"/>
-        <path class="cls-2" d="M56.24,169.13l1.69,.14s.03,0,.04,0"/>
-        <path class="cls-2" d="M59.72,169.84c.55-.06,1.13-.05,1.71,.03"/>
-        <path class="cls-2" d="M62.98,170.39c.46-.1,.97-.06,1.46,.1"/>
-        <path class="cls-2" d="M65.95,170.92c.52-.11,1.1-.07,1.67,.1"/>
-        <path class="cls-2" d="M69.01,171.54c.45,0,.91,.05,1.37,.13"/>
-        <path class="cls-2" d="M71.59,171.86l1.82,.28s.02,0,.03,0"/>
-        <path class="cls-2" d="M75.12,172.73l1.71,.18"/>
-        <path class="cls-2" d="M78.36,173.38c.58,.08,1.17,.24,1.73,.49"/>
-        <path class="cls-2" d="M81.68,174.46c.53,.25,1.04,.53,1.55,.83"/>
-        <path class="cls-2" d="M84.41,176.08c.56,.02,1.04,.59,1.6,.81"/>
-        <path class="cls-2" d="M87.38,177.8l1.48,1.13"/>
-        <path class="cls-2" d="M90.18,180.12c.46,.36,.9,.75,1.31,1.16"/>
-        <path class="cls-2" d="M92.58,182.55c.45,.34,.86,.73,1.22,1.16"/>
-        <path class="cls-2" d="M94.88,185.34c.36,.44,.63,.93,.81,1.43"/>
-        <path class="cls-2" d="M95.76,187.68c.08,.4,.06,.79-.03,1.16"/>
-        <path class="cls-2" d="M37.19,163.14s17.14-4.2,21.36-7.48,2.27-5.45,2.27-5.45c0,0,8.22-5.18,11.44-6.93,2.99-1.62,11.08-7.14,12.93-8.3,4.93-3.1,9.1-7.89,11.8-11.98,1.96-2.97-7.4-2.4-7.4-2.4"/>
-        <path class="cls-10" d="M32.4,162.07s9.05-.98,24.14-7.92c3.2-1.47,.64-7.73-3.82-6.59"/>
-        <path class="cls-2" d="M78.02,59.64c.22-.67,.54-1.3,.95-1.86"/>
-        <path class="cls-2" d="M79.6,57.14c.15-.54,.46-1,.89-1.33"/>
-        <path class="cls-2" d="M81.5,54.98l1.06-1.01"/>
-        <path class="cls-2" d="M83.75,53.26c.36-.42,.79-.77,1.28-1.05"/>
-        <path class="cls-2" d="M86.12,51.82l1.35-.95"/>
-        <path class="cls-2" d="M102.29,101.06l-.43-2.19"/>
-        <path class="cls-2" d="M102.51,102.29c.1,.58,.14,1.15,.11,1.71"/>
-        <path class="cls-2" d="M102.64,105.22c-.06,.67-.17,1.32-.33,1.95"/>
-        <path class="cls-2" d="M102.2,108.3c-.12,.68-.29,1.35-.52,1.98"/>
-        <path class="cls-2" d="M101.49,111.27c-.16,.61-.38,1.2-.65,1.76"/>
-        <path class="cls-2" d="M100.48,114.03c-.24,.49-.47,.99-.69,1.5"/>
-        <path class="cls-2" d="M99.19,116.68l-.78,1.33"/>
-        <path class="cls-2" d="M98.04,118.76l-.83,1.31"/>
-        <path class="cls-2" d="M101.56,97.29l-.35-1.96"/>
-        <path class="cls-2" d="M101.05,93.8c-.08-.67-.21-1.33-.39-2"/>
-        <path class="cls-2" d="M99.7,88.2c.19,.6,.35,1.2,.49,1.8"/>
-        <path class="cls-2" d="M99.1,85.06c.05,.48,.13,.95,.25,1.43l-.02-.11"/>
-        <path class="cls-2" d="M98.13,82.35c.15,.49,.28,.97,.39,1.46-.01-.05-.02-.1-.04-.16"/>
-        <path class="cls-2" d="M97.38,79.17c.09,.51,.23,1.02,.4,1.52"/>
-        <path class="cls-2" d="M96.52,76.44c.13,.55,.28,1.1,.46,1.65-.01-.06-.02-.13-.03-.19"/>
-        <path class="cls-2" d="M95.73,73.5l.44,1.65"/>
-        <path class="cls-2" d="M94.89,70.47c.1,.55,.24,1.09,.42,1.63"/>
-        <path class="cls-2" d="M94.12,67.63c.08,.54,.2,1.08,.35,1.61"/>
-        <path class="cls-2" d="M93.45,64.65l.42,1.59"/>
-        <path class="cls-2" d="M92.62,62.31l.4,1.52-.06-.23"/>
-        <path class="cls-2" d="M91.89,59.22l.3,1.53"/>
-        <path class="cls-2" d="M91.03,55.8c.16,.66,.26,1.32,.28,1.97"/>
-        <path class="cls-2" d="M90.32,52.8l.28,1.31"/>
-        <path class="cls-2" d="M89.22,49.97c.15,.56,.32,1.11,.51,1.67"/>
+        <g class="outer-wings">
+          <path class="st0" d="M292.8,1.2c0-0.1,0-0.1,0-0.1C292.8,1,292.7,1,292.8,1.2z"/>
+          <path class="st0 body" d="M234.7,82.6c28.4,8.2,47.9,6.8,58.2,0.8c15.9-9.3,13.8-30.8,13.8-30.8c-1.2,2.2-8.3,18.5-58.8,13.8
+                                    c5-0.9,12-2.5,19.5-4.8c48.3-14.7,26.5-57.5,25.6-60.5c-0.4,1.8-6,23.5-46.4,39.6c-17.9,7.2-40.6,7.6-52.4,6.2
+                                    c-11.7-1.3-31.6,8.9-31.6,8.9s14.3,52.6,25.5,70.8c1.4,2.2,6.9,9,15.4,11.5c9.5,2.7,16.8,0,16.8,0s-9.3-3.5-14.4-8.6
+                                    c-5.2-5.2-11.8-18.6-11.8-18.6s5.5,8.2,13.7,14.8c8.9,7.2,21.4,8.5,26.8,8.5c7.9,0,16.2-3.6,16.2-3.6s-16.5-2.1-24.3-7.6
+                                    c-6.8-4.8-9.9-10.4-9.9-10.4s6.2,5.8,16.6,9.6c8.6,3.2,20.9,4.8,28.2,2.7c8.9-2.7,13.2-10.1,13.2-10.1s-9,2.1-28.4-4.3
+                                    c-6.9-2.3-19.2-8.8-25.4-12.2c4.3,2.1,12.8,5.5,28.5,9.5c39.4,10.2,47.6-16.8,47.6-16.8s-13.5,9.2-51.6-3.8
+                                    C229.7,82,202.6,73.4,234.7,82.6L234.7,82.6z"/>
+          <path class="accent" d="M182.8,109.7l4-3.9c0,0,5.8,13.5,10,18.9c4.7,6,8.6,8.3,8.6,8.3s-1.8,0.2-10-8.6c-2.7-2.8-6.2-9.8-6.1-7.2
+                                  c0,1.2,3.7,7,5.2,9c3,4.1,4.4,4.7,4.4,4.7s-1.7-0.5-5.3-5C189.9,121.6,182.8,109.7,182.8,109.7L182.8,109.7z"/>
+          <path class="accent" d="M198.9,108.2l4.9-3.1c0,0,8.5,12.2,11.6,15.8c3.2,3.7,12,8.3,12,8.3s-6.6-3-12.3-7.3c-1.9-1.4-7.9-8.1-7.4-5.6
+                                  c0.2,1.1,2.8,4.5,4.5,6c2.8,2.6,5.6,4.8,5.6,4.8s-3.5-2.2-7.1-5.5C206.9,117.9,199,108.2,198.9,108.2L198.9,108.2z"/>
+          <path class="accent" d="M212.6,105.4l-3.8-7.9c0,0,23.5,14,28.9,16.2c10.8,4.4,17.3,4.1,17.3,4.1s-6.6,1.1-18.8-3.2c-3-1.1-13.9-6.9-11.9-3.7
+                                  c0.9,1.4,1.8,1.3,3.2,2.5c4,3.5,9.8,5.3,9.8,5.3s0.2,0.7-5.8-2C224.8,113.7,212.6,105.4,212.6,105.4L212.6,105.4z"/>
+          <path class="accent" d="M234.3,93.2l2.5-2.2c0,0,16.2,6,24.9,7.2c11,1.5,17.9,1.3,17.9,1.3s-10.5,1.4-19.9-0.1c-7.1-1.1-19.5-3.9-19.5-3.9
+                                  s-6.7-2-6.4-0.9c0.7,2.4,13.5,5.4,17.5,6.3c5.8,1.2,10.2,1.1,10.2,1.1s-1.6,1-11.6-0.5c-7.1-1.1-15.3-3.4-20.5-4.9L234.3,93.2
+                                  L234.3,93.2z"/>
+          <path class="accent" d="M247.2,74.8l2.1-3c0,0,12.9,2.3,24.5,2.1s18.5-2.3,18.5-2.3s-5.9,3.5-17.1,4.2c-7.2,0.5-21.6,0.1-21.6,0.1
+                                  s-6.9-0.6-6.5,0.5c1.8,4.6,28.4,3.9,28.8,3.3c0,0-9,3.7-32.8-0.2L247.2,74.8z"/>
+          <path class="accent" d="M240.8,55.2l3.6-8.3c0,0,9.1,0.6,17.6-3.6c10.6-5.3,20.8-16.1,20.8-16.1s-5.5,10.6-13.4,16.7
+                                  c-11.7,8.9-15.8,8.1-22.2,9.8c-1.2,0.3-5.1,2.5-3.9,3.1c1.8,0.9,9.3-0.4,16.2-2.1c9.5-2.4,16.7-9.5,17.3-9.8
+                                  c0,0-7.7,8.6-18,11.4s-22.9,6.3-30.4,5.3L240.8,55.2L240.8,55.2z"/>
+        </g>
+        <g class="inner-wings">
+          <path class="st2" d="M255.5,36.8c-0.5-5.3-2.4-10.4-2.4-10.4s-0.8,11.5-26.4,15.8c-18.4,3.1-25-3.2-45.5-2.9
+                               C160.7,39.5,162,58.9,162,58.9"/>
+          <path class="st3 body" d="M162,58.9c0,0-1.3-19.5,19.2-19.7c20.5-0.3,27.1,6,45.5,2.9c25.6-4.3,26.2-14.9,26.2-14.9
+                                    s9.1,26.7-11.4,32.9c-18.7,5.7-34.2,3-34.2,3s8.6,3.9,20.5,4.2c20.1,0.6,27.3-7.2,27.3-7.2s1.5,18.3-16.9,22.1
+                                    c-14.2,3-35.8-4.1-35.8-4.1s12.4,7.3,24.4,8.2c19.9,1.5,22.4-1,22.4-1s-4.5,13.7-23,13.9c-9.6,0.1-26.8-7.4-26.8-7.4
+                                    s12,8.4,23.3,11c14.3,3.4,14.5,2.1,14.5,2.1c-6.9,7.6-14.1,9.4-26.2,6.9c-11.6-2.4-20.2-9.7-20.2-9.7s2.9,3.9,7.2,6.9
+                                    c9.8,6.8,25.1,7.3,25.1,7.3s-4.7,7.1-21.1,4c-4.1-0.8-16.9-7.2-19.7-13c-0.6-1.2-1-7.3-1.4-7.9C172,88,172.3,71.8,171,70.1
+                                    C163.2,60.5,162,58.9,162,58.9L162,58.9z"/>
+          <path class="accent" d="M180.7,96.6c3.4,0.1,11.9,13.1,15.6,16c4.6,3.5,8.7,4.6,8.7,4.6s-4.3-0.8-9.8-4.2c-5.1-3.2-10.7-9.8-11.1-10.1
+                                  c-6.9-7.3,0.5,3.1,7.2,8.8c3.4,2.9,4.4,3.4,4.4,3.4s-6.7-4.1-12-9.5C179.5,101.3,179.8,96.6,180.7,96.6L180.7,96.6z"/>
+          <path class="accent" d="M173.8,80.6l0.5-2.9c0,0,21.3,17.7,28,22.2c11.7,7.9,15.4,8.2,16.1,8.5c0.6,0.3-3.5,0.8-17.6-7.9
+                                  c-9.1-5.6-17.1-12.4-17.8-12.8c-2.7-1.6,0.6,4.3,6.1,8.3c9,6.5,18.5,10.8,18.5,10.8s-10.3-3.5-21.3-10.5
+                                  c-8.5-5.4-9.6-7.8-10.9-9.9L173.8,80.6L173.8,80.6z"/>
+          <path class="accent" d="M174.6,75c0,0.1-4.5-10.4-0.3-8.9c1.8,0.7,6.4,3.8,9.8,6.2c7.3,5,25.7,12.8,27.3,13.5c13.7,5.4,25.4,5.2,25.4,5.2
+                                  s-11.6,2.1-27.4-3.8c-11.8-4.4-17.6-6.6-22.5-9.4c-3.8-2.2,0.8,2,7.1,5.9c11.7,7.3,26,10.8,26,10.8s-8.4-0.6-23.2-7.7
+                                  C188.4,82.8,179.4,79.4,174.6,75L174.6,75L174.6,75z"/>
+          <path class="accent" d="M243.9,72.4c0,0-19.8-0.2-35.5-5.4c-3.6-1.2-9-4.5-16.9-5.2c-5.9-0.5-11.5,1.8-11.5,1.8s5.1-3.1,9.7-4.2
+                                  s10.7-1.5,15-1.6c17.3-0.1,25.9-2.6,25.9-2.6s-9.5,1.9-27.8,0.6c-2.2-0.2-6.2-1.1-13.4,0.6c-3.1,0.7-8,3.7-8,3.7s5-7.4,25.6-7.4
+                                  c7.1,0,26.2-3.1,36.1-6.7c0,0-17.3,3.9-35.9,3.6c-8.3-0.1-17.4-1.2-23.3,2.2c-5.3,3-9.1,8.9-9.5,13.2c2.5-2.6,23.9,6.3,30.1,8
+                                  c19.6,5.2,24.4,3.4,24.4,3.4c-3.7,0-7.7,0.5-24-5.4c-5.9-2.1-9.1-4.5-20.3-7c-2.8-0.6-4.5,0.9-4.5,0.9s5.7-0.7,12.3,0.7
+                                  c4.7,1,12.2,3.4,15,4C229.3,74.2,243.9,72.4,243.9,72.4L243.9,72.4z"/>
+        </g>
+      </g>
+      <g>
         <g>
-          <path class="cls-8 front-strap-1" d="M93.41,152.02c-16.28-12.57-23.93-13.49-23.93-13.49,0,0-3.15-.49-6.4,1-5.52,2.53-4.81,4.1-4.81,4.1,0,0,8.21-1.31,25.95,12.76,13.92,11.04,23.27,24.31,23.27,24.31l10.49-6.04s-2.4-5.51-24.57-22.64Z"/>
-          <path class="cls-8 front-strap-2" d="M80.12,130.03s3.21-2.4,7.32-2.08c7.84,.62,17.06,1.87,29.79,7.38,15.63,6.77,26.41,15.86,26.41,15.86,0,0-6.06,5.88-6.71,6.77-.41,.57-7.08-9.1-25.6-16.11-19.54-7.39-28.95-7.46-32.18-7.84-3.23-.38,.97-3.99,.97-3.99Z"/>
-          <path class="cls-8 power-strap" d="M96.33,122.5l-5.26-.37s-3.19-.54-3.26-2.97-.76-9.54,2.15-11.32,6.93-3.61,27.48,3.17c20.56,6.78,33.04,11.52,33.98,17.29,.94,5.77-1.36,12.17-2.86,12.59s-3.59-2.55-25.81-10.79c-18.07-6.7-26.42-7.61-26.42-7.61Z"/>
-          <path class="cls-10" d="M87.8,119.33s20.52-1.97,62.12,19.94"/>
-          <path class="cls-10" d="M91.26,107.61s12.36-1.83,59.58,19.06"/>
+          <path class="st0 frame" d="M164.5,189.5c-6.1,0.8-36.2,1.1-60.3,1.9c-27.1,0.8-48.1,2.1-48.1,2.1s-10.6,13.8-14.9,17.3
+                               c-8.8,7.1-4.1,20.9,7.1,17.4c16.5-5.2,21.3-9,35.1-3.9c13.8,5.1,12.9,4.8,19.3,4.8c9.5,0,13.7-8.1,24.1-8.1
+                               c12.2,0,17.4,8,27.7,8.5c12.1,0.6,13.5-8.9,27-8.3c9.5,0.4,19.7,4.7,24.1,6.7c2.3,1.1,4.8,1.5,7.1,1.1c2-0.4,3.3-2.1,3.6-4.5
+                               c1-8.3-2.1-12.2-24.7-31.7C185.7,187.6,177.5,187.9,164.5,189.5L164.5,189.5z"/>
+          <path class="frame" fill="#FFFFFF" d="M180.4,190.6c-12.6-3-142.6,37.7-131.4,34.4c18.2-5.3,21.3-9,35.1-3.9s12.9,4.8,19.3,4.8
+                                  c9.5,0,13.7-8.1,24.1-8.1c12.2,0,17.4,8,27.7,8.5c12.1,0.6,13.5-8.9,27-8.3c9.5,0.4,19.5,5.9,23.9,8"/>
+          <g class="frame-bolt-outer">
+
+            <ellipse class="st1 one" transform="matrix(0.8218 -0.5697 0.5697 0.8218 -116.8774 65.2225)" cx="45.8" cy="219.5" rx="3.5" ry="4.4"/>
+
+            <ellipse class="st1 two" transform="matrix(0.8218 -0.5697 0.5697 0.8218 -107.3251 95.7656)" cx="99.5" cy="219.5" rx="3.5" ry="4.4"/>
+
+            <ellipse class="st1 three" transform="matrix(0.8218 -0.5697 0.5697 0.8218 -97.7786 126.3072)" cx="153.1" cy="219.5" rx="3.5" ry="4.4"/>
+
+            <ellipse class="st1 four" transform="matrix(0.8218 -0.5697 0.5697 0.8218 -88.2507 156.7857)" cx="206.5" cy="219.5" rx="3.5" ry="4.4"/>
+          </g>
+          <g class="frame-bolt-inner">
+            <polygon class="st4 one" points="44.1,218 43.9,220.1 45.5,221.6 47.6,221.2 47.8,219.1 46,217.3"/>
+            <polygon class="st4 two" points="97.7,218 97.5,220.1 99.1,221.6 101.2,221.2 101.4,219.1 99.6,217.3"/>
+            <polygon class="st4 three" points="151.3,218 151.1,220.1 152.7,221.6 154.8,221.2 155.1,219.1 153.2,217.3"/>
+            <polygon class="st4 four" points="204.8,218 204.6,220.1 206.2,221.6 208.3,221.2 208.5,219.1 206.7,217.3"/>
+          </g>
+          <g class="frame-spacing">
+            <path class="st0" d="M65.1,197.5l-13.7,16.2c0,0-1.7,3.7,2.6,2.5s35.7-11.2,35.7-11.2s5.9-5.1,0.9-5.1
+                                 C85.4,199.8,65.1,197.5,65.1,197.5L65.1,197.5z"/>
+            <path class="st0" d="M96.6,197.2c0,0,1.9,6.6,8.7,6c6.8-0.6,53.9-12.8,53.9-12.8L96.6,197.2L96.6,197.2z"/>
+            <path class="st0" d="M130.5,207.4c0,0-3.8,1.3-3.3,3c0.5,1.7,15.8,2,15.8,2l49.9-0.7c0,0,6.4-2.5-2-10.2
+                                 c-8.4-7.7-13.1-5.5-17.4-4.5C169.2,198,130.5,207.4,130.5,207.4L130.5,207.4z"/>
+          </g>
+          <path d="M64,191.5l-11.8-1.1c0,0,0.7,6.2,4.4,6.4C60.3,197,93,200,93,200l85-10.8l-25.7,1l-82.7,0.6L64,191.5z"/>
         </g>
-        <path class="liner-front-accent" d="M14.71,171.63c-1.01,.48-1.13,2.37-1.02,3.52,.13,1.38,3.24,3.85,6.01,5.31,2.72,1.43,10.77,4.79,14.48,5.13,8.59,.78,50.36,1.25,49.69-.34-.22-.51-.99-.65-3.12-1.3-5.19-1.58-8.39-2.34-11.65-2.92-5.77-1.03-17.96-3.41-25.02-4.43-3.3-.48-13.94-2.62-13.94-2.62-3.1-.21-14.26-2.91-15.43-2.35Z"/>
-        <path class="liner-back-accent" d="M101.58,64.33l-6.59-19.49s2.11-5.49,7.33-6.34c5.22-.86,9.38-.91,21.49,0,27.08,2.04,40.73,16.52,42.39,21.13,1.77,4.92,6.03,15.81,5.71,18.55-.31,2.75,7.15,34.01,12.32,45.38,5.17,11.37,16.63,28.46,23.19,41.53,6.56,13.07-23.32,22.6-35.11-1s-9.3-42.44-10.32-54.8c-1.01-12.36-13.93-27.6-20-27.99-6.07-.39-40.42-16.98-40.42-16.98"/>
-      </g>
-      <g>
-        <path class="cls-9 cuff" d="M100.71,68.05s-.61-6.57,3.56-10.91c3.71-3.86,21.71-7.84,34.91,.78,18.74,12.23,13.52,27.31,18.8,35.27,4.59,6.92,11.73,21.8,15.36,16.35,2.7-4.06,6.09-12.43-5.57-22.13-16.08-13.37-13.49-17.46-12.09-20.81s17.59,8.64,19.2,11.58c1.61,2.94,10.68,23.53,6.52,28.75-4.1,5.14-4.17,1.35-4.39,6.09-.63,13.66-.87,12.36-.47,22.09,.32,7.77,11.75,23.33,25.09,19.98,3.97-1,8.82,5.19,10.9,12.64,3.43,12.31-2.61,20.54-6.12,20.54s-125.25,2.24-125.25,2.24c0,0,19.06-3.82,31.1-11.51,13.5-8.63,25.16-21.15,32.75-33.47,.95-1.54-.19-3.26,.7-5.52,3.08-7.82,4.06-14.59,4.43-21.24,.32-5.73-.11-13.11-3.27-17.7-6.01-8.73-39.34-11.65-40.36-15.26-1.02-3.61-5.81-17.76-5.81-17.76Z"/>
-        <path class="cls-8 cuff-spacing" d="M156.81,176.81c3.21-3.71,8.17-13.02,4.5-17.61-3.68-4.59-30.12,10.46-37.41,16.88-.4,.35-1.34,1.22-1.88,2.14s-.67,1.88,.52,2.42c2.51,1.13,31.05-.13,34.26-3.84Z"/>
-        <path class="cls-6 cuff-spacing" d="M177.86,157.94c-6.69,.92-7.92,6.61-8.55,9.78-.43,2.17-1.49,8.47,4.01,9.14s29.18,1.32,29.5-6.3c.14-3.38-17.33-13.68-24.96-12.63Z"/>
-        <path d="M161.31,159.2l1.29,3.23-.77,4.86-1.68,4.6-3.75,5.44-4.82,1.6s-24.44,2.67-26.89,2.11-3.09-1-2.43-1.33c1.53-.78,27.63-.31,31.12-3.94,2.58-2.68,7.41-3.09,6.97-17.22l.97,.65Z"/>
-        <path class="cls-12" d="M182.11,158.35l11.06,4.19,3.51,2.36,3.71,2.43,2.37,2.72-.89,2.44-3.6,2.39-9.38,2.01-7.62,.25-7.99-.18s-4.29-2.07-2.19-1.96c3.7,.2,13.65,1.48,20.87,.31,4.59-.74,8.1-2.24,8.22-4.95,.1-2.22-7.52-6.59-14.93-9.33-3.26-1.21-6.79-2.69-9.1-2.6-.43,.02,5.98-.07,5.98-.07Z"/>
-        <path class="cls-10" d="M104.91,80.69s3.34-.74,3.92,0c.86,1.09-1.25,3.19,3.65,4.37,4.03,.97,34.06,2.02,40.59,11.25,7.08,10,1.14,22.97-3.72,41.85-2.47,9.6,5.37,11.55,5.37,11.55"/>
-        <path class="cls-2" d="M145.72,140c-.99,4.25,5.62,10.83,12.08,9.75s8.37-1.93,10.84-3.43c2.94-1.79,7.99-5.89,7.91-11.2"/>
-        <path d="M155.3,150.24c6.06,1.41,12.11-1.18,14.58-2.68,2.94-1.79,8.35-4.14,8.27-9.45s0-14.13,.37-18.43c.16-1.82-.17-6.28,.44-8.1,.33-1,2.19-3.1,2.19-3.1l-3.93,2.33-.46,12.47-.28,12.69s-.3,2.74-.72,3.49c-3.79,6.81-10.73,8.61-10.73,8.61l-9.72,2.17Z"/>
-        <g class="top-buckle-strap">
-          <path class="cls-8 top-buckle-outer" d="M105.6,63.81s3.3,15.48,5.36,17.75c2.06,2.27,30.55-1.25,32.32-1.73s8.89-20.8,5.81-23.17-43.49,7.15-43.49,7.15Z"/>
-          <path class="cls-12 top-buckle-inner" d="M117.61,66.33s1.92,8.98,3.11,10.3c1.19,1.32,17.69-.73,18.72-1s5.14-12.08,3.36-13.45c-1.79-1.37-25.18,4.15-25.18,4.15Z"/>
-          <path class="cls-8 top-strap" d="M76.87,78.73l3.13,7.62c.51,1.23,1.86,2.03,3.05,1.81l21.68-4.05c.79-.15,1.35-.73,1.47-1.51l.57-3.87c.11-.74,.61-1.3,1.34-1.49l20.71-5.3c.52-.13,.93-.46,1.16-.92l.15-.29c.41-.81,.18-1.9-.57-2.7h0c-.65-.7-1.59-1.06-2.42-.93l-20.1,3.27c-.66,.11-1.39-.09-2-.55l-3.14-2.34c-.76-.57-1.7-.73-2.45-.42l-21.66,9.02c-.98,.41-1.36,1.52-.9,2.64Z"/>
+        <g>
+          <path class="st0 liner" d="M36,158.1c0,0-5.6,5.8-4.3,10.3c1.3,4.5-3.9,7.8,4,14.4c7.9,6.7,17.5,7.9,17.5,7.9l152.3-3.2
+                                     c0,0,16.1-9.2-0.2-33.5c-12.5-18.7-20.7-45.9-20.7-45.9s-8.7-47.4-11.9-52.1c-5.4-8-9.5-10.7-18.5-14.6c-7-3-17.3-8.2-30.6-8.2
+                                     c-25.4,0-19.6,10.8-23.2,11.4C96,45.2,88.9,55.4,88.9,55.4l1.8,4.6l7.2,29.9c0,0,6.8,26.2,3.2,31.7
+                                     c-15.4,23.5-64.9,36.3-64.9,36.3L36,158.1z"/>
+          <g class="liner-flap">
+            <path class="st7 toe-flap" d="M49.4,162.2c0,0,7.7-1.1,21.5-8c2.9-1.5,0.6-7.7-3.5-6.6c0,0-15.5,6.1-19.6,7.5c-3.8,1.3-11.8,3.5-11.8,3.5
+                                           l2.5,1.8L49.4,162.2z"/>
+            <path class="st5" d="M67.8,147.3c0,0,2-0.6,3.4,1.4c1.4,2,1.3,4.4,0.3,5c-0.6,0.4-8.6,4.7-15.4,6.7c-6.8,2-6.2,1.7-6.2,1.7
+                                 l4.3,1.1l10-3.2c0,0,7.7-2.5,9.8-5c2.3-2.8,1.1-4.8,1.1-4.8l5.7-4c0,0-4-3.4-7.1-2C71.7,145.1,67.8,147.3,67.8,147.3z"/>
+            <path class="st5" d="M84.1,138.5l6.3-4.3c0,0,0.4,0,2.2,0.3c1.8,0.3,3.6,0.5,3.6,0.5l-7.5,5.5L84.1,138.5z"/>
+            <polygon class="st5" points="97.6,127.4 101.4,122.8 107.1,123.2 103.6,128.1"/>
+            <path class="st5" d="M98.6,87.9c0,0,1.4,7.1,1.9,9.2c0.6,2.5,1.7,9.7,1.7,9.7s1.6-0.6,3.2-0.8c0.8-0.1,3.6-0.4,5.6-0.1
+                                 c2,0.3,2.8,0.4,2.8,0.4s0.7-1.7-1.3-11.5c-1.2-6-2.2-9.3-2.2-9.3L98.6,87.9z"/>
+            <path class="st5" d="M89.9,55.5c0,0,1.2,2.7,1.7,4.5c0.8,2.8,3.3,13.5,3.3,13.5l11.5-5.3l-6.1-22.9c0,0-2.4,1.1-5.8,4.2
+                                 C92.6,51.4,89.9,55.5,89.9,55.5z"/>
+          </g>
+          <path class="st5 liner-toe-support" d="M33.8,180.1c-1.1-1.2-1.7-4.5-1.7-4.5s1.3,2.8,5.3,5c3.1,1.7,6.5,2.7,11.6,4.8c0.6,0.3,1.2,0.3,3.3,0.4
+                                                 c3.5,0.1,9.8,0.3,13.4,0.4c11.2,0.2,22.7,0,22.8,0c0.3,0,7-0.6,7-0.6s1.1,0.5,1.6,1.6c0.6,1.3,0.5,1.4,0.5,1.4s-1,0.4-1.8,0.5
+                                                 c-1.1,0.2-3.2,0-3.2,0l-39.4,0.8c0,0-6.5-1.2-8.8-2.3C41.3,186.1,35.8,182.2,33.8,180.1z"/>
+          <g class="liner-accent">
+            <path class="front" d="M32.8,171.7c-0.8,0.8-1,2.3-0.9,3.5c0.1,1.4,2.9,3.9,5.5,5.3c2.5,1.4,9.8,4.8,13.2,5.1c7.8,0.8,45.9,1.2,45.2-0.3
+                                   c-0.2-0.5-0.9-0.6-2.8-1.3c-4.7-1.6-7.6-2.3-10.6-2.9c-5.3-1-16.4-3.4-22.8-4.4c-3-0.5-12.9-2.6-12.9-2.6
+                                   c-2.6-0.2-11.6-2.4-13.7-2.8c-0.2,0-0.1,0.3-0.2,0.4L32.8,171.7z"/>
+            <path class="middle" d="M60.5,164.7c0.8,0.2,18.4-3.2,17.5-10c-1-6.9,2.8-5,2.8-5s7.6,5.3,9.8,7.6c5.2,5.3,13.2,16.1,13.2,16.1
+                                    s-12.5-20.1-20.3-26c-3.3-2.5,1.9-0.8,1.9-0.8l10.9-5.5c0.1,0.1,11.1,3.9,16.3,8.7c6,5.4,13.3,15.9,13.3,15.9
+                                    s-6.8-19.6-26.3-27.6c0,0,0.3-0.3,2.6-2.4l9.7-9.1c0,0,7.9,2,13.4,4.6c5.1,2.4,16.3,9.7,16.3,9.7s-14.8-14.6-28.1-16.9
+                                    c-1.7-0.3,4.2-15.6,4.3-18.6c0,0,6.6,0.6,11.5,2.6c4.4,1.8,18.1,10.3,18.1,10.3s-15.6-13.4-29.4-16.7c0,0,0.2-1.2,0.1-2.5
+                                    c-0.1-1.7-0.2-3.1-0.2-3.1c-1.4-0.6,7.8,3.5,10.7,5.2c3.4,1.9,13.3,8.8,13.3,8.8s-10.5-9.9-24.1-15.8c0,0-1.3-5.1-1.9-8.4
+                                    c-0.3-1.4,3.6,1.3,11.1,3.5c0,0,22.5,6.8,24.5,8.5c2,1.7,5,9.6,5,9.6l0.1,7.9l-2.2,14.5l-2.2,13.4l-2.2,8.2l-14.2,16.7
+                                    l-20.7,14.7l-7.4,3.6l-3.1-6.2l-6.2-5.5l-5.7-2.3L60.5,164.7L60.5,164.7z"/>
+            <path class="back" d="M111.9,64.3l-6-19.5c0,0,1.9-5.5,6.7-6.3c4.8-0.9,8.5-0.9,19.6,0c24.7,2,37.1,16.5,38.6,21.1c1.6,4.9,5.5,15.8,5.2,18.6
+                                  c-0.3,2.8,6.5,34,11.2,45.4c4.7,11.4,15.1,28.5,21.1,41.5c6,13.1-21.2,22.6-32-1s-8.5-42.4-9.4-54.8
+                                  c-0.9-12.4-12.7-27.6-18.2-28S111.8,64.3,111.9,64.3"/>
+          </g>
+          <path class="st6" d="M107.7,123c0,0,7.9-10.2,6.5-20.9s-13.7-57.4-13.7-57.2"/>
+          <path class="st6" d="M97.9,190.4c0,0,1.2-4.6-4.5-6.2C79.1,180,48.4,174,35.1,172c-2.5-0.4-4.1-5-4.1-5"/>
+          <path class="st6" d="M35.8,159.2c0.7,0.1,2,1.2,2.8,1.3c14.2,2.3,41.6,7.6,55.3,11.6c5.7,1.7,11.6,7.5,13.3,11.5
+                               c0.7,1.6,0.8,6.5,0.8,6.5"/>
+          <path class="st6" d="M35.7,161.6c0.2,0.2,0.5,0.4,0.7,0.6c0.3,0.2,0.6,0.3,0.8,0.2"/>
+          <path class="st6" d="M38.9,162.9l1.3,0.4"/>
+          <path class="st6" d="M41.6,163.8c0.4,0.1,0.9,0.1,1.3,0.3"/>
+          <path class="st6" d="M44.5,164.5c0.5,0.1,0.9,0.1,1.4,0.3"/>
+          <path class="st6" d="M47.4,165.1c0.4,0.1,0.9,0.2,1.3,0.3"/>
+          <path class="st6" d="M50.5,165.7l1.3,0.2"/>
+          <path class="st6" d="M52.9,166.2c0.6,0.1,1.2,0.2,1.8,0.2"/>
+          <path class="st6" d="M56.3,166.7c0.4-0.1,0.9,0,1.3,0.1"/>
+          <path class="st6" d="M59,167.2c0.5,0,1,0.1,1.6,0.2"/>
+          <path class="st6" d="M62.2,167.8l1.7,0.2"/>
+          <path class="st6" d="M65,168.3l1.3,0.2"/>
+          <path class="st6" d="M67.7,168.8c0.5,0,1,0.1,1.6,0.3"/>
+          <path class="st6" d="M70.6,169.1l1.5,0.1c0,0,0,0,0,0"/>
+          <path class="st6" d="M73.7,169.8c0.5-0.1,1-0.1,1.6,0"/>
+          <path class="st6" d="M76.7,170.4c0.4-0.1,0.9-0.1,1.3,0.1"/>
+          <path class="st6" d="M79.4,170.9c0.5-0.1,1-0.1,1.5,0.1"/>
+          <path class="st6" d="M82.2,171.5c0.4,0,0.8,0.1,1.2,0.1"/>
+          <path class="st6" d="M84.6,171.9l1.7,0.3c0,0,0,0,0,0"/>
+          <path class="st6" d="M87.8,172.7l1.6,0.2"/>
+          <path class="st6" d="M90.7,173.4c0.5,0.1,1.1,0.2,1.6,0.5"/>
+          <path class="st6" d="M93.7,174.5c0.5,0.2,0.9,0.5,1.4,0.8"/>
+          <path class="st6" d="M96.2,176.1c0.5,0,0.9,0.6,1.5,0.8"/>
+          <path class="st6" d="M98.9,177.8l1.3,1.1"/>
+          <path class="st6" d="M101.5,180.1c0.4,0.4,0.8,0.8,1.2,1.2"/>
+          <path class="st6" d="M103.7,182.6c0.4,0.3,0.8,0.7,1.1,1.2"/>
+          <path class="st6" d="M105.8,185.3c0.3,0.4,0.6,0.9,0.7,1.4"/>
+          <path class="st6" d="M106.6,187.7c0.1,0.4,0.1,0.8,0,1.2"/>
+          <path class="st6" d="M53.2,163.1c0,0,15.6-4.2,19.4-7.5s2.1-5.4,2.1-5.4s7.5-5.2,10.4-6.9c2.7-1.6,10.1-7.1,11.8-8.3
+                               c4.5-3.1,8.3-7.9,10.7-12c1.8-3-6.7-2.4-6.7-2.4"/>
+          <path class="st6" d="M90.4,59.6c0.2-0.7,0.5-1.3,0.9-1.9"/>
+          <path class="st6" d="M91.8,57.1c0.1-0.5,0.4-1,0.8-1.3"/>
+          <path class="st6" d="M93.6,55l1-1"/>
+          <path class="st6" d="M95.6,53.3c0.3-0.4,0.7-0.8,1.2-1"/>
+          <path class="st6" d="M97.8,51.8l1.2-1"/>
+          <path class="st6" d="M112.5,101.1l-0.4-2.2"/>
+          <path class="st6" d="M112.7,102.3c0.1,0.6,0.1,1.2,0.1,1.7"/>
+          <path class="st6" d="M112.8,105.2c-0.1,0.7-0.2,1.3-0.3,1.9"/>
+          <path class="st6" d="M112.4,108.3c-0.1,0.7-0.3,1.3-0.5,2"/>
+          <path class="st6" d="M111.8,111.3c-0.1,0.6-0.3,1.2-0.6,1.8"/>
+          <path class="st6" d="M110.9,114c-0.2,0.5-0.4,1-0.6,1.5"/>
+          <path class="st6" d="M109.7,116.7L109,118"/>
+          <path class="st6" d="M108.6,118.8l-0.8,1.3"/>
+          <path class="st6" d="M111.8,97.3l-0.3-2"/>
+          <path class="st6" d="M111.4,93.8c-0.1-0.7-0.2-1.3-0.4-2"/>
+          <path class="st6" d="M110.1,88.2c0.2,0.6,0.3,1.2,0.4,1.8"/>
+          <path class="st6" d="M109.6,85.1c0,0.5,0.1,0.9,0.2,1.4l0-0.1"/>
+          <path class="st6" d="M108.7,82.3c0.1,0.5,0.3,1,0.4,1.5c0-0.1,0-0.1,0-0.2"/>
+          <path class="st6" d="M108,79.2c0.1,0.5,0.2,1,0.4,1.5"/>
+          <path class="st6" d="M107.2,76.4c0.1,0.6,0.3,1.1,0.4,1.7c0-0.1,0-0.1,0-0.2"/>
+          <path class="st6" d="M106.5,73.5l0.4,1.7"/>
+          <path class="st6" d="M105.8,70.5c0.1,0.6,0.2,1.1,0.4,1.6"/>
+          <path class="st6" d="M105.1,67.6c0.1,0.5,0.2,1.1,0.3,1.6"/>
+          <path class="st6" d="M104.5,64.7l0.4,1.6"/>
+          <path class="st6" d="M103.7,62.3l0.4,1.5l-0.1-0.2"/>
+          <path class="st6" d="M103,59.2l0.3,1.5"/>
+          <path class="st6" d="M102.2,55.8c0.1,0.7,0.2,1.3,0.3,2"/>
+          <path class="st6" d="M101.6,52.8l0.3,1.3"/>
+          <path class="st6" d="M100.6,50c0.1,0.6,0.3,1.1,0.5,1.7"/>
+          <g>
+            <path class="st1 front-strap-1" d="M104.4,152c-14.8-12.6-21.8-13.5-21.8-13.5s-2.9-0.5-5.8,1c-5,2.5-4.4,4.1-4.4,4.1s7.5-1.3,23.6,12.8
+                                               c12.7,11,21.2,24.3,21.2,24.3l9.6-6C126.8,174.7,124.6,169.2,104.4,152z"/>
+            <path class="st1 front-strap-2" d="M92.3,130c0,0,2.9-2.4,6.7-2.1c7.1,0.6,15.5,1.9,27.1,7.4c14.2,6.8,24,15.9,24,15.9s-5.5,5.9-6.1,6.8
+                                               c-0.4,0.6-6.4-9.1-23.3-16.1c-17.8-7.4-26.4-7.5-29.3-7.8C88.5,133.6,92.3,130.1,92.3,130L92.3,130z"/>
+            <g>
+              <g class="power-strap">
+                <path class="st4 top-edge" d="M101.2,108c0,0,6.2-5.1,24.2,2.4c16.4,6.8,24,9.3,29,15.1c0.5,0.6,0.8,1.6,0.8,1.6S133.9,116.3,113,110
+                                              C106.2,107.9,101.2,108,101.2,108z"/>
+                <path class="st4 strap" d="M101.3,107.9c0,0-1.6,0.7-2,3.8c-0.4,3.4-0.1,7.8-0.1,7.8s4.7,0.3,6.7,0.7c8.9,1.9,18.7,5.1,25.7,7.9
+                                           c5.8,2.3,22.9,11.6,22.9,11.6s1.9-8,1.5-10.4c-0.3-1.7-0.8-2.4-0.8-2.4s-12.8-6.3-22.2-10c-5.8-2.3-14.6-6.6-24.2-8.2
+                                           C107,108.3,101.3,107.9,101.3,107.9z"/>
+                <path class="st4 bottom-edge" d="M99.2,119.6c0,0,0.1,2.4,2.4,2.7s3.3,0.5,5.4,0.5c0.3,0,9.3,1.2,26.3,8.7c10.2,4.5,19.7,9.9,19.7,9.9
+                                                 s1-0.1,1.5-1.7c0.5-1.7-21.8-11.5-23.9-12.1c-2.1-0.6-14.9-6.5-24.7-7.5C99.3,119.5,99.2,119.6,99.2,119.6z"/>
+              </g>
+              <g>
+                <g>
+                  <path class="st6" d="M155.9,129.3c-0.3-1.7-0.8-2.4-0.8-2.4s0,0,0,0c-0.1-0.3-0.4-1-0.7-1.4c-5-5.8-12.6-8.3-29-15.1
+                                       c-18-7.5-24.2-2.4-24.2-2.4s0,0,0,0c-0.6,0.3-1,0.7-1,0.7s-0.6,0.8-0.9,3.1c-0.5,3.1-0.2,7.1-0.1,7.7c0,0.1,0,0.2,0,0.2
+                                       s0.1,2.4,2.4,2.7c2.4,0.4,3.3,0.5,5.4,0.5c0.3,0,9.3,1.2,26.3,8.7c10.2,4.5,19.7,9.9,19.7,9.9s1-0.1,1.5-1.7
+                                       c0-0.1,0-0.1,0-0.2C154.6,138.9,156.3,131.6,155.9,129.3z"/>
+                </g>
+              </g>
+            </g>
+          </g>
         </g>
-        <ellipse class="cls-2 cuff-screw" cx="160.44" cy="138.16" rx="6.53" ry="7.66" transform="translate(-50.08 115.57) rotate(-34.61)"/>
-        <path d="M155.58,141.83c1.4,1.28,2.18,2.68,5.15,2.68,.92,0,3.48-.16,4.44-1.55,2.15-3.12,2.25-11.47-7.08-11.47-1.42,0,2.69-.93,4.72,.25,1.44,.83,2.87,2.2,3.54,3.59,1.18,2.47,.93,5.58,.73,6.26-.78,2.57-2.74,3.15-2.74,3.15l-5.76,.46s-3.96-4.25-3-3.37Z"/>
-        <path class="cls-8" d="M78.68,77.84c1.2,3.04,2.4,6.09,3.61,9.13"/>
-        <path class="cls-8" d="M93.61,71.31c1.2,4.14,2.19,8.3,2.98,12.46"/>
-        <path class="cls-8" d="M91.75,72.11c1.16,3.82,2.15,8.29,3.16,12.12"/>
-        <path class="cls-8" d="M89.61,72.74c1.08,3.73,2.31,8.23,3.63,11.94"/>
-        <path class="cls-8" d="M87.64,73.52c1.24,3.69,2.69,8.11,3.93,11.8"/>
-        <path class="cls-8" d="M85.81,74.73c1.07,3.49,2.39,7.46,3.76,10.91"/>
-        <path class="cls-8" d="M83.83,75.57c1.02,3.39,2.5,7.27,3.85,10.61"/>
-        <path class="cls-8" d="M82.08,76.44c1.07,3.4,2.25,6.38,3.69,9.72"/>
-        <path class="cls-8" d="M80.32,76.99c1.13,3.12,2.34,6.19,3.82,9.7"/>
-        <path d="M164.27,84.66l7.79,9.48s2.4,1.99,1.94,6.3-1.41,9.05-3.9,8.06-3.55-2.52-4.71-4.33,3.94,5.64,3.94,5.64l3.54,.71,1.69-2.74,1.09-3.84,.29-3.18-.46-3.62-4-6.47-7.2-6.03Z"/>
+        <g>
+          <path class="st0 cuff" d="M111.1,68.1c0,0-0.6-6.6,3.2-10.9c3.4-3.9,19.8-7.8,31.8,0.8c17.1,12.2,12.3,27.3,17.1,35.3
+                                    c4.2,6.9,10.7,21.8,14,16.3c2.5-4.1,5.5-12.4-5.1-22.1c-14.6-13.4-12.3-17.5-11-20.8c1.3-3.3,16,8.6,17.5,11.6
+                                    s9.7,23.5,5.9,28.8c-3.7,5.1-3.8,1.3-4,6.1c-0.6,13.7-0.8,12.4-0.4,22.1c0.3,7.8,10.7,23.3,22.8,20c3.6-1,8,5.2,9.9,12.6
+                                    c3.1,12.3-2.4,20.5-5.6,20.5c-3.2,0-114,2.2-114,2.2s17.4-3.8,28.3-11.5c12.3-8.6,22.9-21.1,29.8-33.5c0.9-1.5-0.2-3.3,0.6-5.5
+                                    c2.8-7.8,3.7-14.6,4-21.2c0.3-5.7-0.1-13.1-3-17.7c-5.5-8.7-35.8-11.7-36.7-15.3C115.4,82.2,111.1,68,111.1,68.1L111.1,68.1z"/>
+          <path class="st5 cuff-inner-edge" d="M116.5,82.7c0,0-0.6,2.4,2,3.6c2.5,1.2,5.2,1.7,9.9,2.9c8.7,2.2,18.9,5.3,22.3,8.2c2.9,2.5,4.4,5.1,5,7.7
+                               c0.9,3.6,1.4,6.3,1.3,11.7c-0.1,5-2.9,16.8-4.5,24.4c-0.6,2.9,4,6.4,4,6.4s-1.2-1.8-1.4-2.8c-0.2-0.9-0.8-1.6-0.4-5.1
+                               c0.4-3.5,4-15.8,4.7-19.4c0.8-3.8,3.5-12.8,0.7-20.6c-2.2-6-6.4-8.1-13.3-10.1c-8-2.3-10.1-2.3-16.5-3.3
+                               c-6.1-0.9-10.4-0.9-11.6-2.6c-1.2-1.7,0.1-2.2-0.6-3c-0.5-0.5-1.5-0.2-1.5-0.2L116.5,82.7z"/>
+          <path class="st1 cuff-spacing" d="M162.1,176.8c2.9-3.7,7.4-13,4.1-17.6c-3.4-4.6-27.4,10.5-34.1,16.9c-0.4,0.4-1.2,1.2-1.7,2.1
+                                            s-0.6,1.9,0.5,2.4C133.2,181.8,159.2,180.5,162.1,176.8L162.1,176.8z"/>
+          <path class="st1 cuff-spacing" d="M181.3,157.9c-6.1,0.9-7.2,6.6-7.8,9.8c-0.4,2.2-1.4,8.5,3.7,9.1s26.6,1.3,26.9-6.3
+                                            C204.2,167.2,188.3,156.9,181.3,157.9L181.3,157.9z"/>
+          <path d="M166.2,159.2l1.2,3.2l-0.7,4.9l-1.5,4.6l-3.4,5.4l-4.4,1.6c0,0-22.3,2.7-24.5,2.1c-2.2-0.6-2.8-1-2.2-1.3
+                   c1.4-0.8,25.2-0.3,28.3-3.9c2.3-2.7,6.7-3.1,6.3-17.2L166.2,159.2L166.2,159.2z"/>
+          <path d="M185.2,158.4l10.1,4.2l3.2,2.4l3.4,2.4l2.2,2.7l-0.8,2.4l-3.3,2.4l-8.5,2l-6.9,0.2l-7.3-0.2c0,0-3.9-2.1-2-2
+                   c3.4,0.2,12.4,1.5,19,0.3c4.2-0.7,7.4-2.2,7.5-4.9c0.1-2.2-6.8-6.6-13.6-9.3c-3-1.2-6.2-2.7-8.3-2.6
+                   C179.4,158.4,185.2,158.4,185.2,158.4L185.2,158.4z"/>
+          <path class="st7" d="M114.9,80.7c0,0,3-0.7,3.6,0c0.8,1.1-1.1,3.2,3.3,4.4c3.7,1,31,2,37,11.2c6.4,10,1,23-3.4,41.8
+                               c-2.2,9.6,4.9,11.6,4.9,11.6"/>
+          <path class="st6" d="M152,140c-0.9,4.2,5.1,10.8,11,9.8c5.9-1.1,7.6-1.9,9.9-3.4c2.7-1.8,7.3-5.9,7.2-11.2"/>
+          <path d="M160.8,150.2c5.5,1.4,11-1.2,13.3-2.7c2.7-1.8,7.6-4.1,7.5-9.4c-0.1-5.3,0-14.1,0.3-18.4c0.1-1.8-0.2-6.3,0.4-8.1
+                   c0.3-1,2-3.1,2-3.1l-3.6,2.3l-0.4,12.5L180,136c0,0-0.3,2.7-0.7,3.5c-3.5,6.8-9.8,8.6-9.8,8.6L160.8,150.2L160.8,150.2z"/>
+          <g class="top-buckle">
+            <path class="st1 outer" d="M115.5,63.8c0,0,3,15.5,4.9,17.7c1.9,2.3,27.8-1.2,29.4-1.7c1.6-0.5,8.1-20.8,5.3-23.2
+                                       S115.5,63.8,115.5,63.8z"/>
+            <path class="inner" d="M126.4,66.3c0,0,1.7,9,2.8,10.3c1.1,1.3,16.1-0.7,17-1c0.9-0.3,4.7-12.1,3.1-13.5C147.8,60.8,126.5,66.3,126.4,66.3
+                                   L126.4,66.3z"/>
+            <path class="st1 strap" d="M89.4,78.7l2.8,7.6c0.5,1.2,1.7,2,2.8,1.8l19.7-4.1c0.7-0.2,1.2-0.7,1.3-1.5l0.5-3.9
+                                       c0.1-0.7,0.6-1.3,1.2-1.5l18.9-5.3c0.5-0.1,0.8-0.5,1.1-0.9l0.1-0.3c0.4-0.8,0.2-1.9-0.5-2.7l0,0c-0.6-0.7-1.4-1.1-2.2-0.9
+                                       l-18.3,3.3c-0.6,0.1-1.3-0.1-1.8-0.6l-2.9-2.3c-0.7-0.6-1.5-0.7-2.2-0.4l-19.7,9C89.3,76.5,89,77.6,89.4,78.7L89.4,78.7z"/>
+          </g>
+
+          <ellipse  class="st6 cuff-screw" transform="matrix(0.9254 -0.379 0.379 0.9254 -40.0177 73.0121)" cx="165.4" cy="138.2" rx="6.1" ry="7.5"/>
+          <path d="M161,141.8c1.3,1.3,2,2.7,4.7,2.7c0.8,0,3.2-0.2,4-1.6c2-3.1,2-11.5-6.4-11.5c-1.3,0,2.4-0.9,4.3,0.2
+                   c1.3,0.8,2.6,2.2,3.2,3.6c1.1,2.5,0.8,5.6,0.7,6.3c-0.7,2.6-2.5,3.1-2.5,3.1l-5.2,0.5C163.8,145.2,160.1,140.9,161,141.8
+                   L161,141.8z"/>
+          <path class="st1" d="M91,77.8c1.1,3,2.2,6.1,3.3,9.1"/>
+          <path class="st1" d="M104.6,71.3c1.1,4.1,2,8.3,2.7,12.5"/>
+          <path class="st1" d="M102.9,72.1c1.1,3.8,2,8.3,2.9,12.1"/>
+          <path class="st1" d="M101,72.7c1,3.7,2.1,8.2,3.3,11.9"/>
+          <path class="st1" d="M99.2,73.5c1.1,3.7,2.4,8.1,3.6,11.8"/>
+          <path class="st1" d="M97.5,74.7c1,3.5,2.2,7.5,3.4,10.9"/>
+          <path class="st1" d="M95.7,75.6c0.9,3.4,2.3,7.3,3.5,10.6"/>
+          <path class="st1" d="M94.1,76.4c1,3.4,2,6.4,3.4,9.7"/>
+          <path class="st1" d="M92.5,77c1,3.1,2.1,6.2,3.5,9.7"/>
+          <path d="M168.9,84.7l7.1,9.5c0,0,2.2,2,1.8,6.3s-1.3,9.1-3.6,8.1s-3.2-2.5-4.3-4.3s3.6,5.6,3.6,5.6l3.2,0.7l1.5-2.7l1-3.8
+                   l0.3-3.2l-0.4-3.6l-3.6-6.5L168.9,84.7L168.9,84.7z"/>
+        </g>
       </g>
     </g>
   </g>

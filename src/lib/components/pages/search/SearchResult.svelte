@@ -18,7 +18,22 @@
 
 <!-- The styles for the search result -->
 <style>
+
+  .search-result {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+  }
+
+  .result-title {
+    font-size: 20px;
+  }
   
 </style>
 
 <!-- The HTML for the search result -->
+<div class="search-result">
+  <a class="result-title" href={convertPagefindUrl(result.url)}>{result.meta.title}</a>
+  <div class="result-excerpt">{@html result.excerpt}</div>
+</div>

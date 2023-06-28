@@ -37,7 +37,7 @@
     --hamburger-gap: 4px;
     --animation-timing: 200ms ease-in-out;
     --hamburger-height: calc(var(--bar-height) * 3 + var(--hamburger-gap) * 2);
-    --hamburger-width: calc(var(--bar-width) + 2 * var(--bar-height));
+    --hamburger-width: var(--bar-width);
     
     /* The width of the "X" when the hamburger menu is open */
     /* 1.41421356237 is root 2 */
@@ -58,7 +58,7 @@
   }
 
   .nav-bar {
-    padding: 5px 10px;
+    padding: 5px 15px;
     gap: 10px;
   }
 
@@ -66,7 +66,7 @@
     font-family: Oleo Script;
     font-size: 2rem;
     text-decoration: none;
-    gap: 5px;
+    gap: 10px;
   }
 
   .search-bar {
@@ -83,12 +83,8 @@
     height: var(--icon-size);
   }
 
-  .theme-toggler-wrapper {
-    padding: 5px;
-  }
-
   .theme-toggler {
-    --theme-toggler-size: calc(var(--hamburger-width) - 10px);
+    --theme-toggler-size: calc(var(--hamburger-width) - 5px);
 
     width: var(--theme-toggler-size);
     height: var(--theme-toggler-size);
@@ -105,7 +101,6 @@
     flex-direction: column;
     gap: var(--hamburger-gap);
     cursor: pointer;
-    padding: 5px;
     width: var(--hamburger-width);
     justify-self: flex-start;
   }

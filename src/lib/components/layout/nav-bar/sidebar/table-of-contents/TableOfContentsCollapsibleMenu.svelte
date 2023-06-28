@@ -2,13 +2,10 @@
 
 <script lang="ts">
 
+  import { makeUrlFriendlyString } from "$lib/utils";
+
   // The table of contents variable to be passed to the collapsible menu
   export let tableOfContents: Map<string, any>;
-
-  // Function to change the title into a url friendly string
-  function makeUrlFriendlyString(str: string) {
-    return str.replace(" ", "-").toLowerCase();
-  }
   
   // Function to check if a title has any children
   function titleHasChildren(obj: any) {

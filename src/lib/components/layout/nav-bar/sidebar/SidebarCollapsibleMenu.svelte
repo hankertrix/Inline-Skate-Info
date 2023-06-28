@@ -1,6 +1,8 @@
 <!-- The collapsible menu that is to be created as part of the sidebar -->
 <script lang="ts">
 
+  import { makeUrlFriendlyString } from "$lib/utils";
+
   // The pages type for the pages variable
   type Pages = {
     [title: string]: string | Pages
@@ -14,11 +16,6 @@
 
   // The parent titles that are url friendly to create the ID
   export let parentUrlTitles: string = "";
-
-  // Function to change the title into a url friendly string
-  function makeUrlFriendlyString(str: string) {
-    return str.replace(" ", "-").toLowerCase();
-  }
   
   // Function to check if a title has any children
   function titleHasChildren(obj: any) {
