@@ -10,7 +10,7 @@
     height: var(--footer-height);
     display: grid;
     align-items: center;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     font-family: Helvetica;
     padding: 5px 20px;
   }
@@ -95,7 +95,7 @@
 
 <!-- The main HTML for the footer -->
 <footer class="footer">
-  <a href="https://github.com/hankertrix/Inline-Skate-Info/blob/main/LICENSE.txt" class="copyleft" title="Copyright notice and license" rel="noopener noreferrer">
+  <a href="https://codeberg.org/Hanker/Research-Engine/src/branch/main/LICENSE.txt" class="copyleft" title="Copyright notice and license" rel="noopener noreferrer">
     <div class="text">
       Copyleft&nbsp;<span class="symbol">©</span>&#32;2023 Hankertrix.
       <div class="rights-notice">All Wrongs Reserved.</div>
