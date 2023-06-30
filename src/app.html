@@ -55,7 +55,6 @@
       --footer-height: 3.5rem;
       --nav-bar-height: 74px;
       --page-left-right-margin: 65px;
-      --animation-timing: 200ms ease-in-out;
     }
     
     /* The colours for the light theme */
@@ -100,7 +99,6 @@
       padding: 0;
       margin: 0;
       font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-      scroll-behavior: smooth;
       scroll-padding-top: calc(var(--nav-bar-height) + 10px);
 
       /* Colours */
@@ -155,6 +153,21 @@
       box-sizing: border-box;
     }
 
+
+    /* Animate when the user has no preference for reduced motion */
+    @media (prefers-reduced-motion: no-preference) {
+  
+      :root {
+        --animation-timing: 200ms ease-in-out;
+      }
+  
+      html {
+        scroll-behaviour: smooth;
+      }
+      
+    }
+
+    
     @media only screen and (max-width: 700px) {
 
       :root {

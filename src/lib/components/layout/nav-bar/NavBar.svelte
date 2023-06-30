@@ -164,6 +164,7 @@
     translate: 0;
   }
 
+  
   /* Styles for mobile */
   @media only screen and (max-width: 700px) {
 
@@ -173,15 +174,6 @@
 
     .website-name {
       display: none;
-    }
-    
-  }
-
-  /* Don't animate when the user prefers reduced motion */
-  @media (prefers-reduced-motion) {
-
-    .top-menu {
-      --animation-timing: 0;
     }
     
   }
