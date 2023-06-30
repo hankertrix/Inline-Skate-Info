@@ -8,6 +8,7 @@
   // Import all the required components
   import Footer from "$lib/components/layout/Footer.svelte";
   import NavBar from "$lib/components/layout/nav-bar/NavBar.svelte";
+  import ScrollUpButton from "$lib/components/layout/ScrollUpButton.svelte";
 
   // Other imports
   import { onMount } from "svelte";
@@ -52,12 +53,18 @@
     padding-top: var(--nav-bar-height);
     padding-bottom: var(--footer-height);
   }
+
+  #top-of-the-page {
+    visibility: hidden;
+  }
   
 </style>
 
 <!-- The HTML for the layout -->
 <div class="page-container">
   <div class="page-wrapper">
+    <div id="top-of-the-page"></div>
+    <ScrollUpButton />
     <NavBar />
     <slot />
   </div>

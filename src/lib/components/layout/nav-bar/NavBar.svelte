@@ -35,7 +35,6 @@
     --bar-width: 35px;
     --bar-height: 5px;
     --hamburger-gap: 4px;
-    --animation-timing: 200ms ease-in-out;
     --hamburger-height: calc(var(--bar-height) * 3 + var(--hamburger-gap) * 2);
     --hamburger-width: var(--bar-width);
     

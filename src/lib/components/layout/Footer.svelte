@@ -62,11 +62,10 @@
     align-items: center;
     gap: 0.5em;
     text-decoration: none;
-    color: #229ED9;
     text-align: center;
   }
 
-  .telegram-bot-wrapper:is(:link, :hover, :visited, :active) {
+  .telegram-bot-wrapper:is(:link, :hover, :active, :visited) {
     color: #229ED9;
   }
 
