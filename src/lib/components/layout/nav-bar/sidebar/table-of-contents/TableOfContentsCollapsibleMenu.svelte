@@ -31,24 +31,48 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-items: center;
+    justify-content: center;
     cursor: pointer;
+    width: 100%;
+  }
+
+  .table-of-contents {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .table-of-contents-title {
+    color: var(--icon-colour);
+  }
+  
+  .table-of-contents:hover .table-of-contents-title {
+    color: var(--icon-hover-colour);
   }
 
   .menu-toggler {
+    flex: 1;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    align-items: center;
+  }
+
+  .icon {
     --triangle-size: 6px;
     
     width: 0;
     height: 0;
-    cursor: pointer;
     border-top: var(--triangle-size) solid transparent;
     border-bottom: var(--triangle-size) solid transparent;
     border-right: var(--triangle-size) solid var(--icon-colour);
-    margin-left: 0.45em;
+    margin-right: 0.5em;
     transition: rotate var(--animation-timing), translate var(--animation-timing);
   }
 
-  .menu-toggler:hover {
+  .table-of-contents:hover .icon {
     border-right-color: var(--icon-hover-colour);
   }
 
@@ -64,7 +88,7 @@
     max-height: 100%;
   }
 
-  input:checked + .menu > .menu-toggler {
+  input:checked + .menu .icon {
     rotate: -90deg;
     translate: 0 2px;
   }
@@ -88,8 +112,12 @@
     {#if title === "Table Of Contents"}
 
       <label class="menu" for={checkboxId} title="Show or hide the table of contents">
-        <div class="text">{title}</div>
-        <div class="menu-toggler"></div>
+        <div class="table-of-contents">
+          <div class="table-of-contents-title">{title}</div>
+          <div class="menu-toggler">
+            <div class="icon"></div>
+          </div>
+        </div>
       </label>
 
     <!-- If the title is a regular heading in the page -->
@@ -97,7 +125,9 @@
       
       <div class="menu">
         <a href={`#${urlFriendlyTitle}`} title={`Go to the section called '${title}'`}>{title}</a>
-        <label class="menu-toggler" for={checkboxId} title={`Show or hide the sections under '${title}'`}></label>
+        <label class="menu-toggler" for={checkboxId} title={`Show or hide the sections under '${title}'`}>
+          <div class="icon"></div>
+        </label>
       </div>
 
     {/if}

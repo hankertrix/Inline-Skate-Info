@@ -41,24 +41,33 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-items: center;
+    justify-content: center;
     cursor: pointer;
+    width: 100%;
   }
 
   .menu-toggler {
+    flex: 1;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    align-items: center;
+  }
+
+  .icon {
     --triangle-size: 6px;
-    
+
     width: 0;
     height: 0;
-    cursor: pointer;
     border-top: var(--triangle-size) solid transparent;
     border-bottom: var(--triangle-size) solid transparent;
     border-right: var(--triangle-size) solid var(--icon-colour);
-    margin-left: 0.45em;
+    margin-right: 0.5em;
     transition: rotate var(--animation-timing), translate var(--animation-timing);
   }
 
-  .menu-toggler:hover {
+  .menu-toggler:hover > .icon {
     border-right-color: var(--icon-hover-colour);
   }
 
@@ -74,7 +83,7 @@
     max-height: 100%;
   }
 
-  input:checked + .menu > .menu-toggler {
+  input:checked + .menu .icon {
     rotate: -90deg;
     translate: 0 2px;
   }
@@ -98,7 +107,9 @@
     <!-- The label to open and close the collapsible menu -->
     <div class="menu">
       <a href={currentUrl} title={`Go to the page called '${title}'`}>{title}</a>
-      <label class="menu-toggler" for={checkboxId} title={`Show or hide the pages under '${title}'`}></label>
+      <label class="menu-toggler" for={checkboxId} title={`Show or hide the pages under '${title}'`}>
+        <div class="icon"></div>
+      </label>
     </div>
 
     <!-- The collapsible menu to open and close -->
