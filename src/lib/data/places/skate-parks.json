@@ -16,7 +16,7 @@
   "SuperPark Indoor Skate Park": {
     "address": "#02-477, Suntec City (North Wing, 3 Temasek Blvd, Tower 1, Singapore 038983, on the 2nd floor of Suntec City",
     "hours": "Open from 10:30am - 8pm on weekdays, and from 9am - 9pm on weekends",
-    "price": "$29.90 - $33.90 for adults per 2-hour session depending on where you buy the tickets from and whether you are going on a weekday instead of a weekend or public holiday. An additional $3.50 is needed for the compulsory SuperPark grip socks. You can see more information about ticket prices <a href=\"https://www.superpark.com.sg/ticket-info/\">here</a> and you can book your sessions directly from SuperPark <a href=\"https://www.superpark.com.sg/ticket-direct-booking/\">here</a>.",
+    "price": "$29.90 - $33.90 for adults per 2-hour session depending on where you buy the tickets from and whether you are going on a weekday instead of a weekend or public holiday. An additional $3.50 is needed for the compulsory SuperPark grip socks. You can see more information about ticket prices <a target=\"_blank\" href=\"https://www.superpark.com.sg/ticket-info/\">here</a> and you can book your sessions directly from SuperPark <a target=\"_blank\" href=\"https://www.superpark.com.sg/ticket-direct-booking/\">here</a>.",
     "mapLink": "https://g.page/SuperParkSG?share"
   },
 
@@ -86,14 +86,14 @@
   "Por Vida Indoor Skate Park": {
     "address": "1 Selegie Rd, B1-11 GR.iD, Singapore 188306, Located inside GR.iD",
     "hours": "Open from 10am - 10pm daily",
-    "price": "$15 for 2 hours. You can book your sessions <a href=\"https://pvskateboarding.com/buy-pvs-skatepark-entry-pass/\">here</a>.",
+    "price": "$15 for 2 hours. You can book your sessions <a target=\"_blank\" href=\"https://pvskateboarding.com/buy-pvs-skatepark-entry-pass/\">here</a>.",
     "mapLink": "https://goo.gl/maps/C4j22n6Xy32G8wgZ7"
   },
 
   "United Skates Indoor Skate Park": {
     "address": "10 Science Centre Rd, #01-05, Singapore 609079",
     "hours": "Open from 9am - 9pm daily",
-    "price": "$15 for 2 hours, $37.50 for 6 hours and $62.50 for 12 hours. You can buy your tickets <a href=\"https://book.timify.com/services?accountId=6058315a0ad9f01158965ee4&hideCloseButton=true\">here</a>.",
+    "price": "$15 for 2 hours, $37.50 for 6 hours and $62.50 for 12 hours. You can buy your tickets <a target=\"_blank\" href=\"https://book.timify.com/services?accountId=6058315a0ad9f01158965ee4&hideCloseButton=true\">here</a>.",
     "mapLink": "https://goo.gl/maps/cg985yCwPzgpqvos6"
   },
 
