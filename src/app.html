@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
 
     <!-- Favicons stuff -->
     <link rel="apple-touch-icon" sizes="180x180" href="%sveltekit.assets%/favicons/apple-touch-icon.png">
@@ -27,12 +27,12 @@
       // If the theme is found in the local storage, set the theme to the theme found in the local storage
       if (theme) htmlElement.className = theme;
 
-      // Otherwise, set the theme to the light theme
+        // Otherwise, set the theme to the light theme
       else htmlElement.className = "light";
-      
+
     </script>
-		%sveltekit.head%
-	</head>
+    %sveltekit.head%
+  </head>
   <style>
 
     @font-face {
@@ -42,7 +42,7 @@
            url("/fonts/oleo-script-regular.woff") format("woff"),
            url("/fonts/oleo-script-regular.ttf") format("truetype");
     }
-    
+
     @font-face {
       font-family: "Oleo Script";
       font-weight: bold;
@@ -56,7 +56,7 @@
       --nav-bar-height: 74px;
       --page-left-right-margin: 65px;
     }
-    
+
     /* The colours for the light theme */
     .light {
       --text-colour: black;
@@ -75,7 +75,7 @@
       --icon-hover-colour: hsl(210 10% 30%);
       --icon-opacity: 1;
     }
-    
+
     /* The colours for the dark theme */
     .dark {
       --text-colour: white;
@@ -94,7 +94,7 @@
       --icon-hover-colour: hsl(210 10% 95%);
       --icon-opacity: 1;
     }
-    
+
     html, body {
       padding: 0;
       margin: 0;
@@ -156,28 +156,28 @@
 
     /* Animate when the user has no preference for reduced motion */
     @media (prefers-reduced-motion: no-preference) {
-  
+
       :root {
         --animation-timing: 200ms ease-in-out;
       }
-  
+
       html {
         scroll-behavior: smooth;
       }
-      
+
     }
 
-    
+
     @media only screen and (max-width: 700px) {
 
       :root {
         --page-left-right-margin: 15px;
       }
-      
+
     }
-    
+
   </style>
-	<body>
-		<div>%sveltekit.body%</div>
-	</body>
+  <body>
+    <div>%sveltekit.body%</div>
+  </body>
 </html>
