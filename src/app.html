@@ -124,6 +124,19 @@
       opacity: 1;
     }
 
+    /* Remove list styling from the summary element */
+    summary {
+      list-style: none;
+    }
+
+    /* Remove the arrow markwr beside the summary element */
+    summary::marker, summary::-webkit-details-marker {
+      display: none;
+    }
+
+    
+    /* Resize all of the heading elements so that the headings are always bigger than regular text */
+    
     h1 {
       font-size: 2.5em;
     }
@@ -148,6 +161,7 @@
       font-size: 1.17em;
     }
 
+    
     .text {
       color: var(--text-colour);
       opacity: var(--text-opacity);
@@ -200,6 +214,7 @@
     }
 
 
+    /* The styles for mobile devices */
     @media only screen and (max-width: 700px) {
 
       :root {

@@ -28,11 +28,6 @@
     flex-direction: row;
     align-items: center;
     cursor: pointer;
-    list-style: none;
-  }
-
-  summary::marker, summary::-webkit-details-marker {
-    display: none;
   }
 
   .table-of-contents-title {

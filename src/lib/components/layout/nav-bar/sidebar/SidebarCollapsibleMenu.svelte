@@ -35,12 +35,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    list-style: none;
     cursor: pointer;
-  }
-
-  summary::marker, summary::-webkit-details-marker {
-    display: none;
   }
 
   .menu-toggler {
