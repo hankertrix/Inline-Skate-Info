@@ -17,10 +17,6 @@
 <!-- The styles for the collapsible menu -->
 <style>
 
-  input {
-    display: none;
-  }
-
   a {
     text-decoration: none;
     color: var(--text-colour);
