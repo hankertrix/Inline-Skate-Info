@@ -87,6 +87,11 @@
     rotate: -90deg;
     translate: 0 2px;
   }
+
+  li > a {
+    display: block;
+    width: 100%;
+  }
   
 </style>
 
