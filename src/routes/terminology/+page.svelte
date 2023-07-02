@@ -48,7 +48,7 @@
   <!-- Iterates over all the categories inside the JSON file -->
   {#each Object.entries(terminologyJson) as [categoryName, categoryItems]}
 
-    <div class="category-wrapper">
+    <section class="category-wrapper">
 
       <!-- Display the category title -->
       <h3 class="category-title text" id={makeUrlFriendlyString(categoryName)}>{categoryName}</h3>
@@ -62,7 +62,7 @@
           {@html definition}
         </p>
       {/each}
-    </div>
+    </section>
   {/each}
   
 </main>

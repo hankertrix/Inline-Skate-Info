@@ -84,16 +84,18 @@
 </svelte:head>
 
 <!-- The HTML for the main page -->
-<main class="main-page-wrapper">
-  <h1 class="main-page-title text" id={makeUrlFriendlyString(title)}>{title}</h1>
-  <div class="description text">Here, you can find most of the information you need to get started with inline skating!</div>
-  <div class="how-to-use text">
-    <div>Click the hamburger icon at the top right hand corner of the screen to open up the sidebar.</div>
-    <div>Use the search bar above or click on one of the links below to get started!</div>
-  </div>
+<div class="main-page-wrapper">
+  <header>
+    <h1 class="main-page-title text" id={makeUrlFriendlyString(title)}>{title}</h1>
+    <div class="description text">Here, you can find most of the information you need to get started with inline skating!</div>
+    <div class="how-to-use text">
+      <div>Click the hamburger icon at the top right hand corner of the screen to open up the sidebar.</div>
+      <div>Use the search bar above or click on one of the links below to get started!</div>
+    </div>
+  </header>
 
   <!-- The grid of links to all the pages -->
-  <div class="links-grid">
+  <main class="links-grid">
 
     <div></div>
     <a href={makeUrlFriendlyString(mainPages[0])}>{mainPages[0]}</a>
@@ -107,5 +109,5 @@
     <a href={makeUrlFriendlyString(mainPages[mainPages.length - 1])}>{mainPages[mainPages.length - 1]}</a>
     <div></div>
 
-  </div>
-</main>
+  </main>
+</div>
