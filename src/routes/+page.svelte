@@ -26,7 +26,6 @@
 
   .main-page-title {
     font-family: Oleo Script;
-    font-size: 40px;
     margin: 20px 0;
     text-align: center;
   }
