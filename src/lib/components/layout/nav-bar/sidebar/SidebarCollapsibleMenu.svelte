@@ -14,8 +14,6 @@
   // The start of the url to add on to, defaults to the main page
   export let urlStart: string = "/";
 
-  // The parent titles that are url friendly to create the ID
-  export let parentUrlTitles: string = "";
   
   // Function to check if a title has any children
   function titleHasChildren(obj: any) {
@@ -27,23 +25,22 @@
 <!-- The styles for the collapsible menu -->
 <style>
 
-  input {
-    display: none;
-  }
-
   a {
     text-decoration: none;
     color: var(--text-colour);
     opacity: var(--text-opacity);
   }
-  
-  .menu {
+
+  summary {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    list-style: none;
     cursor: pointer;
-    width: 100%;
+  }
+
+  summary::marker, summary::-webkit-details-marker {
+    display: none;
   }
 
   .menu-toggler {
@@ -72,25 +69,22 @@
   }
 
   ul {
-    max-height: 0;
-    overflow: hidden;
     margin: 0 8px;
     padding: 0;
     list-style-type: var(--sidebar-list-style-type);
   }
 
-  input:checked + .menu + ul {
-    max-height: 100%;
-  }
-
-  input:checked + .menu .icon {
-    rotate: -90deg;
-    translate: 0 2px;
-  }
-
   li > a {
     display: block;
     width: 100%;
+  }
+
+  
+  /* The styles when the collapsible is open */
+
+  details[open] .icon {
+    rotate: -90deg;
+    translate: 0 2px;
   }
   
 </style>
@@ -100,27 +94,25 @@
 {#each Object.entries(pages) as [title, child]}
   {@const urlFriendlyTitle = makeUrlFriendlyString(title)}
   {@const currentUrl = `${urlStart}${urlFriendlyTitle}/`}
-  {@const checkboxIdFragment = `${parentUrlTitles.trim() === "" ? parentUrlTitles : `${parentUrlTitles}-`}${urlFriendlyTitle}`}
-  {@const checkboxId = `${checkboxIdFragment}-sidebar`}
 
   <!-- If the current title has any children -->
   {#if titleHasChildren(child)}
-    
-    <!-- The checkbox that controls the opening and the closing of the menu -->
-    <input type="checkbox" id={checkboxId} />
 
-    <!-- The label to open and close the collapsible menu -->
-    <div class="menu">
-      <a href={currentUrl} title={`Go to the page called '${title}'`}>{title}</a>
-      <label class="menu-toggler" for={checkboxId} title={`Show or hide the pages under '${title}'`}>
-        <div class="icon"></div>
-      </label>
-    </div>
+    <!-- The details element to open and close the collapsible menu -->
+    <details>
+      <summary>
+        <a href={currentUrl} title={`Go to the page called '${title}'`}>{title}</a>
+        <div class="menu-toggler" title={`Show or hide the pages under '${title}'`}>
+          <div class="icon"></div>
+        </div>
+      </summary>
 
-    <!-- The collapsible menu to open and close -->
-    <ul>
-      <svelte:self pages={child} urlStart={currentUrl} parentUrlTitles={checkboxIdFragment} />
-    </ul>
+      <!-- The collapsible menu to open and close -->
+      <ul>
+        <svelte:self pages={child} urlStart={currentUrl} />
+      </ul>
+      
+    </details>
 
   <!-- If the cuurent title has no children -->
   {:else}

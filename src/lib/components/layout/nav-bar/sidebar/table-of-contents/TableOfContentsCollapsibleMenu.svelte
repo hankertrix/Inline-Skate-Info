@@ -26,28 +26,24 @@
     color: var(--text-colour);
     opacity: var(--text-opacity);
   }
-  
-  .menu {
+
+  summary {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
     cursor: pointer;
-    width: 100%;
+    list-style: none;
   }
 
-  .table-of-contents {
-    flex: 1;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+  summary::marker, summary::-webkit-details-marker {
+    display: none;
   }
 
   .table-of-contents-title {
     color: var(--icon-colour);
   }
   
-  .table-of-contents:hover .table-of-contents-title {
+  summary:hover .table-of-contents-title {
     color: var(--icon-hover-colour);
   }
 
@@ -72,30 +68,27 @@
     transition: rotate var(--animation-timing), translate var(--animation-timing);
   }
 
-  .table-of-contents:hover .icon {
+  summary:hover .icon {
     border-right-color: var(--icon-hover-colour);
   }
 
   ul {
-    max-height: 0;
-    overflow: hidden;
     margin: 0 8px;
     padding: 0;
     list-style-type: var(--sidebar-list-style-type);
   }
 
-  input:checked + .menu + ul {
-    max-height: 100%;
-  }
-
-  input:checked + .menu .icon {
-    rotate: -90deg;
-    translate: 0 2px;
-  }
-
   li > a {
     display: block;
     width: 100%;
+  }
+
+
+  /* The styles when the collapsible is open */
+
+  details[open] .icon {
+    rotate: -90deg;
+    translate: 0 2px;
   }
   
 </style>
@@ -104,43 +97,41 @@
 <!-- Iterates over all the titles in the given table of contents -->
 {#each [...tableOfContents.entries()] as [title, child]}
   {@const urlFriendlyTitle = makeUrlFriendlyString(title)}
-  {@const checkboxId = `${urlFriendlyTitle}-table-of-contents`}
 
   <!-- If the current title has any children -->
   {#if titleHasChildren(child)}
-    
-    <!-- The checkbox that controls the opening and the closing of the menu -->
-    <input type="checkbox" id={checkboxId} />
 
-    <!-- The label to open and close the collapsible menu -->
-    <!-- If the title is actually the table of contents -->
-    {#if title === "Table Of Contents"}
+    <details>
+      
+      <!-- The label to open and close the collapsible menu -->
+      <!-- If the title is actually the table of contents -->
+      {#if title === "Table Of Contents"}
 
-      <label class="menu" for={checkboxId} title="Show or hide the table of contents">
-        <div class="table-of-contents">
+        <summary title="Show or hide the table of contents">
           <div class="table-of-contents-title">{title}</div>
           <div class="menu-toggler">
             <div class="icon"></div>
           </div>
-        </div>
-      </label>
+        </summary>
 
-    <!-- If the title is a regular heading in the page -->
-    {:else}
-      
-      <div class="menu">
-        <a href={`#${urlFriendlyTitle}`} title={`Go to the section called '${title}'`}>{title}</a>
-        <label class="menu-toggler" for={checkboxId} title={`Show or hide the sections under '${title}'`}>
-          <div class="icon"></div>
-        </label>
-      </div>
+      <!-- If the title is a regular heading in the page -->
+      {:else}
 
-    {/if}
+        <summary>
+          <a href={`#${urlFriendlyTitle}`} title={`Go to the section called '${title}'`}>{title}</a>
+          <div class="menu-toggler" title={`Show or hide the sections under '${title}'`}>
+            <div class="icon"></div>
+          </div>
+        </summary>
+        
+      {/if}
 
-    <!-- The collapsible menu to open and close -->
-    <ul>
-      <svelte:self tableOfContents={child} />
-    </ul>
+      <!-- The collapsible menu to open and close -->
+      <ul>
+        <svelte:self tableOfContents={child} />
+      </ul>
+        
+    </details>
 
   <!-- If the cuurent title has no children -->
   {:else}
@@ -151,4 +142,5 @@
     </li>
     
   {/if}
+  
 {/each}
