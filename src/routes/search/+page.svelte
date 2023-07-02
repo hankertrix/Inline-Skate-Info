@@ -102,7 +102,7 @@
       
       <!-- Display the results -->
       {#each results as result}
-        <SearchResult result={result} />
+        <SearchResult {result} />
       {/each}
       
     </div>

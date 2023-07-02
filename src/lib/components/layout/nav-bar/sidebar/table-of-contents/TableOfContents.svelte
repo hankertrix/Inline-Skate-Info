@@ -123,5 +123,5 @@
 <!-- The HTML for the table of contents -->
 <!-- Displays the table of contents only when the number of headings on the page is greater than 2 -->
 {#if headings && headings.length > 1}
-  <TableOfContentsCollapsibleMenu tableOfContents={tableOfContents} />
+  <TableOfContentsCollapsibleMenu {tableOfContents} />
 {/if}
