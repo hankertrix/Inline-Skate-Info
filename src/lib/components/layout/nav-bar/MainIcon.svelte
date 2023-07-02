@@ -108,89 +108,89 @@
     
     /* The colours for the first wheel */
     --wheel-1-outer-colour: black;
-    --wheel-1-inner-colour: #F6C1E3;
-    --wheel-1-core-colour: #FF3BC2;
+    --wheel-1-inner-colour: #EF432A;
+    --wheel-1-core-colour: #DEE3FF;
     --wheel-1-accent-colour: black;
 
     /* The colours for the second wheel */
     --wheel-2-outer-colour: black;
-    --wheel-2-inner-colour: #F6C1E3;
-    --wheel-2-core-colour: #FF3BC2;
+    --wheel-2-inner-colour: #EF432A;
+    --wheel-2-core-colour: #DEE3FF;
     --wheel-2-accent-colour: black;
 
     /* The colours for the third wheel */
     --wheel-3-outer-colour: black;
-    --wheel-3-inner-colour: #F6C1E3;
-    --wheel-3-core-colour: #FF3BC2;
+    --wheel-3-inner-colour: #EF432A;
+    --wheel-3-core-colour: #DEE3FF;
     --wheel-3-accent-colour: black;
 
     /* The colours for the fourth wheel */
     --wheel-4-outer-colour: black;
-    --wheel-4-inner-colour: #F6C1E3;
-    --wheel-4-core-colour: #FF3BC2;
+    --wheel-4-inner-colour: #EF432A;
+    --wheel-4-core-colour: #DEE3FF;
     --wheel-4-accent-colour: black;
 
 
     /* The colours for the outer wings */
-    --outer-wings-body-colour: #FF3BC2;
+    --outer-wings-body-colour: #EF432A;
     --outer-wings-accent-colour: black;
 
     /* The colours for the inner wings */
-    --inner-wings-body-colour: hotpink;
+    --inner-wings-body-colour: #F2753F;
     --inner-wings-accent-colour: black;
 
     
     /* The colours for the frame */
-    --frame-colour: #D9D8D9;
-    --frame-spacing-colour: black;
+    --frame-colour: #4A4A4B;
+    --frame-spacing-colour: #0D0B0C;
 
     /* The colours for the first frame bolt */
-    --frame-bolt-1-outer-colour: hotpink;
+    --frame-bolt-1-outer-colour: #F2753F;
     --frame-bolt-1-inner-colour: black;
 
     /* The colours for the second frame bolt */
-    --frame-bolt-2-outer-colour: hotpink;
+    --frame-bolt-2-outer-colour: #F2753F;
     --frame-bolt-2-inner-colour: black;
 
     /* The colours for the third frame bolt */
-    --frame-bolt-3-outer-colour: hotpink;
+    --frame-bolt-3-outer-colour: #F2753F;
     --frame-bolt-3-inner-colour: black;
 
     /* The colours for the fourth frame bolt */
-    --frame-bolt-4-outer-colour: hotpink;
+    --frame-bolt-4-outer-colour: #F2753F;
     --frame-bolt-4-inner-colour: black;
 
     
     /* The colours for the liner */
-    --liner-colour: #99E1BF;
-    --liner-front-accent-colour: #014D4E;
-    --liner-middle-accent-colour: #014D4E;
-    --liner-back-accent-colour: #014D4E;
+    --liner-colour: #0BC3D3;
+    --liner-front-accent-colour: #0A0B89;
+    --liner-middle-accent-colour: #0A0B89;
+    --liner-back-accent-colour: #0A0B89;
 
     /* The colours for the liner flap */
-    --liner-flap-colour: #D9D8D9;
+    --liner-flap-colour: #DEE3FF;
 
     /* The colours for the toe flap and toe cap */
     --toe-flap-colour: black;
-    --toe-cap-colour: #D9D8D9;
+    --toe-cap-colour: #DEE3FF;
 
     
     /* The colours for the cuff */
-    --cuff-colour: #419F90;
-    --cuff-inner-edge-colour: #99E1BF;
+    --cuff-colour: #4A4A4B;
+    --cuff-inner-edge-colour: #0BC3D3;
     --cuff-screw-colour: black;
-    --cuff-spacing-colour: #014D4E;
+    --cuff-spacing-colour: #0A0B89;
 
     
     /* The colours for the straps and buckles */
-    --front-strap-1-colour: hotpink;
-    --front-strap-2-colour: hotpink;
+    --front-strap-1-colour: #DEE3FF;
+    --front-strap-2-colour: #DEE3FF;
     --power-strap-colour: black;
-    --power-strap-top-edge-colour: hotpink;
-    --power-strap-bottom-edge-colour: hotpink;
+    --power-strap-top-edge-colour: #F2753F;
+    --power-strap-bottom-edge-colour: #F2753F;
     --top-buckle-inner-colour: black;
-    --top-buckle-outer-colour: #D9D8D9;
-    --top-strap-colour: #D9D8D9;
+    --top-buckle-outer-colour: #DEE3FF;
+    --top-strap-colour: #DEE3FF;
   }
 
 
