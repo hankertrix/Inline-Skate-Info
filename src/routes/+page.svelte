@@ -49,7 +49,7 @@
     font-weight: bold;
     font-size: 25px;
     text-align: center;
-    background-color: var(--nav-and-footer-background-colour);
+    background-color: var(--accent-colour);
     border: 2px solid black;
     border-radius: 20px;
     margin-top: 10px;
