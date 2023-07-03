@@ -40,7 +40,7 @@ bot.command("start", async ctx => {
   // The start message
   const startMsg = `Hello! This bot aims to be the ultimate resource for all things inline skating!
 
-Visit the website: ${BASE_PATH}
+${utils.hyperlink("Here", BASE_PATH)} is the bot's website if you prefer to view the information presented here on a website.
 
 If you find that the resource is not ultimate enough, or that the information presented is wrong, inaccurate or outdated, please contact ${DEV}. Please contact ${DEV} as well if you have any feedback, suggestions, enquiries or bug reports.
 
