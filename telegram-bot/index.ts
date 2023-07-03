@@ -1198,6 +1198,7 @@ bot.command([
 
   // The list of hyperlinks to where the source of the bot is hosted
   const sources = [
+    utils.hyperlink("Codeberg", "https://codeberg.org/Hanker/Inline-Skate-Info"),
     utils.hyperlink("GitHub", "https://github.com/hankertrix/Inline-Skate-Info"),
     utils.hyperlink("Replit", "https://replit.com/@hankertrix/Inline-Skate-Info?v=1")
   ];
