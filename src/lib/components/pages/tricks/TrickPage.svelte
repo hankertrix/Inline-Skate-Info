@@ -23,6 +23,7 @@
 
   div {
     margin: 10px var(--page-left-right-margin);
+    width: 100%;
   }
 
   h1 {
