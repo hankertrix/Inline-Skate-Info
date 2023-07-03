@@ -233,7 +233,7 @@ function getCommandHelpMsg() {
 export function generateMsg() {
 
   // The preface
-  const preface = `Hi, this bot aims to be the one-stop shop for all things inline skating! This bot is created with Singaporean skaters in mind, so all prices are in SGD and 'local' refers to Singapore. The skate recommendations may include skates exclusive to Singapore and the student discount is only relevant to tertiary students studying in Singapore. If you find the information provided by the bot to be wrong or outdated or have any enquiries, bug reports or suggestions, please contact ${DEV}.\n\nHere is how you can use the bot:`;
+  const preface = `Hi, this bot aims to be the one-stop shop for all things inline skating! This bot is created with Singaporean skaters in mind, so all prices are in SGD and 'local' refers to Singapore. The skate recommendations may include skates exclusive to Singapore and the student discount is only relevant to tertiary students studying in Singapore.\n\nHere is how you can use the bot:`;
 
   // Get the help message for the commands
   const commandHelpMsg = `${utils.bold("Bot Commands")}${SPACING}${getCommandHelpMsg()}`;
