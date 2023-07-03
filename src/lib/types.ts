@@ -30,3 +30,9 @@ export interface PagefindResult {
   content: string;
   word_count: number;
 };
+
+// The type representing a single trick
+export type Trick = {
+  description: string,
+  videos: [string, string][]
+};
