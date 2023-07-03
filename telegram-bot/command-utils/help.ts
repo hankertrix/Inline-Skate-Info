@@ -93,11 +93,11 @@ function getCommandDict() {
     },
 
     "skateparks": {
-      explanation: "Displays information about the skateparks in Singapore."
+      explanation: "Displays information about skateparks in Singapore."
     },
 
     "rinks": {
-      explanation: "Displays information about the skating rinks in Singapore."
+      explanation: "Displays information about skating rinks in Singapore."
     },
 
     "brands": {
