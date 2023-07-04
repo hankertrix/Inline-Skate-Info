@@ -63,10 +63,7 @@
     gap: 0.5em;
     text-decoration: none;
     text-align: center;
-  }
-
-  .telegram-bot-wrapper:is(:link, :hover, :active, :visited) {
-    color: #229ED9;
+    color: #229ed9;
   }
 
   .telegram-bot-wrapper > img {

@@ -40,7 +40,7 @@
   }
 
   :global(.light) .number-of-results {
-    --colour: #70757A;
+    --colour: #70757a;
     --opacity: 1;
   }
   

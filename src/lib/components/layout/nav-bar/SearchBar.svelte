@@ -29,8 +29,8 @@
 <style>
 
   :global(.light) form {
-    --search-icon-colour: #787C82;
-    --search-icon-hover-colour: #9AA0A6;
+    --search-icon-colour: #787c82;
+    --search-icon-hover-colour: #9aa0a6;
     
     background-color: white;
     box-shadow: 0 2px 5px 1px rgba(64, 60, 67, .16);
@@ -41,14 +41,14 @@
   }
 
   :global(.dark) form {
-    --search-icon-colour: #C5C5D4;
-    --search-icon-hover-colour: #DEDEEE;
+    --search-icon-colour: #c5c5d4;
+    --search-icon-hover-colour: #dedeee;
 
     background-color: navy;
   }
 
   :global(.dark) form:hover {
-    background-color: #0000B8;
+    background-color: #0000b8;
   }
 
   form {

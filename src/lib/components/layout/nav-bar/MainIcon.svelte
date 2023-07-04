@@ -17,31 +17,31 @@
     
     /* The colours for the first wheel */
     --wheel-1-outer-colour: black;
-    --wheel-1-inner-colour: #F6C1E3;
-    --wheel-1-core-colour: #FF3BC2;
+    --wheel-1-inner-colour: #f6c1e3;
+    --wheel-1-core-colour: #ff3bc2;
     --wheel-1-accent-colour: black;
 
     /* The colours for the second wheel */
     --wheel-2-outer-colour: black;
-    --wheel-2-inner-colour: #F6C1E3;
-    --wheel-2-core-colour: #FF3BC2;
+    --wheel-2-inner-colour: #f6c1e3;
+    --wheel-2-core-colour: #ff3bc2;
     --wheel-2-accent-colour: black;
 
     /* The colours for the third wheel */
     --wheel-3-outer-colour: black;
-    --wheel-3-inner-colour: #F6C1E3;
-    --wheel-3-core-colour: #FF3BC2;
+    --wheel-3-inner-colour: #f6c1e3;
+    --wheel-3-core-colour: #ff3bc2;
     --wheel-3-accent-colour: black;
 
     /* The colours for the fourth wheel */
     --wheel-4-outer-colour: black;
-    --wheel-4-inner-colour: #F6C1E3;
-    --wheel-4-core-colour: #FF3BC2;
+    --wheel-4-inner-colour: #f6c1e3;
+    --wheel-4-core-colour: #ff3bc2;
     --wheel-4-accent-colour: black;
 
 
     /* The colours for the outer wings */
-    --outer-wings-body-colour: #FF3BC2;
+    --outer-wings-body-colour: #ff3bc2;
     --outer-wings-accent-colour: black;
 
     /* The colours for the inner wings */
@@ -50,7 +50,7 @@
 
     
     /* The colours for the frame */
-    --frame-colour: #D9D8D9;
+    --frame-colour: #d9d8d9;
     --frame-spacing-colour: black;
 
     /* The colours for the first frame bolt */
@@ -71,24 +71,24 @@
 
     
     /* The colours for the liner */
-    --liner-colour: #99E1BF;
-    --liner-front-accent-colour: #014D4E;
-    --liner-middle-accent-colour: #014D4E;
-    --liner-back-accent-colour: #014D4E;
+    --liner-colour: #99e1bf;
+    --liner-front-accent-colour: #014d4e;
+    --liner-middle-accent-colour: #014d4e;
+    --liner-back-accent-colour: #014d4e;
 
     /* The colours for the liner flap */
-    --liner-flap-colour: #D9D8D9;
+    --liner-flap-colour: #d9d8d9;
 
     /* The colours for the toe flap and toe cap */
     --toe-flap-colour: black;
-    --toe-cap-colour: #D9D8D9;
+    --toe-cap-colour: #d9d8d9;
 
     
     /* The colours for the cuff */
-    --cuff-colour: #419F90;
-    --cuff-inner-edge-colour: #99E1BF;
+    --cuff-colour: #419f90;
+    --cuff-inner-edge-colour: #99e1bf;
     --cuff-screw-colour: black;
-    --cuff-spacing-colour: #014D4E;
+    --cuff-spacing-colour: #014d4e;
 
     
     /* The colours for the straps and buckles */
@@ -98,8 +98,8 @@
     --power-strap-top-edge-colour: hotpink;
     --power-strap-bottom-edge-colour: hotpink;
     --top-buckle-inner-colour: black;
-    --top-buckle-outer-colour: #D9D8D9;
-    --top-strap-colour: #D9D8D9;
+    --top-buckle-outer-colour: #d9d8d9;
+    --top-strap-colour: #d9d8d9;
   }
 
   /* The colours for the main icon in the dark theme */
@@ -108,89 +108,89 @@
     
     /* The colours for the first wheel */
     --wheel-1-outer-colour: black;
-    --wheel-1-inner-colour: #EF432A;
-    --wheel-1-core-colour: #DEE3FF;
+    --wheel-1-inner-colour: #ef432a;
+    --wheel-1-core-colour: #dee3ff;
     --wheel-1-accent-colour: black;
 
     /* The colours for the second wheel */
     --wheel-2-outer-colour: black;
-    --wheel-2-inner-colour: #EF432A;
-    --wheel-2-core-colour: #DEE3FF;
+    --wheel-2-inner-colour: #ef432a;
+    --wheel-2-core-colour: #dee3ff;
     --wheel-2-accent-colour: black;
 
     /* The colours for the third wheel */
     --wheel-3-outer-colour: black;
-    --wheel-3-inner-colour: #EF432A;
-    --wheel-3-core-colour: #DEE3FF;
+    --wheel-3-inner-colour: #ef432a;
+    --wheel-3-core-colour: #dee3ff;
     --wheel-3-accent-colour: black;
 
     /* The colours for the fourth wheel */
     --wheel-4-outer-colour: black;
-    --wheel-4-inner-colour: #EF432A;
-    --wheel-4-core-colour: #DEE3FF;
+    --wheel-4-inner-colour: #ef432a;
+    --wheel-4-core-colour: #dee3ff;
     --wheel-4-accent-colour: black;
 
 
     /* The colours for the outer wings */
-    --outer-wings-body-colour: #EF432A;
+    --outer-wings-body-colour: #ef432a;
     --outer-wings-accent-colour: black;
 
     /* The colours for the inner wings */
-    --inner-wings-body-colour: #F2753F;
+    --inner-wings-body-colour: #f2753f;
     --inner-wings-accent-colour: black;
 
     
     /* The colours for the frame */
-    --frame-colour: #4A4A4B;
-    --frame-spacing-colour: #0D0B0C;
+    --frame-colour: #4a4a4b;
+    --frame-spacing-colour: #0d0b0c;
 
     /* The colours for the first frame bolt */
-    --frame-bolt-1-outer-colour: #F2753F;
+    --frame-bolt-1-outer-colour: #f2753f;
     --frame-bolt-1-inner-colour: black;
 
     /* The colours for the second frame bolt */
-    --frame-bolt-2-outer-colour: #F2753F;
+    --frame-bolt-2-outer-colour: #f2753f;
     --frame-bolt-2-inner-colour: black;
 
     /* The colours for the third frame bolt */
-    --frame-bolt-3-outer-colour: #F2753F;
+    --frame-bolt-3-outer-colour: #f2753f;
     --frame-bolt-3-inner-colour: black;
 
     /* The colours for the fourth frame bolt */
-    --frame-bolt-4-outer-colour: #F2753F;
+    --frame-bolt-4-outer-colour: #f2753f;
     --frame-bolt-4-inner-colour: black;
 
     
     /* The colours for the liner */
-    --liner-colour: #0BC3D3;
-    --liner-front-accent-colour: #0A0B89;
-    --liner-middle-accent-colour: #0A0B89;
-    --liner-back-accent-colour: #0A0B89;
+    --liner-colour: #0bc3d3;
+    --liner-front-accent-colour: #0a0b89;
+    --liner-middle-accent-colour: #0a0b89;
+    --liner-back-accent-colour: #0a0b89;
 
     /* The colours for the liner flap */
-    --liner-flap-colour: #DEE3FF;
+    --liner-flap-colour: #dee3ff;
 
     /* The colours for the toe flap and toe cap */
     --toe-flap-colour: black;
-    --toe-cap-colour: #DEE3FF;
+    --toe-cap-colour: #dee3ff;
 
     
     /* The colours for the cuff */
-    --cuff-colour: #4A4A4B;
-    --cuff-inner-edge-colour: #0BC3D3;
+    --cuff-colour: #4a4a4b;
+    --cuff-inner-edge-colour: #0bc3d3;
     --cuff-screw-colour: black;
-    --cuff-spacing-colour: #0A0B89;
+    --cuff-spacing-colour: #0a0b89;
 
     
     /* The colours for the straps and buckles */
-    --front-strap-1-colour: #DEE3FF;
-    --front-strap-2-colour: #DEE3FF;
+    --front-strap-1-colour: #dee3ff;
+    --front-strap-2-colour: #dee3ff;
     --power-strap-colour: black;
-    --power-strap-top-edge-colour: #F2753F;
-    --power-strap-bottom-edge-colour: #F2753F;
+    --power-strap-top-edge-colour: #f2753f;
+    --power-strap-bottom-edge-colour: #f2753f;
     --top-buckle-inner-colour: black;
-    --top-buckle-outer-colour: #DEE3FF;
-    --top-strap-colour: #DEE3FF;
+    --top-buckle-outer-colour: #dee3ff;
+    --top-strap-colour: #dee3ff;
   }
 
 
@@ -438,69 +438,69 @@
   height="255px" viewBox="0 0 320 230" xml:space="preserve">
   <style type="text/css">
     .st0 {
-      fill: #FFFFFF;
-      stroke: #000000;
+      fill: #fff;
+      stroke: #000;
       stroke-width: 2;
       stroke-miterlimit: 10;
     }
     .st1 {
-      fill: #FFFFFF;
-      stroke: #000000;
+      fill: #fff;
+      stroke: #000;
       stroke-width: 1;
       stroke-miterlimit: 10;
     }
     .st2 {
-      fill: #FFFFFF;
-      stroke: #000000;
+      fill: #fff;
+      stroke: #000;
       stroke-width: 2;
       stroke-miterlimit: 10;
     }
     .st3 {
       fill: none;
-      stroke: #000000;
+      stroke: #000;
       stroke-width: 2;
       stroke-miterlimit: 10;
     }
     .st4 {
-      fill: #FFFFFF;
-      stroke: #000000;
+      fill: #fff;
+      stroke: #000;
       stroke-width: 1.5;
       stroke-miterlimit: 10;
     }
     .st5 {
-      fill: #FFFFFF;
+      fill: #fff;
     }
     .st6 {
-      fill: #FFFFFF;
-      stroke: #000000;
+      fill: #fff;
+      stroke: #000;
       stroke-width: 1;
       stroke-miterlimit: 10;
     }
     .st7 {
-      fill: #FFFFFF;
-      stroke: #000000;
+      fill: #fff;
+      stroke: #000;
       stroke-width: 0.5;
       stroke-miterlimit: 10;
     }
     .st8 {
       fill: none;
-      stroke: #000000;
+      stroke: #000;
       stroke-miterlimit: 10;
     }
     .st9 {
       fill: none;
-      stroke: #000000;
+      stroke: #000;
       stroke-width: 0.5;
       stroke-miterlimit: 10;
     }
     .st10 {
-      fill: #FFFFFF;
-      stroke: #000000;
+      fill: #fff;
+      stroke: #000;
       stroke-miterlimit: 10;
     }
     .st11 {
       fill: none;
-      stroke: #000000;
+      stroke: #000;
       stroke-width: 1;
       stroke-miterlimit: 10;
     }
