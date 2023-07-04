@@ -22,7 +22,7 @@
 <style>
 
   div {
-    margin: 10px var(--page-left-right-margin);
+    margin: var(--page-margin);
     width: 100%;
   }
 

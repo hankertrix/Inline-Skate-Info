@@ -15,7 +15,7 @@
 <style>
 
   .terminology-page {
-    margin: 10px var(--page-left-right-margin);
+    margin: var(--page-margin);
   }
 
   .category-wrapper {
@@ -24,13 +24,6 @@
 
   .page-title {
     font-family: Oleo Script;
-  }
-
-  @media only screen and (max-width: 700px) {
-
-    .terminology-page {
-      margin: 0 var(--page-left-right-margin);
-    }
   }
   
 </style>
