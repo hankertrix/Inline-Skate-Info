@@ -77,17 +77,17 @@
     transition: opacity var(--animation-timing), visibility var(--animation-timing);
   }
 
-  nav a {
+  a {
     text-decoration: none;
     width: 100%;
     height: 100%;
   }
 
-  nav a:is(:link, :hover, :active, :visited) {
+  a:is(:link, :hover, :active, :visited) {
     color: var(--icon-colour);
   }
 
-  nav svg {
+  svg {
     width: 100%;
     height: 100%;
     translate: 0 -2px;
