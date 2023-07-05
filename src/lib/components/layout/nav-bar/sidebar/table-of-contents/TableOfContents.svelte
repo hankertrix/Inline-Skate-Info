@@ -9,7 +9,10 @@
   let headings: NodeListOf<Element>;
 
   // The variable to store the table of contents object
-  let tableOfContents: Map<string, any> = new Map();
+  let tableOfContents: Map<string, {
+    id: string,
+    children: any
+  }> = new Map();
   
   // Function to get the table of contents
   function getTableOfContents(headings: NodeListOf<Element>) {
@@ -42,10 +45,13 @@
         previousHeadingLevel = currentHeadingLevel;
 
         // Adds the heading to the table of contents
-        tableOfContents.set(heading.textContent, new Map());
+        tableOfContents.set(heading.textContent, {
+          id: heading.id,
+          children: new Map()
+        });
 
         // Adds the reference to the current heading to the list of previous headings, at the position of its level
-        previousHeadings[currentHeadingLevel] = tableOfContents.get(heading.textContent);
+        previousHeadings[currentHeadingLevel] = tableOfContents.get(heading.textContent).children;
 
         // Adds the reference to the entire table of contents to the list of previous headings, one level below the current heading level
         previousHeadings[currentHeadingLevel - 1] = tableOfContents;
@@ -88,10 +94,13 @@
       }
 
       // Adds the current heading to the previous heading
-      previousHeading.set(heading.textContent, new Map());
+      previousHeading.set(heading.textContent, {
+        id: heading.id,
+        children: new Map()
+      });
 
       // Adds the current heading to the list of previous headings at its current level
-      previousHeadings[currentHeadingLevel] = previousHeading.get(heading.textContent);
+      previousHeadings[currentHeadingLevel] = previousHeading.get(heading.textContent).children;
 
       // Set the previous heading level to the current heading level
       previousHeadingLevel = currentHeadingLevel;
@@ -114,7 +123,10 @@
       headings = document.querySelectorAll("h2, h3, h4, h5, h6");
 
       // Gets the table of contents from the page
-      tableOfContents = tableOfContents.set("Table Of Contents", getTableOfContents(headings));
+      tableOfContents = tableOfContents.set("Table Of Contents", {
+        id: "",
+        children: getTableOfContents(headings)
+      });
     }
   }
   

@@ -2,8 +2,6 @@
 
 <script lang="ts">
 
-  import { makeUrlFriendlyString } from "$lib/utils";
-
   // The table of contents variable to be passed to the collapsible menu
   export let tableOfContents: Map<string, any>;
   
@@ -86,11 +84,10 @@
 
 <!-- The HTML for the collapsible menu -->
 <!-- Iterates over all the titles in the given table of contents -->
-{#each [...tableOfContents.entries()] as [title, child]}
-  {@const urlFriendlyTitle = makeUrlFriendlyString(title)}
+{#each [...tableOfContents.entries()] as [title, { id, children }]}
 
   <!-- If the current title has any children -->
-  {#if titleHasChildren(child)}
+  {#if titleHasChildren(children)}
 
     <details>
       
@@ -109,7 +106,7 @@
       {:else}
 
         <summary>
-          <a href={`#${urlFriendlyTitle}`} title={`Go to the section called '${title}'`}>{title}</a>
+          <a href={`#${id}`} title={`Go to the section called '${title}'`}>{title}</a>
           <div class="menu-toggler" title={`Show or hide the sections under '${title}'`}>
             <div class="icon"></div>
           </div>
@@ -119,7 +116,7 @@
 
       <!-- The collapsible menu to open and close -->
       <ul>
-        <svelte:self tableOfContents={child} />
+        <svelte:self tableOfContents={children} />
       </ul>
         
     </details>
@@ -129,7 +126,7 @@
 
     <!-- Displays the current title as a list element -->
     <li>
-      <a href={`#${urlFriendlyTitle}`} title={`Go to the section called '${title}'`}>{title}</a>
+      <a href={`#${id}`} title={`Go to the section called '${title}'`}>{title}</a>
     </li>
     
   {/if}
