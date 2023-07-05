@@ -77,7 +77,7 @@
   
   /* The styles when the collapsible is open */
 
-  details[open] .icon {
+  details[open] > summary > .menu-toggler > .icon {
     rotate: -90deg;
     translate: 0 2px;
   }
