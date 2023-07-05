@@ -72,7 +72,7 @@
     <section class="trick-category">
 
       <!-- Adds the category title -->
-      <svelte:element this={heading} id={urlFriendlyName}>{urlFriendlyName}</svelte:element>
+      <svelte:element this={heading} id={urlFriendlyName}>{name}</svelte:element>
       <svelte:self tricksJson={obj} headingLevel={headingLevel + changeInHeadingLevel} {changeInHeadingLevel} />
       
     </section>
