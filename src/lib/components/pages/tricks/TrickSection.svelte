@@ -14,6 +14,9 @@
   // The variable to take in the change in the heading level
   export let changeInHeadingLevel: number = 1;
 
+  // The variable to take in the ID of the parent category
+  export let parentId: string = "";
+
   
   // The function to check if the object is a trick object
   function isTrickObject(obj: any) {
@@ -44,6 +47,9 @@
   <!-- Gets the URL friendly string of the trick or category name -->
   {@const urlFriendlyName = makeUrlFriendlyString(name)}
 
+  <!-- Creates the heading ID -->
+  {@const headingId = `${parentId ? `${parentId}-` : ""}${urlFriendlyName}`}
+
   <!-- Gets the heading -->
   {@const heading = `h${headingLevel}`}
 
@@ -56,7 +62,7 @@
     <article class="trick">
 
       <!-- Adds the trick title -->
-      <svelte:element this={heading} id={urlFriendlyName} class="text">{name}</svelte:element>
+      <svelte:element this={heading} id={headingId} class="text">{name}</svelte:element>
 
       <!-- Adds the description for the trick -->
       <p class="text">{@html description}</p>
@@ -72,8 +78,8 @@
     <section class="trick-category">
 
       <!-- Adds the category title -->
-      <svelte:element this={heading} id={urlFriendlyName}>{name}</svelte:element>
-      <svelte:self tricksJson={obj} headingLevel={headingLevel + changeInHeadingLevel} {changeInHeadingLevel} />
+      <svelte:element this={heading} id={headingId}>{name}</svelte:element>
+      <svelte:self tricksJson={obj} headingLevel={headingLevel + changeInHeadingLevel} {changeInHeadingLevel} parentId={headingId} />
       
     </section>
     
