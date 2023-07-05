@@ -9,6 +9,9 @@
   // The variable to take in the title for the video collapsible
   export let title: string = "View the videos";
 
+  // Initialise the list of videos
+  const listOfVideos: [string, string][] = Array.isArray(videos) ? videos : Object.entries(videos);
+
   // The regex to remove everything but the YouTube ID
   const youtubeIdRegex = /^.*\/(?:watch\?v=)?|[?&].+$/g;
 
@@ -49,13 +52,6 @@
     // Iterates over all the iframe elements and set their src attribute
     for (const iframeElement of iframeElements) iframeElement.src = iframeElement.dataset.src!;
   }
-
-
-
-
-
-  // If the list of videos is an object, convert it to a list
-  if (!Array.isArray(videos)) videos = Object.entries(videos);
   
 </script>
 
@@ -177,8 +173,8 @@
 
   <section class="video-collapsible">
 
-    <!-- Iterates over all the videos -->
-    {#each videos as [videoInfo, url]}
+    <!-- Iterates over the list of videos -->
+    {#each listOfVideos as [videoInfo, url]}
       {@const youtubeId = getYoutubeId(url)}
       {@const youtubeTimestamp = getYoutubeTimestamp(url)}
 
