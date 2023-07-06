@@ -1,9 +1,16 @@
 <!-- The page for all the wizard tricks -->
-<script lang="ts">
+<script lang="ts" context="module">
 
   import tricksJson from "$lib/data/tricks/wizard.json";
-  import TrickPage from "$lib/components/pages/tricks/TrickPage.svelte";
+  export { tricksJson };
 
+</script>
+
+<script lang="ts">
+
+  // Import the trick page component
+  import TrickPage from "$lib/components/pages/tricks/TrickPage.svelte";
+  
 </script>
 
 <!-- The HTML for the wizard tricks page -->
