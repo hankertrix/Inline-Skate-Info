@@ -35,7 +35,16 @@
 <style>
 
   .trick {
-    margin-bottom: 5rem;
+    margin-bottom: 5em;
+  }
+
+  .trick-category {
+    margin: 3em 0;
+  }
+
+  /* Make the spacing between two trick categories quite large */
+  .trick-category + .trick-category {
+    margin: 10em 0;
   }
 
 </style>
