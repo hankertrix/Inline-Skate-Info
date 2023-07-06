@@ -1,9 +1,16 @@
 <!-- The page for all the class B aggressive tricks in the grinds category -->
-<script lang="ts">
+<script lang="ts" context="module">
 
   import tricksJson from "$lib/data/tricks/aggressive/class-B/grinds.json";
-  import TrickPage from "$lib/components/pages/tricks/TrickPage.svelte";
+  export { tricksJson };
 
+</script>
+
+<script lang="ts">
+
+  // Import the trick page component
+  import TrickPage from "$lib/components/pages/tricks/TrickPage.svelte";
+  
 </script>
 
 <!-- The HTML for the class B aggressive tricks in the grinds category -->

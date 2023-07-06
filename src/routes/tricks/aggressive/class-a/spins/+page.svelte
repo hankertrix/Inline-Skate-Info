@@ -1,9 +1,16 @@
 <!-- The page for all the class A aggressive tricks in the spins category -->
-<script lang="ts">
+<script lang="ts" context="module">
 
   import tricksJson from "$lib/data/tricks/aggressive/class-A/spins.json";
-  import TrickPage from "$lib/components/pages/tricks/TrickPage.svelte";
+  export { tricksJson };
 
+</script>
+
+<script lang="ts">
+
+  // Import the trick page component
+  import TrickPage from "$lib/components/pages/tricks/TrickPage.svelte";
+  
 </script>
 
 <!-- The HTML for the class A aggressive tricks in the spins category -->

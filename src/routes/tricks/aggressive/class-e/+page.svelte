@@ -1,12 +1,12 @@
 <!-- The page for all of the class E aggressive tricks -->
 <script lang="ts" context="module">
 
-  import stallsTricksJson from "$lib/data/tricks/aggressive/class-E/stalls.json";
-  import grindsTricksJson from "$lib/data/tricks/aggressive/class-E/grinds.json";
-  import airsTricksJson from "$lib/data/tricks/aggressive/class-E/airs.json";
-  import grabsTricksJson from "$lib/data/tricks/aggressive/class-E/grabs.json";
-  import spinsTricksJson from "$lib/data/tricks/aggressive/class-E/spins.json";
-  import othersTricksJson from "$lib/data/tricks/aggressive/class-E/others.json";
+  import { tricksJson as stallsTricksJson } from "./stalls/+page.svelte";
+  import { tricksJson as grindsTricksJson } from "./grinds/+page.svelte";
+  import { tricksJson as airsTricksJson } from "./airs/+page.svelte";
+  import { tricksJson as grabsTricksJson } from "./grabs/+page.svelte";
+  import { tricksJson as spinsTricksJson } from "./spins/+page.svelte";
+  import { tricksJson as othersTricksJson } from "./others/+page.svelte";
 
   // The tricks JSON to pass to the trick page
   export const tricksJson = {
