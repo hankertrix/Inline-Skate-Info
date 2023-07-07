@@ -1,9 +1,14 @@
 <!-- The component to display a category of tricks, or a single trick -->
 <script lang="ts">
 
-  import type { Trick } from "$lib/types";
   import { makeUrlFriendlyString } from "$lib/utils";
   import VideoCollapsible from "$lib/components/general/VideoCollapsible.svelte";
+
+  // The type representing a single trick
+  type Trick = {
+    description: string,
+    videos: [string, string][]
+  };
 
   // The variable to take in the tricks JSON file
   export let tricksJson: any;
@@ -24,7 +29,7 @@
   }
 
 
-  // The function to cast a trick object
+  // The function to cast an object to a trick object
   function castAsTrickObj(obj: any): Trick {
     return obj as Trick;
   }
