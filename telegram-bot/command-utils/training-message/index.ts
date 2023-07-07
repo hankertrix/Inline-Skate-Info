@@ -1,12 +1,14 @@
 // Module to export all the functions to generate the training message
 
 import type { Context } from "telegraf";
-import type { TrainingMessageFunction } from "../../types";
 import { DEV } from "../../../constants";
 import * as trgMsgUtils from "./utils";
 import * as ntu from "./ntu";
 import * as nus from "./nus";
 
+
+// The type representing a training message function
+type TrainingMessageFunction = (ctx: Context, message: string) => Promise<void>;
 
 // The interface for the training message module
 interface TrainingMessageModule {
