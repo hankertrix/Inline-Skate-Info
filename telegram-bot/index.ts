@@ -3,7 +3,7 @@
 import { Telegraf, Scenes, session } from "telegraf";
 import type { Context } from "telegraf";
 import type { InlineQueryResult, InlineKeyboardButton, CallbackQuery, Message } from "telegraf/types";
-import { SPACING, BASE_PATH, DEV } from "../constants";
+import { SPACING, BASE_PATH, DEV } from "../src/lib/constants";
 import * as utils from "./utils";
 import { ctxReply, answerInlineQuery, isAdmin, deleteMessages, messageAndFileCommandHandler, messageAndFileInlineQueryHandler, wrapCallbackWithMessageDeleter } from "./bot-utils";
 import * as scenes from "./bot-scenes";

@@ -2,7 +2,7 @@
 
 import { readFile, readdir } from "node:fs/promises";
 import * as pathLib from "path";
-import { BASE_PATH } from "../constants";
+import { BASE_PATH } from "../src/lib/constants";
 import type { Dict } from "./types";
 
 

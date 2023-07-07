@@ -1,7 +1,7 @@
 // Module to handle the help command
 
 import * as utils from "../utils";
-import { DEV, SPACING } from "../../constants";
+import { DEV, SPACING } from "../../src/lib/constants";
 import { TRICK_FILEPATH_MAP } from "./tricks";
 import { BRAND_CATEGORY } from "./brands";
 

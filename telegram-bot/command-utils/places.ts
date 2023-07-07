@@ -1,7 +1,7 @@
 // Module to handle all the commands related to places, like where to buy skates, where to rent skates and so on
 
 import * as utils from "../utils";
-import { SPACING, CATEGORY_SPACING, LABEL_SPACING } from "../../constants";
+import { SPACING, CATEGORY_SPACING, LABEL_SPACING } from "../../src/lib/constants";
 import type { ObjectValues, Dict, Place } from "../types";
 
 

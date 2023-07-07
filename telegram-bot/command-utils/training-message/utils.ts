@@ -3,7 +3,7 @@
 import type { DateMapping } from "../../types";
 import * as utils from "../../utils";
 import { deleteMessages, wrapCallbackWithMessageDeleter } from "../../bot-utils";
-import { DEV } from "../../../constants";
+import { DEV } from "../../../src/lib/constants";
 import { DEFAULT_POLL_OPTIONS, generatePollMessage } from "../poll";
 
 

@@ -1,7 +1,7 @@
 // Module to handle the commands that returns a list of links and files
 
 import * as utils from "../utils";
-import { SPACING } from "../../constants";
+import { SPACING } from "../../src/lib/constants";
 
 // The enumeration representing all the different lists available
 export enum Lists {

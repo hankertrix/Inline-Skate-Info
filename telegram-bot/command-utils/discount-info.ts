@@ -1,7 +1,7 @@
 // The utilities for the discount info command
 
 import * as utils from "../utils";
-import { SPACING } from "../../constants";
+import { SPACING } from "../../src/lib/constants";
 import type { Dict, Place } from "../types";
 
 

@@ -2,7 +2,7 @@
 
 import type { RequestHandler } from "@sveltejs/kit";
 import { ENABLE_SETTING_WEBHOOK } from "../../../config";
-import { BASE_PATH } from "../../../constants";
+import { BASE_PATH } from "$lib/constants";
 import bot from "../../../telegram-bot";
 
 
