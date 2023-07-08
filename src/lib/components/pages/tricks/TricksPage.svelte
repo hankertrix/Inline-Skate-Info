@@ -2,7 +2,7 @@
 <script lang="ts">
 
   import { makeUrlFriendlyString } from "$lib/utils";
-  import TrickSection from "$lib/components/pages/tricks/TrickSection.svelte";
+  import TricksSection from "./TricksSection.svelte";
 
   // The variable which takes in the title of the page
   export let title: string;
@@ -41,6 +41,6 @@
 <div>
   <h1 id={makeUrlFriendlyString(title)} class="text">{title}</h1>
   <main>
-    <TrickSection {tricksJson} {headingLevel} {changeInHeadingLevel} />
+    <TricksSection {tricksJson} {headingLevel} {changeInHeadingLevel} />
   </main>
 </div>

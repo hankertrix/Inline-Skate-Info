@@ -11,7 +11,7 @@
   import { tricksJson as aggressiveTricksJson } from "./aggressive/+page.svelte";
   import { tricksJson as wizardTricksJson } from "./wizard/+page.svelte";
   import { tricksJson as miscTricksJson } from "./misc/+page.svelte";
-  import TrickPage from "$lib/components/pages/tricks/TrickPage.svelte";
+  import TricksPage from "$lib/components/pages/tricks/TricksPage.svelte";
 
   // The tricks JSON to pass to the page
   const tricksJson = {
@@ -32,4 +32,4 @@
 </script>
 
 <!-- The HTML for the page containing all of the tricks -->
-<TrickPage title="Tricks" {tricksJson} headingLevel={2} changeInHeadingLevel={1} />
+<TricksPage title="Tricks" {tricksJson} headingLevel={2} changeInHeadingLevel={1} />

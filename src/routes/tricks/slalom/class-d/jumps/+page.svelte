@@ -9,9 +9,9 @@
 <script lang="ts">
 
   // Import the trick page component
-  import TrickPage from "$lib/components/pages/tricks/TrickPage.svelte";
+  import TricksPage from "$lib/components/pages/tricks/TricksPage.svelte";
   
 </script>
 
 <!-- The HTML for the class D slalom tricks in the jumps category -->
-<TrickPage title="Jumps, Class D Slalom Tricks" {tricksJson} headingLevel={3} changeInHeadingLevel={1} />
+<TricksPage title="Jumps, Class D Slalom Tricks" {tricksJson} headingLevel={3} changeInHeadingLevel={1} />

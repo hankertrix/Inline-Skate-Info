@@ -19,9 +19,9 @@
 <script lang="ts">
 
   // Import the trick page component
-  import TrickPage from "$lib/components/pages/tricks/TrickPage.svelte";
+  import TricksPage from "$lib/components/pages/tricks/TricksPage.svelte";
   
 </script>
 
 <!-- The HTML for all of the class D slides -->
-<TrickPage title="Class D Slides" {tricksJson} headingLevel={2} changeInHeadingLevel={1} />
+<TricksPage title="Class D Slides" {tricksJson} headingLevel={2} changeInHeadingLevel={1} />
