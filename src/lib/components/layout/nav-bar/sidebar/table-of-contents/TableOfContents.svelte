@@ -3,7 +3,7 @@
 
   import { page } from "$app/stores";
   import { browser } from "$app/environment";
-  import TableOfContentsCollapsibleMenu from "$lib/components/layout/nav-bar/sidebar/table-of-contents/TableOfContentsCollapsibleMenu.svelte";
+  import TableOfContentsCollapsibleMenu from "./TableOfContentsCollapsibleMenu.svelte";
 
   // The variable to store the list of headings on the page
   let headings: NodeListOf<Element>;

@@ -1,10 +1,10 @@
 <!-- The hamburger menu for the website -->
 <script lang="ts">
   
-  import Sidebar from "$lib/components/layout/nav-bar/sidebar/Sidebar.svelte";
-  import MainIcon from "$lib/components/layout/nav-bar/MainIcon.svelte";
-  import SearchBar from "$lib/components/layout/nav-bar/SearchBar.svelte";
-  import ThemeToggler from "$lib/components/layout/nav-bar/ThemeToggler.svelte";
+  import Sidebar from "./sidebar/Sidebar.svelte";
+  import MainIcon from "./MainIcon.svelte";
+  import SearchBar from "./SearchBar.svelte";
+  import ThemeToggler from "./ThemeToggler.svelte";
 
   // The javascript function to add a "checked" class to the nav bar (fallback for firefox which doesn't support the :has selector)
   function addCheckedClass(e: MouseEvent & { currentTarget: HTMLInputElement }) {
