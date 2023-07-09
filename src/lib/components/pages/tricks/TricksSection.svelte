@@ -36,7 +36,7 @@
   
 </script>
 
-<!-- The styles for the trick section -->
+<!-- The styles for the tricks section -->
 <style>
 
   .trick {
@@ -54,7 +54,7 @@
 
 </style>
 
-<!-- The HTML for the trick section -->
+<!-- The HTML for the tricks section -->
 <!-- Iterates over each of the items in the tricks JSON given -->
 {#each Object.entries(tricksJson) as [name, obj]}
 
