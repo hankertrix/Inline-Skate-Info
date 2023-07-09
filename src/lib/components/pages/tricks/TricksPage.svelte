@@ -10,7 +10,7 @@
   // The variable which takes in the JSON data for the tricks
   export let tricksJson: any;
   
-  // The variable to take in the initial heading level
+  // The variable to take in the heading level
   export let headingLevel: number = 2;
 
   // The variable to take in the change in the heading level
