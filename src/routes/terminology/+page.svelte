@@ -22,7 +22,7 @@
     margin-bottom: 5em;
   }
 
-  .page-title {
+  h1 {
     font-family: Oleo Script;
   }
   
@@ -36,7 +36,7 @@
 <!-- The HTML for the terminology page -->
 <main class="terminology-page">
 
-  <h1 class="page-title text" id={makeUrlFriendlyString(title)}>{title}</h1>
+  <h1 class="text" id={makeUrlFriendlyString(title)}>{title}</h1>
 
   <!-- Iterates over all the categories inside the JSON file -->
   {#each Object.entries(terminologyJson) as [categoryName, categoryItems]}
