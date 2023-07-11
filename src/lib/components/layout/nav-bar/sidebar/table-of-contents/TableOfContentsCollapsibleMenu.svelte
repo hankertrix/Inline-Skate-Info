@@ -53,7 +53,7 @@
     border-top: var(--triangle-size) solid transparent;
     border-bottom: var(--triangle-size) solid transparent;
     border-right: var(--triangle-size) solid var(--icon-colour);
-    margin-right: 0.5em;
+    margin: 0 0.5em;
     transition: rotate var(--animation-timing), translate var(--animation-timing);
   }
 
