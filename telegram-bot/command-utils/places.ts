@@ -12,7 +12,7 @@ export const PLACES = {
   OverseasRetailers: "overseas-retailers",
   OnlineRetailers: "online-retailers",
   SkateParks: "skate-parks",
-  Rinks: "rinks"
+  SkatingRinks: "skating-rinks"
 } as const;
 
 // The type representing the places
@@ -27,8 +27,8 @@ export const whereToRentRegex = /^\/?\b(?:(?:(?:places?|where)(?:[ _\-]?to[ _\-]
 // The regex to check for the skate parks command
 export const skateParksRegex = /^\/?\b(?:skate)?[ _\-]?(?:park|ramp)s?\b/i;
 
-// The regex to check for the rinks command
-export const rinksRegex = /^\/?\b(?:skat(?:e|ing))?[ _\-]?rinks?\b/i;
+// The regex to check for the skating rinks command
+export const skatingRinksRegex = /^\/?\b(?:skat(?:e|ing))?[ _\-]?rinks?\b/i;
 
 
 // The spacing between each place

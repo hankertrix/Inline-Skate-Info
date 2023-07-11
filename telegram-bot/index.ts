@@ -596,6 +596,8 @@ bot.inlineQuery(commandUtils.places.whereToRentRegex, async ctx => {
 
 // The handler for the skate parks command
 bot.command([
+  "skate_parks",
+  "skate_park",
   "skateparks",
   "skatepark"
 ], async ctx => {
@@ -635,13 +637,15 @@ bot.inlineQuery(commandUtils.places.skateParksRegex, async ctx => {
 
 // The handler for the rinks command
 bot.command([
+  "skating_rinks",
+  "skating_rink",
   "rinks",
   "rink"
 ], async ctx => {
 
   // Calls the handler for the rinks command to get the reply
   const reply = await commandUtils.places.uncategorisedPlacesHandler(
-    commandUtils.places.PLACES.Rinks
+    commandUtils.places.PLACES.SkatingRinks
   );
 
   // Replies the user with the message
@@ -650,11 +654,11 @@ bot.command([
 
 
 // The inline query handler for the rinks command
-bot.inlineQuery(commandUtils.places.rinksRegex, async ctx => {
+bot.inlineQuery(commandUtils.places.skatingRinksRegex, async ctx => {
 
   // Calls the handler for the rinks command to get the reply
   const reply = await commandUtils.places.uncategorisedPlacesHandler(
-    commandUtils.places.PLACES.Rinks
+    commandUtils.places.PLACES.SkatingRinks
   );
 
   // Answers the inline query

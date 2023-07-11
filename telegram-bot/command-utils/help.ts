@@ -92,11 +92,11 @@ function getCommandDict() {
       explanation: "Displays information about the places where you can rent inline skates in Singapore."
     },
 
-    "skateparks": {
+    "skate_parks": {
       explanation: "Displays information about skateparks in Singapore."
     },
 
-    "rinks": {
+    "skating_rinks": {
       explanation: "Displays information about skating rinks in Singapore."
     },
 
