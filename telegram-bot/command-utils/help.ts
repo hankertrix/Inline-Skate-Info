@@ -93,7 +93,7 @@ function getCommandDict() {
     },
 
     "skate_parks": {
-      explanation: "Displays information about skateparks in Singapore."
+      explanation: "Displays information about skate parks in Singapore."
     },
 
     "skating_rinks": {
