@@ -134,6 +134,7 @@
   .sidebar {
     translate: -100%;
     width: max-content;
+    max-width: 100svw;
     transition: translate var(--animation-timing);
   }
 
