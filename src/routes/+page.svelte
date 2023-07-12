@@ -47,7 +47,7 @@
     gap: 5px;
     font-family: Oleo Script;
     font-weight: bold;
-    font-size: 25px;
+    font-size: 1.5em;
     text-align: center;
     background-color: var(--accent-colour);
     border: 2px solid black;
@@ -67,7 +67,6 @@
     .links-grid {
       display: flex;
       flex-direction: column;
-      gap: 5px;
     }
 
     .links-grid > div:empty {
