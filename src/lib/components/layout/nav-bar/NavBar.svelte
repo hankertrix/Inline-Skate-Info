@@ -182,7 +182,7 @@
 </style>
 
 <!-- The HTML for the top menu -->
-<div class="top-menu">
+<header class="top-menu">
 
   <!-- The nav bar -->
   <nav class="nav-bar">
@@ -222,4 +222,4 @@
     <Sidebar />
   </aside>
   
-</div>
+</header>
