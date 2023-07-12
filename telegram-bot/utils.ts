@@ -448,7 +448,7 @@ function stripHtmlReplacer(match: string) {
 
 // Function to strip html characters from the given text
 export function stripHtml(text: string) {
-  return text.replace(/&|<|>/g, stripHtmlReplacer);
+  return text.replace(/[&<>]/g, stripHtmlReplacer);
 }
 
 
@@ -476,7 +476,7 @@ export function bold(text: string) {
 }
 
 
-// Function to make the first line of the text givevn bold
+// Function to make the first line of the text given bold
 export function boldFirstLine(text: string) {
 
   // Gets the splitted text
