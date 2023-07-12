@@ -13,6 +13,7 @@
     id: string,
     children: any
   }> = new Map();
+
   
   // Function to get the table of contents
   function getTableOfContents(headings: NodeListOf<Element>) {
@@ -109,6 +110,7 @@
     // Returns the table of contents
     return tableOfContents;
   }
+  
 
   // Reactive block
   $: {

@@ -4,6 +4,7 @@
 
   // The table of contents variable to be passed to the collapsible menu
   export let tableOfContents: Map<string, any>;
+
   
   // Function to check if a title has any children
   function titleHasChildren(obj: any) {

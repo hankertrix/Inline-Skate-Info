@@ -6,6 +6,7 @@
   import SearchBar from "./SearchBar.svelte";
   import ThemeToggler from "./ThemeToggler.svelte";
 
+  
   // The javascript function to add a "checked" class to the nav bar (fallback for firefox which doesn't support the :has selector)
   function addCheckedClass(e: MouseEvent & { currentTarget: HTMLInputElement }) {
 
@@ -24,6 +25,7 @@
     // Otherwise, remove the "checked" class from the nav bar if it exists
     else if (classList.contains("checked")) classList.remove("checked");
   }
+  
 </script>
 
 <!-- Styles for the nav bar -->

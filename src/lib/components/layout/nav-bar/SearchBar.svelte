@@ -4,6 +4,7 @@
 
   import { goto } from "$app/navigation";
 
+  
   // The function to handle the submission of the search query
   function handleSearchSubmit(e: SubmitEvent) {
 

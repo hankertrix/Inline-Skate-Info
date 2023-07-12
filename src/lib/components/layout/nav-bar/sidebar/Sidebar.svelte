@@ -1,5 +1,6 @@
 <!-- The side bar that the hamburger menu opens up -->
 <script lang="ts">
+  
   import TableOfContents from "./table-of-contents/TableOfContents.svelte";
   import SidebarCollapsibleMenu from "./SidebarCollapsibleMenu.svelte";
   import { PAGES } from "$lib/constants";
