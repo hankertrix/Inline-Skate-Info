@@ -334,10 +334,10 @@ export function strFormat(str: string, ...args: any[]) {
 }
 
 
-// Function to get a title from the filename
+// Function to get a title from the file name
 export function getTitleFromFilename(filename: string, formatFunc: Function = titlecase) {
 
-  // Remove the file extension from the filename
+  // Remove the file extension from the file name
   filename = filename.replace(/\.\w*$/, "");
 
   // Convert all the underscores and dashes to spaces
