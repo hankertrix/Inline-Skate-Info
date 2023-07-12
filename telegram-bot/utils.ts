@@ -308,20 +308,6 @@ export function titlecase(str: string) {
 }
 
 
-// Function to capitalise the first character of the first word in the string only, with the rest of the string in lowercase
-export function sentencecase(str: string) {
-
-  // Gets the first character and makes it uppercase
-  const firstChar = str[0].toUpperCase();
-
-  // Converts the rest of the string to lowercase
-  const restOfString = str.slice(1).toLowerCase();
-
-  // Joins the first character back with the rest of the string and returns the result
-  return `${firstChar}${restOfString}`;
-}
-
-
 // Function to format a string with the arguments given
 export function strFormat(str: string, ...args: any[]) {
 
