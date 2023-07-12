@@ -21,7 +21,7 @@
 <!-- The styles for the places page -->
 <style>
 
-  div {
+  main {
     margin: var(--page-margin);
   }
 
@@ -37,9 +37,9 @@
 </svelte:head>
 
 <!-- The HTML for the places page -->
-<div>
-  <h1 id={makeUrlFriendlyString(title)} class="text">{title}</h1>
-  <main>
+<main>
+  <h1 class="text" id={makeUrlFriendlyString(title)}>{title}</h1>
+  <div>
     <PlacesSection {placesJson} {headingLevel} {changeInHeadingLevel} />
-  </main>
-</div>
+  </div>
+</main>

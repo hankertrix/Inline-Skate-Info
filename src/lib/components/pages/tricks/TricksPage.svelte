@@ -21,7 +21,7 @@
 <!-- The styles for the trick page -->
 <style>
 
-  div {
+  main {
     margin: var(--page-margin);
     width: 100%;
   }
@@ -38,9 +38,9 @@
 </svelte:head>
 
 <!-- The HTML for the tricks page -->
-<div>
-  <h1 id={makeUrlFriendlyString(title)} class="text">{title}</h1>
-  <main>
+<main>
+  <h1 class="text" id={makeUrlFriendlyString(title)}>{title}</h1>
+  <div>
     <TricksSection {tricksJson} {headingLevel} {changeInHeadingLevel} />
-  </main>
-</div>
+  </div>
+</main>
