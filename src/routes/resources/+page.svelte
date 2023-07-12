@@ -89,7 +89,7 @@
     <!-- Iterates over all of the pages with resources -->
     {#each pagesWithResources as page}
 
-      <a href={`${urlFriendlyTitle}/${makeUrlFriendlyString(page)}`} target="_blank">{page}</a>
+      <a href={`${urlFriendlyTitle}/${makeUrlFriendlyString(page)}`}>{page}</a>
       
     {/each}
     
