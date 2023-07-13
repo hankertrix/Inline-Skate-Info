@@ -476,10 +476,10 @@ export function reverseDict(dict: ReversibleDict) {
 function unstripValidHtmlTags(text: string) {
 
   // The regular expression to check for valid HTML tags that have been stripped
-  const strippedHtmlRegex = /&gt;(?:a .+?|code|i|b)&lt;.+?&gt;\/(?:a|code|i|b)&lt;/g;
+  const strippedHtmlRegex = /&lt;(?:a .+?|code|i|b)&gt;.+?&lt;\/(?:a|code|i|b)&gt;/g;
 
   // The regular expression to find all the HTML entities for the "<" and the ">" symbol
-  const htmlEntitiesRegex = /&gt;|&lt;/g;
+  const htmlEntitiesRegex = /&lt;|&gt;/g;
 
   // The dictionary to convert a HTML entity into a character
   const htmlEntityToChar = reverseDict(charToHtmlEntity);
