@@ -102,7 +102,7 @@
       {#if "website" in placeObj}
 
         <!-- Hyperlink the website with the name of the place -->
-        <svelte:element this={heading} id={urlFriendlyName} class="text"><a href={placeObj.website} target="_blank">{name}</a></svelte:element>
+        <svelte:element this={heading} id={urlFriendlyName} class="text"><a href={placeObj.website} target="_blank" title="View their website">{name}</a></svelte:element>
 
       <!-- Otherwise -->
       {:else}
@@ -149,7 +149,7 @@
             <!-- Displays the address in bold with the address link -->
             <div class="text">
               <strong>{titleCasedAttribute}: </strong>
-              <a href={placeObj.mapLink} target="_blank">{@html value}</a>
+              <a href={placeObj.mapLink} target="_blank" title="View the address on Google Maps">{@html value}</a>
             </div>
             
           <!-- Otherwise -->
