@@ -18,12 +18,20 @@
     margin: var(--page-margin);
   }
 
-  .category-wrapper {
-    margin-bottom: 5em;
-  }
-
   h1 {
     font-family: Oleo Script;
+  }
+
+  .category {
+    margin: 3em 0;
+  }
+
+  .category+ .category {
+    margin: 10em 0;
+  }
+
+  .term {
+    margin-bottom: 5em;
   }
   
 </style>
@@ -41,21 +49,26 @@
   <!-- Iterates over all the categories inside the JSON file -->
   {#each Object.entries(terminologyJson) as [categoryName, categoryItems]}
 
-    <section class="category-wrapper">
+    <section class="category">
 
       <!-- Display the category title -->
-      <h3 class="category-title text" id={makeUrlFriendlyString(categoryName)}>{categoryName}</h3>
+      <h2 class="category-title text" id={makeUrlFriendlyString(categoryName)}>{categoryName}</h2>
 
       <!-- Iterates over all the terms and definitions in the category -->
       {#each Object.entries(categoryItems) as [term, definition]}
 
-        <!-- Display the term and its definition -->
-        <p class="text">
-          <strong>{term}: </strong>
-          {@html definition}
-        </p>
+        <section class="term">
+          
+          <!-- Display the term and its definition -->
+          <h3 class="text" id={makeUrlFriendlyString(term)}>{term}</h3>
+          <p class="text">{@html definition}</p>
+          
+        </section>
+        
       {/each}
+      
     </section>
+    
   {/each}
   
 </main>
