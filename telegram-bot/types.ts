@@ -3,7 +3,13 @@
 
 // The dictionary type
 export type Dict<T> = {
-  [key: string | number] : T | Dict<T>
+  [key: string | number]: T | Dict<T>
+};
+
+
+// The type representing a dictionary that can be reversed
+export type ReversibleDict = {
+  [key: string | symbol | number]: string | symbol | number
 };
 
 
