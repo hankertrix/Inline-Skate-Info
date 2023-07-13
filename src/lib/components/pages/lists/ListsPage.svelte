@@ -7,7 +7,7 @@
   // The type of the JSON data in the lists folder
   type ListsJson = {
     heading: string,
-    links: [string, string][],
+    links: string[][],
     files: string[]
   };
   
