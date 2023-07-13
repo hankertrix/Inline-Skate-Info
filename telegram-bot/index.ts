@@ -269,7 +269,7 @@ bot.inlineQuery(commandUtils.lists.buyingGuidesRegex, async ctx => {
   // Use the general handler for this inline query as the function to generate a the data returns a message and a list of paths to the files
   await messageAndFileInlineQueryHandler(ctx, () => commandUtils.lists.generateListsText(
     commandUtils.lists.Lists.BuyingGuides
-  ), false);
+  ));
 });
 
 
