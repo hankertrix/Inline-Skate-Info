@@ -73,7 +73,7 @@
 
     <article class="brand">
 
-      <svelte:element this={heading} id={urlFriendlyName} class="text"><a href={brandObj.link} target="_blank">{name}</a></svelte:element>
+      <svelte:element this={heading} id={urlFriendlyName} class="text"><a href={brandObj.link} target="_blank" title="Visit the website">{name}</a></svelte:element>
       <p class="text">{@html brandObj.description}</p>
       
     </article>
