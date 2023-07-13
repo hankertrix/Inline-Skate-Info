@@ -94,7 +94,7 @@
       {#each discountInfoJson.pdfFiles as file}
 
         <!-- Display the link to the catalogue -->
-        <a href={convertFilePathToUrl(file)} target="_blank">{getFilenameFromFilePath(file)}</a>
+        <a href={convertFilePathToUrl(file)} target="_blank" title="View the discounted skates">{getFilenameFromFilePath(file)}</a>
 
       {/each}
 
