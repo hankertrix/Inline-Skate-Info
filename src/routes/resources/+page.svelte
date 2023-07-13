@@ -1,4 +1,4 @@
-<!-- The page to display all of the resources -->
+<!-- The landing page for all of the resources -->
 <script lang="ts">
 
   import { makeUrlFriendlyString } from "$lib/utils";
@@ -11,7 +11,7 @@
   const urlFriendlyTitle = makeUrlFriendlyString(title);
 
   // The pages containing resources
-  const pagesWithResources = Object.keys(PAGES["Resources"]);
+  const pagesWithResources = Object.keys(PAGES[title]);
   
 </script>
 
