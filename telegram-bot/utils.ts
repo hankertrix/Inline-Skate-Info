@@ -3,7 +3,14 @@
 import { readFile, readdir } from "node:fs/promises";
 import * as pathLib from "path";
 import { BASE_PATH } from "../src/lib/constants";
-import type { Dict } from "./types";
+import type { Dict, ReversibleDict } from "./types";
+
+// The dictionary to convert a character to a HTML entity
+const charToHtmlEntity = {
+  ">": "&gt;",
+  "<": "&lt;",
+  "&": "&amp;",
+} as const;
 
 
 // Function to check if something is an object
@@ -412,43 +419,14 @@ export function removeHtml(text: string) {
 }
 
 
-// The function to replace the HTML characters in the stripHtml function
-function stripHtmlReplacer(match: string) {
-
-  // Initialise the replacement string
-  let replacementStr = match;
-
-  // Switch statement to deal with all the cases
-  switch (match) {
-
-    // Returns the matched string by default
-    default:
-      break;
-
-    // Replace the ampersand character with the HTML escaped version
-    case "&":
-      replacementStr = "&amp;";
-      break;
-
-    // Replace the left arrow character with the HTML escaped version
-    case "<":
-      replacementStr = "&lt;";
-      break;
-
-    // Replace the right arrow character with the HTML escaped version
-    case ">":
-      replacementStr = "&gt;";
-      break;
-  }
-
-  // Returns the replacement string
-  return replacementStr;
-}
-
-
-// Function to strip html characters from the given text
+// Function to strip HTML characters from the given text
 export function stripHtml(text: string) {
-  return text.replace(/[&<>]/g, stripHtmlReplacer);
+  return text.replace(
+    /[&<>]/g,
+
+    // The HTML characters in the given text are replaced with their respective HTML entities using the charToHtmlEntity dictionary
+    char => dictGet(charToHtmlEntity, char, char)
+  );
 }
 
 
@@ -476,14 +454,65 @@ export function bold(text: string) {
 }
 
 
+// Function to reverse a dictionary
+export function reverseDict(dict: ReversibleDict) {
+
+  // Initialise the reverse dictionary
+  const reversedDict: ReversibleDict = {};
+
+  // Iterates over the dictionary
+  for (const [key, value] of Object.entries(dict)) {
+
+    // Sets the value of the original dictionary as the key in the reversed dictionary and vice versa
+    reversedDict[value] = key;
+  }
+
+  // Returns the reversed dictionary
+  return reversedDict;
+}
+
+
+// The function to unstrip stripped HTML tags (the "<" and ">" of the HTML tags has been converted to their respective entities)
+function unstripValidHtmlTags(text: string) {
+
+  // The regular expression to check for valid HTML tags that have been stripped
+  const strippedHtmlRegex = /&gt;(?:a .+?|code|i|b)&lt;.+?&gt;\/(?:a|code|i|b)&lt;/g;
+
+  // The regular expression to find all the HTML entities for the "<" and the ">" symbol
+  const htmlEntitiesRegex = /&gt;|&lt;/g;
+
+  // The dictionary to convert a HTML entity into a character
+  const htmlEntityToChar = reverseDict(charToHtmlEntity);
+
+  // Unstrip all the valid HTML tags
+  return text.replace(
+    strippedHtmlRegex,
+
+    // Match refers to a valid HTML tag that has been stripped
+    match => match.replace(
+      htmlEntitiesRegex,
+
+      // The HTML entities for "<" and ">" in the valid HTML tag are changed back into regular characters using the htmlEntityToChar dictionary
+      char => dictGet(htmlEntityToChar, char, char)
+    )
+  );
+}
+
+
 // Function to make the first line of the text given bold
 export function boldFirstLine(text: string) {
 
   // Gets the splitted text
   const splittedText = text.trim().split("\n");
 
+  // Strips the HTML from the first line
+  const strippedFirstLine = stripHtml(splittedText[0]);
+
+  // Bold and unstrip the valid HTML tags from the first line
+  const firstLine = bold(unstripValidHtmlTags(strippedFirstLine));
+
   // Returns the message with the first line bolded
-  return `${bold(stripHtml(splittedText[0]))}\n${splittedText.slice(1).join("\n") ?? ""}`.trim();
+  return `${firstLine}\n${splittedText.slice(1).join("\n") ?? ""}`.trim();
 }
 
 
