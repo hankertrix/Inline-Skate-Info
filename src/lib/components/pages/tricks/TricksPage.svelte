@@ -39,8 +39,13 @@
 
 <!-- The HTML for the tricks page -->
 <main>
-  <h1 class="text" id={makeUrlFriendlyString(title)}>{title}</h1>
+  
+  <header>
+    <h1 class="text" id={makeUrlFriendlyString(title)}>{title}</h1>
+  </header>
+  
   <div>
     <TricksSection {tricksJson} {headingLevel} {changeInHeadingLevel} />
   </div>
+  
 </main>

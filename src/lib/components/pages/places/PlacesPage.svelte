@@ -38,8 +38,13 @@
 
 <!-- The HTML for the places page -->
 <main>
-  <h1 class="text" id={makeUrlFriendlyString(title)}>{title}</h1>
+  
+  <header>
+    <h1 class="text" id={makeUrlFriendlyString(title)}>{title}</h1>
+  </header>
+  
   <div>
     <PlacesSection {placesJson} {headingLevel} {changeInHeadingLevel} />
   </div>
+  
 </main>
