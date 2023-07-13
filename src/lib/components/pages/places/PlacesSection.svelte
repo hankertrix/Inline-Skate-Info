@@ -102,7 +102,7 @@
       {#if "website" in placeObj}
 
         <!-- Hyperlink the website with the name of the place -->
-        <svelte:element this={heading} id={urlFriendlyName} class="text"><a href={placeObj.website} target="_blank" title="View their website">{name}</a></svelte:element>
+        <svelte:element this={heading} id={urlFriendlyName} class="text"><a href={placeObj.website} target="_blank" title="Visit the website">{name}</a></svelte:element>
 
       <!-- Otherwise -->
       {:else}
