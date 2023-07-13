@@ -36,8 +36,8 @@
   const phoneNumRegex = /\+\d+ (?:\d+(?:[\- ]\b|\b)){2,}/g;
 
 
-  // The function to check if an object is a place
-  function isPlace(obj: any) {
+  // The function to check if an object is a place object
+  function isPlaceObject(obj: any) {
 
     // Checks if the attributes present in the object is a subset of the attributes in the place object and returns the result
     return Object.keys(obj).every(attribute => (PLACE_ATTRIBUTES as readonly string[]).includes(attribute));
@@ -91,7 +91,7 @@
   {@const heading = `h${headingLevel}`}
 
   <!-- If the object is a place -->
-  {#if isPlace(obj)}
+  {#if isPlaceObject(obj)}
 
     <!-- Cast the object to a place object -->
     {@const placeObj = castAsPlaceObject(obj)}
