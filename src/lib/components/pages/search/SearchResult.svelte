@@ -33,7 +33,7 @@
 </style>
 
 <!-- The HTML for the search result -->
-<div class="search-result">
+<section class="search-result">
   <a class="result-title" href={convertPagefindUrl(result.url)}>{result.meta.title}</a>
   <div class="result-excerpt text">{@html result.excerpt}</div>
-</div>
+</section>

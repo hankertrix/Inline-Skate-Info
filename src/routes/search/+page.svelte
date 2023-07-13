@@ -78,7 +78,7 @@
 {#if numberOfResults < 1}
 
   <!-- Show that there are no results found and ask the user to try a different search term -->
-  <div class="no-results">
+  <main class="no-results">
     <p class="text">
       Sorry, there are no results found for '{searchTerm}'.
       <br>
@@ -87,26 +87,26 @@
     <a href="/" title="Return to the home page">
       Return to the home page.
     </a>
-  </div>
+  </main>
 
 <!-- If there are results -->
 {:else}
 
-  <div class="results-wrapper">
+  <main class="results-wrapper">
     
     <!-- Show how many results were found -->
-    <div class="number-of-results">{numberOfResults} {numberOfResults > 1 ? "results" : "result"} found for '{searchTerm}'.</div>
+    <section class="number-of-results">{numberOfResults} {numberOfResults > 1 ? "results" : "result"} found for '{searchTerm}'.</section>
 
     <!-- The wrapper for the search results -->
-    <div class="search-results">
+    <section class="search-results">
       
       <!-- Display the results -->
       {#each results as result}
         <SearchResult {result} />
       {/each}
       
-    </div>
+    </section>
 
-  </div>
+  </main>
   
 {/if}
