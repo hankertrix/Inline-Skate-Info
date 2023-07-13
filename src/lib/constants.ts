@@ -189,7 +189,7 @@ export const PAGES = {
     "Misc": "",
   },
 
-  "Discount Info": "",
+  "Discount Information": "",
 
   "Skate Recommendations": "",
 
