@@ -162,7 +162,7 @@
 <!-- The HTML for the video collapsible -->
 <details>
   <summary title={title} on:click|once={loadEmbeds}>
-    <div class="text">{videos.length} videos</div>
+    <div class="text">{listOfVideos.length} videos</div>
     <div class="icon-wrapper">
       <div class="plus-icon">
         <div class="vertical-bar"></div>
