@@ -6,13 +6,13 @@ import * as trgMsgUtils from "./utils";
 
 
 // The location of the training
-const trainingLocation = "ntu Mpc 1";
+const trainingLocation = utils.hyperlink("NTU MPC 1", "https://goo.gl/maps/uwQk8Q38B4Rdv18B8");
 
 // The training dates
 const trainingDates = ["2022-12-28T19:00:00.000", "2022-12-30T19:00:00.000"];
 
 // The training message
-const trainingMsg = "👾{last} {day} cca training @{location} @{date} 👾";
+const trainingMsg = "👾{last} {day} CCA Training @{location} @{date} 👾";
 
 
 
