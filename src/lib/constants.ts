@@ -214,7 +214,7 @@ export const PAGES = {
   },
 
   "Differences": {
-    "Tri-skates": "",
+    "Triskates": "",
     "FR Skates": "",
     "Boot Types": "",
   },
