@@ -39,7 +39,7 @@ const TITLE_SPACING = "";
 
 
 // Function to load the JSON data of the places
-async function loadPlacesJson(place: Places) {
+export async function loadPlacesJson(place: Places) {
 
   // Loads and returns the JSON data
   return await utils.loadJsonData(`places/${place}`);

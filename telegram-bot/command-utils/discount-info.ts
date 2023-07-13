@@ -1,6 +1,7 @@
 // The utilities for the discount info command
 
 import * as utils from "../utils";
+import { PLACES, loadPlacesJson } from "./places";
 import { SPACING } from "../../src/lib/constants";
 import type { Dict, Place } from "../types";
 
@@ -21,7 +22,7 @@ export const regex = /^\/?\bdiscount[ _\-]?(?:info(?:rmation)?)?\b/i;
 async function getDiscountApplicableStoresDetails(listSlice: number[]) {
 
   // Loads the JSON data for the retailers in Singapore
-  const data = await utils.loadJsonData("places/singapore-retailers") as Dict<Place>;
+  const data = await loadPlacesJson(PLACES.RetailersInSingapore) as Dict<Place>;
 
   // The list of strings to make up the final string containing all the stores' details
   const detailStrList: string[] = [];
