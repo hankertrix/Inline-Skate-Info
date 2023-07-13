@@ -47,3 +47,26 @@ export function titlecase(str: string) {
   // Returns the new titlecased string
   return chars.join("");
 }
+
+
+// Function to convert a file path to a URL
+export function convertFilePathToUrl(filePath: string) {
+  return filePath.replace(/^.*\/static/, "").trim();
+}
+
+
+// Function to get the file name from a file path
+export function getFilenameFromFilePath(filePath: string) {
+
+  // Remove everything from the start of the file path to get the file name
+  let filename = filePath.replace(/^.*\//, "");
+
+  // Remove the file extension from the file name
+  filename = filename.replace(/\.\w*$/, "");
+
+  // Convert all the underscores and dashes to spaces
+  filename = filename.replace(/[_\-]/g, " ");
+
+  // Returns the titlecased file name
+  return titlecase(filename).trim();
+}

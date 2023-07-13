@@ -2,7 +2,7 @@
 <!-- The pages are usually under the resources route -->
 <script lang="ts">
 
-  import { makeUrlFriendlyString, titlecase } from "$lib/utils";
+  import { makeUrlFriendlyString, titlecase, convertFilePathToUrl, getFilenameFromFilePath } from "$lib/utils";
 
   // The type of the JSON data in the lists folder
   type ListsJson = {
@@ -19,29 +19,6 @@
 
   // Gets the heading from the JSON data
   const heading = listsJson.heading;
-
-
-  // Function to convert a file path to a URL
-  function convertPathToUrl(filepath: string) {
-    return filepath.replace(/^.*\/static/, "").trim();
-  }
-
-  
-  // Function to get the file name from a file path
-  function getFilename(filepath: string) {
-
-    // Remove everything from the start of the file path to get the file name
-    let filename = filepath.replace(/^.*\//, "");
-
-    // Remove the file extension from the file name
-    filename = filename.replace(/\.\w*$/, "");
-
-    // Convert all the underscores and dashes to spaces
-    filename = filename.replace(/[_\-]/g, " ");
-
-    // Returns the titlecased file name
-    return titlecase(filename).trim();
-  }
   
 </script>
 
@@ -126,7 +103,7 @@
         {#each listsJson.files as file}
 
           <!-- Display the link to the file -->
-          <a href={convertPathToUrl(file)} target="_blank">{getFilename(file)}</a>
+          <a href={convertFilePathToUrl(file)} target="_blank">{getFilenameFromFilePath(file)}</a>
 
         {/each}
 
