@@ -175,7 +175,7 @@
     <section class="place-category">
 
       <!-- Adds the category title -->
-      <svelte:element this={heading} id={headingId}>{name}</svelte:element>
+      <svelte:element this={heading} id={headingId} class="text">{name}</svelte:element>
       <svelte:self placesJson={obj} headingLevel={headingLevel + changeInHeadingLevel} {changeInHeadingLevel} parentId={headingId} />
 
     </section>
