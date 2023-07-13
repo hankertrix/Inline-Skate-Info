@@ -503,7 +503,7 @@ bot.command([
 bot.inlineQuery(commandUtils.discountInfo.regex, async ctx => {
 
   // Use the general handler for this inline query as the function to generate a the data returns a message and a list of paths to the files
-  await messageAndFileInlineQueryHandler(ctx, commandUtils.discountInfo.generateDiscountInfo, true, "\n\n\n\n\nLinks to the PDF files with pricing information:\n\n\n");
+  await messageAndFileInlineQueryHandler(ctx, commandUtils.discountInfo.generateDiscountInfo, true, "\n\n\n\n\nLinks to the PDF catalogues:\n\n\n");
 });
 
 
