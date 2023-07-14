@@ -12,6 +12,9 @@ export const POST: RequestHandler = async function({ request, url }) {
   // Try block to handle errors
   try {
 
+    // Set the default timezone to "Asia/Singapore"
+    process.env.TZ = "Asia/Singapore";
+
     // Checks if the query is to set a webhook
     if (url.searchParams.get("setWebhook") === "true" && ENABLE_SETTING_WEBHOOK) {
 
