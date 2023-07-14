@@ -71,11 +71,11 @@
             {:else}
 
               <!-- Display the information in an unordered list -->
-              <ul>
+              <ul class="text">
 
                 <!-- Iterates over each of the strings inside the list -->
                 {#each info as line}
-                  <li class="text">{line}</li>
+                  <li>{line}</li>
                 {/each}
 
               </ul>
