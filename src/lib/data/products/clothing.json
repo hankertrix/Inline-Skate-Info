@@ -9,9 +9,9 @@
     "link": "https://www.lifestylemart.com/inventory/show.php?itemid=6"
   },
 
-  "Kipsta F500 Football Socks (Green)": {
-    "price": "$2.00",
-    "link": "https://www.decathlon.sg/p/football-socks-kipsta-f500-green-kipsta-8528516.html"
+  "Long Boot Socks (Lifestylemart)": {
+    "price": "$3.23 for large, $3.34 for medium and $3.65 for small",
+    "link": "https://www.lifestylemart.com/inventory/show.php?itemid=5"
   },
 
   "Long Boot Socks (Lazada)": {
@@ -27,10 +27,5 @@
   "Kipsta F100 Football Socks (Blue)": {
     "price": "$3.40",
     "link": "https://www.decathlon.sg/p/football-socks-kipsta-f100-blue-kipsta-8526961.html"
-  },
-
-  "Long Boot Socks (Lifestylemart)": {
-    "price": "$3.65",
-    "link": "https://www.lifestylemart.com/inventory/show.php?itemid=5"
   }
 }
