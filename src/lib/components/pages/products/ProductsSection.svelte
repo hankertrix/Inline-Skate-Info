@@ -75,7 +75,7 @@
       
       <!-- Displays the product and it's price -->
       <!-- The heading is also hyperlinked -->
-      <svelte:element this={heading} id={headingId} class="text"><a href={obj.link} target="_blank" title="Visit the product page">{name} - {productObj.price}</a></svelte:element>
+      <svelte:element this={heading} id={headingId} class="text"><a href={productObj.link} target="_blank" title="Visit the product page">{name} - {productObj.price}</a></svelte:element>
 
     </section>
 
