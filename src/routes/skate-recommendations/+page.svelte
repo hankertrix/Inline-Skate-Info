@@ -7,10 +7,18 @@
 
   // The title for the page
   const title = "Skate Recommendations";
+  
 
   // Function to add a soft hyphen (&shy;) to a string at a specified position
   function addSoftHyphen(str: string, position: number) {
     return `${title.slice(0, position)}&shy;${title.slice(position)}`;
+  }
+
+
+  // Function to cast the video object to a suitable type for the videos collapsible
+  // Typescript somehow doesn't recognise the type of the video object for some reason
+  function castAsVideoObject(obj: any) {
+    return obj as { [title: string]: string };
   }
   
 </script>
@@ -64,10 +72,13 @@
     <section class="recommendations">
 
       <!-- Iterates over the category of recommended skates -->
-      {#each Object.entries(skateRecsJson.recommendations) as [category, [recommendedSkates, videos]]}
+      {#each Object.entries(skateRecsJson.recommendations) as [category, [recommendedSkates, listOfVideos]]}
 
         <!-- The heading for the videos -->
         {@const videoHeading = "Video Recommendations"}
+
+        <!-- Gets the list of videos casted as a video object -->
+        {@const videos = castAsVideoObject(listOfVideos)}
 
         <section class="recommendation-category">
           
