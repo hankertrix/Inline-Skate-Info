@@ -19,6 +19,10 @@
     margin: var(--page-margin);
   }
 
+  h1 {
+    font-family: Oleo Script;
+  }
+
   .boot-type {
     margin: 3em 0;
   }
