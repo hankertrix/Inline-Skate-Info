@@ -4,7 +4,7 @@
 	"private": true,
 	"scripts": {
 		"dev": "vite dev --host",
-    "prebuild": "cp src/lib/data static/",
+    "prebuild": "cp -r src/lib/data static/",
 		"build": "vite build",
 		"postbuild": "pagefind",
 		"preview": "vite preview --host",
