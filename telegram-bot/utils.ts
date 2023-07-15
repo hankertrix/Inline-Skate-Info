@@ -123,35 +123,11 @@ export async function loadJsonDirectory(path: string) {
 }
 
 
-// Function to check if the environment is the production environment
-export function isProduction() {
-  return process.env.VERCEL_ENV === "production";
-}
-
-
-// Function to get the root file path for the JSON files
-export function getJsonRoot() {
-  return isProduction() ? "./static/" : "./src/lib/";
-}
-
-
 // Function to load a JSON file from the data folder
-export async function loadJsonData(path: string, root: string = `${getJsonRoot()}data/`) {
-
-  console.log(process.cwd());
-
-  const child = await import("node:child_process");
-  child.exec("ls ..",  (error, stdout, stderr) => {
-    if (error) {
-      console.error(`exec error: ${error}`);
-      return;
-    }
-    console.log(`stdout: ${stdout}`);
-    console.error(`stderr: ${stderr}`);
-  });
+export async function loadJsonData(path: string, root: string = "./src/lib/data/") {
 
   // Gets the file path
-  let filePath = `${root ? root : getJsonRoot()}${path}`;
+  let filePath = `${root ? root : "./src/lib/"}${path}`;
   
   // Replace multiple consecutive slashes in the file path with a single slash
   filePath = filePath.replace(/\/{2,}/g, "/");
