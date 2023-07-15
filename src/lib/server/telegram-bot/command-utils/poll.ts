@@ -3,7 +3,7 @@
 import * as utils from "../utils";
 import type { Context } from "telegraf";
 import type { User, InlineKeyboardButton } from "telegraf/types";
-import { SPACING } from "../../src/lib/constants";
+import { SPACING } from "$lib/constants";
 
 
 // The default poll options

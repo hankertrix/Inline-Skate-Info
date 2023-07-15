@@ -2,7 +2,7 @@
 
 import { readFile, readdir } from "node:fs/promises";
 import * as pathLib from "path";
-import { getBasePath } from "../src/lib/constants";
+import { getBasePath } from "$lib/constants";
 import type { Dict, ReversibleDict } from "./types";
 
 // The dictionary to convert a character to a HTML entity
@@ -124,10 +124,10 @@ export async function loadJsonDirectory(path: string) {
 
 
 // Function to load a JSON file from the data folder
-export async function loadJsonData(path: string, root: string = "./src/lib/data/") {
+export async function loadJsonData(path: string, root: string = "$lib/data/") {
 
   // Gets the file path
-  let filePath = `${root ? root : "./src/lib/"}${path}`;
+  let filePath = `${root ? root : "$lib/"}${path}`;
   
   // Replace multiple consecutive slashes in the file path with a single slash
   filePath = filePath.replace(/\/{2,}/g, "/");
@@ -147,10 +147,10 @@ export async function loadJsonData(path: string, root: string = "./src/lib/data/
 
 
 // Function to load a PDF file from the PDF folder
-export async function loadPdfFile(path: string, root: string = "./static/pdf/") {
+export async function loadPdfFile(path: string, root: string = "$lib/../../static/pdf/") {
   
   // Gets the file path
-  let filePath = `${root ? root : "./src/lib/"}${path}${path.endsWith(".pdf") ? "" : ".pdf"}`;
+  let filePath = `${root ? root : "$lib/../../static/pdf/"}${path}${path.endsWith(".pdf") ? "" : ".pdf"}`;
 
   // Loads the PDF file
   const file = await readFile(filePath, "utf8");

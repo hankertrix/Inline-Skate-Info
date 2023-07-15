@@ -1,7 +1,7 @@
 // Module to export all the functions to generate the training message
 
 import type { Context } from "telegraf";
-import { DEV } from "../../../src/lib/constants";
+import { DEV } from "$lib/constants";
 import * as trgMsgUtils from "./utils";
 import * as ntu from "./ntu";
 import * as nus from "./nus";

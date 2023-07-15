@@ -1,7 +1,7 @@
 // Module containing the utilities to handle the tricks command
 
 import * as utils from "../utils";
-import { SPACING, CATEGORY_SPACING, LABEL_SPACING } from "../../src/lib/constants";
+import { SPACING, CATEGORY_SPACING, LABEL_SPACING } from "$lib/constants";
 import { loadFundamentalTricks } from "../normalise-data";
 
 

@@ -1,7 +1,7 @@
 // The module that contains the utilities for the FR skates difference command
 
 import * as utils from "../utils";
-import { SPACING } from "../../src/lib/constants";
+import { SPACING } from "$lib/constants";
 
 
 // The type of the JSON data containing the differences between FR skates
