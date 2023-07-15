@@ -10,16 +10,6 @@ import path from "path";
 // Function to handle the POST request
 export const POST: RequestHandler = async function({ request, url }) {
 
-  const child = await import("node:child_process");
-  child.exec("ls -R", (error, stdout, stderr) => {
-    if (error) {
-      console.error(`exec error: ${error}`);
-      return;
-    }
-    console.log(`stdout: ${stdout}`);
-    console.error(`stderr: ${stderr}`);
-  });
-
   // Try block to handle errors
   try {
 
