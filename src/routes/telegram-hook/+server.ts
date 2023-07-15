@@ -10,8 +10,6 @@ import path from "path";
 // Function to handle the POST request
 export const POST: RequestHandler = async function({ request, url }) {
 
-  const dataDir = path.join(process.cwd(), "src/lib/data");
-  const pdfDif = path.join(process.cwd(), "static/pdf");
   const child = await import("node:child_process");
   child.exec("ls -R", (error, stdout, stderr) => {
     if (error) {
