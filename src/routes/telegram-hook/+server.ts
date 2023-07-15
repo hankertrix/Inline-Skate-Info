@@ -15,6 +15,8 @@ export const POST: RequestHandler = async function({ request, url }) {
     // Checks if the query is to set a webhook
     if (url.searchParams.get("setWebhook") === "true" && ENABLE_SETTING_WEBHOOK) {
 
+      console.log(process.env);
+
       // Gets the webhook URL
       const webhookUrl = `${BASE_PATH}/telegram-hook?secretHash=${process.env.SECRET_HASH}`;
 
