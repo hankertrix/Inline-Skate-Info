@@ -1,1 +1,0 @@
-export { default as component } from "../../../../src/routes/tricks/aggressive/class-d/grabs/+page.svelte";

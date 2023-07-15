@@ -1,1 +1,0 @@
-export { default as component } from "../../../../src/routes/tricks/slalom/class-c/others/+page.svelte";

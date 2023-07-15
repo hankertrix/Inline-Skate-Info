@@ -1,1 +1,0 @@
-export { default as component } from "../../../../src/routes/tricks/aggressive/class-c/stalls/+page.svelte";
