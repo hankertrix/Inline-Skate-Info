@@ -1,3 +1,4 @@
 {
-  "source": ".svelte-kit"
+  "source": ".svelte-kit",
+  "bundle_dir": "output/client/_pagefind"
 }
