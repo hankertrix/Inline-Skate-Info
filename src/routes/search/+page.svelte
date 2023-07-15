@@ -32,11 +32,12 @@
     align-items: center;
     text-align: center;
     font-size: 18px;
+    margin: var(--page-margin);
   }
 
   /* Styles for the page when there are results */
   .results-wrapper {
-    margin: 50px var(--page-left-right-margin);
+    margin: 50px var(--page-left-right-margin) 5em;
   }
 
   :global(.light) .number-of-results {
@@ -53,25 +54,32 @@
     font-size: 14px;
     color: var(--colour);
     opacity: var(--opacity);
-    margin-bottom: 15px;
+    margin-bottom: 1.2em;
   }
 
   .search-results {
     display: flex;
     flex-direction: column;
-    justify-items: center;
-    align-items: left;
-    gap: 20px;
+    gap: 3em;
   }
 
   @media only screen and (max-width: 700px) {
 
     .results-wrapper {
-      margin: 15px var(--page-left-right-margin);
+      margin: 25px var(--page-left-right-margin) 5em;
+    }
+
+    .number-of-results {
+      margin-bottom: 1em;
     }
   }
   
 </style>
+
+<!-- The headers for the page -->
+<svelte:head>
+  <title>{searchTerm} - Inline Skate Info</title>
+</svelte:head>
 
 <!-- The HTML for the search page -->
 <!-- If there are no results -->
