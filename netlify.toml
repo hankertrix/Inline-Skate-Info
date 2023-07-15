@@ -2,7 +2,7 @@
   command = "npm run build"
 
   # Build directory
-  publish = ".svelte-kit"
+  publish = "build"
 
 [functions]
 
