@@ -1,7 +1,7 @@
 // Module to handle the triskate differences command
 
 import * as utils from "../utils";
-import { SPACING } from "$lib/constants";
+import { SPACING } from "../../src/lib/constants";
 
 
 // The regular expression to check for the triskate differences command

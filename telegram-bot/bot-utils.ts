@@ -3,9 +3,9 @@
 import type { Context } from "telegraf";
 import type { InlineQueryResult, InputMediaDocument } from "telegraf/types";
 import { Scenes } from "telegraf";
-import { MAX_CHARACTERS, CACHE_TIME, SPACING, OPERATION_CANCELLED_MSG, EXIT_MESSAGE, MESSAGE_ENTITY_LIMIT } from "$lib/constants";
+import { MAX_CHARACTERS, CACHE_TIME, SPACING, OPERATION_CANCELLED_MSG, EXIT_MESSAGE, MESSAGE_ENTITY_LIMIT } from "../src/lib/constants";
 import * as utils from "./utils";
-import { ENABLE_DELETING_COMMAND_MESSAGES, ENABLE_ADMIN_CHECK } from "$lib/../../config";
+import { ENABLE_DELETING_COMMAND_MESSAGES, ENABLE_ADMIN_CHECK } from "../config";
 
 // The regular expression to get the message entities (currently HTML tags)
 const messageEntityRegex = /<.+?>/g;

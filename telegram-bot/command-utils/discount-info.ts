@@ -2,7 +2,7 @@
 
 import * as utils from "../utils";
 import { PLACES, loadPlacesJson } from "./places";
-import { SPACING } from "$lib/constants";
+import { SPACING } from "../../src/lib/constants";
 import type { Dict, Place } from "../types";
 
 

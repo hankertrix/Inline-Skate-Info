@@ -1,7 +1,7 @@
 // Module to handle the skate recommendations command
 
 import * as utils from "../utils";
-import { SPACING } from "$lib/constants";
+import { SPACING } from "../../src/lib/constants";
 import { loadSkateRecs } from "../normalise-data";
 
 

@@ -1,7 +1,7 @@
 // Module that contains the functions to handle the brands command
 
 import * as utils from "../utils";
-import { SPACING } from "$lib/constants";
+import { SPACING } from "../../src/lib/constants";
 import type { ObjectValues } from "../types";
 
 
