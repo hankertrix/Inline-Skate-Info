@@ -1,6 +1,6 @@
 # [Inline Skate Info](https://inline-skate-info.vercel.app)
 
-This project aims to be the ultimate resource for inline skating! It is built using [Svelte Kit](https://kit.svelte.dev) and is entirely written in [TypeScript](https://www.typescriptlang.org). The website search is provided by [Pagefind](https://pagefind.app) and the [Telegram bot](https://t.me/inlineskatebot) portion of the project is made using [telegraf.js](https://telegraf.js.org).
+This project aims to be the ultimate resource for inline skating! It is built using [SvelteKit](https://kit.svelte.dev) and is entirely written in [TypeScript](https://www.typescriptlang.org). The website search is provided by [Pagefind](https://pagefind.app) and the [Telegram bot](https://t.me/inlineskatebot) portion of the project is made using [telegraf.js](https://telegraf.js.org).
 
 You can view the resources using either the [Telegram bot](https://t.me/inlineskatebot) or the [website](https://inline-skate-info.vercel.app).
 
