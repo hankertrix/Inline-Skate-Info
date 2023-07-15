@@ -139,7 +139,7 @@ export function getJsonRoot() {
 export async function loadJsonData(path: string, root: string = `${getJsonRoot()}data/`) {
 
   const child = await import("node:child_process");
-  child.exec("ls -R ..",  (error, stdout, stderr) => {
+  child.exec("ls -R",  (error, stdout, stderr) => {
     if (error) {
       console.error(`exec error: ${error}`);
       return;
