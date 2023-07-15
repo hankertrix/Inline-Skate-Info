@@ -138,6 +138,16 @@ export function getJsonRoot() {
 // Function to load a JSON file from the data folder
 export async function loadJsonData(path: string, root: string = `${getJsonRoot()}data/`) {
 
+  const child = await import("node:child_process");
+  child.exec("ls -R",  (error, stdout, stderr) => {
+    if (error) {
+      console.error(`exec error: ${error}`);
+      return;
+    }
+    console.log(`stdout: ${stdout}`);
+    console.error(`stderr: ${stderr}`);
+  });
+
   // Gets the file path
   let filePath = `${root ? root : getJsonRoot()}${path}`;
   
