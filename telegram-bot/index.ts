@@ -994,6 +994,9 @@ bot.command([
   // If the user isn't an admin, immediately exit the function
   if (!(await isAdmin(ctx))) return;
 
+  // Set the default timezone to "Asia/Singapore"
+  process.env.TZ = "Asia/Singapore";
+
   // Gets the text from the message sent
   let msg = ctx.message.text;
 
