@@ -7,4 +7,4 @@
 [functions]
 
   # Include all of the JSON and static files
-  included_files = ["src/lib/data/**/*.json", "static/**/*.pdf"]
+  included_files = ["src/lib/data/**/*.json", "static/**"]

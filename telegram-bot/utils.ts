@@ -152,9 +152,6 @@ export async function loadPdfFile(path: string, root: string = "./static/pdfs/")
   // Gets the file path
   let filePath = `${root ? root : "./static/"}${path}${path.endsWith(".pdf") ? "" : ".pdf"}`;
 
-  console.log(process.cwd())
-  console.log(filePath);
-
   // Loads the PDF file
   const file = await readFile(filePath, "utf8");
 
