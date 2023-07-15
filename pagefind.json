@@ -1,4 +1,4 @@
 {
   "source": ".svelte-kit",
-  "bundle_dir": ".vercel/output/static/_pagefind"
+  "bundle_dir": "../.vercel/output/static/_pagefind"
 }
