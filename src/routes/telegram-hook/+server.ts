@@ -4,10 +4,14 @@ import type { RequestHandler } from "@sveltejs/kit";
 import { ENABLE_SETTING_WEBHOOK } from "../../../config";
 import { getBasePath } from "$lib/constants";
 import bot from "../../../telegram-bot";
+import path from "path";
 
 
 // Function to handle the POST request
 export const POST: RequestHandler = async function({ request, url }) {
+
+  const dataDir = path.join(process.cwd(), "src/lib/data");
+  const pdfDif = path.join(process.cwd(), "static/pdf");
 
   // Try block to handle errors
   try {
