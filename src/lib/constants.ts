@@ -2,7 +2,7 @@
 
 // The function to get the URL of the website
 export function getBasePath() {
-  return process?.env.VERCEL_ENV === "production" ? "https://inline-skate-info.vercel.app" : "https://inline-skate-info.hankertrix.repl.co";
+  return process.env.VERCEL_ENV === "production" ? "https://inline-skate-info.vercel.app" : "https://inline-skate-info.hankertrix.repl.co";
 } 
 
 // The maximum number of characters in a message
