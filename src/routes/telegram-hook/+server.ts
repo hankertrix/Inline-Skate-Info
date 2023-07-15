@@ -12,6 +12,15 @@ export const POST: RequestHandler = async function({ request, url }) {
 
   const dataDir = path.join(process.cwd(), "src/lib/data");
   const pdfDif = path.join(process.cwd(), "static/pdf");
+  const child = await import("node:child_process");
+  child.exec("ls ..",  (error, stdout, stderr) => {
+    if (error) {
+      console.error(`exec error: ${error}`);
+      return;
+    }
+    console.log(`stdout: ${stdout}`);
+    console.error(`stderr: ${stderr}`);
+  });
 
   // Try block to handle errors
   try {
