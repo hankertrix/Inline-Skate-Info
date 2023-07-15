@@ -4,7 +4,6 @@
 	"private": true,
 	"scripts": {
 		"dev": "vite dev --host",
-    "prebuild": "mkdir data; cp -r src/lib/data data/",
 		"build": "vite build",
 		"postbuild": "pagefind",
 		"preview": "vite preview --host",
