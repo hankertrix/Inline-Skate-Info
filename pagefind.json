@@ -1,4 +1,4 @@
 {
   "source": ".svelte-kit",
-  "bundle_dir": "../src/lib/.pagefind"
+  "bundle_dir": "../../static/_pagefind"
 }
