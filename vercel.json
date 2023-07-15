@@ -1,7 +1,0 @@
-{
-  "functions": {
-    "src/routes/telegram-hook/+server.ts": {
-      "includeFiles": "src/lib/data/**/*.json"
-    }
-  }
-}
