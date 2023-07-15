@@ -1,0 +1,403 @@
+{
+	"/": [
+		"src/routes/+layout.ts",
+		"src/routes/+layout.ts"
+	],
+	"/brands": [
+		"src/routes/+layout.ts"
+	],
+	"/brands/frame-brands": [
+		"src/routes/+layout.ts"
+	],
+	"/brands/liner-brands": [
+		"src/routes/+layout.ts"
+	],
+	"/brands/skate-brands": [
+		"src/routes/+layout.ts"
+	],
+	"/brands/wheel-brands": [
+		"src/routes/+layout.ts"
+	],
+	"/differences": [
+		"src/routes/+layout.ts"
+	],
+	"/differences/boot-types": [
+		"src/routes/+layout.ts"
+	],
+	"/differences/fr-skates": [
+		"src/routes/+layout.ts"
+	],
+	"/differences/triskates": [
+		"src/routes/+layout.ts"
+	],
+	"/discount-information": [
+		"src/routes/+layout.ts"
+	],
+	"/places-to-rent": [
+		"src/routes/+layout.ts"
+	],
+	"/places-to-skate": [
+		"src/routes/+layout.ts"
+	],
+	"/places-to-skate/skate-parks": [
+		"src/routes/+layout.ts"
+	],
+	"/places-to-skate/skating-rinks": [
+		"src/routes/+layout.ts"
+	],
+	"/products": [
+		"src/routes/+layout.ts"
+	],
+	"/products/accessories": [
+		"src/routes/+layout.ts"
+	],
+	"/products/clothing": [
+		"src/routes/+layout.ts"
+	],
+	"/products/maintenance-items": [
+		"src/routes/+layout.ts"
+	],
+	"/products/protective-gear": [
+		"src/routes/+layout.ts"
+	],
+	"/resources": [
+		"src/routes/+layout.ts"
+	],
+	"/resources/buying-guides": [
+		"src/routes/+layout.ts"
+	],
+	"/resources/glossaries": [
+		"src/routes/+layout.ts"
+	],
+	"/resources/maintenance-guides": [
+		"src/routes/+layout.ts"
+	],
+	"/resources/misc": [
+		"src/routes/+layout.ts"
+	],
+	"/resources/rulebooks": [
+		"src/routes/+layout.ts"
+	],
+	"/resources/trick-lists": [
+		"src/routes/+layout.ts"
+	],
+	"/retailers": [
+		"src/routes/+layout.ts"
+	],
+	"/retailers/online-retailers": [
+		"src/routes/+layout.ts"
+	],
+	"/retailers/overseas-retailers": [
+		"src/routes/+layout.ts"
+	],
+	"/retailers/retailers-in-singapore": [
+		"src/routes/+layout.ts"
+	],
+	"/search": [
+		"src/routes/search/+page.ts",
+		"src/routes/+layout.ts"
+	],
+	"/skate-recommendations": [
+		"src/routes/+layout.ts"
+	],
+	"/telegram-hook": [
+		"src/routes/telegram-hook/+server.ts"
+	],
+	"/terminology": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/aggressive": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/aggressive/basics": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/aggressive/class-a": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/aggressive/class-a/others": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/aggressive/class-a/spins": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/aggressive/class-b": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/aggressive/class-b/airs": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/aggressive/class-b/grinds": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/aggressive/class-b/others": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/aggressive/class-b/spins": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/aggressive/class-b/stalls": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/aggressive/class-c": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/aggressive/class-c/airs": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/aggressive/class-c/grabs": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/aggressive/class-c/grinds": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/aggressive/class-c/others": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/aggressive/class-c/spins": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/aggressive/class-c/stalls": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/aggressive/class-d": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/aggressive/class-d/airs": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/aggressive/class-d/grabs": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/aggressive/class-d/grinds": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/aggressive/class-d/others": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/aggressive/class-d/spins": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/aggressive/class-d/stalls": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/aggressive/class-e": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/aggressive/class-e/airs": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/aggressive/class-e/grabs": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/aggressive/class-e/grinds": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/aggressive/class-e/others": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/aggressive/class-e/spins": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/aggressive/class-e/stalls": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/basics": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/fundamentals": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/jumps": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/misc": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/slalom": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/slalom/class-a": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/slalom/class-a/jumps": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/slalom/class-a/others": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/slalom/class-a/sitting": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/slalom/class-a/spins": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/slalom/class-a/wheelings": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/slalom/class-b": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/slalom/class-b/jumps": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/slalom/class-b/others": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/slalom/class-b/sitting": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/slalom/class-b/spins": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/slalom/class-b/wheelings": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/slalom/class-c": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/slalom/class-c/jumps": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/slalom/class-c/others": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/slalom/class-c/sitting": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/slalom/class-c/spins": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/slalom/class-c/wheelings": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/slalom/class-d": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/slalom/class-d/jumps": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/slalom/class-d/others": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/slalom/class-d/sitting": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/slalom/class-d/spins": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/slalom/class-d/wheelings": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/slalom/class-e": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/slalom/class-e/jumps": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/slalom/class-e/others": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/slalom/class-e/sitting": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/slalom/class-e/spins": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/slalom/class-e/wheelings": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/slides": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/slides/class-a": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/slides/class-a/family-1": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/slides/class-a/family-2": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/slides/class-a/family-3": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/slides/class-a/family-4": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/slides/class-a/family-5": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/slides/class-b": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/slides/class-b/family-1": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/slides/class-b/family-2": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/slides/class-b/family-3": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/slides/class-b/family-4": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/slides/class-b/family-5": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/slides/class-c": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/slides/class-c/family-1": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/slides/class-c/family-2": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/slides/class-c/family-4": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/slides/class-c/family-5": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/slides/class-d": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/slides/class-d/family-1": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/slides/class-d/family-2": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/slides/class-d/family-4": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/slides/class-d/family-5": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/slides/class-e": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/slides/class-e/family-1": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/slides/class-e/family-2": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/slides/class-e/family-4": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/stops": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/turns": [
+		"src/routes/+layout.ts"
+	],
+	"/tricks/wizard": [
+		"src/routes/+layout.ts"
+	]
+}

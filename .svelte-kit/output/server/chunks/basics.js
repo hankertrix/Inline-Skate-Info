@@ -1,0 +1,328 @@
+const Falling = {
+  description: "When you fall on skates, make sure you try as far as possible to fall forward and try to get as low as possible. When you fall with wrist and knee guards, make sure your palm is fully open so that your fingers do not get in the way and get hurt. Fall onto your wrist and knee guards in a kind of crawl position. When you fall without any guards, try to contact the ground with your hands first and then rotate your body to the side using your hands to make sure one of your butt cheeks contacts the ground first. This way, you'll reduce the chance of getting scratches on your knees and elbows and your natural pillows (your bum) will take most of the impact, which is ideal for avoiding major injury.",
+  videos: [
+    [
+      "Alex Oleksa",
+      "https://youtu.be/-SFC-p726xc"
+    ],
+    [
+      "How To Inline Skate",
+      "https://youtu.be/w2el-rohOxw"
+    ],
+    [
+      "Ricardo Lino",
+      "https://youtu.be/sY5a4JW0jWE?t=445"
+    ],
+    [
+      "This Is Soul",
+      "https://youtu.be/EuY6Ja5dF0I?t=18"
+    ],
+    [
+      "InMove Skates",
+      "https://youtu.be/vTmZ1ogaVT0"
+    ],
+    [
+      "Damian Nawa",
+      "https://youtu.be/KruzyEElqCg?t=475"
+    ],
+    [
+      "SkaMiDan",
+      "https://youtu.be/NCLEt3hvHjM?t=20"
+    ],
+    [
+      "Indy Jamma Jones",
+      "https://youtu.be/sSbX2HSD9EQ?t=386"
+    ],
+    [
+      "Flow Skate",
+      "https://youtu.be/1g8RMBEltQQ?t=167"
+    ],
+    [
+      "Ice Coach Online",
+      "https://youtu.be/b6e5tggNmlQ?t=231"
+    ]
+  ]
+};
+const Scissors = {
+  description: "You have probably heard this term before if you've been in any fitness class. If you have, then it is the exact same position, just that you are wearing skates instead of being on your feet. The position is basically just having your feet shoulder-width apart and with one foot in front of the other. Another way to think of it is to think of the ready position but with one foot in front of the other. Your weight in the scissors position should be 40% on the front foot and 60% on the back foot for better stability.",
+  videos: [
+    [
+      "This Is Soul",
+      "https://youtu.be/KxFANPHCKA4?t=48"
+    ],
+    [
+      "InMove Skates",
+      "https://youtu.be/DYm6KuqxFOQ"
+    ],
+    [
+      "Nik Zvi",
+      "https://youtu.be/2Kr-j1gkl24"
+    ],
+    [
+      "Tiago",
+      "https://youtu.be/dE2Xp78OxEA?t=65"
+    ],
+    [
+      "Skatefresh Asha",
+      "https://youtu.be/j8omwdMdNf4?t=155"
+    ],
+    [
+      "Indy Jamma Jones",
+      "https://youtu.be/sSbX2HSD9EQ?t=712"
+    ],
+    [
+      "Flow Skate",
+      "https://youtu.be/8xwOkoQuhwU?t=272"
+    ],
+    [
+      "SkaMiDan",
+      "https://youtu.be/FLMHYkk3Auc?t=325"
+    ]
+  ]
+};
+const basicsTricksJson = {
+  "Putting on skates": {
+    description: "To put on your skates, loosen the laces and the buckles and put your feet into the skate. Afterwards, tighten the lace, making sure to pull at every lace so that they are tight. Then, tighten the buckles and straps on the inline skate, starting with the one at the bottom of your skates and working your way up to the top. Make sure that your skates are tight-fitting, but aren't painful.",
+    videos: [
+      [
+        "Indy Jamma Jones",
+        "https://youtu.be/sSbX2HSD9EQ?t=101"
+      ],
+      [
+        "Ricardo Lino",
+        "https://youtu.be/sY5a4JW0jWE?t=189"
+      ],
+      [
+        "SkaMiDan",
+        "https://youtu.be/FLMHYkk3Auc?t=168"
+      ]
+    ]
+  },
+  "Putting on protective gear": {
+    description: "It is highly recommended that you put on a helmet at least to protect your head. Knee pads are also highly recommended as your knees are what you're most likely going to fall on. Other kinds of protective gear like wrist guards and elbow guards are not as essential, but they're recommended if you are new to inline skating. Watch the videos below to learn how to put on your protective gear.",
+    videos: [
+      [
+        "This Is Soul",
+        "https://youtu.be/CVErB-8Wx_o?t=169"
+      ],
+      [
+        "Indy Jamma Jones",
+        "https://youtu.be/sSbX2HSD9EQ?t=101"
+      ],
+      [
+        "SkaMiDan",
+        "https://youtu.be/FLMHYkk3Auc?t=240"
+      ],
+      [
+        "InMove Skates",
+        "https://youtu.be/fyWL-4tRM6I?t=37"
+      ],
+      [
+        "Howcast",
+        "https://youtu.be/z10SQgx_kRA?t=5"
+      ]
+    ]
+  },
+  "Standing up": {
+    description: "To stand up on skates, make sure that the centre of the skates, when you're standing on it, is always under your chest, otherwise, you'll fall backwards. Thus, you should get on your knees in a kneel first, then place one skate on the ground, followed by the other, and slowly stand up.",
+    videos: [
+      [
+        "Ricardo Lino",
+        "https://youtu.be/sY5a4JW0jWE?t=335"
+      ],
+      [
+        "Ricardo Lino",
+        "https://youtu.be/ptRtL_H9vFI?t=148"
+      ],
+      [
+        "Ricardo Lino",
+        "https://youtu.be/1hAeUiapG_Y?t=20"
+      ],
+      [
+        "This Is Soul",
+        "https://youtu.be/CVErB-8Wx_o?t=368"
+      ],
+      [
+        "Damian Nawa",
+        "https://youtu.be/8eaa7PMMsCA?t=500"
+      ],
+      [
+        "Brandon Drummond",
+        "https://youtu.be/xDNSswJhsl8?t=91"
+      ],
+      [
+        "Marcel's Hockey School",
+        "https://youtu.be/qZC1nrqP710?t=327"
+      ],
+      [
+        "Indy Jamma Jones",
+        "https://youtu.be/sSbX2HSD9EQ?t=354"
+      ],
+      [
+        "Ice Coach Online",
+        "https://youtu.be/b6e5tggNmlQ?t=78"
+      ],
+      [
+        "Sikana",
+        "https://youtu.be/gaMNfokY-K8"
+      ],
+      [
+        "Rollerblade",
+        "https://youtu.be/7jKDup7evO0"
+      ],
+      [
+        "Flow Skate",
+        "https://youtu.be/1g8RMBEltQQ?t=106"
+      ],
+      [
+        "Ricardo Lino",
+        "https://youtu.be/ZgM6PjLfOzM?t=164"
+      ]
+    ]
+  },
+  Falling,
+  "Body posture": {
+    description: "To have a proper body posture that is conducive to inline skating, your knees should always be bent. Your shins should touch the front of your skates if your knees are sufficiently bent. Next, your core should always be above the centre of your skate so that you can balance on the skates. With your knees sufficiently bent, this should come automatically. Your back should always be straight while skating, so do not bend your back forward as it makes it easier for you to fall forward and you will get a backache.",
+    videos: [
+      [
+        "Skatefresh Asha",
+        "https://youtu.be/3VmC45KHJ6w?t=96"
+      ],
+      [
+        "Skatefresh Asha",
+        "https://youtu.be/j8omwdMdNf4?t=177"
+      ],
+      [
+        "Skatefresh Asha",
+        "https://youtu.be/rn5WixdiaE4?t=126"
+      ],
+      [
+        "Ricardo Lino",
+        "https://youtu.be/sY5a4JW0jWE?t=401"
+      ],
+      [
+        "Ricardo Lino",
+        "https://youtu.be/EnhrFrD_Fas?t=167"
+      ],
+      [
+        "Ricardo Lino",
+        "https://youtu.be/Lsa3ltqNLw0?t=89"
+      ],
+      [
+        "Ricardo Lino",
+        "https://youtu.be/ZgM6PjLfOzM?t=386"
+      ],
+      [
+        "This Is Soul",
+        "https://youtu.be/5ooOOxZWSgo"
+      ],
+      [
+        "Flow Skate",
+        "https://youtu.be/1g8RMBEltQQ?t=120"
+      ],
+      [
+        "Damian Nawa",
+        "https://youtu.be/KruzyEElqCg?t=202"
+      ],
+      [
+        "SkaMiDan",
+        "https://youtu.be/FLMHYkk3Auc?t=359"
+      ],
+      [
+        "LIVESTRONG.COM",
+        "https://youtu.be/Ght4EhVDh_M?t=5"
+      ]
+    ]
+  },
+  "Ready position": {
+    description: "This position is simply having your feet parallel to each other, and having them side by side, similar to how you would stand. Your feet should also be shoulder-width apart. When looking at your feet, they should look like the number 11.",
+    videos: [
+      [
+        "Flow Skate (he calls it ready)",
+        "https://youtu.be/8xwOkoQuhwU?t=254"
+      ],
+      [
+        "Skatefresh Asha (she calls it chips)",
+        "https://youtu.be/3VmC45KHJ6w?t=26"
+      ],
+      [
+        "Ricardo Lino",
+        "https://youtu.be/ZgM6PjLfOzM?t=319"
+      ],
+      [
+        "Indy Jamma Jones",
+        "https://youtu.be/sSbX2HSD9EQ?t=438"
+      ],
+      [
+        "Ricardo Lino",
+        "https://youtu.be/sY5a4JW0jWE?t=397"
+      ]
+    ]
+  },
+  Scissors,
+  "Feet position": {
+    description: "Your feet should always be in the scissors position while rolling on skates as it is the safest position to be in. With one leg in front of the other, obstacles like twigs and debris won't contact both of your feet simultaneously, making it much less likely for you to fall. More of your weight should be on the back foot. That way, if your front foot trips over something, you wouldn't fall over and you can shift your weight from the back foot to the front foot when the object contacts your back foot. Your weight should ideally be 40% on the front foot and 60% on the back foot.",
+    videos: [
+      [
+        "Skatefresh Asha",
+        "https://youtu.be/j8omwdMdNf4?t=126"
+      ],
+      [
+        "SkaMiDan",
+        "https://youtu.be/FLMHYkk3Auc?t=325"
+      ]
+    ]
+  },
+  "First steps": {
+    description: "For your first few steps on inline skates, it is quite likely that you won't be confident enough to lift one foot off the ground for too long, so open your feet in a 'V' position and just do small steps, with the back of one skate touching the other skate so that you don't roll. The motion is similar to how a penguin walks. Once you are more comfortable on skates, you can continue to do the same thing, but this time, you let yourself roll a little by not having the back of one skate touch the other skate.",
+    videos: [
+      [
+        "Ricardo Lino",
+        "https://youtu.be/sY5a4JW0jWE?t=544"
+      ],
+      [
+        "Ricardo Lino",
+        "https://youtu.be/ptRtL_H9vFI?t=259"
+      ],
+      [
+        "SkaMiDan",
+        "https://youtu.be/FLMHYkk3Auc?t=400"
+      ],
+      [
+        "Ice Coach Online",
+        "https://youtu.be/b6e5tggNmlQ?t=128"
+      ],
+      [
+        "Damian Nawa",
+        "https://youtu.be/KruzyEElqCg?t=777"
+      ],
+      [
+        "Skatefresh Asha",
+        "https://youtu.be/3VmC45KHJ6w?t=11"
+      ],
+      [
+        "Flow Skate",
+        "https://youtu.be/1g8RMBEltQQ?t=222"
+      ],
+      [
+        "Brandon Drummond",
+        "https://youtu.be/xDNSswJhsl8?t=291"
+      ],
+      [
+        "InMove Skates",
+        "https://youtu.be/fyWL-4tRM6I?t=153"
+      ],
+      [
+        "Rollerblade",
+        "https://youtu.be/SAkv0naHJi8"
+      ],
+      [
+        "Rollerblade",
+        "https://youtu.be/z6xi9Db1E-A?t=5"
+      ]
+    ]
+  }
+};
+export {
+  basicsTricksJson as b
+};

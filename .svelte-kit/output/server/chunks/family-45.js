@@ -1,0 +1,31 @@
+const family4TricksJson = {
+  "Fastslide Toe Slide": {
+    description: "",
+    videos: [
+      [
+        "Hankertrix",
+        "https://youtu.be/zy-2XAHjjfQ"
+      ],
+      [
+        "Hankertrix",
+        "https://youtu.be/MY63z16grRM"
+      ],
+      [
+        "Hankertrix",
+        "https://youtu.be/yApD1oxwUc4"
+      ]
+    ]
+  },
+  "Fastslide Heel Slide": {
+    description: "",
+    videos: [
+      [
+        "Hankertrix",
+        "https://youtu.be/b3fAV38xGrA"
+      ]
+    ]
+  }
+};
+export {
+  family4TricksJson as f
+};

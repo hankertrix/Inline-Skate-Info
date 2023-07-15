@@ -1,0 +1,1 @@
+export { default as component } from "../../../../src/routes/tricks/slides/class-a/family-4/+page.svelte";

@@ -1,0 +1,105 @@
+import { c as create_ssr_component, d as escape, b as add_attribute, e as each, v as validate_component } from "../../../chunks/ssr.js";
+import { m as makeUrlFriendlyString } from "../../../chunks/utils.js";
+import { V as VideoCollapsible } from "../../../chunks/VideoCollapsible.js";
+const preface = `The skate recommendations below only represent the opinions of the developer. They are not meant to be the authority on what is and isn't a good skate. Since this resource is made with Singaporean skaters in mind, the availability of the skates in Singapore is a big factor in coming up with these recommendations. The recommendations are also catering to people who want to get into inline skating and need a decent skate to start with. Hence, the price of the skates is a huge factor. Keep in mind that the skates not recommended here may be just as good or even better than the skates recommended here. If there is a skate you want to recommend here, please contact <a target="_blank" href="https://t.me/hankertrix">@hankertrix</a>.`;
+const recommendations = {
+  "Urban / Freestyle Skates": [
+    {
+      FRX: {
+        price: "$265",
+        link: "https://www.inlinex.com.sg/products/frx80skates",
+        reason: `This skate is FR Skates' best-selling skate and are the <a target="_blank" href="https://youtu.be/ikp4bCbVbbI">best-selling skates on LocoSkates for the past 10 years</a>. It is the priciest skate on the list, but it is also the one with the best quality. FR stock liners are incredibly comfortable and the FRX comes with the FR X2R rockerable frames, which means changing your skates to a rockered set-up for slalom would be a breeze. Also, you should look into the FRW skates if you're a woman as those are FRX skates that have been modified to fit women's heels better. They are also a little cheaper and come included with a brake so you can save some money as well. If your budget permits you to buy these skates, definitely go for them.`
+      },
+      "Nexus Phantom": {
+        price: "$179",
+        link: "https://hvpersport.com/product/nexus-phantom-white/",
+        reason: "Nexus is the proprietary brand of the Singaporean skate shop Hvper Sport and the Phantom is their only skate. It is a ridiculously cheap skate, considering that Hvper Sport also provides a roughly 20% discount for tertiary students in Singapore that reduces its price to just $149, which is really not much more than the cheap Decathlon skates, the Oxelo MF 500. The quality of the Nexus Phantom is obviously much better and it comes with top-of-the-line ABEC 9 bearings. Even the FRX doesn't come with ABEC 9 bearings, it comes with ABEC 7 (MW7 to be exact) bearings. However, you might want to get an extra set of wheels, preferably from another brand or from TaoBao, as the Nexus Phantom comes with Nexus Basic Wheels. Those wheels have humongous cores that are much bigger than most other wheels, which means they wear out in no time. That being said, this should be the skate to get if you're on a budget as its value for money is just incredible."
+      },
+      "Flying Eagle F5S Eclipse": {
+        price: "$189",
+        link: "https://shopee.sg/feskatesg/13972122027",
+        reason: "This is most likely Flying Eagle's most popular model and with good reason. It isn't too expensive and it is built well. The frames are CNC machined aluminium and are rockerable, just like the FRX's X2R rockerable frames. It also comes with a ratcheting buckle for the power strap which is much better than the FRX's velcro power strap. If you want something that allows you to do slalom and urban without having to change frames but don't want to splurge to get an FRX, the Flying Eagle F5S Eclipse would be a great choice for you. That said, the Nexus Phantom still seems to provide far more value for money, so you should consider that if you don't need a skate with rockerable frames."
+      },
+      "Micro MT Plus": {
+        price: "$209",
+        link: "https://www.inlinex.com.sg/products/micro-mt-plus-urban-skates",
+        reason: "These skates are a pretty popular choice for a budget all-around skate that can do most things, similar to the FRX. They are of similar quality to the FRX, maybe a bit lower than the FRX, but they are quite a bit cheaper. They are the go-to recommendation for beginners who want urban skates on a budget. They come with a ratcheting buckle for the power strap, which is much nicer than the velcro power strap that the FRX has. However, the frames aren't rockerable, so they aren't the best if you want to learn slalom in the future. Overall, they are great skates and you won't go wrong buying them, but they aren't as cheap as the other skates on the list and aren't as good as the FRX, which is why they are in 4th place."
+      },
+      "Oxelo MF 500": {
+        price: "$119.90",
+        link: "https://www.decathlon.sg/p/adult-inline-skate-mf-500-white-red-oxelo-8540230.html",
+        reason: "Oxelo is the in-house brand for Decathlon and their skates are very affordable while still being decent. These skates would do well for those who are on a tight budget as they are capable of carrying you quite far in your skating journey. However, it is still recommended to get something of better quality if you have the budget to do so as these skates aren't really of the best quality and will break after a while."
+      }
+    },
+    {
+      "TOP 13 INLINE SKATES FOR BEGINNERS": "https://youtu.be/osFtDlk92ro",
+      "Best Budget Rollerblades - Freestyle & Inline Skates Under $200": "https://youtu.be/myAO7dXGu6Y",
+      "What are the Best Rollerblades for Beginners? + Where to Buy Them?": "https://youtu.be/EOx7rnYhAW4",
+      "Top 7 most popular inline skates (Freestyle / recreational)": "https://youtu.be/A0rEwu0r25Q"
+    }
+  ],
+  "Aggressive Skates": [
+    {
+      "Rollerblade Blank SK (Sean Keane)": {
+        price: "$415",
+        link: "https://www.inlinex.com.sg/products/rollerblade-blank-sk-aggressive-skates",
+        reason: "The Rollerblade Blank SK is an aggressive skate that simply comes out of the box with good parts. The liner is fantastic, apparently feeling like an Intuition liner around your toes and being very soft around the ankles. It comes with high-quality Rollerblade Hydrogen wheels which are one of the best wheels out on the market currently and the frames it comes with are well-designed. They are certainly pricey, but they are very much worth the price. It might not be the easiest to recommend to beginners due to its high price, but it will definitely serve them well. These skates also sometimes go on sale on Inlinex so do keep a lookout for those to get them at a much lower price."
+      },
+      "USD Aeon 60": {
+        price: "$318",
+        link: "https://www.inlinex.com.sg/products/usdaeon60basicaggressiveskates",
+        reason: "The USD Aeon is another skate that constantly makes it into top 5 and top 10 lists. They are a special kind of aggressive skate in that it has a unibody construction and hence the entire outer portion of the skate is a single piece and can't be taken apart. This allows it to be much lighter than most other aggressive skates as it doesn't need heavy mounting bolts to mount the thick soul plates and frames to the skate. This makes it an excellent choice for most beginners as they are much easier to get used to and don't require as much energy and strength to skate. People who are coming from an urban skating background would also find it easier to skate with its lighter weight. They also provide excellent power transfer and are extremely responsive. They are probably the most responsive aggressive skates out there thanks to this special unibody design. However, with this unibody design, you lose the flexibility of the UFS mounting system, which means you can no longer replace your frames and soul plate if they break or switch them out to ones that you prefer. You would also need to replace the entire skate if they break instead of just swapping out the part that is broken, which can get very costly if you are rough with your skates. That said, most skaters would find the lighter weight, excellent power transfer and incredible responsiveness to be worth the drawbacks. It is also one of the cheaper aggressive skates out there, which makes it suitable for people who are looking for an affordable entry-level aggressive skate."
+      },
+      "FR UFR Street AP (Antony Pottier)": {
+        price: "$435",
+        link: "https://www.inlinex.com.sg/products/fr-ufr-street-ap-flat-aggressive-skates",
+        reason: "The FR UFR Street AP is almost always in every top 5 or top 10 list of aggressive skates and that's no surprise. It comes with the standard FR boot and liners, which are amazing feeling and super comfortable. They are great for people who already use the FR urban skates as the boots are the same and it wouldn't take long to get comfortable with the skates. The skate has great power transfer and is very responsive, which makes them a joy to skate as they provide you with full control."
+      },
+      "USD Sway 60 XXI": {
+        price: "$258",
+        link: "https://www.inlinex.com.sg/products/usdsway60xxiaggressiveskates",
+        reason: "The USD Sway is probably the go-to aggressive skate recommendation for beginners and those on a budget. They are one of the most affordable aggressive skates out there while still coming with quality parts, like a remarkably thick soul plate and comfortable USD liners. They are pretty durable and can take a lot of beating, so they'll be sure to serve you well for a good part of your aggressive skating journey. You won't go wrong buying these."
+      },
+      "Roces M12": {
+        price: "$220",
+        link: "https://www.locoskates.com/products/roces-m12-ufs-black-skates",
+        reason: "The Roces M12 is an amazing skate, especially for its price. This skate will give you the most bang for your buck with its high-quality boots and comfortable liners. It is highly regarded by a lot of aggressive skaters in the community. However, the reason it is the last on this list is that it isn't available in Singapore. The skate is extremely narrow, which makes it impossible to wear for a good number of people, even when buying a size larger. It is almost a must to be able to try out these skates before you buy them because they may not even fit you despite being of the correct size, and not having a physical store in Singapore stocking these skates means you will very likely end up losing some money on them."
+      }
+    },
+    {
+      "All Aggressive Skates Ranked ...the people's vote": "https://youtu.be/L7vEWSWle8Q",
+      "Best Aggressive Skates 2023": "https://youtu.be/D-S2is1dWxQ",
+      "TOP 5 AGGRESSIVE SKATES IN 2022": "https://youtu.be/qsZJZ-x5kIw",
+      "Top 10 Aggressive Skates - 2022": "https://youtu.be/feQ7a_0D8do",
+      "Gear Talk Episode 73: Best Aggressive Skates for the Price": "https://youtu.be/KP61YBJ9o-M"
+    }
+  ]
+};
+const skateRecsJson = {
+  preface,
+  recommendations
+};
+const _page_svelte_svelte_type_style_lang = "";
+const css = {
+  code: "main.svelte-1tlt5mp{margin:var(--page-margin)}h1.svelte-1tlt5mp{font-family:Oleo Script;hyphens:manual}.preface.svelte-1tlt5mp{margin-bottom:3em}.recommendation-category.svelte-1tlt5mp{margin-bottom:10em}.skate-recommendation.svelte-1tlt5mp{margin-bottom:5em}",
+  map: null
+};
+const title = "Skate Recommendations";
+function addSoftHyphen(str, position) {
+  return `${title.slice(0, position)}&shy;${title.slice(position)}`;
+}
+function castAsVideoObject(obj) {
+  return obj;
+}
+const Page = create_ssr_component(($$result, $$props, $$bindings, slots) => {
+  $$result.css.add(css);
+  return `     ${$$result.head += `<!-- HEAD_svelte-1n1sarj_START -->${$$result.title = `<title>${escape(title)} - Inline Skate Info</title>`, ""}<!-- HEAD_svelte-1n1sarj_END -->`, ""}  <main class="svelte-1tlt5mp"><header><h1 class="text svelte-1tlt5mp"${add_attribute("id", makeUrlFriendlyString(title), 0)}><!-- HTML_TAG_START -->${addSoftHyphen(title, 16)}<!-- HTML_TAG_END --></h1></header> <article><section class="preface svelte-1tlt5mp"><p class="text"><!-- HTML_TAG_START -->${skateRecsJson.preface}<!-- HTML_TAG_END --></p></section> <section class="recommendations"> ${each(Object.entries(skateRecsJson.recommendations), ([category, [recommendedSkates, listOfVideos]]) => {
+    let videoHeading = "Video Recommendations", videos = castAsVideoObject(listOfVideos);
+    return `    <section class="recommendation-category svelte-1tlt5mp"> <h3 class="text"${add_attribute("id", makeUrlFriendlyString(category), 0)}>${escape(category)}</h3> <section class="recommended-skates"> ${each(Object.entries(recommendedSkates), ([name, skateObj], index) => {
+      return `<section class="skate-recommendation svelte-1tlt5mp"><header><h4${add_attribute("id", makeUrlFriendlyString(name), 0)}>${escape(index + 1)}. <a${add_attribute("href", skateObj.link, 0)} target="_blank" title="View the product page for this skate">${escape(name)}</a></h4></header> <div class="details text"><div><strong data-svelte-h="svelte-x2lc07">Price: </strong>${escape(skateObj.price)}</div> <div><!-- HTML_TAG_START -->${skateObj.reason}<!-- HTML_TAG_END --></div></div> </section>`;
+    })}</section> <section class="videos"><header><h4 class="text"${add_attribute("id", makeUrlFriendlyString(videoHeading), 0)}>${escape(videoHeading)}</h4></header> ${validate_component(VideoCollapsible, "VideoCollapsible").$$render($$result, { videos }, {}, {})}</section> </section>`;
+  })}</section></article></main>`;
+});
+export {
+  Page as default
+};
