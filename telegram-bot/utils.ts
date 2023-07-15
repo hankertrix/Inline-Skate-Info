@@ -147,7 +147,7 @@ export async function loadJsonData(path: string, root: string = "./src/lib/data/
 
 
 // Function to load a PDF file from the PDF folder
-export async function loadPdfFile(path: string, root: string = "./static/pdf/") {
+export async function loadPdfFile(path: string, root: string = "./static/pdfs/") {
   
   // Gets the file path
   let filePath = `${root ? root : "./static/"}${path}${path.endsWith(".pdf") ? "" : ".pdf"}`;
