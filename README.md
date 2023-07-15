@@ -1,8 +1,8 @@
-# [Inline Skate Info](https://inline-skate-info.vercel.app)
+# [Inline Skate Info](https://inline-skate-info.netlify.app)
 
-This project aims to be the ultimate resource for inline skating! It is built using [SvelteKit](https://kit.svelte.dev) and is entirely written in [TypeScript](https://www.typescriptlang.org). The website search is provided by [Pagefind](https://pagefind.app) and the [Telegram bot](https://t.me/inlineskatebot) portion of the project is made using [telegraf.js](https://telegraf.js.org).
+This project aims to be the ultimate resource for inline skating! It is built using [SvelteKit](https://kit.svelte.dev) and deployed to [Netlify](https://www.netlify.com). The project is entirely written in [TypeScript](https://www.typescriptlang.org), with the exception of HTML and CSS in HTML amd Svelte files of course. The website search is provided by [Pagefind](https://pagefind.app) and the [Telegram bot](https://t.me/inlineskatebot) portion of the project is made using [telegraf.js](https://telegraf.js.org).
 
-You can view the resources using either the [Telegram bot](https://t.me/inlineskatebot) or the [website](https://inline-skate-info.vercel.app).
+You can view the resources using either the [Telegram bot](https://t.me/inlineskatebot) or the [website](https://inline-skate-info.netlify.app).
 
 <br>
 
@@ -49,9 +49,9 @@ Below is a list of the available commands for the Telegram bot. Use the `/help` 
 
 <br>
 
-## [Website](https://inline-skate-info.vercel.app)
+## [Website](https://inline-skate-info.netlify.app)
 
-Click [this link](https://inline-skate-info.vercel.app) to visit the website!
+Click [this link](https://inline-skate-info.netlify.app) to visit the website!
 
 <br>
 
