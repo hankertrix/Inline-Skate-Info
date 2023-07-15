@@ -1,0 +1,10 @@
+[build]
+  command = "npm run build"
+
+  # Build directory
+  publish = ".svelte-kit"
+
+[functions]
+
+  # Include all of the JSON and static files
+  included_files = ["src/lib/data/**/*.json", "static/**/*.pdf"]
