@@ -1,10 +1,9 @@
 // Module that contains all the constants
 
-// Initialise the process variable so the browser doesn't complain about the variable being undefined
-var process: any = process ? process : null;
-
-// The base path of the url for the program
-export const BASE_PATH = process?.env.VERCEL_ENV === "production" ? "https://inline-skate-info.vercel.app" : "https://inline-skate-info.hankertrix.repl.co";
+// The function to get the URL of the website
+export function getBasePath() {
+  return process?.env.VERCEL_ENV === "production" ? "https://inline-skate-info.vercel.app" : "https://inline-skate-info.hankertrix.repl.co";
+} 
 
 // The maximum number of characters in a message
 export const MAX_CHARACTERS = 4096;

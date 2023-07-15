@@ -2,7 +2,7 @@
 
 import type { RequestHandler } from "@sveltejs/kit";
 import { ENABLE_SETTING_WEBHOOK } from "../../../config";
-import { BASE_PATH } from "$lib/constants";
+import { getBasePath } from "$lib/constants";
 import bot from "../../../telegram-bot";
 
 
@@ -15,10 +15,8 @@ export const POST: RequestHandler = async function({ request, url }) {
     // Checks if the query is to set a webhook
     if (url.searchParams.get("setWebhook") === "true" && ENABLE_SETTING_WEBHOOK) {
 
-      console.log(process.env);
-
       // Gets the webhook URL
-      const webhookUrl = `${BASE_PATH}/telegram-hook?secretHash=${process.env.SECRET_HASH}`;
+      const webhookUrl = `${getBasePath()}/telegram-hook?secretHash=${process.env.SECRET_HASH}`;
 
       // Sets the webhook on the bot
       const isSet = await bot.telegram.setWebhook(webhookUrl);

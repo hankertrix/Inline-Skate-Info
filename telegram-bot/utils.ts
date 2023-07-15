@@ -2,7 +2,7 @@
 
 import { readFile, readdir } from "node:fs/promises";
 import * as pathLib from "path";
-import { BASE_PATH } from "../src/lib/constants";
+import { getBasePath } from "../src/lib/constants";
 import type { Dict, ReversibleDict } from "./types";
 
 // The dictionary to convert a character to a HTML entity
@@ -171,7 +171,7 @@ export function convertStaticFilePathToUrl(path: string) {
   }
 
   // Otherwise, returns the path converted into a URL
-  else return `${BASE_PATH}${path.replace(/\.\/static/g, "")}`;
+  else return `${getBasePath()}${path.replace(/\.\/static/g, "")}`;
 }
 
 

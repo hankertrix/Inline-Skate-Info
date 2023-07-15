@@ -3,7 +3,7 @@
 import { Telegraf, Scenes, session } from "telegraf";
 import type { Context } from "telegraf";
 import type { InlineQueryResult, InlineKeyboardButton, CallbackQuery, Message } from "telegraf/types";
-import { SPACING, BASE_PATH, DEV } from "../src/lib/constants";
+import { SPACING, DEV, getBasePath } from "../src/lib/constants";
 import * as utils from "./utils";
 import { ctxReply, answerInlineQuery, isAdmin, deleteMessages, messageAndFileCommandHandler, messageAndFileInlineQueryHandler, wrapCallbackWithMessageDeleter } from "./bot-utils";
 import * as scenes from "./bot-scenes";
@@ -40,7 +40,7 @@ bot.command("start", async ctx => {
   // The start message
   const startMsg = `Hello! This bot aims to be the ultimate resource for all things inline skating!
 
-${utils.hyperlink("Here", BASE_PATH)} is the bot's website if you prefer to view the information presented here on a website.
+${utils.hyperlink("Here", getBasePath())} is the bot's website if you prefer to view the information presented here on a website.
 
 If you find that the resource is not ultimate enough, or that the information presented is wrong, inaccurate or outdated, please contact ${DEV}. Please contact ${DEV} as well if you have any feedback, suggestions, enquiries or bug reports.
 
