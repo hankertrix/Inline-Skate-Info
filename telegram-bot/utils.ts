@@ -123,11 +123,23 @@ export async function loadJsonDirectory(path: string) {
 }
 
 
+// Function to check if the environment is the production environment
+export function isProduction() {
+  return process.env.VERCEL_ENV === "production";
+}
+
+
+// Function to get the root file path for the JSON files
+export function getJsonRoot() {
+  return isProduction() ? "./static/" : "./src/lib/";
+}
+
+
 // Function to load a JSON file from the data folder
-export async function loadJsonData(path: string, root: string = "./src/lib/data/") {
+export async function loadJsonData(path: string, root: string = `${getJsonRoot()}data/`) {
 
   // Gets the file path
-  let filePath = `${root ? root : "./src/lib/"}${path}`;
+  let filePath = `${root ? root : getJsonRoot()}${path}`;
   
   // Replace multiple consecutive slashes in the file path with a single slash
   filePath = filePath.replace(/\/{2,}/g, "/");
@@ -150,7 +162,7 @@ export async function loadJsonData(path: string, root: string = "./src/lib/data/
 export async function loadPdfFile(path: string, root: string = "./static/pdf/") {
   
   // Gets the file path
-  let filePath = `${root ? root : "./src/lib/"}${path}${path.endsWith(".pdf") ? "" : ".pdf"}`;
+  let filePath = `${root ? root : "./static/"}${path}${path.endsWith(".pdf") ? "" : ".pdf"}`;
 
   // Loads the PDF file
   const file = await readFile(filePath, "utf8");
