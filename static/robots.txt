@@ -1,3 +1,7 @@
 # Allow search engines to crawl the site
+# But disallow them from crawling the search page
+# As well as the telegram bot web hook
 User-agent: *
 Allow: /
+Disallow: /search
+Disallow: /telegram-hook
