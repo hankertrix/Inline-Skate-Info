@@ -280,10 +280,10 @@ async function getTrickText(jsonFiles: string[], trick: string = "") {
 // Function to handle the tricks command
 export async function handler(message: string) {
 
-  // Removes the tricks command from the message
+  // Remove the tricks command from the message
   message = message.replace(regex, "").trim();
 
-  // Removes the bot's username from the message
+  // Remove the bot's username from the message
   message = removeBotUsername(message);
 
   // Makes the message lowercase
