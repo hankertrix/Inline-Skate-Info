@@ -90,37 +90,39 @@
   <!-- If the current title has any children -->
   {#if titleHasChildren(children)}
 
-    <details>
-      
-      <!-- The label to open and close the collapsible menu -->
-      <!-- If the title is actually the table of contents -->
-      {#if title === "Table Of Contents"}
+    <li>
+      <details>
 
-        <summary title="Show or hide the table of contents">
-          <div class="table-of-contents-title">{title}</div>
-          <div class="menu-toggler">
-            <div class="icon"></div>
-          </div>
-        </summary>
+        <!-- The label to open and close the collapsible menu -->
+        <!-- If the title is actually the table of contents -->
+        {#if title === "Table Of Contents"}
 
-      <!-- If the title is a regular heading in the page -->
-      {:else}
+          <summary title="Show or hide the table of contents">
+            <div class="table-of-contents-title">{title}</div>
+            <div class="menu-toggler">
+              <div class="icon"></div>
+            </div>
+          </summary>
 
-        <summary>
-          <a href={`#${id}`} title={`Go to the section called '${title}'`}>{title}</a>
-          <div class="menu-toggler" title={`Show or hide the sections under '${title}'`}>
-            <div class="icon"></div>
-          </div>
-        </summary>
-        
-      {/if}
+          <!-- If the title is a regular heading in the page -->
+        {:else}
 
-      <!-- The collapsible menu to open and close -->
-      <ul>
-        <svelte:self tableOfContents={children} />
-      </ul>
-        
-    </details>
+          <summary>
+            <a href={`#${id}`} title={`Go to the section called '${title}'`}>{title}</a>
+            <div class="menu-toggler" title={`Show or hide the sections under '${title}'`}>
+              <div class="icon"></div>
+            </div>
+          </summary>
+
+        {/if}
+
+        <!-- The collapsible menu to open and close -->
+        <ul>
+          <svelte:self tableOfContents={children} />
+        </ul>
+
+      </details>
+    </li>
 
   <!-- If the cuurent title has no children -->
   {:else}

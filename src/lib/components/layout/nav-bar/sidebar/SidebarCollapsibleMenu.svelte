@@ -92,22 +92,25 @@
 
   <!-- If the current title has any children -->
   {#if titleHasChildren(child)}
+    
+    <li>
+      <details>
+        
+        <!-- The summary element to open and close the collapsible menu -->
+        <summary>
+          <a href={currentUrl} title={`Go to the page called '${title}'`}>{title}</a>
+          <div class="menu-toggler" title={`Show or hide the pages under '${title}'`}>
+            <div class="icon"></div>
+          </div>
+        </summary>
 
-    <!-- The details element to open and close the collapsible menu -->
-    <details>
-      <summary>
-        <a href={currentUrl} title={`Go to the page called '${title}'`}>{title}</a>
-        <div class="menu-toggler" title={`Show or hide the pages under '${title}'`}>
-          <div class="icon"></div>
-        </div>
-      </summary>
+        <!-- The collapsible menu to open and close -->
+        <ul>
+          <svelte:self pages={child} urlStart={currentUrl} />
+        </ul>
 
-      <!-- The collapsible menu to open and close -->
-      <ul>
-        <svelte:self pages={child} urlStart={currentUrl} />
-      </ul>
-      
-    </details>
+      </details>
+    </li>
 
   <!-- If the cuurent title has no children -->
   {:else}
