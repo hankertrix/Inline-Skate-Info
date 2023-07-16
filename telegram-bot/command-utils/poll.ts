@@ -43,6 +43,8 @@ export function generatePollMessage(message: string, pollOptions: string[]) {
 
   // Remove the bot's username from the message
   message = removeBotUsername(message);
+
+  console.log(`message in generatePollMessage: "${message}"`);
   
   // Generate the portion of the message that is a poll
   const pollPortion = `${pollOptions.map(option => `${utils.bold(option)}`).join(SPACING)}${SPACING}👥 Nobody responded`;

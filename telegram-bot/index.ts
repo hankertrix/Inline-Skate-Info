@@ -966,6 +966,8 @@ bot.command([
 
   // Gets the message and the callback from the generatePollCallback function
   const { message, callback } = commandUtils.poll.generatePollMessage(messageText, pollOptions);
+  
+  console.log(`message in poll command handler: "${message}"`);
 
   // If the message is empty, enters the scene to get the user's input
   if (!message) {
@@ -1005,6 +1007,7 @@ bot.command([
 
   // Remove the bot's username from the message
   msg = removeBotUsername(msg);
+  console.log(`msg in trg_msg command handler: "${msg}"`);
 
   // Gets the training message handler to handle the training message command
   await commandUtils.trainingMsg.handler(ctx, msg);
