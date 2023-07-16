@@ -1,6 +1,7 @@
 // Module containing the utilities to handle the tricks command
 
 import * as utils from "../utils";
+import { removeBotUsername } from "../bot-utils";
 import { SPACING, CATEGORY_SPACING, LABEL_SPACING } from "../../src/lib/constants";
 import { loadFundamentalTricks } from "../normalise-data";
 
@@ -281,6 +282,9 @@ export async function handler(message: string) {
 
   // Removes the tricks command from the message
   message = message.replace(regex, "").trim();
+
+  // Removes the bot's username from the message
+  message = removeBotUsername(message);
 
   // Makes the message lowercase
   const msg = message.toLowerCase();

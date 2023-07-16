@@ -1,6 +1,7 @@
 // Module that contains the functions to handle the brands command
 
 import * as utils from "../utils";
+import { removeBotUsername } from "../bot-utils";
 import { SPACING } from "../../src/lib/constants";
 import type { ObjectValues } from "../types";
 
@@ -70,7 +71,10 @@ async function generateText(category: BrandCategory) {
 // Function to handle the brands command
 export async function handler(message: string) {
 
-  // Removes the brands command from the message
+  // Remove the bot's username from the message
+  message = removeBotUsername(message);
+
+  // Makes the message lower case and removes the brands command from the message
   const msg = message.toLowerCase().replace(regex, "").trim();
 
   // Initialise the list of JSON files to load

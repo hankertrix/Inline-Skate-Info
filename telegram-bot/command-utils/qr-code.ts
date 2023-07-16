@@ -1,11 +1,13 @@
 // The module containing all the utilities for the QR code command
 
+import { removeBotUsername } from "../bot-utils";
 
 // The regex for the QR code command
 export const qrCodeRegex = /^\/?\bqr[ _\-]?(?:code)?s?\b/i;
 
+
 // Function to handle the QR code command and generate the reply
-export async function qrCodeHandler(message: string) {
+export async function handler(message: string) {
 
   // Removes the command from the message
   message = message.replace(qrCodeRegex, "").trim();

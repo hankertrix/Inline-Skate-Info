@@ -10,6 +10,15 @@ import { ENABLE_DELETING_COMMAND_MESSAGES, ENABLE_ADMIN_CHECK } from "../config"
 // The regular expression to get the message entities (currently HTML tags)
 const messageEntityRegex = /<.+?>/g;
 
+// The regular expression to remove the bot's username
+const removeBotUsernameRegex = /@inlineskatebot/g;
+
+
+// Function to remove the bot's username from a message
+export function removeBotUsername(message: string) {
+  return message.replace(removeBotUsernameRegex, "").trim();
+}
+
 
 // Function to get the number of message entities in the message
 function getMessageEntityCount(message: string) {

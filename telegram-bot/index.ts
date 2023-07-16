@@ -5,7 +5,7 @@ import type { Context } from "telegraf";
 import type { InlineQueryResult, InlineKeyboardButton, CallbackQuery, Message } from "telegraf/types";
 import { SPACING, DEV, getBasePath } from "../src/lib/constants";
 import * as utils from "./utils";
-import { ctxReply, answerInlineQuery, isAdmin, deleteMessages, messageAndFileCommandHandler, messageAndFileInlineQueryHandler, wrapCallbackWithMessageDeleter } from "./bot-utils";
+import { removeBotUsername, ctxReply, answerInlineQuery, isAdmin, deleteMessages, messageAndFileCommandHandler, messageAndFileInlineQueryHandler, wrapCallbackWithMessageDeleter } from "./bot-utils";
 import * as scenes from "./bot-scenes";
 import * as commandUtils from "./command-utils";
 
@@ -1003,6 +1003,9 @@ bot.command([
   // Remove the command from the message
   msg = msg.replace(commandUtils.trainingMsg.regex, "").trim();
 
+  // Remove the bot's username from the message
+  msg = removeBotUsername(msg);
+
   // Gets the training message handler to handle the training message command
   await commandUtils.trainingMsg.handler(ctx, msg);
 });
@@ -1104,7 +1107,7 @@ bot.command([
   const msgText = ctx.message.text;
 
   // Calls the QR code handler to generate the QR code
-  const [_, qrCodeDataURL] = await commandUtils.qrCode.qrCodeHandler(msgText);
+  const [_, qrCodeDataURL] = await commandUtils.qrCode.handler(msgText);
 
   // If the QR code is generated, reply to the user with the image
   if (qrCodeDataURL) return await ctx.replyWithPhoto({ source: Buffer.from(qrCodeDataURL, "base64") });
@@ -1113,7 +1116,7 @@ bot.command([
   async function callback(ctx: Context, input: string) {
 
     // Calls the QR code handler to generate the QR code
-    const [_, qrCodeDataURL] = await commandUtils.qrCode.qrCodeHandler(input);
+    const [_, qrCodeDataURL] = await commandUtils.qrCode.handler(input);
 
     // Reply to the user with the image
     return await ctx.replyWithPhoto({ source: Buffer.from(qrCodeDataURL, "base64") });
@@ -1131,7 +1134,7 @@ bot.inlineQuery(commandUtils.qrCode.qrCodeRegex, utils.debounce(async (ctx: Cont
   const queryText = ctx.inlineQuery!.query;
 
   // Call the handler to generate the QR code
-  const [message, qrCodeDataURL] = await commandUtils.qrCode.qrCodeHandler(queryText);
+  const [message, qrCodeDataURL] = await commandUtils.qrCode.handler(queryText);
 
   // If the QR code isn't generated, exit the function
   if (!qrCodeDataURL) return;

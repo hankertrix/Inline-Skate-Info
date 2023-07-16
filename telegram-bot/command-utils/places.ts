@@ -1,6 +1,7 @@
 // Module to handle all the commands related to places, like where to buy skates, where to rent skates and so on
 
 import * as utils from "../utils";
+import { removeBotUsername } from "../bot-utils";
 import { SPACING, CATEGORY_SPACING, LABEL_SPACING } from "../../src/lib/constants";
 import type { ObjectValues, Dict, Place } from "../types";
 
@@ -113,7 +114,10 @@ export async function generatePlacesText(place: Places, formatFunc: Function = u
 // Function to handle the where to buy command
 export async function whereToBuyHandler(message: string) {
 
-  // Removes the command from the message
+  // Remove the bot's username from the message
+  message = removeBotUsername(message);
+
+  // Makes the message lowercase and removes the command from the message
   const msg = message.toLowerCase()
     .replace(whereToBuyRegex, "").trim();
 

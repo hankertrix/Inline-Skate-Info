@@ -3,6 +3,7 @@
 import * as normaliseData from "../normalise-data";
 import type { Dict } from "../types";
 import * as utils from "../utils";
+import { removeBotUsername } from "../bot-utils";
 
 
 // The regex for the terminology command
@@ -70,8 +71,11 @@ function generateTerminologyText(data: Dict<string> | string, separator: string 
 export async function handler(message: string) {
 
   
-  // Gets the message text from the context and remove the command from the message
+  // Remove the command from the message
   message = message.replace(regex, "").trim();
+
+  // Remove the bot's username from the message
+  message = removeBotUsername(message);
 
   // Change the message to lowercase
   const msg = message.toLowerCase();

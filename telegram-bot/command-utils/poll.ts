@@ -1,6 +1,7 @@
 // The utility functions for the poll command
 
 import * as utils from "../utils";
+import { removeBotUsername } from "../bot-utils"
 import type { Context } from "telegraf";
 import type { User, InlineKeyboardButton } from "telegraf/types";
 import { SPACING } from "../../src/lib/constants";
@@ -39,6 +40,9 @@ export function generatePollMessage(message: string, pollOptions: string[]) {
 
   // Remove the command from the message
   message = message.replace(pollMessageRegex, "").trim();
+
+  // Remove the bot's username from the message
+  message = removeBotUsername(message);
   
   // Generate the portion of the message that is a poll
   const pollPortion = `${pollOptions.map(option => `${utils.bold(option)}`).join(SPACING)}${SPACING}👥 Nobody responded`;
