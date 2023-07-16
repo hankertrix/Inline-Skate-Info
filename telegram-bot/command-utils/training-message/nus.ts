@@ -5,7 +5,7 @@ import * as filters from "telegraf/filters";
 import type { DateMapping } from "../../types";
 import * as utils from "../../utils";
 import * as trgMsgUtils from "./utils";
-import { cancelCommand, createWizardScene, deleteMessages, markMessageForDeletion, wrapCallbackWithMessageDeleter, promptUserForInput } from "../../bot-utils";
+import { removeCommand, cancelCommand, removeBotUsername, createWizardScene, deleteMessages, markMessageForDeletion, wrapCallbackWithMessageDeleter, promptUserForInput } from "../../bot-utils";
 import { generatePollMessage } from "../poll";
 
 
@@ -276,8 +276,11 @@ nusValidator.on(filters.message("text"), async ctx => {
   // Gets the username and the week type from the state object
   const { weekType, username } = state;
 
-  // Gets the message from the user
-  const msg = utils.removeCommand(ctx.message.text);
+  // Gets the message from the user and removes the command from the start of the message
+  let msg = removeCommand(ctx.message.text);
+
+  // Remove the bot's username from the message
+  msg = removeBotUsername(msg);
 
   // Gets the given username and the week type from the message
   const [givenWeekType, noRentals, givenUsername] = getRequiredArgs(msg);
