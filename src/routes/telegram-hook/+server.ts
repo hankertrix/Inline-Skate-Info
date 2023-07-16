@@ -4,7 +4,6 @@ import type { RequestHandler } from "@sveltejs/kit";
 import { ENABLE_SETTING_WEBHOOK } from "../../../config";
 import { getBasePath } from "$lib/constants";
 import bot from "../../../telegram-bot";
-import path from "path";
 
 
 // Function to handle the POST request
