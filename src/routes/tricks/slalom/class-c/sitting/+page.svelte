@@ -14,4 +14,4 @@
 </script>
 
 <!-- The HTML for the class C slalom tricks in the sitting category -->
-<TricksPage title="Sitting, Class C Slalom Tricks" {tricksJson} headingLevel={3} changeInHeadingLevel={1} />
+<TricksPage title="Sitting, Class C Slalom Tricks" description="The list of class C slalom tricks in the sitting category" {tricksJson} headingLevel={3} changeInHeadingLevel={1} />

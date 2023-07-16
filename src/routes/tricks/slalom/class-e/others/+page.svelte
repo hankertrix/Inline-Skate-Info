@@ -14,4 +14,4 @@
 </script>
 
 <!-- The HTML for the class E slalom tricks in the others category -->
-<TricksPage title="Others, Class E Slalom Tricks" {tricksJson} headingLevel={3} changeInHeadingLevel={1} />
+<TricksPage title="Others, Class E Slalom Tricks" description="The list of class E slalom tricks in the others category" {tricksJson} headingLevel={3} changeInHeadingLevel={1} />

@@ -39,6 +39,7 @@
 <!-- The headers for the terminology page -->
 <svelte:head>
   <title>{title} - Inline Skate Info</title>
+  <meta name="description" content="The list of definitions for the commonly used terms in inline skating">
 </svelte:head>
 
 <!-- The HTML for the terminology page -->

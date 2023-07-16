@@ -13,4 +13,4 @@
 </script>
 
 <!-- The HTML for the page -->
-<PlacesPage title="Skate Parks" {placesJson} headingLevel={3} changeInHeadingLevel={1} />
+<PlacesPage title="Skate Parks" description="The list of skate parks in Singapore" {placesJson} headingLevel={3} changeInHeadingLevel={1} />

@@ -7,6 +7,9 @@
   // The variable which takes in the title of the page
   export let title: string;
 
+  // The variable which takes in the description of the page
+  export let description: string;
+
   // The variable which takes in the JSON data for the tricks
   export let tricksJson: any;
   
@@ -35,6 +38,7 @@
 <!-- The headers for the trick page -->
 <svelte:head>
   <title>{title} - Inline Skate Info</title>
+  <meta name="description" content={description}>
 </svelte:head>
 
 <!-- The HTML for the tricks page -->

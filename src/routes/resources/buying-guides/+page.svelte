@@ -7,4 +7,4 @@
 </script>
 
 <!-- The HTML for the page -->
-<ListsPage title="Buying Guides" {listsJson} />
+<ListsPage title="Buying Guides" description="The list of buying guides for you to peruse" {listsJson} />

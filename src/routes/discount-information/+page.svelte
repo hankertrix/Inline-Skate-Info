@@ -55,6 +55,7 @@
 <!-- The headers for the page -->
 <svelte:head>
   <title>{title} - Inline Skate Info</title>
+  <meta name="description" content="Details about the tertiary student discount for students studying in Singapore">
 </svelte:head>
 
 <!-- The HTML for the page -->

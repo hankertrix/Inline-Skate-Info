@@ -29,4 +29,4 @@
 </script>
 
 <!-- The HTML for all aggressive tricks -->
-<!-- <TricksPage title="Aggressive Tricks" {tricksJson} headingLevel={2} changeInHeadingLevel={1} /> -->
+<!-- <TricksPage title="Aggressive Tricks" description="The list of all aggressive tricks" {tricksJson} headingLevel={2} changeInHeadingLevel={1} /> -->

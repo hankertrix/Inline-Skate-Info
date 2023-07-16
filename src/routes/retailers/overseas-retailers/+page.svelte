@@ -13,4 +13,4 @@
 </script>
 
 <!-- The HTML for the page -->
-<PlacesPage title="Overseas Retailers" {placesJson} headingLevel={3} changeInHeadingLevel={1} />
+<PlacesPage title="Overseas Retailers" description="The list of overseas retailers where you can buy inline skating products" {placesJson} headingLevel={3} changeInHeadingLevel={1} />

@@ -64,6 +64,7 @@
 <!-- The headers for the page -->
 <svelte:head>
   <title>{title}</title>
+  <meta name="description" content="Learn about the differences between regular 4-wheeled inline skates and triskates">
 </svelte:head>
 
 <!-- The HTML for the page -->

@@ -7,4 +7,4 @@
 </script>
 
 <!-- The HTML for the page -->
-<ListsPage title="Trick Lists" {listsJson} />
+<ListsPage title="Trick Lists" description="The list of trick lists for you to peruse" {listsJson} />

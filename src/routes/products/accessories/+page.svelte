@@ -13,4 +13,4 @@
 </script>
 
 <!-- The HTML for the page -->
-<ProductsPage title="Accessories" {productsJson} headingLevel={4} changeInHeadingLevel={1} />
+<ProductsPage title="Accessories" description="The list of accessories that you might find useful" {productsJson} headingLevel={4} changeInHeadingLevel={1} />

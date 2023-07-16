@@ -14,4 +14,4 @@
 </script>
 
 <!-- The HTML for the miscellaneous tricks page -->
-<TricksPage title="Miscellaneous Tricks" {tricksJson} headingLevel={3} changeInHeadingLevel={1} />
+<TricksPage title="Miscellaneous Tricks" description="The list of miscellaneous tricks in inline skating" {tricksJson} headingLevel={3} changeInHeadingLevel={1} />

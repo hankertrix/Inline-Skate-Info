@@ -13,4 +13,4 @@
 </script>
 
 <!-- The HTML for the page -->
-<PlacesPage title="Retailers In Singapore" {placesJson} headingLevel={3} changeInHeadingLevel={1} />
+<PlacesPage title="Retailers In Singapore" description="The list of retailers in Singapore where you can buy inline skating products" {placesJson} headingLevel={3} changeInHeadingLevel={1} />

@@ -14,4 +14,4 @@
 </script>
 
 <!-- The HTML for the class C aggressive tricks in the spins category -->
-<TricksPage title="Spins, Class C Aggressive Tricks" {tricksJson} headingLevel={3} changeInHeadingLevel={1} />
+<!-- <TricksPage title="Spins, Class C Aggressive Tricks" description="The list of class C aggressive tricks in the spins category" {tricksJson} headingLevel={3} changeInHeadingLevel={1} /> -->

@@ -17,4 +17,4 @@
 </script>
 
 <!-- The HTML for the page -->
-<PlacesPage title="Retailers" {placesJson} headingLevel={2} changeInHeadingLevel={1} />
+<PlacesPage title="Retailers" description="The list of retailers where you can buy inline skating products" {placesJson} headingLevel={2} changeInHeadingLevel={1} />

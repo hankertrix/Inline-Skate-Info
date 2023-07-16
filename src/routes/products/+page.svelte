@@ -19,4 +19,4 @@
 </script>
 
 <!-- The HTML for the page -->
-<ProductsPage title="Products" {productsJson} headingLevel={2} changeInHeadingLevel={2} />
+<ProductsPage title="Products" description="The list of all the products that you may find useful for inline skating" {productsJson} headingLevel={2} changeInHeadingLevel={2} />

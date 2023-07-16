@@ -7,4 +7,4 @@
 </script>
 
 <!-- The HTML for the page -->
-<ListsPage title="Miscellaneous Resources" {listsJson} />
+<ListsPage title="Miscellaneous Resources" description="The list of miscellaneous resources for you to peruse" {listsJson} />

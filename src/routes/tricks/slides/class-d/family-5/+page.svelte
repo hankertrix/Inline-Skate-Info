@@ -14,4 +14,4 @@
 </script>
 
 <!-- The HTML for the class D family 5 slides -->
-<TricksPage title="Class D, Family 5 Slides" {tricksJson} headingLevel={3} changeInHeadingLevel={1} />
+<TricksPage title="Class D, Family 5 Slides" description="The list of class D slides in family 5" {tricksJson} headingLevel={3} changeInHeadingLevel={1} />

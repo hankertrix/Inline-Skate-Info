@@ -13,4 +13,4 @@
 </script>
 
 <!-- The HTML for the page -->
-<ProductsPage title="Maintenance Items" {productsJson} headingLevel={4} changeInHeadingLevel={1} />
+<ProductsPage title="Maintenance Items" description="The list of items that you will likely need to maintain your skates" {productsJson} headingLevel={4} changeInHeadingLevel={1} />

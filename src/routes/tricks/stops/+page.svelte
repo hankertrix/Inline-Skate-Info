@@ -14,4 +14,4 @@
 </script>
 
 <!-- The HTML for the stops page -->
-<TricksPage title="Stops" {tricksJson} headingLevel={3} changeInHeadingLevel={1} />
+<TricksPage title="Stops" description="The list of inline skating stops" {tricksJson} headingLevel={3} changeInHeadingLevel={1} />

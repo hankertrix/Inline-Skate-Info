@@ -13,4 +13,4 @@
 </script>
 
 <!-- The HTML for the page -->
-<ProductsPage title="Clothing" {productsJson} headingLevel={4} changeInHeadingLevel={1} />
+<ProductsPage title="Clothing" description="The list of clothing items that would be useful for inline skating" {productsJson} headingLevel={4} changeInHeadingLevel={1} />

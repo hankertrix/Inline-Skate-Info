@@ -52,6 +52,7 @@
 <!-- The headers for the page -->
 <svelte:head>
   <title>{title} - Inline Skate Info</title>
+  <meta name="description" content="The list of skates recommended for beginners who intend to become serious about inline skating">
 </svelte:head>
 
 <!-- The HTML for the page -->

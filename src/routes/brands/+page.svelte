@@ -19,4 +19,4 @@
 </script>
 
 <!-- The HTML for the page -->
-<BrandsPage title="Brands" {brandsJson} headingLevel={2} changeInHeadingLevel={1} />
+<BrandsPage title="Brands" description="Learn more about the brands involved in inline skating" {brandsJson} headingLevel={2} changeInHeadingLevel={1} />

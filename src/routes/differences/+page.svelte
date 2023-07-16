@@ -74,6 +74,7 @@
 <!-- The headers for the differences page -->
 <svelte:head>
   <title>{title} - Inline Skate Info</title>
+  <meta name="description" content="The landing page for all of the pages talking about differences">
 </svelte:head>
 
 <!-- The HTML for the differences page -->

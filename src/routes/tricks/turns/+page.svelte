@@ -14,4 +14,4 @@
 </script>
 
 <!-- The HTML for the turns page -->
-<TricksPage title="Turns" {tricksJson} headingLevel={3} changeInHeadingLevel={1} />
+<TricksPage title="Turns" description="The list of inline skating turns" {tricksJson} headingLevel={3} changeInHeadingLevel={1} />

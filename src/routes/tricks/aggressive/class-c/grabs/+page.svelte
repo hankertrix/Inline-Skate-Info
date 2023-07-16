@@ -14,4 +14,4 @@
 </script>
 
 <!-- The HTML for the class C aggressive tricks in the grabs category -->
-<!-- <TricksPage title="Grabs, Class C Aggressive Tricks" {tricksJson} headingLevel={3} changeInHeadingLevel={1} /> -->
+<!-- <TricksPage title="Grabs, Class C Aggressive Tricks" description="The list of class C aggressive tricks in the grabs category" {tricksJson} headingLevel={3} changeInHeadingLevel={1} /> -->

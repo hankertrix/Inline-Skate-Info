@@ -14,4 +14,4 @@
 </script>
 
 <!-- The HTML for the class B aggressive tricks in the grinds category -->
-<!-- <TricksPage title="Grinds, Class B Aggressive Tricks" {tricksJson} headingLevel={3} changeInHeadingLevel={1} /> -->
+<!-- <TricksPage title="Grinds, Class B Aggressive Tricks" description="The list of class B aggressive tricks in the grinds category" {tricksJson} headingLevel={3} changeInHeadingLevel={1} /> -->

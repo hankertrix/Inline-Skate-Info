@@ -27,4 +27,4 @@
 </script>
 
 <!-- The HTML for the page containing all of the slides -->
-<TricksPage title="Slides" {tricksJson} headingLevel={2} changeInHeadingLevel={1} />
+<TricksPage title="Slides" description="The list of all inline skating slides" {tricksJson} headingLevel={2} changeInHeadingLevel={1} />

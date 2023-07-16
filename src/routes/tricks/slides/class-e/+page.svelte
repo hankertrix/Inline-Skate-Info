@@ -22,4 +22,4 @@
 </script>
 
 <!-- The HTML for all of the class E slides -->
-<TricksPage title="Class E Slides" {tricksJson} headingLevel={2} changeInHeadingLevel={1} />
+<TricksPage title="Class E Slides" description="The list of all class E slides" {tricksJson} headingLevel={2} changeInHeadingLevel={1} />

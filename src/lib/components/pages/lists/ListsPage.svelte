@@ -13,6 +13,9 @@
   
   // The variable to take in the title of the page
   export let title: string;
+  
+  // The variable which takes in the description of the page
+  export let description: string;
 
   // The variable to take in the JSON data of the lists
   export let listsJson: ListsJson;
@@ -49,6 +52,7 @@
 <!-- The headers for the page -->
 <svelte:head>
   <title>{title} - Inline Skate Info</title>
+  <meta name="description" content={description}>
 </svelte:head>
 
 <!-- The HTML for the component -->

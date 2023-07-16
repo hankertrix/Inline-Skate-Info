@@ -7,4 +7,4 @@
 </script>
 
 <!-- The HTML for the page -->
-<ListsPage title="Glossaries" {listsJson} />
+<ListsPage title="Glossaries" description="The list of glossaries for you to peruse" {listsJson} />

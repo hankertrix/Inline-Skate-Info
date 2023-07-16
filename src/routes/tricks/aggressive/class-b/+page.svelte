@@ -26,4 +26,4 @@
 </script>
 
 <!-- The HTML for all of the class B aggressive tricks -->
-<!-- <TricksPage title="Class B Aggressive Tricks" {tricksJson} headingLevel={2} changeInHeadingLevel={1} /> -->
+<!-- <TricksPage title="Class B Aggressive Tricks" description="The list of all class B aggressive tricks" {tricksJson} headingLevel={2} changeInHeadingLevel={1} /> -->

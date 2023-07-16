@@ -20,4 +20,4 @@
 </script>
 
 <!-- The HTML for all of the class A aggressive tricks -->
-<!-- <TricksPage title="Class A Aggressive Tricks" {tricksJson} headingLevel={2} changeInHeadingLevel={1} /> -->
+<!-- <TricksPage title="Class A Aggressive Tricks" description="The list of all class A aggressive tricks" {tricksJson} headingLevel={2} changeInHeadingLevel={1} /> -->

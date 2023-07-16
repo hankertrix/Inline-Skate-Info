@@ -13,4 +13,4 @@
 </script>
 
 <!-- The HTML for the page -->
-<ProductsPage title="Protective Gear" {productsJson} headingLevel={4} changeInHeadingLevel={1} />
+<ProductsPage title="Protective Gear" description="The list of protective gear to protect yourself while inline skating" {productsJson} headingLevel={4} changeInHeadingLevel={1} />

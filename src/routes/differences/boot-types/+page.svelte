@@ -40,6 +40,7 @@
 <!-- The headers for the page -->
 <svelte:head>
   <title>{title} - Inline Skate Info</title>
+  <meta name="description" content="Learn about the differences between the various inline skate boot types">
 </svelte:head>
 
 <!-- The HTML for the page -->

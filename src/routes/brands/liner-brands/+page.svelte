@@ -13,4 +13,4 @@
 </script>
 
 <!-- The HTML for the page -->
-<BrandsPage title="Liner Brands" {brandsJson} headingLevel={3} changeInHeadingLevel={1} />
+<BrandsPage title="Liner Brands" description="The list of brands that specialise in making liners for inline skates" {brandsJson} headingLevel={3} changeInHeadingLevel={1} />

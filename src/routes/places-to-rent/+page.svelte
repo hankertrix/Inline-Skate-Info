@@ -7,4 +7,4 @@
 </script>
 
 <!-- The HTML for the page -->
-<PlacesPage title="Places to Rent" {placesJson} headingLevel={3} changeInHeadingLevel={1} />
+<PlacesPage title="Places to Rent" description="The list of places to rent skates" {placesJson} headingLevel={3} changeInHeadingLevel={1} />

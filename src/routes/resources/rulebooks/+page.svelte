@@ -7,4 +7,4 @@
 </script>
 
 <!-- The HTML for the page -->
-<ListsPage title="Rulebooks" {listsJson} />
+<ListsPage title="Rulebooks" description="The list of rulebooks for you to peruse" {listsJson} />

@@ -15,4 +15,4 @@
 </script>
 
 <!-- The HTML for the page -->
-<PlacesPage title="Places to Skate" {placesJson} headingLevel={2} changeInHeadingLevel={1} />
+<PlacesPage title="Places to Skate" description="The list of all the places in Singapore that are made specifically for inline skating" {placesJson} headingLevel={2} changeInHeadingLevel={1} />

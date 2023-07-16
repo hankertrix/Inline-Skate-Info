@@ -14,4 +14,4 @@
 </script>
 
 <!-- The HTML for the class C aggressive tricks in the airs category -->
-<!-- <TricksPage title="Airs, Class C Aggressive Tricks" {tricksJson} headingLevel={3} changeInHeadingLevel={1} /> -->
+<!-- <TricksPage title="Airs, Class C Aggressive Tricks" description="The list of class C aggressive tricks in the airs category" {tricksJson} headingLevel={3} changeInHeadingLevel={1} /> -->

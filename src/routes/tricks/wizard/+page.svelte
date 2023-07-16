@@ -14,4 +14,4 @@
 </script>
 
 <!-- The HTML for the wizard tricks page -->
-<TricksPage title="Wizard Tricks" {tricksJson} headingLevel={3} changeInHeadingLevel={1} />
+<TricksPage title="Wizard Tricks" description="The list of wizard tricks" {tricksJson} headingLevel={3} changeInHeadingLevel={1} />

@@ -27,4 +27,4 @@
 </script>
 
 <!-- The HTML for all slalom tricks -->
-<TricksPage title="Slalom Tricks" {tricksJson} headingLevel={2} changeInHeadingLevel={1} />
+<TricksPage title="Slalom Tricks" description="The list of all slalom tricks" {tricksJson} headingLevel={2} changeInHeadingLevel={1} />

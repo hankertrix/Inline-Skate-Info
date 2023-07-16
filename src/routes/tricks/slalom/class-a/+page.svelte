@@ -26,4 +26,4 @@
 </script>
 
 <!-- The HTML for all of the class A slalom tricks -->
-<TricksPage title="Class A Slalom Tricks" {tricksJson} headingLevel={2} changeInHeadingLevel={1} />
+<TricksPage title="Class A Slalom Tricks" description="The list of all class A slalom tricks" {tricksJson} headingLevel={2} changeInHeadingLevel={1} />

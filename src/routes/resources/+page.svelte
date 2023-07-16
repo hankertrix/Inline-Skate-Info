@@ -73,6 +73,7 @@
 <!-- The headers for the resources page -->
 <svelte:head>
   <title>{title} - Inline Skate Info</title>
+  <meta name="description" content="The landing page for all of the pages containing resources">
 </svelte:head>
 
 <!-- The HTML for the resources page -->

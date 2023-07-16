@@ -26,4 +26,4 @@
 </script>
 
 <!-- The HTML for all of the class B slides -->
-<TricksPage title="Class B Slides" {tricksJson} headingLevel={2} changeInHeadingLevel={1} />
+<TricksPage title="Class B Slides" description="The list of all class B slides" {tricksJson} headingLevel={2} changeInHeadingLevel={1} />

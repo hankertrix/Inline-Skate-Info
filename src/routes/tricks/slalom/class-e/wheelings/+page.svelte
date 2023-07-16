@@ -14,4 +14,4 @@
 </script>
 
 <!-- The HTML for the class E slalom tricks in the wheelings category -->
-<TricksPage title="Wheelings, Class E Slalom Tricks" {tricksJson} headingLevel={3} changeInHeadingLevel={1} />
+<TricksPage title="Wheelings, Class E Slalom Tricks" description="The list of class E slalom tricks in the wheelings category" {tricksJson} headingLevel={3} changeInHeadingLevel={1} />

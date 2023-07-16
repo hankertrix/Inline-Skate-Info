@@ -14,4 +14,4 @@
 </script>
 
 <!-- The HTML for the class D aggressive tricks in the stalls category -->
-<!-- <TricksPage title="Stalls, Class D Aggressive Tricks" {tricksJson} headingLevel={3} changeInHeadingLevel={1} /> -->
+<!-- <TricksPage title="Stalls, Class D Aggressive Tricks" description="The list of class D aggressive tricks in the stalls category" {tricksJson} headingLevel={3} changeInHeadingLevel={1} /> -->

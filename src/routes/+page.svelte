@@ -80,6 +80,7 @@
 <!-- The headers for the page -->
 <svelte:head>
   <title>Inline Skate Info</title>
+  <meta name="description" content="Quite possibly the ultimate resource for inline skating">
 </svelte:head>
 
 <!-- The HTML for the main page -->

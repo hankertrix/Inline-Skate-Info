@@ -14,4 +14,4 @@
 </script>
 
 <!-- The HTML for the jumps page -->
-<TricksPage title="Jumps" {tricksJson} headingLevel={3} changeInHeadingLevel={1} />
+<TricksPage title="Jumps" description="The list of inline skating jumps" {tricksJson} headingLevel={3} changeInHeadingLevel={1} />

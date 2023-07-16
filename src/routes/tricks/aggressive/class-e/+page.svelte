@@ -28,4 +28,4 @@
 </script>
 
 <!-- The HTML for all of the class E aggressive tricks -->
-<!-- <TricksPage title="Class E Aggressive Tricks" {tricksJson} headingLevel={2} changeInHeadingLevel={1} /> -->
+<!-- <TricksPage title="Class E Aggressive Tricks" description="The list of all class E aggressive tricks" {tricksJson} headingLevel={2} changeInHeadingLevel={1} /> -->

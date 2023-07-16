@@ -14,4 +14,4 @@
 </script>
 
 <!-- The HTML for the aggressive basics page -->
-<!-- <TricksPage title="Aggressive Basics" {tricksJson} headingLevel={3} changeInHeadingLevel={1} /> -->
+<!-- <TricksPage title="Aggressive Basics" description="The list of basic tricks in aggressive skating" {tricksJson} headingLevel={3} changeInHeadingLevel={1} /> -->

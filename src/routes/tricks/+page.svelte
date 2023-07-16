@@ -32,4 +32,4 @@
 </script>
 
 <!-- The HTML for the page containing all of the tricks -->
-<TricksPage title="Tricks" {tricksJson} headingLevel={2} changeInHeadingLevel={1} />
+<TricksPage title="Tricks" description="The list of all inline skating tricks" {tricksJson} headingLevel={2} changeInHeadingLevel={1} />
