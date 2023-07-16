@@ -1,4 +1,3 @@
 {
-  "source": "build",
-  "bundle_dir": "_pagefind"
+  "source": "build"
 }
