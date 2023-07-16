@@ -407,12 +407,6 @@ export function debounce(func: Function, timeInMs: number = 2000) {
 }
 
 
-// Function to remove a command from a message
-export function removeCommand(message: string) {
-  return message.replace(/^\/[\w\-]+/, "").trim();
-}
-
-
 // Function to remove all html tags from the given text
 export function removeHtml(text: string) {
   return text.replace(/<\/?.*?(?:>|$)/g, "");
