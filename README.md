@@ -1,6 +1,6 @@
 # [Inline Skate Info](https://inline-skate-info.netlify.app)
 
-This project aims to be the ultimate resource for inline skating! It is built using [SvelteKit](https://kit.svelte.dev) and deployed to [Netlify](https://www.netlify.com). The project is entirely written in [TypeScript](https://www.typescriptlang.org), with the exception of HTML and CSS in HTML amd Svelte files of course. The website search is provided by [Pagefind](https://pagefind.app) and the [Telegram bot](https://t.me/inlineskatebot) portion of the project is made using [telegraf.js](https://telegraf.js.org).
+This project aims to be the ultimate resource for inline skating! It is built using [SvelteKit](https://kit.svelte.dev) and deployed to [Netlify](https://www.netlify.com). The project is entirely written in [TypeScript](https://www.typescriptlang.org), with the exception of HTML and CSS in HTML and Svelte files of course. The website search is provided by [Pagefind](https://pagefind.app) and the [Telegram bot](https://t.me/inlineskatebot) portion of the project is made using [telegraf.js](https://telegraf.js.org).
 
 You can view the resources using either the [Telegram bot](https://t.me/inlineskatebot) or the [website](https://inline-skate-info.netlify.app).
 
