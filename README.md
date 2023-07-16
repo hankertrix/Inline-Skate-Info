@@ -67,7 +67,7 @@ Other than the `/qr_code` command in inline mode, all other commands do not coll
 
 <br>
 
-## License
+## [License](https://codeberg.org/Hanker/Inline-Skate-Info/src/branch/main/LICENSE.txt)
 
 This project is licensed under GNU Affero General Public License Version 3 (GNU AGPL v3). For the full license, look at the [LICENSE.txt](https://codeberg.org/Hanker/Inline-Skate-Info/src/branch/main/LICENSE.txt) file.
 
