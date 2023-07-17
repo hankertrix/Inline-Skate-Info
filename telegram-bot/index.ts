@@ -1128,7 +1128,7 @@ bot.command([
 
 
 // The inline query handler for the QR code command
-bot.inlineQuery(commandUtils.qrCode.qrCodeRegex, utils.debounce(async (ctx: Context) => {
+bot.inlineQuery(commandUtils.qrCode.qrCodeRegex, async ctx => {
 
   // Gets the text from the inline query
   const queryText = ctx.inlineQuery!.query;
@@ -1158,7 +1158,7 @@ bot.inlineQuery(commandUtils.qrCode.qrCodeRegex, utils.debounce(async (ctx: Cont
 
   // Answers the inline query
   await ctx.answerInlineQuery([queryReply], { cache_time: 2 ** 31 - 1 });
-}));
+});
 
 
 

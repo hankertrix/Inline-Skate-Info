@@ -389,24 +389,6 @@ export function getFilenameFromPath(path: string, removeFileExt: boolean = false
 }
 
 
-// A debounce function to stop the a function from responding when the input is being changed
-export function debounce(func: Function, timeInMs: number = 2000) {
-
-  // Initialise the timer variable
-  let timer: ReturnType<typeof setTimeout>;
-
-  // Returns a function that clears the timeout if the function is called again within the time given and eventually calls it after the time given if the function isn't called again
-  return function (this: any, ...args: any[]) {
-
-    // Removes the timer (restarts the timer again)
-    clearTimeout(timer);
-
-    // Sets the timer to call the function after the time given
-    timer = setTimeout(() => func.apply(this, args), timeInMs);
-  }
-}
-
-
 // Function to remove all html tags from the given text
 export function removeHtml(text: string) {
   return text.replace(/<\/?.*?(?:>|$)/g, "");
