@@ -238,6 +238,16 @@ export function generateMsg() {
   // Get the help message for the commands
   const commandHelpMsg = `${utils.bold("Bot Commands")}${SPACING}${getCommandHelpMsg()}`;
 
+  // The help message for other miscellaneous bot features
+  const otherBotFeaturesHelpMsg = `
+  
+${utils.bold("Other Features")}
+  
+
+The bot is also capable of deleting the messages that are sent when a someone joins or leaves the group. All you need to do is to make the bot an admin and give it the permission to delete messages.
+
+`.trim();
+
   // The part of the help message talking about inline mode
   const inlineModeHelp = `
 
@@ -256,7 +266,7 @@ All other commands are completely anonymous, even when used in inline mode. You 
   `.trim();
 
   // Returns the help message and the inline mode help message
-  return [preface, commandHelpMsg, inlineModeHelp];
+  return [preface, commandHelpMsg, otherBotFeaturesHelpMsg, inlineModeHelp];
 }
 
 
