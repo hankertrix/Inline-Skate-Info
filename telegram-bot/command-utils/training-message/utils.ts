@@ -45,11 +45,11 @@ export async function handleTrgMsg(ctx: any, msg: string) {
     return await ctx.scene.enter("validate", { message: `No training message was found for this chat, so please enter the desired training message. If you want to set up a poll message for this chat, please contact ${DEV}.`, callback: wrappedCallback, messagesToDelete: [] })
   }
 
-  // Otherwise, tries to delete the command message that the user has sent
-  await deleteMessages(ctx, ctx.message.message_id);
-
-  // Calls the callback function to create a training message
+  // Otherwise, calls the callback function to create a training message
   await callback(ctx, msg);
+
+  // Tries to delete the command message that the user has sent
+  await deleteMessages(ctx, ctx.message.message_id);
 }
 
 

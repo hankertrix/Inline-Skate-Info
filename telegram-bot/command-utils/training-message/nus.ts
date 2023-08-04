@@ -198,12 +198,12 @@ export async function handler(ctx: any, msg: string) {
 
     // Creates a poll message with the custom message, but with the training dates as options, like the default training message
     const { message, callback } = createCustomTrgMsg(msg, trainingDates);
+
+    // Calls the callback function to send the message
+    await callback(ctx, message);
     
     // Tries to delete the message sent by the user
     await deleteMessages(ctx, ctx.message.message_id);
-
-    // Calls the callback function to send the message
-    return await callback(ctx, message);
   }
 
   // If either the username or the week is null, then enters the scene to ask for the required information to create the training message
@@ -214,14 +214,14 @@ export async function handler(ctx: any, msg: string) {
     messagesToDelete: []
   });
 
-  // Otherwise, tries to delete the message sent by the user
-  await deleteMessages(ctx, ctx.message.message_id);
-
-  // Generates the training message
+  // Otherwise, generates the training message
   const { message, callback } = createTrainingPollMsg(trainingMsg, trainingLocation, noRentals, week, username, trainingDates);
 
   // Calls the function to send the training message to the user
   await callback(ctx, message);
+
+  // Tries to delete the message sent by the user
+  await deleteMessages(ctx, ctx.message.message_id);
 }
 
 

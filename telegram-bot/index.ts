@@ -978,11 +978,11 @@ bot.command([
     return await ctx.scene.enter("validate", { message: "Please enter the poll message.", callback: wrappedCallback, messagesToDelete: [] });
   }
 
+  // Calls the callback function
+  await callback(ctx, message);
+
   // Tries to delete the message that the user has sent
   await deleteMessages(ctx, ctx.message.message_id);
-
-  // Calls the callback function
-  return await callback(ctx, message);
 });
 
 
