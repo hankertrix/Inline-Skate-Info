@@ -19,6 +19,8 @@ const trainingDates = ["2023-02-21T18:30:00.000", "2023-02-23T18:30:00.000"];
 const rentalMsg = `
 For this week's rentals, please contact {username} and let us know your SIZE IN EU.  (〃'▽'〃)
 
+Thereafter, make payment via https://nusfastpay.nus.edu.sg/skaterental and send screenshot of payment page to @weiiiiixiang
+
 Collection and return of rentals will be at the cage at 6.30pm and 9.30pm. (๑•‌ ₃ •‌๑)
 
 P.S. rentals are first come first serve. (。•‌︿•‌。)
