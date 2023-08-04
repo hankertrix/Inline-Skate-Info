@@ -1111,7 +1111,9 @@ bot.command([
   const [_, qrCodeDataURL] = await commandUtils.qrCode.handler(msgText);
 
   // If the QR code is generated, reply to the user with the image
-  if (qrCodeDataURL) return await ctx.replyWithPhoto({ source: Buffer.from(qrCodeDataURL, "base64") });
+  if (qrCodeDataURL) return await ctx.replyWithPhoto({
+    source: Buffer.from(qrCodeDataURL, "base64")
+  });
 
   // The callback function to call when the user has given a valid input
   async function callback(ctx: Context, input: string) {
@@ -1120,7 +1122,9 @@ bot.command([
     const [_, qrCodeDataURL] = await commandUtils.qrCode.handler(input);
 
     // Reply to the user with the image
-    return await ctx.replyWithPhoto({ source: Buffer.from(qrCodeDataURL, "base64") });
+    return await ctx.replyWithPhoto({
+      source: Buffer.from(qrCodeDataURL, "base64")
+    });
   }
 
   // Enter the scene to validate user input
@@ -1183,13 +1187,13 @@ bot.command([
 ], async ctx => {
 
   // Sends a message telling the user that the next message is the chat ID of the current chat
-  await ctx.reply("The chat ID of this chat is:");
+  await ctxReply(ctx, "The chat ID of this chat is:");
 
   // Gets the chat ID of the chat
   const chatID = ctx.message.chat.id;
 
   // Sends the chat ID to the user
-  await ctx.reply(`${chatID}`);
+  await ctxReply(ctx, `${chatID}`);
 });
 
 

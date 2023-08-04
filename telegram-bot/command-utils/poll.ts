@@ -59,6 +59,7 @@ export function generatePollMessage(message: string, pollOptions: string[]) {
     // Sends a poll with the user's input
     return await ctx.reply(`${input}\n\n${pollPortion}`, {
       parse_mode: "HTML",
+      reply_to_message_id: ctx.message!.message_id,
       reply_markup: {
         inline_keyboard: inlineKeyboard
       }
