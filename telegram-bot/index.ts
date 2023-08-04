@@ -3,6 +3,7 @@
 import { Telegraf, Scenes, session } from "telegraf";
 import type { Context } from "telegraf";
 import type { InlineQueryResult, InlineKeyboardButton, CallbackQuery, Message } from "telegraf/types";
+import * as filters from "telegraf/filters";
 import { SPACING, DEV, getBasePath } from "../src/lib/constants";
 import * as utils from "./utils";
 import { removeBotUsername, ctxReply, answerInlineQuery, isAdmin, deleteMessages, messageAndFileCommandHandler, messageAndFileInlineQueryHandler, wrapCallbackWithMessageDeleter } from "./bot-utils";
@@ -1243,6 +1244,20 @@ bot.command([
 
   // Sends the message to the user
   await ctxReply(ctx, msg);
+});
+
+
+
+
+
+
+
+
+
+
+// The function to immediately delete messages of people joining the group
+bot.on(filters.message("new_chat_members"), async ctx => {
+  await deleteMessages(ctx, ctx.message.message_id);
 });
 
 
