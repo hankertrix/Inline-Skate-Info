@@ -243,7 +243,6 @@ export function generateMsg() {
   
 ${utils.bold("Other Features")}
   
-
 The bot is also capable of deleting the messages that are sent when a someone joins or leaves the group. All you need to do is to make the bot an admin and give it the permission to delete messages.
 
 `.trim();
