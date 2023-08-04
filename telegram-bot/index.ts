@@ -1269,5 +1269,19 @@ bot.on(filters.message("new_chat_members"), async ctx => {
 
 
 
+// The function to immediately delete messages of people leaving the group
+bot.on(filters.message("left_chat_member"), async ctx => {
+  await deleteMessages(ctx, ctx.message.message_id);
+});
+
+
+
+
+
+
+
+
+
+
 // Export the bot as a default export
 export default bot;
