@@ -12,7 +12,7 @@ const trainingLocation = "NTU MPC 1";
 const trainingDates = ["2022-12-28T19:00:00.000", "2022-12-30T19:00:00.000"];
 
 // The training message
-const trainingMsg = "👾{last} {day} CCA Training @{location} @{date} 👾";
+const trainingMsg = "👾{last} {day} CCA Training @{location} @{date} 👾";
 
 
 
