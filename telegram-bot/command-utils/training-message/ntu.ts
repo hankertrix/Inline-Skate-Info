@@ -6,7 +6,7 @@ import * as trgMsgUtils from "./utils";
 
 
 // The location of the training
-const trainingLocation = utils.hyperlink("NTU MPC 1", "https://goo.gl/maps/uwQk8Q38B4Rdv18B8");
+const trainingLocation = "NTU MPC 1";
 
 // The training dates
 const trainingDates = ["2022-12-28T19:00:00.000", "2022-12-30T19:00:00.000"];
