@@ -448,33 +448,6 @@ export function reverseDict(dict: ReversibleDict) {
 }
 
 
-// The function to unstrip stripped HTML tags (the "<" and ">" of the HTML tags has been converted to their respective entities)
-function unstripValidHtmlTags(text: string) {
-
-  // The regular expression to check for valid HTML tags that have been stripped
-  const strippedHtmlRegex = /&lt;(?:a .+?|code|i|b)&gt;.+?&lt;\/(?:a|code|i|b)&gt;/g;
-
-  // The regular expression to find all the HTML entities for the "<" and the ">" symbol
-  const htmlEntitiesRegex = /&lt;|&gt;/g;
-
-  // The dictionary to convert a HTML entity into a character
-  const htmlEntityToChar = reverseDict(charToHtmlEntity);
-
-  // Unstrip all the valid HTML tags
-  return text.replace(
-    strippedHtmlRegex,
-
-    // Match refers to a valid HTML tag that has been stripped
-    match => match.replace(
-      htmlEntitiesRegex,
-
-      // The HTML entities for "<" and ">" in the valid HTML tag are changed back into regular characters using the htmlEntityToChar dictionary
-      char => dictGet(htmlEntityToChar, char, char)
-    )
-  );
-}
-
-
 // Function to make the first line of the text given bold
 export function boldFirstLine(text: string) {
 
@@ -484,8 +457,8 @@ export function boldFirstLine(text: string) {
   // Strips the HTML from the first line
   const strippedFirstLine = stripHtml(splittedText[0]);
 
-  // Bold and unstrip the valid HTML tags from the first line
-  const firstLine = bold(unstripValidHtmlTags(strippedFirstLine));
+  // Bold the first line
+  const firstLine = bold(strippedFirstLine);
 
   // Returns the message with the first line bolded
   return `${firstLine}\n${splittedText.slice(1).join("\n") ?? ""}`.trim();
