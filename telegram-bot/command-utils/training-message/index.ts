@@ -38,7 +38,13 @@ export const regex = /^\/?(?:train(?:ing)?|trg|trng?)_?(?:msg|message)?/i;
 
 // Function to get the module mapping
 function getModuleMapping(): [number, string][] {
-  return JSON.parse(process.env.MODULE_MAPPING as string);
+
+  // Gets the module mapping as a string
+  const moduleMapping = process.env.MODULE_MAPPING as string;
+
+  // Replace all of the single quotes ' with double quotes "
+  // And return the module mapping
+  return JSON.parse(moduleMapping.replaceAll(`'`, `"`));
 }
 
 
