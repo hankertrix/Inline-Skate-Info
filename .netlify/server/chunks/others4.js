@@ -1,0 +1,47 @@
+const othersTricksJson = {
+  "Cobra Back": {
+    description: "",
+    videos: [
+      [
+        "Lorenzo Guslandi",
+        "https://youtu.be/WSrExlIqYsk?t=17"
+      ],
+      [
+        "World Slalom Skaters Association [WSSA]",
+        "https://youtu.be/rFZh55-LYww?t=10"
+      ],
+      [
+        "Sinead Howick",
+        "https://youtu.be/1h5I9yqiRa4?t=7"
+      ],
+      [
+        "Sinead Howick",
+        "https://youtu.be/2wd91a9KZxc?t=12"
+      ]
+    ]
+  },
+  "Toe Reverse Eagle": {
+    description: "",
+    videos: [
+      [
+        "Learn Slalom (turn on captions)",
+        "https://youtu.be/GdaRbl30YrM"
+      ],
+      [
+        "Learn Slalom",
+        "https://youtu.be/2oFhIm3gtQo"
+      ],
+      [
+        "World Slalom Skaters Association [WSSA]",
+        "https://youtu.be/fVWPldGByyE?t=10"
+      ],
+      [
+        "Kamil Strygner",
+        "https://youtu.be/AW07hBe2Ghc"
+      ]
+    ]
+  }
+};
+export {
+  othersTricksJson as o
+};

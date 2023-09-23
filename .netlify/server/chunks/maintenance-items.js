@@ -1,0 +1,49 @@
+const maintenanceItemsJson = {
+  "Acetone (500ml)": {
+    price: "$9.00",
+    link: "https://shopee.sg/product/2875608/19368903099"
+  },
+  "Acetone (520ml) [Shopee]": {
+    price: "$9.80",
+    link: "https://shopee.sg/product/54316101/18801123600"
+  },
+  "Acetone (520ml) [Lazada]": {
+    price: "$9.80",
+    link: "https://www.lazada.sg/products/100-pure-acetone520ml-408g-sg-ready-stock-i2294363160.html"
+  },
+  "Acetone (1L)": {
+    price: "$16.90",
+    link: "https://www.lazada.sg/products/pure-acetone-1000ml-for-gel-nail-polish-remove-soak-off-solution-i169791771-s220804172.html"
+  },
+  "Acetone (3.785L)": {
+    price: "$21.90",
+    link: "https://shopee.sg/product/10214/14802708973"
+  },
+  "Isopropyl Alcohol (1L)": {
+    price: "$12.38",
+    link: "https://shopee.sg/product/321677655/8694850057"
+  },
+  "Isopropyl Alcohol (5L)": {
+    price: "$41.90",
+    link: "https://shopee.sg/product/153031150/6725912484"
+  },
+  "Lighter Fluid (300ml)": {
+    price: "$4.50 for one, $6.90 for two, $9.00 for three, $16.90 for six and $29.90 for twelve",
+    link: "https://shopee.sg/product/402868325/12305678047"
+  },
+  "Lighter Fluid (300ml) [4 Pack]": {
+    price: "$10.80",
+    link: "https://www.lazada.sg/products/lightzone-universal-butane-fuel-refill-for-lighter-lighter-gas-i1973479448-s10645207890.html"
+  },
+  "3M 5-Way Lubricant (400ml)": {
+    price: "$6.98",
+    link: "https://shopee.sg/product/127821595/7937520022"
+  },
+  "3M 5-Way Lubricant (400ml) [Attached nozzle]": {
+    price: "$10.90",
+    link: "https://shopee.sg/product/135793716/2050741725"
+  }
+};
+export {
+  maintenanceItemsJson as m
+};

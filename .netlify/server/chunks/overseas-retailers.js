@@ -1,0 +1,160 @@
+const Grindhouse = {
+  address: "Altkönigstraße 12, 65239 Hochheim am Main, Germany",
+  hours: "Open from 2pm - 6pm on weekdays, closed on weekends",
+  phone: "+49 6146-83-765-11",
+  email: "contact@grindhouse.eu",
+  website: "https://www.grindhouse.eu/",
+  mapLink: "https://goo.gl/maps/7Gjuqh9KQZwuD4oEA",
+  description: "As the name suggests, Grindhouse is a skate shop in Germany that focuses on aggressive skates. However, they do stock fitness, urban, and speed skates in addition to aggressive skates. They also stock ice skates, as well as wizard frames, but they don't sell a whole wizard skate. They are also the only retailer that sells electric skates, or E-skates, that are made by Escend, which is really interesting."
+};
+const Hedonskate = {
+  address: "Graniczna 29, 40-956 Katowice, Poland, located in Bipromet S.A.",
+  hours: "Open from 10am - 6pm (CEST) on weekdays, and from 10am - 3pm (CEST) on Saturday",
+  phone: "+48 32-247-81-15",
+  email: "info@hedonskate.com",
+  website: "https://hedonskate.com/",
+  mapLink: "https://goo.gl/maps/GptMGBoVCDPP4AUC9",
+  description: 'Hedonskate is a Polish skate shop that specialises in aggressive skates and most of their catalogue is aggressive skates. However, they also stock urban skates in addition to aggressive skates. They also have a <a target="_blank" href="https://www.youtube.com/@hedonskate">YouTube channel</a> of the same name that mostly uploads inline skating edits.'
+};
+const Bladeville = {
+  address: "Graniczna 29, 40-956 Katowice, Poland, located on Floor G of Bipromet S.A.",
+  hours: "Open from 10am - 6pm (CEST) on weekdays, and from 10am - 3pm (CEST) on Saturday",
+  phone: "+48 32-247-81-16",
+  email: "info@bladeville.com",
+  website: "https://bladeville.com/",
+  mapLink: "https://goo.gl/maps/EuXko9Db2yrceRXH8",
+  description: "Bladeville is another Polish skate shop that sells all kinds of skates, including fitness, urban, speed, aggressive and roller skates. They also sell ice skates, skateboards and scooters. They do sell wizard frames with wheels attached, but they don't sell a whole wizard skate. Bladeville seems to be run by the same company that runs Hedonskate as its in-store location is the exact same as Hedonskate and both companies are registered under the same company name."
+};
+const overseasRetailersJson = {
+  "Wheel Love Skate Shop": {
+    address: "1st Floor, 20A, Jalan Telawi, Bangsar, 59100 Kuala Lumpur, Federal Territory of Kuala Lumpur, Malaysia",
+    hours: "Open from 11am - 7pm (MYT) from Tuesday to Sunday, closed on Mondays",
+    phone: "+60 17-215-8664",
+    email: "shop.wl33@gmail.com",
+    website: "https://wl33.com/collections/all",
+    mapLink: "https://goo.gl/maps/KGzyCu5MFKxcc8VN9",
+    description: 'Wheel Love Skate Shop is a Malaysian skate shop that sells everything related to skating, including skateboards, longboards, scooters, ice skates, roller skates and of course, inline skates. They stock fitness, urban, speed and aggressive skates. If you ever go for a holiday in Malaysia, consider checking them out, you might get skates for a cheaper price there. You would need to <a target="_blank" href="https://wl33.com/products/in-store-shopping">an appointment</a> to enter the store though, so do plan in advance.'
+  },
+  "ProSkaters Place": {
+    address: "110 Galaxy Blvd, Etobicoke, ON M9W 4Y6, Canada",
+    hours: "Open from 11am - 7pm (EST) on Tuesdays, Fridays and Saturdays. On Sundays, it is open from 11am - 6pm (EST).",
+    phone: "+1 855-757-5223 (toll-free support) & +1 416-739-2929 (store number)",
+    email: "customerservice@proskatersplace.com",
+    website: "https://proskatersplace.com/",
+    mapLink: "https://goo.gl/maps/aJyCx9fNCDfwSZyV8",
+    description: "ProSkaters Place is a shop in Canada that sells skating and skiing equipment. They stock fitness, urban, speed, aggressive and roller skates. They also sell Endless frames for wizard skating, but they don't sell a whole wizard skate."
+  },
+  "Shop Task (Vancouver)": {
+    address: "1739 Main St, Vancouver, BC V5T 3B5, Canada",
+    hours: "Open from 1pm - 6pm (PST) from Wednesday to Friday, and from 11am - 6pm (PST) on weekends. Closed on Mondays, Tuesdays and on state holidays.",
+    phone: "+1 604-647-0094",
+    email: "info@shop-task.com",
+    website: "https://shop-task.com/collections/inline-skates",
+    mapLink: "https://goo.gl/maps/TdfgfJF17eBgFGzs5",
+    description: `Shop Task is a Canadian inline skate shop that started out by specialising in aggressive skates, but they have since branched out into other styles of skates. They stock all kinds of inline skates, such as fitness, urban, speed, aggressive and wizard skates. They don't stock roller skates and figure-inline skates though. They have a <a target="_blank" href="https://www.youtube.com/@tasktv">YouTube channel</a>, and are run by a team called <a target="_blank" href="https://www.youtube.com/@FlowSkate">Task</a>. The team behind the shop are also responsible for creating a style of skating called wizard skating.`
+  },
+  "Shop Task (Victoria)": {
+    address: "1029 View St Unit 101, Victoria, BC V8V 0C9, Canada",
+    hours: "Only open on Wednesdays from 12pm - 5pm (PST) and is closed on state holidays",
+    phone: "+1 877-497-7613",
+    email: "info@shop-task.com",
+    website: "https://shop-task.com/collections/inline-skates",
+    mapLink: "https://goo.gl/maps/aiEqBQekU1kcGNnA9",
+    description: `Shop Task is a Canadian inline skate shop that started out by specialising in aggressive skates, but they have since branched out into other styles of skates. They stock all kinds of inline skates, such as fitness, urban, speed, aggressive and wizard skates. They don't stock roller skates and figure-inline skates though. They have a <a target="_blank" href="https://www.youtube.com/@tasktv">YouTube channel</a>, and are run by a team called <a target="_blank" href="https://www.youtube.com/@FlowSkate">Task</a>. The team behind the shop are also responsible for creating a style of skating called wizard skating.`
+  },
+  "Shop Task (Seattle)": {
+    address: "855 8th Ave N, Seattle, WA 98109, United States, inside JUXT",
+    hours: "Open from 12pm - 7pm (PST) from Wednesday to Friday, and from 12pm - 6pm (PST) on weekends. Closed on Mondays, Tuesdays and on state holidays.",
+    phone: "+1 206-402-4966",
+    email: "seattle@shop-task.com",
+    website: "https://usa.shop-task.com/collections/inline-skates-2",
+    mapLink: "https://goo.gl/maps/kweHZHpexu4yPPNB7",
+    description: `Shop Task is a Canadian inline skate shop that started out by specialising in aggressive skates, but they have since branched out into other styles of skates. They stock all kinds of inline skates, such as fitness, urban, speed, aggressive and wizard skates. They don't stock roller skates and figure-inline skates though. They have a <a target="_blank" href="https://www.youtube.com/@tasktv">YouTube channel</a>, and are run by a team called <a target="_blank" href="https://www.youtube.com/@FlowSkate">Task</a>. The team behind the shop are also responsible for creating a style of skating called wizard skating.`
+  },
+  "Intuition Skate Shop (Bakersfield)": {
+    address: "1020 19th St, Bakersfield, CA 93301, United States",
+    hours: "Open from 10am - 6pm (PST) on weekdays, and from 10am - 2pm (PST) on Saturdays. Closed on Sundays.",
+    phone: "+1 661-323-6293",
+    email: "intuitionskateshop@hotmail.com",
+    website: "http://www.intuitionskate.com/collections/all",
+    mapLink: "https://goo.gl/maps/mWpt7UmkK72KCVZf8",
+    description: "Intuition Skate is a US inline skate shop that was established in 2000 in Bakersfield, California and they seem to focus a lot on aggressive skates. They stock fitness, urban, aggressive and roller skates and like most other shops, don't stock figure-inline skates. They don't stock speed skates either."
+  },
+  "Intuition Skate Shop (Santa Monica)": {
+    address: "3303 Pico Blvd Suite B, Santa Monica, CA 90405, United States, inside UnUrban Coffee House",
+    hours: "Open from 12pm - 5pm (PST) on weekdays, and from 10am - 6pm (PST) on Saturdays. Closed on Sundays.",
+    phone: "+1 310-334-9987",
+    email: "intuitionsantamonica@gmail.com",
+    website: "http://www.intuitionskate.com/collections/all",
+    mapLink: "https://goo.gl/maps/wz9iPdY4RnKCyT3v6",
+    description: "Intuition Skate is a US inline skate shop that was established in 2000 in Bakersfield, California and they seem to focus a lot on aggressive skates. They stock fitness, urban, aggressive and roller skates and like most other shops, don't stock figure-inline skates. They don't stock speed skates either."
+  },
+  "Oak City Inline Skate Shop": {
+    website: "https://oakcityskate.com/collections/all",
+    address: "6116 Plain View Hwy, Dunn, NC 28334, United States",
+    phone: "+1 919-834-2221",
+    email: "info@oakcityskate.com",
+    mapLink: "https://goo.gl/maps/VDpyapb9HejRsbJ29",
+    description: "Oak City Inline Skate Shop is a US skate shop that stocks fitness, urban and aggressive skates. They also sell wizard frames, but they don't sell a whole wizard skate. They have a physical location that you can visit, but they are currently not accepting visitors, so it's an online-only retailer for now."
+  },
+  "Roller Warehouse": {
+    address: "4320 Anthony Ct #15, Rocklin, CA 95677, United States",
+    hours: "Open from 9am - 5pm (PST) on weekdays, closed on weekends and public holidays",
+    phone: "+1 800-772-2502",
+    email: "captain@rollerwarehouse.com",
+    website: "https://rollerwarehouse.com/",
+    mapLink: "https://goo.gl/maps/ra4pajPYg8nRY3sVA",
+    description: "Roller Warehouse is a US skate shop that was started in 1994 and specialises in aggressive skates. Their site is a blast from the past and doesn't look great on mobile, so you should access the site on a desktop. They stock fitness, aggressive, and roller skates, but you won't find any urban or speed skates there. Like most other stores, they also don't stock figure-inline skates."
+  },
+  "SG Sports": {
+    address: "390 Amapola Ave Suite 3, Torrance, CA 90501, United States, located in Torrance Tech Park",
+    hours: "Open from 9am - 4:30pm (PST) from Tuesday to Friday",
+    phone: "+1 310-783-0733",
+    email: "contact@sgsportsdistribution.com",
+    website: "https://sgsports.shop/collections/all",
+    mapLink: "https://goo.gl/maps/59mN1nyRbXUWA9fBA",
+    description: "Contrary to what you would infer from the name, SG Sports is not a Singaporean skate shop. Instead, it is the exclusive distributor of Seba Skates, FR Skates and Luminous Wheels in the US. Being a distributor, they supply skate shops in the US with these brands, but you can also walk in to buy skates. They only stock Seba and FR skates, so you will only find urban and speed skates, as well as a single model of aggressive skates here, the UFR Street Anthony Pottier (AP) skates."
+  },
+  "Loco Skates": {
+    address: "Unit J1 Swallow Business Park Diamond Drive, Lower Dicker, Hailsham BN27 4EL, United Kingdom",
+    hours: "Open from 11am - 4pm (GMT) from Tuesday to Friday, and from 10am - 3pm (GMT) on Saturdays",
+    phone: "+44 1323-840218",
+    email: "hello@locoskates.com",
+    website: "https://www.locoskates.com/collections/all",
+    mapLink: "https://goo.gl/maps/aQfDMjqf5YkYboWC7",
+    description: 'Loco Skates is a skate shop in the UK run by a group of skaters that sells fitness, urban, speed, aggressive and roller skates. They also sell wizard frames with the wheels included, but not a whole wizard skate. They also have a <a target="_blank" href="https://www.youtube.com/@LocoSkates">YouTube channel</a> of the same name that does reviews, tutorials, guides and just regular inline skating content.'
+  },
+  Grindhouse,
+  "This Is Soul": {
+    address: "Overtoom 327, 1054 JM Amsterdam, Netherlands",
+    hours: "Open from 12pm - 6pm (CEST) daily, closed on public holidays",
+    phone: "+31 6-28350976",
+    email: "skateshop@thisissoul.nl",
+    website: "https://www.thisissoul.com/collections/all",
+    mapLink: "https://goo.gl/maps/PnLqXzXbeSdC2Dbw7",
+    description: 'This Is Soul is a skate shop in the Netherlands that sells fitness, urban and aggressive skates. They also sell ice skates and apparently even aggressive ice skates, which is just the Roces M12 aggressive skate fitted with a black ice blade. They also run a <a target="_blank" href="https://www.youtube.com/@Thisissoul">YouTube channel</a> of the same name that, similar to Loco Skates, does reviews, tutorials, guides and regular inline skating content.'
+  },
+  Hedonskate,
+  Bladeville,
+  "Skater HQ": {
+    address: "8/750 Pittwater Rd, Brookvale NSW 2100, Australia",
+    hours: "Open from 9:30pm - 5:30pm (AEDT) on weekdays, and from 10am - 4pm (AEDT) on weekends",
+    phone: "+61 2-8667-7892",
+    email: "customerservice@skaterhq.com.au",
+    website: "https://www.skaterhq.com.au/",
+    mapLink: "https://goo.gl/maps/M5fgSkHW5VddZFwT6",
+    description: "Skater HQ is an Australian, family-run skate shop that started in 1991 as Manly Blades. They stock fitness, urban, speed, aggressive and roller skates."
+  },
+  "Lino Skate Shop": {
+    address: "Unit 137, Platinum Junction, 4 School St, Montague Gardens, Cape Town, 7442, South Africa",
+    hours: "Open from 9am - 5pm (SAST) from Monday to Saturday, closed on Sundays",
+    phone: "+27 74-040-4545",
+    email: "info@linoskateshop.com",
+    website: "https://linoskateshop.com/",
+    mapLink: "https://goo.gl/maps/v5ikwB9w8ew72HQC8",
+    description: 'Lino Skate Shop is a skate shop in South Africa that is owned by <a target="_blank" href="https://www.youtube.com/@RicardoLino">Ricardo Lino</a>. He set up this shop when he was living in South Africa to help grow the skating community there. They sell urban, aggressive and roller skates, but they are more focused on roller skates and hence stock a greater variety of them. They also sell ice skates, though the selection is quite small.'
+  }
+};
+export {
+  overseasRetailersJson as o
+};

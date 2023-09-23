@@ -1,0 +1,58 @@
+const Wiper = {
+  description: "",
+  videos: [
+    [
+      "EZ Action (turn on captions)",
+      "https://youtu.be/nuXjOA10ce4"
+    ],
+    [
+      "Learn Slalom",
+      "https://youtu.be/UkKZk0sjDDI"
+    ],
+    [
+      "Lorenzo Guslandi",
+      "https://youtu.be/kOHNJi4ABMQ?t=15"
+    ],
+    [
+      "World Slalom Skaters Association [WSSA]",
+      "https://youtu.be/KeQmhd1BbEw?t=10"
+    ],
+    [
+      "Team Some What There",
+      "https://youtu.be/QV9xLUJPLpM?t=11"
+    ]
+  ]
+};
+const Kazatchok = {
+  description: "",
+  videos: [
+    [
+      "Dante the Skater254",
+      "https://youtu.be/m8H5IZeHTqM"
+    ],
+    [
+      "World Slalom Skaters Association [WSSA]",
+      "https://youtu.be/i7rQVwqFy_E?t=10"
+    ],
+    [
+      "slalomskating",
+      "https://youtu.be/6ZXFJCTBwW8?t=7"
+    ]
+  ]
+};
+const jumpsTricksJson = {
+  "Special Jumps": {
+    description: "",
+    videos: [
+      [
+        "World Slalom Skaters Association [WSSA]",
+        "https://youtu.be/Pspxe4n_ICE?t=10"
+      ]
+    ]
+  },
+  Wiper,
+  Kazatchok
+};
+export {
+  jumpsTricksJson as j
+};

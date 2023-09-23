@@ -1,0 +1,42 @@
+const family1TricksJson = {
+  "Ern Sui 4 Wheels Slide": {
+    description: "",
+    videos: [
+      [
+        "Ernsports Academy",
+        "https://youtu.be/mbXsrU7uZaM?t=11"
+      ],
+      [
+        "Slide Academy",
+        "https://youtu.be/Sp7-ICr2ljg?t=7"
+      ],
+      [
+        "Inline Skates School",
+        "https://youtu.be/N1MkCjsaIrg"
+      ],
+      [
+        "Flying Eagle Skates",
+        "https://youtu.be/GF6FYrT1QWs?t=95"
+      ],
+      [
+        "ROEX",
+        "https://youtu.be/LfxZK7m4vEo"
+      ],
+      [
+        "ReKiL.ru Team",
+        "https://youtu.be/dO-J8ddSSNU"
+      ],
+      [
+        "EZ Action",
+        "https://youtu.be/8vBkzuIagJs?t=56"
+      ],
+      [
+        "Manh Huu",
+        "https://youtu.be/CSjiaevUBHs?t=5"
+      ]
+    ]
+  }
+};
+export {
+  family1TricksJson as f
+};
