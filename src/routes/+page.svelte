@@ -90,7 +90,7 @@
     <div class="description text">Here, you can find most of the information you need to get started with inline skating!</div>
     <div class="how-to-use text">
       <div>Click the hamburger icon at the top right hand corner of the screen to open up the sidebar.</div>
-      <div>Use the search bar above or click on one of the links below to get started!</div>
+      <div>Use the search bar above or click on one of the links below to get started! Thisisatestword</div>
     </div>
   </header>
 
