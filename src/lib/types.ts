@@ -2,8 +2,13 @@
 
 // The interface representing the pagefind library
 export interface Pagefind {
-  search: (query: string) => Promise<PagefindResponse>;
   init: () => void;
+  options: (options: {
+    baseUrl?: string;
+    bundlePath?: string;
+    excerptLength?: number;
+  }) => void;
+  search: (query: string) => Promise<PagefindResponse>;
 };
 
 // The interface representing pagefind response after searching

@@ -24,6 +24,11 @@ export async function load({ url: { searchParams } }: LoadEvent) {
   // @ts-ignore: pagefind will be available after the site is built
   const pagefind = await import("$lib/../../static/pagefind/pagefind.js") as Pagefind;
 
+  // Set the bundle directory
+  await pagefind.options({
+    bundlePath: "/pagefind/"
+  });
+
   // Initialise pagefind
   pagefind.init();
 
