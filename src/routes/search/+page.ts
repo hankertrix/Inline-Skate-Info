@@ -19,10 +19,13 @@ export async function load({ url: { searchParams } }: LoadEvent) {
     results: []
   };
 
-  // Otherwise, initialise pagefind
+  // Otherwise, import pagefind
   // Asks typescript to ignore the import so that the site can be successfully built as the pagefind file is only available after the site is built
   // @ts-ignore: pagefind will be available after the site is built
-  const pagefind = await import("$lib/../../static/_pagefind/pagefind.js") as Pagefind;
+  const pagefind = await import("$lib/../../static/pagefind/pagefind.js") as Pagefind;
+
+  // Initialise pagefind
+  pagefind.init();
 
   // Search for the search query
   const search = await pagefind.search(searchQuery);

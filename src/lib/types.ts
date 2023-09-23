@@ -3,6 +3,7 @@
 // The interface representing the pagefind library
 export interface Pagefind {
   search: (query: string) => Promise<PagefindResponse>;
+  init: () => void;
 };
 
 // The interface representing pagefind response after searching
