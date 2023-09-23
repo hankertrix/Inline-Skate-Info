@@ -10,6 +10,9 @@
 /build
 /.svelte-kit
 
+# Netlify directory
+/.netlify
+
 # Environment variables
 .env
 .env.*
