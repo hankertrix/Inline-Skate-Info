@@ -956,8 +956,8 @@ bot.command([
   "pollmsg"
 ], async ctx => {
 
-  // If the user isn't an admin, immediately exit the function
-  if (!(await isAdmin(ctx))) return;
+  // If the user isn't an admin, tries to delete the message that the user has sent
+  if (!(await isAdmin(ctx))) return await deleteMessages(ctx, ctx.message.message_id);
 
   // Gets the text from the message
   let messageText = ctx.message.text;
@@ -992,8 +992,8 @@ bot.command([
   "trgmsg"
 ], async ctx => {
 
-  // If the user isn't an admin, immediately exit the function
-  if (!(await isAdmin(ctx))) return;
+  // If the user isn't an admin, tries to delete the message that the user has sent
+  if (!(await isAdmin(ctx))) return await deleteMessages(ctx, ctx.message.message_id);
 
   // Set the default timezone to "Asia/Singapore"
   process.env.TZ = "Asia/Singapore";
