@@ -152,7 +152,6 @@ export async function ctxReply(ctx: Context, reply: string, options = {}) {
     await ctx.reply(segment, {
       parse_mode: "HTML",
       disable_web_page_preview: true,
-      reply_to_message_id: ctx.message!.message_id,
       ...options
     });
   }
@@ -410,7 +409,7 @@ export function wrapCallbackWithMessageDeleter(callback: Function) {
 export async function promptUserForInput(ctx: Context, message: string) {
   
   // Asks the user for an input
-  const botMessage = await ctx.reply(`${message} ${EXIT_MESSAGE}`, { parse_mode: "HTML", reply_to_message_id: ctx.message!.message_id });
+  const botMessage = await ctx.reply(`${message} ${EXIT_MESSAGE}`, { parse_mode: "HTML" });
 
   // Mark the user's message as well as the bot's message for deletion if possible
   markMessageForDeletion(ctx, ctx.message!.message_id, botMessage.message_id);
