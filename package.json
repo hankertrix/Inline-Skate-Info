@@ -15,6 +15,7 @@
 	"devDependencies": {
 		"@sveltejs/adapter-netlify": "^3.0.1",
 		"@sveltejs/kit": "^2.0.6",
+		"@sveltejs/vite-plugin-svelte": "^3.0.0",
 		"@types/node": "^20.0.0",
 		"@types/qrcode": "^1.5.1",
 		"@typescript-eslint/eslint-plugin": "^6.0.0",
