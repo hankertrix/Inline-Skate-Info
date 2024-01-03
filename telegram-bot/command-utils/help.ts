@@ -187,12 +187,15 @@ export function getCommandHelpMsg(args: {
   // If the command is given
   if (args.command) {
 
+    // Remove the slash before the command
+    const command = args.command.replace(/^\/\s+/, "");
+
     // Gets the command dictionary
     const commandDict = getCommandDict();
 
     // Sets the data object to the command
     // and the value returned from the command dictionary
-    args.entry = [args.command, utils.dictGet(commandDict, args.command)];
+    args.entry = [command, utils.dictGet(commandDict, args.command)];
   }
 
   // Pulls out the command and the information from the data
