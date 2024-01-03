@@ -188,7 +188,7 @@ export function getCommandHelpMsg(args: {
   if (args.command) {
 
     // Remove the slash before the command
-    const command = args.command.trim().replace(/^\/\s*/, "").trim();
+    const command = args.command.replace(/^\/\s*/, "").trim();
 
     // Gets the command dictionary
     const commandDict = getCommandDict();
