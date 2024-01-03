@@ -195,7 +195,7 @@ export function getCommandHelpMsg(args: {
 
     // Sets the data object to the command
     // and the value returned from the command dictionary
-    args.entry = [command, utils.dictGet(commandDict, args.command)];
+    args.entry = [command, utils.dictGet(commandDict, command)];
   }
 
   // Pulls out the command and the information from the data
