@@ -230,7 +230,7 @@ export function getCommandHelpMsg(args: {
 
       // Add the example of how to use the command to the list
       infoList.push(`${utils.bold(
-        utils.titlecase(`${label}`)
+        utils.titlecase(`${label}:`)
       )} ${utils.monospace(utils.stripHtml(value as string))}`);
     }
 
