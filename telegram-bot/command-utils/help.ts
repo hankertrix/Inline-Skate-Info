@@ -5,6 +5,14 @@ import { DEV, SPACING } from "../../src/lib/constants";
 import { TRICK_FILEPATH_MAP } from "./tricks";
 import { BRAND_CATEGORY } from "./brands";
 
+// The type of the info object in the command dictionary
+type HelpInfo = {
+  explanation: string,
+  usage?: string,
+  example?: string,
+  categories?: string[]
+};
+
 // The regular expression to get the first sentence
 const firstSentenceRegex = /^.*?(?:\.|$)/m;
 
@@ -20,7 +28,9 @@ function getCommandDict() {
     },
 
     "help": {
-      explanation: "Displays information about how to use the bot and its commands."
+      explanation: `Displays information about how to use the bot and its commands. You can get the help message for a specific command by entering a bot command after the /help command.`,
+      usage: "<bot command (optional)>",
+      example: "/help start",
     },
 
     "terminology": {
@@ -168,8 +178,89 @@ function getCommandDict() {
 }
 
 
+// Function to create the help message for a specific command
+export function getCommandHelpMsg(args: {
+  command?: string,
+  entry?: [string, HelpInfo]
+}): string {
+
+  // If the command is given
+  if (args.command) {
+
+    // Gets the command dictionary
+    const commandDict = getCommandDict();
+
+    // Sets the data object to the command
+    // and the value returned from the command dictionary
+    args.entry = [args.command, utils.dictGet(commandDict, args.command)];
+  }
+
+  // Pulls out the command and the information from the data
+  const [cmd, info] = args.entry as [string, HelpInfo];
+
+  // If the information is not found
+  if (!info) {
+
+    // Returns a string to tell the user that the command is not found
+    return `No command called "${cmd}" was found.`;
+  }
+
+  // Initialise the list to store the command information
+  const infoList: string[] = [];
+
+  // Adds the command to the list
+  infoList.push(`/${cmd}`);
+
+  // Iterates the information
+  for (const [label, value] of Object.entries(info)) {
+
+    // If the label is "usage"
+    if (label === "usage") {
+
+      // Add the information about how to use the command to the list
+      infoList.push(`${utils.bold(
+        utils.titlecase(`${label}:`)
+      )} ${utils.monospace(
+        `/${cmd} ${utils.stripHtml(value as string)}`
+      )}`);
+    }
+
+    // If the label is "example"
+    else if (label === "example") {
+
+      // Add the example of how to use the command to the list
+      infoList.push(`${utils.bold(
+        utils.titlecase(`${label}`)
+      )} ${utils.monospace(utils.stripHtml(value as string))}`);
+    }
+
+    // If the label is "categories"
+    else if (label === "categories") {
+
+      // Adds the categories to the list
+      infoList.push(`${utils.bold(
+        `Available ${label}:`
+      )}\n${
+        (value as string[]).map(
+        (category: string) => `- ${utils.monospace(`/${cmd} ${category}`)}`
+      ).join("\n")}`);
+    }
+
+    // Otherwise
+    else {
+
+      // Add the information to the list
+      infoList.push(value as string);
+    }
+  }
+
+  // Returns the info list joined with a new line
+  return infoList.join("\n");
+}
+
+
 // Function to generate the help message for the commands
-function getCommandHelpMsg() {
+function getAllCommandHelpMsges() {
 
   // Gets the command dictionary
   const commandDict = getCommandDict();
@@ -178,50 +269,12 @@ function getCommandHelpMsg() {
   const commandHelpList: string[] = [];
 
   // Iterates the command dictionary
-  for (const [command, info] of Object.entries(commandDict)) {
-
-    // Initialise the list to store the command information
-    const infoList: string[] = [];
-
-    // Adds the command to the list
-    infoList.push(`/${command}`);
-
-    // Iterates the information
-    for (const [label, value] of Object.entries(info)) {
-
-      // If the label is "usage"
-      if (label === "usage") {
-
-        // Add the information about how to use the command to the list
-        infoList.push(`${utils.bold(
-          utils.titlecase(`${label}:`)
-        )} ${utils.monospace(
-          `/${command} ${utils.stripHtml(value)}`
-        )}`);
-      }
-
-      // If the label is "categories"
-      else if (label === "categories") {
-
-        // Adds the categories to the list
-        infoList.push(`${utils.bold(
-          `Available ${label}:`
-        )}\n${
-          value.map(
-          (category: string) => `- ${utils.monospace(`/${command} ${category}`)}`
-        ).join("\n")}`);
-      }
-
-      // Otherwise
-      else {
-
-        // Add the information to the list
-        infoList.push(value);
-      }
-    }
+  for (const entry of Object.entries(commandDict)) {
 
     // Adds the information about the command to the list
-    commandHelpList.push(infoList.join("\n"));
+    commandHelpList.push(
+      getCommandHelpMsg({entry: entry as [string, HelpInfo]})
+    );
   }
 
   // Returns the help message for the bot commands
@@ -236,7 +289,7 @@ export function generateMsg() {
   const preface = `Hi, this bot aims to be the one-stop shop for all things inline skating! This bot is created with Singaporean skaters in mind, so all prices are in SGD and 'local' refers to Singapore. The skate recommendations may include skates exclusive to Singapore and the student discount is only relevant to tertiary students studying in Singapore.\n\nHere is how you can use the bot:`;
 
   // Get the help message for the commands
-  const commandHelpMsg = `${utils.bold("Bot Commands")}${SPACING}${getCommandHelpMsg()}`;
+  const commandHelpMsg = `${utils.bold("Bot Commands")}${SPACING}${getAllCommandHelpMsges()}`;
 
   // The help message for other miscellaneous bot features
   const otherBotFeaturesHelpMsg = `

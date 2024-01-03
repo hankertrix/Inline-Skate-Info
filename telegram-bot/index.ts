@@ -6,7 +6,17 @@ import type { InlineQueryResult, InlineKeyboardButton, CallbackQuery, Message } 
 import * as filters from "telegraf/filters";
 import { SPACING, DEV, getBasePath } from "../src/lib/constants";
 import * as utils from "./utils";
-import { removeBotUsername, ctxReply, answerInlineQuery, isAdmin, deleteMessages, messageAndFileCommandHandler, messageAndFileInlineQueryHandler, wrapCallbackWithMessageDeleter } from "./bot-utils";
+import {
+  removeBotUsername,
+  removeCommand,
+  ctxReply,
+  answerInlineQuery,
+  isAdmin,
+  deleteMessages,
+  messageAndFileCommandHandler,
+  messageAndFileInlineQueryHandler,
+  wrapCallbackWithMessageDeleter,
+} from "./bot-utils";
 import * as scenes from "./bot-scenes";
 import * as commandUtils from "./command-utils";
 
@@ -65,7 +75,20 @@ Use the /help command to see what the bot can do.`;
 // The handler for the help command
 bot.command("help", async ctx => {
 
-  // Gets the sections of the help message
+  // Remove the command from the message
+  const givenCommand = removeCommand(ctx.message.text);
+
+  // If a command is given
+  if (givenCommand) {
+
+    // Sends the result of the getCommandHelpMessage function to the user
+    return await ctxReply(
+      ctx,
+      commandUtils.help.getCommandHelpMsg({command: givenCommand})
+    );
+  }
+
+  // Otherwise, gets the sections of the help message
   const sections = commandUtils.help.generateMsg();
 
   // Joins the sections of the help message with 3 new lines
