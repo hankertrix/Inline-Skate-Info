@@ -5,7 +5,7 @@
       ["InMove Skates", "https://youtu.be/bE05dHkXoHI?t=522"]
     ]
   },
-  
+
   "Z-Eagle": {
     "description": "",
     "videos": [
@@ -14,21 +14,36 @@
       ["World Slalom Skaters Association [WSSA]", "https://youtu.be/BIQv2fTWnQY?t=10"]
     ]
   },
-  
+
+  "Toe Wheeling Eagle": {
+    "description": "",
+    "videos": [
+      ["Hankertrix", "https://youtu.be/JImOiRVJEl4"],
+      ["Hankertrix", "https://youtu.be/i0pxTlbrclY"]
+    ]
+  },
+
+  "Heel-Toe Eagle": {
+    "description": "",
+    "videos": [
+      ["Hankertrix", "https://youtu.be/kOEdtQjkGnI"]
+    ]
+  },
+
   "Heel Wheeling Eagle": {
     "description": "",
     "videos": [
       ["World Slalom Skaters Association [WSSA]", "https://youtu.be/330lNF7tZIs?t=10"]
     ]
   },
-  
+
   "Reverse Eagle": {
     "description": "",
     "videos": [
       ["World Slalom Skaters Association [WSSA]", "https://youtu.be/ys22ecLV1AE?t=10"]
     ]
   },
-  
+
   "Cobra": {
     "description": "",
     "videos": [
