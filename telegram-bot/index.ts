@@ -1170,7 +1170,7 @@ bot.command([
   const msgText = ctx.message.text;
 
   // Calls the QR code handler to generate the QR code
-  const [, qrCodeDataURL] = await commandUtils.qrCode.handler(msgText);
+  const [ , qrCodeDataURL] = await commandUtils.qrCode.handler(msgText);
 
   // If the QR code is generated, reply to the user with the image
   if (qrCodeDataURL) return await ctx.replyWithPhoto({
@@ -1181,7 +1181,7 @@ bot.command([
   async function callback(ctx: Context, input: string) {
 
     // Calls the QR code handler to generate the QR code
-    const [, qrCodeDataURL] = await commandUtils.qrCode.handler(input);
+    const [ , qrCodeDataURL] = await commandUtils.qrCode.handler(input);
 
     // Reply to the user with the image
     return await ctx.replyWithPhoto({
