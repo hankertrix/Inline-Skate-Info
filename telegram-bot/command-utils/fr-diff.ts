@@ -14,7 +14,7 @@ type FrDiffData = {
 };
 
 // The regular expression to check for the FR skates difference command
-export const regex = /^\/?\bfr[ _\-]?diff?(?:erences?)?\b/i;
+export const regex = /^\/?\bfr[ _-]?diff?(?:erences?)?\b/i;
 
 
 // The function to generate the message
