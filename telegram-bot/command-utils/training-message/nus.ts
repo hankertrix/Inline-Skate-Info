@@ -15,11 +15,17 @@ const trainingLocation = "MPCs 14/15 & 16/17";
 // The training dates
 const trainingDates = ["2023-02-21T18:30:00.000", "2023-02-23T18:30:00.000"];
 
+// The payment link
+const paymentLink = "https://nusfastpay.nus.edu.sg/skaterental24";
+
+// The treasurer
+const treasurer = "@weiiiiixiang";
+
 // The rental message
 const rentalMsg = `
 For this week's rentals, please contact {username} and let us know your SIZE IN EU.  (〃'▽'〃)
 
-Thereafter, make payment via https://nusfastpay.nus.edu.sg/skaterental and send screenshot of payment page to @weiiiiixiang
+Thereafter, make payment via ${paymentLink} and send screenshot of payment page to ${treasurer}
 
 Collection and return of rentals will be at the cage at 6.30pm and 9.30pm. (๑•‌ ₃ •‌๑)
 
@@ -43,10 +49,10 @@ const usernameRegex = /@\w+/i;
 const typeOfWeekRegexStr = "(?:exam|recess|reading|summer|winter)";
 
 // The regular expression to get the week from the message
-const weekRegex = new RegExp(String.raw`${typeOfWeekRegexStr}?[ _\-]?(?:weeks?|breaks?)[ _\-]?\d*`, "i");
+const weekRegex = new RegExp(String.raw`${typeOfWeekRegexStr}?[ _-]?(?:weeks?|breaks?)[ _-]?\d*`, "i");
 
 // The regular expression to get whether or not the training message should have rentals
-const noRentalsRegex = /no[ _\-]?re(?:nt|tn)(?:al)?s?/i;
+const noRentalsRegex = /no[ _-]?re(?:nt|tn)(?:al)?s?/i;
 
 // The name of the validator scene for the NUS training message
 const sceneName = "nusValidator";
