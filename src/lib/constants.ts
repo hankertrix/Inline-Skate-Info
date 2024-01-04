@@ -215,6 +215,7 @@ export const PAGES = {
   "Differences": {
     "Triskates": "",
     "FR Skates": "",
+    "F5S vs F6S": "",
     "Boot Types": "",
   },
 
