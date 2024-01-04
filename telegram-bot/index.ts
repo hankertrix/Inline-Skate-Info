@@ -732,6 +732,7 @@ bot.inlineQuery(commandUtils.brands.regex, async ctx => {
 
 
 
+
 // The command to explain the differences between FR skates
 
 // The handler for the FR differences command
@@ -759,6 +760,44 @@ bot.inlineQuery(commandUtils.frDiff.regex, async ctx => {
   const msg = await commandUtils.frDiff.generateMsg();
 
   // Answers the inline query with the message that talks about the differences between the FR skates
+  await answerInlineQuery(ctx, msg);
+});
+
+
+
+
+
+
+
+
+
+
+// The command to explain the differences between
+// the Flying Eagle F5S and F6S
+
+// The handler for the F5S vs F6S command
+bot.command([
+  "f5s_vs_f6s",
+  "f5svsf6s",
+], async ctx => {
+
+  // Gets the F5S vs F6S message
+  const msg = await commandUtils.flyingEagleDiff.generateMsg();
+
+  // Replies to the user with the message that talks
+  // about the differences between the F5S and F6S
+  await ctxReply(ctx, msg);
+});
+
+
+// The inline query handler for the F5S vs F6S command
+bot.inlineQuery(commandUtils.flyingEagleDiff.regex, async ctx => {
+
+  // Gets the FR difference message
+  const msg = await commandUtils.flyingEagleDiff.generateMsg();
+
+  // Answers the inline query with the message that talks
+  // about the differences between the F5S and F6S
   await answerInlineQuery(ctx, msg);
 });
 
@@ -983,7 +1022,7 @@ bot.command([
   if (!(await isAdmin(ctx))) return await deleteMessages(ctx, ctx.message.message_id);
 
   // Gets the text from the message
-  let messageText = ctx.message.text;
+  const messageText = ctx.message.text;
 
   // Gets the poll options
   const pollOptions = commandUtils.poll.DEFAULT_POLL_OPTIONS;
@@ -1131,7 +1170,7 @@ bot.command([
   const msgText = ctx.message.text;
 
   // Calls the QR code handler to generate the QR code
-  const [_, qrCodeDataURL] = await commandUtils.qrCode.handler(msgText);
+  const [, qrCodeDataURL] = await commandUtils.qrCode.handler(msgText);
 
   // If the QR code is generated, reply to the user with the image
   if (qrCodeDataURL) return await ctx.replyWithPhoto({
@@ -1142,7 +1181,7 @@ bot.command([
   async function callback(ctx: Context, input: string) {
 
     // Calls the QR code handler to generate the QR code
-    const [_, qrCodeDataURL] = await commandUtils.qrCode.handler(input);
+    const [, qrCodeDataURL] = await commandUtils.qrCode.handler(input);
 
     // Reply to the user with the image
     return await ctx.replyWithPhoto({

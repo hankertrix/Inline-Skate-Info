@@ -116,13 +116,17 @@ function getCommandDict() {
       categories: [
         "all",
         ...Object.values(BRAND_CATEGORY).map(
-          category => category.replace(/[ _\-]brands?/g, "")
+          category => category.replace(/[ _-]brands?/g, "")
         )
       ]
     },
 
     "fr_differences": {
       explanation: "Displays information about the differences between the various FR skates."
+    },
+
+    "f5s_vs_f6s": {
+      explanation: "Displays information about the differences between the Flying Eagle F5S and the Flying Eagle F6S."
     },
 
     "triskate_differences": {
