@@ -15,7 +15,7 @@ type DiscountInfo = {
 };
 
 // The regex to check for the discount info command
-export const regex = /^\/?\b(?:students?)?[ _\-]?disc(?:ount)?[ _\-]?(?:info(?:rmation)?)?\b/i;
+export const regex = /^\/?\b(?:students?)?[ _-]?disc(?:ount)?[ _-]?(?:info(?:rmation)?)?\b/i;
 
 
 // Function to get the stores that have a student discount

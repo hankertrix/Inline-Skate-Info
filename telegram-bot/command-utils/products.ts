@@ -16,13 +16,13 @@ export enum ProductTypes {
 export const accessoriesRegex = /^\/?\bacc(?:s|essor(?:y|ies))?\b/i;
 
 // The regex to check for the protective gear command
-export const protectiveGearRegex = /^\/?\b(?:protect(?:ion|ive)?[ _\-]?(?:gears?)?|guards?|helmets?)\b/i;
+export const protectiveGearRegex = /^\/?\b(?:protect(?:ion|ive)?[ _-]?(?:gears?)?|guards?|helmets?)\b/i;
 
-// The regex to check for the clothing command 
-export const clothingRegex = /^\/?\b(?:(?:apparel|cloth(?:ing)?)[ _\-]?(?:items?)?|socks?)\b/i;
+// The regex to check for the clothing command
+export const clothingRegex = /^\/?\b(?:(?:apparel|cloth(?:ing)?)[ _-]?(?:items?)?|socks?)\b/i;
 
 // The regex to check for the maintenance items command
-export const maintenanceItemsRegex = /^\/?\bmain(?:tenance|tain(?:[ea]nce|ing)?)[ _\-]?items?\b/i;
+export const maintenanceItemsRegex = /^\/?\bmain(?:tenance|tain(?:[ea]nce|ing)?)[ _-]?items?\b/i;
 
 
 // The function to generate the text for the products

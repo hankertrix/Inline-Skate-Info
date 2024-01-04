@@ -21,22 +21,22 @@ type ListData = {
 };
 
 // The regular expression to check for the trick list command
-export const trickListsRegex = /^\/?\b(?:others?[ _\-]?)?tricks?[ _\-]?lists?\b/i;
+export const trickListsRegex = /^\/?\b(?:others?[ _-]?)?tricks?[ _-]?lists?\b/i;
 
 // The regular expression to check for the rulebooks command
-export const rulebooksRegex = /^\/?\brules?[ _\-]?(?:book)?s?\b/i;
+export const rulebooksRegex = /^\/?\brules?[ _-]?(?:book)?s?\b/i;
 
 // The regex to check for the buying guide command
-export const buyingGuidesRegex = /^\/?\bbuy(?:ing)?[ _\-]?guides?\b/i;
+export const buyingGuidesRegex = /^\/?\bbuy(?:ing)?[ _-]?guides?\b/i;
 
 // The regular expression to check for the maintenance guide command
-export const maintenanceGuidesRegex = /^\/?\bmain(?:tenance|tain(?:[ea]nce|ing)?)[ _\-]?(?:guides?)\b/i;
+export const maintenanceGuidesRegex = /^\/?\bmain(?:tenance|tain(?:[ea]nce|ing)?)[ _-]?(?:guides?)\b/i;
 
 // The regular expression to check for the glossaries command
-export const glossariesRegex = /^\/?\b(?:(?:glossar(?:y|ies?)|dict?(?:ionar(?:y|ie?))?s?)(?:[ _\-]?of[ _\-]?term(?:s|inology|inologies?)?)?)\b/i;
+export const glossariesRegex = /^\/?\b(?:(?:glossar(?:y|ies?)|dict?(?:ionar(?:y|ie?))?s?)(?:[ _-]?of[ _-]?term(?:s|inology|inologies?)?)?)\b/i;
 
 // The regular expression to check for the miscellaneous resources command
-export const miscResourcesRegex = /^\/?\b(?:misc(?:ell?an[ea]ous)?s?|ran(?:dom)?s?)?[ _\-]?(?:resour?ce|guide)s?\b/i;
+export const miscResourcesRegex = /^\/?\b(?:misc(?:ell?an[ea]ous)?s?|ran(?:dom)?s?)?[ _-]?(?:resour?ce|guide)s?\b/i;
 
 
 // Function to generate the lists text

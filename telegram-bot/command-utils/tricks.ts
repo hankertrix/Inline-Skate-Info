@@ -149,7 +149,7 @@ const TRICK_SPACING = SPACING;
 async function loadTricksJson(file: string) {
 
   // Gets the load function for the file name from the file path mapping for the tricks
-  const [_, __, loadFunction] = utils.dictGet(TRICK_FILEPATH_MAP, file, [null, null, null]);
+  const [, loadFunction] = utils.dictGet(TRICK_FILEPATH_MAP, file, [null, null, null]);
 
   // If there is a load function for the file name, returns the result of the load function
   if (loadFunction != null) return await loadFunction();

@@ -3,7 +3,7 @@
 import { removeBotUsername } from "../bot-utils";
 
 // The regex for the QR code command
-export const qrCodeRegex = /^\/?\bqr[ _\-]?(?:code)?s?\b/i;
+export const qrCodeRegex = /^\/?\bqr[ _-]?(?:code)?s?\b/i;
 
 
 // Function to handle the QR code command and generate the reply
@@ -11,6 +11,9 @@ export async function handler(message: string) {
 
   // Removes the command from the message
   message = message.replace(qrCodeRegex, "").trim();
+
+  // Removes the bot's username from the message
+  message = removeBotUsername(message);
 
   // If the message is empty, returns the message and an empty string in a list
   if (!message) return [message, ""];

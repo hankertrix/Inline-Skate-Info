@@ -20,16 +20,16 @@ export const PLACES = {
 export type Places = ObjectValues<typeof PLACES>;
 
 // The regex to check for the where to buy command
-export const whereToBuyRegex = /^\/?\b(?:(?:(?:places?|where)(?:[ _\-]?to[ _\-]?buy))|buy(?:ing)?)\b/i;
+export const whereToBuyRegex = /^\/?\b(?:(?:(?:places?|where)(?:[ _-]?to[ _-]?buy))|buy(?:ing)?)\b/i;
 
 // The regex to check for the where to rent command
-export const whereToRentRegex = /^\/?\b(?:(?:(?:places?|where)(?:[ _\-]?to[ _\-]?rent))|rent(?:ing)?)\b/i;
+export const whereToRentRegex = /^\/?\b(?:(?:(?:places?|where)(?:[ _-]?to[ _-]?rent))|rent(?:ing)?)\b/i;
 
 // The regex to check for the skate parks command
-export const skateParksRegex = /^\/?\b(?:skate)?[ _\-]?(?:park|ramp)s?\b/i;
+export const skateParksRegex = /^\/?\b(?:skate)?[ _-]?(?:park|ramp)s?\b/i;
 
 // The regex to check for the skating rinks command
-export const skatingRinksRegex = /^\/?\b(?:skat(?:e|ing))?[ _\-]?rinks?\b/i;
+export const skatingRinksRegex = /^\/?\b(?:skat(?:e|ing))?[ _-]?rinks?\b/i;
 
 
 // The spacing between each place

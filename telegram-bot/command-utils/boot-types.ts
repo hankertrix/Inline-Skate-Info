@@ -4,7 +4,7 @@ import * as utils from "../utils";
 
 
 // The regular expression to check for the skate boot types command
-export const regex = /^\/?\b(?:skates?)?[ _\-]?boots?[ _\-]?(?:types?)?\b/i;
+export const regex = /^\/?\b(?:skates?)?[ _-]?boots?[ _-]?(?:types?)?\b/i;
 
 // The spacing between the boot types
 const BOOT_TYPE_SPACING = "\n\n\n\n";

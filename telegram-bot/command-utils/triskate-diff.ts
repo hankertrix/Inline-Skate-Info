@@ -5,7 +5,7 @@ import { SPACING } from "../../src/lib/constants";
 
 
 // The regular expression to check for the triskate differences command
-export const regex = /^\/?\b(?:tri[ _\-]?skates?[ _\-]?(?:diff?(?:erences?)?)?|3[ _\-]?vs[ _\-]?4[ _\-]?(?:wheels?)?|wheels?[ _\-]?compar(?:e|ison)s?)\b/i;
+export const regex = /^\/?\b(?:tri[ _-]?skates?[ _-]?(?:diff?(?:erences?)?)?|3[ _-]?vs[ _-]?4[ _-]?(?:wheels?)?|wheels?[ _-]?compar(?:e|ison)s?)\b/i;
 
 // The type of the JSON containing the triskate differences data
 type TriskateDiffData = {

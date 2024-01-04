@@ -6,7 +6,7 @@ import { loadSkateRecs } from "../normalise-data";
 
 
 // The regular expression to check for the skate recommendations command
-export const regex = /^\/?\b(?:(?:skates?)?[ _\-]?recc?(?:s|omm?endations?)?|(?:recc?(?:s|ed)?|recc?omm?end(?:ed)?)[ _\-]?(?:skates?)?)\b/i;
+export const regex = /^\/?\b(?:(?:skates?)?[ _-]?recc?(?:s|omm?endations?)?|(?:recc?(?:s|ed)?|recc?omm?end(?:ed)?)[ _-]?(?:skates?)?)\b/i;
 
 // The type representing a skate recommendation
 type SkateRec = {
