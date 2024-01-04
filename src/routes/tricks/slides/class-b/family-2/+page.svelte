@@ -1,17 +1,19 @@
 <!-- The page for all the class B family 2 slides -->
 <script lang="ts" context="module">
-
-  import tricksJson from "$lib/data/tricks/slides/class-B/family-2.json";
+  import tricksJson from '$lib/data/tricks/slides/class-B/family-2.json';
   export { tricksJson };
-
 </script>
 
 <script lang="ts">
-
   // Import the trick page component
-  import TricksPage from "$lib/components/pages/tricks/TricksPage.svelte";
-  
+  import TricksPage from '$lib/components/pages/tricks/TricksPage.svelte';
 </script>
 
 <!-- The HTML for the class B family 2 slides -->
-<TricksPage title="Class B, Family 2 Slides" description="The list of class B slides in family 2" {tricksJson} headingLevel={3} changeInHeadingLevel={1} />
+<TricksPage
+  title="Class B, Family 2 Slides"
+  description="The list of class B slides in family 2"
+  {tricksJson}
+  headingLevel={3}
+  changeInHeadingLevel={1}
+/>

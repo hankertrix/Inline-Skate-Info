@@ -1,16 +1,12 @@
 <!-- The page for all the aggressive basic tricks -->
 <script lang="ts" context="module">
-
-  import tricksJson from "$lib/data/tricks/aggressive/basics.json";
+  import tricksJson from '$lib/data/tricks/aggressive/basics.json';
   export { tricksJson };
-
 </script>
 
 <script lang="ts">
-
   // Import the trick page component
-  import TricksPage from "$lib/components/pages/tricks/TricksPage.svelte";
-  
+  import TricksPage from '$lib/components/pages/tricks/TricksPage.svelte';
 </script>
 
 <!-- The HTML for the aggressive basics page -->
