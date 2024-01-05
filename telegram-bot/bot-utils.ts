@@ -14,7 +14,7 @@ const messageEntityRegex = /<.+?>/g;
 const removeBotUsernameRegex = /@inlineskatebot/g;
 
 // The regular expression to remove the command from the start of the message
-const removeCommandRegex = /^\/[\w\-]+/;
+const removeCommandRegex = /^\/[\w-]+/;
 
 
 // Function to remove the bot's username from a message
@@ -49,8 +49,11 @@ function getMsgSegment(startIndex: number, endIndex: number, message: string, ma
   // Initialise the message length
   const msgLen = message.length;
 
+  // The variable to decide whether to continue the loop
+  let continueLoop = true;
+
   // Loop while the message segment without HTML isn't equal to the max length
-  while (true) {
+  while (continueLoop) {
 
     // Gets the message segment
     msgSegment = message.slice(startIndex, endIndex);
@@ -69,7 +72,7 @@ function getMsgSegment(startIndex: number, endIndex: number, message: string, ma
     }
 
     // Breaks the loop if the message segment is already shorter than the max length or if the end index is equal to or past the length of the message
-    else if (msgSegment.length < maxLength || endIndex >= msgLen) break;
+    else if (msgSegment.length < maxLength || endIndex >= msgLen) continueLoop = false;
 
     // Otherwise, remove the HTML from the message segment
     const msgSegmentWithoutHtml = utils.removeHtml(msgSegment);
@@ -78,7 +81,7 @@ function getMsgSegment(startIndex: number, endIndex: number, message: string, ma
     const segmentWithoutHtmlLen = msgSegmentWithoutHtml.length;
     
     // Breaks the loop if the message segment without HTML is equal to the max length
-   if (segmentWithoutHtmlLen === maxLength) break;
+   if (segmentWithoutHtmlLen === maxLength) continueLoop = false;
     
     // Otherwise, increase the end index by the difference in length between the maximum length and the length of the segment without HTML
     endIndex += (maxLength - segmentWithoutHtmlLen);
@@ -280,7 +283,7 @@ export async function sendDocGroupFromPaths(ctx: Context, ...paths: string[]) {
 
 
 // Function to handle the commands that generate a message and send files
-export async function messageAndFileCommandHandler(ctx: Context, fn: Function) {
+export async function messageAndFileCommandHandler(ctx: Context, fn: () => Promise<[string, string[]]>) {
 
   // Gets the message and the files
   const [message, files] = await fn() as [string, string[]];
@@ -294,13 +297,13 @@ export async function messageAndFileCommandHandler(ctx: Context, fn: Function) {
 
 
 // Function to handle the commands that generate a message and send files
-export async function messageAndFileInlineQueryHandler(ctx: Context, fn: Function, isHyperlinked: boolean = true, joiningSection: string = "\n\n") {
+export async function messageAndFileInlineQueryHandler(ctx: Context, fn: () => Promise<[string, string[]]>, isHyperlinked: boolean = true, joiningSection: string = "\n\n") {
 
   // Gets the message and the files
-  let [message, files] = await fn() as [string, string[]];
+  const [message, files] = await fn() as [string, string[]];
 
   // Adds the links to the files to the back of the message
-  message = `${message}${joiningSection}${files.map(
+  const msg = `${message}${joiningSection}${files.map(
     path => {
 
       // Gets the URL for the file
@@ -315,7 +318,7 @@ export async function messageAndFileInlineQueryHandler(ctx: Context, fn: Functio
     }).join("\n\n")}`;
 
   // Answers the inline query
-  await answerInlineQuery(ctx, message);
+  await answerInlineQuery(ctx, msg);
 }
 
 
