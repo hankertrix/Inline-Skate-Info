@@ -1,6 +1,8 @@
 // Module containing all the utilities for the training message command
 
 import type { DateMapping } from "../../types";
+import type { Scenes } from "telegraf";
+import type { Message } from "telegraf/types";
 import * as utils from "../../utils";
 import { deleteMessages, wrapCallbackWithMessageDeleter } from "../../bot-utils";
 import { DEV } from "../../../src/lib/constants";
@@ -29,7 +31,7 @@ export function createDateMapping(trainingDates: string[]) {
 
 
 // Function to handle the training message command when no default training message has been set up
-export async function handleTrgMsg(ctx: any, msg: string) {
+export async function handleTrgMsg(ctx: Scenes.WizardContext & { message: Message.TextMessage }, msg: string) {
 
   // Generate a poll message with the given training message and the default options
   const { callback } = generatePollMessage(msg, DEFAULT_POLL_OPTIONS);
@@ -86,13 +88,18 @@ export function getUpcomingTrainingDates(dateMapping: { [day: number]: Date }, n
   // Create a temporary date
   let tempDate = currentDate;
 
+  // Intialise the variable to decide
+  // whether to continue looping or not
+  let continueLoop = true;
+
   // Infinite loop
-  while (true) {
+  while (continueLoop) {
 
     // Checks if the temporary date is in the date mapping
     if (tempDate.getDay() in dateMapping) {
 
-      // If the temporary date is past the current date, break the loop
+      // If the temporary date is past the current date,
+      // add the date to the list of upcoming training dates
       if (tempDate > currentDate)
         upcomingTrainingDates.push(
           setTimeOnUpcomingTrainingDate(
@@ -106,7 +113,8 @@ export function getUpcomingTrainingDates(dateMapping: { [day: number]: Date }, n
         // Gets the training date from the date mapping
         const trainingDate = dateMapping[tempDate.getDay()];
 
-        // If the hour on the temporary date is not past the hour of the training time, break the loop
+        // If the hour on the temporary date is not past the hour of the training time,
+        // add the date to the list of upcoming training dates
         if (tempDate.getHours() < trainingDate.getHours())
           upcomingTrainingDates.push(
             setTimeOnUpcomingTrainingDate(
@@ -114,7 +122,9 @@ export function getUpcomingTrainingDates(dateMapping: { [day: number]: Date }, n
             )
           );
 
-        // Otherwise, if the time on the temporary date is on the same hour as the training time but the minutes are less than or equal to the training time, then break the loop
+        // Otherwise, if the time on the temporary date is on the same hour as the training time
+        // but the minutes are less than or equal to the training time,
+        // add the date to the list of upcoming training dates
         else if (
           tempDate.getHours() === trainingDate.getHours() &&
           tempDate.getMinutes() <= trainingDate.getMinutes()
@@ -125,7 +135,7 @@ export function getUpcomingTrainingDates(dateMapping: { [day: number]: Date }, n
       }
       
       // If the number of training dates required is reached, breaks the loop
-      if (upcomingTrainingDates.length === numOfTrainingDates) break;
+      if (upcomingTrainingDates.length === numOfTrainingDates) continueLoop = false;
     }
 
     // Otherwise, add one day to the temporary date

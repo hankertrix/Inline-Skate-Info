@@ -1,5 +1,6 @@
 // Module to create the training message for NUS
 
+import type { TrainingMessageFunction } from ".";
 import { Scenes, Composer } from "telegraf";
 import * as filters from "telegraf/filters";
 import type { DateMapping } from "../../types";
@@ -59,6 +60,7 @@ const sceneName = "nusValidator";
 
 
 // Function to get the regular expression match in a saner way
+// eslint-disable-next-line  @typescript-eslint/no-explicit-any
 function getRegexMatch(match: RegExpMatchArray | null, defaultValue: any = null) {
 
   // If the match given is null, immediately return the default value
@@ -75,7 +77,7 @@ function normaliseWeek(week: string) {
   // Tries to get the type of the week
   const weekType = getRegexMatch(
     week.match(new RegExp(typeOfWeekRegexStr, "i")), ""
-  );
+  ) as string;
 
   // Tries to get the week number
   const weekNum = getRegexMatch(
@@ -94,7 +96,7 @@ function normaliseWeek(week: string) {
 
 
 // Function to get the username and week number from the message
-function getRequiredArgs(message: string): [string, boolean, string] {
+function getRequiredArgs(message: string): [string | null, boolean, string | null] {
 
   // Removes the trailing whitespace from the message
   message = message.trim();
@@ -189,7 +191,7 @@ function createCustomTrgMsg(message: string, trainingDates: string[]) {
 
 
 // Function to handle the training message command for NUS
-export async function handler(ctx: any, msg: string) {
+export async function handler(...[ctx, msg]: Parameters<TrainingMessageFunction>): ReturnType<TrainingMessageFunction> {
 
   // If the message is empty, immediately enters the scene to get the required information for the NUS training message
   if (!msg) return await ctx.scene.enter(sceneName, {
@@ -212,7 +214,8 @@ export async function handler(ctx: any, msg: string) {
     await deleteMessages(ctx, ctx.message.message_id);
   }
 
-  // If either the username or the week is null, then enters the scene to ask for the required information to create the training message
+  // If either the username or the week is null,
+  // then enters the scene to ask for the required information to create the training message
   else if (username == null || week == null) return await ctx.scene.enter(sceneName, {
     noRentals: noRentals,
     weekType: week,
@@ -221,7 +224,9 @@ export async function handler(ctx: any, msg: string) {
   });
 
   // Otherwise, generates the training message
-  const { message, callback } = createTrainingPollMsg(trainingMsg, trainingLocation, noRentals, week, username, trainingDates);
+  // Type coercion for the week and username variables because typescript
+  // can't understand the above if statement for some reason
+  const { message, callback } = createTrainingPollMsg(trainingMsg, trainingLocation, noRentals, week as string, username as string, trainingDates);
 
   // Calls the function to send the training message to the user
   await callback(ctx, message);
@@ -279,7 +284,7 @@ nusValidator.command(...cancelCommand);
 nusValidator.on(filters.message("text"), async ctx => {
 
   // Gets the state object
-  const state: any = ctx.wizard.state;
+  const state = ctx.wizard.state as { weekType: string, username: string, noRentals: boolean };
 
   // Gets the username and the week type from the state object
   const { weekType, username } = state;
@@ -303,7 +308,10 @@ nusValidator.on(filters.message("text"), async ctx => {
     if (!givenUsername) {
 
       // Ask the user for the username and exit the function
-      return await promptUserForInput(ctx, `Please enter the username of the person who is in charge of skate rentals this week. If there are no rentals this week, simply enter the phrase '${utils.monospace("no rentals")}' instead of the username.`);
+      return await promptUserForInput(
+        ctx,
+        `Please enter the username of the person who is in charge of skate rentals this week. If there are no rentals this week, simply enter the phrase '${utils.monospace("no rentals")}' instead of the username.`
+      );
     }
 
     // Otherwise, store the given username

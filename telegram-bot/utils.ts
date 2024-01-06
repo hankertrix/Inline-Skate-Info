@@ -14,13 +14,14 @@ const charToHtmlEntity = {
 
 
 // Function to check if something is an object
-export function isObject(obj: any) {
+export function isObject(obj: unknown) {
   return Object.prototype.toString.call(obj) === "[object Object]";
 }
 
 
 // Function to merge two objects
 // This function will MODIFY the base object
+// eslint-disable-next-line  @typescript-eslint/no-explicit-any
 export function mergeObjects(baseObj: any, objToMerge: object, errorOnConflict: boolean = true, overwriteBaseObject: boolean = false) {
 
   // Iterates the object to merge
@@ -150,7 +151,7 @@ export async function loadJsonData(path: string, root: string = "./src/lib/data/
 export async function loadPdfFile(path: string, root: string = "./static/pdfs/") {
   
   // Gets the file path
-  let filePath = `${root ? root : "./static/"}${path}${path.endsWith(".pdf") ? "" : ".pdf"}`;
+  const filePath = `${root ? root : "./static/"}${path}${path.endsWith(".pdf") ? "" : ".pdf"}`;
 
   // Loads the PDF file
   const file = await readFile(filePath, "utf8");
@@ -179,18 +180,19 @@ export function convertStaticFilePathToUrl(path: string) {
 export function convertToLabel(label: string) {
 
   // Capitalise the first character that is after a forward slash or at the start of the string as well as everything in brackets if there isn't any space inside the brackets. If there are spaces inside the brackets, make the string title case instead
-  return label.replace(/(?<=\/ ?|^)\w|[\[(].*?[)\]]/g, str => str.includes(" ") ? titlecase(str) : str.toUpperCase());
+  return label.replace(/(?<=\/ ?|^)\w|[[(].*?[)\]]/g, str => str.includes(" ") ? titlecase(str) : str.toUpperCase());
 }
 
 
 // Function to get a key from a dictionary and return a default value if the key is not found (mimics the python dict.get method)
-export function dictGet(dict: Dict<any>, key: string | number, default_value: any = null) {
+// eslint-disable-next-line  @typescript-eslint/no-explicit-any
+export function dictGet(dict: Dict<unknown>, key: string | number, defaultValue: any = null) {
 
   // If the key is inside the dictionary, return the value
   if (key in dict) return dict[key];
 
   // Otherwise return the default value
-  else return default_value;
+  else return defaultValue;
 }
 
 
@@ -204,7 +206,7 @@ export function dictGetSearch(dict: Dict<string>, searchTerm: string | number) {
   if (result != null) return result;
 
   // Otherwise iterate the dictionaries in the dictionary
-  for (const [_, innerDict] of Object.entries(dict)) {
+  for (const [ , innerDict] of Object.entries(dict)) {
 
     // If the inner dictionary is actually a string then continue the loop
     if (typeof innerDict === "string") continue;
@@ -316,6 +318,7 @@ export function titlecase(str: string) {
 
 
 // Function to format a string with the arguments given
+// eslint-disable-next-line  @typescript-eslint/no-explicit-any
 export function strFormat(str: string, ...args: any[]) {
 
   // If arguments aren't given, return the string passed immediately
@@ -332,7 +335,9 @@ export function strFormat(str: string, ...args: any[]) {
   for (const arg in args) {
 
     // Replace the text in brackets with the argument given
-    // The args[arg] works in both situations (array and object) because iterating in an array gets the index of the array, so args[arg] is essentially args[index]
+    // The args[arg] works in both situations (array and object)
+    // because iterating in an array gets the index of the array,
+    // so args[arg] is essentially args[index]
     str = str.replace(new RegExp(`\\{${arg}\\}`, "gi"), args[arg]);
   }
 
@@ -342,13 +347,13 @@ export function strFormat(str: string, ...args: any[]) {
 
 
 // Function to get a title from the file name
-export function getTitleFromFilename(filename: string, formatFunc: Function = titlecase) {
+export function getTitleFromFilename(filename: string, formatFunc: (text: string) => string = titlecase) {
 
   // Remove the file extension from the file name
   filename = filename.replace(/\.\w*$/, "");
 
   // Convert all the underscores and dashes to spaces
-  filename = filename.replace(/[_\-]/g, " ");
+  filename = filename.replace(/[_-]/g, " ");
 
   // Returns the titlecased file name
   return formatFunc(filename).trim();
@@ -401,7 +406,7 @@ export function stripHtml(text: string) {
     /[&<>]/g,
 
     // The HTML characters in the given text are replaced with their respective HTML entities using the charToHtmlEntity dictionary
-    char => dictGet(charToHtmlEntity, char, char)
+    char => dictGet(charToHtmlEntity, char, char) as string
   );
 }
 
@@ -469,7 +474,7 @@ export function boldFirstLine(text: string) {
 export function addDays(date: Date, days: number) {
 
   // Creates a new date object with the original date
-  let newDate = new Date(date.getTime());
+  const newDate = new Date(date.getTime());
 
   // Adds the days to the new date object
   newDate.setDate(date.getDate() + days);
@@ -483,7 +488,7 @@ export function addDays(date: Date, days: number) {
 export function addHours(date: Date, hours: number) {
 
   // Creates a new date object with the original date
-  let newDate = new Date(date.getTime());
+  const newDate = new Date(date.getTime());
 
   // Adds the hours to the new date object
   newDate.setHours(date.getHours() + hours);

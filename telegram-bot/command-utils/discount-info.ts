@@ -69,7 +69,7 @@ async function getDiscountApplicableStoresDetails(listSlice: number[]) {
 
 
 // Function to generate the discount info message as well as the files needed
-export async function generateDiscountInfo() {
+export async function generateDiscountInfo(): Promise<[string, string[]]> {
 
   // Loads the JSON data containing the discount info
   const { title, messageParts, pdfFiles, listSlice } = await utils.loadJsonData("misc/discount-info") as DiscountInfo;

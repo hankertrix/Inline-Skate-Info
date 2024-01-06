@@ -1,6 +1,7 @@
 // Module to export all the functions to generate the training message
 
-import type { Context } from "telegraf";
+import type { Scenes } from "telegraf";
+import type { Message } from "telegraf/types";
 import { DEV } from "../../../src/lib/constants";
 import * as trgMsgUtils from "./utils";
 import * as ntu from "./ntu";
@@ -8,7 +9,7 @@ import * as nus from "./nus";
 
 
 // The type representing a training message function
-type TrainingMessageFunction = (ctx: Context, message: string) => Promise<void>;
+export type TrainingMessageFunction = (ctx: Scenes.WizardContext & { message: Message.TextMessage }, message: string) => Promise<unknown>;
 
 // The interface for the training message module
 interface TrainingMessageModule {
@@ -49,7 +50,7 @@ function getModuleMapping(): [number, string][] {
 
 
 // Function to handle the training message command
-export async function handler(ctx: Context, message: string) {
+export async function handler(...[ctx, message]: Parameters<TrainingMessageFunction>): ReturnType<TrainingMessageFunction> {
 
   // Gets the module mapping
   const moduleMapping = getModuleMapping();
@@ -62,7 +63,7 @@ export async function handler(ctx: Context, message: string) {
   if (relevantData.length === 0) return await trgMsgUtils.handleTrgMsg(ctx, message);
 
   // Gets the module string for the current chat
-  const [_, moduleStr] = relevantData[0];
+  const [ , moduleStr] = relevantData[0];
 
   // Gets the training message function from the function mapping
   const trgMsgFunction = trgMsgModules[moduleStr].handler;
@@ -86,7 +87,7 @@ export function generateHelpText(chatID: number) {
   if (relevantData.length === 0) return `The training message has not been set up for this chat. Please contact ${DEV} if you would like to set up a training message.`;
 
   // Otherwise, gets the training message module string
-  const [_, trgMsgModuleStr] = relevantData[0];
+  const [ , trgMsgModuleStr] = relevantData[0];
 
   // Gets the help message from the data
   const helpText = trgMsgModules[trgMsgModuleStr].help;

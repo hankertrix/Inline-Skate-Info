@@ -17,6 +17,12 @@ export type ReversibleDict = {
 export type ObjectValues<T> = T[keyof T];
 
 
+// The type representing the optional properties of a given type
+export type OptionalPropertiesOf<T extends object> = {
+  [K in keyof T as T extends Record<K, T[K]> ? never : K]: T[K]
+};
+
+
 // The type representing a product
 export type Product = {
   price: string,

@@ -48,7 +48,7 @@ export async function loadPlacesJson(place: Places) {
 
 
 // Function to return the text from the JSON data
-export async function generatePlacesText(place: Places, formatFunc: Function = utils.titlecase, separator: string = ": " ) {
+export async function generatePlacesText(place: Places, formatFunc: (text: string) => string = utils.titlecase, separator: string = ": " ) {
 
   // Loads the JSON data
   const json = await loadPlacesJson(place) as Dict<Place>;
@@ -62,7 +62,7 @@ export async function generatePlacesText(place: Places, formatFunc: Function = u
   )}${TITLE_SPACING}`);
 
   // Iterates the JSON data
-  for (let [placeName, placeInfo] of Object.entries(json)) {
+  for (const [placeName, placeInfo] of Object.entries(json)) {
 
     // The list containing the information about the place
     const placeInfoStrList = [];
@@ -140,7 +140,7 @@ export async function whereToBuyHandler(message: string) {
     );
 
     // Gets the category from the categories dictionary
-    const category = utils.dictGet(categories, msg);
+    const category = utils.dictGet(categories, msg) as Places | null;
     
     // If the category is found, sets the list of JSON files to the one in the category
     if (category) jsonFiles = [category];

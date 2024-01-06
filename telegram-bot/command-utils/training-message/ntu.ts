@@ -1,6 +1,6 @@
 // Module to create the training message for NTU
 
-import type { Context } from "telegraf";
+import type { TrainingMessageFunction } from ".";
 import * as utils from "../../utils";
 import * as trgMsgUtils from "./utils";
 
@@ -45,7 +45,7 @@ function formatMsg(date: Date, location: string, trgMsg: string, isLast: boolean
 
 
 // Function to handle the training message command for NTU
-export async function handler(ctx: Context, message: string) {
+export async function handler(...[ctx, message]: Parameters<TrainingMessageFunction>): ReturnType<TrainingMessageFunction> {
 
   // The boolean variable to check if the lowercased message just contains the word "last"
   const isLast = message.toLowerCase() === "last";

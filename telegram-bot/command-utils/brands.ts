@@ -84,7 +84,7 @@ export async function handler(message: string) {
   const brandCategories = await utils.loadJsonData("brands/brand-categories");
 
   // Gets the category from the brand categories JSON
-  const category = utils.dictGet(brandCategories, msg);
+  const category = utils.dictGet(brandCategories, msg) as BrandCategory | null;
 
   // If there is a category found, set the JSON files to be the file with the category
   if (category) jsonFiles = [category];

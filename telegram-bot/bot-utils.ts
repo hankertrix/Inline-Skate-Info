@@ -1,7 +1,8 @@
 // Module containing all the utility functions for the telegram bot
 
-import type { Context } from "telegraf";
-import type { InlineQueryResult, InputMediaDocument } from "telegraf/types";
+import type { Context, Types, Composer } from "telegraf";
+import type { InlineQueryResult, InputMediaDocument, InputMessageContent, Message } from "telegraf/types";
+import type { OptionalPropertiesOf } from "./types";
 import { Scenes } from "telegraf";
 import { MAX_CHARACTERS, CACHE_TIME, SPACING, OPERATION_CANCELLED_MSG, EXIT_MESSAGE, MESSAGE_ENTITY_LIMIT } from "../src/lib/constants";
 import * as utils from "./utils";
@@ -146,7 +147,7 @@ function splitMessage(message: string, maxLength: number = MAX_CHARACTERS, maxEn
 
 
 // Function to reply to a context with message splitting and with HTML parse mode
-export async function ctxReply(ctx: Context, reply: string, options = {}) {
+export async function ctxReply(ctx: Context, reply: string, options: Types.ExtraReplyMessage = {}) {
 
   // Iterates the splitted reply
   for (const segment of splitMessage(reply)) {
@@ -162,7 +163,13 @@ export async function ctxReply(ctx: Context, reply: string, options = {}) {
 
 
 // Function to generate an inline query reply
-function generateInlineQueryReply(title: string, message: string, id: string | number, options: any = {}, queryTitle: string = ""): InlineQueryResult {
+function generateInlineQueryReply(
+  title: string,
+  message: string,
+  id: string | number,
+  options: OptionalPropertiesOf<InputMessageContent> = {},
+  queryTitle: string = ""
+): InlineQueryResult {
 
   // Gets the query title from the title
   queryTitle = queryTitle || title;
@@ -187,7 +194,12 @@ function generateInlineQueryReply(title: string, message: string, id: string | n
 
 
 // Function to answer the inline query
-export async function answerInlineQuery(ctx: Context, messages: string | string[], title: string | null = null, options: any = {}) {
+export async function answerInlineQuery(
+  ctx: Context,
+  messages: string | string[],
+  title: string | null = null,
+  options: OptionalPropertiesOf<InputMessageContent> = {}
+) {
 
   // If the message given is not a list of messages
   if (typeof messages === "string") messages = [messages];
@@ -380,27 +392,30 @@ export async function deleteMessages(ctx: Context, ...message_ids: number[]): Pr
 
 
 // Function to add the current message to the list of messages to be deleted
-export function markMessageForDeletion(ctx: any, ...message_ids: number[]) {
+export function markMessageForDeletion(ctx: Scenes.WizardContext, ...message_ids: number[]) {
+
+  // Gets the state object
+  const state = ctx.wizard.state as { messagesToDelete: number[] };
 
   // Gets the list of message IDs to be deleted
-  const messagesToDelete = ctx.wizard.state.messagesToDelete;
+  const messagesToDelete = state.messagesToDelete;
 
   // Checks if the list of message IDs exists
-  if (Array.isArray(messagesToDelete)) ctx.wizard.state.messagesToDelete = messagesToDelete.concat(message_ids);
+  if (Array.isArray(messagesToDelete)) state.messagesToDelete = messagesToDelete.concat(message_ids);
 }
 
 
 // Function to wrap the callback function to include the function to delete messages
-export function wrapCallbackWithMessageDeleter(callback: Function) {
+export function wrapCallbackWithMessageDeleter(callback: (ctx: Scenes.WizardContext, input: string) => Promise<void | Message.TextMessage>) {
 
   // Returns a function that takes the arguments of the callback function
-  return async (ctx: any, input: string) => {
+  return async (ctx: Scenes.WizardContext, input: string) => {
 
     // Calls the callback function
     await callback(ctx, input);
 
     // Gets the list of messages to delete from the state in the wizard scene
-    const messagesToDelete: any = ctx.wizard.state.messagesToDelete;
+    const messagesToDelete: number[] = (ctx.wizard.state as object & { messagesToDelete: number[] }).messagesToDelete;
 
     // If the list of message IDs exists, calls the function to delete the messages
     if (Array.isArray(messagesToDelete)) await deleteMessages(ctx, ...messagesToDelete);
@@ -409,7 +424,7 @@ export function wrapCallbackWithMessageDeleter(callback: Function) {
 
 
 // Prompts the user for an input
-export async function promptUserForInput(ctx: Context, message: string) {
+export async function promptUserForInput(ctx: Scenes.WizardContext, message: string) {
   
   // Asks the user for an input
   const botMessage = await ctx.reply(`${message} ${EXIT_MESSAGE}`, { parse_mode: "HTML" });
@@ -420,7 +435,7 @@ export async function promptUserForInput(ctx: Context, message: string) {
 
 
 // The function to exit a validator (cancel the ongoing operation)
-async function exitValidator(ctx: any) {
+async function exitValidator(ctx: Scenes.WizardContext) {
 
   // Tells the user that the operation has been cancelled
   await ctx.reply(OPERATION_CANCELLED_MSG);
@@ -430,11 +445,11 @@ async function exitValidator(ctx: any) {
 }
 
 // The array containing the cancel command
-export const cancelCommand: [string, any] = ["cancel", exitValidator];
+export const cancelCommand: [string, (ctx: Scenes.WizardContext) => Promise<void>] = ["cancel", exitValidator];
 
 
 // The function to create a wizard scene
-export function createWizardScene(name: string, handler: any) {
+export function createWizardScene(name: string, handler: Composer<Scenes.WizardContext>) {
 
   // Returns the new scene
   return new Scenes.WizardScene<Scenes.WizardContext>(name, handler);

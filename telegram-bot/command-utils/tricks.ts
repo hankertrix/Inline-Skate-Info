@@ -1,5 +1,6 @@
 // Module containing the utilities to handle the tricks command
 
+import type { Dict } from "../types";
 import * as utils from "../utils";
 import { removeBotUsername } from "../bot-utils";
 import { SPACING, CATEGORY_SPACING, LABEL_SPACING } from "../../src/lib/constants";
@@ -149,7 +150,9 @@ const TRICK_SPACING = SPACING;
 async function loadTricksJson(file: string) {
 
   // Gets the load function for the file name from the file path mapping for the tricks
-  const [ , , loadFunction] = utils.dictGet(TRICK_FILEPATH_MAP, file, [null, null, null]);
+  const [ , , loadFunction] = utils.dictGet(
+    TRICK_FILEPATH_MAP, file, [null, null, null]
+  ) as [string | null, string | null, () => Promise<Dict<string>>];
 
   // If there is a load function for the file name, returns the result of the load function
   if (loadFunction != null) return await loadFunction();
@@ -315,7 +318,7 @@ export async function handler(message: string) {
     const tricksMapping = await loadTricksJson("tricks-mapping");
 
     // Gets the information from the tricks mapping
-    const info = utils.dictGet(tricksMapping, msg);
+    const info = utils.dictGet(tricksMapping, msg) as string;
 
     // If the trick isn't found in the dictionary, immediately returns the message to tell the user the trick wasn't found
     if (!info) return [message, `No trick was found for '${message}'.`];
@@ -340,7 +343,9 @@ export async function handler(message: string) {
     else {
 
       // Get the heading from the file path mapping for the tricks
-      heading = utils.dictGet(TRICK_FILEPATH_MAP, jsonFile, ["Category not found", "Trick heading not found", null])[1];
+      heading = (utils.dictGet(
+        TRICK_FILEPATH_MAP, jsonFile, ["Category not found", "Trick heading not found", null]
+      ) as [string, string, () => Promise<Dict<string>>])[1];
     }
   }
 

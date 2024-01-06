@@ -10,12 +10,14 @@ type LowercaseStringKeys<T> = Lowercase<Extract<keyof T, string>>;
 type NonStringKeys<T> = Exclude<keyof T, string>;
 
 // An object having the same values of the original object but the keys are converted to lowercase
+// eslint-disable-next-line  @typescript-eslint/no-explicit-any
 type LowercaseObjectKeys<T extends { [key: string | number | symbol]: any }> = {
   [x in LowercaseStringKeys<T> | NonStringKeys<T>]: x extends string ? T[Lowercase<x>]: T[x];
 };
 
 
 // Function to convert all the keys in an object to lower case
+// eslint-disable-next-line  @typescript-eslint/no-explicit-any
 function convertKeysToLowercase<T extends Record<any, any>>(obj: T): LowercaseObjectKeys<T> {
   return Object.fromEntries(Object.entries(obj).map(([key, value]) => {
 

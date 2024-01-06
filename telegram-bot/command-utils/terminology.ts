@@ -84,7 +84,7 @@ export async function handler(message: string) {
   const terminology = await normaliseData.loadTerminology();
 
   // The data to iterate and send to the user
-  let data: any = null;
+  let data: Dict<string> | null = null;
 
   // Initialise the term that the user used
   let term: string = "";
@@ -96,7 +96,7 @@ export async function handler(message: string) {
     term = "general terms";
 
     // Gets the general terms from the data
-    data = utils.dictGet(terminology, term);
+    data = utils.dictGet(terminology, term) as Dict<string> | null;
   }
 
   // If the message is all

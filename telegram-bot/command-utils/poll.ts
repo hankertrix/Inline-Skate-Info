@@ -2,7 +2,7 @@
 
 import * as utils from "../utils";
 import { removeBotUsername } from "../bot-utils"
-import type { Context } from "telegraf";
+import type { Scenes } from "telegraf";
 import type { User, InlineKeyboardButton } from "telegraf/types";
 import { SPACING } from "../../src/lib/constants";
 
@@ -51,7 +51,7 @@ export function generatePollMessage(message: string, pollOptions: string[]) {
   const inlineKeyboard = generateInlineKeyboard(pollOptions);
   
   // The callback function
-  async function callback(ctx: Context, input: string) {
+  async function callback(ctx: Scenes.WizardContext, input: string) {
 
     // Bold the first line of the input
     input = utils.boldFirstLine(input);

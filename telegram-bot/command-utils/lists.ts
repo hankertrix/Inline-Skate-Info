@@ -40,7 +40,7 @@ export const miscResourcesRegex = /^\/?\b(?:misc(?:ell?an[ea]ous)?s?|ran(?:dom)?
 
 
 // Function to generate the lists text
-export async function generateListsText(lists: Lists) {
+export async function generateListsText(lists: Lists): Promise<[string, string[]]> {
 
   // Asynchronously load the JSON data for the lists
   const data = await utils.loadJsonData(`/lists/${lists}.json`) as ListData;

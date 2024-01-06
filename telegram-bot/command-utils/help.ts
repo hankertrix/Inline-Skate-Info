@@ -188,6 +188,9 @@ export function getCommandHelpMsg(args: {
   entry?: [string, HelpInfo]
 }): string {
 
+  // Initialise the entry variable
+  let entry: [string, HelpInfo | null] | undefined = args.entry;
+
   // If the command is given
   if (args.command) {
 
@@ -197,13 +200,13 @@ export function getCommandHelpMsg(args: {
     // Gets the command dictionary
     const commandDict = getCommandDict();
 
-    // Sets the data object to the command
+    // Sets the entry variable to the command
     // and the value returned from the command dictionary
-    args.entry = [command, utils.dictGet(commandDict, command)];
+    entry = [command, utils.dictGet(commandDict, command) as HelpInfo | null];
   }
 
   // Pulls out the command and the information from the data
-  const [cmd, info] = args.entry as [string, HelpInfo];
+  const [cmd, info] = entry as [string, HelpInfo | null];
 
   // If the information is not found
   if (!info) {

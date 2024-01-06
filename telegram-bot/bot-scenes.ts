@@ -19,10 +19,14 @@ validateHandler.command(...cancelCommand);
 validateHandler.on(filters.message("text"), async ctx => {
 
   // Gets the state object
-  const state: any = ctx.wizard.state;
+  const state = ctx.wizard.state as {
+    message: string,
+    callback: (ctx: Scenes.WizardContext, input: string) => Promise<void>,
+    validator?: (input: string) => boolean,
+  };
 
   // Gets the message from the state
-  const message: string = state.message;
+  const message = state.message;
 
   // Gets the user's input while removing the command at the start
   let input: string = removeCommand(ctx.message.text);
@@ -38,7 +42,7 @@ validateHandler.on(filters.message("text"), async ctx => {
   }
 
   // Gets the validator given and use the default validator if none is given
-  const validator: Function = state.validator ?? defaultValidator;
+  const validator = state.validator ?? defaultValidator;
 
   // If the validator returns false
   if (!validator(input)) {
@@ -51,7 +55,7 @@ validateHandler.on(filters.message("text"), async ctx => {
   markMessageForDeletion(ctx, ctx.message.message_id);
 
   // Get the callback function from the state
-  const callback: Function = state.callback;
+  const callback = state.callback;
 
   // Calls the function with the context and the user's input
   await callback(ctx, input);
