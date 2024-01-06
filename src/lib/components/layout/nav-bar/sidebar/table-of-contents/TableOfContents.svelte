@@ -1,22 +1,20 @@
 <!-- The component to generate the table of contents for the side bar -->
 <script lang="ts">
 
+  import { TableOfContents } from "$lib/types";
   import { page } from "$app/stores";
   import { browser } from "$app/environment";
   import TableOfContentsCollapsibleMenu from "./TableOfContentsCollapsibleMenu.svelte";
 
   // The variable to store the list of headings on the page
-  let headings: NodeListOf<Element>;
+  let headings: Element[];
 
   // The variable to store the table of contents object
-  let tableOfContents: Map<string, {
-    id: string,
-    children: any
-  }> = new Map();
+  let tableOfContents: TableOfContents = new Map();
 
   
   // Function to get the table of contents
-  function getTableOfContents(headings: NodeListOf<Element>) {
+  function getTableOfContents(headings: Element[]) {
 
     // The object representing the table of contents
     const tableOfContents = new Map();

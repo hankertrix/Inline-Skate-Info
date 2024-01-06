@@ -1,5 +1,13 @@
 // The file containing all the types used in the website
 
+// The type for the table of contents
+export type TableOfContents = Map<string, { id: string, children: TableOfContents }>;
+
+// The dictionary type
+export type Dict<T> = {
+  [key: string | number]: T | Dict<T>
+};
+
 // The interface representing the pagefind library
 export interface Pagefind {
   init: () => void;
@@ -7,7 +15,8 @@ export interface Pagefind {
     baseUrl?: string;
     bundlePath?: string;
     excerptLength?: number;
-  }) => void;
+    highlightParam?: "highlight"
+  }) => Promise<void>;
   search: (query: string) => Promise<PagefindResponse>;
 };
 

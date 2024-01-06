@@ -1,6 +1,7 @@
 <!-- The component to display a category of tricks, or a single trick -->
 <script lang="ts">
 
+  import { Dict } from "$lib/types";
   import { makeUrlFriendlyString } from "$lib/utils";
   import VideoCollapsible from "$lib/components/general/VideoCollapsible.svelte";
 
@@ -11,7 +12,7 @@
   };
 
   // The variable to take in the tricks JSON file
-  export let tricksJson: any;
+  export let tricksJson: Dict<string>;
 
   // The variable to take in the initial heading level
   export let headingLevel: number = 2;
@@ -24,13 +25,14 @@
 
   
   // The function to check if the object is a trick object
-  function isTrickObject(obj: any) {
-    return obj.hasOwnProperty("description") && obj.hasOwnProperty("videos");
+  function isTrickObject(obj: unknown) {
+    return Object.prototype.hasOwnProperty.call(obj, "description") &&
+    Object.prototype.hasOwnProperty.call(obj, "videos");
   }
 
 
   // The function to cast an object to a trick object
-  function castAsTrickObj(obj: any): Trick {
+  function castAsTrickObj(obj: object): Trick {
     return obj as Trick;
   }
   
@@ -79,6 +81,7 @@
       <svelte:element this={heading} id={headingId} class="text">{name}</svelte:element>
 
       <!-- Adds the description for the trick -->
+      <!-- eslint-disable-next-line svelte/no-at-html-tags -->
       <p class="text">{@html description}</p>
 
       <!-- The collapsible containing all of the videos -->

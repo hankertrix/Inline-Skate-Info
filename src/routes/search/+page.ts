@@ -3,12 +3,14 @@
 import type { LoadEvent } from '@sveltejs/kit';
 import type { Pagefind } from '$lib/types';
 import { browser } from '$app/environment';
+import { PAGEFIND_FOLDER } from '$lib/constants';
 
 // Don't prerender this page
 export const prerender = false;
 
 // The function to load the data before loading the page
 export async function load({ url: { searchParams } }: LoadEvent) {
+
   // Gets the search query from search params
   const searchQuery = searchParams.get('q')?.trim();
 
@@ -21,8 +23,8 @@ export async function load({ url: { searchParams } }: LoadEvent) {
 
   // Otherwise, import pagefind
   // Asks typescript to ignore the import so that the site can be successfully built as the pagefind file is only available after the site is built
-  // @ts-ignore: pagefind will be available after the site is built
-  const pagefind = (await import('$lib/../../static/pagefind/pagefind.js')) as Pagefind;
+  // @ts-export-error: pagefind will be available after the site is built
+  const pagefind = await import(`${PAGEFIND_FOLDER}/pagefind.js`) as Pagefind;
 
   // Set the bundle directory
   await pagefind.options({

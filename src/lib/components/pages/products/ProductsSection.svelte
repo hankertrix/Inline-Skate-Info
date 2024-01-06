@@ -1,10 +1,11 @@
 <!-- The component to display a category of products, or a single product -->
 <script lang="ts">
-  
-  import { makeUrlFriendlyString, titlecase } from "$lib/utils";
+
+  import type { Dict } from "$lib/types";
+  import { makeUrlFriendlyString } from "$lib/utils";
 
   // The variable to take in the JSON data for the products
-  export let productsJson: any;
+  export let productsJson: Dict<string>;
 
   // The variable to take in the heading level
   export let headingLevel: number = 2;
@@ -23,13 +24,14 @@
 
 
   // The function to check if an object is a product object
-  function isProductObject(obj: any) {
-    return obj.hasOwnProperty("price") && obj.hasOwnProperty("link");
+  function isProductObject(obj: unknown) {
+    return Object.prototype.hasOwnProperty.call(obj, "price")
+    && Object.prototype.hasOwnProperty.call(obj, "link");
   }
 
 
   // The function to cast an object as a product object
-  function castAsProductObject(obj: any) {
+  function castAsProductObject(obj: object): Product {
     return obj as Product;
   }
   

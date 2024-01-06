@@ -1,7 +1,7 @@
 // The module containing the utility functions for the website
 
 // The regular expression to match all the symbols
-const symbolRegex = /[!$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/g;
+const symbolRegex = /[!$%^&*()_+|~=`{}[\]:";'<>?,./]/g;
 
 
 // Function to change the title into a url friendly string
@@ -65,7 +65,7 @@ export function getFilenameFromFilePath(filePath: string) {
   filename = filename.replace(/\.\w*$/, "");
 
   // Convert all the underscores and dashes to spaces
-  filename = filename.replace(/[_\-]/g, " ");
+  filename = filename.replace(/[_-]/g, " ");
 
   // Returns the titlecased file name
   return titlecase(filename).trim();

@@ -1,10 +1,17 @@
 <!-- The component to display a category of brands, or single brand -->
 <script lang="ts">
 
+  import { Dict } from "$lib/types";
   import { makeUrlFriendlyString } from "$lib/utils";
 
+  // The type representing a brand
+  type Brand = {
+    link: string,
+    description: string
+  };
+
   // The variable to take in the JSON data for the brands
-  export let brandsJson: any;
+  export let brandsJson: Dict<string>;
 
   // The variable to take in the heading level
   export let headingLevel: number = 2;
@@ -15,21 +22,16 @@
   // The variable to take in the ID of the parent category
   export let parentId: string = "";
 
-  // The type representing a brand
-  type Brand = {
-    link: string,
-    description: string
-  };
-
 
   // Function to check if an object is a brand object
-  function isBrandObject(obj: any) {
-    return obj.hasOwnProperty("link") && obj.hasOwnProperty("description");
+  function isBrandObject(obj: object) {
+    return Object.prototype.hasOwnProperty.call(obj, "link") &&
+    Object.prototype.hasOwnProperty.call(obj, "description");
   }
 
 
   // Function to cast an object as a brand object
-  function castAsBrandObject(obj: any) {
+  function castAsBrandObject(obj: object): Brand {
     return obj as Brand;
   }
   
@@ -74,8 +76,10 @@
     <article class="brand">
 
       <svelte:element this={heading} id={urlFriendlyName} class="text"><a href={brandObj.link} target="_blank" title="Visit the website">{name}</a></svelte:element>
+
+      <!-- eslint-disable-next-line svelte/no-at-html-tags -->
       <p class="text">{@html brandObj.description}</p>
-      
+
     </article>
 
   <!-- Otherwise, the object is a category of brands -->

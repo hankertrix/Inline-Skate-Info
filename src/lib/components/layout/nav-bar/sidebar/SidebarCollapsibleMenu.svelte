@@ -16,7 +16,7 @@
 
   
   // Function to check if a title has any children
-  function titleHasChildren(obj: any) {
+  function titleHasChildren(obj: unknown) {
     return (obj instanceof String || typeof obj !== "string") && Object.keys(obj).length > 0;
   }
   

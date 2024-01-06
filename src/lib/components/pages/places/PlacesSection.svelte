@@ -1,10 +1,11 @@
 <!-- The component to display a category of places, or a single place -->
 <script lang="ts">
 
+  import type { Dict } from "$lib/types";
   import { makeUrlFriendlyString, titlecase } from "$lib/utils";
 
   // The variable to take in the JSON data for the places
-  export let placesJson: any;
+  export let placesJson: Dict<string>;
 
   // The variable to take in the heading level
   export let headingLevel: number = 2;
@@ -33,11 +34,11 @@
   };
 
   // The regular expression to check for phone numbers
-  const phoneNumRegex = /\+\d+ (?:\d+(?:[\- ]\b|\b)){2,}/g;
+  const phoneNumRegex = /\+\d+ (?:\d+(?:[- ]\b|\b)){2,}/g;
 
 
   // The function to check if an object is a place object
-  function isPlaceObject(obj: any) {
+  function isPlaceObject(obj: unknown) {
 
     // Checks if the attributes present in the object is a subset of the attributes in the place object and returns the result
     return Object.keys(obj).every(attribute => (PLACE_ATTRIBUTES as readonly string[]).includes(attribute));
@@ -45,7 +46,7 @@
 
 
   // Cast an object to a place object
-  function castAsPlaceObject(obj: any) {
+  function castAsPlaceObject(obj: object) {
     return obj as Place;
   }
 
@@ -131,6 +132,8 @@
             <!-- Displays the email in bold with the email linked -->
             <div class="text">
               <strong>{titleCasedAttribute}: </strong>
+
+              <!-- eslint-disable-next-line svelte/no-at-html-tags -->
               <a href={`mailto:${value}`} target="_blank">{@html value}</a>
             </div>
             
@@ -140,6 +143,8 @@
             <!-- Displays the email in bold with the email linked -->
             <div class="text">
               <strong>{titleCasedAttribute}: </strong>
+
+              <!-- eslint-disable-next-line svelte/no-at-html-tags -->
               {@html createLinkForPhoneNum(value)}
             </div>
             
@@ -149,6 +154,8 @@
             <!-- Displays the address in bold with the address link -->
             <div class="text">
               <strong>{titleCasedAttribute}: </strong>
+
+              <!-- eslint-disable-next-line svelte/no-at-html-tags -->
               <a href={placeObj.mapLink} target="_blank" title="View the address on Google Maps">{@html value}</a>
             </div>
             
@@ -158,6 +165,8 @@
             <!-- Displays the attribute in bold with the value beside it -->
             <div class="text">
               <strong>{titleCasedAttribute}: </strong>
+
+              <!-- eslint-disable-next-line svelte/no-at-html-tags -->
               {@html value}
             </div>
 

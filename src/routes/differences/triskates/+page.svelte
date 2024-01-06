@@ -45,6 +45,7 @@
 
     <!-- Display the characteristics in an unordered list -->
     <ul class="text">
+
       <!-- Iterates over all of the characteristics of a triskate -->
       {#each triskateDiffJson.characteristics as characteristic}
         <li>{characteristic}</li>
@@ -59,6 +60,7 @@
 
     <!-- Display the advantages in an unordered list -->
     <ul class="text">
+
       <!-- Iterates over all of the advantages of a triskate -->
       {#each triskateDiffJson.advantages as advantage}
         <li>{advantage}</li>
@@ -73,8 +75,11 @@
 
     <!-- Display the disadvantages in an unordered list -->
     <ul class="text">
+
       <!-- Iterates over all of the disadvantages of a triskate -->
       {#each triskateDiffJson.disadvantages as disadvantage}
+
+        <!-- eslint-disable-next-line svelte/no-at-html-tags -->
         <li>{@html disadvantage}</li>
       {/each}
     </ul>

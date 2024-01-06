@@ -179,7 +179,7 @@
       {@const youtubeTimestamp = getYoutubeTimestamp(url)}
 
       <!-- Display the YouTube embed -->
-      <iframe data-src={`https:\/\/www.youtube-nocookie.com/embed/${youtubeId}?start=${youtubeTimestamp}`} src="" title={videoInfo} frameborder="0" allow="clipboard-write; encrypted-media; picture-in-picture; web-share" allowfullscreen>
+      <iframe data-src={`https://www.youtube-nocookie.com/embed/${youtubeId}?start=${youtubeTimestamp}`} src="" title={videoInfo} frameborder="0" allow="clipboard-write; encrypted-media; picture-in-picture; web-share" allowfullscreen>
         <a href={url} target="_blank" title={videoInfo}>{videoInfo}</a>
       </iframe>
 

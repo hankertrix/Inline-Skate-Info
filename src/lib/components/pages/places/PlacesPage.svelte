@@ -1,6 +1,7 @@
 <!-- The component to display the page for the places -->
 <script lang="ts">
 
+  import { Dict } from "$lib/types";
   import { makeUrlFriendlyString } from "$lib/utils";
   import PlacesSection from "./PlacesSection.svelte";
 
@@ -11,7 +12,7 @@
   export let description: string;
 
   // The variable to take in the JSON data of the places
-  export let placesJson: any;
+  export let placesJson: Dict<string>;
   
   // The variable to take in the heading level
   export let headingLevel: number = 2;

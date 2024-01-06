@@ -2,12 +2,13 @@
 
 <script lang="ts">
 
-  // The table of contents variable to be passed to the collapsible menu
-  export let tableOfContents: Map<string, any>;
+  import { TableOfContents } from "$lib/types";
 
-  
+  // The table of contents variable to be passed to the collapsible menu
+  export let tableOfContents: TableOfContents;
+
   // Function to check if a title has any children
-  function titleHasChildren(obj: any) {
+  function titleHasChildren(obj: unknown) {
     return obj instanceof Map && obj.size > 0;
   }
   

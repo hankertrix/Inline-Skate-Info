@@ -3,7 +3,7 @@
 // The function to get the URL of the website
 export function getBasePath() {
   return process.env.URL ? process.env.URL : "https://inline-skate-info.hankertrix.repl.co";
-} 
+}
 
 // The maximum number of characters in a message
 export const MAX_CHARACTERS = 4096;
@@ -31,6 +31,12 @@ export const OPERATION_CANCELLED_MSG = "The operation has been cancelled.";
 
 // The developer's username
 export const DEV = "@hankertrix";
+
+// The pagefind folder
+export const PAGEFIND_FOLDER = "$lib/../../static/pagefind";
+
+// Pagefind highlight param
+export const PAGEFIND_HIGHLIGHT_PARAM = "highlight";
 
 // The pages in the website
 export const PAGES = {

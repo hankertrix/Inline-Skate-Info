@@ -2,7 +2,7 @@
 <!-- The pages are usually under the resources route -->
 <script lang="ts">
 
-  import { makeUrlFriendlyString, titlecase, convertFilePathToUrl, getFilenameFromFilePath } from "$lib/utils";
+  import { makeUrlFriendlyString, convertFilePathToUrl, getFilenameFromFilePath } from "$lib/utils";
 
   // The type of the JSON data in the lists folder
   type ListsJson = {

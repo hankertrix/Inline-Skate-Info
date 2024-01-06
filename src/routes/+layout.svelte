@@ -1,6 +1,7 @@
 <!-- The layout file for the website -->
 
 <script lang="ts">
+
   // Imports the theme
   import theme from '$lib/stores/theme';
 
@@ -11,15 +12,16 @@
 
   // Other imports
   import { onMount } from 'svelte';
-  import { browser } from '$app/environment';
 
   // Function to run when the component is mounted
   onMount(() => {
+
     // The media query for the user's theme preference
     const mq = window.matchMedia('(prefers-color-scheme: dark)');
 
     // The function to run when the user's theme changes
     function whenUserThemeChanges(mq: MediaQueryListEvent) {
+
       // Sets the theme
       $theme = mq.matches ? 'dark' : 'light';
     }

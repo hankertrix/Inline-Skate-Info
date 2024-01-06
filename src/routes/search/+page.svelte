@@ -1,8 +1,7 @@
 <!-- The search page -->
 <script lang="ts">
+
   import type { PagefindResult } from '$lib/types';
-  import { page } from '$app/stores';
-  import { goto } from '$app/navigation';
   import SearchResult from '$lib/components/pages/search/SearchResult.svelte';
 
   // Export the data variable
@@ -16,6 +15,7 @@
 
   // Gets the number of results on the page
   $: numberOfResults = results.length;
+
 </script>
 
 <!-- The headers for the page -->
@@ -26,6 +26,7 @@
 <!-- The HTML for the search page -->
 <!-- If there are no results -->
 {#if numberOfResults < 1}
+
   <!-- Show that there are no results found and ask the user to try a different search term -->
   <main class="no-results">
     <p class="text">
@@ -38,7 +39,9 @@
 
   <!-- If there are results -->
 {:else}
+
   <main class="results-wrapper">
+
     <!-- Show how many results were found -->
     <section class="number-of-results">
       {numberOfResults}
@@ -47,12 +50,15 @@
 
     <!-- The wrapper for the search results -->
     <section class="search-results">
+
       <!-- Display the results -->
       {#each results as result}
         <SearchResult {result} />
       {/each}
+
     </section>
   </main>
+
 {/if}
 
 <!-- The styles for the search page -->

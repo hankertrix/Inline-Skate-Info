@@ -25,14 +25,18 @@
   <!-- Iterates over all the categories inside the JSON file -->
   {#each Object.entries(terminologyJson) as [categoryName, categoryItems]}
     <section class="category">
+
       <!-- Display the category title -->
       <h2 class="category-title text" id={makeUrlFriendlyString(categoryName)}>{categoryName}</h2>
 
       <!-- Iterates over all the terms and definitions in the category -->
       {#each Object.entries(categoryItems) as [term, definition]}
         <section class="term">
+
           <!-- Display the term and its definition -->
           <h3 class="text" id={makeUrlFriendlyString(term)}>{term}</h3>
+
+          <!-- eslint-disable-next-line svelte/no-at-html-tags -->
           <p class="text">{@html definition}</p>
         </section>
       {/each}

@@ -1,6 +1,7 @@
 <!-- The page to display the brands in inline skating -->
 <script lang="ts">
 
+  import { Dict } from "$lib/types";
   import { makeUrlFriendlyString } from "$lib/utils";
   import BrandsSection from "./BrandsSection.svelte";
 
@@ -11,7 +12,7 @@
   export let description: string;
 
   // The variable to take in the JSON data of the brands
-  export let brandsJson: any;
+  export let brandsJson: Dict<string>;
   
   // The variable to take in the heading level
   export let headingLevel: number = 2;

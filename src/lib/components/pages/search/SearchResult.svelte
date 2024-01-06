@@ -35,5 +35,7 @@
 <!-- The HTML for the search result -->
 <section class="search-result">
   <a class="result-title" href={convertPagefindUrl(result.url)}>{result.meta.title}</a>
+
+  <!-- eslint-disable-next-line svelte/no-at-html-tags -->
   <div class="result-excerpt text">{@html result.excerpt}</div>
 </section>

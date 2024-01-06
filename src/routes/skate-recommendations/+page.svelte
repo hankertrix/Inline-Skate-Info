@@ -14,7 +14,7 @@
 
   // Function to cast the video object to a suitable type for the videos collapsible
   // Typescript somehow doesn't recognise the type of the video object for some reason
-  function castAsVideoObject(obj: any) {
+  function castAsVideoObject(obj: object) {
     return obj as { [title: string]: string };
   }
 </script>
@@ -31,17 +31,23 @@
 <!-- The HTML for the page -->
 <main>
   <header>
+
+    <!-- eslint-disable-next-line svelte/no-at-html-tags -->
     <h1 class="text" id={makeUrlFriendlyString(title)}>{@html addSoftHyphen(title, 16)}</h1>
   </header>
 
   <article>
     <section class="preface">
+
+      <!-- eslint-disable-next-line svelte/no-at-html-tags -->
       <p class="text">{@html skateRecsJson.preface}</p>
     </section>
 
     <section class="recommendations">
+
       <!-- Iterates over the category of recommended skates -->
       {#each Object.entries(skateRecsJson.recommendations) as [category, [recommendedSkates, listOfVideos]]}
+
         <!-- The heading for the videos -->
         {@const videoHeading = 'Video Recommendations'}
 
@@ -49,10 +55,12 @@
         {@const videos = castAsVideoObject(listOfVideos)}
 
         <section class="recommendation-category">
+
           <!-- Displays the category -->
           <h3 class="text" id={makeUrlFriendlyString(category)}>{category}</h3>
 
           <section class="recommended-skates">
+
             <!-- Iterates over the recommended skates -->
             {#each Object.entries(recommendedSkates) as [name, skateObj], index}
               <section class="skate-recommendation">
@@ -69,6 +77,8 @@
 
                 <div class="details text">
                   <div><strong>Price: </strong>{skateObj.price}</div>
+
+                  <!-- eslint-disable-next-line svelte/no-at-html-tags -->
                   <div>{@html skateObj.reason}</div>
                 </div>
               </section>

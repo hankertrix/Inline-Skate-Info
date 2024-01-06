@@ -1,7 +1,6 @@
 <!-- The button to scroll up to the top of a page -->
 <script lang="ts">
 
-  import { browser } from "$app/environment";
   import { onMount } from "svelte";
 
   // The scroll height threshold in pixels
