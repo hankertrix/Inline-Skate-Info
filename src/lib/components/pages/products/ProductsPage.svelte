@@ -1,7 +1,7 @@
 <!-- The component to display a product page -->
 <script lang="ts">
 
-  import type { Dict } from "$lib/types";
+  import type { JsonData } from "$lib/types";
   import { makeUrlFriendlyString } from "$lib/utils";
   import ProductsSection from "./ProductsSection.svelte";
   
@@ -12,7 +12,7 @@
   export let description: string;
 
   // The variable to take in the JSON data of the products
-  export let productsJson: Dict<string>;
+  export let productsJson: JsonData;
   
   // The variable to take in the heading level
   export let headingLevel: number = 2;

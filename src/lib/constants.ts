@@ -35,9 +35,6 @@ export const DEV = "@hankertrix";
 // The pagefind bundle path
 export const PAGEFIND_BUNDLE_PATH = "pagefind"
 
-// Pagefind highlight param
-export const PAGEFIND_HIGHLIGHT_PARAM = "highlight";
-
 // The pages in the website
 export const PAGES = {
 

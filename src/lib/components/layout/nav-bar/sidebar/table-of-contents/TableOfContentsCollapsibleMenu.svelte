@@ -2,7 +2,7 @@
 
 <script lang="ts">
 
-  import { TableOfContents } from "$lib/types";
+  import type { TableOfContents } from "$lib/types";
 
   // The table of contents variable to be passed to the collapsible menu
   export let tableOfContents: TableOfContents;

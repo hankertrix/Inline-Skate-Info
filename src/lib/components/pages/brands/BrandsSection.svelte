@@ -1,7 +1,7 @@
 <!-- The component to display a category of brands, or single brand -->
 <script lang="ts">
 
-  import { Dict } from "$lib/types";
+  import type { JsonData } from "$lib/types";
   import { makeUrlFriendlyString } from "$lib/utils";
 
   // The type representing a brand
@@ -11,7 +11,7 @@
   };
 
   // The variable to take in the JSON data for the brands
-  export let brandsJson: Dict<string>;
+  export let brandsJson: JsonData;
 
   // The variable to take in the heading level
   export let headingLevel: number = 2;
@@ -24,14 +24,16 @@
 
 
   // Function to check if an object is a brand object
-  function isBrandObject(obj: object) {
+  // eslint-disable-next-line  @typescript-eslint/no-explicit-any
+  function isBrandObject(obj: any) {
     return Object.prototype.hasOwnProperty.call(obj, "link") &&
     Object.prototype.hasOwnProperty.call(obj, "description");
   }
 
 
   // Function to cast an object as a brand object
-  function castAsBrandObject(obj: object): Brand {
+  // eslint-disable-next-line  @typescript-eslint/no-explicit-any
+  function castAsBrandObject(obj: any): Brand {
     return obj as Brand;
   }
   

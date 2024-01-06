@@ -32,6 +32,7 @@
     // Returns the function to remove the media query listener
     return () => mq.removeListener(whenUserThemeChanges);
   });
+
 </script>
 
 <!-- The HTML for the layout -->

@@ -1,7 +1,7 @@
 <!-- The component to display a page of tricks -->
 <script lang="ts">
 
-  import type { Dict } from "$lib/types";
+  import type { JsonData } from "$lib/types";
   import { makeUrlFriendlyString } from "$lib/utils";
   import TricksSection from "./TricksSection.svelte";
 
@@ -12,7 +12,7 @@
   export let description: string;
 
   // The variable which takes in the JSON data for the tricks
-  export let tricksJson: Dict<string>;
+  export let tricksJson: JsonData;
   
   // The variable to take in the heading level
   export let headingLevel: number = 2;

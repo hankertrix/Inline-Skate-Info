@@ -1,7 +1,7 @@
 <!-- The component to display a category of tricks, or a single trick -->
 <script lang="ts">
 
-  import { Dict } from "$lib/types";
+  import type { JsonData } from "$lib/types";
   import { makeUrlFriendlyString } from "$lib/utils";
   import VideoCollapsible from "$lib/components/general/VideoCollapsible.svelte";
 
@@ -12,7 +12,7 @@
   };
 
   // The variable to take in the tricks JSON file
-  export let tricksJson: Dict<string>;
+  export let tricksJson: JsonData;
 
   // The variable to take in the initial heading level
   export let headingLevel: number = 2;
@@ -32,7 +32,8 @@
 
 
   // The function to cast an object to a trick object
-  function castAsTrickObj(obj: object): Trick {
+  // eslint-disable-next-line  @typescript-eslint/no-explicit-any
+  function castAsTrickObj(obj: any): Trick {
     return obj as Trick;
   }
   

@@ -1,11 +1,11 @@
 <!-- The component to display a category of places, or a single place -->
 <script lang="ts">
 
-  import type { Dict } from "$lib/types";
+  import type { JsonData } from "$lib/types";
   import { makeUrlFriendlyString, titlecase } from "$lib/utils";
 
   // The variable to take in the JSON data for the places
-  export let placesJson: Dict<string>;
+  export let placesJson: JsonData;
 
   // The variable to take in the heading level
   export let headingLevel: number = 2;
@@ -38,7 +38,8 @@
 
 
   // The function to check if an object is a place object
-  function isPlaceObject(obj: unknown) {
+  // eslint-disable-next-line  @typescript-eslint/no-explicit-any
+  function isPlaceObject(obj: any) {
 
     // Checks if the attributes present in the object is a subset of the attributes in the place object and returns the result
     return Object.keys(obj).every(attribute => (PLACE_ATTRIBUTES as readonly string[]).includes(attribute));
@@ -46,7 +47,8 @@
 
 
   // Cast an object to a place object
-  function castAsPlaceObject(obj: object) {
+  // eslint-disable-next-line  @typescript-eslint/no-explicit-any
+  function castAsPlaceObject(obj: any): Place {
     return obj as Place;
   }
 

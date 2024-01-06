@@ -1,11 +1,11 @@
 <!-- The component to display a category of products, or a single product -->
 <script lang="ts">
 
-  import type { Dict } from "$lib/types";
+  import type { JsonData } from "$lib/types";
   import { makeUrlFriendlyString } from "$lib/utils";
 
   // The variable to take in the JSON data for the products
-  export let productsJson: Dict<string>;
+  export let productsJson: JsonData;
 
   // The variable to take in the heading level
   export let headingLevel: number = 2;
@@ -31,7 +31,8 @@
 
 
   // The function to cast an object as a product object
-  function castAsProductObject(obj: object): Product {
+  // eslint-disable-next-line  @typescript-eslint/no-explicit-any
+  function castAsProductObject(obj: any): Product {
     return obj as Product;
   }
   
