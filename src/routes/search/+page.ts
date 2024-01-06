@@ -3,7 +3,7 @@
 import type { LoadEvent } from '@sveltejs/kit';
 import type { Pagefind } from '$lib/types';
 import { browser } from '$app/environment';
-import { PAGEFIND_FOLDER, PAGEFIND_BUNDLE_PATH, PAGEFIND_HIGHLIGHT_PARAM } from '$lib/constants';
+import { PAGEFIND_BUNDLE_PATH, PAGEFIND_HIGHLIGHT_PARAM } from '$lib/constants';
 
 // Don't prerender this page
 export const prerender = false;
@@ -22,9 +22,13 @@ export async function load({ url: { searchParams } }: LoadEvent) {
     };
 
   // Otherwise, import pagefind
-  // Asks typescript to ignore the import so that the site can be successfully built as the pagefind file is only available after the site is built
+  // Asks typescript to expect an error with the import so that the
+  // site can be successfully built as the pagefind file is only available
+  // after the site is built.
+  // The path given here cannot have any variables, otherwise Sveltekit would
+  // not be able to resolve the correct path and import the pagefind library.
   // @ts-export-error: pagefind will be available after the site is built
-  const pagefind = await import(`${PAGEFIND_FOLDER}/pagefind.js`) as Pagefind;
+  const pagefind = await import('$lib/../../static/pagefind/pagefind.js') as Pagefind;
 
   // Set the bundle directory
   await pagefind.options({

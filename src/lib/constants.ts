@@ -35,9 +35,6 @@ export const DEV = "@hankertrix";
 // The pagefind bundle path
 export const PAGEFIND_BUNDLE_PATH = "pagefind"
 
-// The pagefind folder
-export const PAGEFIND_FOLDER = `$lib/../../static/${PAGEFIND_BUNDLE_PATH}`;
-
 // Pagefind highlight param
 export const PAGEFIND_HIGHLIGHT_PARAM = "highlight";
 

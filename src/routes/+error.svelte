@@ -1,5 +1,6 @@
 <!-- The error page to display -->
 <script lang="ts">
+
   import { goto } from '$app/navigation';
   import { browser } from '$app/environment';
   import { page } from '$app/stores';
