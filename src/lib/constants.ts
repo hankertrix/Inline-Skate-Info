@@ -32,8 +32,11 @@ export const OPERATION_CANCELLED_MSG = "The operation has been cancelled.";
 // The developer's username
 export const DEV = "@hankertrix";
 
+// The pagefind bundle path
+export const PAGEFIND_BUNDLE_PATH = "pagefind"
+
 // The pagefind folder
-export const PAGEFIND_FOLDER = "$lib/../../static/pagefind";
+export const PAGEFIND_FOLDER = `$lib/../../static/${PAGEFIND_BUNDLE_PATH}`;
 
 // Pagefind highlight param
 export const PAGEFIND_HIGHLIGHT_PARAM = "highlight";

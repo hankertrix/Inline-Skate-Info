@@ -3,7 +3,7 @@
 import type { LoadEvent } from '@sveltejs/kit';
 import type { Pagefind } from '$lib/types';
 import { browser } from '$app/environment';
-import { PAGEFIND_FOLDER, PAGEFIND_HIGHLIGHT_PARAM } from '$lib/constants';
+import { PAGEFIND_FOLDER, PAGEFIND_BUNDLE_PATH, PAGEFIND_HIGHLIGHT_PARAM } from '$lib/constants';
 
 // Don't prerender this page
 export const prerender = false;
@@ -28,7 +28,7 @@ export async function load({ url: { searchParams } }: LoadEvent) {
 
   // Set the bundle directory
   await pagefind.options({
-    bundlePath: '/pagefind/',
+    bundlePath: `/${PAGEFIND_BUNDLE_PATH}/`,
     highlightParam: PAGEFIND_HIGHLIGHT_PARAM
   });
 
