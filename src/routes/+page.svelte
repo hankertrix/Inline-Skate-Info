@@ -25,7 +25,7 @@
     </div>
     <div class="how-to-use text">
       <div>
-        Click the hamburger hotdoggydog icon at the top right hand corner of the screen to open up the sidebar.
+        Click the hamburger icon at the top right hand corner of the screen to open up the sidebar.
       </div>
       <div>Use the search bar above or click on one of the links below to get started!</div>
     </div>
