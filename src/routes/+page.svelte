@@ -113,4 +113,10 @@
       display: none;
     }
   }
+
+  @media only screen and (max-width: 666px) {
+    .description {
+      text-align: left;
+    }
+  }
 </style>
