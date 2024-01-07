@@ -169,7 +169,7 @@
 
   
   /* Styles for mobile devices */
-  @media only screen and (max-width: 799px) {
+  @media only screen and (max-width: 600px) {
 
     .search-bar {
       margin: 0;

@@ -98,11 +98,7 @@
   }
 
   /* Styles for mobile devices */
-  @media only screen and (max-width: 799px) {
-
-    .description {
-      text-align: left;
-    }
+  @media only screen and (max-width: 600px) {
 
     .how-to-use {
       margin: 30px 0;

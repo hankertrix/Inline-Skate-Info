@@ -104,7 +104,7 @@
   }
 
   /* Styles for mobile devices */
-  @media only screen and (max-width: 799px) {
+  @media only screen and (max-width: 600px) {
     .results-wrapper {
       margin: 25px var(--page-left-right-margin) 5em;
     }
