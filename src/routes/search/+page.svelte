@@ -103,7 +103,8 @@
     gap: 3em;
   }
 
-  @media only screen and (max-width: 700px) {
+  /* Styles for mobile devices */
+  @media only screen and (max-width: 799px) {
     .results-wrapper {
       margin: 25px var(--page-left-right-margin) 5em;
     }

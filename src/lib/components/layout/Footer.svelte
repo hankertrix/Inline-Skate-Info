@@ -71,7 +71,8 @@
     height: 1.85em;
   }
 
-  @media only screen and (max-width: 700px) {
+  /* Styles for mobile devices */
+  @media only screen and (max-width: 799px) {
 
     .footer {
       padding: 5px 10px;

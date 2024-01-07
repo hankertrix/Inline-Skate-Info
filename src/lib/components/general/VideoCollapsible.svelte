@@ -150,7 +150,7 @@
   
 
   /* The styles for mobile devices */
-  @media only screen and (max-width: 700px) {
+  @media only screen and (max-width: 799px) {
 
     iframe {
       margin: 1.25em 0;
