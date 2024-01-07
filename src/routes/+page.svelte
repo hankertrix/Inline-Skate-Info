@@ -66,6 +66,10 @@
     text-align: center;
   }
 
+  .description {
+    text-align: center;
+  }
+
   .how-to-use {
     display: flex;
     flex-direction: column;
@@ -95,6 +99,11 @@
 
   /* Styles for mobile devices */
   @media only screen and (max-width: 799px) {
+
+    .description {
+      text-align: left;
+    }
+
     .how-to-use {
       margin: 30px 0;
     }
