@@ -94,7 +94,7 @@
   }
 
   /* Styles for mobile devices */
-  @media only screen and (max-width: 700px) {
+  @media only screen and (max-width: 1000px) {
     .how-to-use {
       margin: 30px 0;
     }
