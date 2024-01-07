@@ -81,7 +81,7 @@
   }
 
   /* Styles for mobile devices */
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 700px) {
     .links-grid {
       display: flex;
       flex-direction: column;

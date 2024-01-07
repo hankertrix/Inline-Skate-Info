@@ -72,7 +72,7 @@
   }
 
   /* Styles for mobile devices */
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 700px) {
 
     .footer {
       padding: 5px 10px;
