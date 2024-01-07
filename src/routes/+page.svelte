@@ -114,7 +114,7 @@
     }
   }
 
-  @media only screen and (max-width: 666px) {
+  @media only screen and (max-width: 665px) {
     .description {
       text-align: left;
     }
