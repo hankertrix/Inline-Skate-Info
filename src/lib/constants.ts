@@ -35,6 +35,41 @@ export const DEV = "@hankertrix";
 // The pagefind bundle path
 export const PAGEFIND_BUNDLE_PATH = "pagefind"
 
+// The dictionary containing all the zero width characters
+// mapped to the letters of the alphabet.
+// Purposefully left out left to right and right to left marks as those
+// will mess with the formatting of the message in Telegram.
+// This dictionary of characters is to create a zero-width code to check
+// for a specific type of message when answering a callback query.
+export const LETTER_TO_ZERO_WIDTH_CHARS = {
+  A: "\u00AD",       // Soft hyphen
+  B: "\u061C",       // Arabic letter mark
+  C: "\u180E",       // Mongolian vowel separator
+  D: "\u200B",       // Zero width space
+  E: "\u200C",       // Zero width non-joiner
+  F: "\u200D",       // Zero width joiner
+  G: "\uFEFF",       // Zero width non-breaking space
+  H: "\u2060",       // Word joiner
+  I: "\u2061",       // Function application
+  J: "\u2062",       // Invisible times
+  K: "\u2063",       // Invisible separator
+  L: "\u2064",       // Invisible plus
+  M: "\u206A",       // Inhibit symmetric swapping
+  N: "\u206B",       // Activate symmetric swapping
+  O: "\u206C",       // Inhibit arabic form swapping
+  P: "\u206D",       // Activate arabic form swapping
+  Q: "\u206E",       // National digit shapes
+  R: "\u206F",       // Nominal digit shapes
+  S: "\u{1D173}",    // Musical symbol begin beam
+  T: "\u{1D174}",    // Musical symbol end beam
+  U: "\u{1D175}",    // Musical symbol begin tie
+  V: "\u{1D176}",    // Musical symbol end tie
+  W: "\u{1D177}",    // Musical symbol begin slur
+  X: "\u{1D178}",    // Musical symbol end slur
+  Y: "\u{1D179}",    // Musical symbol begin phrase
+  Z: "\u{1D17A}",    // Musical symbol end phrase
+}
+
 // The pages in the website
 export const PAGES = {
 

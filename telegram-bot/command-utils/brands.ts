@@ -1,9 +1,9 @@
 // Module that contains the functions to handle the brands command
 
+import type { ObjectValues } from "../types";
 import * as utils from "../utils";
 import { removeBotUsername } from "../bot-utils";
 import { SPACING } from "../../src/lib/constants";
-import type { ObjectValues } from "../types";
 
 
 // The enums for the brand categories

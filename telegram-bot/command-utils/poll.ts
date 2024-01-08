@@ -1,11 +1,21 @@
 // The utility functions for the poll command
 
-import * as utils from "../utils";
-import { removeBotUsername } from "../bot-utils"
 import type { Scenes } from "telegraf";
 import type { User, InlineKeyboardButton } from "telegraf/types";
+import type { CbQuery, ObjectValues } from "../types";
+import * as utils from "../utils";
+import { removeBotUsername } from "../bot-utils"
 import { SPACING } from "../../src/lib/constants";
 
+
+// The enum representing the various poll types
+export const POLL_TYPES = {
+  DEFAULT: utils.generateZeroWidthCode("default"),
+  RENTAL: utils.generateZeroWidthCode("rental"),
+} as const;
+
+// The type of poll
+export type PollType = ObjectValues<typeof POLL_TYPES>;
 
 // The default poll options
 export const DEFAULT_POLL_OPTIONS = ["Coming"];
@@ -15,7 +25,9 @@ export const pollMessageRegex = /^\/?\bpoll_?(?:msg|message)?\b/i;
 
 
 // Function to generate the inline keyboard markup
-export function generateInlineKeyboard(pollOptions: string[] = DEFAULT_POLL_OPTIONS) {
+export function generateInlineKeyboard(
+  pollOptions: string[] = DEFAULT_POLL_OPTIONS
+) {
 
   // The list of inline keyboard buttons
   const inlineKeyboard = [];
@@ -36,7 +48,11 @@ export function generateInlineKeyboard(pollOptions: string[] = DEFAULT_POLL_OPTI
 
 
 // Function to generate the callback function for the poll message command
-export function generatePollMessage(message: string, pollOptions: string[]) {
+export function generatePollMessage(
+  message: string,
+  pollOptions: string[],
+  pollType: PollType = POLL_TYPES.DEFAULT
+) {
 
   // Remove the command from the message
   message = message.replace(pollMessageRegex, "").trim();
@@ -45,11 +61,12 @@ export function generatePollMessage(message: string, pollOptions: string[]) {
   message = removeBotUsername(message);
 
   // Generate the portion of the message that is a poll
-  const pollPortion = `${pollOptions.map(option => `${utils.bold(option)}`).join(SPACING)}${SPACING}👥 Nobody responded`;
+  const pollPortion = `${pollOptions.map(option => `${utils.bold(option)
+    }`).join(SPACING)}${SPACING}👥 Nobody responded`;
 
   // Gets the inline keyboard
   const inlineKeyboard = generateInlineKeyboard(pollOptions);
-  
+
   // The callback function
   async function callback(ctx: Scenes.WizardContext, input: string) {
 
@@ -57,16 +74,18 @@ export function generatePollMessage(message: string, pollOptions: string[]) {
     input = utils.boldFirstLine(input);
 
     // Sends a poll with the user's input
-    return await ctx.reply(`${input}\n\n${pollPortion}`, {
-      parse_mode: "HTML",
-      reply_markup: {
-        inline_keyboard: inlineKeyboard
-      }
-    });
+    return await ctx.reply(
+      `${input}\n${pollType}\n${pollPortion}`,
+      {
+        parse_mode: "HTML",
+        reply_markup: {
+          inline_keyboard: inlineKeyboard
+        }
+      });
   }
 
   // Returns the message and the callback function
-  return {message: message, callback: callback};
+  return { message: message, callback: callback };
 }
 
 
@@ -77,23 +96,35 @@ export function generatePollMessage(message: string, pollOptions: string[]) {
 // Function to get the poll option segment
 export function getPollOptionSegment(message: string, pollOption: string) {
 
-  // Gets the index of the poll option in the message and set it to zero if the index is not found
-  const pollOptionIndex = message.indexOf(pollOption) === -1 ? 0 : message.indexOf(pollOption);
+  // Gets the index of the poll option in the message
+  // and set it to zero if the index is not found
+  const pollOptionIndex = message.indexOf(
+    pollOption
+  ) === -1 ? 0 : message.indexOf(pollOption);
 
   // Find the index of the new line after the poll option
   let newLineAfterPollOptionIndex = message.indexOf("\n", pollOptionIndex);
 
-  // Sets the index of the new line after the poll option to 0 if it's not found
-  newLineAfterPollOptionIndex = newLineAfterPollOptionIndex === -1 ? 0 : newLineAfterPollOptionIndex;
+  // Sets the index of the new line after the poll option to 0
+  // if it's not found
+  newLineAfterPollOptionIndex =
+    newLineAfterPollOptionIndex === -1 ? 0 : newLineAfterPollOptionIndex;
 
-  // Searches for the next double new line in the message slice after the poll option
-  let doubleNewLineIndex = message.indexOf("\n\n", newLineAfterPollOptionIndex + 1);
+  // Searches for the next double new line in the message slice
+  // after the poll option
+  let doubleNewLineIndex = message.indexOf(
+    "\n\n", newLineAfterPollOptionIndex + 1
+  );
 
-  // Set the index for the next double new line to the end of the message if it's not found
-  doubleNewLineIndex = doubleNewLineIndex === -1 ? message.length : doubleNewLineIndex;
+  // Set the index for the next double new line to the end of the message
+  // if it's not found
+  doubleNewLineIndex = doubleNewLineIndex === -1 ? message.length
+    : doubleNewLineIndex;
 
   // Gets the part of the message with the list of names
-  const pollOptionSegment = message.slice(newLineAfterPollOptionIndex, doubleNewLineIndex).trim();
+  const pollOptionSegment = message.slice(
+    newLineAfterPollOptionIndex, doubleNewLineIndex
+  ).trim();
 
   // Returns the part of the message with the list of names
   return pollOptionSegment;
@@ -101,7 +132,12 @@ export function getPollOptionSegment(message: string, pollOption: string) {
 
 
 // Function to create the poll portion for a given poll option
-export function createPollPortion(message: string, pollOption: string, isSelected: boolean, name: string) {
+export function createPollPortion(
+  message: string,
+  pollOption: string,
+  isSelected: boolean,
+  name: string
+) {
 
   // Gets the poll option segment of the message
   const pollOptionSegment = getPollOptionSegment(message, pollOption);
@@ -109,13 +145,17 @@ export function createPollPortion(message: string, pollOption: string, isSelecte
   // Initialise the list of names
   let names: string[];
 
-  // Initialised the removed variable (the variable to indicate whether the name has been added or removed to the poll option)
+  // Initialised the removed variable
+  // (the variable to indicate whether the name has been added
+  // or removed to the poll option)
   let removed: boolean | null = null;
 
-  // If the poll option segment is empty, then the list of names would be an empty list
+  // If the poll option segment is empty,
+  // then the list of names would be an empty list
   if (pollOptionSegment.length === 0) names = [];
 
-  // Otherwise, the list of names is the list of names in the poll option segment
+  // Otherwise, the list of names is the list of names
+  // in the poll option segment
   else names = pollOptionSegment.split("\n");
 
   // Checks if the poll option is selected and the name is given
@@ -143,15 +183,25 @@ export function createPollPortion(message: string, pollOption: string, isSelecte
   }
 
   // Create the poll portion for the given poll option
-  const pollPortion = `${utils.bold(`${pollOption}${names.length === 0 ? "" : ` (${names.length}👥)`}`)}\n${names.join("\n")}`;
+  const pollPortion = `${utils.bold(
+    `${pollOption}${names.length === 0 ? "" : ` (${names.length}👥)`}`
+  )
+    }\n${names.join("\n")}`;
 
-  // Returns the poll portion and the number of people responded to this poll portion
-  return {pollPortion: pollPortion, names: names, nameRemoved: removed};
+  // Returns the poll portion
+  // and the number of people responded to this poll portion
+  return { pollPortion: pollPortion, names: names, nameRemoved: removed };
 }
 
 
 // Function to reform the poll message
-export function reformPollMessage(message: string, pollMessage: string, selectedPollOption: string, pollOptions: string[], name: string) {
+export function reformPollMessage(
+  message: string,
+  pollMessage: string,
+  selectedPollOption: string,
+  pollOptions: string[],
+  name: string
+) {
 
   // The list that contains the final message
   const reformedPollMessageList: string[] = [];
@@ -159,10 +209,12 @@ export function reformPollMessage(message: string, pollMessage: string, selected
   // The list containing the people who responded to the poll
   let peopleResponded: string[] = [];
 
-  // Initialise the variable to indicate whether the person has been added or removed from the poll
+  // Initialise the variable to indicate whether the person has been added
+  // or removed from the poll
   let removed: boolean | null = null;
 
-  // Adds the poll message and the selected poll portion to the reformed poll message list
+  // Adds the poll message and the selected poll portion
+  // to the reformed poll message list
   reformedPollMessageList.push(pollMessage);
 
   // Iterates the list of poll options
@@ -171,16 +223,24 @@ export function reformPollMessage(message: string, pollMessage: string, selected
     // The boolean variable that indicates if the poll option is selected
     const isSelected = pollOption === selectedPollOption;
 
-    // Calls the function to generate the poll portion and get the number of people who responded to that poll option
-    const { pollPortion, names, nameRemoved } = createPollPortion(message, pollOption, isSelected, isSelected ? name : "");
+    // Calls the function to generate the poll portion
+    // and get the number of people who responded to that poll option
+    const { pollPortion, names, nameRemoved } = createPollPortion(
+      message,
+      pollOption,
+      isSelected,
+      isSelected ? name : ""
+    );
 
     // Adds the poll portion to the reformed poll message list
     reformedPollMessageList.push(pollPortion);
 
-    // Adds the people who responded to the poll option to the list of people who responded
+    // Adds the people who responded to the poll option
+    // to the list of people who responded
     peopleResponded = peopleResponded.concat(names);
 
-    // If the nameRemoved variable isn't null, then set the removed variable to its value
+    // If the nameRemoved variable isn't null,
+    // then set the removed variable to its value
     if (nameRemoved !== null) removed = nameRemoved;
   }
 
@@ -188,7 +248,9 @@ export function reformPollMessage(message: string, pollMessage: string, selected
   const numResponded = new Set(peopleResponded).size;
 
   // The portion of the message that says how many people responded
-  const respondedPortion = `👥 ${numResponded === 0 ? "Nobody" : numResponded === 1 ? "1 person" : `${numResponded} people`} responded`;
+  const respondedPortion = `👥 ${numResponded === 0 ? "Nobody" :
+    numResponded === 1 ? "1 person" : `${numResponded} people`
+    } responded`;
 
   // Adds the responded portion to the reformed message list
   reformedPollMessageList.push(respondedPortion);
@@ -197,7 +259,7 @@ export function reformPollMessage(message: string, pollMessage: string, selected
   const reformedPollMessage = reformedPollMessageList.join("\n\n");
 
   // Returns the reformed poll message
-  return {reformedPollMessage: reformedPollMessage, removed: removed};
+  return { reformedPollMessage: reformedPollMessage, removed: removed };
 }
 
 
@@ -238,3 +300,67 @@ export function getPollMessage(message: string, pollOptions: string[]) {
   return utils.boldFirstLine(message.slice(0, firstPollOptionIndex).trim());
 }
 
+
+// Function to handle a callback query
+export async function callback_handler(
+  ctx: Scenes.WizardContext,
+  pollType: PollType = POLL_TYPES.DEFAULT
+) {
+
+  // Gets the callback query object
+  const callbackQuery = ctx.callbackQuery as CbQuery;
+
+  // Cast the callback query message type
+  const message = callbackQuery.message;
+
+  // Gets the message text
+  const messageText = message.text;
+
+  // If the poll type isn't found in the message,
+  // immediately exit the function so that
+  // another handler can take care of the message
+  if (!messageText.includes(pollType)) return;
+
+  // Gets the poll option and the poll message
+  const pollOption = callbackQuery.data;
+
+  // If the poll option doesn't exist, then tells the user
+  if (messageText.indexOf(pollOption) === -1) return await ctx.answerCbQuery(
+    `The option "${pollOption
+    }" doesn't exist on the poll you are responding to.`
+  );
+
+  // Gets the list of poll options
+  const pollOptions = getPollOptions(message.reply_markup.inline_keyboard);
+
+  // Gets the poll message
+  const pollMessage = getPollMessage(messageText, pollOptions);
+
+  // Gets the name of the person responding
+  const name = getName(callbackQuery.from);
+
+  // Gets the reformed poll message
+  // and the variable to indicated whether the person has been added
+  // or removed from the poll option
+  const { reformedPollMessage, removed } = reformPollMessage(
+    messageText,
+    pollMessage,
+    pollOption,
+    pollOptions,
+    name
+  );
+
+  // Answers the callback query
+  await ctx.answerCbQuery(
+    `Your name has been ${removed ? "removed from" : "added to"
+    } '${pollOption}'!`
+  );
+
+  // Edit the message with the reformed poll message
+  return await ctx.editMessageText(reformedPollMessage, {
+    parse_mode: "HTML",
+    reply_markup: {
+      inline_keyboard: message.reply_markup.inline_keyboard
+    }
+  });
+}

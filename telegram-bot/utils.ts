@@ -1,9 +1,9 @@
 // Module that contains all the utility functions
 
+import type { Dict, ReversibleDict } from "./types";
 import { readFile, readdir } from "node:fs/promises";
 import * as pathLib from "path";
-import { getBasePath } from "../src/lib/constants";
-import type { Dict, ReversibleDict } from "./types";
+import { getBasePath, LETTER_TO_ZERO_WIDTH_CHARS } from "../src/lib/constants";
 
 // The dictionary to convert a character to a HTML entity
 const charToHtmlEntity = {
@@ -11,6 +11,9 @@ const charToHtmlEntity = {
   "<": "&lt;",
   "&": "&amp;",
 } as const;
+
+// The regular expression to get all the non-letters
+const nonLetterRegex = /[^A-Za-z]/g;
 
 
 // Function to check if something is an object
@@ -516,4 +519,34 @@ export function getTimeStr(date: Date) {
     hour: "numeric",
     minute: "numeric"
   }).format(date).replace(/ |:00/g, "").trim();
+}
+
+
+// Function to generate a zero-width code
+// from a string consisting of letters only
+export function generateZeroWidthCode(text: string) {
+
+  // Removes everything in the string that isn't a letter
+  // of the alphabet
+  text = text.replace(nonLetterRegex, "");
+
+  // Initialise the list that contains the zero-width code
+  const codeList: string[] = [];
+
+  // Iterates over the string
+  for (const char of text) {
+
+    // Gets the code character for the character in the string
+    const codeChar = dictGet(
+      LETTER_TO_ZERO_WIDTH_CHARS,
+      char.toUpperCase(),
+      char
+    );
+
+    // Adds the code character to the list
+    codeList.push(codeChar);
+  }
+
+  // Returns the list of code characters joined together with an empty string
+  return codeList.join("");
 }

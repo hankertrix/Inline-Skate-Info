@@ -45,12 +45,15 @@ function formatMsg(date: Date, location: string, trgMsg: string, isLast: boolean
 
 
 // Function to handle the training message command for NTU
-export async function handler(...[ctx, message]: Parameters<TrainingMessageFunction>): ReturnType<TrainingMessageFunction> {
+export async function handler(
+  ...[ctx, message]: Parameters<TrainingMessageFunction>
+): ReturnType<TrainingMessageFunction> {
 
   // The boolean variable to check if the lowercased message just contains the word "last"
   const isLast = message.toLowerCase() === "last";
 
-  // If the message passed isn't empty and isn't just the word "last", then use it instead of the default message
+  // If the message passed isn't empty and isn't just the word "last",
+  // then use it instead of the default message
   if (message && !isLast) return await trgMsgUtils.handleTrgMsg(ctx, message);
 
   // Gets the upcoming training date
@@ -59,7 +62,12 @@ export async function handler(...[ctx, message]: Parameters<TrainingMessageFunct
   ) as Date;
 
   // Gets the formatted message
-  const formattedMsg = formatMsg(upcomingTrainingDate, trainingLocation, trainingMsg, isLast);
+  const formattedMsg = formatMsg(
+    upcomingTrainingDate,
+    trainingLocation,
+    trainingMsg,
+    isLast
+  );
 
   // Sends the formatted message with the default poll options
   await trgMsgUtils.handleTrgMsg(ctx, formattedMsg);

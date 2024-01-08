@@ -1,12 +1,15 @@
 // Module containing all the utilities for the training message command
 
 import type { DateMapping } from "../../types";
-import type { Scenes } from "telegraf";
-import type { Message } from "telegraf/types";
+import type { TrainingMessageFunction } from ".";
 import * as utils from "../../utils";
 import { deleteMessages, wrapCallbackWithMessageDeleter } from "../../bot-utils";
 import { DEV } from "../../../src/lib/constants";
-import { DEFAULT_POLL_OPTIONS, generatePollMessage } from "../poll";
+import {
+  DEFAULT_POLL_OPTIONS,
+  POLL_TYPES,
+  generatePollMessage,
+} from "../poll";
 
 
 // Function to create the date mapping
@@ -31,10 +34,16 @@ export function createDateMapping(trainingDates: string[]) {
 
 
 // Function to handle the training message command when no default training message has been set up
-export async function handleTrgMsg(ctx: Scenes.WizardContext & { message: Message.TextMessage }, msg: string) {
+export async function handleTrgMsg(
+  ...[ctx, msg]: Parameters<TrainingMessageFunction>
+): ReturnType<TrainingMessageFunction> {
 
   // Generate a poll message with the given training message and the default options
-  const { callback } = generatePollMessage(msg, DEFAULT_POLL_OPTIONS);
+  const { callback } = generatePollMessage(
+    msg,
+    DEFAULT_POLL_OPTIONS,
+    POLL_TYPES.DEFAULT
+  );
 
   // If the message given is empty
   if (!msg) {

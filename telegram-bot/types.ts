@@ -1,5 +1,10 @@
 // Module that contains all the types used in the bot
 
+import type {
+  CallbackQuery,
+  Message,
+  InlineKeyboardButton
+} from "telegraf/types";
 
 // The dictionary type
 export type Dict<T> = {
@@ -20,6 +25,17 @@ export type ObjectValues<T> = T[keyof T];
 // The type representing the optional properties of a given type
 export type OptionalPropertiesOf<T extends object> = {
   [K in keyof T as T extends Record<K, T[K]> ? never : K]: T[K]
+};
+
+
+// The type representing a callback query
+export type CbQuery = CallbackQuery & {
+  data: string,
+  message: Message.TextMessage & {
+    reply_markup: {
+      inline_keyboard: InlineKeyboardButton[][]
+    }
+  }
 };
 
 

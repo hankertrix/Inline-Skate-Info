@@ -2,7 +2,7 @@
 
 import { Telegraf, Scenes, session } from "telegraf";
 import type { Context } from "telegraf";
-import type { InlineQueryResult, InlineKeyboardButton, CallbackQuery, Message } from "telegraf/types";
+import type { InlineQueryResult } from "telegraf/types";
 import * as filters from "telegraf/filters";
 import { SPACING, DEV, getBasePath } from "../src/lib/constants";
 import * as utils from "./utils";
@@ -1028,7 +1028,11 @@ bot.command([
   const pollOptions = commandUtils.poll.DEFAULT_POLL_OPTIONS;
 
   // Gets the message and the callback from the generatePollCallback function
-  const { message, callback } = commandUtils.poll.generatePollMessage(messageText, pollOptions);
+  const { message, callback } = commandUtils.poll.generatePollMessage(
+    messageText,
+    pollOptions,
+    commandUtils.poll.POLL_TYPES.DEFAULT
+  );
 
   // If the message is empty, enters the scene to get the user's input
   if (!message) {
@@ -1075,50 +1079,10 @@ bot.command([
 
 
 // The callback query handler for the poll message
-bot.on("callback_query", async ctx => {
+bot.on(filters.callbackQuery("data"), async ctx => {
 
-  // Cast the callbackQuery type
-  const callbackQuery = ctx.callbackQuery as CallbackQuery & { data: string };
-
-  // Gets the poll option and the poll message
-  const pollOption = callbackQuery.data;
-
-  // Cast the callback query message type
-  const message = callbackQuery.message as Message & {
-    text: string,
-    reply_markup: {
-      inline_keyboard: InlineKeyboardButton[][]
-    }
-  };
-
-  // Gets the message text
-  const messageText = message.text;
-
-  // If the poll option doesn't exist, then tells the user
-  if (messageText.indexOf(pollOption) === -1) return await ctx.answerCbQuery(`The option "${pollOption}" doesn't exist on the poll you are responding to.`);
-
-  // Gets the list of poll options
-  const pollOptions = commandUtils.poll.getPollOptions(message.reply_markup.inline_keyboard);
-
-  // Gets the poll message
-  const pollMessage = commandUtils.poll.getPollMessage(messageText, pollOptions);
-
-  // Gets the name of the person responding
-  const name = commandUtils.poll.getName(callbackQuery.from);
-
-  // Gets the reformed poll message and the variable to indicated whether the person has been added or removed from the poll option
-  const { reformedPollMessage, removed } = commandUtils.poll.reformPollMessage(messageText, pollMessage, pollOption, pollOptions, name);
-
-  // Answers the callback query
-  await ctx.answerCbQuery(`Your name has been ${removed ? "removed from" : "added to"} '${pollOption}'!`);
-
-  // Edit the message with the reformed poll message
-  return await ctx.editMessageText(reformedPollMessage, {
-    parse_mode: "HTML",
-    reply_markup: {
-      inline_keyboard: message.reply_markup.inline_keyboard
-    }
-  });
+  // Calls the callback handler in the poll message to handle the callback query
+  await commandUtils.poll.callback_handler(ctx);
 });
 
 

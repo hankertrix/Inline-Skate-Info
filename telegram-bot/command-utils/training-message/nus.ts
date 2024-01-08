@@ -6,8 +6,17 @@ import * as filters from "telegraf/filters";
 import type { DateMapping } from "../../types";
 import * as utils from "../../utils";
 import * as trgMsgUtils from "./utils";
-import { removeCommand, cancelCommand, removeBotUsername, createWizardScene, deleteMessages, markMessageForDeletion, wrapCallbackWithMessageDeleter, promptUserForInput } from "../../bot-utils";
-import { generatePollMessage } from "../poll";
+import {
+  removeCommand,
+  cancelCommand,
+  removeBotUsername,
+  createWizardScene,
+  deleteMessages,
+  markMessageForDeletion,
+  wrapCallbackWithMessageDeleter,
+  promptUserForInput
+} from "../../bot-utils";
+import { generatePollMessage, POLL_TYPES } from "../poll";
 
 
 // The location of the training
@@ -172,7 +181,8 @@ function createTrainingPollMsg(message: string, location: string, noRentals: boo
     ),
     generatePollOptions(
       trgMsgUtils.createDateMapping(trainingDates)
-    )
+    ),
+    POLL_TYPES.DEFAULT
   );
 }
 
@@ -185,13 +195,16 @@ function createCustomTrgMsg(message: string, trainingDates: string[]) {
     message,
     generatePollOptions(
       trgMsgUtils.createDateMapping(trainingDates)
-    )
+    ),
+    POLL_TYPES.DEFAULT
   );
 }
 
 
 // Function to handle the training message command for NUS
-export async function handler(...[ctx, msg]: Parameters<TrainingMessageFunction>): ReturnType<TrainingMessageFunction> {
+export async function handler(
+  ...[ctx, msg]: Parameters<TrainingMessageFunction>
+): ReturnType<TrainingMessageFunction> {
 
   // If the message is empty, immediately enters the scene to get the required information for the NUS training message
   if (!msg) return await ctx.scene.enter(sceneName, {
