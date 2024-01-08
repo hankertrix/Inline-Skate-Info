@@ -25,7 +25,8 @@ export const NUMBERING_STYLES = {
   EQUAL: "=",
   PLUS: "+",
   TILDE: "~",
-  DOT: "·",
+  SMALL_DOT: "·",
+  BIG_DOT: "•",
   ROUND_BRACKET: "1)",
   NUMBERED_DOT: "1.",
   ROUND_BRACKETS: "(1)",
@@ -33,6 +34,11 @@ export const NUMBERING_STYLES = {
   CURLY_BRACKETS: "{1}",
   ANGLE_BRACKETS: "<1>",
 } as const;
+
+// The regex to get the numbering style
+// and the name from the poll option segment
+const numberingStyleAndNameRegex =
+  /^\s*?([->=+~•·([{<]?\d*[).\]}>]?)\s*(.*?)$/gm;
 
 // The type for the numbering styles
 export type NumberingStyle = ObjectValues<typeof NUMBERING_STYLES>;
@@ -106,10 +112,6 @@ export const DEFAULT_FORMAT_OPTIONS: FormatOptions = {
 
 // The regex for the poll message command
 export const pollMessageRegex = /^\/?\bpoll_?(?:msg|message)?\b/i;
-
-// The regex to get the numbering style
-// and the name from the poll option segment
-const numberingStyleAndNameRegex = /^(.*?)\s(.*?)$/gm;
 
 // Function to generate the inline keyboard markup
 export function generateInlineKeyboard(
@@ -492,7 +494,8 @@ export async function callback_handler(
 
   // If the poll option doesn't exist, then tells the user
   if (messageText.indexOf(pollOption) === -1) return await ctx.answerCbQuery(
-    `The option "${pollOption
+    `The option "${
+      pollOption
     }" doesn't exist on the poll you are responding to.`
   );
 
