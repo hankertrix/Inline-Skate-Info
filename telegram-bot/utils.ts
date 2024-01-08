@@ -528,7 +528,7 @@ export function generateZeroWidthCode(text: string) {
 
   // Removes everything in the string that isn't a letter
   // of the alphabet
-  text = text.replace(nonLetterRegex, "");
+  text = text.replaceAll(nonLetterRegex, "");
 
   // Initialise the list that contains the zero-width code
   const codeList: string[] = [];
