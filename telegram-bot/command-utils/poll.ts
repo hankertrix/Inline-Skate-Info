@@ -235,7 +235,7 @@ export function getPollOptionData(message: string, pollOption: string) {
     if (index === 0) {
 
       // Set the numbering style
-      numberingStyle = numStyle
+      numberingStyle = numStyle.trim();
     }
 
     // Add the names to the list of names
