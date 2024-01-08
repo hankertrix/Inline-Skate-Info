@@ -1031,7 +1031,8 @@ bot.command([
   const { message, callback } = commandUtils.poll.generatePollMessage(
     messageText,
     pollOptions,
-    commandUtils.poll.POLL_TYPES.DEFAULT
+    commandUtils.poll.POLL_TYPES.DEFAULT,
+    commandUtils.poll.DEFAULT_FORMAT_OPTIONS.messageFooter
   );
 
   // If the message is empty, enters the scene to get the user's input

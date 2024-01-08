@@ -6,6 +6,7 @@ import * as utils from "../../utils";
 import { deleteMessages, wrapCallbackWithMessageDeleter } from "../../bot-utils";
 import { DEV } from "../../../src/lib/constants";
 import {
+  DEFAULT_FORMAT_OPTIONS,
   DEFAULT_POLL_OPTIONS,
   POLL_TYPES,
   generatePollMessage,
@@ -42,7 +43,8 @@ export async function handleTrgMsg(
   const { callback } = generatePollMessage(
     msg,
     DEFAULT_POLL_OPTIONS,
-    POLL_TYPES.DEFAULT
+    POLL_TYPES.DEFAULT,
+    DEFAULT_FORMAT_OPTIONS.messageFooter
   );
 
   // If the message given is empty

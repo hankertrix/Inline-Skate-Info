@@ -140,7 +140,8 @@ export function generateInlineKeyboard(
 export function generatePollMessage(
   message: string,
   pollOptions: string[],
-  pollType: PollType = POLL_TYPES.DEFAULT
+  pollType: PollType = POLL_TYPES.DEFAULT,
+  formatOption: FormatOption = DEFAULT_FORMAT_OPTIONS.messageFooter
 ) {
 
   // Remove the command from the message
@@ -152,7 +153,9 @@ export function generatePollMessage(
   // Generate the portion of the message that is a poll
   const pollPortion = `${pollOptions.map(
     option => `${utils.bold(option)}`
-  ).join(SPACING)}${SPACING}👥 Nobody responded`;
+  ).join(SPACING)}${SPACING}${createNumberOfPeoplePortion(
+    0, formatOption
+  )}`;
 
   // Gets the inline keyboard
   const inlineKeyboard = generateInlineKeyboard(pollOptions);
@@ -235,11 +238,11 @@ export function getPollOptionData(message: string, pollOption: string) {
     if (index === 0) {
 
       // Set the numbering style
-      numberingStyle = numStyle.trim();
+      numberingStyle = numStyle
     }
 
-    // Add the names to the list of names
-    names.push(name);
+    // If the name is not empty, add the name to the list of names
+    if (name.trim()) names.push(name);
   }
 
   // Returns the data for the poll option
@@ -516,7 +519,8 @@ export async function callback_handler(
     pollMessage,
     pollOption,
     pollOptions,
-    name
+    name,
+    DEFAULT_FORMAT_OPTIONS
   );
 
   // Answers the callback query
