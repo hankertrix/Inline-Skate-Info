@@ -88,7 +88,10 @@ function setTimeOnUpcomingTrainingDate(upcomingTrainingDate: Date, dateMapping: 
 
 
 // Function to get the upcoming training date
-export function getUpcomingTrainingDates(dateMapping: { [day: number]: Date }, numOfTrainingDates: number = 1): Date | Date[] {
+export function getUpcomingTrainingDates(
+  dateMapping: { [day: number]: Date },
+  numOfTrainingDates: number = 1
+): Date | Date[] {
 
   // Gets the current date
   const currentDate = new Date();
@@ -121,9 +124,7 @@ export function getUpcomingTrainingDates(dateMapping: { [day: number]: Date }, n
     // If the temporary date is past the current date
     if (tempDate > currentDate) {
 
-      console.log("Temp date is past the current date.")
-
-      //Add the date to the list of upcoming training dates
+      // Add the date to the list of upcoming training dates
       upcomingTrainingDates.push(
         setTimeOnUpcomingTrainingDate(
           tempDate, dateMapping
@@ -134,15 +135,12 @@ export function getUpcomingTrainingDates(dateMapping: { [day: number]: Date }, n
     // Otherwise, if the temporary date is the same as the current date
     else if (tempDate === currentDate) {
 
-      console.log("Temp date equal to current date.")
-
       // Gets the training date from the date mapping
       const trainingDate = dateMapping[tempDate.getDay()];
 
-      // If the hour on the temporary date is not past the hour of the training time,
+      // If the hour on the temporary date
+      // is not past the hour of the training time
       if (tempDate.getHours() < trainingDate.getHours()) {
-
-        console.log("Temp date not past hour of training time.")
 
         // Add the date to the list of upcoming training dates
         upcomingTrainingDates.push(
@@ -153,13 +151,11 @@ export function getUpcomingTrainingDates(dateMapping: { [day: number]: Date }, n
       }
 
       // Otherwise, if the time on the temporary date is on the same hour as the training time
-      // but the minutes are less than or equal to the training time,
+      // but the minutes are less than or equal to the training time
       else if (
         tempDate.getHours() === trainingDate.getHours() &&
         tempDate.getMinutes() <= trainingDate.getMinutes()
       ) {
-
-        console.log("Temp date hour is same as training time but the minutes are less than or equal to the training time.")
 
         // Add the date to the list of upcoming training dates
         upcomingTrainingDates.push(
