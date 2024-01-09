@@ -94,7 +94,7 @@
 <footer class="footer">
   <a class="copyleft" href="https://codeberg.org/Hanker/Inline-Skate-Info/src/branch/main/LICENSE.txt" target="_blank" title="Copyright notice and license" rel="noopener noreferrer">
     <div class="text">
-      Copyleft&nbsp;<span class="symbol">©</span>&#32;2023 Hankertrix.
+      Copyleft&nbsp;<span class="symbol">©</span>&#32;2024 Hankertrix.
       <div class="rights-notice">All Wrongs Reserved.</div>
     </div>
   </a>
