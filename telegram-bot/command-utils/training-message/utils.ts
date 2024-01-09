@@ -95,7 +95,7 @@ export function getUpcomingTrainingDates(dateMapping: { [day: number]: Date }, n
 
   // Create a list to store all the training dates
   const upcomingTrainingDates: Date[] = [];
-  
+
   // Create a temporary date
   let tempDate = currentDate;
 
@@ -106,51 +106,70 @@ export function getUpcomingTrainingDates(dateMapping: { [day: number]: Date }, n
   // Infinite loop
   while (continueLoop) {
 
-    // Checks if the temporary date is in the date mapping
-    if (tempDate.getDay() in dateMapping) {
+    // Checks if the temporary date is not in the date mapping
+    if (!(tempDate.getDay() in dateMapping)) {
 
-      // If the temporary date is past the current date,
-      // add the date to the list of upcoming training dates
-      if (tempDate > currentDate)
+      // Add a day to the temporary date
+      tempDate = utils.addDays(tempDate, 1);
+
+      // Continue the loop
+      continue;
+    }
+
+    // Otherwise, if the temporary date is not in the date mapping
+
+    // If the temporary date is past the current date
+    if (tempDate > currentDate) {
+
+      console.log("Temp date is past the current date.")
+
+      //Add the date to the list of upcoming training dates
+      upcomingTrainingDates.push(
+        setTimeOnUpcomingTrainingDate(
+          tempDate, dateMapping
+        )
+      );
+    }
+
+    // Otherwise, if the temporary date is the same as the current date
+    else if (tempDate === currentDate) {
+
+      console.log("Temp date equal to current date.")
+
+      // Gets the training date from the date mapping
+      const trainingDate = dateMapping[tempDate.getDay()];
+
+      // If the hour on the temporary date is not past the hour of the training time,
+      if (tempDate.getHours() < trainingDate.getHours()) {
+
+        console.log("Temp date not past hour of training time.")
+
+        // Add the date to the list of upcoming training dates
         upcomingTrainingDates.push(
           setTimeOnUpcomingTrainingDate(
             tempDate, dateMapping
           )
         );
-
-      // Otherwise, if the temporary date is the same as the current date
-      else if (tempDate === currentDate) {
-        
-        // Gets the training date from the date mapping
-        const trainingDate = dateMapping[tempDate.getDay()];
-
-        // If the hour on the temporary date is not past the hour of the training time,
-        // add the date to the list of upcoming training dates
-        if (tempDate.getHours() < trainingDate.getHours())
-          upcomingTrainingDates.push(
-            setTimeOnUpcomingTrainingDate(
-              tempDate, dateMapping
-            )
-          );
-
-        // Otherwise, if the time on the temporary date is on the same hour as the training time
-        // but the minutes are less than or equal to the training time,
-        // add the date to the list of upcoming training dates
-        else if (
-          tempDate.getHours() === trainingDate.getHours() &&
-          tempDate.getMinutes() <= trainingDate.getMinutes()
-        )
-          upcomingTrainingDates.push(
-            setTimeOnUpcomingTrainingDate(tempDate, dateMapping)
-          );
       }
-      
-      // If the number of training dates required is reached, breaks the loop
-      if (upcomingTrainingDates.length === numOfTrainingDates) continueLoop = false;
+
+      // Otherwise, if the time on the temporary date is on the same hour as the training time
+      // but the minutes are less than or equal to the training time,
+      else if (
+        tempDate.getHours() === trainingDate.getHours() &&
+        tempDate.getMinutes() <= trainingDate.getMinutes()
+      ) {
+
+        console.log("Temp date hour is same as training time but the minutes are less than or equal to the training time.")
+
+        // Add the date to the list of upcoming training dates
+        upcomingTrainingDates.push(
+          setTimeOnUpcomingTrainingDate(tempDate, dateMapping)
+        );
+      }
     }
 
-    // Otherwise, add one day to the temporary date
-    tempDate = utils.addDays(tempDate, 1);
+    // If the number of training dates required is reached, breaks the loop
+    if (upcomingTrainingDates.length === numOfTrainingDates) continueLoop = false;
   }
 
   // Returns the upcoming training date if there's only one
