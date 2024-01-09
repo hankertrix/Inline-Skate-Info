@@ -38,7 +38,10 @@ export const NUMBERING_STYLES = {
 // The regex to get the numbering style
 // and the name from the poll option segment
 const numberingStyleAndNameRegex =
-  /^\s*?([->=+~•·([{<]?\d*[).\]}>]?)\s*(.*?)$/gm;
+  /^\s*?([->=+~•·([{<]?\d*[).\]}>]?)\s*(.*?)\s*()$/gm;
+
+// The regex to create the numbering from the numbering style
+const createNumberingRegex = /\d+/;
 
 // The type for the numbering styles
 export type NumberingStyle = ObjectValues<typeof NUMBERING_STYLES>;
@@ -168,7 +171,7 @@ export function generatePollMessage(
 
     // Sends a poll with the user's input
     return await ctx.reply(
-      `${input}\n${pollType}\n${pollPortion}`,
+      `${input}${pollType}\n\n${pollPortion}`,
       {
         parse_mode: "HTML",
         reply_markup: {
@@ -186,8 +189,8 @@ export function generatePollMessage(
 
 // All functions relating to the callback query from the poll
 
-// Function to get the data from the poll option segment
-export function getPollOptionData(message: string, pollOption: string) {
+// Function to get the poll option segment
+export function getPollOptionSegment(message: string, pollOption: string) {
 
   // Gets the index of the poll option in the message
   // and set it to zero if the index is not found
@@ -219,38 +222,14 @@ export function getPollOptionData(message: string, pollOption: string) {
     newLineAfterPollOptionIndex, doubleNewLineIndex
   ).trim();
 
-  // Get the numbering style and the names
-  // from the poll option segment
-  const matches = Array.from(
-    pollOptionSegment.matchAll(numberingStyleAndNameRegex)
-  );
+  // Returns the poll option segment
+  return pollOptionSegment;
+}
 
-  // Initialise the numbering styles variable
-  let numberingStyle: string = NUMBERING_STYLES.NONE;
 
-  // Initialise the list of names
-  const names: string[] = [];
-
-  // Iterates over the matches
-  for (const [index, [ , numStyle, name]] of matches.entries()) {
-
-    // If it's the first item
-    if (index === 0) {
-
-      // Set the numbering style
-      numberingStyle = numStyle
-    }
-
-    // If the name is not empty, add the name to the list of names
-    if (name.trim()) names.push(name);
-  }
-
-  // Returns the data for the poll option
-  return {
-    pollOptionSegment: pollOptionSegment,
-    numberingStyle: numberingStyle,
-    names: names
-  };
+// Function to create the numbering from the numbering style
+function createNumbering(numberingStyle: string, index: number) {
+  return numberingStyle.replace(createNumberingRegex, `${index + 1}`);
 }
 
 
@@ -308,58 +287,181 @@ function createNumberOfPeoplePortion(
 export function createPollPortion(
   message: string,
   pollOption: string,
-  isSelected: boolean,
-  name: string | null,
-  formatOption: FormatOption = DEFAULT_FORMAT_OPTIONS.pollOptionHeader
+  selected: boolean,
+  givenName: string | null,
+  formatOption: FormatOption = DEFAULT_FORMAT_OPTIONS.pollOptionHeader,
+  tagString: string | null = null,
+  preserveNumbering: boolean = false
 ) {
 
   // Gets the poll option segment of the message
-  const { numberingStyle, names } = getPollOptionData(message, pollOption);
+  const pollOptionSegment = getPollOptionSegment(message, pollOption);
 
-  // Initialise the variable to store the list of names
-  let listOfNames = names;
+  // Initialise the regular expression to the
+  // globally defined numbering style and name regex
+  let regex = numberingStyleAndNameRegex;
+
+  // If the tag string is given
+  if (tagString) {
+
+    // Escape all the characters in the tag string
+    tagString = Array.from(tagString).map(char => `\\${char}`).join("");
+
+    // Recreate the regular expression to add the tag string
+    regex = new RegExp(
+      `${numberingStyleAndNameRegex.source.replace(
+        /\(\)\$$/, `((?:${tagString})?)$`
+      )}`,
+      numberingStyleAndNameRegex.flags
+    )
+  }
+
+  // Get the numbering style and the names
+  // from the poll option segment
+  const matches = Array.from(
+    pollOptionSegment.matchAll(regex)
+  );
+
+  // Initialise the numbering styles variable
+  let numberingStyle: string = NUMBERING_STYLES.NONE;
+
+  // Initialise the encountered variable
+  // to indicate whether the given name has been
+  // encountered or not
+  let encountered = false;
 
   // Initialised the removed variable
   // (the variable to indicate whether the name has been added
   // or removed to the poll option)
   let removed: boolean | null = null;
 
-  // Checks if the poll option is selected and the name is given
-  if (isSelected && name) {
+  // Initialise the tagged variable
+  // This variable indicates whether
+  // the name has been tagged or not.
+  // If the value is null,
+  // that means the person's name
+  // hasn't been added to the list.
+  let tagged: boolean | null = null;
 
-    // Checks if the name is included in the list
-    if (listOfNames.includes(name)) {
+  // Initialise the list of string to get the poll portion
+  const pollPortionList: string[] = [];
 
-      // Remove the name from the list of names
-      listOfNames = listOfNames.filter(personName => personName !== name);
+  // Initialise the list of names
+  const names: string[] = [];
 
-      // Sets the removed variable to true
-      removed = true;
+  // Iterates over the matches
+  for (const [index, [ , numStyle, name, tag]] of matches.entries()) {
+
+    // Gets the trimmed name
+    const trimmedName = name.trim();
+
+    // If it's the first item
+    if (index === 0) {
+
+      // Set the numbering style
+      numberingStyle = numStyle
     }
 
-    // Otherwise
+    // If the name is empty, continue the loop
+    if (!trimmedName) continue;
+
+    // Create the numbering
+    const numbering = createNumbering(numberingStyle, index);
+
+    // Otherwise, if the name is selected and the name is the given name
+    if (trimmedName === givenName && selected) {
+
+      // Set the encountered variable to true
+      encountered = true;
+
+      // If the tag string is given
+      if (tagString) {
+
+        // Sets the tagged variable
+        tagged = tag ? true : false;
+
+        // Add or remove the tag depending on whether the tag is already there
+        // and add the string to the poll portion list
+        pollPortionList.push(
+          `${numbering} ${trimmedName} ${tag ? "" : tagString}`.trim()
+        );
+      }
+
+      // Otherwise, if no tag string is given
+      else {
+
+        // Set the removed variable to true
+        removed = true;
+
+        // Continue the loop to remove the name from the list
+        continue;
+      }
+    }
+
+    // Otherwise, if the name is not the given name
     else {
 
-      // Adds the name to the list of names
-      listOfNames.push(name);
+      // Adds the numbering style, name, and the tag
+      // to the poll portion list
+      pollPortionList.push(`${numbering} ${trimmedName} ${tag}`);
+    }
 
-      // Sets the removed variable to false
-      removed = false;
+    // Add the name to the list of names
+    names.push(trimmedName);
+  }
+
+  // If the given name exists and is selected,
+  // and has not been encountered.
+  // This means the name wasn't in the list
+  // and should be added to the list.
+  // Tagging should not be done as the person should
+  // already be in the list to be tagged.
+  if (selected && givenName && !encountered) {
+
+    // Set the removed variable to false,
+    // which means the person has been added to the list
+    removed = false;
+
+    // Adds the given name to the list
+    // This is done first as the createNumbering function
+    // increases the given index by 1
+    pollPortionList.push(
+      `${createNumbering(numberingStyle, names.length)} ${givenName}`
+    );
+
+    // Adds the name to the list of names
+    names.push(givenName);
+  }
+
+  // If the numbering should be preserved
+  if (preserveNumbering) {
+
+    // Iterates from the number of people to the total number of matches
+    for (let index = names.length; index < matches.length; ++index) {
+
+      // Adds the numbering to the list
+      pollPortionList.push(`${createNumbering(numberingStyle, index)}`);
     }
   }
 
+  // Gets the poll portion header
+  const pollPortionHeader = createNumberOfPeoplePortion(
+    names.length, formatOption, { pollOption: pollOption }
+  );
+
   // Create the poll portion for the given poll option
-  const pollPortion = `${createNumberOfPeoplePortion(
-    listOfNames.length, formatOption, { pollOption: pollOption }
-  )}\n${listOfNames.map(
-    (name, index) => `${numberingStyle.replace(
-      /\d+/, `${index}`
-    )} ${name}`.trim()
-  ).join("\n")}`;
+  const pollPortion = `${pollPortionHeader}\n${
+    pollPortionList.join("\n").trim()
+  }`;
 
   // Returns the poll portion
   // and the number of people responded to this poll portion
-  return { pollPortion: pollPortion, names: listOfNames, nameRemoved: removed };
+  return {
+    pollPortion: pollPortion,
+    names: names,
+    nameRemoved: removed,
+    nameTagged: tagged
+  };
 }
 
 
@@ -370,7 +472,9 @@ export function reformPollMessage(
   selectedPollOption: string,
   pollOptions: string[],
   name: string,
-  formatOptions: FormatOptions = DEFAULT_FORMAT_OPTIONS
+  formatOptions: FormatOptions = DEFAULT_FORMAT_OPTIONS,
+  tagString: string | null = null,
+  preserveNumbering: boolean = false
 ) {
 
   // The list that contains the final message
@@ -400,7 +504,9 @@ export function reformPollMessage(
       pollOption,
       isSelected,
       isSelected ? name : null,
-      formatOptions.pollOptionHeader
+      formatOptions.pollOptionHeader,
+      tagString,
+      preserveNumbering
     );
 
     // Adds the poll portion to the reformed poll message list
