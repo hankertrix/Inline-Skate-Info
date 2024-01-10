@@ -32,8 +32,8 @@ export const OPERATION_CANCELLED_MSG = "The operation has been cancelled.";
 // The developer's username
 export const DEV = "@hankertrix";
 
-// The pagefind bundle path
-export const PAGEFIND_BUNDLE_PATH = "pagefind"
+// The pagefind bundle folder
+export const PAGEFIND_BUNDLE_FOLDER = "pagefind"
 
 // The dictionary containing all the zero width characters
 // mapped to the letters of the alphabet.
