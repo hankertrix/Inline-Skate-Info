@@ -14,9 +14,15 @@ import {
   deleteMessages,
   markMessageForDeletion,
   wrapCallbackWithMessageDeleter,
-  promptUserForInput
+  promptUserForInput,
+  generateInlineKeyboard,
 } from "../../bot-utils";
-import { DEFAULT_FORMAT_OPTIONS, generatePollMessage, POLL_TYPES } from "../poll";
+import {
+  DEFAULT_FORMAT_OPTIONS,
+  DEFAULT_NUMBERING_STYLE,
+  POLL_TYPES,
+  generatePollMessage
+} from "../poll";
 
 
 // The location of the training
@@ -182,8 +188,11 @@ function createTrainingPollMsg(message: string, location: string, noRentals: boo
     generatePollOptions(
       trgMsgUtils.createDateMapping(trainingDates)
     ),
+    [],
+    DEFAULT_NUMBERING_STYLE,
+    DEFAULT_FORMAT_OPTIONS,
     POLL_TYPES.DEFAULT,
-    DEFAULT_FORMAT_OPTIONS.messageFooter
+    generateInlineKeyboard
   );
 }
 
@@ -197,8 +206,11 @@ function createCustomTrgMsg(message: string, trainingDates: string[]) {
     generatePollOptions(
       trgMsgUtils.createDateMapping(trainingDates)
     ),
+    [],
+    DEFAULT_NUMBERING_STYLE,
+    DEFAULT_FORMAT_OPTIONS,
     POLL_TYPES.DEFAULT,
-    DEFAULT_FORMAT_OPTIONS.messageFooter
+    generateInlineKeyboard
   );
 }
 

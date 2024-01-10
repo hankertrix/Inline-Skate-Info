@@ -31,7 +31,7 @@ const trgMsgModules: TrainingMessageModules = {
 // The list of training message scenes
 export const trainingMsgScenes = [
   nus.validateScene
-];
+] as const;
 
 // The regex for the training message command
 export const regex = /^\/?(?:train(?:ing)?|trg|trng?)_?(?:msg|message)?/i;

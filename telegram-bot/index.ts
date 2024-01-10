@@ -16,6 +16,8 @@ import {
   messageAndFileCommandHandler,
   messageAndFileInlineQueryHandler,
   wrapCallbackWithMessageDeleter,
+  removeBotUsernameAndCommand,
+  generateInlineKeyboard
 } from "./bot-utils";
 import * as scenes from "./bot-scenes";
 import * as commandUtils from "./command-utils";
@@ -131,7 +133,7 @@ bot.command([
     // Sets the reply to the no definition found message
     reply = definition;
   }
-  
+
   // Otherwise, adds the term on top of the definition
   else reply = `${utils.bold(term)}${SPACING}${definition}`;
 
@@ -183,7 +185,7 @@ bot.command([
 
 // The inline query handler for the tricks command
 bot.inlineQuery(commandUtils.tricks.regex, async ctx => {
-  
+
   // Calls the function to get the text for the tricks command
   const [trick, reply] = await commandUtils.tricks.handler(ctx.inlineQuery.query);
 
@@ -205,7 +207,7 @@ bot.inlineQuery(commandUtils.tricks.regex, async ctx => {
 // The handler for the trick lists command
 bot.command([
   "trick_lists",
-  "trick_list", 
+  "trick_list",
   "tricklists",
   "tricklist"
 ], async ctx => {
@@ -219,7 +221,7 @@ bot.command([
 
 // The inline query handler for the trick lists command
 bot.inlineQuery(commandUtils.lists.trickListsRegex, async ctx => {
-  
+
   // Use the general handler for this inline query as the function to generate a the data returns a message and a list of paths to the files
   await messageAndFileInlineQueryHandler(ctx, () => commandUtils.lists.generateListsText(
     commandUtils.lists.Lists.TrickLists
@@ -240,7 +242,7 @@ bot.inlineQuery(commandUtils.lists.trickListsRegex, async ctx => {
 // The handler for the rulebooks command
 bot.command([
   "rulebooks",
-  "rulebook", 
+  "rulebook",
   "rule_books",
   "rule_book"
 ], async ctx => {
@@ -254,7 +256,7 @@ bot.command([
 
 // The inline query handler for the rulebooks command
 bot.inlineQuery(commandUtils.lists.rulebooksRegex, async ctx => {
-  
+
   // Use the general handler for this inline query as the function to generate a the data returns a message and a list of paths to the files
   await messageAndFileInlineQueryHandler(ctx, () => commandUtils.lists.generateListsText(
     commandUtils.lists.Lists.Rulebooks
@@ -275,7 +277,7 @@ bot.inlineQuery(commandUtils.lists.rulebooksRegex, async ctx => {
 // The handler for the buying guides command
 bot.command([
   "buying_guides",
-  "buying_guide", 
+  "buying_guide",
   "buyingguides",
   "buyingguide"
 ], async ctx => {
@@ -289,7 +291,7 @@ bot.command([
 
 // The inline query handler for the buying guides command
 bot.inlineQuery(commandUtils.lists.buyingGuidesRegex, async ctx => {
-  
+
   // Use the general handler for this inline query as the function to generate a the data returns a message and a list of paths to the files
   await messageAndFileInlineQueryHandler(ctx, () => commandUtils.lists.generateListsText(
     commandUtils.lists.Lists.BuyingGuides
@@ -332,7 +334,7 @@ bot.command([
 
 // The inline query handler for the maintenance guides command
 bot.inlineQuery(commandUtils.lists.maintenanceGuidesRegex, async ctx => {
-  
+
   // Use the general handler for this inline query as the function to generate a the data returns a message and a list of paths to the files
   await messageAndFileInlineQueryHandler(ctx, () => commandUtils.lists.generateListsText(
     commandUtils.lists.Lists.MaintenanceGuides
@@ -367,7 +369,7 @@ bot.command([
 
 // The inline query handler for the glossaries command
 bot.inlineQuery(commandUtils.lists.glossariesRegex, async ctx => {
-  
+
   // Use the general handler for this inline query as the function to generate a the data returns a message and a list of paths to the files
   await messageAndFileInlineQueryHandler(ctx, () => commandUtils.lists.generateListsText(
     commandUtils.lists.Lists.Glossaries
@@ -388,11 +390,11 @@ bot.inlineQuery(commandUtils.lists.glossariesRegex, async ctx => {
 // The handler for the miscellaneous resources command
 bot.command([
   "misc_resources",
-  "misc_resource", 
+  "misc_resource",
   "miscresources",
   "miscresource",
   "miscellaneous_resources",
-  "miscellaneous_resource", 
+  "miscellaneous_resource",
   "miscellaneousresources",
   "miscellaneousresource"
 ], async ctx => {
@@ -406,7 +408,7 @@ bot.command([
 
 // The inline query handler for the miscellaneous resources command
 bot.inlineQuery(commandUtils.lists.miscResourcesRegex, async ctx => {
-  
+
   // Use the general handler for this inline query as the function to generate a the data returns a message and a list of paths to the files
   await messageAndFileInlineQueryHandler(ctx, () => commandUtils.lists.generateListsText(
     commandUtils.lists.Lists.MiscResources
@@ -450,7 +452,7 @@ bot.command([
 
 // The inline query handler for the skate boot types command
 bot.inlineQuery(commandUtils.bootTypes.regex, async ctx => {
-  
+
 
   // Gets the skate boot types message
   const msg = await commandUtils.bootTypes.generateMsg();
@@ -1010,7 +1012,9 @@ bot.inlineQuery(commandUtils.products.maintenanceItemsRegex, async ctx => {
 
 
 
-// Poll message and training message command (they function similarly, only that the training message command will have a default output which is the training message)
+// Poll message and training message command
+// (they function similarly, only that the training message command
+// will have a default output which is the training message)
 
 // The handler for the poll message command
 bot.command([
@@ -1018,8 +1022,11 @@ bot.command([
   "pollmsg"
 ], async ctx => {
 
-  // If the user isn't an admin, tries to delete the message that the user has sent
-  if (!(await isAdmin(ctx))) return await deleteMessages(ctx, ctx.message.message_id);
+  // If the user isn't an admin,
+  // tries to delete the message that the user has sent
+  if (!(await isAdmin(ctx))) return await deleteMessages(
+    ctx, ctx.message.message_id
+  );
 
   // Gets the text from the message
   const messageText = ctx.message.text;
@@ -1031,8 +1038,11 @@ bot.command([
   const { message, callback } = commandUtils.poll.generatePollMessage(
     messageText,
     pollOptions,
+    [],
+    commandUtils.poll.DEFAULT_NUMBERING_STYLE,
+    commandUtils.poll.DEFAULT_FORMAT_OPTIONS,
     commandUtils.poll.POLL_TYPES.DEFAULT,
-    commandUtils.poll.DEFAULT_FORMAT_OPTIONS.messageFooter
+    generateInlineKeyboard
   );
 
   // If the message is empty, enters the scene to get the user's input
@@ -1042,7 +1052,14 @@ bot.command([
     const wrappedCallback = wrapCallbackWithMessageDeleter(callback);
 
     // Enters the scene to get the user's input
-    return await ctx.scene.enter("validate", { message: "Please enter the poll message.", callback: wrappedCallback, messagesToDelete: [] });
+    return await ctx.scene.enter(
+      "validate",
+      {
+        message: "Please enter the poll message.",
+        callback: wrappedCallback,
+        messagesToDelete: []
+      }
+    );
   }
 
   // Calls the callback function
@@ -1059,8 +1076,11 @@ bot.command([
   "trgmsg"
 ], async ctx => {
 
-  // If the user isn't an admin, tries to delete the message that the user has sent
-  if (!(await isAdmin(ctx))) return await deleteMessages(ctx, ctx.message.message_id);
+  // If the user isn't an admin,
+  // tries to delete the message that the user has sent
+  if (!(await isAdmin(ctx))) return await deleteMessages(
+    ctx, ctx.message.message_id
+  );
 
   // Set the default timezone to "Asia/Singapore"
   process.env.TZ = "Asia/Singapore";
@@ -1084,6 +1104,47 @@ bot.on(filters.callbackQuery("data"), async ctx => {
 
   // Calls the callback handler in the poll message to handle the callback query
   await commandUtils.poll.callback_handler(ctx);
+});
+
+
+
+
+
+
+
+
+
+
+// The create poll message and create rental message commands
+// (they function similarly, just creating different types of polls)
+
+// The handler for the create poll message command
+bot.command([
+  "create_poll_message",
+  "create_custom_poll_message",
+  "make_poll_message",
+  "make_custom_poll_message",
+  "custom_poll_message"
+], async ctx => {
+
+  // If the user isn't an admin,
+  // tries to delete the message that the user has sent
+  if (!(await isAdmin(ctx))) return await deleteMessages(
+    ctx, ctx.message.message_id
+  );
+
+  // Gets the message from the user
+  const message = removeBotUsernameAndCommand(ctx.message.text);
+
+  // Enters the create poll message scene
+  ctx.scene.enter(
+    "createPollMessage",
+    {
+      message: message,
+      pollOptions: [],
+      messagesToDelete: [ctx.message.message_id]
+    }
+  );
 });
 
 
@@ -1155,7 +1216,13 @@ bot.command([
   }
 
   // Enter the scene to validate user input
-  await ctx.scene.enter("validate", { message: "Please enter the text you want to convert to a QR code.", callback: callback });
+  await ctx.scene.enter(
+    "validate",
+    {
+      message: "Please enter the text you want to convert to a QR code.",
+      callback: callback
+    }
+  );
 });
 
 
@@ -1166,13 +1233,20 @@ bot.inlineQuery(commandUtils.qrCode.qrCodeRegex, async ctx => {
   const queryText = ctx.inlineQuery!.query;
 
   // Call the handler to generate the QR code
-  const [message, qrCodeDataURL] = await commandUtils.qrCode.handler(queryText);
+  const [message, qrCodeDataURL] = await commandUtils.qrCode.handler(
+    queryText
+  );
 
   // If the QR code isn't generated, exit the function
   if (!qrCodeDataURL) return;
 
-  // Otherwise, send the QR code to the QR code group and gets the photo message object
-  const photoMessage = await ctx.telegram.sendPhoto(process.env.QR_CODE_GROUP_ID! as string, { source: Buffer.from(qrCodeDataURL, "base64") }, { caption: message });
+  // Otherwise, send the QR code to the QR code group
+  // and gets the photo message object
+  const photoMessage = await ctx.telegram.sendPhoto(
+    process.env.QR_CODE_GROUP_ID! as string,
+    { source: Buffer.from(qrCodeDataURL, "base64") },
+    { caption: message }
+  );
 
   // Gets the last photo in the message that was sent
   const qrCode = photoMessage.photo.pop();

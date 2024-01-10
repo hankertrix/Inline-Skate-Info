@@ -3,11 +3,16 @@
 import type { DateMapping } from "../../types";
 import type { TrainingMessageFunction } from ".";
 import * as utils from "../../utils";
-import { deleteMessages, wrapCallbackWithMessageDeleter } from "../../bot-utils";
+import {
+  deleteMessages,
+  wrapCallbackWithMessageDeleter,
+  generateInlineKeyboard
+} from "../../bot-utils";
 import { DEV } from "../../../src/lib/constants";
 import {
   DEFAULT_FORMAT_OPTIONS,
   DEFAULT_POLL_OPTIONS,
+  DEFAULT_NUMBERING_STYLE,
   POLL_TYPES,
   generatePollMessage,
 } from "../poll";
@@ -43,8 +48,11 @@ export async function handleTrgMsg(
   const { callback } = generatePollMessage(
     msg,
     DEFAULT_POLL_OPTIONS,
+    [],
+    DEFAULT_NUMBERING_STYLE,
+    DEFAULT_FORMAT_OPTIONS,
     POLL_TYPES.DEFAULT,
-    DEFAULT_FORMAT_OPTIONS.messageFooter
+    generateInlineKeyboard,
   );
 
   // If the message given is empty

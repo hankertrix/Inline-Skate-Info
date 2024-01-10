@@ -1,9 +1,11 @@
 // Module that contains all the types used in the bot
 
+import type { Types } from "telegraf";
 import type {
   CallbackQuery,
   Message,
-  InlineKeyboardButton
+  InlineKeyboardButton,
+  InlineKeyboardMarkup
 } from "telegraf/types";
 
 // The dictionary type
@@ -37,6 +39,11 @@ export type CbQuery = CallbackQuery & {
     }
   }
 };
+
+
+// The type of the inline keyboard generator function
+export type InlineKeyboardGenerator =
+  (pollOption: string[]) => Types.Markup<InlineKeyboardMarkup>;
 
 
 // The type representing a product

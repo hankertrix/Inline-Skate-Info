@@ -1,10 +1,28 @@
 // The utility functions for the poll command
 
-import type { Scenes } from "telegraf";
-import type { User, InlineKeyboardButton } from "telegraf/types";
-import type { CbQuery, ObjectValues } from "../types";
+import type {
+  User,
+  InlineKeyboardButton,
+  Message,
+} from "telegraf/types";
+import type {
+  CbQuery,
+  ObjectValues,
+  InlineKeyboardGenerator
+} from "../types";
+import { Scenes, Composer } from "telegraf";
+import * as filters from "telegraf/filters";
 import * as utils from "../utils";
-import { removeBotUsername } from "../bot-utils"
+import {
+  removeBotUsername,
+  cancelCommand,
+  deleteMessages,
+  markMessageForDeletion,
+  promptUserForInput,
+  removeBotUsernameAndCommand,
+  generateInlineKeyboard,
+  generateReplyKeyboard
+} from "../bot-utils"
 import { SPACING } from "../../src/lib/constants";
 
 
@@ -35,6 +53,9 @@ export const NUMBERING_STYLES = {
   ANGLE_BRACKETS: "<1>",
 } as const;
 
+// The default numbering style
+export const DEFAULT_NUMBERING_STYLE = NUMBERING_STYLES.NONE;
+
 // The regex to get the numbering style
 // and the name from the poll option segment
 const numberingStyleAndNameRegex =
@@ -42,6 +63,10 @@ const numberingStyleAndNameRegex =
 
 // The regex to create the numbering from the numbering style
 const createNumberingRegex = /\d+/;
+
+// The regex to get the maximum number of entries from the
+// poll option header
+const getMaxEntriesRegex = /\d+\s*\/\s*(\d+)/;
 
 // The type for the numbering styles
 export type NumberingStyle = ObjectValues<typeof NUMBERING_STYLES>;
@@ -111,120 +136,10 @@ export const DEFAULT_FORMAT_OPTIONS: FormatOptions = {
     // The string to display when there is one person
     one: "1 person"
   }
-}
+} as const;
 
 // The regex for the poll message command
 export const pollMessageRegex = /^\/?\bpoll_?(?:msg|message)?\b/i;
-
-// Function to generate the inline keyboard markup
-export function generateInlineKeyboard(
-  pollOptions: string[] = DEFAULT_POLL_OPTIONS
-) {
-
-  // The list of inline keyboard buttons
-  const inlineKeyboard = [];
-
-  // Iterates over the poll options and add their buttons to the list
-  for (const pollOption of pollOptions) {
-
-    // Adds the poll option button to the list
-    inlineKeyboard.push([{
-      text: pollOption,
-      callback_data: pollOption
-    }]);
-  }
-
-  // Returns the inline keyboard object
-  return inlineKeyboard;
-}
-
-
-// Function to generate the callback function for the poll message command
-export function generatePollMessage(
-  message: string,
-  pollOptions: string[],
-  pollType: PollType = POLL_TYPES.DEFAULT,
-  formatOption: FormatOption = DEFAULT_FORMAT_OPTIONS.messageFooter
-) {
-
-  // Remove the command from the message
-  message = message.replace(pollMessageRegex, "").trim();
-
-  // Remove the bot's username from the message
-  message = removeBotUsername(message);
-
-  // Generate the portion of the message that is a poll
-  const pollPortion = `${pollOptions.map(
-    option => `${utils.bold(option)}`
-  ).join(SPACING)}${SPACING}${createNumberOfPeoplePortion(
-    0, formatOption
-  )}`;
-
-  // Gets the inline keyboard
-  const inlineKeyboard = generateInlineKeyboard(pollOptions);
-
-  // The callback function
-  async function callback(ctx: Scenes.WizardContext, input: string) {
-
-    // Bold the first line of the input
-    input = utils.boldFirstLine(input);
-
-    // Sends a poll with the user's input
-    return await ctx.reply(
-      `${input}${pollType}\n\n${pollPortion}`,
-      {
-        parse_mode: "HTML",
-        reply_markup: {
-          inline_keyboard: inlineKeyboard
-        }
-      });
-  }
-
-  // Returns the message and the callback function
-  return { message: message, callback: callback };
-}
-
-
-
-
-// All functions relating to the callback query from the poll
-
-// Function to get the poll option segment
-export function getPollOptionSegment(message: string, pollOption: string) {
-
-  // Gets the index of the poll option in the message
-  // and set it to zero if the index is not found
-  const pollOptionIndex = message.indexOf(
-    pollOption
-  ) === -1 ? 0 : message.indexOf(pollOption);
-
-  // Find the index of the new line after the poll option
-  let newLineAfterPollOptionIndex = message.indexOf("\n", pollOptionIndex);
-
-  // Sets the index of the new line after the poll option to 0
-  // if it's not found
-  newLineAfterPollOptionIndex =
-    newLineAfterPollOptionIndex === -1 ? 0 : newLineAfterPollOptionIndex;
-
-  // Searches for the next double new line in the message slice
-  // after the poll option
-  let doubleNewLineIndex = message.indexOf(
-    "\n\n", newLineAfterPollOptionIndex + 1
-  );
-
-  // Set the index for the next double new line to the end of the message
-  // if it's not found
-  doubleNewLineIndex =
-    doubleNewLineIndex === -1 ? message.length : doubleNewLineIndex;
-
-  // Gets the part of the message with the list of names
-  const pollOptionSegment = message.slice(
-    newLineAfterPollOptionIndex, doubleNewLineIndex
-  ).trim();
-
-  // Returns the poll option segment
-  return pollOptionSegment;
-}
 
 
 // Function to create the numbering from the numbering style
@@ -283,8 +198,201 @@ function createNumberOfPeoplePortion(
 }
 
 
-// Function to create the poll portion for a given poll option
+// Function to create the poll portion of the poll message
 export function createPollPortion(
+  pollOptions: string[],
+  maxEntriesList: number[] = [],
+  numberingStyle: NumberingStyle = DEFAULT_NUMBERING_STYLE,
+  formatOptions: FormatOptions = DEFAULT_FORMAT_OPTIONS
+) {
+
+  // The list to contain the strings in the poll portion
+  const pollPortionList: string[] = [];
+
+  // Iterates over all the poll options
+  for (const [index, pollOption] of pollOptions.entries()) {
+
+    // The list containing the lines in the poll option
+    // The first line is the poll option header
+    const pollOptionLines: string[] = [
+      createNumberOfPeoplePortion(
+        0, formatOptions.pollOptionHeader, { pollOption: pollOption }
+      )
+    ];
+
+    // Gets the max entries for the poll option
+    const maxEntries = maxEntriesList[index] ? maxEntriesList[index] : 0;
+
+    // Iterates until the maximum number of entries is hit
+    for (let i = 0; i < maxEntries; ++i) {
+
+      // Add the numbering style to the list of poll option lines
+      pollOptionLines.push(`${createNumbering(numberingStyle, i)}`);
+    }
+
+    // Adds the lines in the poll option to the list
+    pollPortionList.push(pollOptionLines.join("\n"));
+  }
+
+  // Returns the poll portion
+  return `${pollPortionList.join(SPACING)}${SPACING}${
+    createNumberOfPeoplePortion(
+      0, formatOptions.messageFooter
+    )
+  }`;
+}
+
+
+// Function to generate the callback function for the poll message command
+export function generatePollMessage(
+  message: string,
+  pollOptions: string[],
+  maxEntriesList: number[] = [],
+  numberingStyle: NumberingStyle,
+  formatOptions: FormatOptions = DEFAULT_FORMAT_OPTIONS,
+  pollType: PollType = POLL_TYPES.DEFAULT,
+  inlineKeyboardGenerator: InlineKeyboardGenerator = generateInlineKeyboard
+) {
+
+  // Remove the command from the message
+  message = message.replace(pollMessageRegex, "").trim();
+
+  // Remove the bot's username from the message
+  message = removeBotUsername(message);
+
+  // Generate the portion of the message that is a poll
+  const pollPortion = createPollPortion(
+    pollOptions,
+    maxEntriesList,
+    numberingStyle,
+    formatOptions
+  );
+
+  // Create the inline keyboard
+  const inlineKeyboard = inlineKeyboardGenerator(pollOptions);
+
+  // The callback function
+  async function callback(ctx: Scenes.WizardContext, input: string) {
+
+    // Bold the first line of the input
+    input = utils.boldFirstLine(input);
+
+    // Sends a poll with the user's input
+    return await ctx.reply(
+      `${input}${pollType}\n\n${pollPortion}`,
+      { parse_mode: "HTML", ...inlineKeyboard }
+    );
+  }
+
+  // Returns the message and the callback function
+  return { message: message, callback: callback };
+}
+
+
+
+
+
+
+
+
+
+
+// All functions relating to the callback query from the poll
+
+
+// Function to get the index or a default value
+// if the index is not found (indexOf returns -1 if not found).
+// It is like the dictionary.get function in python,
+// but with message indexes
+function getIndexOrDefaultValue(
+  index: number,
+  defaultValue: number = 0
+) {
+  return index === -1 ? defaultValue : index;
+}
+
+
+// Function to get the poll option segment
+export function getPollOptionSegment(message: string, pollOption: string) {
+
+  // Gets the index of the poll option in the message
+  // and set it to zero if the index is not found
+  const pollOptionIndex = getIndexOrDefaultValue(
+    message.indexOf(pollOption), 0
+  );
+
+  // Initialise the variable to store the index of the
+  // new line before the poll option segment
+  let newLineBeforePollOptionIndex = 0;
+
+  // Iterates backwards from the poll option index
+  for (let index = pollOptionIndex; index > 0; --index) {
+
+    // If the character is not a new line character,
+    // continue the loop
+    if (message[index] !== "\n") continue;
+
+    // Otherwise, set the index of the new line before the poll option
+    newLineBeforePollOptionIndex = index;
+
+    // Breaks out of the loop
+    break;
+  }
+
+  // Find the index of the new line after the poll option
+  const newLineAfterPollOptionIndex = getIndexOrDefaultValue(
+    message.indexOf("\n", pollOptionIndex), 0
+  );
+
+  // Gets the entire line that the poll option is on
+  const pollOptionLine = message.slice(
+    newLineBeforePollOptionIndex + 1,
+    newLineAfterPollOptionIndex
+  );
+
+  // Searches for the next double new line in the message slice
+  // after the poll option
+  const doubleNewLineIndex = getIndexOrDefaultValue(
+    message.indexOf("\n\n", newLineAfterPollOptionIndex + 1), message.length
+  );
+
+  // Gets the part of the message with the list of names
+  const pollOptionNameSegment = message.slice(
+    newLineAfterPollOptionIndex, doubleNewLineIndex
+  ).trim();
+
+  // Returns the name part of the poll option segment
+  return {
+    pollOptionNameSegment: pollOptionNameSegment,
+    pollOptionLine: pollOptionLine
+  };
+}
+
+
+// Function to get the maximum number of entries for a poll option
+function getPollOptionMaxEntries(
+  pollOptionLine: string,
+) {
+
+  // Search for the maximum entries in line containing the poll option
+  const match = pollOptionLine.match(getMaxEntriesRegex);
+
+  // Gets the max entries for the poll from the match.
+  // The regex.match function returns null if no match is found,
+  // so returning an array with two null values instead of null allows
+  // the destructuring to still work.
+  const [ , maxEntries] = match ? match : [null, null];
+
+  // Returns the maximum number of entries that has been gotten from
+  // the poll option line.
+  // If the maximum number of entries isn't found,
+  // which means maxEntries is null, then return infinity for no limit
+  return maxEntries == null ? Infinity : parseInt(maxEntries);
+}
+
+
+// Function to regenerate the poll portion for a given poll option
+export function regeneratePollPortion(
   message: string,
   pollOption: string,
   selected: boolean,
@@ -295,7 +403,12 @@ export function createPollPortion(
 ) {
 
   // Gets the poll option segment of the message
-  const pollOptionSegment = getPollOptionSegment(message, pollOption);
+  const {
+    pollOptionNameSegment, pollOptionLine
+  } = getPollOptionSegment(message, pollOption);
+
+  // Get the maximum number of entries from the poll option line
+  const maxEntries = getPollOptionMaxEntries(pollOptionLine);
 
   // Initialise the regular expression to the
   // globally defined numbering style and name regex
@@ -313,17 +426,17 @@ export function createPollPortion(
         /\(\)\$$/, `((?:${tagString})?)$`
       )}`,
       numberingStyleAndNameRegex.flags
-    )
+    );
   }
 
   // Get the numbering style and the names
   // from the poll option segment
   const matches = Array.from(
-    pollOptionSegment.matchAll(regex)
+    pollOptionNameSegment.matchAll(regex)
   );
 
   // Initialise the numbering styles variable
-  let numberingStyle: string = NUMBERING_STYLES.NONE;
+  let numberingStyle: string = DEFAULT_NUMBERING_STYLE;
 
   // Initialise the encountered variable
   // to indicate whether the given name has been
@@ -331,8 +444,9 @@ export function createPollPortion(
   let encountered = false;
 
   // Initialised the removed variable
-  // (the variable to indicate whether the name has been added
-  // or removed to the poll option)
+  // This variable indicates whether the name has been added
+  // or removed to the poll option, and a null value means that
+  // the person failed to be added to the list.
   let removed: boolean | null = null;
 
   // Initialise the tagged variable
@@ -410,16 +524,20 @@ export function createPollPortion(
     names.push(trimmedName);
   }
 
-  // If the given name exists and is selected,
-  // and has not been encountered.
-  // This means the name wasn't in the list
+  // If the given name exists, is selected, has not been encountered
+  // and the length of the list of names is
+  // less than the maximum number of entries.
+  // The has not been encountered condition
+  // means the name wasn't in the list
   // and should be added to the list.
   // Tagging should not be done as the person should
   // already be in the list to be tagged.
-  if (selected && givenName && !encountered) {
+  if (selected && givenName && !encountered && names.length < maxEntries) {
 
     // Set the removed variable to false,
     // which means the person has been added to the list
+    // The removed variable being null means the person
+    // failed to be added to the poll.
     removed = false;
 
     // Adds the given name to the list
@@ -499,7 +617,7 @@ export function reformPollMessage(
 
     // Calls the function to generate the poll portion
     // and get the number of people who responded to that poll option
-    const { pollPortion, names, nameRemoved } = createPollPortion(
+    const { pollPortion, names, nameRemoved } = regeneratePollPortion(
       message,
       pollOption,
       isSelected,
@@ -643,3 +761,370 @@ export async function callback_handler(
     }
   });
 }
+
+
+
+
+
+
+
+
+
+
+// Scenes for the poll message
+
+// The type for a step in the create poll message scene
+export type CreatePollMessageContext = Scenes.WizardContext & {
+  message: Message.TextMessage
+}
+
+// The type of the additional options function
+export type AdditionalOptionsFunction =
+  (ctx: CreatePollMessageContext,
+    message: string,
+    state: CreatePollMessageState
+  ) => Promise<boolean>
+
+// The type for the create poll message state
+export type CreatePollMessageState = {
+  message: string,
+  pollOptions: string[],
+  maxEntriesList?: number[],
+  numberingStyle?: NumberingStyle,
+  formatOptions?: FormatOptions,
+  pollType: PollType,
+  inlineKeyboardGenerator?: InlineKeyboardGenerator,
+  additionalOptionsFuncList?: AdditionalOptionsFunction[],
+  additionalOptionsIndex?: number,
+  messagesToDelete?: number[]
+}
+
+
+// The scene name for the create poll message scene
+const sceneName = "createPollMessage";
+
+
+// The incomplete data message for the poll message creation scene
+const incompleteDataMessage = `The poll message is still missing some required data for it to be generated.
+
+Please continue the poll message creation process or use the ${utils.monospace("/cancel")} command to cancel the creation of the poll message.`;
+
+
+// The poll option message
+const pollOptionMsg = `Please enter the next poll option.
+
+Use the ${utils.monospace("/done")} command to get the bot to send the poll message.`;
+
+
+// The function to handle the done command
+async function doneCommandHandler(ctx: Scenes.WizardContext) {
+
+  // Gets the state object
+  const state = ctx.wizard.state as CreatePollMessageState;
+
+  // If the message or poll options are not given
+  if (!state.message || Object.keys(state.pollOptions).length <= 0) {
+
+    // Tells the user that the poll message is not completed
+    // and they should use the "/cancel" command instead to cancel
+    // the operation
+    const reply =  await ctx.reply(incompleteDataMessage);
+
+    // Marks the bot's message for deletion and exit the function
+    return markMessageForDeletion(ctx, reply.message_id);
+  }
+
+  // Otherwise, create the poll message
+  const { message, callback } = generatePollMessage(
+    state.message,
+    state.pollOptions,
+    state.maxEntriesList ? state.maxEntriesList : [],
+    state.numberingStyle ? state.numberingStyle : DEFAULT_NUMBERING_STYLE,
+    state.formatOptions ? state.formatOptions : DEFAULT_FORMAT_OPTIONS,
+    state.pollType ? state.pollType : POLL_TYPES.DEFAULT,
+    state.inlineKeyboardGenerator ?
+      state.inlineKeyboardGenerator : generateInlineKeyboard
+  );
+
+  // Calls the callback to send the poll message
+  await callback(ctx, message);
+
+  // Delete all the messages sent by the user
+  await deleteMessages(
+    ctx, ...(state.messagesToDelete ? state.messagesToDelete : [])
+  );
+
+  // Exit the scene
+  await ctx.scene.leave();
+}
+
+
+// Function to create a step in the poll message scene
+function createStep(func: (ctx: Scenes.WizardContext) => Promise<unknown>) {
+
+  // Create a new composer
+  const composer = new Composer<Scenes.WizardContext>();
+
+  // Attach the cancel command handler
+  composer.command(...cancelCommand);
+
+  // Attach the done command handler
+  composer.command("done", doneCommandHandler);
+
+  // Attach the function as the main handler
+  composer.on(filters.message("text"), func);
+
+  // Returns the composer
+  return composer;
+}
+
+
+// The function to create a list of numbering styles as a string
+// from the numbering style constant
+export function createNumberingStylesList() {
+
+  // The list of numbering styles to
+  // pass to the createReplyKeyboard function
+  const numberingStyles: string[] = [];
+
+  // Iterate over the numbering style constant
+  for (const [property, value] of Object.entries(NUMBERING_STYLES)) {
+
+    // Adds the property and the value to the list of numbering styles
+    numberingStyles.push(`${property} - ${value}`);
+  }
+
+  // Returns the list of numbering styles
+  return numberingStyles;
+}
+
+
+// The create poll message scene
+export const createPollMessageScene = new Scenes.WizardScene(
+
+  // The scene name
+  sceneName,
+
+  // The first step to get the poll message
+  createStep(
+    async (context: Scenes.WizardContext) => {
+
+      // Cast the context to the correct type
+      const ctx = context as CreatePollMessageContext;
+
+      // Gets the state object
+      const state = ctx.wizard.state as CreatePollMessageState;
+
+      // Set the poll options in the state if it has not been initialised
+      state.pollOptions = state.pollOptions ? state.pollOptions : [];
+
+      // Marks the given message for deletion
+      markMessageForDeletion(ctx, ctx.message.message_id);
+
+      // If the message is already given
+      if (state.message) {
+
+        // Go to the next function in the scene
+        ctx.wizard.next();
+
+        // Calls the next function in the scene
+        // and exit the function
+        return await (ctx.wizard.step as CallableFunction)(ctx);
+      }
+
+      // Otherwise, gets the message sent by the user
+      let message = ctx.message.text;
+
+      // Gets the message text from the message
+      message = removeBotUsernameAndCommand(message);
+
+      // If the message is empty
+      if (!message) {
+
+        // Prompt the user for input
+        return await promptUserForInput(
+          ctx,
+          "Please enter the message for the poll."
+        );
+      }
+
+      // Otherwise
+      else {
+
+        // Save the message to the state
+        state.message = message;
+
+        // Tells the user to select a numbering style
+        await promptUserForInput(
+          ctx,
+          "Please select a numbering style from the list for the poll message.",
+          { ...generateReplyKeyboard(
+            createNumberingStylesList()
+          ) }
+        );
+
+        // Go to the next function in the scene
+        return ctx.wizard.next();
+      }
+    }
+  ),
+
+  // The second step to get the numbering style
+  createStep(
+    async (context: Scenes.WizardContext) => {
+
+      // Cast the context to the correct type
+      const ctx = context as CreatePollMessageContext;
+
+      // Gets the state object
+      const state = ctx.wizard.state as CreatePollMessageState;
+
+      // Marks the given message for deletion
+      markMessageForDeletion(ctx, ctx.message.message_id);
+
+      // Gets the message from the user
+      let message = ctx.message.text;
+
+      // Remove the command and the bot's username from the message
+      message = removeBotUsernameAndCommand(message);
+
+      // Gets the list of numbering styles
+      const numberingStyles = createNumberingStylesList()
+
+      // If the message is not one of the accepted numbering styles
+      if (!(message in numberingStyles)) {
+
+        // Tells the user to enter a valid numbering style
+        // and exit the function
+        return await promptUserForInput(
+          ctx,
+          "Please choose a valid numbering style from the list.",
+          { ...generateReplyKeyboard(numberingStyles) }
+        );
+      }
+
+      // Otherwise
+      else {
+
+        // Save the numbering style to the state
+        state.numberingStyle = message as NumberingStyle;
+
+        // Gets the user to send the first poll option
+        await promptUserForInput(ctx, "Please enter the first poll option.");
+
+        // Go to the next function in the scene
+        return ctx.wizard.next();
+      }
+    }
+  ),
+
+  // The third step to get the poll options
+  createStep(
+    async (context: Scenes.WizardContext) => {
+
+      // Cast the context to the correct type
+      const ctx = context as CreatePollMessageContext;
+
+      // Gets the state object
+      const state = ctx.wizard.state as CreatePollMessageState;
+
+      // Marks the given message for deletion
+      markMessageForDeletion(ctx, ctx.message.message_id);
+
+      // Gets the message from the user
+      let message = ctx.message.text;
+
+      // Gets the message text from the message
+      message = removeBotUsernameAndCommand(message);
+
+      // If the message is empty
+      if (!message) {
+
+        // Tells the user to enter a poll option
+        // and exit the function
+        return await promptUserForInput(
+          ctx,
+          pollOptionMsg.replace("the next", "a")
+        );
+      }
+
+      // Otherwise
+      else {
+
+        // Save the poll option to the state
+        state.pollOptions.push(message);
+
+        // If the there are additional options
+        if (state.additionalOptionsFuncList?.length) {
+
+          // Set the additional options index to 0
+          state.additionalOptionsIndex = 0;
+
+          // Calls the function at that index
+          // to get the prompt for the user
+          await state.additionalOptionsFuncList[
+            state.additionalOptionsIndex
+          ](ctx, "", state);
+
+          // Goes to the next scene
+          return ctx.wizard.next();
+        }
+      }
+    }
+  ),
+
+  // The fourth step in creating the poll message
+  // which is to get all the additional options if there are any
+  createStep(
+    async (context: Scenes.WizardContext) => {
+
+      // Cast the context to the correct type
+      const ctx = context as CreatePollMessageContext;
+
+      // Gets the state object
+      const state = ctx.wizard.state as CreatePollMessageState;
+
+      // Set the additional options index if it hasn't been set yet
+      state.additionalOptionsIndex =
+        state.additionalOptionsIndex ? state.additionalOptionsIndex : 0;
+
+      // Gets the additional options index
+      let index = state.additionalOptionsIndex;
+
+      // Gets the additional options function list
+      const funcList = state.additionalOptionsFuncList;
+
+      // Marks the given message for deletion
+      markMessageForDeletion(ctx, ctx.message.message_id);
+
+      // Gets the message from the user
+      let message = ctx.message.text;
+
+      // Gets the message text from the message
+      message = removeBotUsernameAndCommand(message);
+
+      // Calls the function at the current index
+      // and get whether the function is successful or not
+      const success = await funcList![index](ctx, message, state);
+
+      // If the function is successful,
+      // increment the additionalOptionxIndex by 1
+      if (success) index = ++state.additionalOptionsIndex;
+
+      // If the additional options index is
+      // past the length of the function list - 1
+      // (length is 1 more than the last index)
+      if (index > funcList!.length - 1) {
+
+        // Sets the index back to 0
+        state.additionalOptionsIndex = 0;
+
+        // Asks the user for a poll option
+        await promptUserForInput(ctx, pollOptionMsg);
+
+        // Goes back to the previous step
+        return ctx.wizard.back();
+      }
+    }
+  ),
+);

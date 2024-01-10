@@ -1,9 +1,14 @@
 // Module containing all the utility functions for the telegram bot
 
 import type { Context, Types, Composer } from "telegraf";
-import type { InlineQueryResult, InputMediaDocument, InputMessageContent, Message } from "telegraf/types";
+import type {
+  InlineQueryResult,
+  InputMediaDocument,
+  InputMessageContent,
+  Message
+} from "telegraf/types";
 import type { OptionalPropertiesOf } from "./types";
-import { Scenes } from "telegraf";
+import { Scenes, Markup } from "telegraf";
 import { MAX_CHARACTERS, CACHE_TIME, SPACING, OPERATION_CANCELLED_MSG, EXIT_MESSAGE, MESSAGE_ENTITY_LIMIT } from "../src/lib/constants";
 import * as utils from "./utils";
 import { ENABLE_DELETING_COMMAND_MESSAGES, ENABLE_ADMIN_CHECK } from "../config";
@@ -27,6 +32,13 @@ export function removeBotUsername(message: string) {
 // Function to remove a command from a message
 export function removeCommand(message: string) {
   return message.replace(removeCommandRegex, "").trim();
+}
+
+
+// Function to remove the bot's username
+// as well as the command from a message
+export function removeBotUsernameAndCommand(message: string) {
+  return removeBotUsername(removeCommand(message)).trim();
 }
 
 
@@ -159,6 +171,90 @@ export async function ctxReply(ctx: Context, reply: string, options: Types.Extra
       ...options
     });
   }
+}
+
+
+// Function to generate the inline keyboard markup
+export function generateInlineKeyboard(buttons: string[]) {
+
+  // The list of inline keyboard buttons
+  const inlineKeyboard = [];
+
+  // Iterates over the buttons and add them to the list
+  for (const button of buttons) {
+
+    // Adds the poll option button to the list
+    inlineKeyboard.push(
+      Markup.button.callback(button, button)
+    );
+  }
+
+  // Returns the inline keyboard object
+  return Markup.inlineKeyboard(inlineKeyboard);
+}
+
+
+// Function to generate a reply keyboard
+export function generateReplyKeyboard(
+  possible_replies: string[],
+  options: {
+    oneTime?: boolean,
+    resize?: boolean,
+    persistent?: boolean,
+    selective?: boolean,
+    placeholder?: string
+  } = {
+    oneTime: true,
+    resize: true
+  }
+) {
+
+  // Initialise the variable to store the keyboard
+  const replyKeyboard = [];
+
+  // Iterates over the possible replies
+  for (const reply of possible_replies) {
+
+    // Adds the reply to the keyboard
+    replyKeyboard.push(reply);
+  }
+
+  // Turns the reply keyboard into a markup
+  const replyKeyboardMarkup = Markup.keyboard(replyKeyboard);
+
+  // The type of the functions on the reply keyboard markup
+  // This is just to get typescript to behave when using the string
+  // value of the property to call the function
+  type ReplyKeyboardMethods = keyof typeof replyKeyboardMarkup;
+
+  // Iterates over the options
+  for (const [method, value] of Object.entries(options)) {
+
+    // If the value is a string
+    if (typeof value === "string") {
+
+      // Calls the function with the value
+      // This is just to get typescript to behave when using the string
+      // value of the property to call the function
+      (replyKeyboardMarkup[
+        method as ReplyKeyboardMethods
+      ] as CallableFunction)(value);
+    }
+
+    // Otherwise, if the value is a boolean and is true
+    else if (value) {
+
+      // Calls the function with the value
+      // This is just to get typescript to behave when using the string
+      // value of the property to call the function
+      (replyKeyboardMarkup[
+        method as ReplyKeyboardMethods
+      ] as CallableFunction)(value);
+    }
+  }
+
+  // Returns the reply keyboard
+  return replyKeyboardMarkup;
 }
 
 
@@ -424,10 +520,17 @@ export function wrapCallbackWithMessageDeleter(callback: (ctx: Scenes.WizardCont
 
 
 // Prompts the user for an input
-export async function promptUserForInput(ctx: Scenes.WizardContext, message: string) {
+export async function promptUserForInput(
+  ctx: Scenes.WizardContext,
+  message: string,
+  additionalArgs = {}
+) {
   
   // Asks the user for an input
-  const botMessage = await ctx.reply(`${message} ${EXIT_MESSAGE}`, { parse_mode: "HTML" });
+  const botMessage = await ctx.reply(
+    `${message} ${EXIT_MESSAGE}`,
+    { parse_mode: "HTML", ...additionalArgs }
+  );
 
   // Mark the user's message as well as the bot's message for deletion if possible
   markMessageForDeletion(ctx, ctx.message!.message_id, botMessage.message_id);
@@ -435,7 +538,7 @@ export async function promptUserForInput(ctx: Scenes.WizardContext, message: str
 
 
 // The function to exit a validator (cancel the ongoing operation)
-async function exitValidator(ctx: Scenes.WizardContext) {
+export async function exitValidator(ctx: Scenes.WizardContext) {
 
   // Tells the user that the operation has been cancelled
   await ctx.reply(OPERATION_CANCELLED_MSG);

@@ -2,8 +2,16 @@
 
 import { Scenes, Composer } from "telegraf";
 import * as filters from "telegraf/filters";
-import { removeCommand, cancelCommand, removeBotUsername, createWizardScene, markMessageForDeletion, promptUserForInput } from "./bot-utils";
+import {
+  removeCommand,
+  cancelCommand,
+  removeBotUsername,
+  createWizardScene,
+  markMessageForDeletion,
+  promptUserForInput
+} from "./bot-utils";
 import { trainingMsgScenes } from "./command-utils/training-message";
+import { createPollMessageScene } from "./command-utils/poll";
 
 
 // The wizard scene to validate user input
@@ -51,7 +59,8 @@ validateHandler.on(filters.message("text"), async ctx => {
     return await promptUserForInput(ctx, message);
   }
 
-  // Otherwise, mark the current message sent by the user for deletion if possible
+  // Otherwise, mark the current message sent
+  // by the user for deletion if possible
   markMessageForDeletion(ctx, ctx.message.message_id);
 
   // Get the callback function from the state
@@ -74,8 +83,9 @@ const validateScene = createWizardScene("validate", validateHandler);
 // The list of all the scenes to attach to the telegram bot
 const scenes = [
   validateScene,
+  createPollMessageScene,
   ...trainingMsgScenes
-];
+] as const;
 
 // The scene stage to attach to the telegram bot
 export const stage = new Scenes.Stage<Scenes.WizardContext>(scenes);
