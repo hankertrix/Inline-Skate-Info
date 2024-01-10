@@ -29,7 +29,7 @@ export async function load({ url: { searchParams } }: LoadEvent) {
   // not be able to resolve the correct path and import the pagefind library.
   // @ts-ignore: pagefind will be available after the site is built
   const pagefind = await import(
-    `$lib/../../static/${PAGEFIND_BUNDLE_FOLDER}/pagefind.js`
+    `$lib/../../static/pagefind/pagefind.js`
   ) as Pagefind;
 
   // Set the bundle directory
