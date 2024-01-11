@@ -282,8 +282,7 @@ export function generatePollMessage(
       `${input}${pollType}\n\n${pollPortion}`,
       {
         parse_mode: "HTML",
-        ...inlineKeyboard,
-        ...Markup.removeKeyboard()
+        ...inlineKeyboard
       }
     );
   }

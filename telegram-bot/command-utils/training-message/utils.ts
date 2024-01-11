@@ -182,6 +182,9 @@ export function getUpcomingTrainingDates(
       }
     }
 
+    // Add a day to the temporary date
+    tempDate = utils.addDays(tempDate, 1);
+
     // If the number of training dates required is reached, breaks the loop
     if (upcomingTrainingDates.length === numOfTrainingDates) continueLoop = false;
   }
