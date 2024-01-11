@@ -1077,21 +1077,28 @@ export const createPollMessageScene = new Scenes.WizardScene(
         // Save the poll option to the state
         state.pollOptions.push(message);
 
-        // If the there are additional options
-        if (state.additionalOptionsFuncList?.length) {
+        // If the there are no additional options
+        if (!state.additionalOptionsFuncList?.length) {
 
-          // Set the additional options index to 0
-          state.additionalOptionsIndex = 0;
-
-          // Calls the function at that index
-          // to get the prompt for the user
-          await state.additionalOptionsFuncList[
-            state.additionalOptionsIndex
-          ](ctx, "", state);
-
-          // Goes to the next scene
-          return ctx.wizard.next();
+          // Tells the user to enter a poll option
+          // and exit the function
+          return await promptUserForInput(
+            ctx,
+            pollOptionMsg.replace("the next", "a")
+          );
         }
+
+        // Otherwise, set the additional options index to 0
+        state.additionalOptionsIndex = 0;
+
+        // Calls the function at that index
+        // to get the prompt for the user
+        await state.additionalOptionsFuncList[
+          state.additionalOptionsIndex
+        ](ctx, "", state);
+
+        // Goes to the next scene
+        return ctx.wizard.next();
       }
     }
   ),
