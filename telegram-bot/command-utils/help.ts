@@ -151,7 +151,12 @@ function getCommandDict() {
 
     "poll_msg": {
       explanation: "Gets the bot to send a @countmeinbot style poll message but with only one option called 'Coming'. You can also add the bot as an admin to your group to have the bot automatically delete the messages you sent to create the poll.",
-      usage: "<poll message>"
+      usage: "<poll message (optional)>"
+    },
+
+    "create_poll_msg": {
+      explnation: "Create a @countmeinbot style poll with custom poll options. The bot will guide you through the process of creating a poll message using this function and will automatically delete the messages you sent to create the poll.",
+      usage: "<poll message (optional)>"
     },
 
     "trg_msg": {

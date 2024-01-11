@@ -1120,6 +1120,11 @@ bot.on(filters.callbackQuery("data"), async ctx => {
 
 // The handler for the create poll message command
 bot.command([
+  "create_poll_msg",
+  "create_custom_poll_msg",
+  "make_poll_msg",
+  "make_custom_poll_msg",
+  "custom_poll_msg",
   "create_poll_message",
   "create_custom_poll_message",
   "make_poll_message",
