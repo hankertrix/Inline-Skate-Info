@@ -242,7 +242,7 @@ export function createPollPortion(
   }
 
   // Returns the poll portion
-  return `${pollPortionList.join(SPACING)}${SPACING}${
+  return `${utils.stripHtml(pollPortionList.join(SPACING))}${SPACING}${
     createNumberOfPeoplePortion(
       0, formatOptions.messageFooter
     )
