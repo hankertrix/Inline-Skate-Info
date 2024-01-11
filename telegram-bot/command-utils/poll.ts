@@ -1111,22 +1111,9 @@ export const createPollMessageScene = new Scenes.WizardScene(
         // Save the message to the state
         state.message = message;
 
-        // Tells the user to select a numbering style
-        await promptUserForInput(
-          ctx,
-          "Please select a numbering style from the list for the poll message.",
-          { ...generateReplyKeyboard(
-            createNumberingStylesList(),
-              {
-                oneTime: true,
-                resize: true,
-                placeholder: "Choose a numbering style..."
-              }
-          ) }
-        );
-
-        // Go to the next function in the scene
-        return ctx.wizard.next();
+        // Calls the next function in the scene
+        // and exit the function
+        return await callNextStep(ctx, next);
       }
     }
   ),
@@ -1160,7 +1147,7 @@ export const createPollMessageScene = new Scenes.WizardScene(
         // and exit the function
         return await promptUserForInput(
           ctx,
-          "Please choose a valid numbering style from the list.",
+          "Please choose a numbering style from the list.",
           { ...generateReplyKeyboard(
               numberingStyles,
               {
