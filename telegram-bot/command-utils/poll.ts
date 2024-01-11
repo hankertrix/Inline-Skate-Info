@@ -826,6 +826,11 @@ const pollOptionMsg = `Please enter the next poll option.
 Use the /done command to get the bot to send the poll message.`;
 
 
+// The regex to get the numbering style from the string
+// generated from the createNumberingStylesList function
+const getNumberingStyleFromStringRegex = /^[A-Za-z_ ]+/;
+
+
 // The function to handle the done command
 async function doneCommandHandler(ctx: Scenes.WizardContext) {
 
@@ -918,6 +923,15 @@ export function createNumberingStylesList() {
 
   // Returns the list of numbering styles
   return numberingStyles;
+}
+
+
+// The function to get the numbering style from the string
+// created by the createNumberingStylesList function
+export function getNumberingStyleFromString(str: string) {
+  return str.replace(
+    getNumberingStyleFromStringRegex, ""
+  ).trim() as NumberingStyle;
 }
 
 
@@ -1071,7 +1085,7 @@ export const createPollMessageScene = new Scenes.WizardScene(
       else {
 
         // Save the numbering style to the state
-        state.numberingStyle = message as NumberingStyle;
+        state.numberingStyle = getNumberingStyleFromString(message);
 
         // Gets the user to send the first poll option
         await promptUserForInput(
