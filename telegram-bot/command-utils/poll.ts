@@ -581,7 +581,7 @@ export function regeneratePollPortion(
 
   // Create the poll portion for the given poll option
   const pollPortion = `${pollPortionHeader}\n${
-    pollPortionList.join("\n").trim()
+    utils.stripHtml(pollPortionList.join("\n").trim())
   }`;
 
   // Returns the poll portion
@@ -617,6 +617,10 @@ export function reformPollMessage(
   // or removed from the poll
   let removed: boolean | null = null;
 
+  // Initiliase the variable to indicate whether the name has been
+  // tagged or untagged on the poll
+  let tagged: boolean | null = null;
+
   // Adds the poll message and the selected poll portion
   // to the reformed poll message list
   reformedPollMessageList.push(pollMessage);
@@ -629,7 +633,12 @@ export function reformPollMessage(
 
     // Calls the function to generate the poll portion
     // and get the number of people who responded to that poll option
-    const { pollPortion, names, nameRemoved } = regeneratePollPortion(
+    const {
+      pollPortion,
+      names,
+      nameRemoved,
+      nameTagged
+    } = regeneratePollPortion(
       message,
       pollOption,
       isSelected,
@@ -649,6 +658,10 @@ export function reformPollMessage(
     // If the nameRemoved variable isn't null,
     // then set the removed variable to its value
     if (nameRemoved !== null) removed = nameRemoved;
+
+    // If the nameTagged variable isn't null,
+    // then set the tagged variable to its value
+    if (nameTagged !== null) tagged = nameTagged;
   }
 
   // Gets the number of unique people who responded
@@ -666,7 +679,11 @@ export function reformPollMessage(
   const reformedPollMessage = reformedPollMessageList.join("\n\n");
 
   // Returns the reformed poll message
-  return { reformedPollMessage: reformedPollMessage, removed: removed };
+  return {
+    reformedPollMessage: reformedPollMessage,
+    removed: removed,
+    tagged: tagged
+  };
 }
 
 
