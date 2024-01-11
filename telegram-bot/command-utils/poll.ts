@@ -561,8 +561,10 @@ export function regeneratePollPortion(
     names.push(givenName);
   }
 
-  // If the numbering should be preserved
-  if (preserveNumbering) {
+  // If the numbering style is not NONE,
+  // and there are no names on the poll option,
+  // or if the numbering should be preserved
+  if (numberingStyle && names.length < 1 || preserveNumbering) {
 
     // Iterates from the number of people to the total number of matches
     for (let index = names.length; index < matches.length; ++index) {
