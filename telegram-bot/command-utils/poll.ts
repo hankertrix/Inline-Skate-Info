@@ -80,6 +80,7 @@ export const DEFAULT_POLL_OPTIONS = ["Coming"];
 // The type of the format option variable
 export type FormatOption = {
   formatStr: string,
+  bold: boolean,
   default: string,
   zero?: string | null,
   one?: string | null
@@ -110,6 +111,10 @@ export const DEFAULT_FORMAT_OPTIONS: FormatOptions = {
     // the poll option.
     formatStr: "{pollOption} {people}",
 
+    // Whether to bold the header or not.
+    // The poll option header should be bolded.
+    bold: true,
+
     // The string to display when there is more than one person.
     // This is also the string that will be used if no string is given
     // for zero and one.
@@ -127,6 +132,10 @@ export const DEFAULT_FORMAT_OPTIONS: FormatOptions = {
 
     // The format string for the header of the poll message.
     formatStr: "👥 {people} responded",
+
+    // Whether to bold the message footer or not.
+    // The message footer should not be bolded.
+    bold: false,
 
     // The string to display when there is more than one person.
     // This is also the string that will be used if no string is given
@@ -191,13 +200,17 @@ function createNumberOfPeoplePortion(
     { number: numberOfPeople }
   );
 
-  // Returns the header for the poll option
-  return utils.bold(
-    utils.strFormat(
-      formatOption.formatStr,
-      { people: numberOfPeopleString, ...additionalSubstitutions }
-    ).trim()
-  );
+  // Gets the number of people portion of the poll message
+  const numberOfPeoplePortion = utils.strFormat(
+    formatOption.formatStr,
+    { people: numberOfPeopleString, ...additionalSubstitutions }
+  ).trim();
+
+  // Returns the number of people portion of the poll message
+  // and bold it if it is needed
+  return formatOption.bold ? utils.bold(
+    numberOfPeoplePortion
+  ) : numberOfPeoplePortion;
 }
 
 
