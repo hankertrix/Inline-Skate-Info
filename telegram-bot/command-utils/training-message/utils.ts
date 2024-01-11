@@ -189,8 +189,6 @@ export function getUpcomingTrainingDates(
     if (upcomingTrainingDates.length === numOfTrainingDates) continueLoop = false;
   }
 
-  console.log(upcomingTrainingDates);
-
   // Returns the upcoming training date if there's only one
   // Otherwise, return the list of upcoming trainings dates
   return upcomingTrainingDates.length === 1 ? upcomingTrainingDates[0] : upcomingTrainingDates;
