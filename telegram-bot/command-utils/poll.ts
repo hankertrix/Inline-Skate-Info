@@ -810,13 +810,13 @@ const sceneName = "createPollMessage";
 // The incomplete data message for the poll message creation scene
 const incompleteDataMessage = `The poll message is still missing some required data for it to be generated.
 
-Please continue the poll message creation process or use the ${utils.monospace("/cancel")} command to cancel the creation of the poll message.`;
+Please continue the poll message creation process or use the /cancel command to cancel the creation of the poll message.`;
 
 
 // The poll option message
 const pollOptionMsg = `Please enter the next poll option.
 
-Use the ${utils.monospace("/done")} command to get the bot to send the poll message.`;
+Use the /done command to get the bot to send the poll message.`;
 
 
 // The function to handle the done command
@@ -1117,7 +1117,7 @@ export const createPollMessageScene = new Scenes.WizardScene(
           // and exit the function
           return await promptUserForInput(
             ctx,
-            pollOptionMsg.replace("the next", "a")
+            pollOptionMsg
           );
         }
 
