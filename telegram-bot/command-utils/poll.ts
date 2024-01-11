@@ -193,7 +193,7 @@ function createNumberOfPeoplePortion(
     utils.strFormat(
       formatOption.formatStr,
       { people: numberOfPeopleString, ...additionalSubstitutions }
-    )
+    ).trim()
   );
 }
 
