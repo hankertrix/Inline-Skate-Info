@@ -10,10 +10,17 @@
   import NavBar from '$lib/components/layout/nav-bar/NavBar.svelte';
   import ScrollUpButton from '$lib/components/layout/ScrollUpButton.svelte';
 
+  // Import all the constants required
+  import {
+    PAGEFIND_BUNDLE_PATH,
+    PAGEFIND_HIGHLIGHT_PARAM
+  } from '$lib/constants';
+
   // Other imports
   import { onMount } from 'svelte';
 
-  // Function to run when the component is mounted
+  // Function to create a media query listener
+  // when the component is mounted
   onMount(() => {
 
     // The media query for the user's theme preference
@@ -31,6 +38,27 @@
 
     // Returns the function to remove the media query listener
     return () => mq.removeListener(whenUserThemeChanges);
+  });
+
+
+  // Function to initialise the pagefind highlighting script
+  // when the component is mounted
+  onMount(async () => {
+
+    // Import the pagefind highlighting script.
+    // Ask vite to ignore this import as the pagefind highlighting script
+    // is only generated after building the site.
+    await import(
+      /* @vite-ignore */ `${PAGEFIND_BUNDLE_PATH}/pagefind-highlight.js`
+    );
+
+    // Initialise the pagefind highlighting script.
+    // The pagefind highlight class will be a global object when the
+    // pagefind highlight script is loaded, hence the expect error and ignore.
+    // @ts-expect-error: the pagefind highlight class will be a global
+    // eslint-disable-next-line  no-undef
+    new PagefindHighlight( { highlightParam: PAGEFIND_HIGHLIGHT_PARAM } );
+
   });
 
 </script>

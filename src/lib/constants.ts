@@ -33,7 +33,10 @@ export const OPERATION_CANCELLED_MSG = "The operation has been cancelled.";
 export const DEV = "@hankertrix";
 
 // The pagefind bundle folder
-export const PAGEFIND_BUNDLE_PATH = "/pagefind"
+export const PAGEFIND_BUNDLE_PATH = "/pagefind";
+
+// The pagefind highlight parameter
+export const PAGEFIND_HIGHLIGHT_PARAM = "highlight";
 
 // The dictionary containing all the zero width characters
 // mapped to the letters of the alphabet.

@@ -3,7 +3,10 @@
 import type { LoadEvent } from '@sveltejs/kit';
 import type { Pagefind } from '$lib/types';
 import { browser } from '$app/environment';
-import { PAGEFIND_BUNDLE_PATH } from '$lib/constants';
+import {
+  PAGEFIND_BUNDLE_PATH,
+  PAGEFIND_HIGHLIGHT_PARAM
+} from '$lib/constants';
 
 // Don't prerender this page
 export const prerender = false;
@@ -14,7 +17,8 @@ export async function load({ url: { searchParams } }: LoadEvent) {
   // Gets the search query from search params
   const searchQuery = searchParams.get('q')?.trim();
 
-  // If the environment isn't the browser or if the search query isn't given, exit the function immediately and return an empty result
+  // If the environment isn't the browser or if the search query isn't given,
+  // exit the function immediately and return an empty result
   if (!browser || !searchQuery || searchQuery.length < 1)
     return {
       searchTerm: searchQuery,
@@ -32,6 +36,7 @@ export async function load({ url: { searchParams } }: LoadEvent) {
   // Set the bundle directory
   await pagefind.options({
     bundlePath: `${PAGEFIND_BUNDLE_PATH}/`,
+    highlightParam: PAGEFIND_HIGHLIGHT_PARAM
   });
 
   // Initialise pagefind
