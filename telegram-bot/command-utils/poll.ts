@@ -428,9 +428,7 @@ export function getPollOptionSegment(message: string, pollOption: string) {
 
 
 // Function to get the maximum number of entries for a poll option
-function getPollOptionMaxEntries(
-  pollOptionLine: string,
-) {
+function getPollOptionMaxEntries(pollOptionLine: string) {
 
   // Search for the maximum entries in line containing the poll option
   const match = pollOptionLine.match(getMaxEntriesRegex);
@@ -615,8 +613,23 @@ export function regeneratePollPortion(
   // or if the lines in the poll message should be preserved
   if (numberingStyle && names.length < 1 || preserveLines) {
 
-    // Iterates from the number of people to the total number of matches
-    for (let index = names.length; index < matches.length; ++index) {
+    // Set the maximum number of lines to the maximum number of entries.
+    // If the maximum number of entries is infinity, then set the
+    // maximum number of entries to 0, as there's no maximum.
+    // The preserve lines option is to preserve the number of lines
+    // when there is a limit on the number of people for the poll.
+    // It wouldn't make sense to keep on increasing the number of lines,
+    // especially if people remove their names from the poll,
+    // as the lines will still be there.
+    let maxNumberOfLines = Number.isFinite(maxEntries) ? maxEntries : 0;
+
+    // If there is no one left on the poll,
+    // then set the maximum number of lines to 1.
+    // This is so that the numbering style can still be preserved
+    if (names.length < 1) maxNumberOfLines = 1;
+
+    // Iterates from the number of people to the maximum number of lines
+    for (let index = names.length; index < maxNumberOfLines; ++index) {
 
       // Adds the numbering to the list
       pollPortionList.push(`${createNumbering(numberingStyle, index)}`);
