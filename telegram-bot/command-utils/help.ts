@@ -155,7 +155,7 @@ function getCommandDict() {
     },
 
     "create_poll_msg": {
-      explnation: "Create a @countmeinbot style poll with custom poll options. The bot will guide you through the process of creating a poll message using this function and will automatically delete the messages you sent to create the poll.",
+      explanation: "Create a @countmeinbot style poll with custom poll options. The bot will guide you through the process of creating a poll message using this function and will automatically delete the messages you sent to create the poll.",
       usage: "<poll message (optional)>"
     },
 
