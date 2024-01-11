@@ -22,11 +22,9 @@ export async function load({ url: { searchParams } }: LoadEvent) {
     };
 
   // Otherwise, import pagefind
-  // Asks typescript to expect an error with the import so that the
+  // Asks vite to ignore an error with the import so that the
   // site can be successfully built as the pagefind file is only available
   // after the site is built.
-  // The path given here cannot have any variables, otherwise Sveltekit would
-  // not be able to resolve the correct path and import the pagefind library.
   const pagefind = await import(
     /* @vite-ignore */ `${PAGEFIND_BUNDLE_PATH}/pagefind.js`
   ) as Pagefind;
