@@ -1206,7 +1206,7 @@ export const createPollMessageScene = new Scenes.WizardScene(
         // and exit the function
         return await promptUserForInput(
           ctx,
-          pollOptionMsg.replace("another", "a")
+          "Please enter a poll option."
         );
       }
 
