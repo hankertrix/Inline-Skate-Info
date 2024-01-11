@@ -221,7 +221,14 @@ export function createPollPortion(
     ];
 
     // Gets the max entries for the poll option
-    const maxEntries = maxEntriesList[index] ? maxEntriesList[index] : 0;
+    let maxEntries = maxEntriesList[index] ? maxEntriesList[index] : 0;
+
+    // If the numbering style is present,
+    // and the maximum number of entries less than 1.
+    // then set the maximum number of entries to 1.
+    // This is to generate one empty line with the numbering style
+    // so that the callback query knows what numbering style is being used
+    if (numberingStyle && maxEntries < 1) maxEntries = 1;
 
     // Iterates until the maximum number of entries is hit
     for (let i = 0; i < maxEntries; ++i) {
@@ -898,8 +905,15 @@ export function createNumberingStylesList() {
   // Iterate over the numbering style constant
   for (const [property, value] of Object.entries(NUMBERING_STYLES)) {
 
-    // Adds the property and the value to the list of numbering styles
-    numberingStyles.push(`${property} ${value}`.trim());
+    // Replace the underscores with a space
+    let propertyStr = property.replaceAll("_", " ").trim();
+
+    // Titlecase the property string
+    propertyStr = utils.titlecase(propertyStr);
+
+    // Adds the property string
+    // and the value to the list of numbering styles
+    numberingStyles.push(`${propertyStr} ${value}`.trim());
   }
 
   // Returns the list of numbering styles
