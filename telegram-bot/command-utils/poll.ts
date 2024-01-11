@@ -10,7 +10,7 @@ import type {
   ObjectValues,
   InlineKeyboardGenerator
 } from "../types";
-import { Scenes, Composer } from "telegraf";
+import { Scenes, Composer, Markup } from "telegraf";
 import * as filters from "telegraf/filters";
 import * as utils from "../utils";
 import {
@@ -280,7 +280,11 @@ export function generatePollMessage(
     // Sends a poll with the user's input
     return await ctx.reply(
       `${input}${pollType}\n\n${pollPortion}`,
-      { parse_mode: "HTML", ...inlineKeyboard }
+      {
+        parse_mode: "HTML",
+        ...inlineKeyboard,
+        ...Markup.removeKeyboard()
+      }
     );
   }
 
@@ -961,7 +965,12 @@ export const createPollMessageScene = new Scenes.WizardScene(
           ctx,
           "Please select a numbering style from the list for the poll message.",
           { ...generateReplyKeyboard(
-            createNumberingStylesList()
+            createNumberingStylesList(),
+              {
+                oneTime: true,
+                resize: true,
+                placeholder: "Choose a numbering style..."
+              }
           ) }
         );
 
@@ -1003,7 +1012,14 @@ export const createPollMessageScene = new Scenes.WizardScene(
         return await promptUserForInput(
           ctx,
           "Please choose a valid numbering style from the list.",
-          { ...generateReplyKeyboard(numberingStyles) }
+          { ...generateReplyKeyboard(
+              numberingStyles,
+              {
+                oneTime: true,
+                resize: true,
+                placeholder: "Choose a numbering style..."
+              }
+          ) }
         );
       }
 
@@ -1014,7 +1030,11 @@ export const createPollMessageScene = new Scenes.WizardScene(
         state.numberingStyle = message as NumberingStyle;
 
         // Gets the user to send the first poll option
-        await promptUserForInput(ctx, "Please enter the first poll option.");
+        await promptUserForInput(
+          ctx,
+          "Please enter the first poll option.",
+          { ...Markup.removeKeyboard() }
+        );
 
         // Go to the next function in the scene
         return ctx.wizard.next();

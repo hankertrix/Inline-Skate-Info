@@ -541,7 +541,11 @@ export async function promptUserForInput(
 export async function exitValidator(ctx: Scenes.WizardContext) {
 
   // Tells the user that the operation has been cancelled
-  await ctx.reply(OPERATION_CANCELLED_MSG);
+  // and removes any reply keyboard generated
+  await ctx.reply(
+    OPERATION_CANCELLED_MSG,
+    { ...Markup.removeKeyboard() }
+  );
 
   // Exits the scene
   await ctx.scene.leave();
