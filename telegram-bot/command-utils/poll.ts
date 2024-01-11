@@ -891,7 +891,7 @@ export function createNumberingStylesList() {
   for (const [property, value] of Object.entries(NUMBERING_STYLES)) {
 
     // Adds the property and the value to the list of numbering styles
-    numberingStyles.push(`${property} - ${value}`);
+    numberingStyles.push(`${property} ${value}`.trim());
   }
 
   // Returns the list of numbering styles
@@ -937,6 +937,8 @@ export const createPollMessageScene = new Scenes.WizardScene(
 
       // Gets the message text from the message
       message = removeBotUsernameAndCommand(message);
+
+      console.log(message);
 
       // If the message is empty
       if (!message) {
@@ -988,8 +990,10 @@ export const createPollMessageScene = new Scenes.WizardScene(
       // Remove the command and the bot's username from the message
       message = removeBotUsernameAndCommand(message);
 
+      console.log(message);
+
       // Gets the list of numbering styles
-      const numberingStyles = createNumberingStylesList()
+      const numberingStyles = createNumberingStylesList();
 
       // If the message is not one of the accepted numbering styles
       if (!(message in numberingStyles)) {
@@ -1036,6 +1040,8 @@ export const createPollMessageScene = new Scenes.WizardScene(
 
       // Gets the message text from the message
       message = removeBotUsernameAndCommand(message);
+
+      console.log(message);
 
       // If the message is empty
       if (!message) {
@@ -1102,6 +1108,8 @@ export const createPollMessageScene = new Scenes.WizardScene(
 
       // Gets the message text from the message
       message = removeBotUsernameAndCommand(message);
+
+      console.log(message);
 
       // Calls the function at the current index
       // and get whether the function is successful or not
