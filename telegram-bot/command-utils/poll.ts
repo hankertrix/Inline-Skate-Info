@@ -998,13 +998,11 @@ export const createPollMessageScene = new Scenes.WizardScene(
       // Remove the command and the bot's username from the message
       message = removeBotUsernameAndCommand(message);
 
-      console.log(message);
-
       // Gets the list of numbering styles
       const numberingStyles = createNumberingStylesList();
 
       // If the message is not one of the accepted numbering styles
-      if (!(message in numberingStyles)) {
+      if (!numberingStyles.includes(message)) {
 
         // Tells the user to enter a valid numbering style
         // and exit the function
