@@ -911,7 +911,7 @@ Please continue the poll message creation process or use the /cancel command to 
 
 
 // The poll option message
-const pollOptionMsg = `Please enter the next poll option.
+const pollOptionMsg = `Please enter another poll option.
 
 Use the /done command to get the bot to send the poll message.`;
 
@@ -1219,7 +1219,7 @@ export const createPollMessageScene = new Scenes.WizardScene(
         // and exit the function
         return await promptUserForInput(
           ctx,
-          pollOptionMsg.replace("the next", "a")
+          pollOptionMsg.replace("another", "a")
         );
       }
 
