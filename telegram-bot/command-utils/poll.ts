@@ -233,7 +233,7 @@ export function createPollPortion(
     const pollOptionLines: string[] = [];
 
     // Gets the max entries for the poll option
-    let maxEntries = maxEntriesList[index] ? maxEntriesList[index] : 0;
+    let maxEntries = maxEntriesList[index] ?? 0;
 
     // If the numbering style is present,
     // and the maximum number of entries less than 1.
@@ -347,10 +347,14 @@ function getIndexOrDefaultValue(
 export function getPollOptionSegment(message: string, pollOption: string) {
 
   // Gets the index of the poll option in the message
-  // and set it to zero if the index is not found
-  const pollOptionIndex = getIndexOrDefaultValue(
-    message.indexOf(pollOption), 0
-  );
+  // and set it to zero if the index is not found.
+  // For now, I think it's okay to have it match from
+  // the beginning of the line, as I don't intend
+  // to have the format string have anything before the
+  // poll option.
+  const pollOptionIndex = message.match(
+    new RegExp(String.raw`^\b${pollOption}\b`, "m")
+  )?.index ?? 0;
 
   // Initialise the variable to store the index of the
   // new line before the poll option segment
@@ -412,7 +416,7 @@ function getPollOptionMaxEntries(
   // The regex.match function returns null if no match is found,
   // so returning an array with two null values instead of null allows
   // the destructuring to still work.
-  const [ , maxEntries] = match ? match : [null, null];
+  const [ , maxEntries] = match ?? [null, null];
 
   // Returns the maximum number of entries that has been gotten from
   // the poll option line.
@@ -799,7 +803,8 @@ export async function callback_handler(
 
   // Answers the callback query
   await ctx.answerCbQuery(
-    `Your name has been ${removed ? "removed from" : "added to"
+    `Your name has been ${
+      removed ? "removed from" : "added to"
     } '${pollOption}'!`
   );
 
@@ -893,12 +898,11 @@ async function doneCommandHandler(ctx: Scenes.WizardContext) {
   const { message, callback } = generatePollMessage(
     state.message,
     state.pollOptions,
-    state.maxEntriesList ? state.maxEntriesList : [],
-    state.numberingStyle ? state.numberingStyle : DEFAULT_NUMBERING_STYLE,
-    state.formatOptions ? state.formatOptions : DEFAULT_FORMAT_OPTIONS,
-    state.pollType ? state.pollType : POLL_TYPES.DEFAULT,
-    state.inlineKeyboardGenerator ?
-      state.inlineKeyboardGenerator : generateInlineKeyboard
+    state.maxEntriesList ?? [],
+    state.numberingStyle ?? DEFAULT_NUMBERING_STYLE,
+    state.formatOptions ?? DEFAULT_FORMAT_OPTIONS,
+    state.pollType ?? POLL_TYPES.DEFAULT,
+    state.inlineKeyboardGenerator ?? generateInlineKeyboard
   );
 
   // Calls the callback to send the poll message
@@ -906,7 +910,7 @@ async function doneCommandHandler(ctx: Scenes.WizardContext) {
 
   // Delete all the messages sent by the user
   await deleteMessages(
-    ctx, ...(state.messagesToDelete ? state.messagesToDelete : [])
+    ctx, ...(state.messagesToDelete ?? [])
   );
 
   // Exit the scene
@@ -1023,7 +1027,7 @@ export const createPollMessageScene = new Scenes.WizardScene(
       const state = ctx.wizard.state as CreatePollMessageState;
 
       // Set the poll options in the state if it has not been initialised
-      state.pollOptions = state.pollOptions ? state.pollOptions : [];
+      state.pollOptions = state.pollOptions ?? [];
 
       // Marks the given message for deletion
       markMessageForDeletion(ctx, ctx.message.message_id);
@@ -1216,8 +1220,7 @@ export const createPollMessageScene = new Scenes.WizardScene(
       const state = ctx.wizard.state as CreatePollMessageState;
 
       // Set the additional options index if it hasn't been set yet
-      state.additionalOptionsIndex =
-        state.additionalOptionsIndex ? state.additionalOptionsIndex : 0;
+      state.additionalOptionsIndex = state.additionalOptionsIndex ?? 0;
 
       // Gets the additional options index
       let index = state.additionalOptionsIndex;
