@@ -863,7 +863,12 @@ async function doneCommandHandler(ctx: Scenes.WizardContext) {
 
 
 // Function to create a step in the poll message scene
-function createStep(func: (ctx: Scenes.WizardContext) => Promise<unknown>) {
+function createStep(
+  func: (
+    ctx: Scenes.WizardContext,
+    next: () => Promise<void>
+  ) => Promise<unknown>
+) {
 
   // Create a new composer
   const composer = new Composer<Scenes.WizardContext>();
@@ -902,6 +907,37 @@ export function createNumberingStylesList() {
 }
 
 
+// Function to call the next step's function in a scene
+export async function callNextStep(
+  ctx: Scenes.WizardContext,
+  next: () => Promise<void>
+) {
+
+  // Goes to the next step in the scene
+  ctx.wizard.next();
+
+  // Gets the next step
+  const nextStep = ctx.wizard.step;
+
+  // If the next step is empty, then return null
+  if (nextStep == null) return null;
+
+  // If the next step is a function
+  else if (typeof nextStep === "function") {
+
+    // Call the function
+    return await nextStep(ctx, next);
+  }
+
+  // Otherwise, the next step is a composer object
+  else {
+
+    // Calls the function by unwrapping it using the Composer object
+    return await Composer.unwrap(nextStep)(ctx, next);
+  }
+}
+
+
 // The create poll message scene
 export const createPollMessageScene = new Scenes.WizardScene(
 
@@ -910,7 +946,7 @@ export const createPollMessageScene = new Scenes.WizardScene(
 
   // The first step to get the poll message
   createStep(
-    async (context: Scenes.WizardContext) => {
+    async (context: Scenes.WizardContext, next: () => Promise<void>) => {
 
       // Cast the context to the correct type
       const ctx = context as CreatePollMessageContext;
@@ -927,12 +963,9 @@ export const createPollMessageScene = new Scenes.WizardScene(
       // If the message is already given
       if (state.message) {
 
-        // Go to the next function in the scene
-        ctx.wizard.next();
-
         // Calls the next function in the scene
         // and exit the function
-        return await (ctx.wizard.step as CallableFunction)(ctx);
+        return await callNextStep(ctx, next);
       }
 
       // Otherwise, gets the message sent by the user
