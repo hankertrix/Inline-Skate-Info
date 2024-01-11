@@ -23,8 +23,11 @@ import {
   generateInlineKeyboard,
   generateReplyKeyboard
 } from "../bot-utils"
-import { SPACING } from "../../src/lib/constants";
 
+
+// The constant representing the standard spacing to be used
+// in the poll message
+const POLL_SPACING = "\n\n";
 
 // The enum representing the various poll types
 export const POLL_TYPES = {
@@ -247,7 +250,7 @@ export function createPollPortion(
   }
 
   // Returns the poll portion
-  return `${pollPortionList.join(SPACING)}${SPACING}${
+  return `${pollPortionList.join(POLL_SPACING)}${POLL_SPACING}${
     createNumberOfPeoplePortion(
       0, formatOptions.messageFooter
     )
@@ -291,7 +294,7 @@ export function generatePollMessage(
 
     // Sends a poll with the user's input
     return await ctx.reply(
-      `${input}${pollType}\n\n${pollPortion}`,
+      `${input}${pollType}${POLL_SPACING}${pollPortion}`,
       {
         parse_mode: "HTML",
         ...inlineKeyboard
@@ -681,7 +684,7 @@ export function reformPollMessage(
   reformedPollMessageList.push(respondedPortion);
 
   // Reform the poll message
-  const reformedPollMessage = reformedPollMessageList.join("\n\n");
+  const reformedPollMessage = reformedPollMessageList.join(POLL_SPACING);
 
   // Returns the reformed poll message
   return {
