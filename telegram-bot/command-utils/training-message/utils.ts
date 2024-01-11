@@ -63,7 +63,14 @@ export async function handleTrgMsg(
 
     // Enters the scene to ask the user for their message for the training message
     // Also, tells the user that they haven't set up the training message for the chat and ask them to contact the developer if they want to get one set up
-    return await ctx.scene.enter("validate", { message: `No training message was found for this chat, so please enter the desired training message. If you want to set up a poll message for this chat, please contact ${DEV}.`, callback: wrappedCallback, messagesToDelete: [] })
+    return await ctx.scene.enter(
+      "validate",
+      {
+        message: `No training message was found for this chat, so please enter the desired training message. If you want to set up a poll message for this chat, please contact ${DEV}.`,
+        callback: wrappedCallback,
+        messagesToDelete: []
+      }
+    );
   }
 
   // Otherwise, calls the callback function to create a training message
@@ -75,7 +82,10 @@ export async function handleTrgMsg(
 
 
 // Function set the time on the upcoming training date
-function setTimeOnUpcomingTrainingDate(upcomingTrainingDate: Date, dateMapping: { [day: number]: Date }): Date {
+function setTimeOnUpcomingTrainingDate(
+  upcomingTrainingDate: Date,
+  dateMapping: { [day: number]: Date }
+): Date {
 
   // Gets the training date from the date mapping
   const trainingDate = dateMapping[upcomingTrainingDate.getDay()];
@@ -175,6 +185,8 @@ export function getUpcomingTrainingDates(
     // If the number of training dates required is reached, breaks the loop
     if (upcomingTrainingDates.length === numOfTrainingDates) continueLoop = false;
   }
+
+  console.log(upcomingTrainingDates);
 
   // Returns the upcoming training date if there's only one
   // Otherwise, return the list of upcoming trainings dates

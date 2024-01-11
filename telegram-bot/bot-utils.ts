@@ -185,7 +185,7 @@ export function generateInlineKeyboard(buttons: string[]) {
 
     // Adds the poll option button to the list
     inlineKeyboard.push(
-      Markup.button.callback(button, button)
+      [Markup.button.callback(button, button)]
     );
   }
 
