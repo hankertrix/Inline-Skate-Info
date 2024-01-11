@@ -214,11 +214,7 @@ export function createPollPortion(
 
     // The list containing the lines in the poll option
     // The first line is the poll option header
-    const pollOptionLines: string[] = [
-      createNumberOfPeoplePortion(
-        0, formatOptions.pollOptionHeader, { pollOption: pollOption }
-      )
-    ];
+    const pollOptionLines: string[] = [];
 
     // Gets the max entries for the poll option
     let maxEntries = maxEntriesList[index] ? maxEntriesList[index] : 0;
@@ -237,12 +233,21 @@ export function createPollPortion(
       pollOptionLines.push(`${createNumbering(numberingStyle, i)}`);
     }
 
+    // Create the poll option header
+    const pollOptionHeader = createNumberOfPeoplePortion(
+      0, formatOptions.pollOptionHeader, { pollOption: pollOption }
+    );
+
     // Adds the lines in the poll option to the list
-    pollPortionList.push(pollOptionLines.join("\n"));
+    pollPortionList.push(
+      `${pollOptionHeader}${
+        utils.stripHtml(pollOptionLines.join("\n"))
+      }`
+    );
   }
 
   // Returns the poll portion
-  return `${utils.stripHtml(pollPortionList.join(SPACING))}${SPACING}${
+  return `${pollPortionList.join(SPACING)}${SPACING}${
     createNumberOfPeoplePortion(
       0, formatOptions.messageFooter
     )
