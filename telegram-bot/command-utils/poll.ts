@@ -194,7 +194,7 @@ function createNumberOfPeoplePortion(
       formatOption.formatStr,
       { people: numberOfPeopleString, ...additionalSubstitutions }
     )
-  )
+  );
 }
 
 
@@ -240,7 +240,7 @@ export function createPollPortion(
 
     // Adds the lines in the poll option to the list
     pollPortionList.push(
-      `${pollOptionHeader}${
+      `${pollOptionHeader}\n${
         utils.stripHtml(pollOptionLines.join("\n"))
       }`
     );
