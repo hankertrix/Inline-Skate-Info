@@ -1041,6 +1041,8 @@ bot.command([
     [],
     commandUtils.poll.DEFAULT_NUMBERING_STYLE,
     commandUtils.poll.DEFAULT_FORMAT_OPTIONS,
+    commandUtils.poll.DEFAULT_PRESERVE_LINES,
+    commandUtils.poll.DEFAULT_SHOW_REMAINING,
     commandUtils.poll.POLL_TYPES.DEFAULT,
     generateInlineKeyboard
   );

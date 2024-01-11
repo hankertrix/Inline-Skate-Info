@@ -59,6 +59,14 @@ export const NUMBERING_STYLES = {
 // The default numbering style
 export const DEFAULT_NUMBERING_STYLE = NUMBERING_STYLES.NONE;
 
+// The default option for whether or not to preserve
+// the number of lines in the poll message
+export const DEFAULT_PRESERVE_LINES = false;
+
+// The default option for whether or not to show the
+// the remaining number of open slots in the poll message
+export const DEFAULT_SHOW_REMAINING = false;
+
 // The regex to get the numbering style
 // and the name from the poll option segment
 const numberingStyleAndNameRegex =
@@ -219,7 +227,9 @@ export function createPollPortion(
   pollOptions: string[],
   maxEntriesList: number[] = [],
   numberingStyle: NumberingStyle = DEFAULT_NUMBERING_STYLE,
-  formatOptions: FormatOptions = DEFAULT_FORMAT_OPTIONS
+  formatOptions: FormatOptions = DEFAULT_FORMAT_OPTIONS,
+  preserveLines: boolean = DEFAULT_PRESERVE_LINES,
+  showRemaining: boolean = DEFAULT_SHOW_REMAINING
 ) {
 
   // The list to contain the strings in the poll portion
@@ -233,25 +243,34 @@ export function createPollPortion(
     const pollOptionLines: string[] = [];
 
     // Gets the max entries for the poll option
-    let maxEntries = maxEntriesList[index] ?? 0;
+    const maxEntries = maxEntriesList[index] ?? 0;
 
     // If the numbering style is present,
-    // and the maximum number of entries less than 1.
-    // then set the maximum number of entries to 1.
+    // and the maximum number of entries less than 1,
+    // or the lines are to be preserved.
     // This is to generate one empty line with the numbering style
     // so that the callback query knows what numbering style is being used
-    if (numberingStyle && maxEntries < 1) maxEntries = 1;
+    if (numberingStyle && maxEntries < 1 || preserveLines) {
 
-    // Iterates until the maximum number of entries is hit
-    for (let i = 0; i < maxEntries; ++i) {
+      // Set the maximum number of lines to the maximum number of entries
+      // unless the maximum number of entries is less than 1,
+      // then the maximum number of lines is set to 1.
+      const maxNumberOfLines = maxEntries < 1 ? 1 : maxEntries;
 
-      // Add the numbering style to the list of poll option lines
-      pollOptionLines.push(`${createNumbering(numberingStyle, i)}`);
+      // Iterates until the maximum number of lines is hit
+      for (let i = 0; i < maxNumberOfLines; ++i) {
+
+        // Add the numbering style to the list of poll option lines
+        pollOptionLines.push(`${createNumbering(numberingStyle, i)}`);
+      }
     }
+
 
     // Create the poll option header
     const pollOptionHeader = createNumberOfPeoplePortion(
-      0, formatOptions.pollOptionHeader, { pollOption: pollOption }
+      showRemaining ? maxEntries : 0,
+      formatOptions.pollOptionHeader,
+      { pollOption: pollOption }
     );
 
     // Adds the lines in the poll option to the list
@@ -278,6 +297,8 @@ export function generatePollMessage(
   maxEntriesList: number[] = [],
   numberingStyle: NumberingStyle,
   formatOptions: FormatOptions = DEFAULT_FORMAT_OPTIONS,
+  preserveLines: boolean = DEFAULT_PRESERVE_LINES,
+  showRemaining: boolean = DEFAULT_SHOW_REMAINING,
   pollType: PollType = POLL_TYPES.DEFAULT,
   inlineKeyboardGenerator: InlineKeyboardGenerator = generateInlineKeyboard
 ) {
@@ -293,7 +314,9 @@ export function generatePollMessage(
     pollOptions,
     maxEntriesList,
     numberingStyle,
-    formatOptions
+    formatOptions,
+    preserveLines,
+    showRemaining
   );
 
   // Create the inline keyboard
@@ -433,8 +456,9 @@ export function regeneratePollPortion(
   selected: boolean,
   givenName: string | null,
   formatOption: FormatOption = DEFAULT_FORMAT_OPTIONS.pollOptionHeader,
-  tagString: string | null = null,
-  preserveNumbering: boolean = false
+  preserveLines: boolean = DEFAULT_PRESERVE_LINES,
+  showRemaining: boolean = DEFAULT_SHOW_REMAINING,
+  tagString: string | null = null
 ) {
 
   // Gets the poll option segment of the message
@@ -588,8 +612,8 @@ export function regeneratePollPortion(
 
   // If the numbering style is not NONE,
   // and there are no names on the poll option,
-  // or if the numbering should be preserved
-  if (numberingStyle && names.length < 1 || preserveNumbering) {
+  // or if the lines in the poll message should be preserved
+  if (numberingStyle && names.length < 1 || preserveLines) {
 
     // Iterates from the number of people to the total number of matches
     for (let index = names.length; index < matches.length; ++index) {
@@ -601,7 +625,9 @@ export function regeneratePollPortion(
 
   // Gets the poll portion header
   const pollPortionHeader = createNumberOfPeoplePortion(
-    names.length, formatOption, { pollOption: pollOption }
+    showRemaining ? maxEntries - names.length : names.length,
+    formatOption,
+    { pollOption: pollOption }
   );
 
   // Create the poll portion for the given poll option
@@ -628,8 +654,9 @@ export function reformPollMessage(
   pollOptions: string[],
   name: string,
   formatOptions: FormatOptions = DEFAULT_FORMAT_OPTIONS,
-  tagString: string | null = null,
-  preserveNumbering: boolean = false
+  preserveLines: boolean = DEFAULT_PRESERVE_LINES,
+  showRemaining: boolean = DEFAULT_SHOW_REMAINING,
+  tagString: string | null = null
 ) {
 
   // The list that contains the final message
@@ -669,8 +696,9 @@ export function reformPollMessage(
       isSelected,
       isSelected ? name : null,
       formatOptions.pollOptionHeader,
+      preserveLines,
+      showRemaining,
       tagString,
-      preserveNumbering
     );
 
     // Adds the poll portion to the reformed poll message list
@@ -798,7 +826,9 @@ export async function callback_handler(
     pollOption,
     pollOptions,
     name,
-    DEFAULT_FORMAT_OPTIONS
+    DEFAULT_FORMAT_OPTIONS,
+    DEFAULT_PRESERVE_LINES,
+    DEFAULT_SHOW_REMAINING
   );
 
   // Answers the callback query
@@ -847,7 +877,9 @@ export type CreatePollMessageState = {
   maxEntriesList?: number[],
   numberingStyle?: NumberingStyle,
   formatOptions?: FormatOptions,
-  pollType: PollType,
+  preserveLines?: boolean,
+  showRemaining?: boolean,
+  pollType?: PollType,
   inlineKeyboardGenerator?: InlineKeyboardGenerator,
   additionalOptionsFuncList?: AdditionalOptionsFunction[],
   additionalOptionsIndex?: number,
@@ -901,6 +933,8 @@ async function doneCommandHandler(ctx: Scenes.WizardContext) {
     state.maxEntriesList ?? [],
     state.numberingStyle ?? DEFAULT_NUMBERING_STYLE,
     state.formatOptions ?? DEFAULT_FORMAT_OPTIONS,
+    state.preserveLines ?? DEFAULT_PRESERVE_LINES,
+    state.showRemaining ?? DEFAULT_SHOW_REMAINING,
     state.pollType ?? POLL_TYPES.DEFAULT,
     state.inlineKeyboardGenerator ?? generateInlineKeyboard
   );

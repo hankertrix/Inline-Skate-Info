@@ -10,9 +10,11 @@ import {
 } from "../../bot-utils";
 import { DEV } from "../../../src/lib/constants";
 import {
-  DEFAULT_FORMAT_OPTIONS,
-  DEFAULT_POLL_OPTIONS,
   DEFAULT_NUMBERING_STYLE,
+  DEFAULT_FORMAT_OPTIONS,
+  DEFAULT_PRESERVE_LINES,
+  DEFAULT_SHOW_REMAINING,
+  DEFAULT_POLL_OPTIONS,
   POLL_TYPES,
   generatePollMessage,
 } from "../poll";
@@ -51,6 +53,8 @@ export async function handleTrgMsg(
     [],
     DEFAULT_NUMBERING_STYLE,
     DEFAULT_FORMAT_OPTIONS,
+    DEFAULT_PRESERVE_LINES,
+    DEFAULT_SHOW_REMAINING,
     POLL_TYPES.DEFAULT,
     generateInlineKeyboard,
   );

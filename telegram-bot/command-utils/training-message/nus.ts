@@ -18,8 +18,10 @@ import {
   generateInlineKeyboard,
 } from "../../bot-utils";
 import {
-  DEFAULT_FORMAT_OPTIONS,
   DEFAULT_NUMBERING_STYLE,
+  DEFAULT_FORMAT_OPTIONS,
+  DEFAULT_PRESERVE_LINES,
+  DEFAULT_SHOW_REMAINING,
   POLL_TYPES,
   generatePollMessage
 } from "../poll";
@@ -191,6 +193,8 @@ function createTrainingPollMsg(message: string, location: string, noRentals: boo
     [],
     DEFAULT_NUMBERING_STYLE,
     DEFAULT_FORMAT_OPTIONS,
+    DEFAULT_PRESERVE_LINES,
+    DEFAULT_SHOW_REMAINING,
     POLL_TYPES.DEFAULT,
     generateInlineKeyboard
   );
@@ -209,6 +213,8 @@ function createCustomTrgMsg(message: string, trainingDates: string[]) {
     [],
     DEFAULT_NUMBERING_STYLE,
     DEFAULT_FORMAT_OPTIONS,
+    DEFAULT_PRESERVE_LINES,
+    DEFAULT_SHOW_REMAINING,
     POLL_TYPES.DEFAULT,
     generateInlineKeyboard
   );
