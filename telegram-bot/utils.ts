@@ -408,7 +408,8 @@ export function stripHtml(text: string) {
   return text.replace(
     /[&<>]/g,
 
-    // The HTML characters in the given text are replaced with their respective HTML entities using the charToHtmlEntity dictionary
+    // The HTML characters in the given text are replaced with their
+    // respective HTML entities using the charToHtmlEntity dictionary
     char => dictGet(charToHtmlEntity, char, char) as string
   );
 }
