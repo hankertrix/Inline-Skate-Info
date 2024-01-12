@@ -316,8 +316,8 @@ function generateInlineQueryReply(
   message: string,
   id: string | number,
   options: OptionalPropertiesOf<InputMessageContent> = {},
-  markup: Types.Markup<InlineKeyboardMarkup> | null = null,
-  queryTitle: string = ""
+  queryTitle: string | null = null,
+  markup: Types.Markup<InlineKeyboardMarkup> | null = null
 ): InlineQueryResult {
 
   // Gets the query title from the title
@@ -385,7 +385,7 @@ export async function answerInlineQuery(
 
     // Creates the inline query reply
     const queryReply = generateInlineQueryReply(
-      title, firstMsg, 1, options, markup
+      title, firstMsg, 1, options, null, markup
     );
     
     // Replies to the inline query
@@ -418,7 +418,7 @@ export async function answerInlineQuery(
 
       // Creates the reply for each segment
       const queryReply = generateInlineQueryReply(
-        title, segment, index, options, titleWithPageNum
+        title, segment, index, options, titleWithPageNum, markup
       );
 
       // Adds the reply to the list of replies
