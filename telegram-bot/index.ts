@@ -1029,15 +1029,12 @@ bot.command([
   );
 
   // Gets the text from the message
-  const messageText = ctx.message.text;
-
-  // Gets the poll options
-  const pollOptions = commandUtils.poll.DEFAULT_POLL_OPTIONS;
+  const message = ctx.message.text;
 
   // Gets the message and the callback from the generatePollCallback function
-  const { message, callback } = commandUtils.poll.generatePollMessage(
-    messageText,
-    pollOptions,
+  const { pollMessage, callback } = commandUtils.poll.generatePollMessage(
+    message,
+    commandUtils.poll.DEFAULT_POLL_OPTIONS,
     [],
     commandUtils.poll.DEFAULT_NUMBERING_STYLE,
     commandUtils.poll.DEFAULT_FORMAT_OPTIONS,
@@ -1048,7 +1045,7 @@ bot.command([
   );
 
   // If the message is empty, enters the scene to get the user's input
-  if (!message) {
+  if (!pollMessage) {
 
     // Wrap the callback with a message deleter
     const wrappedCallback = wrapCallbackWithMessageDeleter(callback);
@@ -1065,7 +1062,7 @@ bot.command([
   }
 
   // Calls the callback function
-  await callback(ctx, message);
+  await callback(ctx, pollMessage);
 
   // Tries to delete the message that the user has sent
   await deleteMessages(ctx, ctx.message.message_id);
@@ -1100,10 +1097,24 @@ bot.command([
 });
 
 
+bot.inlineQuery(/\b\/test\b/, async (ctx) => {
+  const message = removeBotUsernameAndCommand(ctx.inlineQuery.query);
+  if (!message) return;
+  const { pollMessage } = commandUtils.poll.generatePollMessage(
+    message,
+  );
+  await answerInlineQuery(
+    ctx, pollMessage, null, {},
+    generateInlineKeyboard(commandUtils.poll.DEFAULT_POLL_OPTIONS)
+  )
+});
+
+
 // The callback query handler for the poll message
 bot.on(filters.callbackQuery("data"), async ctx => {
 
-  // Calls the callback handler in the poll message to handle the callback query
+  // Calls the callback handler in the poll message to
+  // handle the callback query
   await commandUtils.poll.callback_handler(ctx);
 });
 
@@ -1156,10 +1167,57 @@ bot.command([
   ctx.scene.enter(
     "createPollMessage",
     {
-      prompts: commandUtils.poll.DEFAULT_CREATE_POLL_MESSAGE_PROMPTS,
       message: message,
       pollOptions: [],
-      messagesToDelete: [ctx.message.message_id]
+      messagesToDelete: [ctx.message.message_id],
+      ...commandUtils.poll.DEFAULT_CREATE_POLL_MSG_CONFIG
+    }
+  );
+});
+
+
+// The handler for the create rental message command
+bot.command([
+  "create_rental_msg",
+  "create_custom_rental_msg",
+  "make_rental_msg",
+  "make_custom_rental_msg",
+  "custom_rental_msg",
+  "create_rental_message",
+  "create_custom_rental_message",
+  "make_rental_message",
+  "make_custom_rental_message",
+  "custom_rental_message",
+  "createrentalmsg",
+  "createcustomrentalmsg",
+  "makerentalmsg",
+  "makecustomrentalmsg",
+  "customrentalmsg",
+  "createrentalmessage",
+  "createcustomrentalmessage",
+  "makerentalmessage",
+  "makecustomrentalmessage",
+  "customrentalmessage"
+], async ctx => {
+
+  // If the user isn't an admin,
+  // tries to delete the message that the user has sent
+  if (!(await isAdmin(ctx))) return await deleteMessages(
+    ctx, ctx.message.message_id
+  );
+
+  // Gets the message from the user
+  const message = removeBotUsernameAndCommand(ctx.message.text);
+
+  // Enters the create poll message scene
+  // with the rental message configuration
+  ctx.scene.enter(
+    "createPollMessage",
+    {
+      message: message,
+      pollOptions: [],
+      messagesToDelete: [ctx.message.message_id],
+      ...commandUtils.rentalMsg.DEFAULT_CREATE_RENTAL_MSG_CONFIG
     }
   );
 });

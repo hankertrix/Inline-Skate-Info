@@ -2,6 +2,7 @@
 
 import type { Context, Types } from "telegraf";
 import type {
+  InlineKeyboardMarkup,
   InlineQueryResult,
   InputMediaDocument,
   InputMessageContent,
@@ -63,8 +64,18 @@ function getMessageEntityCount(message: string) {
 }
 
 
-// Function to get a message segment (this function is more space efficient as it fits more characters into a single message by ignoring the HTML tags, which don't count towards Telegram's character limit)
-function getMsgSegment(startIndex: number, endIndex: number, message: string, maxLength: number = MAX_CHARACTERS, maxEntity: number = MESSAGE_ENTITY_LIMIT) {
+// Function to get a message segment.
+// This function is more space efficient as
+// it fits more characters into a single message by
+// ignoring the HTML tags,
+// which don't count towards Telegram's character limit.
+function getMsgSegment(
+  startIndex: number,
+  endIndex: number,
+  message: string,
+  maxLength: number = MAX_CHARACTERS,
+  maxEntity: number = MESSAGE_ENTITY_LIMIT
+) {
 
   // Initialise the message segment
   let msgSegment = "";
@@ -75,27 +86,38 @@ function getMsgSegment(startIndex: number, endIndex: number, message: string, ma
   // The variable to decide whether to continue the loop
   let continueLoop = true;
 
-  // Loop while the message segment without HTML isn't equal to the max length
+  // Loop while the message segment
+  // without HTML isn't equal to the max length
   while (continueLoop) {
 
     // Gets the message segment
     msgSegment = message.slice(startIndex, endIndex);
 
-    // If the message segment has more than the maximum number of message entities
+    // If the message segment has more than
+    // the maximum number of message entities
     if (getMessageEntityCount(msgSegment) > maxEntity) {
 
       // Gets all the message entities in the message
-      const messageEntities = Array.from(msgSegment.matchAll(messageEntityRegex));
+      const messageEntities = Array.from(
+        msgSegment.matchAll(messageEntityRegex)
+      );
 
-      // Gets the message entity that is after the last message entity (the last messsage entity is the message entity at the message entity limit)
+      // Gets the message entity that is after the last message entity.
+      // The last messsage entity is the message entity
+      // at the message entity limit.
       const messageEntity = messageEntities[maxEntity];
 
-      // Slice the message segment until the position of that message entity that is after the last message entity and return it
+      // Slice the message segment until the position of that message entity
+      // that is after the last message entity and return it
       return msgSegment.slice(0, messageEntity.index);
     }
 
-    // Breaks the loop if the message segment is already shorter than the max length or if the end index is equal to or past the length of the message
-    else if (msgSegment.length < maxLength || endIndex >= msgLen) continueLoop = false;
+    // Breaks the loop if the message segment is already
+    // shorter than the max length
+    // or if the end index is equal to or past the length of the message
+    else if (msgSegment.length < maxLength || endIndex >= msgLen) {
+      continueLoop = false;
+    }
 
     // Otherwise, remove the HTML from the message segment
     const msgSegmentWithoutHtml = utils.removeHtml(msgSegment);
@@ -103,10 +125,12 @@ function getMsgSegment(startIndex: number, endIndex: number, message: string, ma
     // Gets the length of the message segment with the HTML removed
     const segmentWithoutHtmlLen = msgSegmentWithoutHtml.length;
     
-    // Breaks the loop if the message segment without HTML is equal to the max length
+    // Breaks the loop if the message segment
+    // without HTML is equal to the max length
    if (segmentWithoutHtmlLen === maxLength) continueLoop = false;
     
-    // Otherwise, increase the end index by the difference in length between the maximum length and the length of the segment without HTML
+    // Otherwise, increase the end index by the difference in length
+   // between the maximum length and the length of the segment without HTML
     endIndex += (maxLength - segmentWithoutHtmlLen);
   }
 
@@ -116,11 +140,18 @@ function getMsgSegment(startIndex: number, endIndex: number, message: string, ma
 
 
 // Function to split the message if it's too long
-function splitMessage(message: string, maxLength: number = MAX_CHARACTERS, maxEntity: number = MESSAGE_ENTITY_LIMIT) {
+function splitMessage(
+  message: string,
+  maxLength: number = MAX_CHARACTERS,
+  maxEntity: number = MESSAGE_ENTITY_LIMIT
+) {
 
-  // If the length of the message with the HTML removed is less than or equal to the maximum length
-  // And the number of message entities in the message doesn't exceed the maximum number of message entities
-  if (utils.removeHtml(message).length <= maxLength && getMessageEntityCount(message) <= maxEntity) {
+  // If the length of the message with the HTML removed is less than
+  // or equal to the maximum length,
+  // and the number of message entities in the message
+  // doesn't exceed the maximum number of message entities
+  if (utils.removeHtml(message).length <= maxLength
+      && getMessageEntityCount(message) <= maxEntity) {
 
     // Returns the message in a list
     return [message];
@@ -135,17 +166,22 @@ function splitMessage(message: string, maxLength: number = MAX_CHARACTERS, maxEn
   // Initialise the index of the last new line character to 0
   let startIndex = 0;
 
-  // Initialise the end index of a message segment to be more than the start index by the maximum length
+  // Initialise the end index of a message segment
+  // to be more than the start index by the maximum length
   let endIndex = startIndex + maxLength;
 
   // Iterates while the index is less than the length of the message
   while (endIndex < msgLen) {
 
     // Gets the first segment of the message that is of the maximum length
-    const msgSegment = getMsgSegment(startIndex, endIndex, message, maxLength, maxEntity);
+    const msgSegment = getMsgSegment(
+      startIndex, endIndex, message, maxLength, maxEntity
+    );
 
     // Gets the last match index of a new line character
-    const [lastMatchIndex, matchStr] = utils.getLastMatchChained(msgSegment, "\n\n", "\n");
+    const [lastMatchIndex, matchStr] = utils.getLastMatchChained(
+      msgSegment, "\n\n", "\n"
+    );
 
     // Gets the end index of the message segment
     const msgSegmentEndIndex = startIndex + lastMatchIndex + matchStr.length;
@@ -156,7 +192,8 @@ function splitMessage(message: string, maxLength: number = MAX_CHARACTERS, maxEn
     // Sets the new start index to the end index of the message segment
     startIndex = msgSegmentEndIndex;
 
-    // Sets the end index to be more than the start index by the maximum length
+    // Sets the end index to be more than
+    // the start index by the maximum length
     endIndex = startIndex + maxLength;
   }
 
@@ -168,8 +205,13 @@ function splitMessage(message: string, maxLength: number = MAX_CHARACTERS, maxEn
 }
 
 
-// Function to reply to a context with message splitting and with HTML parse mode
-export async function ctxReply(ctx: Context, reply: string, options: Types.ExtraReplyMessage = {}) {
+// Function to reply to a context with message splitting
+// and with HTML parse mode
+export async function ctxReply(
+  ctx: Context,
+  reply: string,
+  options: Types.ExtraReplyMessage = {}
+) {
 
   // Iterates the splitted reply
   for (const segment of splitMessage(reply)) {
@@ -274,6 +316,7 @@ function generateInlineQueryReply(
   message: string,
   id: string | number,
   options: OptionalPropertiesOf<InputMessageContent> = {},
+  markup: Types.Markup<InlineKeyboardMarkup> | null = null,
   queryTitle: string = ""
 ): InlineQueryResult {
 
@@ -291,7 +334,8 @@ function generateInlineQueryReply(
       parse_mode: "HTML",
       disable_web_page_preview: true,
       ...options
-    }
+    },
+    ...markup
   } as InlineQueryResult;
 
   // Returns the inline query reply
@@ -304,7 +348,8 @@ export async function answerInlineQuery(
   ctx: Context,
   messages: string | string[],
   title: string | null = null,
-  options: OptionalPropertiesOf<InputMessageContent> = {}
+  options: OptionalPropertiesOf<InputMessageContent> = {},
+  markup: Types.Markup<InlineKeyboardMarkup> | null = null,
 ) {
 
   // If the message given is not a list of messages
@@ -329,14 +374,25 @@ export async function answerInlineQuery(
   // Gets the first message
   const firstMsg = messages[0];
 
-  // If the message passed is a single message and the message with its HTML removed is shorter than the maximum number of characters in a message
-  if (messages.length === 1 && utils.removeHtml(firstMsg).length + title.length + SPACING.length <= MAX_CHARACTERS) {
+  // Gets the total message length
+  const totalMessageLength =
+    utils.removeHtml(firstMsg).length + title.length + SPACING.length;
+
+  // If the message passed is a single message
+  // and the message with its HTML removed is
+  // shorter than the maximum number of characters in a message
+  if (messages.length === 1 && totalMessageLength <= MAX_CHARACTERS) {
 
     // Creates the inline query reply
-    const queryReply = generateInlineQueryReply(title, firstMsg, 1, options);
+    const queryReply = generateInlineQueryReply(
+      title, firstMsg, 1, options, markup
+    );
     
     // Replies to the inline query
-    return await ctx.answerInlineQuery([queryReply], { cache_time: CACHE_TIME });
+    return await ctx.answerInlineQuery(
+      [queryReply],
+      { cache_time: CACHE_TIME }
+    );
   }
 
   // Otherwise, initialise the list of inline query replies
@@ -349,7 +405,10 @@ export async function answerInlineQuery(
   for (const msgPart of messages) {
 
     // Initialise the splitted message segments
-    const segments = splitMessage(msgPart, MAX_CHARACTERS - title.length - SPACING.length);
+    const segments = splitMessage(
+      msgPart,
+      MAX_CHARACTERS - title.length - SPACING.length
+    );
 
     // Iterates the splitted message
     for (const segment of segments) {
@@ -358,7 +417,9 @@ export async function answerInlineQuery(
       const titleWithPageNum = utils.removeHtml(`${title} page ${++index}`);
 
       // Creates the reply for each segment
-      const queryReply = generateInlineQueryReply(title, segment, index, options, titleWithPageNum);
+      const queryReply = generateInlineQueryReply(
+        title, segment, index, options, titleWithPageNum
+      );
 
       // Adds the reply to the list of replies
       replies.push(queryReply);
@@ -371,7 +432,10 @@ export async function answerInlineQuery(
 
 
 // Function to send documents from the given paths
-export async function sendDocGroupFromPaths(ctx: Context, ...paths: string[]) {
+export async function sendDocGroupFromPaths(
+  ctx: Context,
+  ...paths: string[]
+) {
 
   // If the list of paths given is empty, immediately exit the function
   if (paths.length < 1) return;
@@ -401,7 +465,9 @@ export async function sendDocGroupFromPaths(ctx: Context, ...paths: string[]) {
 
 
 // Function to handle the commands that generate a message and send files
-export async function messageAndFileCommandHandler(ctx: Context, fn: () => Promise<[string, string[]]>) {
+export async function messageAndFileCommandHandler(
+  ctx: Context, fn: () => Promise<[string, string[]]>
+) {
 
   // Gets the message and the files
   const [message, files] = await fn() as [string, string[]];
@@ -415,7 +481,12 @@ export async function messageAndFileCommandHandler(ctx: Context, fn: () => Promi
 
 
 // Function to handle the commands that generate a message and send files
-export async function messageAndFileInlineQueryHandler(ctx: Context, fn: () => Promise<[string, string[]]>, isHyperlinked: boolean = true, joiningSection: string = "\n\n") {
+export async function messageAndFileInlineQueryHandler(
+  ctx: Context,
+  fn: () => Promise<[string, string[]]>,
+  isHyperlinked: boolean = true,
+  joiningSection: string = "\n\n"
+) {
 
   // Gets the message and the files
   const [message, files] = await fn() as [string, string[]];
@@ -427,8 +498,11 @@ export async function messageAndFileInlineQueryHandler(ctx: Context, fn: () => P
       // Gets the URL for the file
       const fileUrl = utils.convertStaticFilePathToUrl(path);
 
-      // If the link is to be hyperlinked, hyperlink the filename with the URL and returns the result
-      if (isHyperlinked) return utils.hyperlink(utils.getFilenameFromPath(path, true), fileUrl);
+      // If the link is to be hyperlinked,
+      // hyperlink the filename with the URL and returns the result
+      if (isHyperlinked) return utils.hyperlink(
+        utils.getFilenameFromPath(path, true), fileUrl
+      );
 
       // Otherwise, returns the URL for the file
       else return fileUrl;
@@ -453,7 +527,9 @@ export async function isAdmin(ctx: Context) {
   const user = await ctx.getChatMember(ctx.from!.id);
 
   // If the user is an admin, return true
-  if (user.status === "administrator" || user.status === "creator") return true;
+  if (
+    user.status === "administrator" || user.status === "creator"
+  ) return true;
 
   // Otherwise, returns false
   else return false;
@@ -475,9 +551,13 @@ export async function canDeleteMessages(ctx: Context): Promise<boolean> {
 
 
 // Function to delete messages
-export async function deleteMessages(ctx: Context, ...message_ids: number[]): Promise<boolean> {
+export async function deleteMessages(
+  ctx: Context,
+  ...message_ids: number[]
+): Promise<boolean> {
 
-  // If deleting the command message is disabled or if the bot isn't allowed to delete messages, immediately return false
+  // If deleting the command message is disabled
+  // or if the bot isn't allowed to delete messages, immediately return false
   if (!ENABLE_DELETING_COMMAND_MESSAGES) return false;
 
   // Check whether the bot can delete messages
@@ -502,7 +582,10 @@ export async function deleteMessages(ctx: Context, ...message_ids: number[]): Pr
 
 
 // Function to add the current message to the list of messages to be deleted
-export function markMessageForDeletion(ctx: Scenes.WizardContext, ...message_ids: number[]) {
+export function markMessageForDeletion(
+  ctx: Scenes.WizardContext,
+  ...message_ids: number[]
+) {
 
   // Gets the state object
   const state = ctx.wizard.state as { messagesToDelete: number[] };
@@ -511,12 +594,21 @@ export function markMessageForDeletion(ctx: Scenes.WizardContext, ...message_ids
   const messagesToDelete = state.messagesToDelete;
 
   // Checks if the list of message IDs exists
-  if (Array.isArray(messagesToDelete)) state.messagesToDelete = messagesToDelete.concat(message_ids);
+  if (Array.isArray(messagesToDelete)) {
+
+    // Add the messages to delete to the list of messages to delete
+    state.messagesToDelete = messagesToDelete.concat(message_ids);
+  }
 }
 
 
-// Function to wrap the callback function to include the function to delete messages
-export function wrapCallbackWithMessageDeleter(callback: (ctx: Scenes.WizardContext, input: string) => Promise<void | Message.TextMessage>) {
+// Function to wrap the callback function to
+// include the function to delete messages
+export function wrapCallbackWithMessageDeleter(
+  callback: (
+    ctx: Scenes.WizardContext, input: string
+  ) => Promise<void | Message.TextMessage>
+) {
 
   // Returns a function that takes the arguments of the callback function
   return async (ctx: Scenes.WizardContext, input: string) => {
@@ -525,10 +617,15 @@ export function wrapCallbackWithMessageDeleter(callback: (ctx: Scenes.WizardCont
     await callback(ctx, input);
 
     // Gets the list of messages to delete from the state in the wizard scene
-    const messagesToDelete: number[] = (ctx.wizard.state as object & { messagesToDelete: number[] }).messagesToDelete;
+    const messagesToDelete: number[] = (
+      ctx.wizard.state as object & { messagesToDelete: number[] }
+    ).messagesToDelete;
 
-    // If the list of message IDs exists, calls the function to delete the messages
-    if (Array.isArray(messagesToDelete)) await deleteMessages(ctx, ...messagesToDelete);
+    // If the list of message IDs exists,
+    // calls the function to delete the messages
+    if (Array.isArray(messagesToDelete)) await deleteMessages(
+      ctx, ...messagesToDelete
+    );
   }
 }
 
@@ -615,11 +712,16 @@ export async function exitValidator(ctx: Scenes.WizardContext) {
 }
 
 // The array containing the cancel command
-export const cancelCommand: [string, (ctx: Scenes.WizardContext) => Promise<void>] = ["cancel", exitValidator];
+export const cancelCommand: [
+  string, (ctx: Scenes.WizardContext) => Promise<void>
+] = ["cancel", exitValidator];
 
 
 // The function to create a wizard scene
-export function createWizardScene(name: string, handler: Composer<Scenes.WizardContext>) {
+export function createWizardScene(
+  name: string,
+  handler: Composer<Scenes.WizardContext>
+) {
 
   // Returns the new scene
   return new Scenes.WizardScene<Scenes.WizardContext>(name, handler);

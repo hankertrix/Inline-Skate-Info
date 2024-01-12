@@ -14,5 +14,6 @@ export * as flyingEagleDiff from "./f5s-vs-f6s";
 export * as triskateDiff from "./triskate-diff";
 export * as products from "./products";
 export * as poll from "./poll";
+export * as rentalMsg from "./rental-message";
 export * as trainingMsg from "./training-message";
 export * as qrCode from "./qr-code";

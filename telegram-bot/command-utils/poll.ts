@@ -67,10 +67,13 @@ export const DEFAULT_PRESERVE_LINES = false;
 // the remaining number of open slots in the poll message
 export const DEFAULT_SHOW_REMAINING = false;
 
-// The regex to get the numbering style
-// and the name from the poll option segment
-const numberingStyleAndNameRegex =
-  /^\s*?([->=+~•·([{<]?\d*[).\]}>]?)\s*(.*?)\s*()$/gm;
+// The regex to get the numbering style from the poll option segment
+const numberingStyleRegex = /[->=+~•·([{<]?\d*[).\]}>]?/;
+
+const numberingStyleAndNameRegex = new RegExp(
+  String.raw`^\s*?(${numberingStyleRegex.source})\s*(.*?)\s*()$`,
+  "gm"
+);
 
 // The regex to create the numbering from the numbering style
 const createNumberingRegex = /\d+/;
@@ -325,9 +328,9 @@ export function createPollPortion(
 // Function to generate the callback function for the poll message command
 export function generatePollMessage(
   message: string,
-  pollOptions: string[],
+  pollOptions: string[] = DEFAULT_POLL_OPTIONS,
   maxEntriesList: number[] = [],
-  numberingStyle: NumberingStyle,
+  numberingStyle: NumberingStyle = DEFAULT_NUMBERING_STYLE,
   formatOptions: FormatOptions = DEFAULT_FORMAT_OPTIONS,
   preserveLines: boolean = DEFAULT_PRESERVE_LINES,
   showRemaining: boolean = DEFAULT_SHOW_REMAINING,
@@ -368,7 +371,7 @@ export function generatePollMessage(
   }
 
   // Returns the message and the callback function
-  return { message: message, callback: callback };
+  return { pollMessage: message, callback: callback };
 }
 
 
@@ -822,6 +825,65 @@ export function getPollMessage(message: string, pollOptions: string[]) {
 }
 
 
+// The function to tag or untag a given entry on the poll
+export function toggleTagOnEntirePollMessage(
+  message: string,
+  entry: string,
+  tagString: string,
+) {
+
+  // Initialise the tagged variable
+  // A null value means that the function failed to tag or untag
+  // the entry in the poll message
+  let tagged = null;
+
+  // Create the regular expression to search for the entry
+  const regex = new RegExp(
+    String.raw`^(\s*${numberingStyleRegex.source}\s*${entry})(.*?)$`,
+    "gm"
+  );
+
+  // Gets the match for the entry in the poll message
+  const match = regex.exec(message);
+
+  // If there is no match, returns null
+  if (!match) return tagged;
+
+  // Otherwise, get the matched entry on the poll message
+  // and the tag string found on the poll message.
+  // Also trim all the strings
+  const [ , matchedEntry, matchedTagStr] = match.map(group => group.trim());
+
+  // Initialise the msg variable to store the new message
+  let msg = message;
+
+  // If a tag string is found and it is the same as the given one
+  if (matchedTagStr === tagString) {
+
+    // Replace all of the entries with the untagged version
+    msg = message.replaceAll(regex, matchedEntry);
+
+    // Sets the tagged variable to false,
+    // to show that the entry has been untagged
+    tagged = false;
+  }
+
+  // Otherwise
+  else {
+
+    // Replace all of the entries with the tagged version
+    msg = message.replaceAll(regex, `${matchedEntry} ${tagString}`);
+
+    // Sets the tagged variable to true,
+    // to show that the entry has been tagged
+    tagged = true;
+  }
+
+  // Returns the message and the tagged variable
+  return { msg: msg, tagged: tagged };
+}
+
+
 // Function to handle a callback query
 export async function callback_handler(
   ctx: Scenes.WizardContext,
@@ -930,9 +992,9 @@ export type CreatePollMessagePrompts = [
 
 
 // The type for the create poll message state
-export type CreatePollMessageState = {
+type CreatePollMessageState = {
   prompts: CreatePollMessagePrompts,
-  message: string,
+  pollMessage: string,
   pollOptions: string[],
   maxEntriesList?: number[],
   numberingStyle?: NumberingStyle,
@@ -944,7 +1006,12 @@ export type CreatePollMessageState = {
   additionalOptionsFuncList?: AdditionalOptionsFunction[],
   additionalOptionsIndex?: number,
   messagesToDelete?: number[]
-}
+};
+
+// The type for the configuration options for the create poll message scene
+export type CreatePollMessageConfig = Omit<
+  CreatePollMessageState, "pollMessage" | "pollOptions"
+>;
 
 
 // The scene name for the create poll message scene
@@ -983,6 +1050,17 @@ export const DEFAULT_CREATE_POLL_MESSAGE_PROMPTS: CreatePollMessagePrompts = [
 ] as const;
 
 
+// The default poll message configuration
+export const DEFAULT_CREATE_POLL_MSG_CONFIG: CreatePollMessageConfig = {
+  prompts: DEFAULT_CREATE_POLL_MESSAGE_PROMPTS,
+  formatOptions: DEFAULT_FORMAT_OPTIONS,
+  preserveLines: false,
+  showRemaining: false,
+  pollType: POLL_TYPES.DEFAULT,
+  inlineKeyboardGenerator: generateInlineKeyboard
+};
+
+
 // The regex to get the numbering style from the string
 // generated from the createNumberingStylesList function
 const getNumberingStyleFromStringRegex = /^[A-Za-z_ ]+/;
@@ -995,7 +1073,7 @@ async function doneCommandHandler(ctx: Scenes.WizardContext) {
   const state = ctx.wizard.state as CreatePollMessageState;
 
   // If the message or poll options are not given
-  if (!state.message || Object.keys(state.pollOptions).length <= 0) {
+  if (!state.pollMessage || Object.keys(state.pollOptions).length <= 0) {
 
     // Tells the user that the poll message is not completed
     // and they should use the "/cancel" command instead to cancel
@@ -1008,9 +1086,9 @@ async function doneCommandHandler(ctx: Scenes.WizardContext) {
   markMessageForDeletion(ctx, ctx.message!.message_id);
 
   // Create the poll message
-  const { message, callback } = generatePollMessage(
-    state.message,
-    state.pollOptions,
+  const { pollMessage, callback } = generatePollMessage(
+    state.pollMessage,
+    state.pollOptions ?? DEFAULT_POLL_OPTIONS,
     state.maxEntriesList ?? [],
     state.numberingStyle ?? DEFAULT_NUMBERING_STYLE,
     state.formatOptions ?? DEFAULT_FORMAT_OPTIONS,
@@ -1021,7 +1099,7 @@ async function doneCommandHandler(ctx: Scenes.WizardContext) {
   );
 
   // Calls the callback to send the poll message
-  await callback(ctx, message);
+  await callback(ctx, pollMessage);
 
   // Delete all the messages sent by the user
   await deleteMessages(
@@ -1114,7 +1192,7 @@ export const createPollMessageScene = new Scenes.WizardScene(
       state.pollOptions = state.pollOptions ?? [];
 
       // If the message is already given
-      if (state.message) {
+      if (state.pollMessage) {
 
         // Calls the next function in the scene
         // and exit the function
@@ -1144,7 +1222,7 @@ export const createPollMessageScene = new Scenes.WizardScene(
       else {
 
         // Save the message to the state
-        state.message = message;
+        state.pollMessage = message;
 
         // Calls the next function in the scene
         // and exit the function
