@@ -245,10 +245,10 @@ export async function handler(
   if (msg.length > 50) {
 
     // Creates a poll message with the custom message, but with the training dates as options, like the default training message
-    const { pollMessage, callback } = createCustomTrgMsg(msg, trainingDates);
+    const { userMessage, callback } = createCustomTrgMsg(msg, trainingDates);
 
     // Calls the callback function to send the message
-    await callback(ctx, pollMessage);
+    await callback(ctx, userMessage);
     
     // Tries to delete the message sent by the user
     await deleteMessages(ctx, ctx.message.message_id);
@@ -266,10 +266,10 @@ export async function handler(
   // Otherwise, generates the training message
   // Type coercion for the week and username variables because typescript
   // can't understand the above if statement for some reason
-  const { pollMessage, callback } = createTrainingPollMsg(trainingMsg, trainingLocation, noRentals, week as string, username as string, trainingDates);
+  const { userMessage, callback } = createTrainingPollMsg(trainingMsg, trainingLocation, noRentals, week as string, username as string, trainingDates);
 
   // Calls the function to send the training message to the user
-  await callback(ctx, pollMessage);
+  await callback(ctx, userMessage);
 
   // Tries to delete the message sent by the user
   await deleteMessages(ctx, ctx.message.message_id);
@@ -372,7 +372,7 @@ nusValidator.on(filters.message("text"), async ctx => {
   }
 
   // If both the username and the week type has been given, calls the function to generate the training message
-  const { pollMessage, callback } = createTrainingPollMsg(trainingMsg, trainingLocation, state.noRentals, state.weekType, state.username, trainingDates)
+  const { userMessage, callback } = createTrainingPollMsg(trainingMsg, trainingLocation, state.noRentals, state.weekType, state.username, trainingDates)
 
   // Marks the current message sent by the user for deletion
   markMessageForDeletion(ctx, ctx.message.message_id);
@@ -381,7 +381,7 @@ nusValidator.on(filters.message("text"), async ctx => {
   const wrappedCallback = wrapCallbackWithMessageDeleter(callback);
 
   // Calls the function to send the training message to the user and delete all the messages
-  await wrappedCallback(ctx, pollMessage);
+  await wrappedCallback(ctx, userMessage);
 
   // Leave the scene
   await ctx.scene.leave();

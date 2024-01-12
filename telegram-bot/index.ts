@@ -1032,7 +1032,7 @@ bot.command([
   const message = ctx.message.text;
 
   // Gets the message and the callback from the generatePollCallback function
-  const { pollMessage, callback } = commandUtils.poll.generatePollMessage(
+  const { userMessage, callback } = commandUtils.poll.generatePollMessage(
     message,
     commandUtils.poll.DEFAULT_POLL_OPTIONS,
     [],
@@ -1045,7 +1045,7 @@ bot.command([
   );
 
   // If the message is empty, enters the scene to get the user's input
-  if (!pollMessage) {
+  if (!userMessage) {
 
     // Wrap the callback with a message deleter
     const wrappedCallback = wrapCallbackWithMessageDeleter(callback);
@@ -1100,11 +1100,11 @@ bot.command([
 bot.inlineQuery(/\/test/, async (ctx) => {
   const message = removeBotUsernameAndCommand(ctx.inlineQuery.query);
   if (!message) return;
-  const { pollMessage } = commandUtils.poll.generatePollMessage(
+  const { userMessage } = commandUtils.poll.generatePollMessage(
     message,
   );
   return await answerInlineQuery(
-    ctx, pollMessage, null, {},
+    ctx, userMessage, null, {},
     generateInlineKeyboard(commandUtils.poll.DEFAULT_POLL_OPTIONS)
   )
 });

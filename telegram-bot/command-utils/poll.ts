@@ -371,7 +371,7 @@ export function generatePollMessage(
   }
 
   // Returns the message and the callback function
-  return { pollMessage: message, callback: callback };
+  return { userMessage: message, callback: callback };
 }
 
 
@@ -1088,7 +1088,7 @@ async function doneCommandHandler(ctx: Scenes.WizardContext) {
   markMessageForDeletion(ctx, ctx.message!.message_id);
 
   // Create the poll message
-  const { pollMessage, callback } = generatePollMessage(
+  const { userMessage, callback } = generatePollMessage(
     state.pollMessage,
     state.pollOptions ?? DEFAULT_POLL_OPTIONS,
     state.maxEntriesList ?? [],
@@ -1101,7 +1101,7 @@ async function doneCommandHandler(ctx: Scenes.WizardContext) {
   );
 
   // Calls the callback to send the poll message
-  await callback(ctx, pollMessage);
+  await callback(ctx, userMessage);
 
   // Delete all the messages sent by the user
   await deleteMessages(
