@@ -1156,7 +1156,6 @@ export const createPollMessageScene = new Scenes.WizardScene(
                 placeholder: prompts.failure.placeholder
               }
             ),
-            ...Markup.forceReply()
           }
         );
       }
