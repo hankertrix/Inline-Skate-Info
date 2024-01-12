@@ -1062,7 +1062,7 @@ bot.command([
   }
 
   // Calls the callback function
-  await callback(ctx, pollMessage);
+  await callback(ctx, userMessage);
 
   // Tries to delete the message that the user has sent
   await deleteMessages(ctx, ctx.message.message_id);
@@ -1094,19 +1094,6 @@ bot.command([
 
   // Gets the training message handler to handle the training message command
   await commandUtils.trainingMsg.handler(ctx, msg);
-});
-
-
-bot.inlineQuery(/\/test/, async (ctx) => {
-  const message = removeBotUsernameAndCommand(ctx.inlineQuery.query);
-  if (!message) return;
-  const { userMessage } = commandUtils.poll.generatePollMessage(
-    message,
-  );
-  return await answerInlineQuery(
-    ctx, userMessage, null, {},
-    generateInlineKeyboard(commandUtils.poll.DEFAULT_POLL_OPTIONS)
-  )
 });
 
 

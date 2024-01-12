@@ -893,8 +893,6 @@ export async function callback_handler(
   // Gets the callback query object
   const callbackQuery = ctx.callbackQuery as CbQuery;
 
-  console.log(callbackQuery);
-
   // Cast the callback query message type
   const message = callbackQuery.message;
 
@@ -1206,8 +1204,6 @@ export const createPollMessageScene = new Scenes.WizardScene(
 
       // Gets the message text from the message
       message = removeBotUsernameAndCommand(message);
-
-      console.log(message);
 
       // If the message is empty
       if (!message) {
