@@ -7,15 +7,14 @@ import type { DateMapping } from "../../types";
 import * as utils from "../../utils";
 import * as trgMsgUtils from "./utils";
 import {
-  removeCommand,
   cancelCommand,
-  removeBotUsername,
   createWizardScene,
   deleteMessages,
   markMessageForDeletion,
   wrapCallbackWithMessageDeleter,
   promptUserForInput,
   generateInlineKeyboard,
+  removeBotUsernameAndCommand,
 } from "../../bot-utils";
 import {
   DEFAULT_NUMBERING_STYLE,
@@ -113,7 +112,9 @@ function normaliseWeek(week: string) {
 
 
 // Function to get the username and week number from the message
-function getRequiredArgs(message: string): [string | null, boolean, string | null] {
+function getRequiredArgs(
+  message: string
+): [string | null, boolean, string | null] {
 
   // Removes the trailing whitespace from the message
   message = message.trim();
@@ -136,7 +137,13 @@ function getRequiredArgs(message: string): [string | null, boolean, string | nul
 
 
 // Function to generate the training message
-function generateTrgMsg(message: string, location: string, noRentals: boolean, weekType: string, username: string = "") {
+function generateTrgMsg(
+  message: string,
+  location: string,
+  noRentals: boolean,
+  weekType: string,
+  username: string = ""
+) {
 
   // Gets the formatted message
   const formattedMsg = utils.strFormat(message, {
@@ -322,11 +329,10 @@ nusValidator.on(filters.message("text"), async ctx => {
   // Gets the username and the week type from the state object
   const { weekType, username } = state;
 
-  // Gets the message from the user and removes the command from the start of the message
-  let msg = removeCommand(ctx.message.text);
-
-  // Remove the bot's username from the message
-  msg = removeBotUsername(msg);
+  // Gets the message from the user and
+  // removes the command from the start of the message,
+  // as well as the bot's username
+  const msg = removeBotUsernameAndCommand(ctx.message.text);
 
   // Gets the given username and the week type from the message
   const [givenWeekType, noRentals, givenUsername] = getRequiredArgs(msg);

@@ -187,6 +187,38 @@ export function convertToLabel(label: string) {
 }
 
 
+// Function to get the module mapping
+function getModuleMapping(): [number, string][] {
+
+  // Gets the module mapping as a string
+  const moduleMapping = process.env.MODULE_MAPPING as string;
+
+  // Replace all of the single quotes ' with double quotes "
+  // And return the module mapping
+  return JSON.parse(moduleMapping.replaceAll(`'`, `"`));
+}
+
+
+// Function to the module data from the module mapping
+export function getModuleString(chatId: number): string | null {
+
+  // Gets the module mapping
+  const moduleMapping = getModuleMapping();
+
+  // Gets the data for the given chat ID in the module mapping
+  const data = moduleMapping.filter(data => data[0] === chatId);
+
+  // If the data isn't found, then return null
+  if (data.length < 1) return null;
+
+  // Otherwise, gets the module string from the data
+  const [ , moduleStr] = data[0];
+
+  // Returns the module string
+  return moduleStr;
+}
+
+
 // Function to get a key from a dictionary and return a default value if the key is not found (mimics the python dict.get method)
 // eslint-disable-next-line  @typescript-eslint/no-explicit-any
 export function dictGet(dict: Dict<unknown>, key: string | number, defaultValue: any = null) {

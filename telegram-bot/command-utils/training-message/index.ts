@@ -3,13 +3,17 @@
 import type { Scenes } from "telegraf";
 import type { Message } from "telegraf/types";
 import { DEV } from "../../../src/lib/constants";
+import { getModuleString } from "../../utils";
 import * as trgMsgUtils from "./utils";
 import * as ntu from "./ntu";
 import * as nus from "./nus";
 
 
 // The type representing a training message function
-export type TrainingMessageFunction = (ctx: Scenes.WizardContext & { message: Message.TextMessage }, message: string) => Promise<unknown>;
+export type TrainingMessageFunction = (
+  ctx: Scenes.WizardContext & { message: Message.TextMessage },
+  message: string
+) => Promise<unknown>;
 
 // The interface for the training message module
 interface TrainingMessageModule {
@@ -22,7 +26,8 @@ type TrainingMessageModules = {
   [name: string]: TrainingMessageModule
 };
 
-// The dictionary containing all the mappings between the name and the training message function
+// The dictionary containing all the mappings between the name
+// and the training message modules
 const trgMsgModules: TrainingMessageModules = {
   ntu: ntu,
   nus: nus,
@@ -33,39 +38,24 @@ export const trainingMsgScenes = [
   nus.validateScene
 ] as const;
 
-// The regex for the training message command
-export const regex = /^\/?(?:train(?:ing)?|trg|trng?)_?(?:msg|message)?/i;
-
-
-// Function to get the module mapping
-function getModuleMapping(): [number, string][] {
-
-  // Gets the module mapping as a string
-  const moduleMapping = process.env.MODULE_MAPPING as string;
-
-  // Replace all of the single quotes ' with double quotes "
-  // And return the module mapping
-  return JSON.parse(moduleMapping.replaceAll(`'`, `"`));
-}
-
 
 // Function to handle the training message command
-export async function handler(...[ctx, message]: Parameters<TrainingMessageFunction>): ReturnType<TrainingMessageFunction> {
-
-  // Gets the module mapping
-  const moduleMapping = getModuleMapping();
-
-  // Gets the data for the given chat ID
-  // It's in the format [chatID: number, location: string, message: string, dates: string[], moduleName: string]
-  const relevantData = moduleMapping.filter(data => data[0] === ctx.chat!.id);
-
-  // If the data is empty (the chat ID wasn't found in the database) then calls the function to handle the training message command when it hasn't been set up
-  if (relevantData.length === 0) return await trgMsgUtils.handleTrgMsg(ctx, message);
+export async function handler(
+  ...[ctx, message]: Parameters<TrainingMessageFunction>
+): ReturnType<TrainingMessageFunction> {
 
   // Gets the module string for the current chat
-  const [ , moduleStr] = relevantData[0];
+  const moduleStr = getModuleString(ctx.chat!.id);
 
-  // Gets the training message function from the function mapping
+  // If the module string isn't found
+  // (the chat ID wasn't found in the database),
+  // then calls the function to handle the training message command
+  // when it hasn't been set up
+  if (!moduleStr) {
+    return await trgMsgUtils.handleTrgMsg(ctx, message);
+  }
+
+  // Otherwise, get the training message function from the function mapping
   const trgMsgFunction = trgMsgModules[moduleStr].handler;
 
   // Calls the training message function
@@ -74,23 +64,20 @@ export async function handler(...[ctx, message]: Parameters<TrainingMessageFunct
 
 
 // Function to generate the help text for the training message help command
-export function generateHelpText(chatID: number) {
+export function generateHelpText(chatId: number) {
 
-  // Gets the module mapping
-  const moduleMapping = getModuleMapping();
-  
-  // Gets the data for the given chat ID
-  // It's in the format [chatID: number, location: string, message: string, dates: string[], moduleName: string]
-  const relevantData = moduleMapping.filter(data => data[0] === chatID);
+  // Gets the module string
+  const moduleStr = getModuleString(chatId);
 
-  // If the data is empty (the chat ID isn't in the database), then tells the user that the training message hasn't been set up
-  if (relevantData.length === 0) return `The training message has not been set up for this chat. Please contact ${DEV} if you would like to set up a training message.`;
-
-  // Otherwise, gets the training message module string
-  const [ , trgMsgModuleStr] = relevantData[0];
+  // If the module string isn't found
+  // (the chat ID wasn't found in the database),
+  // then tells the user that the training message hasn't been set up
+  if (!moduleStr) {
+    return `The training message has not been set up for this chat. Please contact ${DEV} if you would like to set up a training message.`;
+  }
 
   // Gets the help message from the data
-  const helpText = trgMsgModules[trgMsgModuleStr].help;
+  const helpText = trgMsgModules[moduleStr].help;
 
   // Returns the help text
   return helpText;
