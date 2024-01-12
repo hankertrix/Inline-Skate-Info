@@ -41,12 +41,14 @@ export function createDateMapping(trainingDates: string[]) {
 }
 
 
-// Function to handle the training message command when no default training message has been set up
+// Function to handle the training message command
+// when no default training message has been set up
 export async function handleTrgMsg(
   ...[ctx, msg]: Parameters<TrainingMessageFunction>
 ): ReturnType<TrainingMessageFunction> {
 
-  // Generate a poll message with the given training message and the default options
+  // Generate a poll message with the given training message
+  // and the default options
   const { callback } = generatePollMessage(
     msg,
     DEFAULT_POLL_OPTIONS,
@@ -65,8 +67,11 @@ export async function handleTrgMsg(
     // Wraps the callback with the function to delete the conversation
     const wrappedCallback = wrapCallbackWithMessageDeleter(callback);
 
-    // Enters the scene to ask the user for their message for the training message
-    // Also, tells the user that they haven't set up the training message for the chat and ask them to contact the developer if they want to get one set up
+    // Enters the scene to ask the user for their message for
+    // the training message.
+    // Also, tells the user that they haven't set up the training message
+    // for the chat and ask them to contact the developer
+    // if they want to get one set up.
     return await ctx.scene.enter(
       "validate",
       {
@@ -172,7 +177,8 @@ export function getUpcomingTrainingDates(
         );
       }
 
-      // Otherwise, if the time on the temporary date is on the same hour as the training time
+      // Otherwise, if the time on the temporary date is on the
+      // same hour as the training time
       // but the minutes are less than or equal to the training time
       else if (
         tempDate.getHours() === trainingDate.getHours() &&
@@ -189,11 +195,16 @@ export function getUpcomingTrainingDates(
     // Add a day to the temporary date
     tempDate = utils.addDays(tempDate, 1);
 
-    // If the number of training dates required is reached, breaks the loop
-    if (upcomingTrainingDates.length === numOfTrainingDates) continueLoop = false;
+    // If the number of training dates required is reached
+    if (upcomingTrainingDates.length === numOfTrainingDates) {
+
+      // Breaks the loop
+      continueLoop = false;
+    }
   }
 
   // Returns the upcoming training date if there's only one
   // Otherwise, return the list of upcoming trainings dates
-  return upcomingTrainingDates.length === 1 ? upcomingTrainingDates[0] : upcomingTrainingDates;
+  return upcomingTrainingDates.length === 1 ?
+    upcomingTrainingDates[0] : upcomingTrainingDates;
 }
