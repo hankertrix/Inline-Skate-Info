@@ -1097,7 +1097,7 @@ bot.command([
 });
 
 
-bot.inlineQuery(/\b\/test\b/, async (ctx) => {
+bot.inlineQuery(/\/test/, async (ctx) => {
   const message = removeBotUsernameAndCommand(ctx.inlineQuery.query);
   if (!message) return;
   const { pollMessage } = commandUtils.poll.generatePollMessage(
