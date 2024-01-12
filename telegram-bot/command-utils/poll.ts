@@ -948,7 +948,7 @@ export const DEFAULT_CREATE_POLL_MESSAGE_PROMPTS: CreatePollMessagePrompts = [
   },
 
   // The prompts for the third step
-  { success: "Please enter a poll option.", failure: pollOptionMsg }
+  { success: pollOptionMsg, failure: "Please enter a poll option." }
 ] as const;
 
 
@@ -968,8 +968,9 @@ async function doneCommandHandler(ctx: Scenes.WizardContext) {
 
     // Tells the user that the poll message is not completed
     // and they should use the "/cancel" command instead to cancel
-    // the operation
-    await promptUserForInput(ctx, incompleteDataMessage);
+    // the operation.
+    // Also, exit the function
+    return await promptUserForInput(ctx, incompleteDataMessage);
   }
 
   // Otherwise, create the poll message
