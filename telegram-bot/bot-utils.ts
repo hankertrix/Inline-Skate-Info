@@ -30,7 +30,7 @@ const messageEntityRegex = /<.+?>/g;
 const removeBotUsernameRegex = /@inlineskatebot/g;
 
 // The regular expression to remove the command from the start of the message
-const removeCommandRegex = /^\/[\w-]+/;
+const removeCommandRegex = /^\/\w+/;
 
 
 // Function to remove the bot's username from a message
@@ -40,7 +40,7 @@ export function removeBotUsername(message: string) {
 
 
 // Function to remove a command from a message
-export function removeCommand(message: string) {
+function removeCommand(message: string) {
   return message.replace(removeCommandRegex, "").trim();
 }
 
