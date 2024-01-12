@@ -75,7 +75,7 @@ export async function handleTrgMsg(
     return await ctx.scene.enter(
       "validate",
       {
-        message: `No training message was found for this chat, so please enter the desired training message. If you want to set up a poll message for this chat, please contact ${DEV}.`,
+        message: `No training message was found for this chat, so please enter the desired training message. If you would like to set up a training message for this chat, please contact ${DEV}.`,
         callback: wrappedCallback,
         messagesToDelete: []
       }
