@@ -20,7 +20,8 @@ import {
   removeBotUsernameAndCommand,
   generateInlineKeyboard,
   generateReplyKeyboard,
-  callStep
+  callStep,
+  markMessageForDeletion
 } from "../bot-utils"
 
 
@@ -966,7 +967,10 @@ async function doneCommandHandler(ctx: Scenes.WizardContext) {
     return await promptUserForInput(ctx, incompleteDataMessage);
   }
 
-  // Otherwise, create the poll message
+  // Otherwise, mark the user's message for deletion
+  markMessageForDeletion(ctx, ctx.message!.message_id);
+
+  // Create the poll message
   const { message, callback } = generatePollMessage(
     state.message,
     state.pollOptions,
@@ -1143,14 +1147,17 @@ export const createPollMessageScene = new Scenes.WizardScene(
         return await promptUserForInput(
           ctx,
           prompts.failure.prompt,
-          { ...generateReplyKeyboard(
+          {
+            ...generateReplyKeyboard(
               numberingStyles,
               {
                 oneTime: true,
                 resize: true,
                 placeholder: prompts.failure.placeholder
               }
-          ) }
+            ),
+            ...Markup.forceReply()
+          }
         );
       }
 
