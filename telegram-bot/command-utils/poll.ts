@@ -283,7 +283,7 @@ export function createPollPortion(
     createNumberOfPeoplePortion(
       0, formatOptions.messageFooter
     )
-  }`;
+  }`.trim();
 }
 
 
@@ -740,7 +740,7 @@ export function reformPollMessage(
 
   // Returns the reformed poll message
   return {
-    reformedPollMessage: reformedPollMessage,
+    reformedPollMessage: reformedPollMessage.trim(),
     removed: removed,
     tagged: tagged
   };
