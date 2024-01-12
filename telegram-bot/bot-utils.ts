@@ -1,6 +1,6 @@
 // Module containing all the utility functions for the telegram bot
 
-import type { Context, Types, Composer } from "telegraf";
+import type { Context, Types } from "telegraf";
 import type {
   InlineQueryResult,
   InputMediaDocument,
@@ -8,7 +8,7 @@ import type {
   Message
 } from "telegraf/types";
 import type { OptionalPropertiesOf } from "./types";
-import { Scenes, Markup } from "telegraf";
+import { Scenes, Markup, Composer } from "telegraf";
 import * as utils from "./utils";
 import {
   MAX_CHARACTERS,
@@ -486,6 +486,10 @@ export async function deleteMessages(ctx: Context, ...message_ids: number[]): Pr
   // If the bot isn't allowed to delete messages, immediately return false
   if (!deletingAllowed) return false;
 
+  // Remove the duplicates in the message IDs.
+  // This is so that the function won't try to delete messages twice
+  message_ids = [...new Set(message_ids)];
+
   // Otherwise, creates the tasks to delete the given messages
   const tasks = message_ids.map(id => ctx.deleteMessage(id));
 
@@ -533,17 +537,66 @@ export function wrapCallbackWithMessageDeleter(callback: (ctx: Scenes.WizardCont
 export async function promptUserForInput(
   ctx: Scenes.WizardContext,
   message: string,
-  additionalArgs = {}
+  additionalOptions = {}
 ) {
   
   // Asks the user for an input
   const botMessage = await ctx.reply(
     `${message} ${EXIT_MESSAGE}`,
-    { parse_mode: "HTML", ...additionalArgs }
+    { parse_mode: "HTML", ...additionalOptions }
   );
 
-  // Mark the user's message as well as the bot's message for deletion if possible
-  markMessageForDeletion(ctx, ctx.message!.message_id, botMessage.message_id);
+  // Mark the user's message as well as
+  // the bot's message for deletion if possible
+  markMessageForDeletion(
+    ctx,
+    ctx.message!.message_id,
+    botMessage.message_id
+  );
+
+  // Returns the bot's message
+  return botMessage;
+}
+
+
+// Function to call a step's function in a scene
+export async function callStep(
+  ctx: Scenes.WizardContext,
+  next: () => Promise<void>,
+  previous: boolean = false,
+  stepIndex: number | null = null
+) {
+
+  // If the step index is given
+  // and is greater or equal to zero
+  if (stepIndex && stepIndex >= 0) {
+
+    // Calls the select step function to move to the given step
+    ctx.wizard.selectStep(stepIndex);
+  }
+
+  // Otherwise, if previous is true
+  else if (previous) {
+
+    // Calls the back function to move to the previous step
+    ctx.wizard.back();
+  }
+
+  // Otherwise
+  else {
+
+    // Go to the next step in the scene
+    ctx.wizard.next();
+  }
+
+  // Gets the step
+  const step = ctx.wizard.step;
+
+  // If the next step is not defined, then return null
+  if (step == null) return null;
+
+  // Calls the function by unwrapping it using the Composer object
+  return await Composer.unwrap(step)(ctx, next);
 }
 
 

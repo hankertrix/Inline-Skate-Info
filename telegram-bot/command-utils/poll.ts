@@ -17,11 +17,11 @@ import {
   removeBotUsername,
   cancelCommand,
   deleteMessages,
-  markMessageForDeletion,
   promptUserForInput,
   removeBotUsernameAndCommand,
   generateInlineKeyboard,
-  generateReplyKeyboard
+  generateReplyKeyboard,
+  callStep
 } from "../bot-utils"
 
 
@@ -883,8 +883,24 @@ export type AdditionalOptionsFunction =
     state: CreatePollMessageState
   ) => Promise<boolean>
 
+
+// The type of the list of prompts for the create poll message scene
+export type CreatePollMessagePrompts = [
+  string,
+  {
+    success: string,
+    failure: {
+      prompt: string,
+      placeholder: string
+    }
+  },
+  { success: string, failure: string }
+];
+
+
 // The type for the create poll message state
 export type CreatePollMessageState = {
+  prompts: CreatePollMessagePrompts,
   message: string,
   pollOptions: string[],
   maxEntriesList?: number[],
@@ -916,6 +932,26 @@ const pollOptionMsg = `Please enter another poll option.
 Use the /done command to get the bot to send the poll message.`;
 
 
+// The default list of prompts for the poll message scene
+export const DEFAULT_CREATE_POLL_MESSAGE_PROMPTS: CreatePollMessagePrompts = [
+
+  // The prompt for the first step
+  "Please enter the message for the poll.",
+
+  // The prompts for the second step
+  {
+    success: "Please enter the first poll option.",
+    failure: {
+      prompt: "Please choose a numbering style from the list.",
+      placeholder: "Choose a numbering style..."
+    },
+  },
+
+  // The prompts for the third step
+  { success: "Please enter a poll option.", failure: pollOptionMsg }
+] as const;
+
+
 // The regex to get the numbering style from the string
 // generated from the createNumberingStylesList function
 const getNumberingStyleFromStringRegex = /^[A-Za-z_ ]+/;
@@ -933,10 +969,7 @@ async function doneCommandHandler(ctx: Scenes.WizardContext) {
     // Tells the user that the poll message is not completed
     // and they should use the "/cancel" command instead to cancel
     // the operation
-    const reply =  await ctx.reply(incompleteDataMessage);
-
-    // Marks the bot's message for deletion and exit the function
-    return markMessageForDeletion(ctx, reply.message_id);
+    await promptUserForInput(ctx, incompleteDataMessage);
   }
 
   // Otherwise, create the poll message
@@ -1026,37 +1059,6 @@ export function getNumberingStyleFromString(str: string) {
 }
 
 
-// Function to call the next step's function in a scene
-export async function callNextStep(
-  ctx: Scenes.WizardContext,
-  next: () => Promise<void>
-) {
-
-  // Goes to the next step in the scene
-  ctx.wizard.next();
-
-  // Gets the next step
-  const nextStep = ctx.wizard.step;
-
-  // If the next step is empty, then return null
-  if (nextStep == null) return null;
-
-  // If the next step is a function
-  else if (typeof nextStep === "function") {
-
-    // Call the function
-    return await nextStep(ctx, next);
-  }
-
-  // Otherwise, the next step is a composer object
-  else {
-
-    // Calls the function by unwrapping it using the Composer object
-    return await Composer.unwrap(nextStep)(ctx, next);
-  }
-}
-
-
 // The create poll message scene
 export const createPollMessageScene = new Scenes.WizardScene(
 
@@ -1076,15 +1078,12 @@ export const createPollMessageScene = new Scenes.WizardScene(
       // Set the poll options in the state if it has not been initialised
       state.pollOptions = state.pollOptions ?? [];
 
-      // Marks the given message for deletion
-      markMessageForDeletion(ctx, ctx.message.message_id);
-
       // If the message is already given
       if (state.message) {
 
         // Calls the next function in the scene
         // and exit the function
-        return await callNextStep(ctx, next);
+        return await callStep(ctx, next);
       }
 
       // Otherwise, gets the message sent by the user
@@ -1098,10 +1097,11 @@ export const createPollMessageScene = new Scenes.WizardScene(
       // If the message is empty
       if (!message) {
 
-        // Prompt the user for input
+        // Prompt the user for input with the first prompt.
+        // Zero is the first prompt due to zero indexing
         return await promptUserForInput(
           ctx,
-          "Please enter the message for the poll."
+          state.prompts[0]
         );
       }
 
@@ -1113,7 +1113,7 @@ export const createPollMessageScene = new Scenes.WizardScene(
 
         // Calls the next function in the scene
         // and exit the function
-        return await callNextStep(ctx, next);
+        return await callStep(ctx, next);
       }
     }
   ),
@@ -1128,9 +1128,6 @@ export const createPollMessageScene = new Scenes.WizardScene(
       // Gets the state object
       const state = ctx.wizard.state as CreatePollMessageState;
 
-      // Marks the given message for deletion
-      markMessageForDeletion(ctx, ctx.message.message_id);
-
       // Gets the message from the user
       let message = ctx.message.text;
 
@@ -1140,6 +1137,10 @@ export const createPollMessageScene = new Scenes.WizardScene(
       // Gets the list of numbering styles
       const numberingStyles = createNumberingStylesList();
 
+      // Gets the prompts for this step
+      // 1 means the second step thanks to zero indexing
+      const prompts = state.prompts[1];
+
       // If the message is not one of the accepted numbering styles
       if (!numberingStyles.includes(message)) {
 
@@ -1147,13 +1148,13 @@ export const createPollMessageScene = new Scenes.WizardScene(
         // and exit the function
         return await promptUserForInput(
           ctx,
-          "Please choose a numbering style from the list.",
+          prompts.failure.prompt,
           { ...generateReplyKeyboard(
               numberingStyles,
               {
                 oneTime: true,
                 resize: true,
-                placeholder: "Choose a numbering style..."
+                placeholder: prompts.failure.placeholder
               }
           ) }
         );
@@ -1168,7 +1169,7 @@ export const createPollMessageScene = new Scenes.WizardScene(
         // Gets the user to send the first poll option
         await promptUserForInput(
           ctx,
-          "Please enter the first poll option.",
+          prompts.success,
           { ...Markup.removeKeyboard() }
         );
 
@@ -1180,16 +1181,13 @@ export const createPollMessageScene = new Scenes.WizardScene(
 
   // The third step to get the poll options
   createStep(
-    async (context: Scenes.WizardContext) => {
+    async (context: Scenes.WizardContext, next: () => Promise<void>) => {
 
       // Cast the context to the correct type
       const ctx = context as CreatePollMessageContext;
 
       // Gets the state object
       const state = ctx.wizard.state as CreatePollMessageState;
-
-      // Marks the given message for deletion
-      markMessageForDeletion(ctx, ctx.message.message_id);
 
       // Gets the message from the user
       let message = ctx.message.text;
@@ -1199,6 +1197,10 @@ export const createPollMessageScene = new Scenes.WizardScene(
 
       console.log(message);
 
+      // Gets the prompts for this step
+      // 2 is the 3rd step because of zero indexing
+      const prompts = state.prompts[2];
+
       // If the message is empty
       if (!message) {
 
@@ -1206,7 +1208,7 @@ export const createPollMessageScene = new Scenes.WizardScene(
         // and exit the function
         return await promptUserForInput(
           ctx,
-          "Please enter a poll option."
+          prompts.failure
         );
       }
 
@@ -1219,25 +1221,19 @@ export const createPollMessageScene = new Scenes.WizardScene(
         // If the there are no additional options
         if (!state.additionalOptionsFuncList?.length) {
 
-          // Tells the user to enter a poll option
+          // Tells the user to enter another poll option
           // and exit the function
           return await promptUserForInput(
             ctx,
-            pollOptionMsg
+            prompts.success
           );
         }
 
         // Otherwise, set the additional options index to 0
         state.additionalOptionsIndex = 0;
 
-        // Calls the function at that index
-        // to get the prompt for the user
-        await state.additionalOptionsFuncList[
-          state.additionalOptionsIndex
-        ](ctx, "", state);
-
-        // Goes to the next scene
-        return ctx.wizard.next();
+        // Calls the function in the next step
+        return await callStep(ctx, next);
       }
     }
   ),
@@ -1245,7 +1241,7 @@ export const createPollMessageScene = new Scenes.WizardScene(
   // The fourth step in creating the poll message
   // which is to get all the additional options if there are any
   createStep(
-    async (context: Scenes.WizardContext) => {
+    async (context: Scenes.WizardContext, next: () => Promise<void>) => {
 
       // Cast the context to the correct type
       const ctx = context as CreatePollMessageContext;
@@ -1259,11 +1255,12 @@ export const createPollMessageScene = new Scenes.WizardScene(
       // Gets the additional options index
       let index = state.additionalOptionsIndex;
 
-      // Gets the additional options function list
-      const funcList = state.additionalOptionsFuncList;
-
-      // Marks the given message for deletion
-      markMessageForDeletion(ctx, ctx.message.message_id);
+      // Gets the additional options function list.
+      // The exclamation mark at the end is to assert
+      // to typescript that the function list is defined
+      // as this step can only be entered if there are
+      // functions in the additional options function list.
+      const funcList = state.additionalOptionsFuncList!;
 
       // Gets the message from the user
       let message = ctx.message.text;
@@ -1275,7 +1272,7 @@ export const createPollMessageScene = new Scenes.WizardScene(
 
       // Calls the function at the current index
       // and get whether the function is successful or not
-      const success = await funcList![index](ctx, message, state);
+      const success = await funcList[index](ctx, message, state);
 
       // If the function is successful,
       // increment the additionalOptionxIndex by 1
@@ -1284,16 +1281,13 @@ export const createPollMessageScene = new Scenes.WizardScene(
       // If the additional options index is
       // past the length of the function list - 1
       // (length is 1 more than the last index)
-      if (index > funcList!.length - 1) {
+      if (index > funcList.length - 1) {
 
         // Sets the index back to 0
         state.additionalOptionsIndex = 0;
 
-        // Asks the user for a poll option
-        await promptUserForInput(ctx, pollOptionMsg);
-
-        // Goes back to the previous step
-        return ctx.wizard.back();
+        // Calls the previous step
+        return await callStep(ctx, next, true);
       }
     }
   ),

@@ -1147,6 +1147,7 @@ bot.command([
   ctx.scene.enter(
     "createPollMessage",
     {
+      prompts: commandUtils.poll.DEFAULT_CREATE_POLL_MESSAGE_PROMPTS,
       message: message,
       pollOptions: [],
       messagesToDelete: [ctx.message.message_id]
