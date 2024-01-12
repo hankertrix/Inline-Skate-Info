@@ -1103,7 +1103,9 @@ bot.inlineQuery(/\b\/test\b/, async (ctx) => {
   const { pollMessage } = commandUtils.poll.generatePollMessage(
     message,
   );
-  await answerInlineQuery(
+
+  console.log(pollMessage);
+  return await answerInlineQuery(
     ctx, pollMessage, null, {},
     generateInlineKeyboard(commandUtils.poll.DEFAULT_POLL_OPTIONS)
   )
