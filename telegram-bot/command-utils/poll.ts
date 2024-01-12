@@ -14,7 +14,6 @@ import { Scenes, Composer, Markup } from "telegraf";
 import * as filters from "telegraf/filters";
 import * as utils from "../utils";
 import {
-  removeBotUsername,
   cancelCommand,
   deleteMessages,
   promptUserForInput,
@@ -158,9 +157,6 @@ export const DEFAULT_FORMAT_OPTIONS: FormatOptions = {
   }
 } as const;
 
-// The regex for the poll message command
-export const pollMessageRegex = /^\/?\bpoll_?(?:msg|message)?\b/i;
-
 
 // Function to create the numbering from the numbering style
 function createNumbering(numberingStyle: string, index: number) {
@@ -303,11 +299,8 @@ export function generatePollMessage(
   inlineKeyboardGenerator: InlineKeyboardGenerator = generateInlineKeyboard
 ) {
 
-  // Remove the command from the message
-  message = message.replace(pollMessageRegex, "").trim();
-
-  // Remove the bot's username from the message
-  message = removeBotUsername(message);
+  // Remove the command and the bot's username from the message
+  message = removeBotUsernameAndCommand(message);
 
   // Generate the portion of the message that is a poll
   const pollPortion = createPollPortion(
@@ -877,11 +870,11 @@ export type CreatePollMessageContext = Scenes.WizardContext & {
 }
 
 // The type of the additional options function
-export type AdditionalOptionsFunction =
-  (ctx: CreatePollMessageContext,
-    message: string,
-    state: CreatePollMessageState
-  ) => Promise<boolean>
+export type AdditionalOptionsFunction = (
+  ctx: CreatePollMessageContext,
+  message: string,
+  state: CreatePollMessageState
+) => Promise<boolean>
 
 
 // The type of the list of prompts for the create poll message scene

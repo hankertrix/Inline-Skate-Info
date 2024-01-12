@@ -7,8 +7,6 @@ import * as filters from "telegraf/filters";
 import { SPACING, DEV, getBasePath } from "../src/lib/constants";
 import * as utils from "./utils";
 import {
-  removeBotUsername,
-  removeCommand,
   ctxReply,
   answerInlineQuery,
   isAdmin,
@@ -77,8 +75,8 @@ Use the /help command to see what the bot can do.`;
 // The handler for the help command
 bot.command("help", async ctx => {
 
-  // Remove the command from the message
-  const givenCommand = removeCommand(ctx.message.text);
+  // Remove the command and the bot's username from the message
+  const givenCommand = removeBotUsernameAndCommand(ctx.message.text);
 
   // If a command is given
   if (givenCommand) {
@@ -1019,7 +1017,9 @@ bot.inlineQuery(commandUtils.products.maintenanceItemsRegex, async ctx => {
 // The handler for the poll message command
 bot.command([
   "poll_msg",
-  "pollmsg"
+  "pollmsg",
+  "poll_message",
+  "pollmessage"
 ], async ctx => {
 
   // If the user isn't an admin,
@@ -1075,7 +1075,9 @@ bot.command([
 // The handler for the training message command
 bot.command([
   "trg_msg",
-  "trgmsg"
+  "trgmsg",
+  "trg_message",
+  "trgmessage"
 ], async ctx => {
 
   // If the user isn't an admin,
@@ -1091,10 +1093,7 @@ bot.command([
   let msg = ctx.message.text;
 
   // Remove the command from the message
-  msg = msg.replace(commandUtils.trainingMsg.regex, "").trim();
-
-  // Remove the bot's username from the message
-  msg = removeBotUsername(msg);
+  msg = removeBotUsernameAndCommand(msg);
 
   // Gets the training message handler to handle the training message command
   await commandUtils.trainingMsg.handler(ctx, msg);
@@ -1131,7 +1130,17 @@ bot.command([
   "create_custom_poll_message",
   "make_poll_message",
   "make_custom_poll_message",
-  "custom_poll_message"
+  "custom_poll_message",
+  "createpollmsg",
+  "createcustompollmsg",
+  "makepollmsg",
+  "makecustompollmsg",
+  "custompollmsg",
+  "createpollmessage",
+  "createcustompollmessage",
+  "makepollmessage",
+  "makecustompollmessage",
+  "custompollmessage"
 ], async ctx => {
 
   // If the user isn't an admin,

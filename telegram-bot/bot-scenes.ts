@@ -3,12 +3,11 @@
 import { Scenes, Composer } from "telegraf";
 import * as filters from "telegraf/filters";
 import {
-  removeCommand,
   cancelCommand,
-  removeBotUsername,
   createWizardScene,
   markMessageForDeletion,
-  promptUserForInput
+  promptUserForInput,
+  removeBotUsernameAndCommand
 } from "./bot-utils";
 import { trainingMsgScenes } from "./command-utils/training-message";
 import { createPollMessageScene } from "./command-utils/poll";
@@ -36,11 +35,9 @@ validateHandler.on(filters.message("text"), async ctx => {
   // Gets the message from the state
   const message = state.message;
 
-  // Gets the user's input while removing the command at the start
-  let input: string = removeCommand(ctx.message.text);
-
-  // Remove the bot's username from the user's input
-  input = removeBotUsername(input);
+  // Gets the user's input while removing the command at the start,
+  // as well as the bot's username
+  const input = removeBotUsernameAndCommand(ctx.message.text);
 
   // The default validator to use when no validator is given
   function defaultValidator(input: string) {
