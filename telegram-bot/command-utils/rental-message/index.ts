@@ -1,7 +1,7 @@
 // The utility functions for the rental message
 // and create rental message command
 
-import type { Scenes } from "telegraf";
+import { Markup, type Scenes } from "telegraf";
 import type { Message, ParseMode } from "telegraf/types";
 import type { CbQuery } from "../../types";
 import {
@@ -19,7 +19,6 @@ import {
 import { DEV } from "$lib/constants";
 import { getModuleString } from "../../utils";
 import {
-  generateInlineKeyboard,
   promptUserForInput,
   removeBotUsernameAndCommand
 } from "../../bot-utils";
@@ -165,12 +164,39 @@ export const DEFAULT_CREATE_RENTAL_MSG_CONFIG: CreatePollMessageConfig = {
   preserveLines: true,
   showRemaining: true,
   pollType: POLL_TYPES.RENTAL,
-  inlineKeyboardGenerator: generateInlineKeyboard,
+  inlineKeyboardGenerator: generateRentalMsgInlineKeyboard,
   additionalOptionsFuncList: [
     promptForMaxEntries
   ],
   additionalOptionsIndex: 0
 };
+
+
+// The function to generate an inline keyboard
+function generateRentalMsgInlineKeyboard(
+  rentalOptions: string[]
+) {
+
+  // The list of inline keyboard buttons
+  const inline_keyboard = [];
+
+  // Iterates over the rental options and add them to the inline keyboard
+  for (const rentalOption of rentalOptions) {
+
+    // Add the rental option as an inline keyboard button
+    inline_keyboard.push(
+      [Markup.button.callback(rentalOption, rentalOption)]
+    );
+  }
+
+  // Adds the default tag string to the inline keyboard
+  inline_keyboard.push(
+    [Markup.button.callback(DEFAULT_TAG_STRING, DEFAULT_TAG_STRING)]
+  );
+
+  // Returns the keyboard
+  return Markup.inlineKeyboard(inline_keyboard);
+}
 
 
 // The function to prompt the user for the maximum number of entries
@@ -370,9 +396,10 @@ export async function callback_handler(
   const messageText = message.text;
 
   // If the poll type isn't found in the message,
+  // calls the next() function and
   // immediately exit the function so that
   // another handler can take care of the message
-  if (!messageText.includes(POLL_TYPES.RENTAL)) return;
+  if (!messageText.includes(POLL_TYPES.RENTAL)) return await next();
 
   // Gets the module string from the chat ID
   const moduleStr = getModuleString(message.chat.id);

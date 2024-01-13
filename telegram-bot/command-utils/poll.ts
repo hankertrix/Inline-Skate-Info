@@ -901,9 +901,10 @@ export async function callback_handler(
   const messageText = message.text;
 
   // If the poll type isn't found in the message,
+  // calls the next() function and
   // immediately exit the function so that
   // another handler can take care of the message
-  if (!messageText.includes(POLL_TYPES.DEFAULT)) return;
+  if (!messageText.includes(POLL_TYPES.DEFAULT)) return await next();
 
   // Gets the poll option and the poll message
   const pollOption = callbackQuery.data;
