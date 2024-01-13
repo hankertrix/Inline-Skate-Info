@@ -627,15 +627,28 @@ export function regeneratePollPortion(
     names.push(trimmedName);
   }
 
-  // If the given name exists, is selected, has not been encountered
-  // and the length of the list of names is
-  // less than the maximum number of entries.
-  // The has not been encountered condition
-  // means the name wasn't in the list
-  // and should be added to the list.
-  // Tagging should not be done as the person should
-  // already be in the list to be tagged.
-  if (selected && givenName && !encountered && names.length < maxEntries) {
+  // The condition to add the person to the poll message.
+  // Which is that the poll option must be selected,
+  // the name must be given,
+  // the name must not have been encountered earlier when iterating through
+  // the list of people for the poll option,
+  // the name is not being tagged as
+  // the absence of a tag string means tagging isn't wanted and
+  // the length of the list of names must be less than
+  // the maximum number of entries.
+  // Tagging should not be done as the person should already be
+  // in the list to be tagged.
+  const canAddToPoll = (
+    selected
+    && givenName
+    && !encountered
+    && !tagString
+    && names.length < maxEntries
+  );
+
+  // If all the conditions to add the person to the poll message
+  // are fulfilled.
+  if (canAddToPoll) {
 
     // Set the removed variable to false,
     // which means the person has been added to the list
