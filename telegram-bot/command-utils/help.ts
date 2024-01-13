@@ -150,7 +150,7 @@ function getCommandDict() {
     },
 
     "poll_msg": {
-      explanation: "Gets the bot to send a @countmeinbot style poll message but with only one option called 'Coming'. You can also add the bot as an admin to your group to have the bot automatically delete the messages you sent to create the poll.",
+      explanation: "Gets the bot to send a @countmeinbot styled poll message but with only one option called 'Coming'. You can also add the bot as an admin to your group to have the bot automatically delete the messages you sent to create the poll.",
       usage: "<poll message (optional)>"
     },
 
@@ -171,12 +171,12 @@ function getCommandDict() {
     },
 
     "create_poll_msg": {
-      explanation: "Create a @countmeinbot style poll with custom poll options. The bot will guide you through the process of creating a poll message using this function. The bot will automatically delete the messages you sent to create the poll if you have added the bot as an admin to your group.",
+      explanation: "Create a @countmeinbot styled poll with custom poll options. The bot will guide you through the process of creating a poll message using this function. The bot will automatically delete the messages you sent to create the poll if you have added the bot as an admin to your group.",
       usage: "<poll message (optional)>"
     },
 
     "create_rental_msg": {
-      explanation: "Create a rentals-oriented @countmeinbot style poll with custom rental options. The bot will automatically delete the messages you sent to create the rental message if you have added the bot as an admin to your group.",
+      explanation: "Create a rentals-oriented @countmeinbot styled poll with custom rental options. The bot will automatically delete the messages you sent to create the rental message if you have added the bot as an admin to your group.",
       usage: "<rental message (optional)>"
     },
 
