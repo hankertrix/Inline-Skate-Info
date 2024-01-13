@@ -30,9 +30,14 @@ export type RentalMessageHandler = (
   message: string
 ) => Promise<unknown>;
 
+// The rental message callback context type
+type RentalMessageCallbackContext = Scenes.WizardContext & {
+  callbackQuery: CbQuery
+};
+
 // The type of the rental message callback handler
 export type RentalMessageCallbackHandler = (
-  ctx: Scenes.WizardContext & { callbackQuery: CbQuery },
+  ctx: RentalMessageCallbackContext,
   callbackQuery: CbQuery,
   messageText: string,
   tagString?: string
@@ -284,6 +289,85 @@ export async function handler(
 }
 
 
+// The function to answer the rental message callback
+export async function answerRentalMessageCbQuery(
+  ctx: Scenes.WizardContext,
+  isTag: boolean,
+  removed: boolean | null,
+  tagged: boolean | null,
+  rentalOption: string | null = null
+) {
+
+  // If it is a tagging button that was pressed
+  if (isTag) {
+
+    // If the tagged variable isn't null
+    if (tagged != null) {
+
+      // Tells the user that that have indicated that they
+      // have or have not paid.
+      const callbackReply = tagged
+        ? "Successfully indicated that you have paid! Thank you!"
+        : "Removed the indication that you have paid.";
+
+      // Sends the callback reply to the user
+      await ctx.answerCbQuery(callbackReply);
+    }
+
+    // Otherwise
+    else {
+
+      // Tells the user that they need to add their name to the
+      // rental message first
+      await ctx.answerCbQuery(
+        `You need to add your name to the rental message before you can indicate that you have paid.`
+      );
+
+      // Returns false to tell the calling function that there's no need
+      // to edit the message
+      return false;
+    }
+  }
+
+  // Otherwise, if the rental option is given
+  else if (rentalOption) {
+
+    // If the removed variable isn't null
+    if (removed != null && rentalOption) {
+
+      // Tells the user that they have either added
+      // or removed their name from the rental option
+      await ctx.answerCbQuery(
+        `Your name has been ${
+          removed ? "removed from" : "added to"
+        } '${rentalOption}'!`
+      );
+    }
+
+    // Otherwise, the removed variable is null
+    else {
+
+      // Tells the user that the rental option they chose is full
+      await ctx.answerCbQuery(
+        `Sorry, the rental option that you picked, '${rentalOption}', is full.`
+      );
+
+      // Returns false to tell the calling function that there's
+      // no need to edit the message
+      return false;
+    }
+  }
+
+  // Otherwise, return false because a rental option wasn't given
+  // and the button pressed was not a tag button
+  else return false;
+
+  // Returns true to tell the calling function that the message needs
+  // to be edited
+  return true;
+}
+
+
 // The default function to use to handle the callback query
 export async function default_callback_handler(
   ...[
@@ -353,43 +437,17 @@ export async function default_callback_handler(
     DEFAULT_RENTAL_MSG_TAG_ALL
   );
 
-  // If the removed variable isn't null
-  if (removed != null) {
+  // Answers the rental message callback query
+  const shouldEditMessage = await answerRentalMessageCbQuery(
+    ctx, isTag, removed, tagged, rentalOption
+  );
 
-    // Tells the user that they have either added
-    // or removed their name from the rental option
-    await ctx.answerCbQuery(
-      `Your name has been ${
-        removed ? "removed from" : "added to"
-      } '${rentalOption}'!`
-    );
+  // If the message should be edited,
+  // edits the message with the reformed poll message
+  // and exits the function
+  if (shouldEditMessage) {
+    return await ctx.editMessageText(reformedPollMessage, additionalOptions);
   }
-
-  // Otherwise, if the tagged variable is null
-  else if (tagged == null) {
-
-    // Tells the user that they need to add their name to the poll first
-    // and exit the function as there is no need to edit the message
-    return await ctx.answerCbQuery(
-      `You need to add your name to the rental message before you can indicate that you have paid.`
-    );
-  }
-
-  // Otherwise
-  else {
-
-    // Tells the user that that have indicated that they
-    // have or have not paid.
-    const callbackReply = tagged
-      ? "Successfully indicated that you have paid! Thank you!"
-      : "Removed the indication that you have paid.";
-
-    // Sends the callback reply to the user
-    await ctx.answerCbQuery(callbackReply);
-  }
-
-  // Edits the message with the reformed poll message
-  return await ctx.editMessageText(reformedPollMessage, additionalOptions);
 }
 
 
@@ -446,7 +504,7 @@ export async function callback_handler(
 
 
 // Function to generate the help text for the rental message help command
-export async function generateHelpText(chatId: number) {
+export function generateHelpText(chatId: number) {
 
   // Gets the module string
   const moduleStr = getModuleString(chatId);

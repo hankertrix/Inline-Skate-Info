@@ -3,7 +3,8 @@
 import {
   type RentalMessageCallbackHandler,
   type RentalMessageHandler,
-  DEFAULT_TAG_STRING
+  DEFAULT_TAG_STRING,
+  answerRentalMessageCbQuery
 } from ".";
 import type { ParseMode } from "telegraf/types";
 import { Markup, Scenes } from "telegraf";
@@ -377,43 +378,17 @@ export async function callback_handler(
     RENTAL_MSG_CONFIG.tagAll
   );
 
-  // If the removed variable isn't null
-  if (removed != null) {
+  // Answers the rental message callback query
+  const shouldEditMessage = await answerRentalMessageCbQuery(
+    ctx, tag, removed, tagged, selectedRentalOption
+  );
 
-    // Tells the user that they have either added
-    // or removed their name from the rental option
-    await ctx.answerCbQuery(
-      `Your name has been ${
-        removed ? "removed from" : "added to"
-      } '${selectedRentalOption}'!`
-    );
+  // If the message should be edited,
+  // edits the message with the reformed poll message
+  // and exits the function
+  if (shouldEditMessage) {
+    return await ctx.editMessageText(reformedPollMessage, additionalOptions);
   }
-
-  // Otherwise, if the tagged variable is null
-  else if (tagged == null) {
-
-    // Tells the user that they need to add their name to the poll first
-    // and exit the function as there is no need to edit the message
-    return await ctx.answerCbQuery(
-      `You need to add your name to the rental message before you can indicate that you have paid.`
-    );
-  }
-
-  // Otherwise
-  else {
-
-    // Tells the user that that have indicated that they
-    // have or have not paid.
-    const callbackReply = tagged
-      ? "Successfully indicated that you have paid! Thank you!"
-      : "Removed the indication that you have paid.";
-
-    // Sends the callback reply to the user
-    await ctx.answerCbQuery(callbackReply);
-  }
-
-  // Edits the message with the reformed poll message
-  return await ctx.editMessageText(reformedPollMessage, additionalOptions);
 }
 
 
