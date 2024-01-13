@@ -429,6 +429,16 @@ export function getFilenameFromPath(path: string, removeFileExt: boolean = false
 }
 
 
+// Function to escape the characters for regular expressions
+export function regexEscape(str: string) {
+
+  // Converts the string to an array
+  // and add a backslash before the character.
+  // Then join the result with an empty string and return it
+  return Array.from(str).map(char => `\\${char}`).join("");
+}
+
+
 // Function to remove all html tags from the given text
 export function removeHtml(text: string) {
   return text.replace(/<\/?.*?(?:>|$)/g, "");

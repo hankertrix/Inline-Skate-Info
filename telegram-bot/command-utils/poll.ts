@@ -115,6 +115,12 @@ export type FormatOptions = {
   messageFooter: FormatOption
 }
 
+// The type of the isSameNameFunc
+export type IsSameNameFunc = (
+  encounteredName: string,
+  givenName: string | null
+) => boolean;
+
 // The default format options
 export const DEFAULT_FORMAT_OPTIONS: FormatOptions = {
 
@@ -491,6 +497,16 @@ function getPollOptionMaxEntries(pollOptionLine: string) {
 }
 
 
+// The default function to check if two names are the same
+export function defaultIsSameNameFunc(
+  ...[encounteredName, givenName]: Parameters<IsSameNameFunc>
+): ReturnType<IsSameNameFunc> {
+
+  // Returns if they are equal or not
+  return encounteredName === givenName;
+}
+
+
 // Function to regenerate the poll portion for a given poll option
 export function regeneratePollPortion(
   message: string,
@@ -501,6 +517,7 @@ export function regeneratePollPortion(
   preserveLines: boolean = DEFAULT_PRESERVE_LINES,
   showRemaining: boolean = DEFAULT_SHOW_REMAINING,
   tagString: string | null = null,
+  isSameNameFunc: IsSameNameFunc = defaultIsSameNameFunc
 ) {
 
   // Gets the poll option segment of the message
@@ -519,9 +536,7 @@ export function regeneratePollPortion(
   if (tagString) {
 
     // Escape all the characters in the tag string
-    const escapedTagString = Array.from(tagString).map(
-      char => `\\${char}`
-    ).join("");
+    const escapedTagString = utils.regexEscape(tagString);
 
     // Recreate the regular expression to add the tag string
     regex = new RegExp(
@@ -586,7 +601,7 @@ export function regeneratePollPortion(
     const numbering = createNumbering(numberingStyle, index);
 
     // Otherwise, if the name is selected and the name is the given name
-    if (trimmedName === givenName && selected) {
+    if (isSameNameFunc(trimmedName, givenName) && selected) {
 
       // Set the encountered variable to true
       encountered = true;
@@ -739,7 +754,8 @@ export function reformPollMessage(
   preserveLines: boolean = DEFAULT_PRESERVE_LINES,
   showRemaining: boolean = DEFAULT_SHOW_REMAINING,
   tagString: string | null = null,
-  tagAll: boolean = DEFAULT_TAG_ALL
+  tagAll: boolean = DEFAULT_TAG_ALL,
+  isSameNameFunc: IsSameNameFunc = defaultIsSameNameFunc
 ) {
 
   // The list that contains the final message
@@ -786,7 +802,8 @@ export function reformPollMessage(
       formatOptions.pollOptionHeader,
       preserveLines,
       showRemaining,
-      tagString
+      tagString,
+      isSameNameFunc
     );
 
     // Adds the poll portion to the reformed poll message list

@@ -13,10 +13,11 @@ import {
   getName,
   getPollOptions,
   getPollMessage,
-  reformPollMessage
+  reformPollMessage,
+  type IsSameNameFunc
 } from "../poll";
 import { DEV } from "$lib/constants";
-import { getModuleString } from "../../utils";
+import { getModuleString, regexEscape } from "../../utils";
 import {
   promptUserForInput,
   removeBotUsernameAndCommand
@@ -186,9 +187,27 @@ export const DEFAULT_CREATE_RENTAL_MSG_CONFIG: CreatePollMessageConfig = {
 };
 
 
+// The regular expression to remove the tag string from the name
+const removeTagStringRegex = new RegExp(
+  `${regexEscape(DEFAULT_TAG_STRING)}$`
+);
+
 // The regular expression the get the maximum number of entries
 // from the user
 const promptForMaxEntriesRegex = /\d+/;
+
+
+// The function to check if two names are the same
+function isSameName(
+  ...[encounteredName, givenName]: Parameters<IsSameNameFunc>
+): ReturnType<IsSameNameFunc> {
+
+  // Remove the tag string from the encountered name, trims it
+  // and returns if the encountered name and the given name are the same
+  return encounteredName.replace(
+    removeTagStringRegex, ""
+  ).trim() === givenName;
+}
 
 
 // The function to prompt the user for the maximum number of entries
@@ -334,7 +353,8 @@ export async function default_callback_handler(
     DEFAULT_CREATE_RENTAL_MSG_CONFIG.preserveLines,
     DEFAULT_CREATE_RENTAL_MSG_CONFIG.showRemaining,
     isTag ? tagString : null,
-    DEFAULT_RENTAL_MSG_TAG_ALL
+    DEFAULT_RENTAL_MSG_TAG_ALL,
+    isSameName
   );
 
   // Answers the rental message callback query

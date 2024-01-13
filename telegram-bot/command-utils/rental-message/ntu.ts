@@ -9,6 +9,7 @@ import { Markup, Scenes } from "telegraf";
 import * as utils from "../../utils";
 import {
   type FormatOptions,
+  type IsSameNameFunc,
   NUMBERING_STYLES,
   POLL_TYPES,
   POLL_SPACING,
@@ -129,8 +130,29 @@ Add your name if you want skate rentals. $5 for the whole session, which also in
 `.trim();
 
 
+// The regular expression to remove the size and the tag string
+// from the name
+const removeTagAndSizeRegex = new RegExp(
+  String.raw`\d+[^\S\r\n]*${
+    utils.regexEscape(RENTAL_MSG_CONFIG.tagString)
+  }?$/`
+);
+
 // The regular expression to get the size range
 const getSizeRangeRegex = /(\d+)[^\S\r\n]-[^\S\r\n](\d+)/;
+
+
+// The function to check if two names are the same
+function isSameName(
+  ...[encounteredName, givenName]: Parameters<IsSameNameFunc>
+): ReturnType<IsSameNameFunc> {
+
+  // Removes the tag and the size from the encountered name, trims it
+  // and returns if the name is the same as the given name
+  return encounteredName.replace(
+    removeTagAndSizeRegex, ""
+  ).trim() === givenName;
+}
 
 
 // Function to create the time portion of the rental message
@@ -380,7 +402,8 @@ export async function callback_handler(
     RENTAL_MSG_CONFIG.preserveLines,
     RENTAL_MSG_CONFIG.showRemaining,
     tag ? RENTAL_MSG_CONFIG.tagString : null,
-    RENTAL_MSG_CONFIG.tagAll
+    RENTAL_MSG_CONFIG.tagAll,
+    isSameName
   );
 
   // Answers the rental message callback query
