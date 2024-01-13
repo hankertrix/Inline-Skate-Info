@@ -624,7 +624,7 @@ export function regeneratePollPortion(
 
       // Adds the numbering style, name, and the tag
       // to the poll portion list
-      pollPortionList.push(`${numbering} ${trimmedName} ${tag}`);
+      pollPortionList.push(`${numbering} ${trimmedName} ${tag}`.trim());
     }
 
     // Add the name to the list of names
@@ -664,7 +664,7 @@ export function regeneratePollPortion(
     // This is done first as the createNumbering function
     // increases the given index by 1
     pollPortionList.push(
-      `${createNumbering(numberingStyle, names.length)} ${givenName}`
+      `${createNumbering(numberingStyle, names.length)} ${givenName}`.trim()
     );
 
     // Adds the name to the list of names
@@ -697,7 +697,9 @@ export function regeneratePollPortion(
     for (let index = names.length; index < maxNumberOfLines; ++index) {
 
       // Adds the numbering to the list
-      pollPortionList.push(`${createNumbering(numberingStyle, index)}`);
+      pollPortionList.push(
+        `${createNumbering(numberingStyle, index)}`.trim()
+      );
     }
   }
 
