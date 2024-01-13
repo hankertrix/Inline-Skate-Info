@@ -1010,9 +1010,9 @@ bot.inlineQuery(commandUtils.products.maintenanceItemsRegex, async ctx => {
 
 
 
-// Poll message, training message and rental message commands.
-// They function similarly as the training message and rental message
-// commands are both just modified poll message commands
+// Poll message and training message commands
+// They function similarly as the training message command
+// is just a modified poll message command
 
 // The handler for the poll message command
 bot.command([
@@ -1097,6 +1097,55 @@ bot.command([
 });
 
 
+// The callback query handler for the poll and training message commands
+bot.on(filters.callbackQuery("data"), async (ctx, next) => {
+
+  // Calls the callback handler in the poll message module
+  // to handle the callback query
+  await commandUtils.poll.callback_handler(ctx, next);
+});
+
+
+
+
+
+
+
+
+
+
+// The training message help command
+
+// The handler for the training message help command
+bot.command([
+  "trg_msg_help",
+  "trg_help",
+  "trgmsghelp",
+  "trghelp"
+], async ctx => {
+
+  // Calls the function to get the help text for the training message
+  const helpText = commandUtils.trainingMsg.generateHelpText(ctx.chat.id);
+
+  // Replies the user with the help text
+  await ctxReply(ctx, helpText);
+});
+
+
+
+
+
+
+
+
+
+
+// The rental message command
+// It is quite similar to the poll message command but there are a few
+// changes that make it work in reverse, as in counting down the number
+// of people who can add their name to the poll instead of just simply
+// adding their name to the poll.
+
 // The handler for the rental message command
 bot.command([
   "rental_msg",
@@ -1125,15 +1174,6 @@ bot.command([
 })
 
 
-// The callback query handler for the poll message
-bot.on(filters.callbackQuery("data"), async (ctx, next) => {
-
-  // Calls the callback handler in the poll message module
-  // to handle the callback query
-  await commandUtils.poll.callback_handler(ctx, next);
-});
-
-
 // The callback query handler for the rental message
 bot.on(filters.callbackQuery("data"), async (ctx, next) => {
 
@@ -1151,20 +1191,16 @@ bot.on(filters.callbackQuery("data"), async (ctx, next) => {
 
 
 
-// The training message help command
-
-// The handler for the training message help command
+// The handler for the rental message help command
 bot.command([
-  "trg_msg_help",
-  "trg_help",
-  "msg_help",
-  "trgmsghelp",
-  "trghelp",
-  "msghelp"
+  "rental_msg_help",
+  "rental_help",
+  "rentalmsghelp",
+  "rentalhelp"
 ], async ctx => {
 
-  // Calls the function to get the help text for the training message
-  const helpText = commandUtils.trainingMsg.generateHelpText(ctx.chat.id);
+  // Calls the function to get the help text for the rental message
+  const helpText = commandUtils.rentalMsg.generateHelpText(ctx.chat.id);
 
   // Replies the user with the help text
   await ctxReply(ctx, helpText);
