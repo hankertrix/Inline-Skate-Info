@@ -594,8 +594,10 @@ export function regeneratePollPortion(
       // If the tag string is given
       if (tagString) {
 
-        // Sets the tagged variable
-        tagged = tag ? true : false;
+        // Sets the tagged variable.
+        // If the tag exists, remove the tag and set tagged to false.
+        // Otherwise, add the tag and set tagged to true
+        tagged = tag ? false : true;
 
         // Add or remove the tag depending on whether the tag is already there
         // and add the string to the poll portion list
