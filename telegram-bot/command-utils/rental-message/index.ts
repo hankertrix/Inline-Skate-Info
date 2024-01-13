@@ -2,13 +2,19 @@
 // and create rental message command
 
 import type { Scenes } from "telegraf";
-import type { Message } from "telegraf/types";
+import type { Message, ParseMode } from "telegraf/types";
+import type { CbQuery } from "../../types";
 import {
   type CreatePollMessagePrompts,
   type AdditionalOptionsFunction,
   type FormatOptions,
   type CreatePollMessageConfig,
   POLL_TYPES,
+  toggleTagOnEntirePollMessage,
+  getName,
+  getPollOptions,
+  getPollMessage,
+  reformPollMessage
 } from "../poll";
 import { DEV } from "$lib/constants";
 import { getModuleString } from "../../utils";
@@ -19,16 +25,25 @@ import {
 } from "../../bot-utils";
 
 
-// The type of the rental message function
-export type RentalMessageFunction = (
+// The type of the rental message handler
+export type RentalMessageHandler = (
   ctx: Scenes.WizardContext & { message: Message.TextMessage },
   message: string
 ) => Promise<unknown>;
 
+// The type of the rental message callback handler
+export type RentalMessageCallbackHandler = (
+  ctx: Scenes.WizardContext & { callbackQuery: CbQuery },
+  callbackQuery: CbQuery,
+  messageText: string,
+  tagString?: string
+) => Promise<unknown>;
+
 // The interface for the rental message module
 interface RentalMessageModule {
-  handler: RentalMessageFunction,
-  help: string
+  handler: RentalMessageHandler,
+  help: string,
+  callback_handler?: RentalMessageCallbackHandler
 };
 
 // The type of the rental message modules
@@ -40,6 +55,9 @@ type RentalMessageModules = {
 // and the rental message module
 const rentalMsgModules: RentalMessageModules = {
 } as const;
+
+// The default tag string
+export const DEFAULT_TAG_STRING = "✅";
 
 // The rental option message
 const rentalOptionMessage = `Please enter another rental option.
@@ -199,9 +217,9 @@ async function promptForMaxEntries(
 }
 
 
-// Function to handler the rental message command
+// Function to handle the rental message command
 export async function handler(
-  ...[ctx, message]: Parameters<RentalMessageFunction>
+  ...[ctx, message]: Parameters<RentalMessageHandler>
 ) {
 
   // Gets the module string
@@ -224,9 +242,158 @@ export async function handler(
     });
   }
 
-  // Otherwise, gets the rental message function from the module mapping
-  const rentalMsgFunction = rentalMsgModules[moduleStr].handler;
+  // Otherwise, gets the rental message handler from the module mapping
+  const rentalMsgHandler = rentalMsgModules[moduleStr].handler;
 
   // Calls the rental message function
-  await rentalMsgFunction(ctx, message);
+  await rentalMsgHandler(ctx, message);
+}
+
+
+// The default function to use to handle the callback query
+export async function default_callback_handler(
+  ...[
+    ctx,
+    callbackQuery,
+    messageText,
+    tagString = DEFAULT_TAG_STRING
+  ]: Parameters<RentalMessageCallbackHandler>
+): ReturnType<RentalMessageCallbackHandler> {
+
+  // Gets the rental option
+  const rentalOption = callbackQuery.data;
+
+  // If the rental option doesn't exist, then tells the user
+  if (messageText.indexOf(rentalOption) === -1) {
+    return await ctx.answerCbQuery(
+      `The option "${
+        rentalOption
+      }" doesn't exist on the rental message you are responding to.`
+    );
+  }
+
+  // Otherwise, gets the name of the person
+  const name = getName(callbackQuery.from);
+
+  // Gets the message object
+  const message = callbackQuery.message;
+
+  // Create the additional options to edit the message
+  const additionalOptions = {
+    parse_mode: "HTML" as ParseMode,
+    reply_markup: {
+      inline_keyboard: message.reply_markup.inline_keyboard
+    }
+  };
+
+  // If the rental option is the tag string
+  if (rentalOption === tagString) {
+
+    // Tags the user on the poll message
+    const { msg, tagged } = toggleTagOnEntirePollMessage(
+      messageText, name, tagString
+    );
+
+    // If the tagged variable is null
+    if (tagged == null) {
+
+      // Tells the user that they need to add their name to the poll first
+      return await ctx.answerCbQuery(
+        `You need to add your name to the poll before you can indicate that you have paid.`
+      );
+    }
+
+    // Otherwise, tells the user that that have indicated that they
+    // have or have not paid.
+    const callbackReply = tagged
+      ? "Successfully indicated that you have paid! Thank you!"
+      : "Removed the indication that you have paid.";
+
+    // Sends the callback reply to the user
+    await ctx.answerCbQuery(callbackReply);
+
+    // Edit the rental message
+    return await ctx.editMessageText(msg, additionalOptions);
+  }
+
+  // Otherwise, gets the list of rental options
+  const rentalOptions = getPollOptions(message.reply_markup.inline_keyboard);
+
+  // Gets the rental message
+  const rentalMessage = getPollMessage(messageText, rentalOptions);
+
+  // Gets the reformed poll message
+  // and the variable to indicated whether the person has been added
+  // or removed from the rental option
+  const { reformedPollMessage, removed } = reformPollMessage(
+    messageText,
+    rentalMessage,
+    rentalOption,
+    rentalOptions,
+    name,
+    DEFAULT_RENTAL_MSG_FORMAT_OPTIONS,
+    DEFAULT_CREATE_RENTAL_MSG_CONFIG.preserveLines,
+    DEFAULT_CREATE_RENTAL_MSG_CONFIG.showRemaining
+  );
+
+  // Answers the callback query
+  await ctx.answerCbQuery(
+    `Your name has been ${
+      removed ? "removed from" : "added to"
+    } '${rentalOption}'!`
+  );
+
+  // Edits the message with the reformed poll message
+  return await ctx.editMessageText(reformedPollMessage, additionalOptions);
+}
+
+
+// Function to handle the callback query
+export async function callback_handler(
+  context: Scenes.WizardContext,
+  next: () => Promise<void>,
+  tagString: string = DEFAULT_TAG_STRING
+) {
+
+  // Casts the context to the correct type
+  const ctx = context as Scenes.WizardContext & {
+    callbackQuery: CbQuery
+  };
+
+  // Gets the callback query and cast it to the CbQuery type
+  const callbackQuery = ctx.callbackQuery;
+
+  // Gets the message from the callback query
+  const message = callbackQuery.message;
+
+  // Gets the message text
+  const messageText = message.text;
+
+  // If the poll type isn't found in the message,
+  // immediately exit the function so that
+  // another handler can take care of the message
+  if (!messageText.includes(POLL_TYPES.RENTAL)) return;
+
+  // Gets the module string from the chat ID
+  const moduleStr = getModuleString(message.chat.id);
+
+  // If the module string is found
+  if (moduleStr) {
+
+    // Gets the rental message callback handler for the module
+    const rentalMsgCbHandler = rentalMsgModules[moduleStr].callback_handler;
+
+    // If the rental message callback exists
+    if (rentalMsgCbHandler) {
+
+      // Calls the rental message callback and exit the function
+      return await rentalMsgCbHandler(ctx, callbackQuery, messageText);
+    }
+  }
+
+  // Otherwise, calls the default callback handler
+  // to handle the callback query
+  return await default_callback_handler(
+    ctx, callbackQuery, messageText, tagString
+  );
 }

@@ -1010,9 +1010,9 @@ bot.inlineQuery(commandUtils.products.maintenanceItemsRegex, async ctx => {
 
 
 
-// Poll message and training message command
-// (they function similarly, only that the training message command
-// will have a default output which is the training message)
+// Poll message, training message and rental message commands.
+// They function similarly as the training message and rental message
+// commands are both just modified poll message commands
 
 // The handler for the poll message command
 bot.command([
@@ -1097,13 +1097,50 @@ bot.command([
 });
 
 
+// The handler for the rental message command
+bot.command([
+  "rental_msg",
+  "rentalmsg",
+  "rental_message",
+  "rentalmessage"
+], async ctx => {
+
+  // If the user isn't an admin,
+  // tries to delete the message that the user has sent
+  if (!(await isAdmin(ctx))) return await deleteMessages(
+    ctx, ctx.message.message_id
+  );
+
+  // Set the default timezone to "Asia/Singapore"
+  process.env.TZ = "Asia/Singapore";
+
+  // Gets the text from the message sent
+  let msg = ctx.message.text;
+
+  // Remove the command from the message
+  msg = removeBotUsernameAndCommand(msg);
+
+  // Gets the training message handler to handle the rental message command
+  await commandUtils.rentalMsg.handler(ctx, msg);
+})
+
+
 // The callback query handler for the poll message
 bot.on(filters.callbackQuery("data"), async (ctx, next) => {
 
-  // Calls the callback handler in the poll message to
-  // handle the callback query
+  // Calls the callback handler in the poll message module
+  // to handle the callback query
   await commandUtils.poll.callback_handler(ctx, next);
 });
+
+
+// The callback query handler for the rental message
+bot.on(filters.callbackQuery("data"), async (ctx, next) => {
+
+  // Calls the callback handler in the rental message module
+  // to handle the callback query
+  await commandUtils.rentalMsg.callback_handler(ctx, next);
+})
 
 
 
