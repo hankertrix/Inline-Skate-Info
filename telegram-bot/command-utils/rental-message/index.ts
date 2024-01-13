@@ -79,7 +79,10 @@ const DEFAULT_CREATE_RENTAL_MSG_PROMPTS: CreatePollMessagePrompts = [
   },
 
   // The prompts for the third step
-  { success: rentalOptionMessage, failure: "Please enter a rental option." }
+  {
+    success: rentalOptionMessage,
+    failure: "Please enter a rental option.\nUse the /done command to get the bot to send the rental message."
+  }
 ] as const;
 
 
@@ -343,7 +346,11 @@ export async function default_callback_handler(
   }
 
   // Otherwise, gets the list of rental options
-  const rentalOptions = getPollOptions(message.reply_markup.inline_keyboard);
+  // The inline keyboard will have the last option removed
+  // as that is the option to tag the entry
+  const rentalOptions = getPollOptions(
+    message.reply_markup.inline_keyboard.slice(0, -1)
+  );
 
   // Gets the rental message
   const rentalMessage = getPollMessage(messageText, rentalOptions);
