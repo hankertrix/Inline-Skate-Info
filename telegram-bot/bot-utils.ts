@@ -232,10 +232,10 @@ export function generateInlineKeyboard(buttons: string[]) {
   // The list of inline keyboard buttons
   const inlineKeyboard = [];
 
-  // Iterates over the buttons and add them to the list
+  // Iterates over the buttons and add them to the inline keyboard
   for (const button of buttons) {
 
-    // Adds the poll option button to the list
+    // Adds the button to the inline keyboard
     inlineKeyboard.push(
       [Markup.button.callback(button, button)]
     );
