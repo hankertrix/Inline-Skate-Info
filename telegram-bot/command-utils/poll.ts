@@ -519,12 +519,14 @@ export function regeneratePollPortion(
   if (tagString) {
 
     // Escape all the characters in the tag string
-    tagString = Array.from(tagString).map(char => `\\${char}`).join("");
+    const escapedTagString = Array.from(tagString).map(
+      char => `\\${char}`
+    ).join("");
 
     // Recreate the regular expression to add the tag string
     regex = new RegExp(
       `${numberingStyleAndNameRegex.source.replace(
-        /\(\)\$$/, `((?:${tagString})?)$`
+        /\(\)\$$/, `((?:${escapedTagString})?)$`
       )}`,
       numberingStyleAndNameRegex.flags
     );
@@ -777,11 +779,14 @@ export function reformPollMessage(
 
     // If the nameRemoved variable isn't null,
     // then set the removed variable to its value
-    if (nameRemoved !== null) removed = nameRemoved;
+    if (nameRemoved != null) removed = nameRemoved;
 
     // If the nameTagged variable isn't null,
     // then set the tagged variable to its value
-    if (nameTagged !== null) tagged = nameTagged;
+    if (nameTagged != null) tagged = nameTagged;
+
+    console.log(`removed is ${removed}`)
+    console.log(`tagged is ${tagged}`)
   }
 
   // Gets the number of unique people who responded
