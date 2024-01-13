@@ -804,13 +804,13 @@ export function getName(user: User) {
 
 
 // Function to get the list of poll options
-export function getPollOptions(inline_keyboard: InlineKeyboardButton[][]) {
+export function getPollOptions(inlineKeyboard: InlineKeyboardButton[][]) {
 
   // The list of poll options
   const pollOptions = [];
 
   // Iterates the list of inline keyboard buttons
-  for (const inlineKeyboardButton of inline_keyboard) {
+  for (const inlineKeyboardButton of inlineKeyboard) {
 
     // Gets the text for the inline keyboard button
     const text = inlineKeyboardButton[0].text;

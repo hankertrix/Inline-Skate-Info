@@ -181,24 +181,24 @@ function generateRentalMsgInlineKeyboard(
 ) {
 
   // The list of inline keyboard buttons
-  const inline_keyboard = [];
+  const inlineKeyboard = [];
 
   // Iterates over the rental options and add them to the inline keyboard
   for (const rentalOption of rentalOptions) {
 
     // Add the rental option as an inline keyboard button
-    inline_keyboard.push(
+    inlineKeyboard.push(
       [Markup.button.callback(rentalOption, rentalOption)]
     );
   }
 
   // Adds the default tag string to the inline keyboard
-  inline_keyboard.push(
+  inlineKeyboard.push(
     [Markup.button.callback(DEFAULT_TAG_STRING, DEFAULT_TAG_STRING)]
   );
 
   // Returns the keyboard
-  return Markup.inlineKeyboard(inline_keyboard);
+  return Markup.inlineKeyboard(inlineKeyboard);
 }
 
 
