@@ -21,6 +21,7 @@ import {
   promptUserForInput,
   removeBotUsernameAndCommand
 } from "../../bot-utils";
+import * as ntu from "./ntu";
 
 
 // The type of the rental message handler
@@ -52,6 +53,7 @@ type RentalMessageModules = {
 // The dictionary containing all of the mappings between the name
 // and the rental message module
 const rentalMsgModules: RentalMessageModules = {
+  "ntu": ntu
 } as const;
 
 // The default tag string
