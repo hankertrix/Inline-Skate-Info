@@ -658,42 +658,49 @@ export async function promptUserForInput(
 
 // Function to call a step's function in a scene
 export async function callStep(
-  ctx: Scenes.WizardContext,
+  ctx: Scenes.WizardContext & { message: Message.TextMessage },
   next: () => Promise<void>,
   previous: boolean = false,
   stepIndex: number | null = null
 ) {
 
-  // If the step index is given
-  // and is greater or equal to zero
-  if (stepIndex && stepIndex >= 0) {
+  return await next();
 
-    // Calls the select step function to move to the given step
-    ctx.wizard.selectStep(stepIndex);
-  }
-
-  // Otherwise, if previous is true
-  else if (previous) {
-
-    // Calls the back function to move to the previous step
-    ctx.wizard.back();
-  }
-
-  // Otherwise
-  else {
-
-    // Go to the next step in the scene
-    ctx.wizard.next();
-  }
-
-  // Gets the step
-  const step = ctx.wizard.step;
-
-  // If the next step is not defined, then return null
-  if (step == null) return null;
-
-  // Calls the function by unwrapping it using the Composer object
-  return await Composer.unwrap(step)(ctx, next);
+  // // If the step index is given
+  // // and is greater or equal to zero
+  // if (stepIndex && stepIndex >= 0) {
+  //
+  //   // Calls the select step function to move to the given step
+  //   ctx.wizard.selectStep(stepIndex);
+  // }
+  //
+  // // Otherwise, if previous is true
+  // else if (previous) {
+  //
+  //   // Calls the back function to move to the previous step
+  //   ctx.wizard.back();
+  // }
+  //
+  // // Otherwise
+  // else {
+  //
+  //   // Go to the next step in the scene
+  //   ctx.wizard.next();
+  // }
+  //
+  // // Gets the step
+  // const step = ctx.wizard.step;
+  //
+  // // If the next step is not defined, then return null
+  // if (step == null) return null;
+  //
+  // // Sets the message to an empty string,
+  // // so the bot doesn't respond to the input given
+  // // by the user again.
+  // ctx.message.text = "";
+  //
+  // // Calls the function by unwrapping it using the Composer object
+  // return await Composer.unwrap(step)(ctx, next);
 }
 
 
