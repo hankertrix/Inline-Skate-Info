@@ -599,8 +599,10 @@ export function regeneratePollPortion(
         // Otherwise, add the tag and set tagged to true
         tagged = tag ? false : true;
 
-        // Add or remove the tag depending on whether the tag is already there
-        // and add the string to the poll portion list
+        // If the tag is found, then remove the tag by replacing it with
+        // and empty string.
+        // Otherwise, add the tag.
+        // Also add the numbering style and the name to the poll.
         pollPortionList.push(
           `${numbering} ${trimmedName} ${tag ? "" : tagString}`.trim()
         );
