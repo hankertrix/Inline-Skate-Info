@@ -1310,8 +1310,6 @@ export const createPollMessageScene = new Scenes.WizardScene(
       // Gets the message text from the message
       message = removeBotUsernameAndCommand(message);
 
-      console.log(message);
-
       // Gets the prompts for this step
       // 2 is the 3rd step because of zero indexing
       const prompts = state.prompts[2];
@@ -1382,8 +1380,6 @@ export const createPollMessageScene = new Scenes.WizardScene(
 
       // Gets the message text from the message
       message = removeBotUsernameAndCommand(message);
-
-      console.log(message);
 
       // Calls the function at the current index
       // and get whether the function is successful or not
