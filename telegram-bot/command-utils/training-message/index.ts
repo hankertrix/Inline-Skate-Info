@@ -55,11 +55,11 @@ export async function handler(
     return await trgMsgUtils.handleTrgMsg(ctx, message);
   }
 
-  // Otherwise, get the training message function from the function mapping
-  const trgMsgFunction = trgMsgModules[moduleStr].handler;
+  // Otherwise, get the training message handler from the module mapping
+  const trgMsgHandler = trgMsgModules[moduleStr].handler;
 
   // Calls the training message function
-  await trgMsgFunction(ctx, message);
+  await trgMsgHandler(ctx, message);
 }
 
 
