@@ -70,8 +70,14 @@ export const DEFAULT_SHOW_REMAINING = false;
 // The regex to get the numbering style from the poll option segment
 const numberingStyleRegex = /[->=+~•·([{<]?\d*[).\]}>]?/;
 
+// The regex to get the numbering style
+// and the name from the poll option segment.
+// The [^\S\r\n] group matches all spaces except for new line characters,
+// which is what we want here
 const numberingStyleAndNameRegex = new RegExp(
-  String.raw`^\s*?(${numberingStyleRegex.source})\s*(.*?)\s*()$`,
+  String.raw`^[^\S\r\n]*?(${
+    numberingStyleRegex.source
+  })[^\S\r\n]*(.*?)[^\S\r\n]*()$`,
   "gm"
 );
 
@@ -79,8 +85,10 @@ const numberingStyleAndNameRegex = new RegExp(
 const createNumberingRegex = /\d+/;
 
 // The regex to get the maximum number of entries from the
-// poll option header
-const getMaxEntriesRegex = /\d+\s*\/\s*(\d+)/;
+// poll option header.
+// The [^\S\r\n] group matches all spaces except for new line characters,
+// which is what we want here
+const getMaxEntriesRegex = /\d+[^\S\r\n]*\/[^\S\r\n]*(\d+)/;
 
 // The type for the numbering styles
 export type NumberingStyle = ObjectValues<typeof NUMBERING_STYLES>;
@@ -503,9 +511,6 @@ export function regeneratePollPortion(
   // globally defined numbering style and name regex
   let regex = numberingStyleAndNameRegex;
 
-  console.log(numberingStyleAndNameRegex.source);
-  console.log(numberingStyleAndNameRegex.flags);
-
   // If the tag string is given
   if (tagString) {
 
@@ -560,9 +565,6 @@ export function regeneratePollPortion(
 
     // Gets the trimmed name
     const trimmedName = name.trim();
-
-    console.log(trimmedName);
-    console.log(tag)
 
     // If it's the first item
     if (index === 0) {
@@ -844,8 +846,12 @@ export function toggleTagOnEntirePollMessage(
   let tagged = null;
 
   // Create the regular expression to search for the entry
+  // The [^\S\r\n] group matches all spaces except for new line characters,
+  // which is what we want here
   const regex = new RegExp(
-    String.raw`^(\s*${numberingStyleRegex.source}\s*${entry})(.*?)$`,
+    String.raw`^([^\S\r\n]*${
+      numberingStyleRegex.source
+    }[^\S\r\n]*${entry})(.*?)$`,
     "gm"
   );
 
