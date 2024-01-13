@@ -154,11 +154,6 @@ function getCommandDict() {
       usage: "<poll message (optional)>"
     },
 
-    "create_poll_msg": {
-      explanation: "Create a @countmeinbot style poll with custom poll options. The bot will guide you through the process of creating a poll message using this function and will automatically delete the messages you sent to create the poll.",
-      usage: "<poll message (optional)>"
-    },
-
     "trg_msg": {
       explanation: `Gets the bot to send the training message that has been set up for your group. You will have to add the bot to your group and have the developer set up a training message for you. Use the /trg_msg_help command to see how to use the /trg_msg command. It functions the same way as the /poll_msg command if you have not set up a training message. Also, you can add the bot as an admin to your group to have the bot automatically delete the messages you sent to create the poll. If you want to set up a training message, please contact ${DEV}.`
     },
@@ -167,13 +162,31 @@ function getCommandDict() {
       explanation: "Displays how to use the /trg_msg command if you have set it up."
     },
 
+    "rental_msg": {
+      explanation: `Gets the bot to send the rental message that has been set up for your group. You will have to add the bot to your group and have the developer set up a rental message for you. Use the /rental_msg_help command to see how to use the /rental_msg command. It functions the same way as the /create_rental_msg command if you have not set up a rental message. Also you can add the bot as an admin to your group to have the bot automatically delete the messages you sent to create the rental message. If you want to set up a rental message, please contact ${DEV}.`
+    },
+
+    "rental_msg_help": {
+      explanation: "Displays how to use the /rental_msg command if you have set it up."
+    },
+
+    "create_poll_msg": {
+      explanation: "Create a @countmeinbot style poll with custom poll options. The bot will guide you through the process of creating a poll message using this function. The bot will automatically delete the messages you sent to create the poll if you have added the bot as an admin to your group.",
+      usage: "<poll message (optional)>"
+    },
+
+    "create_rental_msg": {
+      explanation: "Create a rentals-oriented @countmeinbot style poll with custom rental options. The bot will automatically delete the messages you sent to create the rental message if you have added the bot as an admin to your group.",
+      usage: "<rental message (optional)>"
+    },
+
     "qr_code": {
       explanation: "Gets the bot to turn your text into a QR code.",
       usage: "<text that you want to convert to a QR code>"
     },
 
     "get_chat_id": {
-      explanation: "Gets the bot to send the chat ID of the chat. This command is just here to facilitate the creation of the training message for the /trg_msg command."
+      explanation: "Gets the bot to send the chat ID of the chat. This command is just here to facilitate the creation of the training message and the rental message for the /trg_msg command and /rental_msg command respectively."
     },
 
     "source": {
