@@ -10,7 +10,6 @@ import {
   type FormatOptions,
   type CreatePollMessageConfig,
   POLL_TYPES,
-  toggleTagOnEntirePollMessage,
   getName,
   getPollOptions,
   getPollMessage,
@@ -306,38 +305,15 @@ export async function default_callback_handler(
     }
   };
 
-  // If the rental option is the tag string
-  if (rentalOption === tagString) {
+  // The variable to indicate that the rental option given
+  // is the tag string
+  const isTag = rentalOption === tagString;
 
-    // Tags the user on the poll message
-    const { msg, tagged } = toggleTagOnEntirePollMessage(
-      messageText, name, tagString
-    );
+  // If the rental option doesn't exist,
+  // and the selected option isn't the tag string
+  if (!isTag && messageText.indexOf(rentalOption) === -1) {
 
-    // If the tagged variable is null
-    if (tagged == null) {
-
-      // Tells the user that they need to add their name to the poll first
-      return await ctx.answerCbQuery(
-        `You need to add your name to the poll before you can indicate that you have paid.`
-      );
-    }
-
-    // Otherwise, tells the user that that have indicated that they
-    // have or have not paid.
-    const callbackReply = tagged
-      ? "Successfully indicated that you have paid! Thank you!"
-      : "Removed the indication that you have paid.";
-
-    // Sends the callback reply to the user
-    await ctx.answerCbQuery(callbackReply);
-
-    // Edit the rental message
-    return await ctx.editMessageText(msg, additionalOptions);
-  }
-
-  // Otherwise, if the rental option doesn't exist, then tells the user
-  else if (messageText.indexOf(rentalOption) === -1) {
+    // Tells the user that the poll option doesn't exist
     return await ctx.answerCbQuery(
       `The option "${
         rentalOption
@@ -358,7 +334,7 @@ export async function default_callback_handler(
   // Gets the reformed poll message
   // and the variable to indicated whether the person has been added
   // or removed from the rental option
-  const { reformedPollMessage, removed } = reformPollMessage(
+  const { reformedPollMessage, removed, tagged } = reformPollMessage(
     messageText,
     rentalMessage,
     rentalOption,
@@ -366,15 +342,43 @@ export async function default_callback_handler(
     name,
     DEFAULT_RENTAL_MSG_FORMAT_OPTIONS,
     DEFAULT_CREATE_RENTAL_MSG_CONFIG.preserveLines,
-    DEFAULT_CREATE_RENTAL_MSG_CONFIG.showRemaining
+    DEFAULT_CREATE_RENTAL_MSG_CONFIG.showRemaining,
+    isTag ? tagString : null
   );
 
-  // Answers the callback query
-  await ctx.answerCbQuery(
-    `Your name has been ${
-      removed ? "removed from" : "added to"
-    } '${rentalOption}'!`
-  );
+  // If the removed variable isn't null
+  if (removed != null) {
+
+    // Tells the user that they have either added
+    // or removed their name from the rental option
+    await ctx.answerCbQuery(
+      `Your name has been ${
+        removed ? "removed from" : "added to"
+      } '${rentalOption}'!`
+    );
+  }
+
+  // Otherwise, if the tagged variable is null
+  else if (tagged == null) {
+
+    // Tells the user that they need to add their name to the poll first
+    return await ctx.answerCbQuery(
+      `You need to add your name to the poll before you can indicate that you have paid.`
+    );
+  }
+
+  // Otherwise
+  else {
+
+    // Tells the user that that have indicated that they
+    // have or have not paid.
+    const callbackReply = tagged
+      ? "Successfully indicated that you have paid! Thank you!"
+      : "Removed the indication that you have paid.";
+
+    // Sends the callback reply to the user
+    await ctx.answerCbQuery(callbackReply);
+  }
 
   // Edits the message with the reformed poll message
   return await ctx.editMessageText(reformedPollMessage, additionalOptions);
