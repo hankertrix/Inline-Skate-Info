@@ -663,10 +663,12 @@ export function regeneratePollPortion(
     // as the lines will still be there.
     let maxNumberOfLines = Number.isFinite(maxEntries) ? maxEntries : 0;
 
-    // If there is no one left on the poll,
+    // If the maximum number of lines is less than 1,
+    // and there is no one left on the poll,
     // then set the maximum number of lines to 1.
     // This is so that the numbering style can still be preserved
-    if (names.length < 1) maxNumberOfLines = 1;
+    // even when there are no names on the poll
+    if (maxNumberOfLines < 1 && names.length < 1) maxNumberOfLines = 1;
 
     // Iterates from the number of people to the maximum number of lines
     for (let index = names.length; index < maxNumberOfLines; ++index) {
