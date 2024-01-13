@@ -797,9 +797,6 @@ export function reformPollMessage(
     // If the nameTagged variable isn't null,
     // then set the tagged variable to its value
     if (nameTagged != null) tagged = nameTagged;
-
-    console.log(`removed is ${removed}`)
-    console.log(`tagged is ${tagged}`)
   }
 
   // Gets the number of unique people who responded
