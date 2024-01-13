@@ -9,7 +9,10 @@ import * as trgMsgUtils from "./utils";
 const trainingLocation = "NTU MPC 1";
 
 // The training dates
-const trainingDates = ["2022-12-28T19:00:00.000", "2022-12-30T19:00:00.000"];
+export const trainingDates = [
+  "2022-12-28T19:00:00.000",
+  "2022-12-30T19:00:00.000"
+];
 
 // The training message
 const trainingMsg = "👾{last} {day} CCA Training @{location} @{date} 👾";
@@ -18,7 +21,12 @@ const trainingMsg = "👾{last} {day} CCA Training @{location} @{date} 👾";
 
 
 // The function to format the training message for NTU
-function formatMsg(date: Date, location: string, trgMsg: string, isLast: boolean) {
+function formatMsg(
+  date: Date,
+  location: string,
+  trgMsg: string,
+  isLast: boolean
+) {
   
   // Gets the formatted time string
   const timeString = utils.getTimeStr(date);
@@ -49,7 +57,8 @@ export async function handler(
   ...[ctx, message]: Parameters<TrainingMessageHandler>
 ): ReturnType<TrainingMessageHandler> {
 
-  // The boolean variable to check if the lowercased message just contains the word "last"
+  // The boolean variable to check
+  // if the lowercased message just contains the word "last"
   const isLast = message.toLowerCase() === "last";
 
   // If the message passed isn't empty and isn't just the word "last",
