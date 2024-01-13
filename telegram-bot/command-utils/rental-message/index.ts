@@ -55,12 +55,6 @@ type RentalMessageModules = {
   [name: string]: RentalMessageModule
 };
 
-// The dictionary containing all of the mappings between the name
-// and the rental message module
-const rentalMsgModules: RentalMessageModules = {
-  "ntu": ntu
-} as const;
-
 // The default tag string
 export const DEFAULT_TAG_STRING = "✅";
 
@@ -68,8 +62,14 @@ export const DEFAULT_TAG_STRING = "✅";
 // should be tagged or not
 export const DEFAULT_RENTAL_MSG_TAG_ALL = true;
 
+// The dictionary containing all of the mappings between the name
+// and the rental message module
+const RENTAL_MSG_MODULES: RentalMessageModules = {
+  "ntu": ntu
+} as const;
+
 // The rental option message
-const rentalOptionMessage = `Please enter another rental option.
+const RENTAL_OPTION_MESSAGE = `Please enter another rental option.
 
 Use the /done command to get the bot to send the rental message.`;
 
@@ -90,7 +90,7 @@ const DEFAULT_CREATE_RENTAL_MSG_PROMPTS: CreatePollMessagePrompts = [
 
   // The prompts for the third step
   {
-    success: rentalOptionMessage,
+    success: RENTAL_OPTION_MESSAGE,
     failure: "Please enter a rental option.\n\nUse the /done command to get the bot to send the rental message."
   }
 ] as const;
@@ -164,11 +164,6 @@ const DEFAULT_RENTAL_MSG_FORMAT_OPTIONS: FormatOptions = {
 };
 
 
-// The regular expression the get the maximum number of entries
-// from the user
-const promptForMaxEntriesRegex = /\d+/;
-
-
 // The default rental message options
 export const DEFAULT_CREATE_RENTAL_MSG_CONFIG: CreatePollMessageConfig = {
   prompts: DEFAULT_CREATE_RENTAL_MSG_PROMPTS,
@@ -183,6 +178,11 @@ export const DEFAULT_CREATE_RENTAL_MSG_CONFIG: CreatePollMessageConfig = {
   ],
   additionalOptionsIndex: 0
 };
+
+
+// The regular expression the get the maximum number of entries
+// from the user
+const promptForMaxEntriesRegex = /\d+/;
 
 
 // The function to generate an inline keyboard
@@ -282,7 +282,7 @@ export async function handler(
   }
 
   // Otherwise, gets the rental message handler from the module mapping
-  const rentalMsgHandler = rentalMsgModules[moduleStr].handler;
+  const rentalMsgHandler = RENTAL_MSG_MODULES[moduleStr].handler;
 
   // Calls the rental message function
   await rentalMsgHandler(ctx, message);
@@ -485,7 +485,7 @@ export async function callback_handler(
   if (moduleStr) {
 
     // Gets the rental message callback handler for the module
-    const rentalMsgCbHandler = rentalMsgModules[moduleStr].callback_handler;
+    const rentalMsgCbHandler = RENTAL_MSG_MODULES[moduleStr].callback_handler;
 
     // If the rental message callback exists
     if (rentalMsgCbHandler) {
@@ -517,7 +517,7 @@ export function generateHelpText(chatId: number) {
   }
 
   // Gets the help message from the data
-  const helpText = rentalMsgModules[moduleStr].help;
+  const helpText = RENTAL_MSG_MODULES[moduleStr].help;
 
   // Returns the help text
   return helpText;
