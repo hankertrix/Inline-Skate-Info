@@ -2,9 +2,7 @@
 
 import {
   type RentalMessageCallbackHandler,
-  type RentalMessageHandler,
-  DEFAULT_TAG_STRING,
-  answerRentalMessageCbQuery
+  type RentalMessageHandler
 } from ".";
 import type { ParseMode } from "telegraf/types";
 import { Markup, Scenes } from "telegraf";
@@ -22,6 +20,7 @@ import {
 import { removeBotUsernameAndCommand } from "../../bot-utils";
 import { getUpcomingTrainingDates } from "../training-message/utils";
 import { trainingDates } from "../training-message/ntu";
+import { answerRentalMessageCbQuery } from "./utils";
 
 
 // The rental options
@@ -119,7 +118,7 @@ const RENTAL_MSG_CONFIG = {
   preserveLines: true,
   showRemaining: true,
   pollType: POLL_TYPES.RENTAL,
-  tagString: DEFAULT_TAG_STRING,
+  tagString: "✅",
   tagAll: true
 } as const;
 
