@@ -17,6 +17,7 @@ import {
   getName,
   reformPollMessage,
   getPollMessage,
+  defaultIsSameNameFunc,
 } from "../poll";
 import { removeBotUsernameAndCommand } from "../../bot-utils";
 import { getUpcomingTrainingDates } from "../training-message/utils";
@@ -407,7 +408,7 @@ export async function callback_handler(
     RENTAL_MSG_CONFIG.showRemaining,
     tag ? RENTAL_MSG_CONFIG.tagString : null,
     RENTAL_MSG_CONFIG.tagAll,
-    isSameName
+    tag ? isSameName : defaultIsSameNameFunc
   );
 
   // Answers the rental message callback query
