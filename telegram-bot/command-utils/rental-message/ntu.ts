@@ -135,7 +135,7 @@ Add your name if you want skate rentals. $5 for the whole session, which also in
 const removeTagAndSizeRegex = new RegExp(
   String.raw`\d+[^\S\r\n]*${
     utils.regexEscape(RENTAL_MSG_CONFIG.tagString)
-  }?$/`
+  }?$`
 );
 
 // The regular expression to get the size range
@@ -147,16 +147,15 @@ function isSameName(
   ...[encounteredName, givenName]: Parameters<IsSameNameFunc>
 ): ReturnType<IsSameNameFunc> {
 
-  console.log(`encounteredName is '${encounteredName}'`)
-  console.log(`givenName is '${givenName}'`)
-  console.log(`replaced name is '${encounteredName.replace(removeTagAndSizeRegex, "").trim()}'`)
-  console.log(removeTagAndSizeRegex.source)
+  // If the given name is null, return false
+  if (givenName == null) return false;
 
-  // Removes the tag and the size from the encountered name, trims it
-  // and returns if the name is the same as the given name
+  // Otherwise, removes the tag and the size from
+  // both the encountered name and the given name, trims them both
+  // and returns if both are the same
   return encounteredName.replace(
     removeTagAndSizeRegex, ""
-  ).trim() === givenName;
+  ).trim() === givenName.replace(removeTagAndSizeRegex, "").trim();
 }
 
 
