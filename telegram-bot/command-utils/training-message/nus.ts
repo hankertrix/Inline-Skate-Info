@@ -1,6 +1,6 @@
 // Module to create the training message for NUS
 
-import type { TrainingMessageFunction } from ".";
+import type { TrainingMessageHandler } from ".";
 import { Scenes, Composer } from "telegraf";
 import * as filters from "telegraf/filters";
 import type { DateMapping } from "../../types";
@@ -230,8 +230,8 @@ function createCustomTrgMsg(message: string, trainingDates: string[]) {
 
 // Function to handle the training message command for NUS
 export async function handler(
-  ...[ctx, msg]: Parameters<TrainingMessageFunction>
-): ReturnType<TrainingMessageFunction> {
+  ...[ctx, msg]: Parameters<TrainingMessageHandler>
+): ReturnType<TrainingMessageHandler> {
 
   // If the message is empty, immediately enters the scene to get the required information for the NUS training message
   if (!msg) return await ctx.scene.enter(sceneName, {

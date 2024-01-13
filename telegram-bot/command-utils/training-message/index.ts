@@ -9,15 +9,15 @@ import * as ntu from "./ntu";
 import * as nus from "./nus";
 
 
-// The type representing a training message function
-export type TrainingMessageFunction = (
+// The type representing a training message handler
+export type TrainingMessageHandler = (
   ctx: Scenes.WizardContext & { message: Message.TextMessage },
   message: string
 ) => Promise<unknown>;
 
 // The interface for the training message module
 interface TrainingMessageModule {
-  handler: TrainingMessageFunction,
+  handler: TrainingMessageHandler,
   help: string
 };
 
@@ -41,8 +41,8 @@ export const trainingMsgScenes = [
 
 // Function to handle the training message command
 export async function handler(
-  ...[ctx, message]: Parameters<TrainingMessageFunction>
-): ReturnType<TrainingMessageFunction> {
+  ...[ctx, message]: Parameters<TrainingMessageHandler>
+): ReturnType<TrainingMessageHandler> {
 
   // Gets the module string for the current chat
   const moduleStr = getModuleString(ctx.chat!.id);

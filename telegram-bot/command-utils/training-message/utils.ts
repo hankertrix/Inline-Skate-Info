@@ -1,7 +1,7 @@
 // Module containing all the utilities for the training message command
 
 import type { DateMapping } from "../../types";
-import type { TrainingMessageFunction } from ".";
+import type { TrainingMessageHandler } from ".";
 import * as utils from "../../utils";
 import {
   deleteMessages,
@@ -44,8 +44,8 @@ export function createDateMapping(trainingDates: string[]) {
 // Function to handle the training message command
 // when no default training message has been set up
 export async function handleTrgMsg(
-  ...[ctx, msg]: Parameters<TrainingMessageFunction>
-): ReturnType<TrainingMessageFunction> {
+  ...[ctx, msg]: Parameters<TrainingMessageHandler>
+): ReturnType<TrainingMessageHandler> {
 
   // Generate a poll message with the given training message
   // and the default options
