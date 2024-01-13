@@ -846,8 +846,9 @@ export function toggleTagOnEntirePollMessage(
   // Gets the match for the entry in the poll message
   const match = regex.exec(message);
 
-  // If there is no match, returns null
-  if (!match) return tagged;
+  // If there is no match, returns the original message
+  // and the tagged variable, which would be null
+  if (!match) return { msg: message, tagged: tagged };
 
   // Otherwise, get the matched entry on the poll message
   // and the tag string found on the poll message.
@@ -887,13 +888,13 @@ export function toggleTagOnEntirePollMessage(
 // Function to handle a callback query
 export async function callback_handler(
   ctx: Scenes.WizardContext,
-  pollType: PollType = POLL_TYPES.DEFAULT
+  next: () => Promise<void>
 ) {
 
   // Gets the callback query object
   const callbackQuery = ctx.callbackQuery as CbQuery;
 
-  // Cast the callback query message type
+  // Get the message from the callback query
   const message = callbackQuery.message;
 
   // Gets the message text
@@ -902,17 +903,19 @@ export async function callback_handler(
   // If the poll type isn't found in the message,
   // immediately exit the function so that
   // another handler can take care of the message
-  if (!messageText.includes(pollType)) return;
+  if (!messageText.includes(POLL_TYPES.DEFAULT)) return;
 
   // Gets the poll option and the poll message
   const pollOption = callbackQuery.data;
 
   // If the poll option doesn't exist, then tells the user
-  if (messageText.indexOf(pollOption) === -1) return await ctx.answerCbQuery(
-    `The option "${
-      pollOption
-    }" doesn't exist on the poll you are responding to.`
-  );
+  if (messageText.indexOf(pollOption) === -1) {
+    return await ctx.answerCbQuery(
+      `The option "${
+        pollOption
+      }" doesn't exist on the poll you are responding to.`
+    );
+  }
 
   // Gets the list of poll options
   const pollOptions = getPollOptions(message.reply_markup.inline_keyboard);

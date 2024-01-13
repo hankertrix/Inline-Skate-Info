@@ -1098,11 +1098,39 @@ bot.command([
 
 
 // The callback query handler for the poll message
-bot.on(filters.callbackQuery("data"), async ctx => {
+bot.on(filters.callbackQuery("data"), async (ctx, next) => {
 
   // Calls the callback handler in the poll message to
   // handle the callback query
-  await commandUtils.poll.callback_handler(ctx);
+  await commandUtils.poll.callback_handler(ctx, next);
+});
+
+
+
+
+
+
+
+
+
+
+// The training message help command
+
+// The handler for the training message help command
+bot.command([
+  "trg_msg_help",
+  "trg_help",
+  "msg_help",
+  "trgmsghelp",
+  "trghelp",
+  "msghelp"
+], async ctx => {
+
+  // Calls the function to get the help text for the training message
+  const helpText = commandUtils.trainingMsg.generateHelpText(ctx.chat.id);
+
+  // Replies the user with the help text
+  await ctxReply(ctx, helpText);
 });
 
 
@@ -1207,34 +1235,6 @@ bot.command([
       ...commandUtils.rentalMsg.DEFAULT_CREATE_RENTAL_MSG_CONFIG
     }
   );
-});
-
-
-
-
-
-
-
-
-
-
-// The training message help command
-
-// The handler for the training message help command
-bot.command([
-  "trg_msg_help",
-  "trg_help",
-  "msg_help",
-  "trgmsghelp",
-  "trghelp",
-  "msghelp"
-], async ctx => {
-
-  // Calls the function to get the help text for the training message
-  const helpText = commandUtils.trainingMsg.generateHelpText(ctx.chat.id);
-
-  // Replies the user with the help text
-  await ctxReply(ctx, helpText);
 });
 
 
