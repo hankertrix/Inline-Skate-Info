@@ -424,3 +424,24 @@ export async function callback_handler(
     ctx, callbackQuery, messageText, tagString
   );
 }
+
+
+// Function to generate the help text for the rental message help command
+export async function generateHelpText(chatId: number) {
+
+  // Gets the module string
+  const moduleStr = getModuleString(chatId);
+
+  // If the module string isn't found
+  // (the chat ID wasn't found in the database),
+  // then tells the user that the rental message hasn't been set up
+  if (!moduleStr) {
+    return `The rental message has not been set up for this chat. Please contact ${DEV} if you would like to set up a rental message.`;
+  }
+
+  // Gets the help message from the data
+  const helpText = rentalMsgModules[moduleStr].help;
+
+  // Returns the help text
+  return helpText;
+}
