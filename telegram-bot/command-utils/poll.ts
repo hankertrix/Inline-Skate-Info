@@ -67,6 +67,10 @@ export const DEFAULT_PRESERVE_LINES = false;
 // the remaining number of open slots in the poll message
 export const DEFAULT_SHOW_REMAINING = false;
 
+// The default option for whether or not
+// to tag all occurences of an entry in the poll message
+export const DEFAULT_TAG_ALL = false;
+
 // The regex to get the numbering style from the poll option segment
 const numberingStyleRegex = /[->=+~•·([{<]?\d*[).\]}>]?/;
 
@@ -496,7 +500,7 @@ export function regeneratePollPortion(
   formatOption: FormatOption = DEFAULT_FORMAT_OPTIONS.pollOptionHeader,
   preserveLines: boolean = DEFAULT_PRESERVE_LINES,
   showRemaining: boolean = DEFAULT_SHOW_REMAINING,
-  tagString: string | null = null
+  tagString: string | null = null,
 ) {
 
   // Gets the poll option segment of the message
@@ -563,15 +567,15 @@ export function regeneratePollPortion(
   // Iterates over the matches
   for (const [index, [ , numStyle, name, tag]] of matches.entries()) {
 
-    // Gets the trimmed name
-    const trimmedName = name.trim();
-
     // If it's the first item
     if (index === 0) {
 
       // Set the numbering style
       numberingStyle = numStyle
     }
+
+    // Gets the trimmed name
+    const trimmedName = name.trim();
 
     // If the name is empty, continue the loop
     if (!trimmedName) continue;
@@ -713,7 +717,8 @@ export function reformPollMessage(
   formatOptions: FormatOptions = DEFAULT_FORMAT_OPTIONS,
   preserveLines: boolean = DEFAULT_PRESERVE_LINES,
   showRemaining: boolean = DEFAULT_SHOW_REMAINING,
-  tagString: string | null = null
+  tagString: string | null = null,
+  tagAll: boolean = DEFAULT_TAG_ALL
 ) {
 
   // The list that contains the final message
@@ -738,7 +743,12 @@ export function reformPollMessage(
   for (const pollOption of pollOptions) {
 
     // The boolean variable that indicates if the poll option is selected
-    const isSelected = pollOption === selectedPollOption;
+    let isSelected = pollOption === selectedPollOption;
+
+    // If the tag string is given,
+    // and all of the entries should be tagged,
+    // then indicate that the poll option is selected
+    if (tagAll && tagString) isSelected = true;
 
     // Calls the function to generate the poll portion
     // and get the number of people who responded to that poll option
@@ -755,7 +765,7 @@ export function reformPollMessage(
       formatOptions.pollOptionHeader,
       preserveLines,
       showRemaining,
-      tagString,
+      tagString
     );
 
     // Adds the poll portion to the reformed poll message list

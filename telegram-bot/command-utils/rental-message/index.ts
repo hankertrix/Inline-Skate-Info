@@ -57,6 +57,10 @@ const rentalMsgModules: RentalMessageModules = {
 // The default tag string
 export const DEFAULT_TAG_STRING = "✅";
 
+// The default option on whether all entries in the rental message
+// should be tagged or not
+export const DEFAULT_RENTAL_MSG_TAG_ALL = true;
+
 // The rental option message
 const rentalOptionMessage = `Please enter another rental option.
 
@@ -343,7 +347,8 @@ export async function default_callback_handler(
     DEFAULT_RENTAL_MSG_FORMAT_OPTIONS,
     DEFAULT_CREATE_RENTAL_MSG_CONFIG.preserveLines,
     DEFAULT_CREATE_RENTAL_MSG_CONFIG.showRemaining,
-    isTag ? tagString : null
+    isTag ? tagString : null,
+    DEFAULT_RENTAL_MSG_TAG_ALL
   );
 
   // If the removed variable isn't null
@@ -362,6 +367,7 @@ export async function default_callback_handler(
   else if (tagged == null) {
 
     // Tells the user that they need to add their name to the poll first
+    // and exit the function as there is no need to edit the message
     return await ctx.answerCbQuery(
       `You need to add your name to the poll before you can indicate that you have paid.`
     );
