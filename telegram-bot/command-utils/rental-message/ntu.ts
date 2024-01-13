@@ -278,7 +278,9 @@ export async function handler(
   );
 
   // Sends the QR code
-  await ctx.sendPhoto("./static/ntu/rentals-paynow-qr-code.jpg");
+  await ctx.replyWithPhoto(
+    { source: "/static/ntu/rentals-paynow-qr-code.jpg" }
+  );
 
   // Calls the callback function with the default rental message portion
   return await callback(ctx, rentalMsgPortion);
