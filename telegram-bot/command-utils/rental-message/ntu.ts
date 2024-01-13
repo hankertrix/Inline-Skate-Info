@@ -205,7 +205,13 @@ function generateInlineKeyboard(sizes: number[]) {
     }
   }
 
-  // Adds the tick
+  // Adds the tag string as the last option to the inline keyboard
+  inlineKeyboard.push([
+    Markup.button.callback(
+      RENTAL_MSG_CONFIG.tagString,
+      RENTAL_MSG_CONFIG.tagString
+    )
+  ]);
 
   // Returns the inline keyboard
   return Markup.inlineKeyboard(inlineKeyboard);
