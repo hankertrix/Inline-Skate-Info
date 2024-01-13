@@ -147,9 +147,10 @@ function isSameName(
   ...[encounteredName, givenName]: Parameters<IsSameNameFunc>
 ): ReturnType<IsSameNameFunc> {
 
-  console.log(`encounteredName is ${encounteredName}`)
-  console.log(`givenName is ${givenName}`)
-  console.log(`replaced name is ${encounteredName.replace(removeTagAndSizeRegex, "").trim()}`)
+  console.log(`encounteredName is '${encounteredName}'`)
+  console.log(`givenName is '${givenName}'`)
+  console.log(`replaced name is '${encounteredName.replace(removeTagAndSizeRegex, "").trim()}'`)
+  console.log(removeTagAndSizeRegex.source)
 
   // Removes the tag and the size from the encountered name, trims it
   // and returns if the name is the same as the given name
