@@ -609,17 +609,22 @@ export function regeneratePollPortion(
       // If the tag string is given
       if (tagString) {
 
-        // Sets the tagged variable.
-        // If the tag exists, remove the tag and set tagged to false.
-        // Otherwise, add the tag and set tagged to true
-        tagged = tag ? false : true;
+        // If the tagged variable has not been set
+        if (tagged == null) {
 
-        // If the tag is found, then remove the tag by replacing it with
-        // and empty string.
-        // Otherwise, add the tag.
+          // Sets the tagged variable.
+          // If the tag exists, remove the tag and set tagged to false.
+          // Otherwise, add the tag and set tagged to true
+          tagged = tag ? false : true;
+        }
+
+        // If the tagged variable is true,
+        // that means the entry should be tagged.
+        // Otherwise, the entry shouldn't be tagged and an empty string
+        // should be left in its place.
         // Also add the numbering style and the name to the poll.
         pollPortionList.push(
-          `${numbering} ${trimmedName} ${tag ? "" : tagString}`.trim()
+          `${numbering} ${trimmedName} ${tagged ? tagString : ""}`.trim()
         );
       }
 
