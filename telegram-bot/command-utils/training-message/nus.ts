@@ -3,7 +3,6 @@
 import type { TrainingMessageHandler } from ".";
 import { Scenes, Composer } from "telegraf";
 import * as filters from "telegraf/filters";
-import type { DateMapping } from "../../types";
 import * as utils from "../../utils";
 import * as trgMsgUtils from "./utils";
 import {
@@ -175,10 +174,12 @@ function formatDate(date: Date) {
 
 
 // Function to generate the poll options
-function generatePollOptions(dateMapping: DateMapping) {
+function generatePollOptions(trainingDates: string[]) {
 
   // Gets the upcoming training dates
-  const upcomingTrainingDates = trgMsgUtils.getUpcomingTrainingDates(dateMapping, 2) as Date[];
+  const upcomingTrainingDates = trgMsgUtils.getUpcomingTrainingDates(
+    trainingDates, 2
+  ) as Date[];
 
   // Returns the poll options
   return upcomingTrainingDates.map(date => formatDate(date));
@@ -194,9 +195,7 @@ function createTrainingPollMsg(message: string, location: string, noRentals: boo
       message, location,
       noRentals, weekType, username
     ),
-    generatePollOptions(
-      trgMsgUtils.createDateMapping(trainingDates)
-    ),
+    generatePollOptions(trainingDates),
     [],
     DEFAULT_NUMBERING_STYLE,
     DEFAULT_FORMAT_OPTIONS,
@@ -214,9 +213,7 @@ function createCustomTrgMsg(message: string, trainingDates: string[]) {
   // Returns the result of the generate poll message function
   return generatePollMessage(
     message,
-    generatePollOptions(
-      trgMsgUtils.createDateMapping(trainingDates)
-    ),
+    generatePollOptions(trainingDates),
     [],
     DEFAULT_NUMBERING_STYLE,
     DEFAULT_FORMAT_OPTIONS,

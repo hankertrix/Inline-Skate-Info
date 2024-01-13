@@ -27,7 +27,7 @@ import {
 
 // The constant representing the standard spacing to be used
 // in the poll message
-const POLL_SPACING = "\n\n";
+export const POLL_SPACING = "\n\n";
 
 // The enum representing the various poll types
 export const POLL_TYPES = {

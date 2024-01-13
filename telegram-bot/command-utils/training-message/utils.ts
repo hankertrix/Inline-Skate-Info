@@ -20,27 +20,6 @@ import {
 } from "../poll";
 
 
-// Function to create the date mapping
-export function createDateMapping(trainingDates: string[]) {
-
-  // Creates the object for the date mapping
-  const dateMapping: DateMapping = {};
-
-  // Iterates the dates
-  for (const date of trainingDates) {
-
-    // Gets the date object
-    const dateObj = new Date(date);
-
-    // Maps the day of the current date to the date object
-    dateMapping[dateObj.getDay()] = dateObj;
-  }
-
-  // Returns the date mapping
-  return dateMapping;
-}
-
-
 // Function to handle the training message command
 // when no default training message has been set up
 export async function handleTrgMsg(
@@ -90,6 +69,27 @@ export async function handleTrgMsg(
 }
 
 
+// Function to create the date mapping
+function createDateMapping(trainingDates: string[]) {
+
+  // Creates the object for the date mapping
+  const dateMapping: DateMapping = {};
+
+  // Iterates the dates
+  for (const date of trainingDates) {
+
+    // Gets the date object
+    const dateObj = new Date(date);
+
+    // Maps the day of the current date to the date object
+    dateMapping[dateObj.getDay()] = dateObj;
+  }
+
+  // Returns the date mapping
+  return dateMapping;
+}
+
+
 // Function set the time on the upcoming training date
 function setTimeOnUpcomingTrainingDate(
   upcomingTrainingDate: Date,
@@ -116,9 +116,12 @@ function setTimeOnUpcomingTrainingDate(
 
 // Function to get the upcoming training date
 export function getUpcomingTrainingDates(
-  dateMapping: { [day: number]: Date },
+  trainingDates: string[],
   numOfTrainingDates: number = 1
 ): Date | Date[] {
+
+  // Creates the date mapping from the training dates
+  const dateMapping = createDateMapping(trainingDates);
 
   // Gets the current date
   const currentDate = new Date();

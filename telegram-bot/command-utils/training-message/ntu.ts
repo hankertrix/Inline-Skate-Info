@@ -67,7 +67,7 @@ export async function handler(
 
   // Gets the upcoming training date
   const upcomingTrainingDate = trgMsgUtils.getUpcomingTrainingDates(
-    trgMsgUtils.createDateMapping(trainingDates)
+    trainingDates
   ) as Date;
 
   // Gets the formatted message
