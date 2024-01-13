@@ -279,7 +279,7 @@ export async function handler(
 
   // Sends the QR code
   await ctx.replyWithPhoto(
-    { source: "/static/ntu/rentals-paynow-qr-code.jpg" }
+    { source: "./static/ntu/rentals-paynow-qr-code.jpg" }
   );
 
   // Calls the callback function with the default rental message portion
