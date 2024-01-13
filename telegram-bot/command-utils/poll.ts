@@ -503,6 +503,9 @@ export function regeneratePollPortion(
   // globally defined numbering style and name regex
   let regex = numberingStyleAndNameRegex;
 
+  console.log(numberingStyleAndNameRegex.source);
+  console.log(numberingStyleAndNameRegex.flags);
+
   // If the tag string is given
   if (tagString) {
 
@@ -557,6 +560,9 @@ export function regeneratePollPortion(
 
     // Gets the trimmed name
     const trimmedName = name.trim();
+
+    console.log(trimmedName);
+    console.log(tag)
 
     // If it's the first item
     if (index === 0) {

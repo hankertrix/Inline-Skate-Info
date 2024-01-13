@@ -81,7 +81,7 @@ const DEFAULT_CREATE_RENTAL_MSG_PROMPTS: CreatePollMessagePrompts = [
   // The prompts for the third step
   {
     success: rentalOptionMessage,
-    failure: "Please enter a rental option.\nUse the /done command to get the bot to send the rental message."
+    failure: "Please enter a rental option.\n\nUse the /done command to get the bot to send the rental message."
   }
 ] as const;
 
@@ -292,16 +292,7 @@ export async function default_callback_handler(
   // Gets the rental option
   const rentalOption = callbackQuery.data;
 
-  // If the rental option doesn't exist, then tells the user
-  if (messageText.indexOf(rentalOption) === -1) {
-    return await ctx.answerCbQuery(
-      `The option "${
-        rentalOption
-      }" doesn't exist on the rental message you are responding to.`
-    );
-  }
-
-  // Otherwise, gets the name of the person
+  // Gets the name of the person
   const name = getName(callbackQuery.from);
 
   // Gets the message object
@@ -343,6 +334,15 @@ export async function default_callback_handler(
 
     // Edit the rental message
     return await ctx.editMessageText(msg, additionalOptions);
+  }
+
+  // Otherwise, if the rental option doesn't exist, then tells the user
+  else if (messageText.indexOf(rentalOption) === -1) {
+    return await ctx.answerCbQuery(
+      `The option "${
+        rentalOption
+      }" doesn't exist on the rental message you are responding to.`
+    );
   }
 
   // Otherwise, gets the list of rental options
