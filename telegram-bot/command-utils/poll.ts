@@ -1394,10 +1394,6 @@ export const createPollMessageScene = new Scenes.WizardScene(
       // increment the additionalOptionxIndex by 1
       if (success) index = ++state.additionalOptionsIndex;
 
-      console.log(`success is ${success}`)
-      console.log(`index is ${index}`)
-      console.log(`funcListLength is ${funcList.length}`)
-
       // If the additional options index is
       // past the length of the function list - 1
       // (length is 1 more than the last index)
