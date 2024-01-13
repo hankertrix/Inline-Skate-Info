@@ -369,7 +369,7 @@ export async function default_callback_handler(
     // Tells the user that they need to add their name to the poll first
     // and exit the function as there is no need to edit the message
     return await ctx.answerCbQuery(
-      `You need to add your name to the poll before you can indicate that you have paid.`
+      `You need to add your name to the rental message before you can indicate that you have paid.`
     );
   }
 
