@@ -130,7 +130,7 @@ Add your name if you want skate rentals. $5 for the whole session, which also in
 
 
 // The regular expression to get the size range
-const getSizeRangeRegex = /(\d+)^[\S\r\n-]*(\d+)/;
+const getSizeRangeRegex = /(\d+)[^\S\r\n]-[^\S\r\n](\d+)/;
 
 
 // Function to create the time portion of the rental message
@@ -156,9 +156,7 @@ function createRentalMessagePortion(
   }).format(upcomingTrainingDate);
 
   // The time portion of the rental message
-  const timePortion = `${
-    utils.bold(`${dayOfTheWeek} rentals!`)
-  } (${dateStr})`;
+  const timePortion = `${dayOfTheWeek} rentals! (${dateStr})`;
 
   // Add the time portion to the rental message and return the rental message
   return utils.strFormat(rentalMsg, { time: timePortion });
