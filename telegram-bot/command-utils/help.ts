@@ -337,7 +337,7 @@ ${utils.bold("Inline Mode")}
 To use the bot's inline mode, first type the bot's username, @inlineskatebot, then type the command that you want and any other arguments that the command takes. The bot will then respond with the result of that command.
 Here's an example: ${utils.monospace("@inlineskatebot /terminology general terms")}
 
-All commands are available in inline mode, except for /start, /help, /poll_msg, /trg_msg, /trg_msg_help and /source.
+All commands are available in inline mode, except for /start, /help, /poll_msg, /trg_msg, /trg_msg_help, /rental_msg, /rental_msg_help, /create_poll_msg, /create_rental_msg, /get_chat_id and /source.
 
 Do note that if you use the /qr_code command in inline mode, the developer will be able to see the QR code you have generated. If you are not comfortable with this, then please do not use the /qr_code command in inline mode. This is due to Telegram's Bot API not supporting the ability to answer inline queries with images created in memory. Instead, Telegram only allows images that have been uploaded online through a link, or images that have been uploaded to Telegram through an image ID. Thus, the QR code is first sent to a private group chat on Telegram, where the bot and the developer are the only members, before the QR code is sent to the user. Once again, if you are not comfortable with this, please do not use the /qr_code command in inline mode.
 
