@@ -148,13 +148,8 @@ export async function answerIfGlobalLimitIsHit(
     "gm"
   );
 
-  console.log(regex.source);
-  console.log(entry)
-
   // Gets the matches in the entire message
   const matches = Array.from(fullMessage.matchAll(regex));
-
-  console.log(matches)
 
   // Gets the number of entries
   const numberOfEntries = matches.length;
