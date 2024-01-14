@@ -889,7 +889,7 @@ export function getPollMessage(message: string, pollOptions: string[]) {
 
 
 // Function to handle a callback query
-export async function callback_handler(
+export async function callbackHandler(
   ctx: Scenes.WizardContext,
   next: () => Promise<void>
 ) {

@@ -2,7 +2,8 @@
 
 import {
   type RentalMessageCallbackHandler,
-  type RentalMessageHandler
+  type RentalMessageHandler,
+  defaultCallbackHandler
 } from ".";
 import type { ParseMode } from "telegraf/types";
 import { Markup, Scenes } from "telegraf";
@@ -320,7 +321,7 @@ export async function handler(
 
 
 // The handler for the callback query
-export async function callback_handler(
+export async function callbackHandler(
   ...[
     ctx,
     callbackQuery,
@@ -394,15 +395,17 @@ export async function callback_handler(
     }
   }
 
-  // If the selected rental option is null somehow,
+  // If the selected rental option is null which is probably because
+  // a standard rental message was being responded to,
   // and the button pressed isn't the tag button.
   if (!selectedRentalOption && !tag) {
 
-    // Tells the user that the poll option doesn't exist
-    return await ctx.answerCbQuery(
-      `The option "${
-        callbackQuery.data
-      }" doesn't exist on the rental message you are responding to.`
+    // Calls the default rental message callback handler as a fallback
+    // and exit the function
+    return await defaultCallbackHandler(
+      ctx,
+      callbackQuery,
+      messageText
     );
   }
 

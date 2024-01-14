@@ -1102,7 +1102,7 @@ bot.on(filters.callbackQuery("data"), async (ctx, next) => {
 
   // Calls the callback handler in the poll message module
   // to handle the callback query
-  await commandUtils.poll.callback_handler(ctx, next);
+  await commandUtils.poll.callbackHandler(ctx, next);
 });
 
 
@@ -1179,7 +1179,7 @@ bot.on(filters.callbackQuery("data"), async (ctx, next) => {
 
   // Calls the callback handler in the rental message module
   // to handle the callback query
-  await commandUtils.rentalMsg.callback_handler(ctx, next);
+  await commandUtils.rentalMsg.callbackHandler(ctx, next);
 })
 
 

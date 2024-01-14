@@ -54,7 +54,7 @@ export type RentalMessageCallbackHandler = (
 interface RentalMessageModule {
   handler: RentalMessageHandler,
   help: string,
-  callback_handler?: RentalMessageCallbackHandler
+  callbackHandler?: RentalMessageCallbackHandler
 };
 
 // The type of the rental message modules
@@ -293,7 +293,7 @@ export async function handler(
 
 
 // The default function to use to handle the callback query
-export async function default_callback_handler(
+export async function defaultCallbackHandler(
   ...[
     ctx,
     callbackQuery,
@@ -387,7 +387,7 @@ export async function default_callback_handler(
 
 
 // Function to handle the callback query
-export async function callback_handler(
+export async function callbackHandler(
   context: Scenes.WizardContext,
   next: () => Promise<void>,
   tagString: string = DEFAULT_TAG_STRING,
@@ -421,7 +421,7 @@ export async function callback_handler(
   if (module) {
 
     // Gets the rental message callback handler for the module
-    const rentalMsgCbHandler = module.callback_handler;
+    const rentalMsgCbHandler = module.callbackHandler;
 
     // If the rental message callback exists
     if (rentalMsgCbHandler) {
@@ -433,7 +433,7 @@ export async function callback_handler(
 
   // Otherwise, calls the default callback handler
   // to handle the callback query
-  return await default_callback_handler(
+  return await defaultCallbackHandler(
     ctx, callbackQuery, messageText, tagString, limit
   );
 }
