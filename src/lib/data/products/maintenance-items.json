@@ -1,46 +1,41 @@
 {
-  "Acetone (500ml)": {
-    "price": "$9.00",
-    "link": "https://shopee.sg/product/2875608/19368903099"
-  },
-  
-  "Acetone (520ml) [Shopee]": {
-    "price": "$9.80",
-    "link": "https://shopee.sg/product/54316101/18801123600"
-  },
-  
   "Acetone (520ml) [Lazada]": {
     "price": "$9.80",
     "link": "https://www.lazada.sg/products/100-pure-acetone520ml-408g-sg-ready-stock-i2294363160.html"
   },
-  
-  "Acetone (1L)": {
-    "price": "$16.74",
-    "link": "https://shopee.sg/product/321677655/14123477076"
+
+  "Acetone (1L) [Shopee]": {
+    "price": "$12.12",
+    "link": "https://shopee.sg/ctc_hardware/19586458136"
   },
 
-  "Acetone (1L)": {
-    "price": "$16.90",
+  "Acetone (1L) [Lazada]": {
+    "price": "$15.80",
     "link": "https://www.lazada.sg/products/pure-acetone-1000ml-for-gel-nail-polish-remove-soak-off-solution-i169791771-s220804172.html"
   },
-
+  
   "Acetone (3.785L)": {
-    "price": "$21.90",
-    "link": "https://shopee.sg/product/10214/14802708973"
+    "price": "$17.17",
+    "link": "https://shopee.sg/ctc_hardware/25201580179"
   },
 
   "Isopropyl Alcohol (1L)": {
-    "price": "$12.38",
-    "link": "https://shopee.sg/product/321677655/8694850057"
+    "price": "$12.50",
+    "link": "https://shopee.sg/ctc_hardware/8694850057"
   },
 
-  "Isopropyl Alcohol (5L)": {
-    "price": "$41.90",
-    "link": "https://shopee.sg/product/153031150/6725912484"
+  "Isopropyl Alcohol (3.785L)": {
+    "price": "$24.19",
+    "link": "https://shopee.sg/ctc_hardware/7857894071"
+  },
+
+  "Isopropyl Alcohol (18L)": {
+    "price": "$55.41",
+    "link": "https://shopee.sg/ctc_hardware/5657893885"
   },
 
   "Lighter Fluid (300ml)": {
-    "price": "$4.50 for one, $6.90 for two, $9.00 for three, $16.90 for six and $29.90 for twelve",
+    "price": "$3.45",
     "link": "https://shopee.sg/product/402868325/12305678047"
   },
 
@@ -49,13 +44,18 @@
     "link": "https://www.lazada.sg/products/lightzone-universal-butane-fuel-refill-for-lighter-lighter-gas-i1973479448-s10645207890.html"
   },
 
-  "3M 5-Way Lubricant (400ml)": {
-    "price": "$6.98",
-    "link": "https://shopee.sg/product/127821595/7937520022"
+  "3M 5-Way Lubricant (400ml) (Official store)": {
+    "price": "$9.00",
+    "link": "https://shopee.sg/3mindustrial/7179300475"
   },
 
-  "3M 5-Way Lubricant (400ml) [Attached nozzle]": {
+  "3M 5-Way Lubricant (400ml) (Attached nozzle) [Shopee]": {
     "price": "$10.90",
     "link": "https://shopee.sg/product/135793716/2050741725"
+  },
+
+  "3M 5-Way Lubricant (400ml) (Attached nozzle) [Lazada]": {
+    "price": "$10.90",
+    "link": "https://www.lazada.sg/products/3m-two-way-5-way-spray-lubricant-i327594640-s694002212.html"
   }
 }
