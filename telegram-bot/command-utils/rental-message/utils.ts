@@ -143,7 +143,7 @@ export async function answerIfGlobalLimitIsHit(
   // Create the regular expression to search the poll message for the entry
   const regex = new RegExp(
     numberingStyleAndNameRegex.source.replace(
-      /\(\.\*\?\)/, `(${regexEscape(entry)})`
+      "(.*?)", `(${regexEscape(entry)})`
     ),
     "gm"
   );
@@ -153,6 +153,11 @@ export async function answerIfGlobalLimitIsHit(
 
   // Gets the number of entries
   const numberOfEntries = matches.length;
+
+  console.log(regex.source)
+  console.log(entry)
+  console.log(reformedPollMessage)
+  console.log(matches)
 
   // If the number of entries is less than or equal to the limit,
   // then return false.
