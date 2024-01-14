@@ -54,7 +54,7 @@ export async function loadSkateRecs() {
 
   // Adds the information to the data
   json["recommendations"]["Urban / Freestyle Skates"][0]["FRX"]["reason"] += " If you want to know the differences between the FRX and the FRW, use the /fr_diff command.";
-  json["recommendations"]["Urban / Freestyle Skates"][0]["Flying Eagle F5S Eclipse"]["reason"] += " If you want to know the differences between the Flying Eagle F5S and the Flying Eagle F6S, use the /f5s_vs_f6s command.";
+  json["recommendations"]["Urban / Freestyle Skates"][0]["Flying Eagle F5S Eclipse"]["reason"] += " If you want to know the differences between the Flying Eagle F5S Eclipse and the Flying Eagle F6S Falcon, use the /f5s_vs_f6s command.";
 
   // Returns the JSON data
   return json;

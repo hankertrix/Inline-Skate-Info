@@ -26,7 +26,11 @@ export async function generateMsg() {
   const msgList: string[] = [];
 
   // Adds the bolded title to the list
-  msgList.push(utils.bold("Similarities and differences between the Flying Eagle F5S and the Flying Eagle F6S"));
+  msgList.push(
+    utils.bold(
+      "Similarities and differences between the Flying Eagle F5S Eclipse and the Flying Eagle F6S Falcon"
+    )
+  );
 
   // Iterates over the similarities and differences
   for (const entry of ["similarities", "differences"]) {
