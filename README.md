@@ -16,36 +16,41 @@ Below is a list of the available commands for the Telegram bot. Use the `/help` 
 
 ### List of bot commands
 
-- `/start` - Starts the bot and displays a basic overview of what the bot does.
-- `/help` - Displays information about how to use the bot and its commands.
-- `/terminology` - Displays the common terms that are regularly used in inline skating.
-- `/tricks` - Displays information about inline skating tricks.
-- `/trick_lists` - Provides a list of trick lists for you to peruse.
-- `/rulebooks` - Provides a list of official rulebooks for you to peruse.
-- `/buying_guides` - Provides a list of buying guides for you to peruse.
-- `/maintenance_guides` - Provides a list of maintenance guides for you to peruse.
-- `/glossaries` - Provides a list of glossaries for you to peruse.
-- `/misc_resources` - Provides a list of miscellaneous resources for you to peruse.
-- `/skate_boot_types` - Displays information about the different types of skate boots.
-- `/skate_recs` - Displays the recommended skates for beginners.
-- `/discount_info` - Displays information about the tertiary student discount.
-- `/where_to_buy` - Displays information about the places you can buy skates from.
-- `/where_to_rent` - Displays information about the places where you can rent inline skates in Singapore.
-- `/skate_parks` - Displays information about skate parks in Singapore.
-- `/skating_rinks` - Displays information about skating rinks in Singapore.
-- `/brands` - Displays information about the brands related to inline skating.
-- `/fr_differences` - Displays information about the differences between the various FR skates.
-- `/triskate_differences` - Displays information about the differences between triskates and regular 4-wheeled inline skates.
-- `/accessories` - Displays information about the accessories that you can buy for inline skating.
-- `/protective_gear` - Displays information about the protective gear you can buy.
-- `/clothing` - Displays information about the clothing you can buy, which are mostly just socks.
-- `/maintenance_items` - Displays information about the maintenance items you might need to maintain your skates.
-- `/poll_msg` - Gets the bot to send a @countmeinbot style poll message but with only one option called 'Coming'.
-- `/trg_msg` - Gets the bot to send the training message that has been set up for your group.
-- `/trg_msg_help` - Displays how to use the /trg_msg command if you have set it up.
-- `/qr_code` - Gets the bot to turn your text into a QR code.
-- `/get_chat_id` - Gets the bot to send the chat ID of the chat.
-- `/source` - View the source code for the bot.
+- `start` - Starts the bot and displays a basic overview of what the bot does.
+- `help` - Displays information about how to use the bot and its commands.
+- `terminology` - Displays the common terms that are regularly used in inline skating.
+- `tricks` - Displays information about inline skating tricks.
+- `trick_lists` - Provides a list of trick lists for you to peruse.
+- `rulebooks` - Provides a list of official rulebooks for you to peruse.
+- `buying_guides` - Provides a list of buying guides for you to peruse.
+- `maintenance_guides` - Provides a list of maintenance guides for you to peruse.
+- `glossaries` - Provides a list of glossaries for you to peruse.
+- `misc_resources` - Provides a list of miscellaneous resources for you to peruse.
+- `skate_boot_types` - Displays information about the different types of skate boots.
+- `skate_recs` - Displays the recommended skates for beginners.
+- `discount_info` - Displays information about the tertiary student discount.
+- `where_to_buy` - Displays information about the places you can buy skates from.
+- `where_to_rent` - Displays information about the places where you can rent inline skates in Singapore.
+- `skate_parks` - Displays information about skate parks in Singapore.
+- `skating_rinks` - Displays information about skating rinks in Singapore.
+- `brands` - Displays information about the brands related to inline skating.
+- `fr_differences` - Displays information about the differences between the various FR skates.
+- `f5s_vs_f6s` - Displays information about the differences between the Flying Eagle F5S and the Flying Eagle F6S.
+- `triskate_differences` - Displays information about the differences between triskates and regular 4-wheeled inline skates.
+- `accessories` - Displays information about the accessories that you can buy for inline skating.
+- `protective_gear` - Displays information about the protective gear you can buy.
+- `clothing` - Displays information about the clothing you can buy, which are mostly just socks.
+- `maintenance_items` - Displays information about the maintenance items you might need to maintain your skates.
+- `poll_msg` - Gets the bot to send a @countmeinbot styled poll message but with only one option called 'Coming'.
+- `trg_msg` - Gets the bot to send the training message that has been set up for your group.
+- `trg_msg_help` - Displays how to use the /trg_msg command if you have set it up.
+- `rental_msg` - Gets the bot to send the rental message that has been set up for your group.
+- `rental_msg_help` - Displays how to use the /rental_msg command if you have set it up.
+- `create_poll_msg` - Create a @countmeinbot styled poll with custom poll options.
+- `create_rental_msg` - Create a rentals-oriented @countmeinbot styled poll with custom rental options.
+- `qr_code` - Gets the bot to turn your text into a QR code.
+- `get_chat_id` - Gets the bot to send the chat ID of the chat.
+- `source` - View the source code for the bot.
 
 <br>
 
