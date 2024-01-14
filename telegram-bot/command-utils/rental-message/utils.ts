@@ -154,11 +154,6 @@ export async function answerIfGlobalLimitIsHit(
   // Gets the number of entries
   const numberOfEntries = matches.length;
 
-  console.log(regex.source)
-  console.log(entry)
-  console.log(reformedPollMessage)
-  console.log(matches)
-
   // If the number of entries is less than or equal to the limit,
   // then return false.
   if (numberOfEntries <= limit) return false;
