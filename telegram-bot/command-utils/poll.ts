@@ -72,13 +72,13 @@ export const DEFAULT_SHOW_REMAINING = false;
 export const DEFAULT_TAG_ALL = false;
 
 // The regex to get the numbering style from the poll option segment
-const numberingStyleRegex = /[->=+~•·([{<]?\d*[).\]}>]?/;
+export const numberingStyleRegex = /[->=+~•·([{<]?\d*[).\]}>]?/;
 
 // The regex to get the numbering style
 // and the name from the poll option segment.
 // The [^\S\r\n] group matches all spaces except for new line characters,
 // which is what we want here
-export const numberingStyleAndNameRegex = new RegExp(
+const numberingStyleAndNameRegex = new RegExp(
   String.raw`^[^\S\r\n]*?(${
     numberingStyleRegex.source
   })[^\S\r\n]*(.*?)[^\S\r\n]*()$`,

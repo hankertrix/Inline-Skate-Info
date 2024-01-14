@@ -1,8 +1,8 @@
 // The utility functions for the rental message
 
 import { Markup, type Scenes } from "telegraf";
-import { numberingStyleAndNameRegex } from "../poll";
 import { regexEscape } from "../../utils";
+import { numberingStyleRegex } from "../poll";
 
 
 // The function to generate an inline keyboard
@@ -142,9 +142,9 @@ export async function answerIfGlobalLimitIsHit(
 
   // Create the regular expression to search the poll message for the entry
   const regex = new RegExp(
-    numberingStyleAndNameRegex.source.replace(
-      "(.*?)", `(${regexEscape(entry)})`
-    ),
+    String.raw`^[^\S\r\n]*${
+      numberingStyleRegex.source
+    }[^\S\r\n]*${regexEscape(entry)}.*?$`,
     "gm"
   );
 
