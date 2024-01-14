@@ -20,7 +20,7 @@ import {
   getPollMessage,
   defaultIsSameNameFunc,
 } from "../poll";
-import { removeBotUsernameAndCommand } from "../../bot-utils";
+import { deleteMessages, removeBotUsernameAndCommand } from "../../bot-utils";
 import { getUpcomingTrainingDates } from "../training-message/utils";
 import { trainingDates } from "../training-message/ntu";
 import { answerIfGlobalLimitIsHit, answerRentalMessageCbQuery } from "./utils";
@@ -302,7 +302,10 @@ export async function handler(
   if (userMessage) {
 
     // Call the callback function with the user's message
-    return await callback(ctx, userMessage);
+    await callback(ctx, userMessage);
+
+    // Deletes the user's message
+    return await deleteMessages(ctx, ctx.message.message_id);
   }
 
   // Otherwise, create the rental message portion
@@ -316,7 +319,10 @@ export async function handler(
   );
 
   // Calls the callback function with the default rental message portion
-  return await callback(ctx, rentalMsgPortion);
+  await callback(ctx, rentalMsgPortion);
+
+  // Deletes the user's message
+  return await deleteMessages(ctx, ctx.message.message_id);
 }
 
 
