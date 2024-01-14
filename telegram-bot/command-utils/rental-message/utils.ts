@@ -124,7 +124,7 @@ export async function answerRentalMessageCbQuery(
 // if the global (poll-wide) limit is hit
 export async function answerIfGlobalLimitIsHit(
   ctx: Scenes.WizardContext,
-  fullMessage: string,
+  reformedPollMessage: string,
   entry: string,
   limit: number,
   removerRegex: RegExp | null = null
@@ -149,15 +149,17 @@ export async function answerIfGlobalLimitIsHit(
   );
 
   // Gets the matches in the entire message
-  const matches = Array.from(fullMessage.matchAll(regex));
+  const matches = Array.from(reformedPollMessage.matchAll(regex));
 
   // Gets the number of entries
   const numberOfEntries = matches.length;
 
-  // If the number of entries is less than the limit, return false
-  if (numberOfEntries < limit) return false;
+  // If the number of entries is less than or equal to the limit,
+  // then return false.
+  if (numberOfEntries <= limit) return false;
 
-  // The item string
+  // Otherwise, if the number of entries is more than the limit,
+  // get the item string
   const itemString = limit === 1 ? "item" : "items";
 
   // Otherwise, answers the callback query

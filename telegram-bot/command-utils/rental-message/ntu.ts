@@ -341,17 +341,6 @@ export async function callbackHandler(
   // Gets the size chosen
   const chosenSize = parseInt(callbackQuery.data);
 
-  // Gets if the poll-wide limit for the rental message has been reached
-  const limitHit = await answerIfGlobalLimitIsHit(
-    ctx,
-    messageText,
-    name,
-    RENTAL_MSG_CONFIG.globalLimit
-  );
-
-  // If the limit has been reached, exit the function
-  if (limitHit) return;
-
   // Create the additional options to edit the message
   const additionalOptions = {
     parse_mode: "HTML" as ParseMode,
@@ -425,6 +414,17 @@ export async function callbackHandler(
     RENTAL_MSG_CONFIG.tagAll,
     tag ? isSameName : defaultIsSameNameFunc
   );
+
+  // Gets if the poll-wide limit for the rental message has been reached
+  const limitHit = await answerIfGlobalLimitIsHit(
+    ctx,
+    reformedPollMessage,
+    name,
+    RENTAL_MSG_CONFIG.globalLimit
+  );
+
+  // If the limit has been reached, exit the function
+  if (limitHit) return;
 
   // Answers the rental message callback query
   const shouldEditMessage = await answerRentalMessageCbQuery(

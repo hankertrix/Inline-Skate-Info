@@ -24,7 +24,7 @@ import {
 } from "../../bot-utils";
 import * as ntu from "./ntu";
 import {
-    answerIfGlobalLimitIsHit,
+  answerIfGlobalLimitIsHit,
   answerRentalMessageCbQuery,
   generateRentalMsgInlineKeyboardFunc
 } from "./utils";
@@ -312,15 +312,6 @@ export async function defaultCallbackHandler(
   // Gets the message object
   const message = callbackQuery.message;
 
-  // Get whether the global (poll-wide) limit
-  // for the rental message has been reached
-  const limitHit = await answerIfGlobalLimitIsHit(
-    ctx, messageText, name, limit
-  );
-
-  // If the poll-wide limit has been reached, exit the function
-  if (limitHit) return;
-
   // Otherwise, create the additional options to edit the message
   const additionalOptions = {
     parse_mode: "HTML" as ParseMode,
@@ -371,6 +362,15 @@ export async function defaultCallbackHandler(
     DEFAULT_RENTAL_MSG_TAG_ALL,
     isSameName
   );
+
+  // Get whether the global (poll-wide) limit
+  // for the rental message has been reached
+  const limitHit = await answerIfGlobalLimitIsHit(
+    ctx, reformedPollMessage, name, limit
+  );
+
+  // If the poll-wide limit has been reached, exit the function
+  if (limitHit) return;
 
   // Answers the rental message callback query
   const shouldEditMessage = await answerRentalMessageCbQuery(
