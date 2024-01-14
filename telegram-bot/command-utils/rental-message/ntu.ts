@@ -22,7 +22,7 @@ import {
 import { removeBotUsernameAndCommand } from "../../bot-utils";
 import { getUpcomingTrainingDates } from "../training-message/utils";
 import { trainingDates } from "../training-message/ntu";
-import { answerRentalMessageCbQuery } from "./utils";
+import { answerIfGlobalLimitIsHit, answerRentalMessageCbQuery } from "./utils";
 
 
 // The rental options
@@ -115,6 +115,7 @@ const RENTAL_MSG_FORMAT_OPTIONS: FormatOptions = {
 const RENTAL_MSG_CONFIG = {
   pollOptions: RENTAL_OPTIONS,
   maxEntriesList: MAX_NUMBER_OF_RENTALS,
+  globalLimit: 1,
   numberingStyle: NUMBERING_STYLES.DASH,
   formatOptions: RENTAL_MSG_FORMAT_OPTIONS,
   preserveLines: true,
@@ -338,6 +339,18 @@ export async function callback_handler(
 
   // Gets the size chosen
   const chosenSize = parseInt(callbackQuery.data);
+
+  // Gets if the poll-wide limit for the rental message has been reached
+  const limitHit = await answerIfGlobalLimitIsHit(
+    ctx,
+    messageText,
+    name,
+    RENTAL_MSG_CONFIG.globalLimit,
+    removeTagAndSizeRegex
+  );
+
+  // If the limit has been reached, exit the function
+  if (limitHit) return;
 
   // Create the additional options to edit the message
   const additionalOptions = {

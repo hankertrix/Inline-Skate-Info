@@ -78,7 +78,7 @@ const numberingStyleRegex = /[->=+~•·([{<]?\d*[).\]}>]?/;
 // and the name from the poll option segment.
 // The [^\S\r\n] group matches all spaces except for new line characters,
 // which is what we want here
-const numberingStyleAndNameRegex = new RegExp(
+export const numberingStyleAndNameRegex = new RegExp(
   String.raw`^[^\S\r\n]*?(${
     numberingStyleRegex.source
   })[^\S\r\n]*(.*?)[^\S\r\n]*()$`,

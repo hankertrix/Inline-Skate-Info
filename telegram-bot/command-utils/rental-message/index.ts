@@ -17,13 +17,14 @@ import {
   type IsSameNameFunc
 } from "../poll";
 import { DEV } from "$lib/constants";
-import { getModuleString, regexEscape } from "../../utils";
+import { getModule, regexEscape } from "../../utils";
 import {
   promptUserForInput,
   removeBotUsernameAndCommand
 } from "../../bot-utils";
 import * as ntu from "./ntu";
 import {
+    answerIfGlobalLimitIsHit,
   answerRentalMessageCbQuery,
   generateRentalMsgInlineKeyboardFunc
 } from "./utils";
@@ -45,7 +46,8 @@ export type RentalMessageCallbackHandler = (
   ctx: RentalMessageCallbackContext,
   callbackQuery: CbQuery,
   messageText: string,
-  tagString?: string
+  tagString?: string,
+  limit?: number
 ) => Promise<unknown>;
 
 // The interface for the rental message module
@@ -77,6 +79,9 @@ const RENTAL_MSG_MODULES: RentalMessageModules = {
 const RENTAL_OPTION_MESSAGE = `Please enter another rental option.
 
 Use the /done command to get the bot to send the rental message.`;
+
+// The default global limit for the rental message
+const DEFAULT_GLOBAL_LIMIT = Infinity;
 
 // The default prompts for the create rental message function
 const DEFAULT_CREATE_RENTAL_MSG_PROMPTS: CreatePollMessagePrompts = [
@@ -259,11 +264,11 @@ export async function handler(
   ...[ctx, message]: Parameters<RentalMessageHandler>
 ) {
 
-  // Gets the module string
-  const moduleStr = getModuleString(ctx.chat!.id);
+  // Gets the module
+  const module = getModule(ctx.chat!.id, RENTAL_MSG_MODULES);
 
-  // If the module string isn't found
-  if (!moduleStr) {
+  // If the module isn't found
+  if (!module) {
 
     // Tells the user that the rental message hasn't been set up
     const botMessage = await ctx.reply(
@@ -280,7 +285,7 @@ export async function handler(
   }
 
   // Otherwise, gets the rental message handler from the module mapping
-  const rentalMsgHandler = RENTAL_MSG_MODULES[moduleStr].handler;
+  const rentalMsgHandler = module.handler;
 
   // Calls the rental message function
   await rentalMsgHandler(ctx, message);
@@ -293,7 +298,8 @@ export async function default_callback_handler(
     ctx,
     callbackQuery,
     messageText,
-    tagString = DEFAULT_TAG_STRING
+    tagString = DEFAULT_TAG_STRING,
+    limit = DEFAULT_GLOBAL_LIMIT
   ]: Parameters<RentalMessageCallbackHandler>
 ): ReturnType<RentalMessageCallbackHandler> {
 
@@ -306,7 +312,16 @@ export async function default_callback_handler(
   // Gets the message object
   const message = callbackQuery.message;
 
-  // Create the additional options to edit the message
+  // Get whether the global (poll-wide) limit
+  // for the rental message has been reached
+  const limitHit = await answerIfGlobalLimitIsHit(
+    ctx, messageText, name, limit, removeTagStringRegex
+  );
+
+  // If the poll-wide limit has been reached, exit the function
+  if (limitHit) return;
+
+  // Otherwise, create the additional options to edit the message
   const additionalOptions = {
     parse_mode: "HTML" as ParseMode,
     reply_markup: {
@@ -375,7 +390,8 @@ export async function default_callback_handler(
 export async function callback_handler(
   context: Scenes.WizardContext,
   next: () => Promise<void>,
-  tagString: string = DEFAULT_TAG_STRING
+  tagString: string = DEFAULT_TAG_STRING,
+  limit: number = DEFAULT_GLOBAL_LIMIT
 ) {
 
   // Casts the context to the correct type
@@ -398,14 +414,14 @@ export async function callback_handler(
   // another handler can take care of the message
   if (!messageText.includes(POLL_TYPES.RENTAL)) return await next();
 
-  // Gets the module string from the chat ID
-  const moduleStr = getModuleString(message.chat.id);
+  // Gets the module from the chat ID
+  const module = getModule(message.chat.id, RENTAL_MSG_MODULES);
 
-  // If the module string is found
-  if (moduleStr) {
+  // If the module is found
+  if (module) {
 
     // Gets the rental message callback handler for the module
-    const rentalMsgCbHandler = RENTAL_MSG_MODULES[moduleStr].callback_handler;
+    const rentalMsgCbHandler = module.callback_handler;
 
     // If the rental message callback exists
     if (rentalMsgCbHandler) {
@@ -418,7 +434,7 @@ export async function callback_handler(
   // Otherwise, calls the default callback handler
   // to handle the callback query
   return await default_callback_handler(
-    ctx, callbackQuery, messageText, tagString
+    ctx, callbackQuery, messageText, tagString, limit
   );
 }
 
@@ -426,18 +442,18 @@ export async function callback_handler(
 // Function to generate the help text for the rental message help command
 export function generateHelpText(chatId: number) {
 
-  // Gets the module string
-  const moduleStr = getModuleString(chatId);
+  // Gets the module
+  const module = getModule(chatId, RENTAL_MSG_MODULES);
 
-  // If the module string isn't found
+  // If the module isn't found
   // (the chat ID wasn't found in the database),
   // then tells the user that the rental message hasn't been set up
-  if (!moduleStr) {
+  if (!module) {
     return `The rental message has not been set up for this chat. Please contact ${DEV} if you would like to set up a rental message.`;
   }
 
   // Gets the help message from the data
-  const helpText = RENTAL_MSG_MODULES[moduleStr].help;
+  const helpText = module.help;
 
   // Returns the help text
   return helpText;

@@ -1,6 +1,8 @@
 // The utility functions for the rental message
 
 import { Markup, type Scenes } from "telegraf";
+import { numberingStyleAndNameRegex } from "../poll";
+import { regexEscape } from "../../utils";
 
 
 // The function to generate an inline keyboard
@@ -114,5 +116,55 @@ export async function answerRentalMessageCbQuery(
 
   // Returns true to tell the calling function that the message needs
   // to be edited
+  return true;
+}
+
+
+// The function to answer the callback query
+// if the global (poll-wide) limit is hit
+export async function answerIfGlobalLimitIsHit(
+  ctx: Scenes.WizardContext,
+  fullMessage: string,
+  entry: string,
+  limit: number,
+  removerRegex: RegExp | null = null
+): Promise<boolean> {
+
+  // This function returns true if the callback query has been answered,
+  // and false if the callback query hasn't been answered
+
+  // If the limit given less than 1, return false
+  if (limit < 1) return false;
+
+  // If the remover regex is given,
+  // replace the things in the remover regex with an empty string
+  if (removerRegex) entry = entry.replace(removerRegex, "");
+
+  // Create the regular expression to search the poll message for the entry
+  const regex = new RegExp(
+    numberingStyleAndNameRegex.source.replace(
+      /\(\.\*\?\)/, `(${regexEscape(entry)})`
+    ),
+    "gm"
+  );
+
+  // Gets the matches in the entire message
+  const matches = Array.from(fullMessage.matchAll(regex));
+
+  // Gets the number of entries
+  const numberOfEntries = matches.length;
+
+  // If the number of entries is less than the limit, return false
+  if (numberOfEntries < limit) return false;
+
+  // The item string
+  const itemString = limit === 1 ? "item" : "items";
+
+  // Otherwise, answers the callback query
+  await ctx.answerCbQuery(
+    `Sorry, you may only rent a total of ${limit} ${itemString}.`
+  );
+
+  // Return true to tell the calling function
   return true;
 }
