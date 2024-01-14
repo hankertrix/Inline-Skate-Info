@@ -272,7 +272,7 @@ export async function handler(
 
     // Tells the user that the rental message hasn't been set up
     const botMessage = await ctx.reply(
-      `No rental message was found for this chat, so please enter the desired rental message. If you would like to set up a rental message for this chat, please contact ${DEV}.`
+      `No rental message was found for this chat, so please follow the process to create a rental message. If you would like to set up a rental message for this chat, please contact ${DEV}.`
     );
 
     // Enters the create poll message scene with
