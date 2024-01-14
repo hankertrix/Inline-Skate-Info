@@ -346,8 +346,7 @@ export async function callbackHandler(
     ctx,
     messageText,
     name,
-    RENTAL_MSG_CONFIG.globalLimit,
-    removeTagAndSizeRegex
+    RENTAL_MSG_CONFIG.globalLimit
   );
 
   // If the limit has been reached, exit the function
