@@ -9,7 +9,7 @@ import {
   promptUserForInput,
   removeBotUsernameAndCommand
 } from "./bot-utils";
-import { trainingMsgScenes } from "./command-utils/training-message";
+import { TRAINING_MSG_SCENES } from "./command-utils/training-message";
 import { createPollMessageScene } from "./command-utils/poll";
 
 
@@ -81,7 +81,7 @@ const validateScene = createWizardScene("validate", validateHandler);
 const scenes = [
   validateScene,
   createPollMessageScene,
-  ...trainingMsgScenes
+  ...TRAINING_MSG_SCENES
 ] as const;
 
 // The scene stage to attach to the telegram bot

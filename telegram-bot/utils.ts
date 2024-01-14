@@ -200,7 +200,7 @@ function getModuleMapping(): [number, string][] {
 
 
 // Function to the module data from the module mapping
-export function getModuleString(chatId: number): string | null {
+function getModuleString(chatId: number): string | null {
 
   // Gets the module mapping
   const moduleMapping = getModuleMapping();
@@ -219,7 +219,23 @@ export function getModuleString(chatId: number): string | null {
 }
 
 
-// Function to get a key from a dictionary and return a default value if the key is not found (mimics the python dict.get method)
+// Function to get the module
+// eslint-disable-next-line  @typescript-eslint/no-explicit-any
+export function getModule(chatId: number, modules: any) {
+
+  // Gets the module string
+  const moduleString = getModuleString(chatId);
+
+  // If the module string is not found, then return null
+  if (!moduleString) return null;
+
+  // Gets the module from the modules given
+  return modules[moduleString];
+}
+
+
+// Function to get a key from a dictionary and return a default value
+// if the key is not found (mimics the python dict.get method)
 // eslint-disable-next-line  @typescript-eslint/no-explicit-any
 export function dictGet(dict: Dict<unknown>, key: string | number, defaultValue: any = null) {
 
