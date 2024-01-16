@@ -1,20 +1,22 @@
 [build]
-  command = "npm run build"
+command = "npm run build"
 
-  # Build directory
-  publish = "build"
+# Build directory
+publish = "build"
 
 
 [functions]
 
-  # Include all of the JSON and static files
-  included_files = ["src/lib/data/**/*.json", "static/**"]
+# Include all of the JSON and static files
+included_files = ["src/lib/data/**/*.json", "static/**"]
 
 
 [[headers]]
-   for = "/*"
-   [headers.values]
-     X-Frame-Options = "DENY"
-     X-XSS-Protection = "1; mode=block"
-     X-Content-Type-Options = "nosniff"
-     X-Robots-Tag = "all"
+for = "/*"
+
+[headers.values]
+Content-Security-Policy = "default-src 'self'"
+X-Frame-Options = "DENY"
+X-XSS-Protection = "1; mode=block"
+X-Content-Type-Options = "nosniff"
+X-Robots-Tag = "all"
