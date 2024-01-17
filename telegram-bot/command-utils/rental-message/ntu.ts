@@ -352,12 +352,8 @@ export async function callbackHandler(
     message.reply_markup.inline_keyboard.slice(0, -1)
   );
 
-  console.log(pollOptions)
-  console.log(SIZES)
-  console.log(pollOptions === SIZES)
-
   // If the poll options isn't the same as the list of sizes
-  if (pollOptions !== SIZES) {
+  if (utils.arraysAreEqual(pollOptions, SIZES)) {
 
     // Then it means the poll isn't the rental message that has been
     // set up for NTU, it is instead a custom rental message.

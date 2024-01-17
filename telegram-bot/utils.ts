@@ -81,6 +81,33 @@ export function mergeListOfObjects(listOfObjects: object[]) {
 }
 
 
+// Function to check if two arrays are equal.
+// It's unbelievable that this function even needs to be written.
+export function arraysAreEqual(
+  array: unknown[],
+  otherArray: unknown[]
+): boolean {
+
+  // Initialise the index variable to the length of the first array
+  let index = array.length;
+
+  // If both arrays don't have the same length, return false
+  if (index !== otherArray.length) return false;
+
+  // Iterates down from the array length.
+  // The while loop will stop when the index hits zero
+  while (--index) {
+
+    // If the item in the first array is not equal
+    // to the item in the second array, then return false
+    if (array[index] !== otherArray[index]) return false;
+  }
+
+  // Otherwise, return true
+  return true;
+}
+
+
 // Function to load all the JSON files in a directory
 export async function loadJsonDirectory(path: string) {
   
