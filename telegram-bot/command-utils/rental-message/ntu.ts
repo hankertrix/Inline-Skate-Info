@@ -23,7 +23,11 @@ import {
 import { deleteMessages, removeBotUsernameAndCommand } from "../../bot-utils";
 import { getUpcomingTrainingDates } from "../training-message/utils";
 import { trainingDates } from "../training-message/ntu";
-import { answerIfGlobalLimitIsHit, answerRentalMessageCbQuery } from "./utils";
+import {
+  answerIfGlobalLimitIsHit,
+  answerRentalMessageCbQuery,
+  createTagFallbackFunc
+} from "./utils";
 
 
 // The rental options
@@ -323,27 +327,6 @@ export async function handler(
 
   // Deletes the user's message
   return await deleteMessages(ctx, ctx.message.message_id);
-}
-
-
-// The tag fallback function to call when the user is not tagged
-function createTagFallbackFunc(
-  ...[
-    ctx,
-    callbackQuery,
-    messageText
-  ]: Parameters<RentalMessageCallbackHandler>
-): () => ReturnType<RentalMessageCallbackHandler> {
-
-  // The function to just wrap the default callback handler
-  // with the required data, so the the answerRentalMessageCbQuery function
-  // can call the default callback handler without any arguments
-  async function callbackWrapper() {
-    return await defaultCallbackHandler(ctx, callbackQuery, messageText);
-  }
-
-  // Returns the callback wrapper
-  return callbackWrapper;
 }
 
 
