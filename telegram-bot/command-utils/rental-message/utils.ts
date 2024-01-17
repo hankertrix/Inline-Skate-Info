@@ -51,6 +51,9 @@ export function createTagFallbackFunc(
   ]: Parameters<RentalMessageCallbackHandler>
 ): () => ReturnType<RentalMessageCallbackHandler> {
 
+  console.log(callbackQuery)
+  console.log(messageText)
+
   // The function to just wrap the default callback handler
   // with the required data, so the the answerRentalMessageCbQuery function
   // can call the default callback handler without any arguments
@@ -184,6 +187,10 @@ export async function answerIfGlobalLimitIsHit(
 
   // Gets the matches in the entire message
   const matches = Array.from(reformedPollMessage.matchAll(regex));
+
+  console.log(entry)
+  console.log(limit)
+  console.log(matches)
 
   // Gets the number of entries
   const numberOfEntries = matches.length;
