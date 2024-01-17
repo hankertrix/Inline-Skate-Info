@@ -352,6 +352,10 @@ export async function callbackHandler(
     message.reply_markup.inline_keyboard.slice(0, -1)
   );
 
+  console.log(pollOptions)
+  console.log(SIZES)
+  console.log(pollOptions === SIZES)
+
   // If the poll options isn't the same as the list of sizes
   if (pollOptions !== SIZES) {
 
