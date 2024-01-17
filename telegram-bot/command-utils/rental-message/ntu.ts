@@ -2,8 +2,7 @@
 
 import {
   type RentalMessageCallbackHandler,
-  type RentalMessageHandler,
-  defaultCallbackHandler
+  type RentalMessageHandler
 } from ".";
 import type { ParseMode } from "telegraf/types";
 import { Markup, Scenes } from "telegraf";
@@ -393,6 +392,14 @@ export async function callbackHandler(
     }
   }
 
+  // Creates the tag fallback function.
+  // This is essentially just the default callback handler wrapped
+  // so that it can be called without arguments for the
+  // answerRentalMessageCbQuery function.
+  const tagFallbackFunc = createTagFallbackFunc(
+    ctx, callbackQuery, messageText
+  );
+
   // If the selected rental option is null which is probably because
   // a standard rental message was being responded to,
   // and the button pressed isn't the tag button.
@@ -400,11 +407,7 @@ export async function callbackHandler(
 
     // Calls the default rental message callback handler as a fallback
     // and exit the function
-    return await defaultCallbackHandler(
-      ctx,
-      callbackQuery,
-      messageText
-    );
+    return await tagFallbackFunc();
   }
 
   // The entry to put in the rental message
@@ -435,11 +438,6 @@ export async function callbackHandler(
 
   // If the limit has been reached, exit the function
   if (limitHit) return;
-
-  // Creates the tag fallback function
-  const tagFallbackFunc = createTagFallbackFunc(
-    ctx, callbackQuery, messageText
-  );
 
   // Answers the rental message callback query
   const shouldEditMessage = await answerRentalMessageCbQuery(
