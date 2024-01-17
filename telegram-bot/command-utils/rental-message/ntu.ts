@@ -28,14 +28,14 @@ import { answerIfGlobalLimitIsHit, answerRentalMessageCbQuery } from "./utils";
 
 // The rental options
 const RENTAL_OPTIONS = [
-  "Sizes 36 - 39",
-  "Sizes 40 - 43"
+  "Sizes 38 - 41",
+  "Sizes 42 - 45"
 ];
 
 // The available sizes for rental
 const SIZES = [
-  36, 37, 38, 39,
-  40, 41, 42, 43
+  38, 39, 40, 41,
+  42, 43, 44, 45
 ];
 
 // The maximum number of rentals for each size group
@@ -326,6 +326,27 @@ export async function handler(
 }
 
 
+// The tag fallback function to call when the user is not tagged
+function createTagFallbackFunc(
+  ...[
+    ctx,
+    callbackQuery,
+    messageText
+  ]: Parameters<RentalMessageCallbackHandler>
+): () => ReturnType<RentalMessageCallbackHandler> {
+
+  // The function to just wrap the default callback handler
+  // with the required data, so the the answerRentalMessageCbQuery function
+  // can call the default callback handler without any arguments
+  async function callbackWrapper() {
+    return await defaultCallbackHandler(ctx, callbackQuery, messageText);
+  }
+
+  // Returns the callback wrapper
+  return callbackWrapper;
+}
+
+
 // The handler for the callback query
 export async function callbackHandler(
   ...[
@@ -432,9 +453,14 @@ export async function callbackHandler(
   // If the limit has been reached, exit the function
   if (limitHit) return;
 
+  // Creates the tag fallback function
+  const tagFallbackFunc = createTagFallbackFunc(
+    ctx, callbackQuery, messageText
+  );
+
   // Answers the rental message callback query
   const shouldEditMessage = await answerRentalMessageCbQuery(
-    ctx, tag, removed, tagged, selectedRentalOption
+    ctx, tag, removed, tagged, selectedRentalOption, tagFallbackFunc
   );
 
   // If the message should be edited,

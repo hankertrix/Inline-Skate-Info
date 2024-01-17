@@ -47,7 +47,8 @@ export async function answerRentalMessageCbQuery(
   isTag: boolean,
   removed: boolean | null,
   tagged: boolean | null,
-  rentalOption: string | null = null
+  rentalOption: string | null = null,
+  tagFallbackFunc: (() => Promise<unknown>) | null = null
 ) {
 
   // If it is a tagging button that was pressed
@@ -69,7 +70,18 @@ export async function answerRentalMessageCbQuery(
     // Otherwise
     else {
 
-      // Tells the user that they need to add their name to the
+      // If there's a fallback function for the tag
+      if (tagFallbackFunc) {
+
+        // Call the function
+        await tagFallbackFunc();
+
+        // Returns false as the message doesn't need to be edited
+        // as the tag fallback function should take care of it
+        return false;
+      }
+
+      // Otherwise, tells the user that they need to add their name to the
       // rental message first
       await ctx.answerCbQuery(
         `You need to add your name to the rental message before you can indicate that you have paid.`
