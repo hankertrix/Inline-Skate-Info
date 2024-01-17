@@ -352,7 +352,7 @@ export async function callbackHandler(
     message.reply_markup.inline_keyboard.slice(0, -1)
   );
 
-  // If the poll options isn't the same as the list of sizes
+  // If the poll options aren't the same as the list of sizes
   if (!utils.arraysAreEqual(pollOptions, SIZES)) {
 
     // Then it means the poll isn't the rental message that has been
