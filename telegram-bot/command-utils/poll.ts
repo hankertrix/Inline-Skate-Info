@@ -862,14 +862,18 @@ export function getPollOptions(inlineKeyboard: InlineKeyboardButton[][]) {
   // The list of poll options
   const pollOptions = [];
 
-  // Iterates the list of inline keyboard buttons
-  for (const inlineKeyboardButton of inlineKeyboard) {
+  // Iterates the list of inline keyboard rows
+  for (const inlineKeyboardRow of inlineKeyboard) {
 
-    // Gets the text for the inline keyboard button
-    const text = inlineKeyboardButton[0].text;
+    // Iterates over the list of inline keyboard buttons in a row
+    for (const inlineKeyboardButton of inlineKeyboardRow) {
 
-    // Adds the text to the list of poll options
-    pollOptions.push(text);
+      // Gets the text for the inline keyboard button
+      const text = inlineKeyboardButton.text;
+
+      // Adds the text to the list of poll options
+      pollOptions.push(text);
+    }
   }
 
   // Returns the list of poll options
