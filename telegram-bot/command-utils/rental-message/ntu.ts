@@ -353,7 +353,7 @@ export async function callbackHandler(
   );
 
   // If the poll options isn't the same as the list of sizes
-  if (utils.arraysAreEqual(pollOptions, SIZES)) {
+  if (!utils.arraysAreEqual(pollOptions, SIZES)) {
 
     // Then it means the poll isn't the rental message that has been
     // set up for NTU, it is instead a custom rental message.
