@@ -3,7 +3,6 @@
 import { Markup, type Scenes } from "telegraf";
 import { regexEscape } from "../../utils";
 import { numberingStyleRegex } from "../poll";
-import { type RentalMessageCallbackHandler, defaultCallbackHandler } from ".";
 
 
 // The function to generate an inline keyboard
@@ -42,30 +41,6 @@ export function generateRentalMsgInlineKeyboardFunc(
 }
 
 
-// The tag fallback function to call when the user is not tagged
-export function createTagFallbackFunc(
-  ...[
-    ctx,
-    callbackQuery,
-    messageText
-  ]: Parameters<RentalMessageCallbackHandler>
-): () => ReturnType<RentalMessageCallbackHandler> {
-
-  console.log(callbackQuery)
-  console.log(messageText)
-
-  // The function to just wrap the default callback handler
-  // with the required data, so the the answerRentalMessageCbQuery function
-  // can call the default callback handler without any arguments
-  async function callbackWrapper() {
-    return await defaultCallbackHandler(ctx, callbackQuery, messageText);
-  }
-
-  // Returns the callback wrapper
-  return callbackWrapper;
-}
-
-
 // The function to answer the rental message callback
 export async function answerRentalMessageCbQuery(
   ctx: Scenes.WizardContext,
@@ -73,7 +48,6 @@ export async function answerRentalMessageCbQuery(
   removed: boolean | null,
   tagged: boolean | null,
   rentalOption: string | null = null,
-  tagFallbackFunc: (() => Promise<unknown>) | null = null
 ) {
 
   // If it is a tagging button that was pressed
@@ -94,17 +68,6 @@ export async function answerRentalMessageCbQuery(
 
     // Otherwise
     else {
-
-      // If there's a fallback function for the tag
-      if (tagFallbackFunc) {
-
-        // Call the function
-        await tagFallbackFunc();
-
-        // Returns false as the message doesn't need to be edited
-        // as the tag fallback function should take care of it
-        return false;
-      }
 
       // Otherwise, tells the user that they need to add their name to the
       // rental message first
@@ -187,10 +150,6 @@ export async function answerIfGlobalLimitIsHit(
 
   // Gets the matches in the entire message
   const matches = Array.from(reformedPollMessage.matchAll(regex));
-
-  console.log(entry)
-  console.log(limit)
-  console.log(matches)
 
   // Gets the number of entries
   const numberOfEntries = matches.length;

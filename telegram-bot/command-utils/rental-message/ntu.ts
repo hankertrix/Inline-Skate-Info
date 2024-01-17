@@ -1,6 +1,7 @@
 // Module to create the rental message for NTU
 
 import {
+    defaultCallbackHandler,
   type RentalMessageCallbackHandler,
   type RentalMessageHandler
 } from ".";
@@ -18,6 +19,7 @@ import {
   reformPollMessage,
   getPollMessage,
   defaultIsSameNameFunc,
+  getPollOptions,
 } from "../poll";
 import { deleteMessages, removeBotUsernameAndCommand } from "../../bot-utils";
 import { getUpcomingTrainingDates } from "../training-message/utils";
@@ -25,7 +27,6 @@ import { trainingDates } from "../training-message/ntu";
 import {
   answerIfGlobalLimitIsHit,
   answerRentalMessageCbQuery,
-  createTagFallbackFunc
 } from "./utils";
 
 
@@ -37,8 +38,8 @@ const RENTAL_OPTIONS = [
 
 // The available sizes for rental
 const SIZES = [
-  38, 39, 40, 41,
-  42, 43, 44, 45
+  "38", "39", "40", "41",
+  "42", "43", "44", "45"
 ];
 
 // The maximum number of rentals for each size group
@@ -196,7 +197,7 @@ function createRentalMessagePortion(
 
 
 // The function to generate an inline keyboard for the NTU rental message
-function generateInlineKeyboard(sizes: number[]) {
+function generateInlineKeyboard(sizes: string[]) {
 
   // Initialise the inline keyboard
   const inlineKeyboard = [];
@@ -214,8 +215,8 @@ function generateInlineKeyboard(sizes: number[]) {
       // Then just add the size at the current index
       inlineKeyboard.push([
         Markup.button.callback(
-          `${sizes[index]}`,
-          `${sizes[index]}`
+          sizes[index],
+          sizes[index]
         )
       ]);
     }
@@ -224,12 +225,12 @@ function generateInlineKeyboard(sizes: number[]) {
     else {
       inlineKeyboard.push([
         Markup.button.callback(
-          `${sizes[index]}`,
-          `${sizes[index]}`
+          sizes[index],
+          sizes[index]
         ),
         Markup.button.callback(
-          `${sizes[index + 1]}`,
-          `${sizes[index + 1]}`
+          sizes[index + 1],
+          sizes[index + 1]
         )
       ]);
     }
@@ -341,7 +342,26 @@ export async function callbackHandler(
   // The variable to determine if the button pressed is the tag button
   const tag = callbackQuery.data === RENTAL_MSG_CONFIG.tagString;
 
-  // Gets the poll message
+  // Gets the message object
+  const message = callbackQuery.message;
+
+  // Gets the poll options.
+  // Skip the last option in the inline keyboard
+  // as it is the tag string and not an actual poll option
+  const pollOptions = getPollOptions(
+    message.reply_markup.inline_keyboard.slice(0, -1)
+  );
+
+  // If the poll options isn't the same as the list of sizes
+  if (pollOptions !== SIZES) {
+
+    // Then it means the poll isn't the rental message that has been
+    // set up for NTU, it is instead a custom rental message.
+    // Hence, call the defaultCallbackHandler to handle it instead.
+    return await defaultCallbackHandler(ctx, callbackQuery, messageText);
+  }
+
+  // Otherwise, gets the poll message
   const pollMessage = getPollMessage(messageText, RENTAL_OPTIONS);
 
   // Gets the name of the user
@@ -354,7 +374,7 @@ export async function callbackHandler(
   const additionalOptions = {
     parse_mode: "HTML" as ParseMode,
     reply_markup: {
-      inline_keyboard: callbackQuery.message.reply_markup.inline_keyboard
+      inline_keyboard: message.reply_markup.inline_keyboard
     }
   };
 
@@ -392,22 +412,16 @@ export async function callbackHandler(
     }
   }
 
-  // Creates the tag fallback function.
-  // This is essentially just the default callback handler wrapped
-  // so that it can be called without arguments for the
-  // answerRentalMessageCbQuery function.
-  const tagFallbackFunc = createTagFallbackFunc(
-    ctx, callbackQuery, messageText
-  );
-
-  // If the selected rental option is null which is probably because
-  // a standard rental message was being responded to,
+  // If the selected rental option is null somehow,
   // and the button pressed isn't the tag button.
   if (!selectedRentalOption && !tag) {
 
-    // Calls the default rental message callback handler as a fallback
-    // and exit the function
-    return await tagFallbackFunc();
+    // Tells the user that the poll option doesn't exist
+    return await ctx.answerCbQuery(
+      `The option "${
+        callbackQuery.data
+      }" doesn't exist on the rental message you are responding to.`
+    );
   }
 
   // The entry to put in the rental message
@@ -441,7 +455,7 @@ export async function callbackHandler(
 
   // Answers the rental message callback query
   const shouldEditMessage = await answerRentalMessageCbQuery(
-    ctx, tag, removed, tagged, selectedRentalOption, tagFallbackFunc
+    ctx, tag, removed, tagged, selectedRentalOption
   );
 
   // If the message should be edited,
