@@ -133,7 +133,7 @@ const RENTAL_MSG_CONFIG = {
 // The rental message
 const RENTAL_MSG = `
 {time}
-Add your name if you want skate rentals. $5 for the whole session. Guards are included in the rental fee. Please either scan the PayNow QR code above or PayNow the $5 to ${process.env.NTU_TREASURER}. Press the ${RENTAL_MSG_CONFIG.tagString} button to indicate that you have paid. First come first served basis!!!
+Add your name if you want skate rentals. $5 for the whole session. Please either scan the PayNow QR code above or PayNow the $5 to ${process.env.NTU_TREASURER}. Press the ${RENTAL_MSG_CONFIG.tagString} button to indicate that you have paid. First come first served basis!!!
 `.trim();
 
 
