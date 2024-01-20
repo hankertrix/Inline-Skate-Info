@@ -13,7 +13,7 @@
     "format": "prettier --plugin-search-dir . --write ."
   },
   "devDependencies": {
-    "@sveltejs/adapter-netlify": "^3.0.1",
+    "@sveltejs/adapter-netlify": "^4.1.0",
     "@sveltejs/kit": "^2.0.6",
     "@sveltejs/vite-plugin-svelte": "^3.0.0",
     "@types/node": "^20.0.0",
