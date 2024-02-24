@@ -639,7 +639,7 @@ export async function promptUserForInput(
   
   // Asks the user for an input
   const botMessage = await ctx.reply(
-    `${message} ${EXIT_MESSAGE}`,
+    `${message}\n${EXIT_MESSAGE}`,
     { parse_mode: "HTML", ...additionalOptions }
   );
 
