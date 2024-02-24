@@ -420,6 +420,9 @@ function getIndexOrDefaultValue(
 // Function to get the poll option segment
 export function getPollOptionSegment(message: string, pollOption: string) {
 
+  console.log(message)
+  console.log(pollOption)
+
   // Gets the index of the poll option in the message
   // and set it to zero if the index is not found.
   // For now, I think it's okay to have it match from
@@ -525,9 +528,6 @@ export function regeneratePollPortion(
   const {
     pollOptionNameSegment, pollOptionLine
   } = getPollOptionSegment(message, pollOption);
-
-  console.log(pollOptionNameSegment)
-  console.log(pollOptionLine)
 
   // Get the maximum number of entries from the poll option line
   const maxEntries = getPollOptionMaxEntries(pollOptionLine);

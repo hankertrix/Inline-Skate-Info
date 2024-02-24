@@ -347,9 +347,6 @@ export async function defaultCallbackHandler(
   // Gets the rental message
   const rentalMessage = getPollMessage(messageText, rentalOptions);
 
-  console.log(rentalMessage);
-  console.log(name);
-
   // Gets the reformed poll message
   // and the variable to indicated whether the person has been added
   // or removed from the rental option
