@@ -1277,7 +1277,7 @@ export const createPollMessageScene = new Scenes.WizardScene(
           ctx,
           utils.strFormat(
             prompts.failure.prompt,
-            { "numberingStyles": numberingStyles.join("\n") }
+            { "numberingStyles": utils.stripHtml(numberingStyles.join("\n")) }
           ),
           {
             ...generateReplyKeyboard(
