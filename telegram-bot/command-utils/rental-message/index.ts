@@ -313,7 +313,7 @@ export async function defaultCallbackHandler(
   // Gets the message object
   const message = callbackQuery.message;
 
-  // Otherwise, create the additional options to edit the message
+  // Create the additional options to edit the message
   const additionalOptions = {
     parse_mode: "HTML" as ParseMode,
     reply_markup: {
@@ -346,6 +346,9 @@ export async function defaultCallbackHandler(
 
   // Gets the rental message
   const rentalMessage = getPollMessage(messageText, rentalOptions);
+
+  console.log(rentalMessage);
+  console.log(name);
 
   // Gets the reformed poll message
   // and the variable to indicated whether the person has been added

@@ -525,6 +525,9 @@ export function regeneratePollPortion(
     pollOptionNameSegment, pollOptionLine
   } = getPollOptionSegment(message, pollOption);
 
+  console.log(pollOptionNameSegment)
+  console.log(pollOptionLine)
+
   // Get the maximum number of entries from the poll option line
   const maxEntries = getPollOptionMaxEntries(pollOptionLine);
 
