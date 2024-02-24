@@ -230,31 +230,30 @@ function createNumberOfPeoplePortion(
     numberFormatString = formatOption.default;
   }
 
-  // Gets the format arguments
+  // Set the maximum number of entries to 0 if it is infinity
+  // and the given number it is not.
+  // Cast the maxEntries variable to a number as well.
+  // For some reason typescript just doesn't understand
+  // the isFinite check also checks for null and undefined
+  // and will return false in those cases.
+  maxEntries = Number.isFinite(maxEntries) ? maxEntries as number : 0;
+
+  // Gets the format arguments.
+  // Show an infinity symbol when there is no maximum number of entries,
+  // which is when the maximum number of entries is less than 1.
   const formatArgs: { [key: string]: number | string } = {
-    number: numberOfPeople
+    number: numberOfPeople,
+    maxEntries: maxEntries < 1 ? "∞" : maxEntries
   };
 
-  // If the maximum number of entries is given and is not infinity
-  if (Number.isFinite(maxEntries)) {
+  // If the number of remaining slots on the poll option is wanted
+  if (showRemaining) {
 
-    // Cast the maxEntries variable to a number.
-    // For some reason typescript just doesn't understand
-    // the isFinite check also checks for null and undefined
-    // and will return false in those cases
-    maxEntries = maxEntries as number;
-
-    // Add the maxEntries variable to the format arguments.
-    // Show an infinity symbol when there is no maximum number of entries,
-    // which is when the maximum number of entries is less than 1
-    formatArgs["maxEntries"] = maxEntries < 1 ? "∞" : maxEntries;
-
-    // If the number of remaining slots on the poll option is wanted
-    if (showRemaining) {
-
-      // Set the number to the absolute value of the number of remaining slots
-      formatArgs["number"] = Math.abs(maxEntries - numberOfPeople);
-    }
+    // Set the number to the absolute value of the number of remaining slots.
+    // This will show the number of people that responded to the poll
+    // when the maximum number of entries is zero instead of the
+    // remaining number of slots.
+    formatArgs["number"] = Math.abs(maxEntries - numberOfPeople);
   }
 
   // Gets the string for the number of people who responded
@@ -423,9 +422,6 @@ function getIndexOrDefaultValue(
 // Function to get the poll option segment
 export function getPollOptionSegment(message: string, pollOption: string) {
 
-  console.log(message)
-  console.log(pollOption)
-
   // Gets the index of the poll option in the message
   // and set it to zero if the index is not found.
   // For now, I think it's okay to have it match from
@@ -531,9 +527,6 @@ export function regeneratePollPortion(
   const {
     pollOptionNameSegment, pollOptionLine
   } = getPollOptionSegment(message, pollOption);
-
-  console.log(pollOptionNameSegment)
-  console.log(pollOptionLine)
 
   // Get the maximum number of entries from the poll option line
   const maxEntries = getPollOptionMaxEntries(pollOptionLine);
@@ -1287,7 +1280,7 @@ export const createPollMessageScene = new Scenes.WizardScene(
           ctx,
           utils.strFormat(
             prompts.failure.prompt,
-            { "numberingStyles": utils.stripHtml(numberingStyles.join("\n")) }
+            { numberingStyles: utils.stripHtml(numberingStyles.join("\n")) }
           ),
           {
             ...generateReplyKeyboard(
