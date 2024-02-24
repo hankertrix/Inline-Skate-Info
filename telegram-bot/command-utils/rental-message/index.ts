@@ -9,12 +9,13 @@ import {
   type AdditionalOptionsFunction,
   type FormatOptions,
   type CreatePollMessageConfig,
+  type IsSameNameFunc,
   POLL_TYPES,
+  DEFAULT_NUMBERING_STYLES_MSG,
   getName,
   getPollOptions,
   getPollMessage,
-  reformPollMessage,
-  type IsSameNameFunc
+  reformPollMessage
 } from "../poll";
 import { DEV } from "$lib/constants";
 import { getModule, regexEscape } from "../../utils";
@@ -93,7 +94,7 @@ const DEFAULT_CREATE_RENTAL_MSG_PROMPTS: CreatePollMessagePrompts = [
   {
     success: "Please enter the first rental option.",
     failure: {
-      prompt: "Please choose a numbering style from the list.",
+      prompt: DEFAULT_NUMBERING_STYLES_MSG,
       placeholder: "Choose a numbering style..."
     },
   },

@@ -1029,16 +1029,21 @@ export type CreatePollMessageConfig = Omit<
 const sceneName = "createPollMessage";
 
 
-// The incomplete data message for the poll message creation scene
-const incompleteDataMessage = `The poll message is still missing some required data for it to be generated.
-
-Please continue the poll message creation process or use the /cancel command to cancel the creation of the poll message.`;
-
+// The message to display for step to get the numbering style.
+// The {numberingStyle} will be substituted with the actual list
+// of numbering styles when the message is sent.
+export const DEFAULT_NUMBERING_STYLES_MSG = `Please select a numbering style by copying and pasting a full line from the list below or by using the reply keyboard.\n\n{numberingStyles}\n`;
 
 // The poll option message
-const pollOptionMsg = `Please enter another poll option.
+const DEFAULT_POLL_OPTION_MSG = `Please enter another poll option.
 
 Use the /done command to get the bot to send the poll message.`;
+
+
+// The incomplete data message for the poll message creation scene
+const DEFAULT_INCOMPLETE_DATA_MESSAGE = `The poll message is still missing some required data for it to be generated.
+
+Please continue the poll message creation process or use the /cancel command to cancel the creation of the poll message.`;
 
 
 // The default list of prompts for the poll message scene
@@ -1051,13 +1056,13 @@ export const DEFAULT_CREATE_POLL_MESSAGE_PROMPTS: CreatePollMessagePrompts = [
   {
     success: "Please enter the first poll option.",
     failure: {
-      prompt: "Please choose a numbering style from the list.",
+      prompt: DEFAULT_NUMBERING_STYLES_MSG,
       placeholder: "Choose a numbering style..."
     },
   },
 
   // The prompts for the third step
-  { success: pollOptionMsg, failure: "Please enter a poll option." }
+  { success: DEFAULT_POLL_OPTION_MSG, failure: "Please enter a poll option." }
 ] as const;
 
 
@@ -1090,7 +1095,7 @@ async function doneCommandHandler(ctx: Scenes.WizardContext) {
     // and they should use the "/cancel" command instead to cancel
     // the operation.
     // Also, exit the function
-    return await promptUserForInput(ctx, incompleteDataMessage);
+    return await promptUserForInput(ctx, DEFAULT_INCOMPLETE_DATA_MESSAGE);
   }
 
   // Otherwise, mark the user's message for deletion
@@ -1270,7 +1275,10 @@ export const createPollMessageScene = new Scenes.WizardScene(
         // and exit the function
         return await promptUserForInput(
           ctx,
-          prompts.failure.prompt,
+          utils.strFormat(
+            prompts.failure.prompt,
+            { "numberingStyles": numberingStyles.join("\n") }
+          ),
           {
             ...generateReplyKeyboard(
               numberingStyles,
