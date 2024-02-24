@@ -233,14 +233,15 @@ function createNumberOfPeoplePortion(
   // Gets the format arguments
   const formatArgs: { [key: string]: number } = { number: numberOfPeople };
 
-  // If the maximum number of entries is given and is not infinity
-  if (Number.isFinite(maxEntries)) {
-
-    // Cast the maxEntries variable to a number.
-    // For some reason typescript just doesn't understand
-    // the above check also checks for null and undefined
-    // and will return false in those cases
-    maxEntries = maxEntries as number;
+  // If the maximum number of entries is given
+  // and is not infinity and is greater than 0.
+  // Also cast the maxEntries variable to a number.
+  // For some reason typescript just doesn't understand
+  // the isFinite check also checks for null and undefined
+  // and will return false in those cases
+  if (
+    Number.isFinite(maxEntries) && (maxEntries = maxEntries as number) > 0
+  ) {
 
     // Add the maxEntries variable to the format arguments
     formatArgs["maxEntries"] = maxEntries;
