@@ -456,7 +456,7 @@ export function getPollOptionSegment(message: string, pollOption: string) {
 
   // Find the index of the new line after the poll option
   const newLineAfterPollOptionIndex = getIndexOrDefaultValue(
-    message.indexOf("\n", pollOptionIndex), 0
+    message.indexOf("\n", pollOptionIndex), message.length
   );
 
   // Gets the entire line that the poll option is on
@@ -531,6 +531,9 @@ export function regeneratePollPortion(
   const {
     pollOptionNameSegment, pollOptionLine
   } = getPollOptionSegment(message, pollOption);
+
+  console.log(pollOptionNameSegment)
+  console.log(pollOptionLine)
 
   // Get the maximum number of entries from the poll option line
   const maxEntries = getPollOptionMaxEntries(pollOptionLine);
