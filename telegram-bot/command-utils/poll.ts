@@ -231,26 +231,29 @@ function createNumberOfPeoplePortion(
   }
 
   // Gets the format arguments
-  const formatArgs: { [key: string]: number } = { number: numberOfPeople };
+  const formatArgs: { [key: string]: number | string } = {
+    number: numberOfPeople
+  };
 
-  // If the maximum number of entries is given
-  // and is not infinity and is greater than 0.
-  // Also cast the maxEntries variable to a number.
-  // For some reason typescript just doesn't understand
-  // the isFinite check also checks for null and undefined
-  // and will return false in those cases
-  if (
-    Number.isFinite(maxEntries) && (maxEntries = maxEntries as number) > 0
-  ) {
+  // If the maximum number of entries is given and is not infinity
+  if (Number.isFinite(maxEntries)) {
 
-    // Add the maxEntries variable to the format arguments
-    formatArgs["maxEntries"] = maxEntries;
+    // Cast the maxEntries variable to a number.
+    // For some reason typescript just doesn't understand
+    // the isFinite check also checks for null and undefined
+    // and will return false in those cases
+    maxEntries = maxEntries as number;
+
+    // Add the maxEntries variable to the format arguments.
+    // Show an infinity symbol when there is no maximum number of entries,
+    // which is when the maximum number of entries is less than 1
+    formatArgs["maxEntries"] = maxEntries < 1 ? "∞" : maxEntries;
 
     // If the number of remaining slots on the poll option is wanted
     if (showRemaining) {
 
-      // Set the number to the number of remaining slots
-      formatArgs["number"] = maxEntries - numberOfPeople;
+      // Set the number to the absolute value of the number of remaining slots
+      formatArgs["number"] = Math.abs(maxEntries - numberOfPeople);
     }
   }
 
