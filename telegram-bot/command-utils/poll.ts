@@ -450,9 +450,12 @@ export function getPollOptionSegment(message: string, pollOption: string) {
     break;
   }
 
+  // Get the length of the message
+  const messageLength = message.length;
+
   // Find the index of the new line after the poll option
   const newLineAfterPollOptionIndex = getIndexOrDefaultValue(
-    message.indexOf("\n", pollOptionIndex), message.length
+    message.indexOf("\n", pollOptionIndex), messageLength
   );
 
   // Gets the entire line that the poll option is on
@@ -464,7 +467,7 @@ export function getPollOptionSegment(message: string, pollOption: string) {
   // Searches for the next double new line in the message slice
   // after the poll option
   const doubleNewLineIndex = getIndexOrDefaultValue(
-    message.indexOf("\n\n", newLineAfterPollOptionIndex + 1), message.length
+    message.indexOf("\n\n", newLineAfterPollOptionIndex + 1), messageLength
   );
 
   // Gets the part of the message with the list of names
