@@ -204,7 +204,9 @@ export async function ctxReply(
     // Replies to the user
     await ctx.reply(segment, {
       parse_mode: "HTML",
-      disable_web_page_preview: true,
+      link_preview_options: {
+        is_disabled: true
+      },
       ...options
     });
   }
@@ -317,7 +319,9 @@ function generateInlineQueryReply(
     input_message_content: {
       message_text: `${utils.bold(title)}${SPACING}${message}`,
       parse_mode: "HTML",
-      disable_web_page_preview: true,
+      link_preview_options: {
+        is_disabled: true
+      },
       ...options
     },
     ...markup
