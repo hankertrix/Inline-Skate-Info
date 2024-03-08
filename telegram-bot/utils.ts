@@ -33,9 +33,9 @@ export function mergeObjects(baseObj: any, objToMerge: object, errorOnConflict: 
     // If the key is found in the base object
     if (key in baseObj) {
 
-      // If the function is set to error on conflict, then throw an error to tell the user that a conflict has occured
+      // If the function is set to error on conflict, then throw an error to tell the user that a conflict has occurred
       if (errorOnConflict) throw new Error(`The key '${key}' exists in both the base object and the object to merge.`);
-      
+
       // If the function is set to overwrite the base object, then overwrite the key in the base object
       else if (overwriteBaseObject) baseObj[key] = value;
     }
