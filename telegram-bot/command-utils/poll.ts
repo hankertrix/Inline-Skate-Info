@@ -17,7 +17,7 @@ import {
   cancelCommand,
   deleteMessages,
   promptUserForInput,
-  removeBotUsernameAndCommand,
+  removeCommand,
   generateInlineKeyboard,
   generateReplyKeyboard,
   callStep,
@@ -360,7 +360,7 @@ export function generatePollMessage(
 ) {
 
   // Remove the command and the bot's username from the message
-  message = removeBotUsernameAndCommand(message);
+  message = removeCommand(message);
 
   // Generate the portion of the message that is a poll
   const pollPortion = createPollPortion(
@@ -1225,7 +1225,7 @@ export const createPollMessageScene = new Scenes.WizardScene(
       let message = ctx.message.text;
 
       // Gets the message text from the message
-      message = removeBotUsernameAndCommand(message);
+      message = removeCommand(message);
 
       // If the message is empty
       if (!message) {
@@ -1265,7 +1265,7 @@ export const createPollMessageScene = new Scenes.WizardScene(
       let message = ctx.message.text;
 
       // Remove the command and the bot's username from the message
-      message = removeBotUsernameAndCommand(message);
+      message = removeCommand(message);
 
       // Gets the list of numbering styles
       const numberingStyles = createNumberingStylesList();
@@ -1331,7 +1331,7 @@ export const createPollMessageScene = new Scenes.WizardScene(
       let message = ctx.message.text;
 
       // Gets the message text from the message
-      message = removeBotUsernameAndCommand(message);
+      message = removeCommand(message);
 
       // Gets the prompts for this step
       // 2 is the 3rd step because of zero indexing
@@ -1402,7 +1402,7 @@ export const createPollMessageScene = new Scenes.WizardScene(
       let message = ctx.message.text;
 
       // Gets the message text from the message
-      message = removeBotUsernameAndCommand(message);
+      message = removeCommand(message);
 
       // Calls the function at the current index
       // and get whether the function is successful or not

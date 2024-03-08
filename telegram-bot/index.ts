@@ -14,7 +14,7 @@ import {
   messageAndFileCommandHandler,
   messageAndFileInlineQueryHandler,
   wrapCallbackWithMessageDeleter,
-  removeBotUsernameAndCommand,
+  removeCommand,
   generateInlineKeyboard
 } from "./bot-utils";
 import * as scenes from "./bot-scenes";
@@ -76,7 +76,7 @@ Use the /help command to see what the bot can do.`;
 bot.command("help", async ctx => {
 
   // Remove the command and the bot's username from the message
-  const givenCommand = removeBotUsernameAndCommand(ctx.message.text);
+  const givenCommand = removeCommand(ctx.message.text);
 
   // If a command is given
   if (givenCommand) {
@@ -1090,7 +1090,7 @@ bot.command([
   let msg = ctx.message.text;
 
   // Remove the command from the message
-  msg = removeBotUsernameAndCommand(msg);
+  msg = removeCommand(msg);
 
   // Gets the training message handler to handle the training message command
   await commandUtils.trainingMsg.handler(ctx, msg);
@@ -1167,7 +1167,7 @@ bot.command([
   let msg = ctx.message.text;
 
   // Remove the command from the message
-  msg = removeBotUsernameAndCommand(msg);
+  msg = removeCommand(msg);
 
   // Gets the training message handler to handle the rental message command
   await commandUtils.rentalMsg.handler(ctx, msg);
@@ -1249,7 +1249,7 @@ bot.command([
   );
 
   // Gets the message from the user
-  const message = removeBotUsernameAndCommand(ctx.message.text);
+  const message = removeCommand(ctx.message.text);
 
   // Enters the create poll message scene
   ctx.scene.enter(
@@ -1295,7 +1295,7 @@ bot.command([
   );
 
   // Gets the message from the user
-  const message = removeBotUsernameAndCommand(ctx.message.text);
+  const message = removeCommand(ctx.message.text);
 
   // Enters the create poll message scene
   // with the rental message configuration

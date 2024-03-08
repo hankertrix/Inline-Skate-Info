@@ -2,8 +2,7 @@
 
 import type { ObjectValues } from "../types";
 import * as utils from "../utils";
-import { removeBotUsername } from "../bot-utils";
-import { SPACING } from "../../src/lib/constants";
+import { BOT_USERNAME, SPACING } from "../../src/lib/constants";
 
 
 // The enums for the brand categories
@@ -18,7 +17,9 @@ export const BRAND_CATEGORY = {
 type BrandCategory = ObjectValues<typeof BRAND_CATEGORY>;
 
 // The regex to check for the brands command
-export const regex = /^\/?\bbrands?\b/i;
+export const regex = new RegExp(
+  String.raw`^\/?\bbrands?\b(?:${BOT_USERNAME})?`, "i"
+);
 
 // The spacing between each brand
 const BRANDS_SPACING = SPACING;
@@ -70,9 +71,6 @@ async function generateText(category: BrandCategory) {
 
 // Function to handle the brands command
 export async function handler(message: string) {
-
-  // Remove the bot's username from the message
-  message = removeBotUsername(message);
 
   // Makes the message lower case and removes the brands command from the message
   const msg = message.toLowerCase().replace(regex, "").trim();

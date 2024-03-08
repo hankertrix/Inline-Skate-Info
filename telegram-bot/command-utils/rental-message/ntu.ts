@@ -21,7 +21,7 @@ import {
   defaultIsSameNameFunc,
   getPollOptions,
 } from "../poll";
-import { deleteMessages, removeBotUsernameAndCommand } from "../../bot-utils";
+import { deleteMessages, removeCommand } from "../../bot-utils";
 import { getUpcomingTrainingDates } from "../training-message/utils";
 import { trainingDates } from "../training-message/ntu";
 import {
@@ -255,7 +255,7 @@ function generateInlineKeyboard(sizes: string[]) {
 function generateRentalMessage(message: string) {
 
   // Remove the command and the bot's username from the message
-  message = removeBotUsernameAndCommand(message);
+  message = removeCommand(message);
 
   // Generate the portion of the message that is a poll
   const pollPortion = createPollPortion(

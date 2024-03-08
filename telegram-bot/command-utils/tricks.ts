@@ -2,12 +2,26 @@
 
 import type { Dict } from "../types";
 import * as utils from "../utils";
-import { removeBotUsername } from "../bot-utils";
-import { SPACING, CATEGORY_SPACING, LABEL_SPACING } from "../../src/lib/constants";
+import {
+  BOT_USERNAME,
+  SPACING,
+  CATEGORY_SPACING,
+  LABEL_SPACING
+} from "../../src/lib/constants";
 import { loadFundamentalTricks } from "../normalise-data";
 
 
-// The dictionary mapping the trick file path to the trick heading, trick category, and the function to load the file
+// The regular expression to check for the tricks command
+export const regex = new RegExp(
+  String.raw`^\/?\btricks?\b(?:${BOT_USERNAME})?`,
+  "i"
+);
+
+// The spacing between each trick
+const TRICK_SPACING = SPACING;
+
+// The dictionary mapping the trick file path
+// to the trick heading, trick category, and the function to load the file
 export const TRICK_FILEPATH_MAP = {
 
   /*-------------
@@ -133,17 +147,12 @@ export const TRICK_FILEPATH_MAP = {
   
 } as const;
 
+
 // The type representing a trick object
 type TrickObj = {
   description: string,
   videos: [string, string][]
 };
-
-// The regular expression to check for the tricks command
-export const regex = /^\/?\btricks?\b/i;
-
-// The spacing between each trick
-const TRICK_SPACING = SPACING;
 
 
 // Function to load the tricks JSON files
@@ -285,9 +294,6 @@ export async function handler(message: string) {
 
   // Remove the tricks command from the message
   message = message.replace(regex, "").trim();
-
-  // Remove the bot's username from the message
-  message = removeBotUsername(message);
 
   // Makes the message lowercase
   const msg = message.toLowerCase();

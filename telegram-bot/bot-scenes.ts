@@ -7,7 +7,7 @@ import {
   createWizardScene,
   markMessageForDeletion,
   promptUserForInput,
-  removeBotUsernameAndCommand
+  removeCommand
 } from "./bot-utils";
 import { TRAINING_MSG_SCENES } from "./command-utils/training-message";
 import { createPollMessageScene } from "./command-utils/poll";
@@ -37,7 +37,7 @@ validateHandler.on(filters.message("text"), async ctx => {
 
   // Gets the user's input while removing the command at the start,
   // as well as the bot's username
-  const input = removeBotUsernameAndCommand(ctx.message.text);
+  const input = removeCommand(ctx.message.text);
 
   // The default validator to use when no validator is given
   function defaultValidator(input: string) {

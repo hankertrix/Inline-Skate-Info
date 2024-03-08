@@ -32,6 +32,9 @@ export const OPERATION_CANCELLED_MSG = "The operation has been cancelled.";
 // The developer's username
 export const DEV = "@hankertrix";
 
+// The bot's username
+export const BOT_USERNAME = "@inlineskatebot";
+
 // The pagefind bundle folder
 export const PAGEFIND_BUNDLE_PATH = "/pagefind";
 

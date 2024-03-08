@@ -1,13 +1,16 @@
 // The module containing all the utilities for the terminology command
 
+import { BOT_USERNAME } from "$lib/constants";
 import * as normaliseData from "../normalise-data";
 import type { Dict } from "../types";
 import * as utils from "../utils";
-import { removeBotUsername } from "../bot-utils";
 
 
 // The regex for the terminology command
-export const regex = /^\/?\bterm(?:s|inolog(?:y|ies))?\b/i;
+export const regex = new RegExp(
+  String.raw`^\/?\bterm(?:s|inolog(?:y|ies))?\b(?:${BOT_USERNAME})?`,
+  "i"
+);
 
 
 // Function to generate the text for the terminology by iterating the dictionary or string
@@ -70,12 +73,8 @@ function generateTerminologyText(data: Dict<string> | string, separator: string 
 // Function to handle the terminology command and generate the reply
 export async function handler(message: string) {
 
-  
   // Remove the command from the message
   message = message.replace(regex, "").trim();
-
-  // Remove the bot's username from the message
-  message = removeBotUsername(message);
 
   // Change the message to lowercase
   const msg = message.toLowerCase();

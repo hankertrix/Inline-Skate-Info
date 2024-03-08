@@ -21,7 +21,7 @@ import { DEV } from "$lib/constants";
 import { getModule, regexEscape } from "../../utils";
 import {
   promptUserForInput,
-  removeBotUsernameAndCommand
+  removeCommand
 } from "../../bot-utils";
 import * as ntu from "./ntu";
 import {
@@ -222,7 +222,7 @@ async function promptForMaxEntries(
 ): ReturnType<AdditionalOptionsFunction> {
 
   // Gets the message from the user
-  const msg = removeBotUsernameAndCommand(message);
+  const msg = removeCommand(message);
 
   // Tries to pull out the numbers in the message
   const maxEntriesMatch = msg.match(promptForMaxEntriesRegex);

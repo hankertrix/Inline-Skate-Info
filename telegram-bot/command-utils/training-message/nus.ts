@@ -13,7 +13,7 @@ import {
   wrapCallbackWithMessageDeleter,
   promptUserForInput,
   generateInlineKeyboard,
-  removeBotUsernameAndCommand,
+  removeCommand,
 } from "../../bot-utils";
 import {
   DEFAULT_NUMBERING_STYLE,
@@ -329,7 +329,7 @@ nusValidator.on(filters.message("text"), async ctx => {
   // Gets the message from the user and
   // removes the command from the start of the message,
   // as well as the bot's username
-  const msg = removeBotUsernameAndCommand(ctx.message.text);
+  const msg = removeCommand(ctx.message.text);
 
   // Gets the given username and the week type from the message
   const [givenWeekType, noRentals, givenUsername] = getRequiredArgs(msg);

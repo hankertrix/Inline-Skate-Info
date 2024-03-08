@@ -1,8 +1,12 @@
 // Module to handle all the commands related to places, like where to buy skates, where to rent skates and so on
 
 import * as utils from "../utils";
-import { removeBotUsername } from "../bot-utils";
-import { SPACING, CATEGORY_SPACING, LABEL_SPACING } from "../../src/lib/constants";
+import {
+  BOT_USERNAME,
+  SPACING,
+  CATEGORY_SPACING,
+  LABEL_SPACING
+} from "../../src/lib/constants";
 import type { ObjectValues, Dict, Place } from "../types";
 
 
@@ -20,16 +24,28 @@ export const PLACES = {
 export type Places = ObjectValues<typeof PLACES>;
 
 // The regex to check for the where to buy command
-export const whereToBuyRegex = /^\/?\b(?:(?:(?:places?|where)(?:[ _-]?to[ _-]?buy))|buy(?:ing)?)\b/i;
+export const whereToBuyRegex = new RegExp(
+  String.raw`^\/?\b(?:(?:(?:places?|where)(?:[ _-]?to[ _-]?buy))|buy(?:ing)?)\b(?:${BOT_USERNAME})?`,
+  "i"
+);
 
 // The regex to check for the where to rent command
-export const whereToRentRegex = /^\/?\b(?:(?:(?:places?|where)(?:[ _-]?to[ _-]?rent))|rent(?:ing)?)\b/i;
+export const whereToRentRegex = new RegExp(
+  String.raw`^\/?\b(?:(?:(?:places?|where)(?:[ _-]?to[ _-]?rent))|rent(?:ing)?)\b(?:${BOT_USERNAME})?`,
+  "i"
+);
 
 // The regex to check for the skate parks command
-export const skateParksRegex = /^\/?\b(?:skate)?[ _-]?(?:park|ramp)s?\b/i;
+export const skateParksRegex = new RegExp(
+  String.raw`^\/?\b(?:skate)?[ _-]?(?:park|ramp)s?\b(?:${BOT_USERNAME})?`,
+  "i"
+);
 
 // The regex to check for the skating rinks command
-export const skatingRinksRegex = /^\/?\b(?:skat(?:e|ing))?[ _-]?rinks?\b/i;
+export const skatingRinksRegex = new RegExp(
+  String.raw`^\/?\b(?:skat(?:e|ing))?[ _-]?rinks?\b(?:${BOT_USERNAME})?`,
+  "i"
+);
 
 
 // The spacing between each place
@@ -113,9 +129,6 @@ export async function generatePlacesText(place: Places, formatFunc: (text: strin
 
 // Function to handle the where to buy command
 export async function whereToBuyHandler(message: string) {
-
-  // Remove the bot's username from the message
-  message = removeBotUsername(message);
 
   // Makes the message lowercase and removes the command from the message
   const msg = message.toLowerCase()

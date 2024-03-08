@@ -12,6 +12,7 @@ import type { OptionalPropertiesOf } from "./types";
 import { Scenes, Markup, Composer } from "telegraf";
 import * as utils from "./utils";
 import {
+  BOT_USERNAME,
   MAX_CHARACTERS,
   CACHE_TIME,
   SPACING,
@@ -27,29 +28,13 @@ import {
 // The regular expression to get the message entities (currently HTML tags)
 const messageEntityRegex = /<.+?>/g;
 
-// The regular expression to remove the bot's username
-const removeBotUsernameRegex = /@inlineskatebot/g;
-
 // The regular expression to remove the command from the start of the message
-const removeCommandRegex = /^\/\w+/;
-
-
-// Function to remove the bot's username from a message
-export function removeBotUsername(message: string) {
-  return message.replace(removeBotUsernameRegex, "").trim();
-}
+const removeCommandRegex = new RegExp(String.raw`^\/\w+(?:${BOT_USERNAME})?`);
 
 
 // Function to remove a command from a message
-function removeCommand(message: string) {
+export function removeCommand(message: string) {
   return message.replace(removeCommandRegex, "").trim();
-}
-
-
-// Function to remove the bot's username
-// as well as the command from a message
-export function removeBotUsernameAndCommand(message: string) {
-  return removeBotUsername(removeCommand(message)).trim();
 }
 
 
@@ -103,7 +88,7 @@ function getMsgSegment(
       );
 
       // Gets the message entity that is after the last message entity.
-      // The last messsage entity is the message entity
+      // The last message entity is the message entity
       // at the message entity limit.
       const messageEntity = messageEntities[maxEntity];
 
@@ -124,13 +109,13 @@ function getMsgSegment(
 
     // Gets the length of the message segment with the HTML removed
     const segmentWithoutHtmlLen = msgSegmentWithoutHtml.length;
-    
+
     // Breaks the loop if the message segment
     // without HTML is equal to the max length
-   if (segmentWithoutHtmlLen === maxLength) continueLoop = false;
-    
+    if (segmentWithoutHtmlLen === maxLength) continueLoop = false;
+
     // Otherwise, increase the end index by the difference in length
-   // between the maximum length and the length of the segment without HTML
+    // between the maximum length and the length of the segment without HTML
     endIndex += (maxLength - segmentWithoutHtmlLen);
   }
 
