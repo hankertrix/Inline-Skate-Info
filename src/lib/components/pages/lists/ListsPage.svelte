@@ -5,8 +5,7 @@
   import {
     makeUrlFriendlyString,
     convertFilePathToUrl,
-    getFilenameFromFilePath,
-    getFileExtension
+    getUniqueFilenamesFromFilePaths,
   } from "$lib/utils";
 
   // The type of the JSON data in the lists folder
@@ -28,32 +27,8 @@
   // Gets the heading from the JSON data
   const heading = listsJson.heading;
 
-  // The list of filenames
-  const filenames = listsJson.files.map(
-    path => getFilenameFromFilePath(path)
-  );
-
-  // Gets the set of duplicated filenames
-  const duplicatedFilenames = new Set(
-    filenames.filter(
-      (filename, index, array) => array.indexOf(filename) !== index
-    )
-  );
-
-  // Iterates over the filenames
-  for (const [index, path] of listsJson.files.entries()) {
-
-    // Gets the filename
-    const filename = filenames[index];
-
-    // If the filename is inside the set of duplicated filenames,
-    // then add the file extension in parentheses
-    if (duplicatedFilenames.has(filename)) {
-      filenames[index] = `${filename} (${
-        getFileExtension(path).toUpperCase()
-      })`;
-    }
-  }
+  // The list of unique filenames
+  const filenames = getUniqueFilenamesFromFilePaths(listsJson.files);
   
 </script>
 

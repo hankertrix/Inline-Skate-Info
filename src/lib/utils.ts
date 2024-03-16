@@ -72,8 +72,8 @@ export function getFileExtension(path: string) {
   // Otherwise, get the file extension from the regex match array
   const [fileExtension, ] = regexMatch;
 
-  // Return the file extension
-  return fileExtension;
+  // Return the file extension without the dot
+  return fileExtension.slice(1);
 }
 
 
@@ -91,4 +91,37 @@ export function getFilenameFromFilePath(filePath: string) {
 
   // Returns the titlecased file name
   return titlecase(filename).trim();
+}
+
+
+// Function to get a list of unique filenames from a list of paths
+export function getUniqueFilenamesFromFilePaths(filePaths: string[]) {
+
+  // Gets the list of filenames
+  const filenames = filePaths.map(path => getFilenameFromFilePath(path));
+
+  // Gets the set of duplicated filenames
+  const duplicatedFilenames = new Set(
+    filenames.filter(
+      (filename, index, array) => array.indexOf(filename) !== index
+    )
+  );
+
+  // Iterates over the filenames
+  for (const [index, path] of filePaths.entries()) {
+
+    // Gets the filename
+    const filename = filenames[index];
+
+    // If the filename is inside the set of duplicated filenames,
+    // then add the file extension in parentheses
+    if (duplicatedFilenames.has(filename)) {
+      filenames[index] = `${filename} (${
+        getFileExtension(path).toUpperCase()
+      })`;
+    }
+  }
+
+  // Returns the list of filenames
+  return filenames;
 }
