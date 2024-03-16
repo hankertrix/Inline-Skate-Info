@@ -517,8 +517,8 @@ export function getFilenameFromPath(
 // Function to get a list of unique filenames from a list of paths
 export function getUniqueFilenamesFromPaths(filePaths: string[]) {
 
-  // Gets the list of filenames
-  const filenames = filePaths.map(path => getFilenameFromPath(path));
+  // Gets the list of filenames with the file extension removed
+  const filenames = filePaths.map(path => getFilenameFromPath(path, true));
 
   // Gets the set of duplicated filenames
   const duplicatedFilenames = new Set(
