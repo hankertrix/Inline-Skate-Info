@@ -56,7 +56,7 @@ export async function generateListsText(lists: Lists): Promise<[string, string[]
 
     // Initialise the processedLink variable
     let processedLink;
-    
+
     // If the first item in the link list exists, hyperlink the link
     if (linkTitle.length !== 0) processedLink = utils.hyperlink(linkTitle, link);
 
