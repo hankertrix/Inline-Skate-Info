@@ -177,13 +177,24 @@ export async function loadJsonData(path: string, root: string = "./src/lib/data/
 }
 
 
-// Function to load a PDF file from the PDF folder
-export async function loadPdfFile(path: string, root: string = "./static/pdfs/") {
-  
-  // Gets the file path
-  const filePath = `${root ? root : "./static/"}${path}${path.endsWith(".pdf") ? "" : ".pdf"}`;
+// Function to load a file from the static folder
+export async function loadStaticFile(
+  path: string,
+  file_extension: string,
+  root: string = "./static/",
+) {
 
-  // Loads the PDF file
+  // Adds a dot in front of the file extension
+  // if the file extension has no dot in front of it
+  file_extension = file_extension.startsWith(".")
+    ? file_extension : `.${file_extension}`;
+
+  // Gets the file path
+  const filePath = `${root ? root : "./static/"}${path}${
+    path.endsWith(file_extension) ? "" : file_extension
+  }`;
+
+  // Loads the file
   const file = await readFile(filePath, "utf8");
 
   // Returns the file
@@ -439,7 +450,11 @@ export function getTitleFromFilename(filename: string, formatFunc: (text: string
 
 
 // Function to get the filename from a path
-export function getFilenameFromPath(path: string, removeFileExt: boolean = false, formatted: boolean = true) {
+export function getFilenameFromPath(
+  path: string,
+  removeFileExt: boolean = false,
+  formatted: boolean = true
+) {
 
   // Initialise the index of the "/" character
   let slashIndex = 0;
