@@ -432,18 +432,15 @@ export async function sendDocGroupFromPaths(
   // The list of document objects to send
   const docObjs = [];
 
-  // The list of unique filenames
-  const filenames = utils.getUniqueFilenamesFromPaths(paths);
-
   // Iterates the list of paths
-  for (const [index, path] of paths.entries()) {
+  for (const path of paths) {
 
     // Creates the document object
     const docObj = {
       type: "document",
       media: {
         source: path,
-        filename: filenames[index],
+        filename: utils.getFilenameFromPath(path)
       }
     } as InputMediaDocument;
 
@@ -483,9 +480,12 @@ export async function messageAndFileInlineQueryHandler(
   // Gets the message and the files
   const [message, files] = await fn() as [string, string[]];
 
+  // Gets the list of unique filenames
+  const filenames = utils.getUniqueFilenamesFromPaths(files);
+
   // Adds the links to the files to the back of the message
   const msg = `${message}${joiningSection}${files.map(
-    path => {
+    (path, index) => {
 
       // Gets the URL for the file
       const fileUrl = utils.convertStaticFilePathToUrl(path);
@@ -493,7 +493,7 @@ export async function messageAndFileInlineQueryHandler(
       // If the link is to be hyperlinked,
       // hyperlink the filename with the URL and returns the result
       if (isHyperlinked) return utils.hyperlink(
-        utils.getFilenameFromPath(path, true), fileUrl
+        filenames[index], fileUrl
       );
 
       // Otherwise, returns the URL for the file
