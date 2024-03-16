@@ -15,6 +15,9 @@ const charToHtmlEntity = {
 // The regular expression to get all the non-letters
 const nonLetterRegex = /[^A-Za-z]/g;
 
+// The regular expression to get the file extension
+const fileExtensionRegex = /\.\w*$/;
+
 
 // Function to check if something is an object
 export function isObject(obj: unknown) {
@@ -394,7 +397,9 @@ export function titlecase(str: string) {
     // Gets the character before the current one
     const charBefore = str[i-1];
 
-    // If the character before the current one is a space, adds the uppercase version of the current character to the list of characters
+    // If the character before the current one is a space,
+    // adds the uppercase version of the current character
+    // to the list of characters
     if (!charBefore.trim()) chars[i] = currentChar.toUpperCase();
 
     // Otherwise, just add the current character without changing anything
@@ -413,12 +418,14 @@ export function strFormat(str: string, ...args: any[]) {
   // If arguments aren't given, return the string passed immediately
   if (!args.length) return str;
 
-  // Gets the type of the arguments by checking the type of the first argument passed
+  // Gets the type of the arguments by
+  // checking the type of the first argument passed
   const argsType = typeof args[0];
 
-  // If the type of the arguments passed is a string or a number, then get all the arguments passed
+  // If the type of the arguments passed is a string or a number,
+  // then get all the arguments passed.
   // Otherwise it takes the first argument given
-  args = (argsType === "string" || argsType === "number") ? [...args] : args[0];
+  args = ["string", "number"].includes(argsType) ? [...args] : args[0];
 
   // Iterates the array or object given
   for (const arg in args) {
@@ -435,11 +442,31 @@ export function strFormat(str: string, ...args: any[]) {
 }
 
 
+// Function to get the file extension of a file
+export function getFileExtension(path: string) {
+
+  // Gets the match using the regular expression
+  const regexMatch = path.match(fileExtensionRegex);
+
+  // If the file extension isn't found, then return an empty string
+  if (!regexMatch) return "";
+
+  // Otherwise, get the file extension from the regex match array
+  const [fileExtension, ] = regexMatch;
+
+  // Return the file extension
+  return fileExtension;
+}
+
+
 // Function to get a title from the file name
-export function getTitleFromFilename(filename: string, formatFunc: (text: string) => string = titlecase) {
+export function getTitleFromFilename(
+  filename: string,
+  formatFunc: (text: string) => string = titlecase
+) {
 
   // Remove the file extension from the file name
-  filename = filename.replace(/\.\w*$/, "");
+  filename = filename.replace(fileExtensionRegex, "");
 
   // Convert all the underscores and dashes to spaces
   filename = filename.replace(/[_-]/g, " ");
@@ -477,7 +504,7 @@ export function getFilenameFromPath(
   let filename = path.slice(slashIndex + 1, path.length);
 
   // If the file extension isn't wanted, remove the file extension
-  if (removeFileExt) filename = filename.replace(/\.\w+$/, "");
+  if (removeFileExt) filename = filename.replace(fileExtensionRegex, "");
 
   // Returns the filename if the a nicely formatted filename isn't wanted
   if (!formatted) return filename;

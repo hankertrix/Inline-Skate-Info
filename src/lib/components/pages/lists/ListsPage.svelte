@@ -2,7 +2,12 @@
 <!-- The pages are usually under the resources route -->
 <script lang="ts">
 
-  import { makeUrlFriendlyString, convertFilePathToUrl, getFilenameFromFilePath } from "$lib/utils";
+  import {
+    makeUrlFriendlyString,
+    convertFilePathToUrl,
+    getFilenameFromFilePath,
+    getFileExtension
+  } from "$lib/utils";
 
   // The type of the JSON data in the lists folder
   type ListsJson = {
@@ -22,6 +27,33 @@
 
   // Gets the heading from the JSON data
   const heading = listsJson.heading;
+
+  // The list of filenames
+  const filenames = listsJson.files.map(
+    path => getFilenameFromFilePath(path)
+  );
+
+  // Gets the set of duplicated filenames
+  const duplicatedFilenames = new Set(
+    filenames.filter(
+      (filename, index, array) => array.indexOf(filename) !== index
+    )
+  );
+
+  // Iterates over the filenames
+  for (const [index, path] of listsJson.files.entries()) {
+
+    // Gets the filename
+    const filename = filenames[index];
+
+    // If the filename is inside the set of duplicated filenames,
+    // then add the file extension in parentheses
+    if (duplicatedFilenames.has(filename)) {
+      filenames[index] = `${filename} (${
+        getFileExtension(path).toUpperCase()
+      })`;
+    }
+  }
   
 </script>
 
@@ -93,7 +125,7 @@
     {/if}
 
     <!-- If there are files to display -->
-    {#if listsJson.files.length > 0}
+    {#if filenames.length > 0}
 
       <!-- The heading for the files -->
       {@const filesHeading = "Files"}
@@ -104,10 +136,10 @@
       <section class="files">
 
         <!-- Iterates over each of the files -->
-        {#each listsJson.files as file}
+        {#each listsJson.files as path, index}
 
           <!-- Display the link to the file -->
-          <a href={convertFilePathToUrl(file)} target="_blank">{getFilenameFromFilePath(file)}</a>
+          <a href={convertFilePathToUrl(path)} target="_blank">{filenames[index]}</a>
 
         {/each}
 

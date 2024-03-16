@@ -3,6 +3,9 @@
 // The regular expression to match all the symbols
 const symbolRegex = /[!$%^&*()_+|~=`{}[\]:";'<>?,./]/g;
 
+// The regular expression to get the file extension
+const fileExtensionRegex = /\.\w*$/;
+
 
 // Function to change the title into a url friendly string
 export function makeUrlFriendlyString(str: string) {
@@ -37,7 +40,9 @@ export function titlecase(str: string) {
     // Gets the character before the current one
     const charBefore = str[i-1];
 
-    // If the character before the current one is a space, adds the uppercase version of the current character to the list of characters
+    // If the character before the current one is a space,
+    // adds the uppercase version of the current character
+    // to the list of characters
     if (!charBefore.trim()) chars[i] = currentChar.toUpperCase();
 
     // Otherwise, just add the current character without changing anything
@@ -55,6 +60,23 @@ export function convertFilePathToUrl(filePath: string) {
 }
 
 
+// Function to get the file extension of a file
+export function getFileExtension(path: string) {
+
+  // Gets the match using the regular expression
+  const regexMatch = path.match(fileExtensionRegex);
+
+  // If the file extension isn't found, then return an empty string
+  if (!regexMatch) return "";
+
+  // Otherwise, get the file extension from the regex match array
+  const [fileExtension, ] = regexMatch;
+
+  // Return the file extension
+  return fileExtension;
+}
+
+
 // Function to get the file name from a file path
 export function getFilenameFromFilePath(filePath: string) {
 
@@ -62,7 +84,7 @@ export function getFilenameFromFilePath(filePath: string) {
   let filename = filePath.replace(/^.*\//, "");
 
   // Remove the file extension from the file name
-  filename = filename.replace(/\.\w*$/, "");
+  filename = filename.replace(fileExtensionRegex, "");
 
   // Convert all the underscores and dashes to spaces
   filename = filename.replace(/[_-]/g, " ");

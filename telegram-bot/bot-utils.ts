@@ -432,15 +432,34 @@ export async function sendDocGroupFromPaths(
   // The list of document objects to send
   const docObjs = [];
 
+  // The list of filenames
+  const filenames = paths.map(path => utils.getFilenameFromPath(path));
+
+  // Gets the set of duplicated filenames
+  const duplicatedFilenames = new Set(
+    filenames.filter(
+      (filename, index, array) => array.indexOf(filename) !== index
+    )
+  );
+
   // Iterates the list of paths
-  for (const path of paths) {
+  for (const [index, path] of paths.entries()) {
+
+    // Gets the filename
+    let filename = filenames[index];
+
+    // If the filename is inside the set of duplicated filenames,
+    // then add the file extension in parentheses
+    if (duplicatedFilenames.has(filename)) {
+      filename = `${filename} (${utils.getFileExtension(path).toUpperCase()})`
+    }
 
     // Creates the document object
     const docObj = {
       type: "document",
       media: {
         source: path,
-        filename: utils.getFilenameFromPath(path),
+        filename: filename,
       }
     } as InputMediaDocument;
 
