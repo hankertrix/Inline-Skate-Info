@@ -41,12 +41,12 @@ Below is a list of the available commands for the Telegram bot. Use the `/help` 
 - `protective_gear` - Displays information about the protective gear you can buy.
 - `clothing` - Displays information about the clothing you can buy, which are mostly just socks.
 - `maintenance_items` - Displays information about the maintenance items you might need to maintain your skates.
-- `poll_msg` - Gets the bot to send a @countmeinbot styled poll message but with only one option called 'Coming'.
+- `poll` - Gets the bot to send a @countmeinbot styled poll message but with only one option called 'Coming'.
 - `trg_msg` - Gets the bot to send the training message that has been set up for your group.
 - `trg_msg_help` - Displays how to use the /trg_msg command if you have set it up.
 - `rental_msg` - Gets the bot to send the rental message that has been set up for your group.
 - `rental_msg_help` - Displays how to use the /rental_msg command if you have set it up.
-- `create_poll_msg` - Create a @countmeinbot styled poll with custom poll options.
+- `create_poll` - Create a @countmeinbot styled poll with custom poll options.
 - `create_rental_msg` - Create a rentals-oriented @countmeinbot styled poll with custom rental options.
 - `qr_code` - Gets the bot to turn your text into a QR code.
 - `get_chat_id` - Gets the bot to send the chat ID of the chat.

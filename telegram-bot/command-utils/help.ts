@@ -149,7 +149,7 @@ function getCommandDict() {
       explanation: "Displays information about the maintenance items you might need to maintain your skates."
     },
 
-    "poll_msg": {
+    "poll": {
       explanation: "Gets the bot to send a @countmeinbot styled poll message but with only one option called 'Coming'. You can also add the bot as an admin to your group to have the bot automatically delete the messages you sent to create the poll.",
       usage: "<poll message (optional)>"
     },
@@ -170,7 +170,7 @@ function getCommandDict() {
       explanation: "Displays how to use the /rental_msg command if you have set it up."
     },
 
-    "create_poll_msg": {
+    "create_poll": {
       explanation: "Create a @countmeinbot styled poll with custom poll options. The bot will guide you through the process of creating a poll message using this function. The bot will automatically delete the messages you sent to create the poll if you have added the bot as an admin to your group.",
       usage: "<poll message (optional)>"
     },

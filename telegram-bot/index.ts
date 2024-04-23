@@ -1016,6 +1016,7 @@ bot.inlineQuery(commandUtils.products.maintenanceItemsRegex, async ctx => {
 
 // The handler for the poll message command
 bot.command([
+  "poll",
   "poll_msg",
   "pollmsg",
   "poll_message",
@@ -1220,6 +1221,7 @@ bot.command([
 
 // The handler for the create poll message command
 bot.command([
+  "create_poll",
   "create_poll_msg",
   "create_custom_poll_msg",
   "make_poll_msg",
@@ -1230,6 +1232,7 @@ bot.command([
   "make_poll_message",
   "make_custom_poll_message",
   "custom_poll_message",
+  "createpoll",
   "createpollmsg",
   "createcustompollmsg",
   "makepollmsg",
