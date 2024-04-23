@@ -68,7 +68,7 @@ export const DEFAULT_PRESERVE_LINES = false;
 export const DEFAULT_SHOW_REMAINING = false;
 
 // The default option for whether or not
-// to tag all occurences of an entry in the poll message
+// to tag all occurrences of an entry in the poll message
 export const DEFAULT_TAG_ALL = false;
 
 // The regex to get the numbering style from the poll option segment
@@ -132,7 +132,7 @@ export const DEFAULT_FORMAT_OPTIONS: FormatOptions = {
   // will be substituted with the actual number of people who
   // responded to the poll option.
 
-  // The {maxEntries} in the zero, one and defulat properties
+  // The {maxEntries} in the zero, one and default properties
   // will be substituted with the maximum number of people
   // allowed on that particular poll option
 
@@ -779,7 +779,7 @@ export function reformPollMessage(
   // or removed from the poll
   let removed: boolean | null = null;
 
-  // Initiliase the variable to indicate whether the name has been
+  // Initialise the variable to indicate whether the name has been
   // tagged or untagged on the poll
   let tagged: boolean | null = null;
 
@@ -1409,7 +1409,7 @@ export const createPollMessageScene = new Scenes.WizardScene(
       const success = await funcList[index](ctx, message, state);
 
       // If the function is successful,
-      // increment the additionalOptionxIndex by 1
+      // increment the additionalOptionsIndex by 1
       if (success) index = ++state.additionalOptionsIndex;
 
       // If the additional options index is
