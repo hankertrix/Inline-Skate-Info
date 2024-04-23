@@ -215,8 +215,8 @@ export function getCommandHelpMsg(args: {
     // Remove the slash before the command
     let command = args.command.replace(/^\/\s*/, "").trim();
 
-    // Change all the spaces to underscores
-    command = command.replace(/\s/g, "_").trim();
+    // Change all the spaces and dashes to underscores
+    command = command.replace(/[\s-]/g, "_").trim();
 
     // Gets the command dictionary
     const commandDict = getCommandDict();
