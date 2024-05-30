@@ -10,12 +10,17 @@
   },
 
   "Kipsta F100 Football Socks (White)": {
-    "price": "$3.40",
+    "price": "$3.90",
     "link": "https://www.decathlon.sg/p/football-socks-kipsta-f100-white-kipsta-8350117.html"
   },
 
+  "Kipsta F100 Football Socks (Black)": {
+    "price": "$3.90",
+    "link": "https://www.decathlon.sg/p/adult-football-socks-essential-club-black-kipsta-8549540.html"
+  },
+
   "Kipsta F100 Football Socks (Blue)": {
-    "price": "$3.40",
+    "price": "$3.90",
     "link": "https://www.decathlon.sg/p/football-socks-kipsta-f100-blue-kipsta-8526961.html"
   }
 }
