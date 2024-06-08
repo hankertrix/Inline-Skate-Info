@@ -191,7 +191,7 @@
 
     <!-- The hamburger menu icon -->
     <label class="hamburger-icon" title="Toggles the hamburger menu">
-      <input type="checkbox" on:click={addCheckedClass} />
+      <input name="hamburger-icon" type="checkbox" on:click={addCheckedClass} />
     </label>
 
     <!-- The main information about the website -->
