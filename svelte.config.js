@@ -8,7 +8,14 @@ const config = {
   preprocess: preprocess(),
 
   kit: {
-    adapter: adapter()
+    adapter: adapter(),
+    csp: {
+      directives: {
+        "default-src": ["self"],
+        "object-src": ["none"],
+        "frame-src": ["https://www.youtube-nocookie.com"]
+      }
+    }
   }
 };
 
