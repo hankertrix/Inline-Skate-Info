@@ -15,6 +15,7 @@ const config = {
         "img-src": ["self"],
         "font-src": ["self"],
         "connect-src": ["self"],
+        "manifest-src": ["self"],
         "object-src": ["none"],
         "frame-src": ["https://www.youtube-nocookie.com"],
         "frame-ancestors": ["none"],
@@ -38,7 +39,10 @@ const config = {
           "sha256-EHFod+1+yJWH4JfktKYKAH7HTu+l8xj88fKU0IUyX/U=",
 
           // Styles for the button to toggle between light and dark theme
-          "sha256-ysd0CFQu/mXJ7dH4GWPr2Y3mx7J2r75LcZQVHMH+5Ss="
+          "sha256-ysd0CFQu/mXJ7dH4GWPr2Y3mx7J2r75LcZQVHMH+5Ss=",
+
+          // Styles for the Pagefind highlight script
+          "sha256-ZCoB1kba9ZTfELA9P5NVsXbrXfcqOSTrLTbcMfUVY4E="
         ]
       }
     }
