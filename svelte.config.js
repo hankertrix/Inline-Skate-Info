@@ -21,7 +21,10 @@ const config = {
           "self",
 
           // For Pagefind to work
-          "wasm-unsafe-eval"
+          "wasm-unsafe-eval",
+
+          // The script in app.html to stop the page from flashing
+          "sha256-igh6+2kzd6C5AbKv2RNaCr6axJslkoleSYgWUDDINvM="
         ],
 
         "style-src": [
@@ -30,7 +33,7 @@ const config = {
           // Main CSS style for the entire page
           "sha256-EHFod+1+yJWH4JfktKYKAH7HTu+l8xj88fKU0IUyX/U=",
 
-          // Styles for the light and dark theme toggle
+          // Styles for the button to toggle between light and dark theme
           "sha256-ysd0CFQu/mXJ7dH4GWPr2Y3mx7J2r75LcZQVHMH+5Ss="
         ]
       }
