@@ -11,10 +11,13 @@ const config = {
     adapter: adapter(),
     csp: {
       directives: {
-        "default-src": ["self"],
+        "default-src": ["none"],
+        "img-src": ["self"],
+        "font-src": ["self"],
         "object-src": ["none"],
         "frame-src": ["https://www.youtube-nocookie.com"],
         "frame-ancestors": ["none"],
+        "form-action": ["none"],
         "base-uri": ["none"],
 
         "script-src": [

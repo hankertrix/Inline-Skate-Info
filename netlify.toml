@@ -15,6 +15,7 @@ included_files = ["src/lib/data/**/*.json", "static/**"]
 for = "/*"
 
 [headers.values]
+Content-Security-Policy = "frame-ancestors 'none'"
 Referrer-Policy = "no-referrer"
 X-Frame-Options = "DENY"
 X-XSS-Protection = "1; mode=block"
