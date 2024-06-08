@@ -14,9 +14,7 @@ const config = {
         "default-src": ["self"],
         "object-src": ["none"],
         "frame-src": ["https://www.youtube-nocookie.com"],
-        "script-src": [
-          "self",
-        ],
+        "script-src": ["self"],
         "style-src": [
           "self",
 
