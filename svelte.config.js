@@ -16,12 +16,14 @@ const config = {
         "frame-src": ["https://www.youtube-nocookie.com"],
         "frame-ancestors": ["none"],
         "base-uri": ["none"],
+
         "script-src": [
           "self",
 
           // For Pagefind to work
           "wasm-unsafe-eval"
         ],
+
         "style-src": [
           "self",
 
