@@ -3,7 +3,7 @@
 
   import { onMount } from 'svelte';
   import {
-    PAGEFIND_BUNDLE_PATH,
+    PAGEFIND_BASE_PATH,
     PAGEFIND_HIGHLIGHT_PARAM
   } from '$lib/constants';
 
@@ -26,7 +26,7 @@
     // Ask vite to ignore this import as the pagefind highlighting script
     // is only generated after building the site.
     await import(
-      /* @vite-ignore */ `${PAGEFIND_BUNDLE_PATH}/pagefind-highlight.js`
+      /* @vite-ignore */ `${PAGEFIND_BASE_PATH}/pagefind-highlight.js`
     );
 
     // Initialise the pagefind highlighting script.
