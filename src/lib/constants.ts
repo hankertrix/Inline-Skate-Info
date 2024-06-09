@@ -36,7 +36,7 @@ export const DEV = "@hankertrix";
 export const BOT_USERNAME = "@inlineskatebot";
 
 // The pagefind bundle folder
-export const PAGEFIND_BUNDLE_PATH = "/pagefind";
+export const PAGEFIND_BASE_PATH = "/pagefind";
 
 // The pagefind highlight parameter
 export const PAGEFIND_HIGHLIGHT_PARAM = "highlight";
