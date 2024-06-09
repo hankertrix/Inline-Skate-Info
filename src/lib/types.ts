@@ -13,10 +13,10 @@ export type JsonData = any;
 export interface Pagefind {
   init: () => void;
   options: (options: {
-    baseUrl?: string;
-    bundlePath?: string;
-    excerptLength?: number;
-    highlightParam?: "highlight"
+    baseUrl?: string,
+    bundlePath?: string,
+    excerptLength?: number,
+    highlightParam?: string,
   }) => Promise<void>;
   search: (query: string) => Promise<PagefindResponse>;
 };
