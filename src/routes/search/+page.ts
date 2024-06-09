@@ -4,7 +4,7 @@ import type { LoadEvent } from '@sveltejs/kit';
 import type { Pagefind } from '$lib/types';
 import { browser } from '$app/environment';
 import {
-  PAGEFIND_BUNDLE_PATH,
+  PAGEFIND_BASE_PATH,
   PAGEFIND_HIGHLIGHT_PARAM
 } from '$lib/constants';
 
@@ -30,17 +30,17 @@ export async function load({ url: { searchParams } }: LoadEvent) {
   // site can be successfully built as the pagefind file is only available
   // after the site is built.
   const pagefind = await import(
-    /* @vite-ignore */ `${PAGEFIND_BUNDLE_PATH}/pagefind.js`
+    /* @vite-ignore */ `${PAGEFIND_BASE_PATH}/pagefind.js`
   ) as Pagefind;
 
   // Set the bundle directory
   await pagefind.options({
-    bundlePath: `${PAGEFIND_BUNDLE_PATH}/`,
+    basePath: `${PAGEFIND_BASE_PATH}/`,
     highlightParam: PAGEFIND_HIGHLIGHT_PARAM
   });
 
   // Initialise pagefind
-  pagefind.init();
+  await pagefind.init();
 
   // Search for the search query
   const search = await pagefind.search(searchQuery);
