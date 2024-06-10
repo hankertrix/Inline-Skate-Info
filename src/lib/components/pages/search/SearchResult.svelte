@@ -1,10 +1,10 @@
 <!-- The component to display a single search result on the search page -->
 <script lang="ts">
 
-  import type { PagefindResult } from "$lib/types";
+  import type { PagefindSearchFragment } from "$lib/types";
 
   // The search result passed in by the search page
-  export let result: PagefindResult;
+  export let result: PagefindSearchFragment;
 
   // The regular expression to convert the URL given by pagefind to the actual website link
   const convertUrlRegex = /.*pages/;

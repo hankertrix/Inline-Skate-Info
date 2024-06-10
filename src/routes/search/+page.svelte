@@ -1,13 +1,13 @@
 <!-- The search page -->
 <script lang="ts">
 
-  import type { PagefindResult } from '$lib/types';
+  import type { PagefindSearchFragment } from '$lib/types';
   import SearchResult from '$lib/components/pages/search/SearchResult.svelte';
 
   // Export the data variable
   export let data: {
     searchTerm: string;
-    results: PagefindResult[];
+    results: PagefindSearchFragment[];
   };
 
   // Gets the search term and the results from the data
