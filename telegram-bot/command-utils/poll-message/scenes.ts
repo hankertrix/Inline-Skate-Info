@@ -121,9 +121,11 @@ export function createNumberingStylesList() {
     // Title case the property string
     propertyStr = utils.titlecase(propertyStr);
 
-    // Adds the property string
+    // Monospace and add the property string
     // and the value to the list of numbering styles
-    numberingStyles.push(`${propertyStr} ${value}`.trim());
+    numberingStyles.push(
+      utils.monospace(`${propertyStr} ${utils.stripHtml(value)}`.trim())
+    );
   }
 
   // Returns the list of numbering styles
@@ -158,9 +160,6 @@ export const createPollMessageScene = new Scenes.WizardScene(
 
       // Gets the poll config object
       const pollConfig = state.pollConfig as Required<CreatePollMessageConfig>;
-
-      console.log("1st step");
-      console.log(pollConfig);
 
       // If the message is already given
       if (state.pollMessage) {
@@ -213,9 +212,6 @@ export const createPollMessageScene = new Scenes.WizardScene(
       // Gets the poll config object
       const pollConfig = state.pollConfig as Required<CreatePollMessageConfig>;
 
-      console.log("2nd step");
-      console.log(pollConfig);
-
       // Gets the message from the user
       let message = ctx.message.text;
 
@@ -238,7 +234,7 @@ export const createPollMessageScene = new Scenes.WizardScene(
           ctx,
           utils.strFormat(
             prompts.failure.prompt,
-            { numberingStyles: utils.stripHtml(numberingStyles.join("\n")) }
+            { numberingStyles: numberingStyles.join("\n") }
           ),
           {
             ...generateReplyKeyboard(
@@ -293,9 +289,6 @@ export const createPollMessageScene = new Scenes.WizardScene(
 
       // Gets the poll config object
       const pollConfig = state.pollConfig;
-
-      console.log("3rd step");
-      console.log(pollConfig);
 
       // Gets the message from the user with the command removed
       const message = removeCommand(ctx.message.text);
@@ -367,9 +360,6 @@ export const createPollMessageScene = new Scenes.WizardScene(
 
       // Gets the poll config object
       const pollConfig = state.pollConfig as Required<CreatePollMessageConfig>;
-
-      console.log("4th step");
-      console.log(pollConfig);
 
       // Gets the message from the user
       let message = ctx.message.text;
