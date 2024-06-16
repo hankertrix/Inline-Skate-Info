@@ -87,10 +87,10 @@ export async function handler(
     const initialState: Required<Omit<CreatePollMessageState, "pollMessage">> =
       {
         messagesToDelete: [botMessage.message_id],
-        pollConfig: createConfig(
+        pollConfig: createConfig<Partial<CreatePollMessageConfig>>(
           {},
           DEFAULT_CREATE_RENTAL_MSG_CONFIG,
-        ) as CreatePollMessageConfig
+        )
       };
 
     // Enters the create poll message scene with
