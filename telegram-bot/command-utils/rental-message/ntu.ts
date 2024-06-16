@@ -137,9 +137,8 @@ Add your name if you want skate rentals. $5 for the whole session. Please either
 // The regular expression to remove the size and the tag string
 // from the name
 const removeTagAndSizeRegex = new RegExp(
-  String.raw`\d+[^\S\r\n]*${
-    utils.regexEscape(RENTAL_MSG_CONFIG.tagString)
-  }?$`
+  String.raw`\d+[^\S\r\n]*${utils.regexEscape(RENTAL_MSG_CONFIG.tagString)
+    }?$`
 );
 
 // The regular expression to get the size range
@@ -196,7 +195,7 @@ function createRentalMessagePortion(
 // The function to generate an inline keyboard for the NTU rental message
 function generateInlineKeyboard(
   sizes: string[] = SIZES
-): () => Types.Markup<InlineKeyboardMarkup> {
+): Types.Markup<InlineKeyboardMarkup> {
 
   // Initialise the inline keyboard
   const inlineKeyboard: InlineKeyboardButton[][] = [];
@@ -244,7 +243,7 @@ function generateInlineKeyboard(
   ]);
 
   // Returns the inline keyboard
-  return () => Markup.inlineKeyboard(inlineKeyboard);
+  return Markup.inlineKeyboard(inlineKeyboard);
 }
 
 
@@ -263,7 +262,8 @@ function generateRentalMessage(
   const pollPortion = createPollPortion(pollConfig);
 
   // Create the inline keyboard
-  const inlineKeyboard = generateInlineKeyboard();
+  const inlineKeyboard: Types.Markup<InlineKeyboardMarkup> =
+    generateInlineKeyboard();
 
   // The callback function
   async function callback(ctx: Scenes.WizardContext, input: string) {
@@ -399,7 +399,7 @@ export async function callbackHandler(
       };
 
       // Otherwise, get the smallest and largest size in the range
-      const [ , smallest, largest] = match.map(number => parseInt(number));
+      const [, smallest, largest] = match.map(number => parseInt(number));
 
       // If the chosen size is within the range
       if (chosenSize >= smallest && chosenSize <= largest) {
@@ -416,8 +416,7 @@ export async function callbackHandler(
 
     // Tells the user that the poll option doesn't exist
     return await ctx.answerCbQuery(
-      `The option "${
-        callbackQuery.data
+      `The option "${callbackQuery.data
       }" doesn't exist on the rental message you are responding to.`
     );
   }
