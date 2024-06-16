@@ -76,7 +76,7 @@ const sceneName = "nusValidator";
 // eslint-disable-next-line  @typescript-eslint/no-explicit-any
 function getRegexMatch(
   match: RegExpMatchArray | null,
-  defaultValue?: string,
+  defaultValue: string | null = null,
 ) {
 
   // If the match given is null, immediately return the default value
@@ -118,7 +118,7 @@ function normaliseWeek(week: string) {
 // Function to get the username and week number from the message
 function getRequiredArgs(
   message: string
-): [string | undefined, boolean, string | undefined] {
+): [string | null, boolean, string | null] {
 
   // Removes the trailing whitespace from the message
   message = message.trim();
