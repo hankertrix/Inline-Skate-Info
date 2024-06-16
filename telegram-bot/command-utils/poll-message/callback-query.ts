@@ -460,7 +460,7 @@ export function reformPollMessage(
       pollOption,
       isSelectedPollOption,
       pollConfig,
-      isSelectedPollOption ? name : null,
+      (isSelectedPollOption || pollConfig.isSingleChoicePoll) ? name : null,
       tagString,
     );
 
