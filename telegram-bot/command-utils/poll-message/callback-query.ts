@@ -239,6 +239,8 @@ export function regeneratePollPortion(
     // If the name is the given name and the poll is a single choice poll
     if (encounteredNameIsGivenName && pollConfig.isSingleChoicePoll) {
 
+      console.log("Single choice poll hit");
+
       // Continue the loop to remove the name from the poll
       continue;
     }
