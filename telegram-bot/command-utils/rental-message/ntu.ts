@@ -5,22 +5,21 @@ import {
   type RentalMessageHandler,
   defaultCallbackHandler,
 } from ".";
-import type { ParseMode } from "telegraf/types";
-import { Markup, Scenes } from "telegraf";
+import type { InlineKeyboardButton, InlineKeyboardMarkup, ParseMode } from "telegraf/types";
+import { Markup, Scenes, Types } from "telegraf";
 import * as utils from "../../utils";
 import {
   type FormatOptions,
   type IsSameNameFunc,
+  type PollConfig,
   NUMBERING_STYLES,
-  POLL_TYPES,
-  POLL_SPACING,
   createPollPortion,
   getName,
   reformPollMessage,
   getPollMessage,
   defaultIsSameNameFunc,
   getPollOptions,
-} from "../poll";
+} from "../poll-message";
 import { deleteMessages, removeCommand } from "../../bot-utils";
 import { getUpcomingTrainingDates } from "../training-message/utils";
 import { trainingDates } from "../training-message/ntu";
@@ -28,6 +27,7 @@ import {
   answerIfGlobalLimitIsHit,
   answerRentalMessageCbQuery,
 } from "./utils";
+import { DEFAULT_RENTAL_MSG_CONFIG } from "./defaults";
 
 
 // The rental options
@@ -59,7 +59,7 @@ const RENTAL_MSG_FORMAT_OPTIONS: FormatOptions = {
   // will be substituted with the actual number of people who
   // responded to the poll option.
 
-  // The {maxEntries} in the zero, one and defulat properties
+  // The {maxEntries} in the zero, one and default properties
   // will be substituted with the maximum number of people
   // allowed on that particular poll option
 
@@ -117,17 +117,15 @@ const RENTAL_MSG_FORMAT_OPTIONS: FormatOptions = {
 
 
 // The rental message configuration
-const RENTAL_MSG_CONFIG = {
+const RENTAL_MSG_CONFIG: Required<PollConfig> = {
+  ...DEFAULT_RENTAL_MSG_CONFIG,
   pollOptions: RENTAL_OPTIONS,
   maxEntriesList: MAX_NUMBER_OF_RENTALS,
-  globalLimit: 1,
   numberingStyle: NUMBERING_STYLES.DASH,
   formatOptions: RENTAL_MSG_FORMAT_OPTIONS,
-  preserveLines: true,
-  showRemaining: true,
-  pollType: POLL_TYPES.RENTAL,
-  tagString: "✅",
-  tagAll: true
+  maxNumberOfVotes: 1,
+  isSameNameFunc: isSameName,
+  inlineKeyboardGenerator: generateInlineKeyboard(SIZES),
 } as const;
 
 // The rental message
@@ -197,10 +195,12 @@ function createRentalMessagePortion(
 
 
 // The function to generate an inline keyboard for the NTU rental message
-function generateInlineKeyboard(sizes: string[]) {
+function generateInlineKeyboard(
+  sizes: string[] = SIZES
+): () => Types.Markup<InlineKeyboardMarkup> {
 
   // Initialise the inline keyboard
-  const inlineKeyboard = [];
+  const inlineKeyboard: InlineKeyboardButton[][] = [];
 
   // Gets the length of the sizes array
   const sizesLength = sizes.length;
@@ -245,30 +245,26 @@ function generateInlineKeyboard(sizes: string[]) {
   ]);
 
   // Returns the inline keyboard
-  return Markup.inlineKeyboard(inlineKeyboard);
+  return () => Markup.inlineKeyboard(inlineKeyboard);
 }
 
 
 // Function to create the rental message
 // This function is very similar to the generatePollMessage function
 // in the poll message module.
-function generateRentalMessage(message: string) {
+function generateRentalMessage(
+  message: string,
+  pollConfig: Required<PollConfig> = RENTAL_MSG_CONFIG
+) {
 
   // Remove the command and the bot's username from the message
   message = removeCommand(message);
 
   // Generate the portion of the message that is a poll
-  const pollPortion = createPollPortion(
-    RENTAL_MSG_CONFIG.pollOptions,
-    RENTAL_MSG_CONFIG.maxEntriesList,
-    RENTAL_MSG_CONFIG.numberingStyle,
-    RENTAL_MSG_CONFIG.formatOptions,
-    RENTAL_MSG_CONFIG.preserveLines,
-    RENTAL_MSG_CONFIG.showRemaining
-  );
+  const pollPortion = createPollPortion(pollConfig);
 
   // Create the inline keyboard
-  const inlineKeyboard = generateInlineKeyboard(SIZES);
+  const inlineKeyboard = pollConfig.inlineKeyboardGenerator(SIZES);
 
   // The callback function
   async function callback(ctx: Scenes.WizardContext, input: string) {
@@ -278,7 +274,7 @@ function generateRentalMessage(message: string) {
 
     // Sends a poll with the user's input
     return await ctx.reply(
-      `${input}${RENTAL_MSG_CONFIG.pollType}${POLL_SPACING}${pollPortion}`,
+      `${input}${pollConfig.pollType}${pollConfig.pollSpacing}${pollPortion}`,
       {
         parse_mode: "HTML",
         ...inlineKeyboard
@@ -339,8 +335,11 @@ export async function callbackHandler(
   ]: Parameters<RentalMessageCallbackHandler>
 ): ReturnType<RentalMessageCallbackHandler> {
 
+  // Initialise the poll configuration object
+  const pollConfig = RENTAL_MSG_CONFIG;
+
   // The variable to determine if the button pressed is the tag button
-  const tag = callbackQuery.data === RENTAL_MSG_CONFIG.tagString;
+  const tag = callbackQuery.data === pollConfig.tagString;
 
   // Gets the message object
   const message = callbackQuery.message;
@@ -427,6 +426,9 @@ export async function callbackHandler(
   // The entry to put in the rental message
   const entry = tag ? name : `${name} ${chosenSize}`;
 
+  // Set the is same name function in the poll configuration object
+  pollConfig.isSameNameFunc = tag ? isSameName : defaultIsSameNameFunc;
+
   // Gets the reformed poll message
   const { reformedPollMessage, removed, tagged } = reformPollMessage(
     messageText,
@@ -434,12 +436,8 @@ export async function callbackHandler(
     selectedRentalOption as string,
     RENTAL_OPTIONS,
     entry,
-    RENTAL_MSG_CONFIG.formatOptions,
-    RENTAL_MSG_CONFIG.preserveLines,
-    RENTAL_MSG_CONFIG.showRemaining,
-    tag ? RENTAL_MSG_CONFIG.tagString : null,
-    RENTAL_MSG_CONFIG.tagAll,
-    tag ? isSameName : defaultIsSameNameFunc
+    pollConfig,
+    tag ? pollConfig.tagString : null,
   );
 
   // Gets if the poll-wide limit for the rental message has been reached
@@ -447,7 +445,7 @@ export async function callbackHandler(
     ctx,
     reformedPollMessage,
     name,
-    RENTAL_MSG_CONFIG.globalLimit
+    pollConfig.maxNumberOfVotes
   );
 
   // If the limit has been reached, exit the function

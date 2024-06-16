@@ -12,17 +12,12 @@ import {
   markMessageForDeletion,
   wrapCallbackWithMessageDeleter,
   promptUserForInput,
-  generateInlineKeyboard,
   removeCommand,
 } from "../../bot-utils";
 import {
-  DEFAULT_NUMBERING_STYLE,
-  DEFAULT_FORMAT_OPTIONS,
-  DEFAULT_PRESERVE_LINES,
-  DEFAULT_SHOW_REMAINING,
-  POLL_TYPES,
+  DEFAULT_POLL_CONFIG,
   generatePollMessage
-} from "../poll";
+} from "../poll-message";
 
 
 // The location of the training
@@ -65,9 +60,12 @@ const usernameRegex = /@\w+/i;
 const typeOfWeekRegexStr = "(?:exam|recess|reading|summer|winter)";
 
 // The regular expression to get the week from the message
-const weekRegex = new RegExp(String.raw`${typeOfWeekRegexStr}?[ _-]?(?:weeks?|breaks?)[ _-]?\d*`, "i");
+const weekRegex = new RegExp(
+  String.raw`${typeOfWeekRegexStr}?[ _-]?(?:weeks?|breaks?)[ _-]?\d*`, "i"
+);
 
-// The regular expression to get whether or not the training message should have rentals
+// The regular expression to get whether or not
+// the training message should have rentals
 const noRentalsRegex = /no[ _-]?re(?:nt|tn)(?:al)?s?/i;
 
 // The name of the validator scene for the NUS training message
@@ -76,7 +74,10 @@ const sceneName = "nusValidator";
 
 // Function to get the regular expression match in a saner way
 // eslint-disable-next-line  @typescript-eslint/no-explicit-any
-function getRegexMatch(match: RegExpMatchArray | null, defaultValue: any = null) {
+function getRegexMatch(
+  match: RegExpMatchArray | null,
+  defaultValue?: string,
+) {
 
   // If the match given is null, immediately return the default value
   if (!match) return defaultValue;
@@ -100,10 +101,14 @@ function normaliseWeek(week: string) {
   );
   
   // Set the middle word to "Break" if the week type is "summer" or "winter"
-  const middleWord = ["summer", "winter"].includes(weekType) ? "Break Week" : "Week";
+  const middleWord = [
+    "summer", "winter"
+  ].includes(weekType) ? "Break Week" : "Week";
 
   // Create the week string
-  const weekStr = `${utils.titlecase(weekType)} ${middleWord} ${weekNum}`.trim();
+  const weekStr = `${
+    utils.titlecase(weekType)
+  } ${middleWord} ${weekNum}`.trim();
 
   // Returns the week string
   return weekStr;
@@ -113,7 +118,7 @@ function normaliseWeek(week: string) {
 // Function to get the username and week number from the message
 function getRequiredArgs(
   message: string
-): [string | null, boolean, string | null] {
+): [string | undefined, boolean, string | undefined] {
 
   // Removes the trailing whitespace from the message
   message = message.trim();
@@ -167,7 +172,9 @@ function formatDate(date: Date) {
   }).format(date);
 
   // Return the formatted date
-  return `${dateStr} (${utils.getDayStr(date).replace(/Tue/, "Tues").replace(/Thu/, "Thurs")}) ${utils.getTimeStr(date)} - ${utils.getTimeStr(
+  return `${dateStr} (${
+    utils.getDayStr(date).replace(/Tue/, "Tues").replace(/Thu/, "Thurs")
+  }) ${utils.getTimeStr(date)} - ${utils.getTimeStr(
     utils.addHours(date, 3)
   )}`;
 }
@@ -186,23 +193,30 @@ function generatePollOptions(trainingDates: string[]) {
 }
 
 
-// Function to combine generating the training message and the poll options into one
-function createTrainingPollMsg(message: string, location: string, noRentals: boolean, weekType: string, username: string, trainingDates: string[]) {
+// Function to combine generating the training message
+// and the poll options into one
+function createTrainingPollMsg(
+  message: string,
+  location: string,
+  noRentals: boolean,
+  weekType: string,
+  username: string,
+  trainingDates: string[]
+) {
 
-  // Returns the result of the generate poll message with the generate
+  // Initialise the poll configuration object
+  const pollConfig = DEFAULT_POLL_CONFIG;
+
+  // Set the poll options on the poll configuration object
+  pollConfig.pollOptions = generatePollOptions(trainingDates);
+
+  // Returns the result of the generate poll message
   return generatePollMessage(
     generateTrgMsg(
       message, location,
       noRentals, weekType, username
     ),
-    generatePollOptions(trainingDates),
-    [],
-    DEFAULT_NUMBERING_STYLE,
-    DEFAULT_FORMAT_OPTIONS,
-    DEFAULT_PRESERVE_LINES,
-    DEFAULT_SHOW_REMAINING,
-    POLL_TYPES.DEFAULT,
-    generateInlineKeyboard
+    pollConfig,
   );
 }
 
@@ -210,18 +224,14 @@ function createTrainingPollMsg(message: string, location: string, noRentals: boo
 // Function to create a training message with a custom message
 function createCustomTrgMsg(message: string, trainingDates: string[]) {
 
+  // Initialise the poll configuration object
+  const pollConfig = DEFAULT_POLL_CONFIG;
+
+  // Set the poll options on the poll configuration object
+  pollConfig.pollOptions = generatePollOptions(trainingDates);
+
   // Returns the result of the generate poll message function
-  return generatePollMessage(
-    message,
-    generatePollOptions(trainingDates),
-    [],
-    DEFAULT_NUMBERING_STYLE,
-    DEFAULT_FORMAT_OPTIONS,
-    DEFAULT_PRESERVE_LINES,
-    DEFAULT_SHOW_REMAINING,
-    POLL_TYPES.DEFAULT,
-    generateInlineKeyboard
-  );
+  return generatePollMessage(message, pollConfig);
 }
 
 
@@ -230,7 +240,9 @@ export async function handler(
   ...[ctx, msg]: Parameters<TrainingMessageHandler>
 ): ReturnType<TrainingMessageHandler> {
 
-  // If the message is empty, immediately enters the scene to get the required information for the NUS training message
+  // If the message is empty,
+  // immediately enters the scene
+  // to get the required information for the NUS training message
   if (!msg) return await ctx.scene.enter(sceneName, {
     messagesToDelete: []
   });
@@ -238,10 +250,13 @@ export async function handler(
   // Gets the week, whether or not there are rentals, and the username
   const [week, noRentals, username] = getRequiredArgs(msg);
 
-  // If the message given has a length of more than 50 characters, it likely means the user wants a custom message
+  // If the message given has a length of more than 50 characters,
+  // it likely means the user wants a custom message
   if (msg.length > 50) {
 
-    // Creates a poll message with the custom message, but with the training dates as options, like the default training message
+    // Creates a poll message with the custom message,
+    // but with the training dates as options,
+    // like the default training message
     const { userMessage, callback } = createCustomTrgMsg(msg, trainingDates);
 
     // Calls the callback function to send the message
@@ -251,19 +266,30 @@ export async function handler(
     await deleteMessages(ctx, ctx.message.message_id);
   }
 
-  // If either the username or the week is null,
-  // then enters the scene to ask for the required information to create the training message
-  else if (username == null || week == null) return await ctx.scene.enter(sceneName, {
-    noRentals: noRentals,
-    weekType: week,
-    username: username,
-    messagesToDelete: []
-  });
+  // If either the username or the week is null
+  else if (username == null || week == null) {
+
+    // Enter the scene to ask for the required information
+    // to create the training message
+    return await ctx.scene.enter(sceneName, {
+      noRentals: noRentals,
+      weekType: week,
+      username: username,
+      messagesToDelete: []
+    })
+  };
 
   // Otherwise, generates the training message
   // Type coercion for the week and username variables because typescript
   // can't understand the above if statement for some reason
-  const { userMessage, callback } = createTrainingPollMsg(trainingMsg, trainingLocation, noRentals, week as string, username as string, trainingDates);
+  const { userMessage, callback } = createTrainingPollMsg(
+    trainingMsg,
+    trainingLocation,
+    noRentals,
+    week as string,
+    username as string,
+    trainingDates
+  );
 
   // Calls the function to send the training message to the user
   await callback(ctx, userMessage);
@@ -321,7 +347,9 @@ nusValidator.command(...cancelCommand);
 nusValidator.on(filters.message("text"), async ctx => {
 
   // Gets the state object
-  const state = ctx.wizard.state as { weekType: string, username: string, noRentals: boolean };
+  const state = ctx.wizard.state as {
+    weekType: string, username: string, noRentals: boolean
+  };
 
   // Gets the username and the week type from the state object
   const { weekType, username } = state;
@@ -337,7 +365,8 @@ nusValidator.on(filters.message("text"), async ctx => {
   // If the no rentals argument given is true, then set the state to it
   if (noRentals) state.noRentals = noRentals;
 
-  // If there are rentals and the username of the person in charge of skate rentals isn't already stored
+  // If there are rentals and the username of the person
+  // in charge of skate rentals isn't already stored
   if (!state.noRentals && !username) {
 
     // If the username hasn't been given
@@ -361,15 +390,25 @@ nusValidator.on(filters.message("text"), async ctx => {
     if (!givenWeekType) {
 
       // Ask the user for the week and exit the function
-      return await promptUserForInput(ctx, "Please enter the week for this week's skate training.");
+      return await promptUserForInput(
+        ctx, "Please enter the week for this week's skate training."
+      );
     }
 
     // Otherwise, store the given week type
     else state.weekType = givenWeekType;
   }
 
-  // If both the username and the week type has been given, calls the function to generate the training message
-  const { userMessage, callback } = createTrainingPollMsg(trainingMsg, trainingLocation, state.noRentals, state.weekType, state.username, trainingDates)
+  // If both the username and the week type has been given,
+  // calls the function to generate the training message
+  const { userMessage, callback } = createTrainingPollMsg(
+    trainingMsg,
+    trainingLocation,
+    state.noRentals,
+    state.weekType,
+    state.username,
+    trainingDates
+  );
 
   // Marks the current message sent by the user for deletion
   markMessageForDeletion(ctx, ctx.message.message_id);
@@ -377,7 +416,8 @@ nusValidator.on(filters.message("text"), async ctx => {
   // Wrap the callback function with the function to delete messages
   const wrappedCallback = wrapCallbackWithMessageDeleter(callback);
 
-  // Calls the function to send the training message to the user and delete all the messages
+  // Calls the function to send the training message
+  // to the user and delete all the messages
   await wrappedCallback(ctx, userMessage);
 
   // Leave the scene

@@ -10,7 +10,7 @@ import {
   removeCommand
 } from "./bot-utils";
 import { TRAINING_MSG_SCENES } from "./command-utils/training-message";
-import { createPollMessageScene } from "./command-utils/poll";
+import { createPollMessageScene } from "./command-utils/poll-message";
 
 
 // The wizard scene to validate user input

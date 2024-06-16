@@ -2,7 +2,7 @@
 
 import { Markup, type Scenes } from "telegraf";
 import { regexEscape } from "../../utils";
-import { numberingStyleRegex } from "../poll";
+import { numberingStyleRegex } from "../poll-message";
 
 
 // The function to generate an inline keyboard

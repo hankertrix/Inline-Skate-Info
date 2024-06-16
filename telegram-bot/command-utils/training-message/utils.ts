@@ -5,19 +5,13 @@ import type { TrainingMessageHandler } from ".";
 import * as utils from "../../utils";
 import {
   deleteMessages,
-  wrapCallbackWithMessageDeleter,
-  generateInlineKeyboard
+  wrapCallbackWithMessageDeleter
 } from "../../bot-utils";
 import { DEV } from "../../../src/lib/constants";
 import {
-  DEFAULT_NUMBERING_STYLE,
-  DEFAULT_FORMAT_OPTIONS,
-  DEFAULT_PRESERVE_LINES,
-  DEFAULT_SHOW_REMAINING,
-  DEFAULT_POLL_OPTIONS,
-  POLL_TYPES,
+  DEFAULT_POLL_CONFIG,
   generatePollMessage,
-} from "../poll";
+} from "../poll-message";
 
 
 // Function to handle the training message command
@@ -28,17 +22,7 @@ export async function handleTrgMsg(
 
   // Generate a poll message with the given training message
   // and the default options
-  const { callback } = generatePollMessage(
-    msg,
-    DEFAULT_POLL_OPTIONS,
-    [],
-    DEFAULT_NUMBERING_STYLE,
-    DEFAULT_FORMAT_OPTIONS,
-    DEFAULT_PRESERVE_LINES,
-    DEFAULT_SHOW_REMAINING,
-    POLL_TYPES.DEFAULT,
-    generateInlineKeyboard,
-  );
+  const { callback } = generatePollMessage(msg, DEFAULT_POLL_CONFIG);
 
   // If the message given is empty
   if (!msg) {
@@ -132,7 +116,7 @@ export function getUpcomingTrainingDates(
   // Create a temporary date
   let tempDate = currentDate;
 
-  // Intialise the variable to decide
+  // Initialise the variable to decide
   // whether to continue looping or not
   let continueLoop = true;
 

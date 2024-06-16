@@ -15,10 +15,10 @@ import {
   messageAndFileInlineQueryHandler,
   wrapCallbackWithMessageDeleter,
   removeCommand,
-  generateInlineKeyboard
 } from "./bot-utils";
 import * as scenes from "./bot-scenes";
 import * as commandUtils from "./command-utils";
+import { type CreatePollMessageState } from "./command-utils/poll-message";
 
 
 
@@ -26,7 +26,9 @@ import * as commandUtils from "./command-utils";
 // Initialising the telegraf bot
 
 // The telegraf bot
-const bot = new Telegraf<Scenes.WizardContext>(process.env.BOT_TOKEN as string);
+const bot = new Telegraf<Scenes.WizardContext>(
+  process.env.BOT_TOKEN as string
+);
 
 // Use the session and adds the scenes
 bot.use(session());
@@ -84,7 +86,7 @@ bot.command("help", async ctx => {
     // Sends the result of the getCommandHelpMessage function to the user
     return await ctxReply(
       ctx,
-      commandUtils.help.getCommandHelpMsg({command: givenCommand})
+      commandUtils.help.getCommandHelpMsg({ command: givenCommand })
     );
   }
 
@@ -171,7 +173,9 @@ bot.command([
 ], async ctx => {
 
   // Calls the function to get the text for the tricks command
-  const [trickName, trickText] = await commandUtils.tricks.handler(ctx.message.text);
+  const [trickName, trickText] = await commandUtils.tricks.handler(
+    ctx.message.text
+  );
 
   // Creates the reply
   const reply = `${utils.bold(trickName)}${SPACING}${trickText}`;
@@ -185,7 +189,9 @@ bot.command([
 bot.inlineQuery(commandUtils.tricks.regex, async ctx => {
 
   // Calls the function to get the text for the tricks command
-  const [trick, reply] = await commandUtils.tricks.handler(ctx.inlineQuery.query);
+  const [trick, reply] = await commandUtils.tricks.handler(
+    ctx.inlineQuery.query
+  );
 
   // Answers the inline query with the text
   await answerInlineQuery(ctx, reply, trick);
@@ -210,20 +216,28 @@ bot.command([
   "tricklist"
 ], async ctx => {
 
-  // Use the general handler for this command as the function to generate a the data returns a message and a list of paths to the files
-  await messageAndFileCommandHandler(ctx, () => commandUtils.lists.generateListsText(
-    commandUtils.lists.Lists.TrickLists
-  ));
+  // Use the general handler for this command as
+  // the function to generate the data
+  await messageAndFileCommandHandler(
+    ctx,
+    () => commandUtils.lists.generateListsText(
+      commandUtils.lists.Lists.TrickLists
+    )
+  );
 });
 
 
 // The inline query handler for the trick lists command
 bot.inlineQuery(commandUtils.lists.trickListsRegex, async ctx => {
 
-  // Use the general handler for this inline query as the function to generate a the data returns a message and a list of paths to the files
-  await messageAndFileInlineQueryHandler(ctx, () => commandUtils.lists.generateListsText(
-    commandUtils.lists.Lists.TrickLists
-  ));
+  // Use the general handler for this command as
+  // the function to generate the data
+  await messageAndFileInlineQueryHandler(
+    ctx,
+    () => commandUtils.lists.generateListsText(
+      commandUtils.lists.Lists.TrickLists
+    )
+  );
 });
 
 
@@ -245,20 +259,28 @@ bot.command([
   "rule_book"
 ], async ctx => {
 
-  // Use the general handler for this command as the function to generate a the data returns a message and a list of paths to the files
-  await messageAndFileCommandHandler(ctx, () => commandUtils.lists.generateListsText(
-    commandUtils.lists.Lists.Rulebooks
-  ));
+  // Use the general handler for this command as
+  // the function to generate the data
+  await messageAndFileCommandHandler(
+    ctx,
+    () => commandUtils.lists.generateListsText(
+      commandUtils.lists.Lists.Rulebooks
+    )
+  );
 });
 
 
 // The inline query handler for the rulebooks command
 bot.inlineQuery(commandUtils.lists.rulebooksRegex, async ctx => {
 
-  // Use the general handler for this inline query as the function to generate a the data returns a message and a list of paths to the files
-  await messageAndFileInlineQueryHandler(ctx, () => commandUtils.lists.generateListsText(
-    commandUtils.lists.Lists.Rulebooks
-  ));
+  // Use the general handler for this command as
+  // the function to generate the data
+  await messageAndFileInlineQueryHandler(
+    ctx,
+    () => commandUtils.lists.generateListsText(
+      commandUtils.lists.Lists.Rulebooks
+    )
+  );
 });
 
 
@@ -280,20 +302,28 @@ bot.command([
   "buyingguide"
 ], async ctx => {
 
-  // Use the general handler for this command as the function to generate a the data returns a message and a list of paths to the files
-  await messageAndFileCommandHandler(ctx, () => commandUtils.lists.generateListsText(
-    commandUtils.lists.Lists.BuyingGuides
-  ));
+  // Use the general handler for this command as
+  // the function to generate the data
+  await messageAndFileCommandHandler(
+    ctx,
+    () => commandUtils.lists.generateListsText(
+      commandUtils.lists.Lists.BuyingGuides
+    )
+  );
 });
 
 
 // The inline query handler for the buying guides command
 bot.inlineQuery(commandUtils.lists.buyingGuidesRegex, async ctx => {
 
-  // Use the general handler for this inline query as the function to generate a the data returns a message and a list of paths to the files
-  await messageAndFileInlineQueryHandler(ctx, () => commandUtils.lists.generateListsText(
-    commandUtils.lists.Lists.BuyingGuides
-  ));
+  // Use the general handler for this command as
+  // the function to generate the data
+  await messageAndFileInlineQueryHandler(
+    ctx,
+    () => commandUtils.lists.generateListsText(
+      commandUtils.lists.Lists.BuyingGuides
+    )
+  );
 });
 
 
@@ -323,20 +353,28 @@ bot.command([
   "maintainingguide"
 ], async ctx => {
 
-  // Use the general handler for this command as the function to generate a the data returns a message and a list of paths to the files
-  await messageAndFileCommandHandler(ctx, () => commandUtils.lists.generateListsText(
-    commandUtils.lists.Lists.MaintenanceGuides
-  ));
+  // Use the general handler for this command as
+  // the function to generate the data
+  await messageAndFileCommandHandler(
+    ctx,
+    () => commandUtils.lists.generateListsText(
+      commandUtils.lists.Lists.MaintenanceGuides
+    )
+  );
 });
 
 
 // The inline query handler for the maintenance guides command
 bot.inlineQuery(commandUtils.lists.maintenanceGuidesRegex, async ctx => {
 
-  // Use the general handler for this inline query as the function to generate a the data returns a message and a list of paths to the files
-  await messageAndFileInlineQueryHandler(ctx, () => commandUtils.lists.generateListsText(
-    commandUtils.lists.Lists.MaintenanceGuides
-  ));
+  // Use the general handler for this command as
+  // the function to generate the data
+  await messageAndFileInlineQueryHandler(
+    ctx,
+    () => commandUtils.lists.generateListsText(
+      commandUtils.lists.Lists.MaintenanceGuides
+    )
+  );
 });
 
 
@@ -358,20 +396,28 @@ bot.command([
   "dictionary"
 ], async ctx => {
 
-  // Use the general handler for this command as the function to generate a the data returns a message and a list of paths to the files
-  await messageAndFileCommandHandler(ctx, () => commandUtils.lists.generateListsText(
-    commandUtils.lists.Lists.Glossaries
-  ));
+  // Use the general handler for this command as
+  // the function to generate the data
+  await messageAndFileCommandHandler(
+    ctx,
+    () => commandUtils.lists.generateListsText(
+      commandUtils.lists.Lists.Glossaries
+    )
+  );
 });
 
 
 // The inline query handler for the glossaries command
 bot.inlineQuery(commandUtils.lists.glossariesRegex, async ctx => {
 
-  // Use the general handler for this inline query as the function to generate a the data returns a message and a list of paths to the files
-  await messageAndFileInlineQueryHandler(ctx, () => commandUtils.lists.generateListsText(
-    commandUtils.lists.Lists.Glossaries
-  ));
+  // Use the general handler for this command as
+  // the function to generate the data
+  await messageAndFileInlineQueryHandler(
+    ctx,
+    () => commandUtils.lists.generateListsText(
+      commandUtils.lists.Lists.Glossaries
+    )
+  );
 });
 
 
@@ -397,20 +443,28 @@ bot.command([
   "miscellaneousresource"
 ], async ctx => {
 
-  // Use the general handler for this command as the function to generate a the data returns a message and a list of paths to the files
-  await messageAndFileCommandHandler(ctx, () => commandUtils.lists.generateListsText(
-    commandUtils.lists.Lists.MiscResources
-  ));
+  // Use the general handler for this command as
+  // the function to generate the data
+  await messageAndFileCommandHandler(
+    ctx,
+    () => commandUtils.lists.generateListsText(
+      commandUtils.lists.Lists.MiscResources
+    )
+  );
 });
 
 
 // The inline query handler for the miscellaneous resources command
 bot.inlineQuery(commandUtils.lists.miscResourcesRegex, async ctx => {
 
-  // Use the general handler for this inline query as the function to generate a the data returns a message and a list of paths to the files
-  await messageAndFileInlineQueryHandler(ctx, () => commandUtils.lists.generateListsText(
-    commandUtils.lists.Lists.MiscResources
-  ));
+  // Use the general handler for this command as
+  // the function to generate the data
+  await messageAndFileInlineQueryHandler(
+    ctx,
+    () => commandUtils.lists.generateListsText(
+      commandUtils.lists.Lists.MiscResources
+    )
+  );
 });
 
 
@@ -518,16 +572,25 @@ bot.command([
   "discount"
 ], async ctx => {
 
-  // Use the general handler for this command as the function to generate a the data returns a message and a list of paths to the files
-  await messageAndFileCommandHandler(ctx, commandUtils.discountInfo.generateDiscountInfo);
+  // Use the general handler for this command as
+  // the function to generate the data
+  await messageAndFileCommandHandler(
+    ctx, commandUtils.discountInfo.generateDiscountInfo
+  );
 });
 
 
 // The inline query handler for the discount information command
 bot.inlineQuery(commandUtils.discountInfo.regex, async ctx => {
 
-  // Use the general handler for this inline query as the function to generate a the data returns a message and a list of paths to the files
-  await messageAndFileInlineQueryHandler(ctx, commandUtils.discountInfo.generateDiscountInfo, true, "\n\n\n\n\nLinks to the PDF catalogues:\n\n\n");
+  // Use the general handler for this command as
+  // the function to generate the data
+  await messageAndFileInlineQueryHandler(
+    ctx,
+    commandUtils.discountInfo.generateDiscountInfo,
+    true,
+    "\n\n\n\n\nLinks to the PDF catalogues:\n\n\n"
+  );
 });
 
 
@@ -562,7 +625,9 @@ bot.command([
 bot.inlineQuery(commandUtils.places.whereToBuyRegex, async ctx => {
 
   // Calls the handler for the where to buy command to get the reply
-  const reply = await commandUtils.places.whereToBuyHandler(ctx.inlineQuery.query);
+  const reply = await commandUtils.places.whereToBuyHandler(
+    ctx.inlineQuery.query
+  );
 
   // Answers the inline query
   await answerInlineQuery(ctx, reply, "Inline skate retailers");
@@ -748,7 +813,8 @@ bot.command([
   // Gets the FR difference message
   const msg = await commandUtils.frDiff.generateMsg();
 
-  // Replies to the user with the message that talks about the differences between the FR skates
+  // Replies to the user with the message
+  // that talks about the differences between the FR skates
   await ctxReply(ctx, msg);
 });
 
@@ -759,7 +825,8 @@ bot.inlineQuery(commandUtils.frDiff.regex, async ctx => {
   // Gets the FR difference message
   const msg = await commandUtils.frDiff.generateMsg();
 
-  // Answers the inline query with the message that talks about the differences between the FR skates
+  // Answers the inline query with the message
+  // that talks about the differences between the FR skates
   await answerInlineQuery(ctx, msg);
 });
 
@@ -862,7 +929,9 @@ bot.command([
 ], async ctx => {
 
   // Generates the text for the list of accessories
-  const accessoriesText = await commandUtils.products.generateProductsText(commandUtils.products.ProductTypes.Accessories);
+  const accessoriesText = await commandUtils.products.generateProductsText(
+    commandUtils.products.ProductTypes.Accessories
+  );
 
   // Replies to the user with the list of accessories
   await ctxReply(ctx, accessoriesText);
@@ -873,7 +942,9 @@ bot.command([
 bot.inlineQuery(commandUtils.products.accessoriesRegex, async ctx => {
 
   // Generates the text for the list of accessories
-  const accessoriesText = await commandUtils.products.generateProductsText(commandUtils.products.ProductTypes.Accessories);
+  const accessoriesText = await commandUtils.products.generateProductsText(
+    commandUtils.products.ProductTypes.Accessories
+  );
 
   // Replies to the inline query with the list of accessories
   await answerInlineQuery(ctx, accessoriesText);
@@ -899,7 +970,9 @@ bot.command([
 ], async ctx => {
 
   // Generates the text for the list of protective gear
-  const protectiveGearText = await commandUtils.products.generateProductsText(commandUtils.products.ProductTypes.ProtectiveGear);
+  const protectiveGearText = await commandUtils.products.generateProductsText(
+    commandUtils.products.ProductTypes.ProtectiveGear
+  );
 
   // Replies to the user with the list of protective gear
   await ctxReply(ctx, protectiveGearText);
@@ -910,7 +983,9 @@ bot.command([
 bot.inlineQuery(commandUtils.products.protectiveGearRegex, async ctx => {
 
   // Generates the text for the list of protective gear
-  const protectiveGearText = await commandUtils.products.generateProductsText(commandUtils.products.ProductTypes.ProtectiveGear);
+  const protectiveGearText = await commandUtils.products.generateProductsText(
+    commandUtils.products.ProductTypes.ProtectiveGear
+  );
 
   // Replies to the inline query with the list of protective gear
   await answerInlineQuery(ctx, protectiveGearText);
@@ -939,7 +1014,9 @@ bot.command([
 ], async ctx => {
 
   // Generates the text for the list of clothing items
-  const clothingText = await commandUtils.products.generateProductsText(commandUtils.products.ProductTypes.Clothing);
+  const clothingText = await commandUtils.products.generateProductsText(
+    commandUtils.products.ProductTypes.Clothing
+  );
 
   // Replies to the user with the list of clothing items
   await ctxReply(ctx, clothingText);
@@ -950,7 +1027,9 @@ bot.command([
 bot.inlineQuery(commandUtils.products.clothingRegex, async ctx => {
 
   // Generates the text for the list of clothing items
-  const clothingText = await commandUtils.products.generateProductsText(commandUtils.products.ProductTypes.Clothing);
+  const clothingText = await commandUtils.products.generateProductsText(
+    commandUtils.products.ProductTypes.Clothing
+  );
 
   // Replies to the inline query with the list of clothing items
   await answerInlineQuery(ctx, clothingText);
@@ -984,7 +1063,9 @@ bot.command([
 ], async ctx => {
 
   // Generates the text for the list of maintenance items
-  const maintenanceItemsText = await commandUtils.products.generateProductsText(commandUtils.products.ProductTypes.MaintenanceItems);
+  const maintenanceItemsText = await commandUtils.products.generateProductsText(
+    commandUtils.products.ProductTypes.MaintenanceItems
+  );
 
   // Replies to the user with the list of maintenance items
   await ctxReply(ctx, maintenanceItemsText);
@@ -995,7 +1076,9 @@ bot.command([
 bot.inlineQuery(commandUtils.products.maintenanceItemsRegex, async ctx => {
 
   // Generates the text for the list of maintenance items
-  const maintenanceItemsText = await commandUtils.products.generateProductsText(commandUtils.products.ProductTypes.MaintenanceItems);
+  const maintenanceItemsText = await commandUtils.products.generateProductsText(
+    commandUtils.products.ProductTypes.MaintenanceItems
+  );
 
   // Replies to the inline query with the list of maintenance items
   await answerInlineQuery(ctx, maintenanceItemsText);
@@ -1032,17 +1115,13 @@ bot.command([
   // Gets the text from the message
   const message = ctx.message.text;
 
+  // Initialise the poll configuration object
+  const pollConfig = commandUtils.poll.DEFAULT_POLL_CONFIG;
+
   // Gets the message and the callback from the generatePollCallback function
   const { userMessage, callback } = commandUtils.poll.generatePollMessage(
     message,
-    commandUtils.poll.DEFAULT_POLL_OPTIONS,
-    [],
-    commandUtils.poll.DEFAULT_NUMBERING_STYLE,
-    commandUtils.poll.DEFAULT_FORMAT_OPTIONS,
-    commandUtils.poll.DEFAULT_PRESERVE_LINES,
-    commandUtils.poll.DEFAULT_SHOW_REMAINING,
-    commandUtils.poll.POLL_TYPES.DEFAULT,
-    generateInlineKeyboard
+    pollConfig
   );
 
   // If the message is empty, enters the scene to get the user's input
@@ -1254,16 +1333,15 @@ bot.command([
   // Gets the message from the user
   const message = removeCommand(ctx.message.text);
 
+  // The initial state
+  const initialState: Required<CreatePollMessageState> = {
+    pollMessage: message,
+    pollConfig: commandUtils.poll.DEFAULT_CREATE_POLL_MSG_CONFIG,
+    messagesToDelete: [ctx.message.message_id],
+  };
+
   // Enters the create poll message scene
-  ctx.scene.enter(
-    "createPollMessage",
-    {
-      message: message,
-      pollOptions: [],
-      messagesToDelete: [ctx.message.message_id],
-      ...commandUtils.poll.DEFAULT_CREATE_POLL_MSG_CONFIG
-    }
-  );
+  ctx.scene.enter("createPollMessage", initialState);
 });
 
 
@@ -1300,17 +1378,16 @@ bot.command([
   // Gets the message from the user
   const message = removeCommand(ctx.message.text);
 
+  // The initial state
+  const initialState: Required<CreatePollMessageState> = {
+    pollMessage: message,
+    pollConfig: commandUtils.rentalMsg.DEFAULT_CREATE_RENTAL_MSG_CONFIG,
+    messagesToDelete: [ctx.message.message_id],
+  };
+
   // Enters the create poll message scene
   // with the rental message configuration
-  ctx.scene.enter(
-    "createPollMessage",
-    {
-      message: message,
-      pollOptions: [],
-      messagesToDelete: [ctx.message.message_id],
-      ...commandUtils.rentalMsg.DEFAULT_CREATE_RENTAL_MSG_CONFIG
-    }
-  );
+  ctx.scene.enter("createPollMessage", initialState);
 });
 
 
@@ -1334,7 +1411,7 @@ bot.command([
   const msgText = ctx.message.text;
 
   // Calls the QR code handler to generate the QR code
-  const [ , qrCodeDataURL] = await commandUtils.qrCode.handler(msgText);
+  const [, qrCodeDataURL] = await commandUtils.qrCode.handler(msgText);
 
   // If the QR code is generated, reply to the user with the image
   if (qrCodeDataURL) return await ctx.replyWithPhoto({
@@ -1345,7 +1422,7 @@ bot.command([
   async function callback(ctx: Context, input: string) {
 
     // Calls the QR code handler to generate the QR code
-    const [ , qrCodeDataURL] = await commandUtils.qrCode.handler(input);
+    const [, qrCodeDataURL] = await commandUtils.qrCode.handler(input);
 
     // Reply to the user with the image
     return await ctx.replyWithPhoto({
@@ -1413,7 +1490,9 @@ bot.inlineQuery(commandUtils.qrCode.qrCodeRegex, async ctx => {
 
 
 
-// The chat ID command (this function is purely to help with the setting up of the training message)
+// The chat ID command.
+// This function is purely to
+// help with the setting up of the training message.
 
 // The handler for the get chat ID command
 bot.command([
@@ -1425,7 +1504,8 @@ bot.command([
   "chatid"
 ], async ctx => {
 
-  // Sends a message telling the user that the next message is the chat ID of the current chat
+  // Sends a message telling the user that
+  // the next message is the chat ID of the current chat
   await ctxReply(ctx, "The chat ID of this chat is:");
 
   // Gets the chat ID of the chat
@@ -1452,9 +1532,15 @@ bot.command([
 
   // The list of hyperlinks to where the source of the bot is hosted
   const sources = [
-    utils.hyperlink("Codeberg", "https://codeberg.org/Hanker/Inline-Skate-Info"),
-    utils.hyperlink("GitHub", "https://github.com/hankertrix/Inline-Skate-Info"),
-    utils.hyperlink("Replit", "https://replit.com/@hankertrix/Inline-Skate-Info?v=1")
+    utils.hyperlink(
+      "Codeberg", "https://codeberg.org/Hanker/Inline-Skate-Info"
+    ),
+    utils.hyperlink(
+      "GitHub", "https://github.com/hankertrix/Inline-Skate-Info"
+    ),
+    utils.hyperlink(
+      "Replit", "https://replit.com/@hankertrix/Inline-Skate-Info?v=1"
+    )
   ];
 
   // The message to send to the user
@@ -1473,7 +1559,8 @@ bot.command([
 
 
 
-// The command to generate the list of commands with their description (for updating the list of commands for the bot in Bot Father)
+// The command to generate the list of commands with their description
+// to update the list of commands for the bot in Bot Father
 bot.command([
   "commands",
   "command"
