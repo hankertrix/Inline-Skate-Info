@@ -159,6 +159,8 @@ export const createPollMessageScene = new Scenes.WizardScene(
       // Gets the poll config object
       const pollConfig = state.pollConfig as Required<CreatePollMessageConfig>;
 
+      console.log(pollConfig);
+
       // If the message is already given
       if (state.pollMessage) {
 
@@ -209,6 +211,8 @@ export const createPollMessageScene = new Scenes.WizardScene(
 
       // Gets the poll config object
       const pollConfig = state.pollConfig as Required<CreatePollMessageConfig>;
+
+      console.log(pollConfig);
 
       // Gets the message from the user
       let message = ctx.message.text;
@@ -288,6 +292,8 @@ export const createPollMessageScene = new Scenes.WizardScene(
       // Gets the poll config object
       const pollConfig = state.pollConfig;
 
+      console.log(pollConfig);
+
       // Gets the message from the user with the command removed
       const message = removeCommand(ctx.message.text);
 
@@ -334,6 +340,8 @@ export const createPollMessageScene = new Scenes.WizardScene(
         pollConfig.isSingleChoicePoll = false;
       }
 
+      console.log(pollConfig);
+
       // Ask the user for the poll options
       await promptUserForInput(
         ctx,
@@ -358,6 +366,8 @@ export const createPollMessageScene = new Scenes.WizardScene(
 
       // Gets the poll config object
       const pollConfig = state.pollConfig as Required<CreatePollMessageConfig>;
+
+      console.log(pollConfig);
 
       // Gets the message from the user
       let message = ctx.message.text;
@@ -386,6 +396,8 @@ export const createPollMessageScene = new Scenes.WizardScene(
         // Save the poll option to the state
         pollConfig.pollOptions.push(message);
 
+        console.log(pollConfig);
+
         // If the there are no additional options
         if (!pollConfig.additionalOptionsFuncList?.length) {
 
@@ -406,7 +418,7 @@ export const createPollMessageScene = new Scenes.WizardScene(
     }
   ),
 
-  // The fourth step in creating the poll message
+  // The fifth step in creating the poll message
   // which is to get all the additional options if there are any
   createStep(
     async (context: Scenes.WizardContext, next: () => Promise<void>) => {
