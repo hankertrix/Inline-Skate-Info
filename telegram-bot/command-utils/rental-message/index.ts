@@ -7,11 +7,13 @@ import type { CbQuery } from "../../types";
 import {
   type PollConfig,
   type CreatePollMessageState,
+  type CreatePollMessageConfig,
   POLL_TYPES,
   getName,
   getPollOptions,
   getPollMessage,
   reformPollMessage,
+  createConfig,
 } from "../poll-message";
 import { DEV } from "$lib/constants";
 import { getModule } from "../../utils";
@@ -85,7 +87,10 @@ export async function handler(
     const initialState: Required<Omit<CreatePollMessageState, "pollMessage">> =
       {
         messagesToDelete: [botMessage.message_id],
-        pollConfig: DEFAULT_CREATE_RENTAL_MSG_CONFIG
+        pollConfig: createConfig<Partial<CreatePollMessageConfig>>(
+          {},
+          DEFAULT_CREATE_RENTAL_MSG_CONFIG,
+        )
       };
 
     // Enters the create poll message scene with

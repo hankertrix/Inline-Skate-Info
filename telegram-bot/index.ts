@@ -1,8 +1,12 @@
 // The module that contains the telegraf bot
 
-import { Telegraf, Scenes, session } from "telegraf";
 import type { Context } from "telegraf";
 import type { InlineQueryResult } from "telegraf/types";
+import type {
+  CreatePollMessageState,
+  CreatePollMessageConfig
+} from "./command-utils/poll-message";
+import { Telegraf, Scenes, session } from "telegraf";
 import * as filters from "telegraf/filters";
 import { SPACING, DEV, getBasePath } from "../src/lib/constants";
 import * as utils from "./utils";
@@ -18,7 +22,6 @@ import {
 } from "./bot-utils";
 import * as scenes from "./bot-scenes";
 import * as commandUtils from "./command-utils";
-import { type CreatePollMessageState } from "./command-utils/poll-message";
 
 
 
@@ -1336,7 +1339,12 @@ bot.command([
   // The initial state
   const initialState: Required<CreatePollMessageState> = {
     pollMessage: message,
-    pollConfig: commandUtils.poll.DEFAULT_CREATE_POLL_MSG_CONFIG,
+    pollConfig: commandUtils.poll.createConfig<
+      Partial<CreatePollMessageConfig>
+    >(
+      {},
+      commandUtils.poll.DEFAULT_CREATE_POLL_MSG_CONFIG
+    ),
     messagesToDelete: [ctx.message.message_id],
   };
 
@@ -1381,7 +1389,12 @@ bot.command([
   // The initial state
   const initialState: Required<CreatePollMessageState> = {
     pollMessage: message,
-    pollConfig: commandUtils.rentalMsg.DEFAULT_CREATE_RENTAL_MSG_CONFIG,
+    pollConfig: commandUtils.poll.createConfig<
+      Partial<CreatePollMessageConfig>
+    >(
+      {},
+      commandUtils.rentalMsg.DEFAULT_CREATE_RENTAL_MSG_CONFIG,
+    ),
     messagesToDelete: [ctx.message.message_id],
   };
 
