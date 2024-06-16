@@ -159,6 +159,9 @@ export const createPollMessageScene = new Scenes.WizardScene(
       // Gets the poll config object
       const pollConfig = state.pollConfig as Required<CreatePollMessageConfig>;
 
+      console.log("1st step");
+      console.log(pollConfig);
+
       // If the message is already given
       if (state.pollMessage) {
 
@@ -209,6 +212,9 @@ export const createPollMessageScene = new Scenes.WizardScene(
 
       // Gets the poll config object
       const pollConfig = state.pollConfig as Required<CreatePollMessageConfig>;
+
+      console.log("2nd step");
+      console.log(pollConfig);
 
       // Gets the message from the user
       let message = ctx.message.text;
@@ -288,6 +294,9 @@ export const createPollMessageScene = new Scenes.WizardScene(
       // Gets the poll config object
       const pollConfig = state.pollConfig;
 
+      console.log("3rd step");
+      console.log(pollConfig);
+
       // Gets the message from the user with the command removed
       const message = removeCommand(ctx.message.text);
 
@@ -358,6 +367,9 @@ export const createPollMessageScene = new Scenes.WizardScene(
 
       // Gets the poll config object
       const pollConfig = state.pollConfig as Required<CreatePollMessageConfig>;
+
+      console.log("4th step");
+      console.log(pollConfig);
 
       // Gets the message from the user
       let message = ctx.message.text;
