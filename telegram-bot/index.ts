@@ -1339,12 +1339,10 @@ bot.command([
   // The initial state
   const initialState: Required<CreatePollMessageState> = {
     pollMessage: message,
-    pollConfig: commandUtils.poll.createConfig<
-      Partial<CreatePollMessageConfig>
-    >(
+    pollConfig: commandUtils.poll.createConfig(
       {},
       commandUtils.poll.DEFAULT_CREATE_POLL_MSG_CONFIG
-    ),
+    ) as CreatePollMessageConfig,
     messagesToDelete: [ctx.message.message_id],
   };
 
@@ -1389,12 +1387,10 @@ bot.command([
   // The initial state
   const initialState: Required<CreatePollMessageState> = {
     pollMessage: message,
-    pollConfig: commandUtils.poll.createConfig<
-      Partial<CreatePollMessageConfig>
-    >(
+    pollConfig: commandUtils.poll.createConfig(
       {},
       commandUtils.rentalMsg.DEFAULT_CREATE_RENTAL_MSG_CONFIG,
-    ),
+    ) as CreatePollMessageConfig,
     messagesToDelete: [ctx.message.message_id],
   };
 

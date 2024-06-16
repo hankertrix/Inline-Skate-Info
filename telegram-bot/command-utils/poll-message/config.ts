@@ -142,23 +142,13 @@ export type CreatePollMessageState = {
 
 
 // Function to create a configuration object with default values
-export function createConfig<Type extends Record<string, unknown>>(
-  givenConfig: Type,
-  defaultConfig: Type,
-): Required<Type> {
+export function createConfig(
+  givenConfig: Record<string, unknown>,
+  defaultConfig: Record<string, unknown>,
+): Record<string, unknown> {
 
-  // Create a new Proxy object with a default getter
-  const config = new Proxy<Type>(givenConfig, {
-
-    // The getter that will return the default value
-    get(object: Type, property: string) {
-
-      // Returns the default value if the poll configuration
-      // doesn't contain the value
-      return object[property] ?? defaultConfig[property];
-    },
-  });
-
-  // Return the Proxy object and cast it to a required version of the type given
-  return config as Required<Type>;
+  return {
+    ...defaultConfig,
+    ...givenConfig
+  };
 }
