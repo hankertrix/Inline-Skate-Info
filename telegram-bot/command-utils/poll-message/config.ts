@@ -160,8 +160,8 @@ export function createConfig<Type extends Record<string, unknown>>(
       // and the default property is a list or a dictionary
       if (
         object[property] == null
-        && utils.isObject(defaultProperty)
-        || Array.isArray(defaultProperty)
+        && (utils.isObject(defaultProperty)
+          || Array.isArray(defaultProperty))
       ) {
 
           // Set the default configuration on the object with a deep copy
