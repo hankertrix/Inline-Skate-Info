@@ -236,8 +236,8 @@ export const createPollMessageScene = new Scenes.WizardScene(
               numberingStyles: numberingStyles.map(
 
                 // Strip the HTML from each item of the
-                // numbering style and monospace each line.
-                // Then join them using a new line character.
+                // numbering style and monospace each line
+                // then join them using a new line character.
                 (value: string) =>
                   utils.monospace(utils.stripHtml(value)).trim()
               ).join("\n")
