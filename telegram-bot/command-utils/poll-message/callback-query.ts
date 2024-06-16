@@ -5,7 +5,8 @@ import type { CbQuery } from "../../types";
 import { Scenes } from "telegraf";
 import {
   type PollConfig,
-  POLL_TYPES
+  POLL_TYPES,
+  createConfig
 } from "./config";
 import * as utils from "../../utils";
 import { DEFAULT_POLL_CONFIG } from "./defaults";
@@ -575,7 +576,7 @@ export async function callbackHandler(
   const name = getName(callbackQuery.from);
 
   // Initialise the poll configuration object
-  const pollConfig = DEFAULT_POLL_CONFIG;
+  const pollConfig = createConfig<PollConfig>({}, DEFAULT_POLL_CONFIG);
 
   // If the message contains the single poll option mark
   if (messageText.includes(SINGLE_CHOICE_POLL_MARK)) {

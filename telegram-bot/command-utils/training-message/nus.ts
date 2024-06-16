@@ -6,6 +6,12 @@ import * as filters from "telegraf/filters";
 import * as utils from "../../utils";
 import * as trgMsgUtils from "./utils";
 import {
+  type PollConfig,
+  DEFAULT_POLL_CONFIG,
+  generatePollMessage,
+  createConfig,
+} from "../poll-message";
+import {
   cancelCommand,
   createWizardScene,
   deleteMessages,
@@ -14,10 +20,6 @@ import {
   promptUserForInput,
   removeCommand,
 } from "../../bot-utils";
-import {
-  DEFAULT_POLL_CONFIG,
-  generatePollMessage
-} from "../poll-message";
 
 
 // The location of the training
@@ -205,10 +207,10 @@ function createTrainingPollMsg(
 ) {
 
   // Initialise the poll configuration object
-  const pollConfig = DEFAULT_POLL_CONFIG;
-
-  // Set the poll options on the poll configuration object
-  pollConfig.pollOptions = generatePollOptions(trainingDates);
+  // with the generated poll options
+  const pollConfig = createConfig<PollConfig>({
+    pollOptions: generatePollOptions(trainingDates)
+  }, DEFAULT_POLL_CONFIG);
 
   // Returns the result of the generate poll message
   return generatePollMessage(
@@ -225,10 +227,10 @@ function createTrainingPollMsg(
 function createCustomTrgMsg(message: string, trainingDates: string[]) {
 
   // Initialise the poll configuration object
-  const pollConfig = DEFAULT_POLL_CONFIG;
-
-  // Set the poll options on the poll configuration object
-  pollConfig.pollOptions = generatePollOptions(trainingDates);
+  // with the generated poll options
+  const pollConfig = createConfig<PollConfig>({
+    pollOptions: generatePollOptions(trainingDates),
+  }, DEFAULT_POLL_CONFIG);
 
   // Returns the result of the generate poll message function
   return generatePollMessage(message, pollConfig);
