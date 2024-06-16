@@ -116,6 +116,61 @@ const RENTAL_MSG_FORMAT_OPTIONS: FormatOptions = {
 };
 
 
+// The function to generate an inline keyboard for the NTU rental message
+function generateInlineKeyboard(
+  sizes: string[] = SIZES
+): () => Types.Markup<InlineKeyboardMarkup> {
+
+  // Initialise the inline keyboard
+  const inlineKeyboard: InlineKeyboardButton[][] = [];
+
+  // Gets the length of the sizes array
+  const sizesLength = sizes.length;
+
+  // Iterates over the sizes in the sizes array
+  for (let index = 0; index < sizesLength; index += 2) {
+
+    // Checks if index + 1 is greater than
+    // or equal to the length of the array
+    if (index + 1 >= sizesLength) {
+
+      // Then just add the size at the current index
+      inlineKeyboard.push([
+        Markup.button.callback(
+          sizes[index],
+          sizes[index]
+        )
+      ]);
+    }
+
+    // Otherwise, add the two sizes at index and at index + 1
+    else {
+      inlineKeyboard.push([
+        Markup.button.callback(
+          sizes[index],
+          sizes[index]
+        ),
+        Markup.button.callback(
+          sizes[index + 1],
+          sizes[index + 1]
+        )
+      ]);
+    }
+  }
+
+  // Adds the tag string as the last option to the inline keyboard
+  inlineKeyboard.push([
+    Markup.button.callback(
+      RENTAL_MSG_CONFIG.tagString,
+      RENTAL_MSG_CONFIG.tagString
+    )
+  ]);
+
+  // Returns the inline keyboard
+  return () => Markup.inlineKeyboard(inlineKeyboard);
+}
+
+
 // The rental message configuration
 const RENTAL_MSG_CONFIG: Required<PollConfig> = {
   ...DEFAULT_RENTAL_MSG_CONFIG,
@@ -191,61 +246,6 @@ function createRentalMessagePortion(
 
   // Add the time portion to the rental message and return the rental message
   return utils.strFormat(rentalMsg, { time: timePortion });
-}
-
-
-// The function to generate an inline keyboard for the NTU rental message
-function generateInlineKeyboard(
-  sizes: string[] = SIZES
-): () => Types.Markup<InlineKeyboardMarkup> {
-
-  // Initialise the inline keyboard
-  const inlineKeyboard: InlineKeyboardButton[][] = [];
-
-  // Gets the length of the sizes array
-  const sizesLength = sizes.length;
-
-  // Iterates over the sizes in the sizes array
-  for (let index = 0; index < sizesLength; index += 2) {
-
-    // Checks if index + 1 is greater than
-    // or equal to the length of the array
-    if (index + 1 >= sizesLength) {
-
-      // Then just add the size at the current index
-      inlineKeyboard.push([
-        Markup.button.callback(
-          sizes[index],
-          sizes[index]
-        )
-      ]);
-    }
-
-    // Otherwise, add the two sizes at index and at index + 1
-    else {
-      inlineKeyboard.push([
-        Markup.button.callback(
-          sizes[index],
-          sizes[index]
-        ),
-        Markup.button.callback(
-          sizes[index + 1],
-          sizes[index + 1]
-        )
-      ]);
-    }
-  }
-
-  // Adds the tag string as the last option to the inline keyboard
-  inlineKeyboard.push([
-    Markup.button.callback(
-      RENTAL_MSG_CONFIG.tagString,
-      RENTAL_MSG_CONFIG.tagString
-    )
-  ]);
-
-  // Returns the inline keyboard
-  return () => Markup.inlineKeyboard(inlineKeyboard);
 }
 
 
