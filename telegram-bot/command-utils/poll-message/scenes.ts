@@ -46,7 +46,7 @@ async function doneCommandHandler(ctx: Scenes.WizardContext) {
   const pollConfig = state.pollConfig as Required<CreatePollMessageConfig>;
 
   // If the message or poll options are not given
-  if (!state.pollMessage || pollConfig.pollOptions?.length) {
+  if (!state.pollMessage || !pollConfig.pollOptions?.length) {
 
     // Tells the user that the poll message is not completed
     // and they should use the "/cancel" command instead to cancel
@@ -159,8 +159,6 @@ export const createPollMessageScene = new Scenes.WizardScene(
       // Gets the poll config object
       const pollConfig = state.pollConfig as Required<CreatePollMessageConfig>;
 
-      console.log(pollConfig);
-
       // If the message is already given
       if (state.pollMessage) {
 
@@ -211,8 +209,6 @@ export const createPollMessageScene = new Scenes.WizardScene(
 
       // Gets the poll config object
       const pollConfig = state.pollConfig as Required<CreatePollMessageConfig>;
-
-      console.log(pollConfig);
 
       // Gets the message from the user
       let message = ctx.message.text;
@@ -292,8 +288,6 @@ export const createPollMessageScene = new Scenes.WizardScene(
       // Gets the poll config object
       const pollConfig = state.pollConfig;
 
-      console.log(pollConfig);
-
       // Gets the message from the user with the command removed
       const message = removeCommand(ctx.message.text);
 
@@ -340,8 +334,6 @@ export const createPollMessageScene = new Scenes.WizardScene(
         pollConfig.isSingleChoicePoll = false;
       }
 
-      console.log(pollConfig);
-
       // Ask the user for the poll options
       await promptUserForInput(
         ctx,
@@ -366,8 +358,6 @@ export const createPollMessageScene = new Scenes.WizardScene(
 
       // Gets the poll config object
       const pollConfig = state.pollConfig as Required<CreatePollMessageConfig>;
-
-      console.log(pollConfig);
 
       // Gets the message from the user
       let message = ctx.message.text;
@@ -395,8 +385,6 @@ export const createPollMessageScene = new Scenes.WizardScene(
 
         // Save the poll option to the state
         pollConfig.pollOptions.push(message);
-
-        console.log(pollConfig);
 
         // If the there are no additional options
         if (!pollConfig.additionalOptionsFuncList?.length) {
