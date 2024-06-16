@@ -9,7 +9,7 @@ import { removeCommand } from "../../bot-utils";
 const createNumberingRegex = /\d+/;
 
 // The string to mark a poll as one with only one choice
-const SINGLE_CHOICE_POLL_MARK = utils.generateZeroWidthCode("single");
+export const SINGLE_CHOICE_POLL_MARK = utils.generateZeroWidthCode("single");
 
 
 // Function to create the numbering from the numbering style

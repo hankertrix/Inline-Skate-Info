@@ -9,7 +9,7 @@ import {
 } from "./config";
 import * as utils from "../../utils";
 import { DEFAULT_POLL_CONFIG } from "./defaults";
-import { createNumberOfPeoplePortion } from "./utils";
+import { createNumberOfPeoplePortion, SINGLE_CHOICE_POLL_MARK } from "./utils";
 
 
 // The regex to get the maximum number of entries from the
@@ -130,7 +130,7 @@ function getPollOptionMaxEntries(pollOptionLine: string) {
   // The regex.match function returns null if no match is found,
   // so returning an array with two null values instead of null allows
   // the destructuring to still work.
-  const [ , maxEntries] = match ?? [null, null];
+  const [, maxEntries] = match ?? [null, null];
 
   // Returns the maximum number of entries that has been gotten from
   // the poll option line.
@@ -144,7 +144,7 @@ function getPollOptionMaxEntries(pollOptionLine: string) {
 export function regeneratePollPortion(
   message: string,
   pollOption: string,
-  selected: boolean,
+  isSelectedPollOption: boolean,
   pollConfig: Required<PollConfig>,
   givenName: string | null,
   tagString: string | null = null,
@@ -212,13 +212,13 @@ export function regeneratePollPortion(
   const names: string[] = [];
 
   // Iterates over the matches
-  for (const [index, [ , numStyle, name, tag]] of matches.entries()) {
+  for (const [index, [, numStyle, name, tag]] of matches.entries()) {
 
     // If it's the first item
     if (index === 0) {
 
       // Set the numbering style
-      numberingStyle = numStyle
+      numberingStyle = numStyle;
     }
 
     // Gets the trimmed name
@@ -230,14 +230,37 @@ export function regeneratePollPortion(
     // Create the numbering
     const numbering = createNumbering(numberingStyle, index);
 
-    // Otherwise, if the name is selected and the name is the given name
-    if (pollConfig.isSameNameFunc(trimmedName, givenName) && selected) {
+    // The condition where the encountered name is the given name
+    const encounteredNameIsGivenName = pollConfig.isSameNameFunc(
+      trimmedName, givenName
+    );
+
+    // If the name is the given name and the poll is a single choice poll
+    if (encounteredNameIsGivenName && pollConfig.isSingleChoicePoll) {
+
+      // Continue the loop to remove the name from the poll
+      continue;
+    }
+
+    // Otherwise, if the name is the given name
+    // and the poll option is the selected one
+    else if (encounteredNameIsGivenName && isSelectedPollOption) {
 
       // Set the encountered variable to true
       encountered = true;
 
-      // If the tag string is given
-      if (tagString) {
+      // If no tag string is given
+      if (!tagString) {
+
+        // Set the removed variable to true
+        removed = true;
+
+        // Continue the loop to remove the name from the list
+        continue;
+      }
+
+      // Otherwise, if the tag string is given
+      else {
 
         // If the tagged variable has not been set
         if (tagged == null) {
@@ -257,19 +280,11 @@ export function regeneratePollPortion(
           `${numbering} ${trimmedName} ${tagged ? tagString : ""}`.trim()
         );
       }
-
-      // Otherwise, if no tag string is given
-      else {
-
-        // Set the removed variable to true
-        removed = true;
-
-        // Continue the loop to remove the name from the list
-        continue;
-      }
     }
 
-    // Otherwise, if the name is not the given name
+    // Otherwise,
+    // if the name is not the given name
+    // or the poll option is not the one selected
     else {
 
       // Adds the numbering style, name, and the tag
@@ -293,7 +308,7 @@ export function regeneratePollPortion(
   // Tagging should not be done as the person should already be
   // in the list to be tagged.
   const canAddToPoll = (
-    selected
+    isSelectedPollOption
     && givenName
     && !encountered
     && !tagString
@@ -411,12 +426,12 @@ export function reformPollMessage(
   for (const pollOption of pollOptions) {
 
     // The boolean variable that indicates if the poll option is selected
-    let isSelected = pollOption === selectedPollOption;
+    let isSelectedPollOption = pollOption === selectedPollOption;
 
     // If the tag string is given,
     // and all of the entries should be tagged,
     // then indicate that the poll option is selected
-    if (pollConfig.tagAll && tagString) isSelected = true;
+    if (pollConfig.tagAll && tagString) isSelectedPollOption = true;
 
     // Calls the function to generate the poll portion
     // and get the number of people who responded to that poll option
@@ -428,9 +443,9 @@ export function reformPollMessage(
     } = regeneratePollPortion(
       message,
       pollOption,
-      isSelected,
+      isSelectedPollOption,
       pollConfig,
-      isSelected ? name : null,
+      isSelectedPollOption ? name : null,
       tagString,
     );
 
@@ -559,6 +574,16 @@ export async function callbackHandler(
   // Gets the name of the person responding
   const name = getName(callbackQuery.from);
 
+  // Initialise the poll configuration object
+  const pollConfig = DEFAULT_POLL_CONFIG;
+
+  // If the message contains the single poll option mark
+  if (messageText.includes(SINGLE_CHOICE_POLL_MARK)) {
+
+    // Set the single choice poll option to true
+    pollConfig.isSingleChoicePoll = true;
+  }
+
   // Gets the reformed poll message
   // and the variable to indicated whether the person has been added
   // or removed from the poll option
@@ -568,13 +593,12 @@ export async function callbackHandler(
     pollOption,
     pollOptions,
     name,
-    DEFAULT_POLL_CONFIG,
+    pollConfig,
   );
 
   // Answers the callback query
   await ctx.answerCbQuery(
-    `Your name has been ${
-      removed ? "removed from" : "added to"
+    `Your name has been ${removed ? "removed from" : "added to"
     } '${pollOption}'!`
   );
 
