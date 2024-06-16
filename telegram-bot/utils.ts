@@ -27,8 +27,12 @@ export function isObject(obj: unknown) {
 
 // Function to merge two objects
 // This function will MODIFY the base object
-// eslint-disable-next-line  @typescript-eslint/no-explicit-any
-export function mergeObjects(baseObj: any, objToMerge: object, errorOnConflict: boolean = true, overwriteBaseObject: boolean = false) {
+export function mergeObjects(
+  baseObj: Record<string, unknown>,
+  objToMerge: Record<string, unknown>,
+  errorOnConflict: boolean = true,
+    overwriteBaseObject: boolean = false
+) {
 
   // Iterates the object to merge
   for (const [key, value] of Object.entries(objToMerge)) {
@@ -36,14 +40,21 @@ export function mergeObjects(baseObj: any, objToMerge: object, errorOnConflict: 
     // If the key is found in the base object
     if (key in baseObj) {
 
-      // If the function is set to error on conflict, then throw an error to tell the user that a conflict has occurred
-      if (errorOnConflict) throw new Error(`The key '${key}' exists in both the base object and the object to merge.`);
+      // If the function is set to error on conflict,
+      // then throw an error to tell the user that a conflict has occurred
+      if (errorOnConflict) throw new Error(
+        `The key '${
+          key
+        }' exists in both the base object and the object to merge.`
+      );
 
-      // If the function is set to overwrite the base object, then overwrite the key in the base object
+      // If the function is set to overwrite the base object,
+      // then overwrite the key in the base object
       else if (overwriteBaseObject) baseObj[key] = value;
     }
 
-    // Otherwise, just set the key and value in the base object since there is no conflict
+    // Otherwise, just set the key and value in the base object
+    // since there is no conflict
     else baseObj[key] = value;
   }
 
@@ -53,7 +64,7 @@ export function mergeObjects(baseObj: any, objToMerge: object, errorOnConflict: 
 
 
 // Function to merge a list of objects into a single object
-export function mergeListOfObjects(listOfObjects: object[]) {
+export function mergeListOfObjects(listOfObjects: Record<string, unknown>[]) {
 
   // Initialise the base object
   let baseObj;
