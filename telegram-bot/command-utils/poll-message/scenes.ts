@@ -121,11 +121,9 @@ export function createNumberingStylesList() {
     // Title case the property string
     propertyStr = utils.titlecase(propertyStr);
 
-    // Monospace and add the property string
+    // Add the property string
     // and the value to the list of numbering styles
-    numberingStyles.push(
-      utils.monospace(`${propertyStr} ${utils.stripHtml(value)}`.trim())
-    );
+    numberingStyles.push(`${propertyStr} ${value}`.trim());
   }
 
   // Returns the list of numbering styles
@@ -234,7 +232,16 @@ export const createPollMessageScene = new Scenes.WizardScene(
           ctx,
           utils.strFormat(
             prompts.failure.prompt,
-            { numberingStyles: numberingStyles.join("\n") }
+            {
+              numberingStyles: numberingStyles.map(
+
+                // Strip the HTML from each item of the
+                // numbering style and monospace each line.
+                // Then join them using a new line character.
+                (value: string) =>
+                  utils.monospace(utils.stripHtml(value)).trim()
+              ).join("\n")
+            }
           ),
           {
             ...generateReplyKeyboard(
