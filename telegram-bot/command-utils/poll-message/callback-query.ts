@@ -60,6 +60,9 @@ function getIndexOrDefaultValue(
 // Function to get the poll option segment
 export function getPollOptionSegment(message: string, pollOption: string) {
 
+  console.log(`Poll message: ${message}`);
+  console.log(`Poll option: ${pollOption}`);
+
   // Gets the index of the poll option in the message
   // and set it to zero if the index is not found.
   // For now, I think it's okay to have it match from
