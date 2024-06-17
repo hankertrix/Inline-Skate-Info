@@ -31,7 +31,7 @@ export const DEFAULT_CREATE_TRAINING_MSG_PROMPTS: CreatePollMessagePrompts = [
   // The prompts for the second step
   {
     success: {
-      prompt: "Do you want to create a training message with only one choice?",
+      prompt: "Do you want to allow multiple choices for the training message?",
       placeholder: "Answer either yes or no...",
     },
     failure: {

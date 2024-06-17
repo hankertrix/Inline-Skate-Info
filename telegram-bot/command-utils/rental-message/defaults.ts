@@ -33,7 +33,7 @@ const DEFAULT_CREATE_RENTAL_MSG_PROMPTS: CreatePollMessagePrompts = [
   // The prompts for the second step
   {
     success: {
-      prompt: "Do you want to restrict your rentals to only one per person?",
+      prompt: "Do you want to allow people to rent multiple skates?",
       placeholder: "Answer either yes or no...",
     },
     failure: {
@@ -212,7 +212,9 @@ export async function promptForMaxEntries(
 
 
 // The default rental message options
-export const DEFAULT_CREATE_RENTAL_MSG_CONFIG: Required<CreatePollMessageConfig> = {
+export const DEFAULT_CREATE_RENTAL_MSG_CONFIG: Required<
+  CreatePollMessageConfig
+> = {
   ...DEFAULT_RENTAL_MSG_CONFIG,
   prompts: DEFAULT_CREATE_RENTAL_MSG_PROMPTS,
   incompleteDataMessage: DEFAULT_INCOMPLETE_DATA_MESSAGE,

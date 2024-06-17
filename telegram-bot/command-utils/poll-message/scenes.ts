@@ -332,15 +332,15 @@ export const createPollMessageScene = new Scenes.WizardScene(
       // Otherwise, if the user answers yes
       else if (message.match(getYesRegex)) {
 
-        // Set the single choice poll option to true
-        pollConfig.isSingleChoicePoll = true;
+        // Set the single choice poll option to false
+        pollConfig.isSingleChoicePoll = false;
       }
 
       // Otherwise, the user must have answered no
       else {
 
-        // Set the single choice poll option to false
-        pollConfig.isSingleChoicePoll = false;
+        // Set the single choice poll option to true
+        pollConfig.isSingleChoicePoll = true;
       }
 
       // Ask the user for the poll options

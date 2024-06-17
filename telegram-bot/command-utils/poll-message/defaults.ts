@@ -157,7 +157,7 @@ export const DEFAULT_CREATE_POLL_MESSAGE_PROMPTS: CreatePollMessagePrompts = [
   // The prompts for the second step
   {
     success: {
-      prompt: "Do you want to create a poll message with only one choice?",
+      prompt: "Do you want to allow multiple choices for the poll?",
       placeholder: "Answer either yes or no...",
     },
     failure: {

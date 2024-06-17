@@ -4,8 +4,15 @@ import type { DateMapping } from "../../types";
 import type { TrainingMessageHandler } from ".";
 import * as utils from "../../utils";
 import {
-  type CreatePollMessageConfig,
+  deleteMessages,
+  wrapCallbackWithMessageDeleter
+} from "../../bot-utils";
+import { DEV } from "../../../src/lib/constants";
+import {
   type CreatePollMessageState,
+  type CreatePollMessageConfig,
+  DEFAULT_POLL_CONFIG,
+  generatePollMessage,
   createConfig,
 } from "../poll-message";
 import { DEFAULT_CREATE_TRAINING_MSG_CONFIG } from "./defaults";
@@ -17,17 +24,30 @@ export async function handleTrgMsg(
   ...[ctx, msg]: Parameters<TrainingMessageHandler>
 ): ReturnType<TrainingMessageHandler> {
 
-  // Initialise the state object
-  const initialState: Required<CreatePollMessageState> = {
-    pollMessage: msg,
-    pollConfig: createConfig<Partial<CreatePollMessageConfig>>(
-      {}, DEFAULT_CREATE_TRAINING_MSG_CONFIG
-    ),
-    messagesToDelete: [ctx.message.message_id],
-  };
+  // Generate a poll message with the given training message
+  // and the default options
+  const { callback } = generatePollMessage(msg, DEFAULT_POLL_CONFIG);
 
-  // Enter the create poll message scene
-  return ctx.scene.enter("createPollMessage", initialState);
+  // If the message given is empty
+  if (!msg) {
+
+    // Initialise the state to create the poll message
+    const initialState: Omit<CreatePollMessageState, "pollMessage"> = {
+      pollConfig: createConfig<Partial<CreatePollMessageConfig>>(
+        {}, DEFAULT_CREATE_TRAINING_MSG_CONFIG
+      ),
+      messagesToDelete: [ctx.message.message_id]
+    };
+
+    // Enters the scene to create the training message
+    return await ctx.scene.enter("createPollMessage", initialState);
+  }
+
+  // Otherwise, calls the callback function to create a training message
+  await callback(ctx, msg);
+
+  // Tries to delete the command message that the user has sent
+  await deleteMessages(ctx, ctx.message.message_id);
 }
 
 
