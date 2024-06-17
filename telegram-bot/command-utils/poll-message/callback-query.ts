@@ -70,7 +70,7 @@ export function getPollOptionSegment(message: string, pollOption: string) {
   // to have the format string have anything before the
   // poll option.
   const pollOptionIndex = message.match(
-    new RegExp(String.raw`^\b${pollOption}\b`, "m")
+    new RegExp(String.raw`^\b${utils.regexEscape(pollOption)}\b`, "m")
   )?.index ?? 0;
 
   // Initialise the variable to store the index of the
