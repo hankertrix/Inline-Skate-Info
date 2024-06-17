@@ -310,7 +310,7 @@ export function regeneratePollPortion(
   // the name is not being tagged as
   // the absence of a tag string means tagging isn't wanted and
   // the length of the list of names must be less than
-  // the maximum number of entries.
+  // the maximum number of entries, unless the poll is a single choice poll.
   // Tagging should not be done as the person should already be
   // in the list to be tagged.
   const canAddToPoll = (
@@ -318,7 +318,7 @@ export function regeneratePollPortion(
     && givenName
     && !encountered
     && !tagString
-    && names.length < maxEntries
+    && (names.length < maxEntries || pollConfig.isSingleChoicePoll)
   );
 
   console.log(`canAddToPoll: ${canAddToPoll}`);
