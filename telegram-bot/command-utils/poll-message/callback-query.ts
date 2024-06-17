@@ -184,6 +184,8 @@ export function regeneratePollPortion(
     pollOptionNameSegment.matchAll(regex)
   );
 
+  console.log(`Matches: ${matches}`);
+
   // Initialise the numbering styles variable
   let numberingStyle: string = pollConfig.numberingStyle;
 
@@ -280,6 +282,8 @@ export function regeneratePollPortion(
     // and the poll is a single choice poll
     else if (encounteredNameIsGivenName && pollConfig.isSingleChoicePoll) {
 
+      console.log("Single choice poll hit");
+
       // Continue the loop to remove the name from the poll
       continue;
     }
@@ -317,6 +321,12 @@ export function regeneratePollPortion(
     && (names.length < maxEntries || pollConfig.isSingleChoicePoll)
   );
 
+  console.log(`canAddToPoll: ${canAddToPoll}`);
+  console.log(`isSelectedPollOption: ${isSelectedPollOption}`);
+  console.log(`givenName: ${givenName}`);
+  console.log(pollPortionList);
+  console.log(names);
+
   // If all the conditions to add the person to the poll message
   // are fulfilled.
   if (canAddToPoll) {
@@ -337,6 +347,10 @@ export function regeneratePollPortion(
     // Adds the name to the list of names
     names.push(givenName);
   }
+
+  console.log("Post adding");
+  console.log(pollPortionList);
+  console.log(names);
 
   // If the numbering style is not NONE,
   // and there are no names on the poll option,
