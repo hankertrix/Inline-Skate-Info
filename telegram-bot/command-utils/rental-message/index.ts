@@ -9,6 +9,7 @@ import {
   type CreatePollMessageState,
   type CreatePollMessageConfig,
   POLL_TYPES,
+  SINGLE_CHOICE_POLL_MARK,
   getName,
   getPollOptions,
   getPollMessage,
@@ -121,6 +122,13 @@ export async function defaultCallbackHandler(
 
     // Initialise the default configuration
     pollConfig = createConfig<PollConfig>({}, DEFAULT_RENTAL_MSG_CONFIG);
+  }
+
+  // If the message contains the single poll option mark
+  if (messageText.includes(SINGLE_CHOICE_POLL_MARK)) {
+
+    // Set the single choice poll option to true
+    pollConfig.isSingleChoicePoll = true;
   }
 
   // Gets the rental option
