@@ -1,13 +1,17 @@
 // Module to create the rental message for NTU
 
+import type {
+  InlineKeyboardButton,
+  InlineKeyboardMarkup,
+  ParseMode
+} from "telegraf/types";
+import { Markup, Scenes, Types } from "telegraf";
+import * as utils from "../../utils";
 import {
   type RentalMessageCallbackHandler,
   type RentalMessageHandler,
   defaultCallbackHandler,
 } from ".";
-import type { InlineKeyboardButton, InlineKeyboardMarkup, ParseMode } from "telegraf/types";
-import { Markup, Scenes, Types } from "telegraf";
-import * as utils from "../../utils";
 import {
   type FormatOptions,
   type IsSameNameFunc,
@@ -124,6 +128,7 @@ const RENTAL_MSG_CONFIG: Required<PollConfig> = {
   numberingStyle: NUMBERING_STYLES.DASH,
   formatOptions: RENTAL_MSG_FORMAT_OPTIONS,
   maxNumberOfVotes: 1,
+  isSingleChoicePoll: true,
   isSameNameFunc: isSameName,
 } as const;
 
