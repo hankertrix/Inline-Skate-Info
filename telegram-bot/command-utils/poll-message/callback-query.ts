@@ -238,18 +238,9 @@ export function regeneratePollPortion(
       trimmedName, givenName
     );
 
-    // If the name is the given name and the poll is a single choice poll
-    if (encounteredNameIsGivenName && pollConfig.isSingleChoicePoll) {
-
-      console.log("Single choice poll hit");
-
-      // Continue the loop to remove the name from the poll
-      continue;
-    }
-
-    // Otherwise, if the name is the given name
+    // If the name is the given name
     // and the poll option is the selected one
-    else if (encounteredNameIsGivenName && isSelectedPollOption) {
+    if (encounteredNameIsGivenName && isSelectedPollOption) {
 
       // Set the encountered variable to true
       encountered = true;
@@ -285,6 +276,16 @@ export function regeneratePollPortion(
           `${numbering} ${trimmedName} ${tagged ? tagString : ""}`.trim()
         );
       }
+    }
+
+    // Otherwise, if the name is the given name
+    // and the poll is a single choice poll
+    else if (encounteredNameIsGivenName && pollConfig.isSingleChoicePoll) {
+
+      console.log("Single choice poll hit");
+
+      // Continue the loop to remove the name from the poll
+      continue;
     }
 
     // Otherwise,
