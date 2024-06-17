@@ -3,11 +3,7 @@
 import type { DateMapping } from "../../types";
 import type { TrainingMessageHandler } from ".";
 import * as utils from "../../utils";
-import {
-  deleteMessages,
-  wrapCallbackWithMessageDeleter
-} from "../../bot-utils";
-import { DEV } from "../../../src/lib/constants";
+import { deleteMessages } from "../../bot-utils";
 import {
   type CreatePollMessageState,
   type CreatePollMessageConfig,

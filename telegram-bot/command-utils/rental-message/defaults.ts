@@ -54,7 +54,8 @@ const DEFAULT_CREATE_RENTAL_MSG_PROMPTS: CreatePollMessagePrompts = [
   // The prompts for the third step
   {
     success: RENTAL_OPTION_MESSAGE,
-    failure: "Please enter a rental option.\n\nUse the /done command to get the bot to send the rental message."
+    failure: "Please enter a rental option.\n\n" +
+      "Use the /done command to get the bot to send the rental message."
   }
 ] as const;
 

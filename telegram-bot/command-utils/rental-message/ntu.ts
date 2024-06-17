@@ -129,15 +129,18 @@ const RENTAL_MSG_CONFIG: Required<PollConfig> = {
   numberingStyle: NUMBERING_STYLES.DASH,
   formatOptions: RENTAL_MSG_FORMAT_OPTIONS,
   maxNumberOfEntries: 1,
-  isSingleChoicePoll: true,
+  isSingleChoicePoll: false,
   isSameNameFunc: isSameName,
 } as const;
 
 // The rental message
-const RENTAL_MSG = `
-{time}
-Add your name if you want skate rentals. $5 for the whole session. Please either scan the PayNow QR code above or PayNow the $5 to ${process.env.NTU_TREASURER_PHONE_NUMBER}. Press the ${RENTAL_MSG_CONFIG.tagString} button to indicate that you have paid. First come first served basis!!!
-`.trim();
+const RENTAL_MSG = "{time}" +
+  "\n" +
+  "Add your name if you want skate rentals. " +
+  "$5 for the whole session. Please either scan the PayNow QR code above " +
+  `or PayNow the $5 to ${process.env.NTU_TREASURER_PHONE_NUMBER}. ` +
+  `Press the ${RENTAL_MSG_CONFIG.tagString} button ` +
+  "to indicate that you have paid. First come first served basis!!!";
 
 
 // The regular expression to remove the size and the tag string
@@ -400,7 +403,8 @@ export async function callbackHandler(
 
         // Tells the user to tell the developer an error has occurred
         return await ctx.answerCbQuery(
-          `Please tell the developer about this error.\nError: The regex match for the size range is null.`
+          "Please tell the developer about this error.\n" +
+            "Error: The regex match for the size range is null."
         );
       };
 
@@ -429,6 +433,9 @@ export async function callbackHandler(
 
   // The entry to put in the rental message
   const entry = tag ? name : `${name} ${chosenSize}`;
+
+  // Set the is same name function in the poll configuration object
+  pollConfig.isSameNameFunc = tag ? isSameName : defaultIsSameNameFunc;
 
   // Gets the reformed poll message
   const { reformedPollMessage, removed, tagged } = reformPollMessage(
@@ -467,7 +474,13 @@ export async function callbackHandler(
 
 
 // The help text for the NTU command
-export const help = `To use the /rental_msg command, simply type the command and the rental message will be sent to the group.
-
-If you would like to change the rental message to a custom one, provide the rental message after you have typed the command, like this:
-${utils.monospace(`/rental_msg ${utils.stripHtml("<custom rental message (optional)>")}`)}`;
+export const help = "To use the /rental_msg command, " +
+  "simply type the command and the rental message " +
+  "will be sent to the group." +
+  "\n\n" +
+  "If you would like to change the rental message to a custom one, " +
+  "provide the rental message after you have typed the command, like this:" +
+  "\n" +
+  `${utils.monospace(
+    `/rental_msg ${utils.stripHtml("<custom rental message (optional)>")}`
+  )}`;
