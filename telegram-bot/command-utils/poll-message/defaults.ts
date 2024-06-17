@@ -123,11 +123,16 @@ export const DEFAULT_POLL_CONFIG: Required<PollConfig> = {
 // The message to display for the step to get the numbering style.
 // The {numberingStyle} will be substituted with the actual list
 // of numbering styles when the message is sent.
-export const DEFAULT_NUMBERING_STYLES_MSG = `Please select a numbering style by copying and pasting a full line from the list below or by using the reply keyboard.\n\n{numberingStyles}\n`;
+export const DEFAULT_NUMBERING_STYLES_MSG =
+  "Please select a numbering style by copying " +
+  "and pasting a full line from the list below " +
+  "or by using the reply keyboard.\n\n{numberingStyles}\n";
 
 // The message to display for the step to get whether the user wants a poll
 // with only one choice
-export const DEFAULT_SINGLE_ANSWER_POLL_MSG = `Please answer yes or no either by typing it out, or using the reply keyboard.`;
+export const DEFAULT_SINGLE_CHOICE_POLL_MSG =
+  "Please answer yes or no either by typing it out, " +
+  "or using the reply keyboard.";
 
 // The poll option message
 export const DEFAULT_POLL_OPTION_MSG = `Please enter another poll option.
@@ -136,9 +141,11 @@ Use the /done command to get the bot to send the poll message.`;
 
 
 // The incomplete data message for the poll message creation scene
-export const DEFAULT_INCOMPLETE_DATA_MESSAGE = `The poll message is still missing some required data for it to be generated.
-
-Please continue the poll message creation process or use the /cancel command to cancel the creation of the poll message.`;
+export const DEFAULT_INCOMPLETE_DATA_MESSAGE =
+  "The poll message is still missing " +
+  "some required data for it to be generated.\n\n" +
+  "Please continue the poll message creation process " +
+  "or use the /cancel command to cancel the creation of the poll message.";
 
 
 // The default list of prompts for the poll message scene
@@ -163,7 +170,7 @@ export const DEFAULT_CREATE_POLL_MESSAGE_PROMPTS: CreatePollMessagePrompts = [
   {
     success: "Please enter the first poll option.",
     failure: {
-      prompt: DEFAULT_SINGLE_ANSWER_POLL_MSG,
+      prompt: DEFAULT_SINGLE_CHOICE_POLL_MSG,
       placeholder: "Answer either yes or no...",
     }
   },

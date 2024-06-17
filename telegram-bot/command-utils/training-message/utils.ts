@@ -4,14 +4,11 @@ import type { DateMapping } from "../../types";
 import type { TrainingMessageHandler } from ".";
 import * as utils from "../../utils";
 import {
-  deleteMessages,
-  wrapCallbackWithMessageDeleter
-} from "../../bot-utils";
-import { DEV } from "../../../src/lib/constants";
-import {
-  DEFAULT_POLL_CONFIG,
-  generatePollMessage,
+  type CreatePollMessageConfig,
+  type CreatePollMessageState,
+  createConfig,
 } from "../poll-message";
+import { DEFAULT_CREATE_TRAINING_MSG_CONFIG } from "./defaults";
 
 
 // Function to handle the training message command
@@ -20,36 +17,17 @@ export async function handleTrgMsg(
   ...[ctx, msg]: Parameters<TrainingMessageHandler>
 ): ReturnType<TrainingMessageHandler> {
 
-  // Generate a poll message with the given training message
-  // and the default options
-  const { callback } = generatePollMessage(msg, DEFAULT_POLL_CONFIG);
+  // Initialise the state object
+  const initialState: Required<CreatePollMessageState> = {
+    pollMessage: msg,
+    pollConfig: createConfig<Partial<CreatePollMessageConfig>>(
+      {}, DEFAULT_CREATE_TRAINING_MSG_CONFIG
+    ),
+    messagesToDelete: [ctx.message.message_id],
+  };
 
-  // If the message given is empty
-  if (!msg) {
-
-    // Wraps the callback with the function to delete the conversation
-    const wrappedCallback = wrapCallbackWithMessageDeleter(callback);
-
-    // Enters the scene to ask the user for their message for
-    // the training message.
-    // Also, tells the user that they haven't set up the training message
-    // for the chat and ask them to contact the developer
-    // if they want to get one set up.
-    return await ctx.scene.enter(
-      "validate",
-      {
-        message: `No training message was found for this chat, so please enter the desired training message. If you would like to set up a training message for this chat, please contact ${DEV}.`,
-        callback: wrappedCallback,
-        messagesToDelete: []
-      }
-    );
-  }
-
-  // Otherwise, calls the callback function to create a training message
-  await callback(ctx, msg);
-
-  // Tries to delete the command message that the user has sent
-  await deleteMessages(ctx, ctx.message.message_id);
+  // Enters the create poll message scene
+  return ctx.scene.enter("createPollMessage", initialState);
 }
 
 

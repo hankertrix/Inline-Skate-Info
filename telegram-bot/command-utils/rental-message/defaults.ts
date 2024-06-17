@@ -8,7 +8,7 @@ import {
   type IsSameNameFunc,
   type AdditionalOptionsFunction,
   DEFAULT_NUMBERING_STYLES_MSG,
-  DEFAULT_SINGLE_ANSWER_POLL_MSG,
+  DEFAULT_SINGLE_CHOICE_POLL_MSG,
   POLL_TYPES,
   DEFAULT_POLL_CONFIG,
   DEFAULT_TAG_STRING,
@@ -46,7 +46,7 @@ const DEFAULT_CREATE_RENTAL_MSG_PROMPTS: CreatePollMessagePrompts = [
   {
     success: "Please enter the first rental option.",
     failure: {
-      prompt: DEFAULT_SINGLE_ANSWER_POLL_MSG,
+      prompt: DEFAULT_SINGLE_CHOICE_POLL_MSG,
       placeholder: "Answer either yes or no...",
     },
   },

@@ -84,8 +84,15 @@ export async function handler(
 
 
 // The help text for the NTU command
-export const help = `To use the /trg_msg command, simply type the command and the training message will be sent to the group. You can indicate that the training is the last training for a while by simply typing the word 'last' after the command, like this:
-${utils.monospace(`/trg_msg last`)}
-
-If you would like to change the training message to a custom one, provide the training message after you have typed the command, like this:
-${utils.monospace(`/trg_msg ${utils.stripHtml("<custom training message (optional)>")}`)}`;
+export const help = "To use the /trg_msg command, simply type the command " +
+  "and the training message will be sent to the group. " +
+  "You can indicate that the training is the last training for a while " +
+  "by simply typing the word 'last' after the command, like this:\n" +
+  `${utils.monospace(`/trg_msg last`)}` +
+  "\n\n" +
+  "If you would like to change the training message to a custom one, " +
+  "provide the training message after you have typed the command, " +
+  "like this:\n" +
+  `${utils.monospace(
+    `/trg_msg ${utils.stripHtml("<custom training message (optional)>")}`
+  )}`;

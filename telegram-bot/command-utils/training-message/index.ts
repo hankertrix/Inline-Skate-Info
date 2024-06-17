@@ -73,7 +73,8 @@ export function generateHelpText(chatId: number) {
   // (the chat ID wasn't found in the database),
   // then tells the user that the training message hasn't been set up
   if (!module) {
-    return `The training message has not been set up for this chat. Please contact ${DEV} if you would like to set up a training message.`;
+    return "The training message has not been set up for this chat. " +
+        `Please contact ${DEV} if you would like to set up a training message.`;
   }
 
   // Gets the help message from the data
