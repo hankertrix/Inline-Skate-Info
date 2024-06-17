@@ -120,7 +120,7 @@ export async function defaultCallbackHandler(
   if (!pollConfig) {
 
     // Initialise the default configuration
-    pollConfig = DEFAULT_RENTAL_MSG_CONFIG;
+    pollConfig = createConfig<PollConfig>({}, DEFAULT_RENTAL_MSG_CONFIG);
   }
 
   // Gets the rental option
