@@ -23,6 +23,7 @@ import {
   getPollMessage,
   defaultIsSameNameFunc,
   getPollOptions,
+  createConfig,
 } from "../poll-message";
 import { deleteMessages, removeCommand } from "../../bot-utils";
 import { getUpcomingTrainingDates } from "../training-message/utils";
@@ -128,7 +129,7 @@ const RENTAL_MSG_CONFIG: Required<PollConfig> = {
   numberingStyle: NUMBERING_STYLES.DASH,
   formatOptions: RENTAL_MSG_FORMAT_OPTIONS,
   maxNumberOfEntries: 1,
-  isSingleChoicePoll: false,
+  isSingleChoicePoll: true,
   isSameNameFunc: isSameName,
 } as const;
 
@@ -340,7 +341,7 @@ export async function callbackHandler(
 ): ReturnType<RentalMessageCallbackHandler> {
 
   // Initialise the poll configuration object
-  const pollConfig = RENTAL_MSG_CONFIG;
+  const pollConfig = createConfig<PollConfig>({}, RENTAL_MSG_CONFIG);
 
   // The variable to determine if the button pressed is the tag button
   const tag = callbackQuery.data === pollConfig.tagString;
@@ -428,9 +429,6 @@ export async function callbackHandler(
 
   // The entry to put in the rental message
   const entry = tag ? name : `${name} ${chosenSize}`;
-
-  // Set the is same name function in the poll configuration object
-  pollConfig.isSameNameFunc = tag ? isSameName : defaultIsSameNameFunc;
 
   // Gets the reformed poll message
   const { reformedPollMessage, removed, tagged } = reformPollMessage(
