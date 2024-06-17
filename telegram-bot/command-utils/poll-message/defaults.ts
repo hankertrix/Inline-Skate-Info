@@ -174,7 +174,9 @@ export const DEFAULT_CREATE_POLL_MESSAGE_PROMPTS: CreatePollMessagePrompts = [
 
 
 // The default poll message configuration
-export const DEFAULT_CREATE_POLL_MSG_CONFIG: Required<CreatePollMessageConfig> = {
+export const DEFAULT_CREATE_POLL_MSG_CONFIG: Required<
+  CreatePollMessageConfig
+> = {
   ...DEFAULT_POLL_CONFIG,
   pollOptions: [],
   prompts: DEFAULT_CREATE_POLL_MESSAGE_PROMPTS,
