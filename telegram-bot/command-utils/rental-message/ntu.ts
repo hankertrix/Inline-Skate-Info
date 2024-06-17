@@ -128,7 +128,7 @@ const RENTAL_MSG_CONFIG: Required<PollConfig> = {
   numberingStyle: NUMBERING_STYLES.DASH,
   formatOptions: RENTAL_MSG_FORMAT_OPTIONS,
   maxNumberOfEntries: 1,
-  isSingleChoicePoll: true,
+  isSingleChoicePoll: false,
   isSameNameFunc: isSameName,
 } as const;
 
