@@ -140,7 +140,7 @@ export const DEFAULT_RENTAL_MSG_CONFIG: Required<PollConfig> = {
   inlineKeyboardGenerator: generateRentalMsgInlineKeyboardFunc(
     DEFAULT_TAG_STRING
   ),
-}
+} as const;
 
 
 // The regular expression the get the maximum number of entries
@@ -220,4 +220,4 @@ export const DEFAULT_CREATE_RENTAL_MSG_CONFIG: Required<CreatePollMessageConfig>
     promptForMaxEntries
   ],
   additionalOptionsIndex: 0
-};
+} as const;
