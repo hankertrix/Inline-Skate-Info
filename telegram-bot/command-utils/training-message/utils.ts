@@ -26,7 +26,7 @@ export async function handleTrgMsg(
     messagesToDelete: [ctx.message.message_id],
   };
 
-  // Enters the create poll message scene
+  // Enter the create poll message scene
   return ctx.scene.enter("createPollMessage", initialState);
 }
 
