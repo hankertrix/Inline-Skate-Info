@@ -157,15 +157,16 @@ export function createConfig<Type extends Record<string, unknown>>(
       const defaultProperty = defaultConfig[property];
 
       // If the object doesn't contain the value
-      // and the default property is a list or a dictionary
-      if (
-        object[property] == null
-        && (utils.isObject(defaultProperty)
-          || Array.isArray(defaultProperty))
-      ) {
+      // and the default property is a list
+      if (object[property] == null && Array.isArray(defaultProperty)) {
 
-          // Set the default configuration on the object with a deep copy
-          Reflect.set(object, property, structuredClone(defaultProperty));
+        // Set the default configuration on the object
+        // with a shallow copy of the array
+        Reflect.set(
+          object,
+          property,
+          ([] as unknown[]).concat(defaultProperty)
+        );
       }
 
       // Returns the object property if it exists,
