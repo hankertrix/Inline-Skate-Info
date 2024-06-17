@@ -109,7 +109,7 @@ export const DEFAULT_POLL_CONFIG: Required<PollConfig> = {
   showRemaining: false,
   tagString: DEFAULT_TAG_STRING,
   tagAll: false,
-  maxNumberOfVotes: Infinity,
+  maxNumberOfEntries: Infinity,
   isSingleChoicePoll: false,
   isSameNameFunc: defaultIsSameNameFunc,
   inlineKeyboardGenerator: generateInlineKeyboard,

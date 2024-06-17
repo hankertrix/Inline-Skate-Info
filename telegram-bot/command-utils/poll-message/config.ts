@@ -79,7 +79,7 @@ export type PollConfig = {
   showRemaining?: boolean;
   tagString?: string;
   tagAll?: boolean;
-  maxNumberOfVotes?: number,
+  maxNumberOfEntries?: number,
   isSingleChoicePoll?: boolean;
   isSameNameFunc?: IsSameNameFunc;
   inlineKeyboardGenerator?: InlineKeyboardGenerator;

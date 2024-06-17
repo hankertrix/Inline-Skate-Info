@@ -1,8 +1,8 @@
 // The utility functions for the rental message
 
-import { Markup, type Scenes } from "telegraf";
+import { type Scenes, Markup } from "telegraf";
+import { type PollConfig, numberingStyleRegex } from "../poll-message";
 import { regexEscape } from "../../utils";
-import { numberingStyleRegex } from "../poll-message";
 
 
 // The function to generate an inline keyboard
@@ -126,15 +126,18 @@ export async function answerIfGlobalLimitIsHit(
   ctx: Scenes.WizardContext,
   reformedPollMessage: string,
   entry: string,
-  limit: number,
+  pollConfig: Required<PollConfig>,
   removerRegex: RegExp | null = null
 ): Promise<boolean> {
 
   // This function returns true if the callback query has been answered,
   // and false if the callback query hasn't been answered
 
+  // If the poll is a single choice poll, return false
+  if (pollConfig.isSingleChoicePoll) return false;
+
   // If the limit given less than 1, return false
-  if (limit < 1) return false;
+  if (pollConfig.maxNumberOfEntries < 1) return false;
 
   // If the remover regex is given,
   // replace the things in the remover regex with an empty string
@@ -156,15 +159,17 @@ export async function answerIfGlobalLimitIsHit(
 
   // If the number of entries is less than or equal to the limit,
   // then return false.
-  if (numberOfEntries <= limit) return false;
+  if (numberOfEntries <= pollConfig.maxNumberOfEntries) return false;
 
   // Otherwise, if the number of entries is more than the limit,
   // get the item string
-  const itemString = limit === 1 ? "item" : "items";
+  const itemString = pollConfig.maxNumberOfEntries === 1 ? "item" : "items";
 
   // Otherwise, answers the callback query
   await ctx.answerCbQuery(
-    `Sorry, you may only rent a total of ${limit} ${itemString}.`
+    `Sorry, you may only rent a total of ${
+      pollConfig.maxNumberOfEntries
+    } ${itemString}.`
   );
 
   // Return true to tell the calling function

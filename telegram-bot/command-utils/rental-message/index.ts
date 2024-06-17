@@ -189,7 +189,7 @@ export async function defaultCallbackHandler(
   // Get whether the global (poll-wide) limit
   // for the rental message has been reached
   const limitHit = await answerIfGlobalLimitIsHit(
-    ctx, reformedPollMessage, name, pollConfig.maxNumberOfVotes
+    ctx, reformedPollMessage, name, pollConfig
   );
 
   // If the poll-wide limit has been reached, exit the function

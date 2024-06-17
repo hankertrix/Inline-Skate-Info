@@ -127,7 +127,7 @@ const RENTAL_MSG_CONFIG: Required<PollConfig> = {
   maxEntriesList: MAX_NUMBER_OF_RENTALS,
   numberingStyle: NUMBERING_STYLES.DASH,
   formatOptions: RENTAL_MSG_FORMAT_OPTIONS,
-  maxNumberOfVotes: 1,
+  maxNumberOfEntries: 1,
   isSingleChoicePoll: true,
   isSameNameFunc: isSameName,
 } as const;
@@ -448,7 +448,7 @@ export async function callbackHandler(
     ctx,
     reformedPollMessage,
     name,
-    pollConfig.maxNumberOfVotes
+    pollConfig
   );
 
   // If the limit has been reached, exit the function
