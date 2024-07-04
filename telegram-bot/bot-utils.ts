@@ -29,7 +29,9 @@ import {
 const messageEntityRegex = /<.+?>/g;
 
 // The regular expression to remove the command from the start of the message
-const removeCommandRegex = new RegExp(String.raw`^\/\w+(?:${BOT_USERNAME})?`);
+const removeCommandRegex = new RegExp(
+  String.raw`^\/\w+(?:${utils.regexEscape(BOT_USERNAME)})?`
+);
 
 
 // Function to remove a command from a message

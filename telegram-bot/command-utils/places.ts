@@ -25,25 +25,29 @@ export type Places = ObjectValues<typeof PLACES>;
 
 // The regex to check for the where to buy command
 export const whereToBuyRegex = new RegExp(
-  String.raw`^\/?\b(?:(?:(?:places?|where)(?:[ _-]?to[ _-]?buy))|buy(?:ing)?)\b(?:${BOT_USERNAME})?`,
+  String.raw`^\/?\b(?:(?:(?:places?|where)(?:[ _-]?to[ _-]?buy))|buy(?:ing)?)\b(?:${
+    utils.regexEscape(BOT_USERNAME)})?`,
   "i"
 );
 
 // The regex to check for the where to rent command
 export const whereToRentRegex = new RegExp(
-  String.raw`^\/?\b(?:(?:(?:places?|where)(?:[ _-]?to[ _-]?rent))|rent(?:ing)?)\b(?:${BOT_USERNAME})?`,
+  String.raw`^\/?\b(?:(?:(?:places?|where)(?:[ _-]?to[ _-]?rent))|rent(?:ing)?)\b(?:${
+    utils.regexEscape(BOT_USERNAME)})?`,
   "i"
 );
 
 // The regex to check for the skate parks command
 export const skateParksRegex = new RegExp(
-  String.raw`^\/?\b(?:skate)?[ _-]?(?:park|ramp)s?\b(?:${BOT_USERNAME})?`,
+  String.raw`^\/?\b(?:skate)?[ _-]?(?:park|ramp)s?\b(?:${
+    utils.regexEscape(BOT_USERNAME)})?`,
   "i"
 );
 
 // The regex to check for the skating rinks command
 export const skatingRinksRegex = new RegExp(
-  String.raw`^\/?\b(?:skat(?:e|ing))?[ _-]?rinks?\b(?:${BOT_USERNAME})?`,
+  String.raw`^\/?\b(?:skat(?:e|ing))?[ _-]?rinks?\b(?:${
+    utils.regexEscape(BOT_USERNAME)})?`,
   "i"
 );
 

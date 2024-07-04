@@ -445,7 +445,7 @@ export function strFormat(str: string, ...args: any[]) {
     // The args[arg] works in both situations (array and object)
     // because iterating in an array gets the index of the array,
     // so args[arg] is essentially args[index]
-    str = str.replace(new RegExp(`\\{${arg}\\}`, "gi"), args[arg]);
+    str = str.replace(new RegExp(`\\{${regexEscape(arg)}\\}`, "gi"), args[arg]);
   }
 
   // Returns the formatted string

@@ -8,7 +8,8 @@ import * as utils from "../utils";
 
 // The regex for the terminology command
 export const regex = new RegExp(
-  String.raw`^\/?\bterm(?:s|inolog(?:y|ies))?\b(?:${BOT_USERNAME})?`,
+  String.raw`^\/?\bterm(?:s|inolog(?:y|ies))?\b(?:${
+    utils.regexEscape(BOT_USERNAME)})?`,
   "i"
 );
 

@@ -18,7 +18,7 @@ type BrandCategory = ObjectValues<typeof BRAND_CATEGORY>;
 
 // The regex to check for the brands command
 export const regex = new RegExp(
-  String.raw`^\/?\bbrands?\b(?:${BOT_USERNAME})?`, "i"
+  String.raw`^\/?\bbrands?\b(?:${utils.regexEscape(BOT_USERNAME)})?`, "i"
 );
 
 // The spacing between each brand

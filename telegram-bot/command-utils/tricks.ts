@@ -13,7 +13,8 @@ import { loadFundamentalTricks } from "../normalise-data";
 
 // The regular expression to check for the tricks command
 export const regex = new RegExp(
-  String.raw`^\/?\btricks?\b(?:${BOT_USERNAME})?`,
+  String.raw`^\/?\btricks?\b(?:${
+    utils.regexEscape(BOT_USERNAME)})?`,
   "i"
 );
 

@@ -1,11 +1,13 @@
 // The module containing all the utilities for the QR code command
 
 import { BOT_USERNAME } from "$lib/constants";
+import { regexEscape } from "../utils";
 
 
 // The regex for the QR code command
 export const qrCodeRegex = new RegExp(
-  String.raw`^\/?\bqr[ _-]?(?:code)?s?\b(?:${BOT_USERNAME})?`,
+  String.raw`^\/?\bqr[ _-]?(?:code)?s?\b(?:${
+    regexEscape(BOT_USERNAME)})?`,
   "i"
 );
 
