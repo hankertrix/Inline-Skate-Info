@@ -75,7 +75,6 @@ const sceneName = "nusValidator";
 
 
 // Function to get the regular expression match in a saner way
-// eslint-disable-next-line  @typescript-eslint/no-explicit-any
 function getRegexMatch(
   match: RegExpMatchArray | null,
   defaultValue: string | null = null,
