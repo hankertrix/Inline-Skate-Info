@@ -82,8 +82,9 @@
       <svelte:element this={heading} id={headingId} class="text">{name}</svelte:element>
 
       <!-- Adds the description for the trick -->
+      <!-- Also convert all newline characters to <br> tags -->
       <!-- eslint-disable-next-line svelte/no-at-html-tags -->
-      <p class="text">{@html description}</p>
+      <p class="text">{@html description.replace(/\n/g, "<br>")}</p>
 
       <!-- The collapsible containing all of the videos -->
       <VideoCollapsible {videos} title="View the videos for the trick" />
