@@ -49,7 +49,7 @@ const SIZES = [
 
 // The maximum number of rentals for each size group
 const MAX_NUMBER_OF_RENTALS = [
-  3,
+  2,
   3
 ];
 
