@@ -1096,9 +1096,9 @@ bot.inlineQuery(commandUtils.products.maintenanceItemsRegex, async ctx => {
 
 
 
-// Poll message and training message commands
+// Poll message and training message commands.
 // They function similarly as the training message command
-// is just a modified poll message command
+// is just a modified poll message command.
 
 // The handler for the poll message command
 bot.command([
@@ -1223,7 +1223,7 @@ bot.command([
 
 
 
-// The rental message command
+// The rental message command.
 // It is quite similar to the poll message command but there are a few
 // changes that make it work in reverse, as in counting down the number
 // of people who can add their name to the poll instead of just simply
