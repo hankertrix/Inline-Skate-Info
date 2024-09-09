@@ -2,7 +2,6 @@
 
 import * as utils from "../utils";
 
-
 // The regular expression to check for the skate boot types command
 export const regex = /^\/?\b(?:skates?)?[ _-]?boots?[ _-]?(?:types?)?\b/i;
 
@@ -16,22 +15,24 @@ const LABEL_SPACING = "\n\n";
 type BootTypesJson = {
   bootTypes: {
     [bootType: string]: {
-      characteristics: string[],
-      support: string,
-      comfort: string,
-      pricing: string,
-      examples: string[]
-    }
-  },
-  credits: string,
+      characteristics: string[];
+      support: string;
+      comfort: string;
+      pricing: string;
+      examples: string[];
+    };
+  };
+  credits: string;
 };
-
 
 // Function to handle the skate boot types command
 export async function generateMsg() {
+  //
 
   // Loads the JSON data
-  const data = await utils.loadJsonData("differences/boot-types") as BootTypesJson;
+  const data = (await utils.loadJsonData(
+    "differences/boot-types"
+  )) as BootTypesJson;
 
   // Initialise the list to contain the message
   const msgList: string[] = [];
@@ -41,6 +42,7 @@ export async function generateMsg() {
 
   // Iterates the data
   for (const [bootType, info] of Object.entries(data.bootTypes)) {
+    //
 
     // Initialise the list to contain the information about the boot type
     const infoList: string[] = [];
@@ -50,24 +52,28 @@ export async function generateMsg() {
 
     // Iterates the information
     for (const [label, value] of Object.entries(info)) {
+      //
 
-      // If the label is "characteristics", adds all the characteristics of the boot to the list
-      if (label === "characteristics") infoList.push(
-        (value as string[]).map(
-          characteristic => `- ${characteristic}`
-        ).join("\n"));
+      // If the label is "characteristics",
+      // adds all the characteristics of the boot to the list
+      if (label === "characteristics")
+        infoList.push(
+          (value as string[])
+            .map((characteristic) => `- ${characteristic}`)
+            .join("\n")
+        );
 
       // If the value is a string, adds the value with the label to the list
-      else if (typeof value === "string") infoList.push(`${utils.bold(
-        utils.titlecase(label)
-      )}: ${value}`);
+      else if (typeof value === "string")
+        infoList.push(`${utils.bold(utils.titlecase(label))}: ${value}`);
 
-        // Otherwise, add the list of strings to the list after the label
-      else infoList.push(`${utils.bold(
-        utils.titlecase(label)
-      )}:\n${value.map(
-        val => `- ${val}`
-      ).join("\n")}`);
+      // Otherwise, add the list of strings to the list after the label
+      else
+        infoList.push(
+          `${utils.bold(utils.titlecase(label))}:\n${value
+            .map((val) => `- ${val}`)
+            .join("\n")}`
+        );
     }
 
     // Adds the information to the main list of messages
