@@ -18,14 +18,11 @@ import { trainingDates } from "../training-message/ntu";
 import { DEFAULT_RENTAL_MSG_CONFIG } from "./defaults";
 
 // The rental options
-const RENTAL_OPTIONS = [
-  "Sizes 38 - 41, $5",
-  "Sizes 42 - 45, $5",
-  "Sizes 38 - 42, $7",
-];
-
-// The maximum number of rentals for each size group
-const MAX_NUMBER_OF_RENTALS = [2, 4, 2];
+const RENTAL_OPTIONS_AND_MAX_AMOUNT = new Map([
+  ["Sizes 38 - 41, $5", 2],
+  ["Sizes 42 - 45, $5", 4],
+  ["Sizes 38 - 42, $7", 2],
+]);
 
 // The format options for the NTU rental message function
 const RENTAL_MSG_FORMAT_OPTIONS: FormatOptions = {
@@ -100,8 +97,8 @@ const RENTAL_MSG_FORMAT_OPTIONS: FormatOptions = {
 // The rental message configuration
 const RENTAL_MSG_CONFIG: Required<PollConfig> = {
   ...DEFAULT_RENTAL_MSG_CONFIG,
-  pollOptions: RENTAL_OPTIONS,
-  maxEntriesList: MAX_NUMBER_OF_RENTALS,
+  pollOptions: Array.from(RENTAL_OPTIONS_AND_MAX_AMOUNT.keys()),
+  maxEntriesList: Array.from(RENTAL_OPTIONS_AND_MAX_AMOUNT.values()),
   numberingStyle: NUMBERING_STYLES.DASH,
   formatOptions: RENTAL_MSG_FORMAT_OPTIONS,
   maxNumberOfEntries: 1,
