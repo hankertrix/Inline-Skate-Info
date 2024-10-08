@@ -25,7 +25,7 @@ const RENTAL_OPTIONS = [
 ];
 
 // The maximum number of rentals for each size group
-const MAX_NUMBER_OF_RENTALS = [2, 3, 2];
+const MAX_NUMBER_OF_RENTALS = [2, 4, 2];
 
 // The format options for the NTU rental message function
 const RENTAL_MSG_FORMAT_OPTIONS: FormatOptions = {
