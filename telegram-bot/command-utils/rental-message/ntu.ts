@@ -21,7 +21,8 @@ import { DEFAULT_RENTAL_MSG_CONFIG } from "./defaults";
 const RENTAL_OPTIONS_AND_MAX_AMOUNT = new Map([
   ["Sizes 38 - 41, $5", 2],
   ["Sizes 42 - 45, $5", 4],
-  ["Sizes 38 - 42, $7", 2],
+  ["Sizes 38 - 42, $7", 4],
+  ["Size 44, $7", 1],
 ]);
 
 // The format options for the NTU rental message function
