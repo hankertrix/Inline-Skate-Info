@@ -18,12 +18,10 @@ const nonLetterRegex = /[^A-Za-z]/g;
 // The regular expression to get the file extension
 const fileExtensionRegex = /\.\w*$/;
 
-
 // Function to check if something is an object
 export function isObject(obj: unknown) {
   return Object.prototype.toString.call(obj) === "[object Object]";
 }
-
 
 // Function to merge two objects
 // This function will MODIFY the base object
@@ -31,26 +29,30 @@ export function mergeObjects(
   baseObj: Record<string, unknown>,
   objToMerge: Record<string, unknown>,
   errorOnConflict: boolean = true,
-    overwriteBaseObject: boolean = false
+  overwriteBaseObject: boolean = false
 ) {
+  //
 
   // Iterates the object to merge
   for (const [key, value] of Object.entries(objToMerge)) {
+    //
 
     // If the key is found in the base object
     if (key in baseObj) {
+      //
 
       // If the function is set to error on conflict,
       // then throw an error to tell the user that a conflict has occurred
-      if (errorOnConflict) throw new Error(
-        `The key '${
-          key
-        }' exists in both the base object and the object to merge.`
-      );
+      if (errorOnConflict)
+        throw new Error(
+          `The key '${
+            key
+          }' exists in both the base object and the object to merge.`
+        );
 
       // If the function is set to overwrite the base object,
       // then overwrite the key in the base object
-      else if (overwriteBaseObject) baseObj[key] = value;
+      if (overwriteBaseObject) baseObj[key] = value;
     }
 
     // Otherwise, just set the key and value in the base object
@@ -62,18 +64,20 @@ export function mergeObjects(
   return baseObj;
 }
 
-
 // Function to merge a list of objects into a single object
 export function mergeListOfObjects(listOfObjects: Record<string, unknown>[]) {
+  //
 
   // Initialise the base object
   let baseObj;
-  
+
   // Iterates the list of objects
   for (const obj of listOfObjects) {
+    //
 
     // If the base object isn't defined yet
     if (!baseObj) {
+      //
 
       // Set the base object to the current object
       baseObj = obj;
@@ -84,6 +88,7 @@ export function mergeListOfObjects(listOfObjects: Record<string, unknown>[]) {
 
     // Otherwise
     else {
+      //
 
       // Merge the current object with the base object
       mergeObjects(baseObj, obj);
@@ -94,13 +99,13 @@ export function mergeListOfObjects(listOfObjects: Record<string, unknown>[]) {
   return baseObj;
 }
 
-
 // Function to check if two arrays are equal.
 // It's unbelievable that this function even needs to be written.
 export function arraysAreEqual(
   array: unknown[],
   otherArray: unknown[]
 ): boolean {
+  //
 
   // Initialise the index variable to the length of the first array
   let index = array.length;
@@ -109,8 +114,9 @@ export function arraysAreEqual(
   if (index !== otherArray.length) return false;
 
   // Iterates down from the array length.
-  // The while loop will stop when the index hits zero
+  // The while loop will stop when the index hits zero.
   while (--index) {
+    //
 
     // If the item in the first array is not equal
     // to the item in the second array, then return false
@@ -121,36 +127,40 @@ export function arraysAreEqual(
   return true;
 }
 
-
 // Function to load all the JSON files in a directory
 export async function loadJsonDirectory(path: string) {
-  
+  //
+
   // Inner function that does the actual directory loading
   async function loadJsonDir(dirPath: string, tasks: Promise<string>[]) {
+    //
 
     // Gets everything in the directory
-    const dirents = await readdir(dirPath, {withFileTypes: true});
+    const dirents = await readdir(dirPath, { withFileTypes: true });
 
     // Iterates the directory
     for (const dirent of dirents) {
+      //
 
-      // If the file extension is ".json", adds the task to load the file to the list of tasks
-      if (dirent.name.endsWith(".json")) tasks.push(
-        readFile(pathLib.join(dirPath, dirent.name), "utf8")
-      );
+      // If the file extension is ".json",
+      // adds the task to load the file to the list of tasks,
+      // and continue the loop
+      if (dirent.name.endsWith(".json")) {
+        tasks.push(readFile(pathLib.join(dirPath, dirent.name), "utf8"));
+        continue;
+      }
 
-      // Otherwise, if the item is a directory, calls the loadJsonDir function on the directory
-      else if (dirent.isDirectory()) {
-        await loadJsonDir(
-          pathLib.join(dirPath, dirent.name), tasks
-        );
+      // Otherwise, if the item is a directory,
+      // calls the loadJsonDir function on the directory
+      if (dirent.isDirectory()) {
+        await loadJsonDir(pathLib.join(dirPath, dirent.name), tasks);
       }
     }
-    
+
     // Returns the list of tasks
     return tasks;
   }
-  
+
   // The list of tasks
   const tasks: Promise<string>[] = [];
 
@@ -161,26 +171,31 @@ export async function loadJsonDirectory(path: string) {
   const jsonFiles = await Promise.all(tasks);
 
   // Parse all the JSON files into JSON objects
-  const jsons = jsonFiles.map(jsonFile => JSON.parse(jsonFile));
+  const jsons = jsonFiles.map((jsonFile) => JSON.parse(jsonFile));
 
   // Merge all the objects into a single object and return the result
   return mergeListOfObjects(jsons);
 }
 
-
 // Function to load a JSON file from the data folder
-export async function loadJsonData(path: string, root: string = "./src/lib/data/") {
+export async function loadJsonData(
+  path: string,
+  root: string = "./src/lib/data/"
+) {
+  //
 
   // Gets the file path
   let filePath = `${root ? root : "./src/lib/"}${path}`;
-  
+
   // Replace multiple consecutive slashes in the file path with a single slash
   filePath = filePath.replace(/\/{2,}/g, "/");
 
-  // If the path given ends with a slash (which means a directory), then return the result of the loadJsonDirectory function
+  // If the path given ends with a slash (which means a directory),
+  // then return the result of the loadJsonDirectory function
   if (filePath.endsWith("/")) return loadJsonDirectory(filePath);
 
-  // Adds the ".json" file extension if the file path given doesn't have a file extension
+  // Adds the ".json" file extension if the file path
+  // given doesn't have a file extension
   filePath = `${filePath}${filePath.endsWith(".json") ? "" : ".json"}`;
 
   // Loads the file from the file path
@@ -190,18 +205,19 @@ export async function loadJsonData(path: string, root: string = "./src/lib/data/
   return JSON.parse(file);
 }
 
-
 // Function to load a file from the static folder
 export async function loadStaticFile(
   path: string,
   file_extension: string,
-  root: string = "./static/",
+  root: string = "./static/"
 ) {
+  //
 
   // Adds a dot in front of the file extension
   // if the file extension has no dot in front of it
   file_extension = file_extension.startsWith(".")
-    ? file_extension : `.${file_extension}`;
+    ? file_extension
+    : `.${file_extension}`;
 
   // Gets the file path
   const filePath = `${root ? root : "./static/"}${path}${
@@ -215,12 +231,13 @@ export async function loadStaticFile(
   return file;
 }
 
-
 // Convert a path to a file in the static folder into a URL
 export function convertStaticFilePathToUrl(path: string) {
+  //
 
   // If the path doesn't start with "./static/"
   if (!path.startsWith("./static/")) {
+    //
 
     // Raise an error
     throw new Error("The file is not in the static folder.");
@@ -230,17 +247,26 @@ export function convertStaticFilePathToUrl(path: string) {
   else return `${getBasePath()}${path.replace(/\.\/static/g, "")}`;
 }
 
-
-// Function to convert a lowercase string to a label (the first character after a forward slash "/", the character at the start of the string, as well as everything within brackets is capitalised)
+// Function to convert a lowercase string to a label
+// (the first character after a forward slash "/",
+// the character at the start of the string,
+// as well as everything within brackets is capitalised)
 export function convertToLabel(label: string) {
+  //
 
-  // Capitalise the first character that is after a forward slash or at the start of the string as well as everything in brackets if there isn't any space inside the brackets. If there are spaces inside the brackets, make the string title case instead
-  return label.replace(/(?<=\/ ?|^)\w|[[(].*?[)\]]/g, str => str.includes(" ") ? titlecase(str) : str.toUpperCase());
+  // Capitalise the first character that is after a forward slash
+  // or at the start of the string as well as everything in brackets
+  // if there isn't any space inside the brackets.
+  // If there are spaces inside the brackets,
+  // make the string title case instead
+  return label.replace(/(?<=\/ ?|^)\w|[[(].*?[)\]]/g, (str) =>
+    str.includes(" ") ? titlecase(str) : str.toUpperCase()
+  );
 }
-
 
 // Function to get the module mapping
 function getModuleMapping(): [number, string][] {
+  //
 
   // Gets the module mapping as a string
   const moduleMapping = process.env.MODULE_MAPPING as string;
@@ -250,30 +276,30 @@ function getModuleMapping(): [number, string][] {
   return JSON.parse(moduleMapping.replaceAll(`'`, `"`));
 }
 
-
 // Function to the module data from the module mapping
 function getModuleString(chatId: number): string | null {
+  //
 
   // Gets the module mapping
   const moduleMapping = getModuleMapping();
 
   // Gets the data for the given chat ID in the module mapping
-  const data = moduleMapping.filter(data => data[0] === chatId);
+  const data = moduleMapping.filter((data) => data[0] === chatId);
 
   // If the data isn't found, then return null
   if (data.length < 1) return null;
 
   // Otherwise, gets the module string from the data
-  const [ , moduleStr] = data[0];
+  const [, moduleStr] = data[0];
 
   // Returns the module string
   return moduleStr;
 }
 
-
 // Function to get the module
 // eslint-disable-next-line  @typescript-eslint/no-explicit-any
 export function getModule(chatId: number, modules: any) {
+  //
 
   // Gets the module string
   const moduleString = getModuleString(chatId);
@@ -285,22 +311,26 @@ export function getModule(chatId: number, modules: any) {
   return modules[moduleString];
 }
 
-
 // Function to get a key from a dictionary and return a default value
 // if the key is not found (mimics the python dict.get method)
-// eslint-disable-next-line  @typescript-eslint/no-explicit-any
-export function dictGet(dict: Dict<unknown>, key: string | number, defaultValue: any = null) {
+export function dictGet(
+  dict: Dict<unknown>,
+  key: string | number,
+  defaultValue: unknown | null = null
+) {
+  //
 
   // If the key is inside the dictionary, return the value
   if (key in dict) return dict[key];
 
   // Otherwise return the default value
-  else return defaultValue;
+  return defaultValue;
 }
 
-
-// Function to search a dictionary using dictGet (basically only searching for keys that fully match)
+// Function to search a dictionary using dictGet
+// (basically only searching for keys that fully match)
 export function dictGetSearch(dict: Dict<string>, searchTerm: string | number) {
+  //
 
   // Tries searching in the top level of the dictionary first
   let result = dictGet(dict, searchTerm);
@@ -309,7 +339,8 @@ export function dictGetSearch(dict: Dict<string>, searchTerm: string | number) {
   if (result != null) return result;
 
   // Otherwise iterate the dictionaries in the dictionary
-  for (const [ , innerDict] of Object.entries(dict)) {
+  for (const [, innerDict] of Object.entries(dict)) {
+    //
 
     // If the inner dictionary is actually a string then continue the loop
     if (typeof innerDict === "string") continue;
@@ -325,9 +356,9 @@ export function dictGetSearch(dict: Dict<string>, searchTerm: string | number) {
   return result;
 }
 
-
 // Function to get the index of the last match in a string
 export function getLastMatch(str: string, matchStr: string): [number, string] {
+  //
 
   // Gets the length of the match string
   const matchStrLen = matchStr.length;
@@ -337,12 +368,14 @@ export function getLastMatch(str: string, matchStr: string): [number, string] {
 
   // Iterates backwards
   for (let i = str.length - matchStrLen; i >= 0; --i) {
+    //
 
     // Gets the token of the length of the match string
     const token = str.slice(i, i + matchStrLen);
 
     // If the token is equal to the match string
     if (token === matchStr) {
+      //
 
       // Sets the index of the last match
       lastMatchIndex = i;
@@ -356,18 +389,23 @@ export function getLastMatch(str: string, matchStr: string): [number, string] {
   return [lastMatchIndex, matchStr];
 }
 
-
-// Function to try getting the last match of the given match strings, it will return the first string that has a match
-export function getLastMatchChained(text: string, ...matchStrings: string[]): [number, string] {
+// Function to try getting the last match of the given match strings,
+// it will return the first string that has a match
+export function getLastMatchChained(
+  text: string,
+  ...matchStrings: string[]
+): [number, string] {
+  //
 
   // Initialise the last match index to 0
   let lastMatchIndex = 0;
 
   // Initialise the last match index to the last match string
-  let matchStr =  matchStrings[matchStrings.length - 1];
+  let matchStr = matchStrings[matchStrings.length - 1];
 
   // Iterates the list of strings to get the last match of
   for (const matchString of matchStrings) {
+    //
 
     // Gets the last match index and the match string
     [lastMatchIndex, matchStr] = getLastMatch(text, matchString);
@@ -380,12 +418,12 @@ export function getLastMatchChained(text: string, ...matchStrings: string[]): [n
   return [lastMatchIndex, matchStr];
 }
 
-
 // Function to make a string titlecase
 export function titlecase(str: string) {
+  //
 
   // Gets the length of the string
-  const strLen = str.length
+  const strLen = str.length;
 
   // If the length of the string is less than 1, return the string
   if (strLen < 1) return str;
@@ -401,30 +439,34 @@ export function titlecase(str: string) {
 
   // Iterates the string
   for (let i = 1; i < strLen; ++i) {
+    //
 
     // Gets the current character
     const currentChar = str[i];
 
     // Gets the character before the current one
-    const charBefore = str[i-1];
+    const charBefore = str[i - 1];
 
     // If the character before the current one is a space,
     // adds the uppercase version of the current character
     // to the list of characters
-    if (!charBefore.trim()) chars[i] = currentChar.toUpperCase();
+    if (!charBefore.trim()) {
+      chars[i] = currentChar.toUpperCase();
+      continue;
+    }
 
     // Otherwise, just add the current character without changing anything
-    else chars[i] = currentChar;
+    chars[i] = currentChar;
   }
 
   // Returns the new titlecased string
   return chars.join("");
 }
 
-
 // Function to format a string with the arguments given
 // eslint-disable-next-line  @typescript-eslint/no-explicit-any
 export function strFormat(str: string, ...args: any[]) {
+  //
 
   // If arguments aren't given, return the string passed immediately
   if (!args.length) return str;
@@ -440,6 +482,7 @@ export function strFormat(str: string, ...args: any[]) {
 
   // Iterates the array or object given
   for (const arg in args) {
+    //
 
     // Replace the text in brackets with the argument given
     // The args[arg] works in both situations (array and object)
@@ -452,9 +495,9 @@ export function strFormat(str: string, ...args: any[]) {
   return str;
 }
 
-
 // Function to get the file extension of a file
 export function getFileExtension(path: string) {
+  //
 
   // Gets the match using the regular expression
   const regexMatch = path.match(fileExtensionRegex);
@@ -463,18 +506,18 @@ export function getFileExtension(path: string) {
   if (!regexMatch) return "";
 
   // Otherwise, get the file extension from the regex match array
-  const [fileExtension, ] = regexMatch;
+  const [fileExtension] = regexMatch;
 
   // Return the file extension without the dot
   return fileExtension.slice(1);
 }
-
 
 // Function to get a title from the file name
 export function getTitleFromFilename(
   filename: string,
   formatFunc: (text: string) => string = titlecase
 ) {
+  //
 
   // Remove the file extension from the file name
   filename = filename.replace(fileExtensionRegex, "");
@@ -486,22 +529,24 @@ export function getTitleFromFilename(
   return formatFunc(filename).trim();
 }
 
-
 // Function to get the filename from a path
 export function getFilenameFromPath(
   path: string,
   removeFileExt: boolean = false,
   formatted: boolean = true
 ) {
+  //
 
   // Initialise the index of the "/" character
   let slashIndex = 0;
 
   // Iterate backwards until the a "/" is found
   for (let i = path.length - 1; i >= 0; i--) {
+    //
 
     // If the slash character is found
     if (path[i] === "/") {
+      //
 
       // Sets the slash index to the current index
       slashIndex = i;
@@ -521,15 +566,15 @@ export function getFilenameFromPath(
   if (!formatted) return filename;
 
   // Otherwise, return a nicely formatted filename
-  else return titlecase(filename.replace(/-|_/g, " "))
+  return titlecase(filename.replace(/-|_/g, " "));
 }
-
 
 // Function to get a list of unique filenames from a list of paths
 export function getUniqueFilenamesFromPaths(filePaths: string[]) {
+  //
 
   // Gets the list of filenames with the file extension removed
-  const filenames = filePaths.map(path => getFilenameFromPath(path, true));
+  const filenames = filePaths.map((path) => getFilenameFromPath(path, true));
 
   // Gets the set of duplicated filenames
   const duplicatedFilenames = new Set(
@@ -540,6 +585,7 @@ export function getUniqueFilenamesFromPaths(filePaths: string[]) {
 
   // Iterates over the filenames
   for (const [index, path] of filePaths.entries()) {
+    //
 
     // Gets the filename
     const filename = filenames[index];
@@ -547,9 +593,9 @@ export function getUniqueFilenamesFromPaths(filePaths: string[]) {
     // If the filename is inside the set of duplicated filenames,
     // then add the file extension in parentheses
     if (duplicatedFilenames.has(filename)) {
-      filenames[index] = `${filename} (${
-        getFileExtension(path).toUpperCase()
-      })`;
+      filenames[index] = `${filename} (${getFileExtension(
+        path
+      ).toUpperCase()})`;
     }
   }
 
@@ -557,20 +603,18 @@ export function getUniqueFilenamesFromPaths(filePaths: string[]) {
   return filenames;
 }
 
-
 // Function to escape the characters for regular expressions
 export function regexEscape(str: string) {
+  //
 
   // Escapes all the special regex characters in the string
   return str.replace(/[/\-\\^$*+?.()|[\]{}]/g, "\\$&");
 }
 
-
 // Function to remove all html tags from the given text
 export function removeHtml(text: string) {
   return text.replace(/<\/?.*?(?:>|$)/g, "");
 }
-
 
 // Function to strip HTML characters from the given text
 export function stripHtml(text: string) {
@@ -579,45 +623,43 @@ export function stripHtml(text: string) {
 
     // The HTML characters in the given text are replaced with their
     // respective HTML entities using the charToHtmlEntity dictionary
-    char => dictGet(charToHtmlEntity, char, char) as string
+    (char) => dictGet(charToHtmlEntity, char, char) as string
   );
 }
-
 
 // Function to make the text a hyperlink using html
 export function hyperlink(text: string, link: string) {
   return `<a href="${link}">${text}</a>`;
 }
 
-
 // Function to make the text monospaced
 export function monospace(text: string) {
   return `<code>${text}</code>`;
 }
-
 
 // Function to italicise the text using html
 export function italicise(text: string) {
   return `<i>${text}</i>`;
 }
 
-
 // Function to make the text bold using html
 export function bold(text: string) {
   return `<b>${text}</b>`;
 }
 
-
 // Function to reverse a dictionary
 export function reverseDict(dict: ReversibleDict) {
+  //
 
   // Initialise the reverse dictionary
   const reversedDict: ReversibleDict = {};
 
   // Iterates over the dictionary
   for (const [key, value] of Object.entries(dict)) {
+    //
 
-    // Sets the value of the original dictionary as the key in the reversed dictionary and vice versa
+    // Sets the value of the original dictionary
+    // as the key in the reversed dictionary and vice versa
     reversedDict[value] = key;
   }
 
@@ -625,9 +667,9 @@ export function reverseDict(dict: ReversibleDict) {
   return reversedDict;
 }
 
-
 // Function to make the first line of the text given bold
 export function boldFirstLine(text: string) {
+  //
 
   // Gets the splitted text
   const splittedText = text.trim().split("\n");
@@ -642,9 +684,9 @@ export function boldFirstLine(text: string) {
   return `${firstLine}\n${splittedText.slice(1).join("\n") ?? ""}`.trim();
 }
 
-
 // Function to add days to a date
 export function addDays(date: Date, days: number) {
+  //
 
   // Creates a new date object with the original date
   const newDate = new Date(date.getTime());
@@ -656,9 +698,9 @@ export function addDays(date: Date, days: number) {
   return newDate;
 }
 
-
 // Function to add hours to a date
 export function addHours(date: Date, hours: number) {
+  //
 
   // Creates a new date object with the original date
   const newDate = new Date(date.getTime());
@@ -670,31 +712,35 @@ export function addHours(date: Date, hours: number) {
   return newDate;
 }
 
-
 // Function to get the day as a string from a date
-export function getDayStr(date: Date, format: ("narrow" | "short" | "long") = "short") {
-
+export function getDayStr(
+  date: Date,
+  format: "narrow" | "short" | "long" = "short"
+) {
   // Returns the day as a string
   return Intl.DateTimeFormat("en-SG", {
-    weekday: format
+    weekday: format,
   }).format(date);
 }
 
-
 // Function to get the time as a string from a date
 export function getTimeStr(date: Date) {
+  //
 
   // Returns the time as a string
   return Intl.DateTimeFormat("en-SG", {
     hour: "numeric",
-    minute: "numeric"
-  }).format(date).replace(/ |:00/g, "").trim();
+    minute: "numeric",
+  })
+    .format(date)
+    .replace(/ |:00/g, "")
+    .trim();
 }
-
 
 // Function to generate a zero-width code
 // from a string consisting of letters only
 export function generateZeroWidthCode(text: string) {
+  //
 
   // Removes everything in the string that isn't a letter
   // of the alphabet
@@ -705,13 +751,14 @@ export function generateZeroWidthCode(text: string) {
 
   // Iterates over the string
   for (const char of text) {
+    //
 
     // Gets the code character for the character in the string
     const codeChar = dictGet(
       LETTER_TO_ZERO_WIDTH_CHARS,
       char.toUpperCase(),
       char
-    );
+    ) as string;
 
     // Adds the code character to the list
     codeList.push(codeChar);
