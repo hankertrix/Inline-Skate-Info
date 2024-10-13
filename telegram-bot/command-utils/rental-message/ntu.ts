@@ -204,6 +204,14 @@ export async function callbackHandler(
 ): ReturnType<RentalMessageCallbackHandler> {
   //
 
+  // If the text of the callback query is not
+  // one of the poll options, exit the function.
+  //
+  // This is to prevent the bot from screwing up old
+  // rental messages that used a custom callback
+  // handler.
+  if (!RENTAL_MSG_CONFIG.pollOptions.includes(callbackQuery.data)) return;
+
   // Calls the default callback handler with the
   // poll configuration object
   return await defaultCallbackHandler(
