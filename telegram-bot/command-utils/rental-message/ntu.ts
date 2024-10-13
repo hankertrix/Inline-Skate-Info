@@ -205,12 +205,17 @@ export async function callbackHandler(
   //
 
   // If the text of the callback query is not
-  // one of the poll options, exit the function.
+  // one of the poll options, and is not the tag string,
+  // exit the function.
   //
   // This is to prevent the bot from screwing up old
   // rental messages that used a custom callback
   // handler.
-  if (!RENTAL_MSG_CONFIG.pollOptions.includes(callbackQuery.data)) return;
+  if (
+    !RENTAL_MSG_CONFIG.pollOptions.includes(callbackQuery.data) &&
+    callbackQuery.data !== RENTAL_MSG_CONFIG.tagString
+  )
+    return;
 
   // Calls the default callback handler with the
   // poll configuration object
