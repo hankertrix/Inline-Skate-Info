@@ -316,7 +316,7 @@ export function getModule(chatId: number, modules: any) {
 export function dictGet(
   dict: Dict<unknown>,
   key: string | number,
-  defaultValue: unknown | null = null
+  defaultValue: unknown = null
 ) {
   //
 
@@ -329,11 +329,14 @@ export function dictGet(
 
 // Function to search a dictionary using dictGet
 // (basically only searching for keys that fully match)
-export function dictGetSearch(dict: Dict<string>, searchTerm: string | number) {
+export function dictGetSearch(
+  dict: Dict<string>,
+  searchTerm: string | number
+): Dict<string> | null {
   //
 
   // Tries searching in the top level of the dictionary first
-  let result = dictGet(dict, searchTerm);
+  let result = dictGet(dict, searchTerm) as Dict<string> | null;
 
   // If the result isn't null, then return the result
   if (result != null) return result;
