@@ -1,8 +1,5 @@
 // The file containing the types used in the website
 
-// Export the Pagefind types
-export * from "./pagefind";
-
 // The type for the table of contents
 export type TableOfContents = Map<string, {
     id: string, children: TableOfContents

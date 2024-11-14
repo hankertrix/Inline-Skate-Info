@@ -1,7 +1,7 @@
 <!-- The component to display a single search result on the search page -->
 <script lang="ts">
 
-  import type { PagefindSearchFragment } from "$lib/types";
+  import type { PagefindSearchFragment } from "vite-plugin-pagefind/types";
 
   // The search result passed in by the search page
   export let result: PagefindSearchFragment;
@@ -13,7 +13,7 @@
   function convertPagefindUrl(url: string) {
     return url.replace(convertUrlRegex, "");
   }
-  
+
 </script>
 
 <!-- The styles for the search result -->
@@ -29,7 +29,7 @@
   .result-title {
     font-size: 20px;
   }
-  
+
 </style>
 
 <!-- The HTML for the search result -->

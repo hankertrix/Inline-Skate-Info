@@ -1,4 +1,8 @@
 {
   "site": "build",
-  "output_subdir": "pagefind"
+  "output_subdir": "pagefind",
+  "vite_plugin_pagefind": {
+    "assets_dir": "static",
+    "dev_strategy": "lazy"
+  }
 }

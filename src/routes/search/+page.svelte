@@ -1,7 +1,7 @@
 <!-- The search page -->
 <script lang="ts">
 
-  import type { PagefindSearchFragment } from '$lib/types';
+  import type { PagefindSearchFragment } from 'vite-plugin-pagefind/types';
   import SearchResult from '$lib/components/pages/search/SearchResult.svelte';
 
   // Export the data variable
