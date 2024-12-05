@@ -5,7 +5,7 @@ It is built using [SvelteKit](https://kit.svelte.dev)
 and deployed to [Netlify](https://www.netlify.com).
 The project is entirely written in
 [TypeScript](https://www.typescriptlang.org),
-with the exception of HTML and CSS in HTML and Svelte files of course.
+except for HTML and CSS in HTML and Svelte files of course.
 The website search is provided by [Pagefind](https://pagefind.app)
 and the [Telegram bot](https://t.me/inlineskatebot) portion of the project
 is made using [telegraf.js](https://telegraf.js.org).
