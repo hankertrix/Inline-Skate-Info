@@ -5,8 +5,8 @@
   import { page } from "$app/stores";
   import TableOfContentsCollapsibleMenu from "./TableOfContentsCollapsibleMenu.svelte";
 
-  // Initialise the previous page url
-  let previousPageUrl: string = $state($page.url.pathname);
+  // Initialise the previous page url to an empty string
+  let previousPageUrl: string = $state("");
 
   // The variable to store the list of headings on the page
   // Eslint is somehow not recognising NodeListOf
