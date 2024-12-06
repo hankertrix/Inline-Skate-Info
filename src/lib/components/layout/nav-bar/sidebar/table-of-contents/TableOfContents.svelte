@@ -1,6 +1,7 @@
 <!-- The component to generate the table of contents for the side bar -->
 <script lang="ts">
   import type { TableOfContents } from "$lib/types";
+  import { SvelteMap } from "svelte/reactivity";
   import { page } from "$app/stores";
   import TableOfContentsCollapsibleMenu from "./TableOfContentsCollapsibleMenu.svelte";
 
@@ -14,7 +15,7 @@
   let headings: NodeListOf<Element> | null = $state(null);
 
   // The variable to store the table of contents object
-  let tableOfContents: TableOfContents = $state(new Map());
+  let tableOfContents: TableOfContents = $state(new SvelteMap());
 
   // Function to get the table of contents
   // Eslint is somehow not recognising NodeListOf
