@@ -83,7 +83,8 @@
 
 <!-- The styles for the collapsible menu -->
 <style>
-  a.table-of-contents-link {
+  a,
+  li > a {
     text-decoration: none;
     color: var(--text-colour);
     opacity: var(--text-opacity);
