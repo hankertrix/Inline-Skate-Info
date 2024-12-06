@@ -45,8 +45,10 @@
         <!-- If the title is a regular heading in the page -->
         {:else}
           <summary>
-            <a href={`#${id}`} title={`Go to the section called '${title}'`}
-              >{title}</a
+            <a
+              class="table-of-contents-link"
+              href={`#${id}`}
+              title={`Go to the section called '${title}'`}>{title}</a
             >
             <div
               class="menu-toggler"
@@ -70,8 +72,10 @@
 
     <!-- Displays the current title as a list element -->
     <li>
-      <a href={`#${id}`} title={`Go to the section called '${title}'`}
-        >{title}</a
+      <a
+        class="table-of-contents-link"
+        href={`#${id}`}
+        title={`Go to the section called '${title}'`}>{title}</a
       >
     </li>
   {/if}
@@ -79,7 +83,7 @@
 
 <!-- The styles for the collapsible menu -->
 <style>
-  a, a:link {
+  a.table-of-contents-link {
     text-decoration: none;
     color: var(--text-colour);
     opacity: var(--text-opacity);
