@@ -1,5 +1,5 @@
 <!-- The page to display all of the liner brands -->
-<script lang="ts" context="module">
+<script lang="ts" module>
   import brandsJson from '$lib/data/brands/liner-brands.json';
   export { brandsJson };
 </script>

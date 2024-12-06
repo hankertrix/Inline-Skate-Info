@@ -1,5 +1,5 @@
 <!-- The page for all the class D slalom tricks in the wheelings category -->
-<script lang="ts" context="module">
+<script lang="ts" module>
   import tricksJson from '$lib/data/tricks/slalom/class-D/wheelings.json';
   export { tricksJson };
 </script>

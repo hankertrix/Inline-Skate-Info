@@ -64,18 +64,18 @@
 
 
   /* Sets the center of rotation of all the elements in the SVG to the center of the SVG */
-  .sun-and-moon > :is(.moon, .sun, .sun-beams) {
+  .sun-and-moon > :is(:global(.moon, .sun, .sun-beams)) {
     transform-origin: center center;
   }
 
 
   /* Fills the sun and moon icons with the icon colour */
-  .sun-and-moon > :is(.moon, .sun) {
+  .sun-and-moon > :is(:global(.moon, .sun)) {
     fill: var(--icon-fill);
   }
 
   /* Fills the sun and moon icons with the icon hover colour when the button is hovered */
-  .theme-toggle:is(:hover, :focus-visible) .sun-and-moon > :is(.moon, .sun) {
+  .theme-toggle:is(:global(:hover, :focus-visible)) .sun-and-moon > :is(:global(.moon, .sun)) {
     fill: var(--icon-fill-hover);
   }
 
@@ -86,7 +86,7 @@
   }
 
   /* Fills the sun beams with the icon hover colour when the button is hovered */
-  .theme-toggle:is(:hover, :focus-visible) .sun-and-moon > .sun-beams {
+  .theme-toggle:is(:global(:hover, :focus-visible)) .sun-and-moon > .sun-beams {
     stroke: var(--icon-fill-hover);
   }
 
@@ -173,7 +173,7 @@
 </style>
 
 <!-- The HTML for the component -->
-<button on:click={handleClick} class="theme-toggle" title="Toggles between light & dark theme" aria-label="auto" aria-live="polite">
+<button onclick={handleClick} class="theme-toggle" title="Toggles between light & dark theme" aria-label="auto" aria-live="polite">
 
   <!-- The SVG of the sun and moon icon -->
   <svg class="sun-and-moon" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24">

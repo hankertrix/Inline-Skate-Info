@@ -1,5 +1,5 @@
 <!-- The page to display the protective gear you can buy -->
-<script lang="ts" context="module">
+<script lang="ts" module>
   import productsJson from '$lib/data/products/protective-gear.json';
   export { productsJson };
 </script>

@@ -1,5 +1,5 @@
 <!-- The page for all the class E slalom tricks in the spins category -->
-<script lang="ts" context="module">
+<script lang="ts" module>
   import tricksJson from '$lib/data/tricks/slalom/class-E/spins.json';
   export { tricksJson };
 </script>

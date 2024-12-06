@@ -1,5 +1,5 @@
 <!-- The page for all of the class A slalom tricks -->
-<script lang="ts" context="module">
+<script lang="ts" module>
   import { tricksJson as othersTricksJson } from './others/+page.svelte';
   import { tricksJson as sittingTricksJson } from './sitting/+page.svelte';
   import { tricksJson as jumpsTricksJson } from './jumps/+page.svelte';

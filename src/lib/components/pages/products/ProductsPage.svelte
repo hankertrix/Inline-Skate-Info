@@ -1,30 +1,58 @@
 <!-- The component to display a product page -->
 <script lang="ts">
-
   import type { JsonData } from "$lib/types";
-  import { makeUrlFriendlyString } from "$lib/utils";
   import ProductsSection from "./ProductsSection.svelte";
-  
-  // The variable to take in the title of the page
-  export let title: string;
-  
-  // The variable which takes in the description of the page
-  export let description: string;
+  import { makeUrlFriendlyString } from "$lib/utils";
 
-  // The variable to take in the JSON data of the products
-  export let productsJson: JsonData;
-  
-  // The variable to take in the heading level
-  export let headingLevel: number = 2;
+  // The interface for the props passed to the component
+  interface Props {
+    //
 
-  // The variable to take in the change in the heading level
-  export let changeInHeadingLevel: number = 1;
-  
+    // The variable to take in the title of the page
+    title: string;
+
+    // The variable which takes in the description of the page
+    description: string;
+
+    // The variable to take in the JSON data of the products
+    productsJson: JsonData;
+
+    // The variable to take in the heading level
+    headingLevel?: number;
+
+    // The variable to take in the change in the heading level
+    changeInHeadingLevel?: number;
+  }
+
+  // Get the variables from the props
+  let {
+    title,
+    description,
+    productsJson,
+    headingLevel = 2,
+    changeInHeadingLevel = 1,
+  }: Props = $props();
 </script>
+
+<!-- The headers for the page -->
+<svelte:head>
+  <title>{title} - Inline Skate Info</title>
+  <meta name="description" content={description} />
+</svelte:head>
+
+<!-- The HTML for the page -->
+<main>
+  <header>
+    <h1 class="text" id={makeUrlFriendlyString(title)}>{title}</h1>
+  </header>
+
+  <div>
+    <ProductsSection {productsJson} {headingLevel} {changeInHeadingLevel} />
+  </div>
+</main>
 
 <!-- The styles for the page -->
 <style>
-
   main {
     margin: var(--page-margin);
   }
@@ -36,24 +64,4 @@
   div {
     margin-bottom: 5em;
   }
-  
 </style>
-
-<!-- The headers for the page -->
-<svelte:head>
-  <title>{title} - Inline Skate Info</title>
-  <meta name="description" content={description}>
-</svelte:head>
-
-<!-- The HTML for the page -->
-<main>
-  
-  <header>
-    <h1 class="text" id={makeUrlFriendlyString(title)}>{title}</h1>
-  </header>
-
-  <div>
-    <ProductsSection {productsJson} {headingLevel} {changeInHeadingLevel} />
-  </div>
-  
-</main>

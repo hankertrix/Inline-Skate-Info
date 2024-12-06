@@ -1,5 +1,5 @@
 <!-- The page for all the class A slalom tricks in the sitting category -->
-<script lang="ts" context="module">
+<script lang="ts" module>
   import tricksJson from '$lib/data/tricks/slalom/class-A/sitting.json';
   export { tricksJson };
 </script>

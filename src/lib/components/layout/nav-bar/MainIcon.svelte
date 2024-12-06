@@ -356,7 +356,7 @@
 
   /* The styles for the liner flap */
   
-  .liner-flap > :is(polygon, path) {
+  .liner-flap > :is(:global(polygon, path)) {
     fill: var(--liner-flap-colour);
   }
 

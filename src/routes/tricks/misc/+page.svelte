@@ -1,5 +1,5 @@
 <!-- The page for all the miscellaneous tricks -->
-<script lang="ts" context="module">
+<script lang="ts" module>
   import tricksJson from '$lib/data/tricks/misc.json';
   export { tricksJson };
 </script>

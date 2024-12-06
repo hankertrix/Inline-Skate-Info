@@ -1,5 +1,5 @@
 <!-- The page for all the turns -->
-<script lang="ts" context="module">
+<script lang="ts" module>
   import tricksJson from '$lib/data/tricks/turns.json';
   export { tricksJson };
 </script>

@@ -10,7 +10,7 @@
 		"sourceMap": true,
 		"strict": true
 	},
-  "include": [
+	"include": [
 		"./.svelte-kit/ambient.d.ts",
 		"./vite.config.ts",
 		"./src/**/*.js",
@@ -22,7 +22,7 @@
 		"./tests/**/*.js",
 		"./tests/**/*.ts",
 		"./tests/**/*.svelte",
-    "./telegram-bot/**/*.ts"
+		"./telegram-bot/**/*.ts"
 	],
 	"exclude": [
 		"./node_modules/**",

@@ -1,5 +1,5 @@
 <!-- The page for all of the class A aggressive tricks -->
-<script lang="ts" context="module">
+<script lang="ts" module>
   import { tricksJson as spinsTricksJson } from './spins/+page.svelte';
   import { tricksJson as othersTricksJson } from './others/+page.svelte';
 

@@ -1,5 +1,5 @@
 <!-- The page to display all of the retailers in Singapore -->
-<script lang="ts" context="module">
+<script lang="ts" module>
   import placesJson from '$lib/data/places/retailers-in-singapore.json';
   export { placesJson };
 </script>

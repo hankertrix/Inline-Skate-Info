@@ -1,5 +1,5 @@
 <!-- The page for all the class C aggressive tricks in the grabs category -->
-<script lang="ts" context="module">
+<script lang="ts" module>
   import tricksJson from '$lib/data/tricks/aggressive/class-C/grabs.json';
   export { tricksJson };
 </script>

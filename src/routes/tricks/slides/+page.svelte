@@ -1,5 +1,5 @@
 <!-- The page containing all of the slides -->
-<script lang="ts" context="module">
+<script lang="ts" module>
   // Import all of the tricks
   import { tricksJson as classATricksJson } from './class-a/+page.svelte';
   import { tricksJson as classBTricksJson } from './class-b/+page.svelte';

@@ -1,5 +1,5 @@
 <!-- The page to display the maintenance items you can buy -->
-<script lang="ts" context="module">
+<script lang="ts" module>
   import productsJson from '$lib/data/products/maintenance-items.json';
   export { productsJson };
 </script>

@@ -1,5 +1,5 @@
 <!-- The page for all the class D aggressive tricks in the grinds category -->
-<script lang="ts" context="module">
+<script lang="ts" module>
   import tricksJson from '$lib/data/tricks/aggressive/class-D/grinds.json';
   export { tricksJson };
 </script>

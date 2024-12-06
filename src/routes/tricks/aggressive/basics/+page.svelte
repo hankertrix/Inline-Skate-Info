@@ -1,5 +1,5 @@
 <!-- The page for all the aggressive basic tricks -->
-<script lang="ts" context="module">
+<script lang="ts" module>
   import tricksJson from '$lib/data/tricks/aggressive/basics.json';
   export { tricksJson };
 </script>

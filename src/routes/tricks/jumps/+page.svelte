@@ -1,5 +1,5 @@
 <!-- The page for all the jumps -->
-<script lang="ts" context="module">
+<script lang="ts" module>
   import tricksJson from '$lib/data/tricks/jumps.json';
   export { tricksJson };
 </script>

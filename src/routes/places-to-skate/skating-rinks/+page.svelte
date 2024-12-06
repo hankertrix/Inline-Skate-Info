@@ -1,5 +1,5 @@
 <!-- The page to display all of the skating rinks in Singapore -->
-<script lang="ts" context="module">
+<script lang="ts" module>
   import placesJson from '$lib/data/places/skating-rinks.json';
   export { placesJson };
 </script>

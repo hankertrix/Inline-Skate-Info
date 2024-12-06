@@ -1,5 +1,5 @@
 <!-- The page to display the accessories you can buy -->
-<script lang="ts" context="module">
+<script lang="ts" module>
   import productsJson from '$lib/data/products/accessories.json';
   export { productsJson };
 </script>

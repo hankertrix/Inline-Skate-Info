@@ -1,5 +1,5 @@
 <!-- The page for all the class B slalom tricks in the others category -->
-<script lang="ts" context="module">
+<script lang="ts" module>
   import tricksJson from '$lib/data/tricks/slalom/class-B/others.json';
   export { tricksJson };
 </script>

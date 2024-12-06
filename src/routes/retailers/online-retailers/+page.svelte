@@ -1,5 +1,5 @@
 <!-- The page to display all of the exclusively online retailers -->
-<script lang="ts" context="module">
+<script lang="ts" module>
   import placesJson from '$lib/data/places/online-retailers.json';
   export { placesJson };
 </script>

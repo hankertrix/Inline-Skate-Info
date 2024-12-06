@@ -1,5 +1,5 @@
 <!-- The page to display the clothing you can buy -->
-<script lang="ts" context="module">
+<script lang="ts" module>
   import productsJson from '$lib/data/products/clothing.json';
   export { productsJson };
 </script>

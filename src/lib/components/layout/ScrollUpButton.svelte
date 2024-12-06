@@ -82,7 +82,7 @@
     height: 100%;
   }
 
-  a:is(:link, :hover, :active, :visited) {
+  a:is(:global(:link, :hover, :active, :visited)) {
     color: var(--icon-colour);
   }
 

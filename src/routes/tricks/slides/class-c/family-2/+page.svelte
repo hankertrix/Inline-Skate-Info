@@ -1,5 +1,5 @@
 <!-- The page for all the class C family 2 slides -->
-<script lang="ts" context="module">
+<script lang="ts" module>
   import tricksJson from '$lib/data/tricks/slides/class-C/family-2.json';
   export { tricksJson };
 </script>

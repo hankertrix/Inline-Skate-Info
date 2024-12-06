@@ -1,5 +1,5 @@
 <!-- The page to display all of the wheel brands -->
-<script lang="ts" context="module">
+<script lang="ts" module>
   import brandsJson from '$lib/data/brands/wheel-brands.json';
   export { brandsJson };
 </script>

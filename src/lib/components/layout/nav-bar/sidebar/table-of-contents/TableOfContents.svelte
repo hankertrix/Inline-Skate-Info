@@ -2,17 +2,19 @@
 <script lang="ts">
   import type { TableOfContents } from "$lib/types";
   import { page } from "$app/stores";
-  import { browser } from "$app/environment";
   import TableOfContentsCollapsibleMenu from "./TableOfContentsCollapsibleMenu.svelte";
+
+  // Initialise the previous page url
+  let previousPageUrl: string = $state($page.url.pathname);
 
   // The variable to store the list of headings on the page
   // Eslint is somehow not recognising NodeListOf
   // defined type, hence the line below
   // eslint-disable-next-line  no-undef
-  let headings: NodeListOf<Element>;
+  let headings: NodeListOf<Element> | null = $state(null);
 
   // The variable to store the table of contents object
-  let tableOfContents: TableOfContents = new Map();
+  let tableOfContents: TableOfContents = $state(new Map());
 
   // Function to get the table of contents
   // Eslint is somehow not recognising NodeListOf
@@ -138,28 +140,26 @@
     return tableOfContents;
   }
 
-  // Reactive block
-  $: {
+  // Run a side effect on the page to update the table of contents
+  $effect(() => {
     //
 
-    // This is just to force the component to re-render when the route changes
-    // eslint-disable-next-line  @typescript-eslint/no-unused-vars
-    let throwaway = $page.url;
+    // If the current page url is the same as the previous page url,
+    // exit the function
+    if ($page.url.pathname === previousPageUrl) return;
 
-    // If the environment is the browser
-    if (browser) {
-      //
+    // Gets all the headings in the document
+    headings = document.querySelectorAll("h2, h3, h4, h5, h6");
 
-      // Gets all the headings in the document
-      headings = document.querySelectorAll("h2, h3, h4, h5, h6");
+    // Gets the table of contents from the page
+    tableOfContents = tableOfContents.set("Table Of Contents", {
+      id: "",
+      children: getTableOfContents(headings),
+    });
 
-      // Gets the table of contents from the page
-      tableOfContents = tableOfContents.set("Table Of Contents", {
-        id: "",
-        children: getTableOfContents(headings),
-      });
-    }
-  }
+    // Update the previous page url to the current one
+    previousPageUrl = $page.url.pathname;
+  });
 </script>
 
 <!-- The HTML for the table of contents -->

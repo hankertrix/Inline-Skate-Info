@@ -1,5 +1,5 @@
 <!-- The page for all of the class A slides -->
-<script lang="ts" context="module">
+<script lang="ts" module>
   import { tricksJson as family1TricksJson } from './family-1/+page.svelte';
   import { tricksJson as family2TricksJson } from './family-2/+page.svelte';
   import { tricksJson as family3TricksJson } from './family-3/+page.svelte';

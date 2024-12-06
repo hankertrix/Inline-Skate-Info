@@ -1,5 +1,5 @@
 <!-- The page containing all of the aggressive tricks -->
-<script lang="ts" context="module">
+<script lang="ts" module>
   // Import all of the tricks
   import { tricksJson as basicTricksJson } from './basics/+page.svelte';
   import { tricksJson as classATricksJson } from './class-a/+page.svelte';

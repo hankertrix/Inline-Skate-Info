@@ -1,5 +1,5 @@
 <!-- The page to display all of the frame brands -->
-<script lang="ts" context="module">
+<script lang="ts" module>
   import brandsJson from '$lib/data/brands/frame-brands.json';
   export { brandsJson };
 </script>
