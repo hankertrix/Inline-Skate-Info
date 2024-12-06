@@ -32,7 +32,7 @@
   const youtubeIdRegex = /^.*\/(?:watch\?v=)?|[?&].+$/g;
 
   // The regex to remove everything but the YouTube timestamp
-  const youtubeTimestampRegex = /^.*t=|s+$/g;
+  const youtubeTimestampRegex = /^.*t=|\s+$/g;
 
   // The function to run a function once
   function once(fn: ((event: OnClickEvent) => void) | null) {
@@ -51,8 +51,8 @@
   function getYoutubeTimestamp(youtubeVideoUrl: string): number {
     //
 
-    // Gets the string of the timestamp for the YouTube video
-    const timestampString = youtubeVideoUrl.match(youtubeTimestampRegex);
+    // Get the timestamp string of the YouTube video
+    const timestampString = youtubeVideoUrl.replace(youtubeTimestampRegex, "");
 
     // Parse the timestamp string to an integer
     const timestamp = parseInt(timestampString);
