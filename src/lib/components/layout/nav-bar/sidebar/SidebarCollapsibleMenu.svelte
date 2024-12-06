@@ -76,7 +76,7 @@
 
 <!-- The styles for the collapsible menu -->
 <style>
-  a {
+  a:link {
     text-decoration: none;
     color: var(--text-colour);
     opacity: var(--text-opacity);

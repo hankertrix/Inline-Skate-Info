@@ -85,7 +85,7 @@
 <style>
   a:link {
     text-decoration: none;
-    color: var(--text-colour) !important;
+    color: var(--text-colour);
     opacity: var(--text-opacity);
   }
 
