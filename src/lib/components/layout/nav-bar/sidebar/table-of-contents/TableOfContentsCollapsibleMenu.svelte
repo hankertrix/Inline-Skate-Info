@@ -83,9 +83,9 @@
 
 <!-- The styles for the collapsible menu -->
 <style>
-  a {
+  a:link {
     text-decoration: none;
-    color: var(--text-colour);
+    color: var(--text-colour) !important;
     opacity: var(--text-opacity);
   }
 
