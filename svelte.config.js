@@ -1,7 +1,12 @@
 import adapter from "@sveltejs/adapter-netlify";
+import { sveltePreprocess } from "svelte-preprocess";
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
+  // Consult https://github.com/sveltejs/svelte-preprocess
+  // for more information about preprocessors
+  preprocess: sveltePreprocess(),
+
   kit: {
     adapter: adapter(),
     csp: {
@@ -38,6 +43,9 @@ const config = {
 
           // Styles for the Pagefind highlight script
           "sha256-ZCoB1kba9ZTfELA9P5NVsXbrXfcqOSTrLTbcMfUVY4E=",
+
+          // This is needed for the style below it to work
+          "unsafe-hashes",
 
           // No idea what style this is for, but it's required
           "sha256-S8qMpvofolR8Mpjy4kQvEm7m1q8clzU4dfDH0AmvZjo=",
