@@ -1,12 +1,7 @@
-import adapter from '@sveltejs/adapter-netlify';
-import preprocess from 'svelte-preprocess';
+import adapter from "@sveltejs/adapter-netlify";
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-  // Consult https://github.com/sveltejs/svelte-preprocess
-  // for more information about preprocessors
-  preprocess: preprocess(),
-
   kit: {
     adapter: adapter(),
     csp: {
@@ -29,7 +24,7 @@ const config = {
           "wasm-unsafe-eval",
 
           // The script in app.html to stop the page from flashing
-          "sha256-igh6+2kzd6C5AbKv2RNaCr6axJslkoleSYgWUDDINvM="
+          "sha256-igh6+2kzd6C5AbKv2RNaCr6axJslkoleSYgWUDDINvM=",
         ],
 
         "style-src": [
@@ -43,10 +38,13 @@ const config = {
 
           // Styles for the Pagefind highlight script
           "sha256-ZCoB1kba9ZTfELA9P5NVsXbrXfcqOSTrLTbcMfUVY4E=",
-        ]
-      }
-    }
-  }
+
+          // No idea what style this is for, but it's required
+          "sha256-S8qMpvofolR8Mpjy4kQvEm7m1q8clzU4dfDH0AmvZjo=",
+        ],
+      },
+    },
+  },
 };
 
 export default config;
