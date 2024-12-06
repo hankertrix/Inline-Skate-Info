@@ -149,7 +149,7 @@
     // exit the function
     if ($page.url.pathname === previousPageUrl) return;
 
-    // Gets all the headings in the document
+    // Otherwise, get all the headings in the document
     headings = document.querySelectorAll("h2, h3, h4, h5, h6");
 
     // Gets the table of contents from the page
