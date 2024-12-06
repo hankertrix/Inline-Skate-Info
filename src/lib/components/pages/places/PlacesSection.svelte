@@ -1,5 +1,7 @@
 <!-- The component to display a category of places, or a single place -->
 <script lang="ts">
+  /* eslint-disable svelte/no-at-html-tags */
+
   import type { JsonData } from "$lib/types";
   import PlacesSection from "./PlacesSection.svelte";
   import { makeUrlFriendlyString, titlecase } from "$lib/utils";
@@ -70,6 +72,8 @@
 
   // Function to create links for phone numbers
   function createLinkForPhoneNum(str: string) {
+    //
+
     // Replace all phone numbers with the linked version
     return str.replace(
       phoneNumRegex,
@@ -145,18 +149,16 @@
             <!-- Displays the email in bold with the email linked -->
             <div class="text">
               <strong>{titleCasedAttribute}: </strong>
-
-              <!-- eslint-disable-next-line svelte/no-at-html-tags -->
               <a href={`mailto:${value}`} target="_blank">{@html value}</a>
             </div>
 
           <!-- If the attribute is "phone" -->
           {:else if ["phone"].includes(attribute)}
+            <!-->
+
             <!-- Displays the email in bold with the email linked -->
             <div class="text">
               <strong>{titleCasedAttribute}: </strong>
-
-              <!-- eslint-disable-next-line svelte/no-at-html-tags -->
               {@html createLinkForPhoneNum(value)}
             </div>
 
@@ -168,8 +170,6 @@
             <!-- Displays the address in bold with the address link -->
             <div class="text">
               <strong>{titleCasedAttribute}: </strong>
-
-              <!-- eslint-disable-next-line svelte/no-at-html-tags -->
               <a
                 href={placeObj.mapLink}
                 target="_blank"
@@ -184,8 +184,6 @@
             <!-- Displays the attribute in bold with the value beside it -->
             <div class="text">
               <strong>{titleCasedAttribute}: </strong>
-
-              <!-- eslint-disable-next-line svelte/no-at-html-tags -->
               {@html value}
             </div>
           {/if}
