@@ -36,13 +36,16 @@ const config = {
           "self",
 
           // Main CSS style for the entire page
-          "sha256-EHFod+1+yJWH4JfktKYKAH7HTu+l8xj88fKU0IUyX/U=",
+          // "sha256-EHFod+1+yJWH4JfktKYKAH7HTu+l8xj88fKU0IUyX/U=",
 
           // Styles for the button to toggle between light and dark theme
-          "sha256-ysd0CFQu/mXJ7dH4GWPr2Y3mx7J2r75LcZQVHMH+5Ss=",
+          // "sha256-ysd0CFQu/mXJ7dH4GWPr2Y3mx7J2r75LcZQVHMH+5Ss=",
 
           // Styles for the Pagefind highlight script
-          "sha256-ZCoB1kba9ZTfELA9P5NVsXbrXfcqOSTrLTbcMfUVY4E="
+          "sha256-ZCoB1kba9ZTfELA9P5NVsXbrXfcqOSTrLTbcMfUVY4E=",
+
+          // Main CSS style for the entire page?
+          "sha256-GQHiEoT/Yyw7i/CQpbsUjU+CrrV6C6C7U5iq+niceqw=",
         ]
       }
     }
