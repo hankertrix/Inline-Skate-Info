@@ -17,8 +17,8 @@
     title?: string;
   }
 
-  // The type of event for the loadEmbeds function
-  type LoadEmbedsEvent = MouseEvent & { currentTarget: HTMLElement };
+  // The on click event
+  type OnClickEvent = MouseEvent & { currentTarget: HTMLElement };
 
   // Get the video and the title from the props
   let { videos, title = "View the videos" }: Props = $props();
@@ -35,8 +35,8 @@
   const youtubeTimestampRegex = /^.*t=|s+$/g;
 
   // The function to run a function once
-  function once(fn: ((event: LoadEmbedsEvent) => void) | null) {
-    return function (this: typeof fn, event: LoadEmbedsEvent) {
+  function once(fn: ((event: OnClickEvent) => void) | null) {
+    return function (this: typeof fn, event: OnClickEvent) {
       if (fn) fn.call(this, event);
       fn = null;
     };
@@ -63,7 +63,7 @@
 
   // Function to load all the embeds inside the video collapsible
   // when the collapsible is opened
-  function loadEmbeds(e: MouseEvent & { currentTarget: HTMLElement }) {
+  function loadEmbeds(e: OnClickEvent) {
     //
 
     // Gets the parent element
