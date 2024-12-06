@@ -52,13 +52,14 @@
     //
 
     // Gets the string of the timestamp for the YouTube video
-    const timestampString = youtubeVideoUrl
-      .replace(youtubeTimestampRegex, "")
-      .trim();
+    const timestampString = youtubeVideoUrl.match(youtubeTimestampRegex);
 
-    // Returns 0 if the timestamp string doesn't exist
-    // Otherwise, returns the timestamp string converted to a number
-    return timestampString === "" ? 0 : parseInt(timestampString);
+    // Parse the timestamp string to an integer
+    const timestamp = parseInt(timestampString);
+
+    // Return 0 if the timestamp is not a number,
+    // and the timestamp if it is a number
+    return isNaN(timestamp) ? 0 : timestamp;
   }
 
   // Function to load all the embeds inside the video collapsible
@@ -106,11 +107,9 @@
         data-src={`https://www.youtube-nocookie.com/embed/${youtubeId}?start=${youtubeTimestamp}`}
         src=""
         title={videoInfo}
-        frameborder="0"
-        allow="clipboard-write; encrypted-media; picture-in-picture; web-share"
+        loading="lazy"
         allowfullscreen
       >
-        <a href={url} target="_blank" title={videoInfo}>{videoInfo}</a>
       </iframe>
     {/each}
   </section>
@@ -192,6 +191,7 @@
     height: 100%;
     aspect-ratio: 16/9;
     margin: 2em 0;
+    border: none;
   }
 
   /* Styles for when the collapsible is open */
