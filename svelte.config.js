@@ -45,10 +45,10 @@ const config = {
           "sha256-ZCoB1kba9ZTfELA9P5NVsXbrXfcqOSTrLTbcMfUVY4E=",
 
           // This is needed for the style below it to work
-          "unsafe-hashes",
+          // "unsafe-hashes",
 
           // No idea what style this is for, but it's required
-          "sha256-S8qMpvofolR8Mpjy4kQvEm7m1q8clzU4dfDH0AmvZjo=",
+          // "sha256-S8qMpvofolR8Mpjy4kQvEm7m1q8clzU4dfDH0AmvZjo=",
         ],
       },
     },
