@@ -13,7 +13,7 @@
   // The variable to store the previous scroll height
   let previousScrollHeight: number = 0;
 
-  
+
   // The function to make the scroll up button appear and disappear
   function handleScroll() {
 
@@ -44,7 +44,7 @@
     previousScrollHeight = currentScrollHeight;
   }
 
-  
+
   // The function to run when the component is mounted
   onMount(() => {
 
@@ -53,9 +53,9 @@
 
     // Gets the scroll up button
     scrollUpButton = document.getElementById("scroll-up-button");
-    
+
   });
-  
+
 </script>
 
 <!-- The styles for the scroll up button -->
@@ -63,7 +63,7 @@
 
   nav {
     --size: 2.5rem;
-    
+
     position: fixed;
     bottom: 4rem;
     right: 1rem;
@@ -82,7 +82,7 @@
     height: 100%;
   }
 
-  a:is(:global(:link, :hover, :active, :visited)) {
+  a:is(:link, :hover, :active, :visited) {
     color: var(--icon-colour);
   }
 
@@ -91,12 +91,12 @@
     height: 100%;
     translate: 0 -2px;
   }
-  
+
 </style>
 
 <!-- The HTML for the scroll up button -->
 <nav id="scroll-up-button" title="Scroll to the top of the page">
-  
+
   <a href="#top-of-the-page">
 
     <!-- The SVG for the scroll up button -->

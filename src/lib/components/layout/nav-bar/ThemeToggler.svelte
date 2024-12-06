@@ -11,7 +11,7 @@
     // Sets the current theme to be opposite of the previous theme
     $theme = $theme === "light" ? "dark" : "light";
   }
-  
+
 </script>
 
 <!-- The styles for the theme toggler -->
@@ -64,18 +64,18 @@
 
 
   /* Sets the center of rotation of all the elements in the SVG to the center of the SVG */
-  .sun-and-moon > :is(:global(.moon, .sun, .sun-beams)) {
+  .sun-and-moon > :is(.moon, .sun, .sun-beams) {
     transform-origin: center center;
   }
 
 
   /* Fills the sun and moon icons with the icon colour */
-  .sun-and-moon > :is(:global(.moon, .sun)) {
+  .sun-and-moon > :is(.moon, .sun) {
     fill: var(--icon-fill);
   }
 
   /* Fills the sun and moon icons with the icon hover colour when the button is hovered */
-  .theme-toggle:is(:global(:hover, :focus-visible)) .sun-and-moon > :is(:global(.moon, .sun)) {
+  .theme-toggle:is(:hover, :focus-visible) .sun-and-moon > :is(:global(.moon, .sun)) {
     fill: var(--icon-fill-hover);
   }
 
@@ -86,7 +86,7 @@
   }
 
   /* Fills the sun beams with the icon hover colour when the button is hovered */
-  .theme-toggle:is(:global(:hover, :focus-visible)) .sun-and-moon > .sun-beams {
+  .theme-toggle:is(:hover, :focus-visible) .sun-and-moon > .sun-beams {
     stroke: var(--icon-fill-hover);
   }
 

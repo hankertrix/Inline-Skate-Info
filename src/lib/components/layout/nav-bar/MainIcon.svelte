@@ -14,7 +14,7 @@
   /* The colours for the main icon in the light theme */
   :global(.light) svg {
 
-    
+
     /* The colours for the first wheel */
     --wheel-1-outer-colour: black;
     --wheel-1-inner-colour: #f6c1e3;
@@ -48,7 +48,7 @@
     --inner-wings-body-colour: hotpink;
     --inner-wings-accent-colour: black;
 
-    
+
     /* The colours for the frame */
     --frame-colour: #d9d8d9;
     --frame-spacing-colour: black;
@@ -69,7 +69,7 @@
     --frame-bolt-4-outer-colour: hotpink;
     --frame-bolt-4-inner-colour: black;
 
-    
+
     /* The colours for the liner */
     --liner-colour: #99e1bf;
     --liner-front-accent-colour: #014d4e;
@@ -83,14 +83,14 @@
     --toe-flap-colour: black;
     --toe-cap-colour: #d9d8d9;
 
-    
+
     /* The colours for the cuff */
     --cuff-colour: #419f90;
     --cuff-inner-edge-colour: #99e1bf;
     --cuff-screw-colour: black;
     --cuff-spacing-colour: #014d4e;
 
-    
+
     /* The colours for the straps and buckles */
     --front-strap-1-colour: hotpink;
     --front-strap-2-colour: hotpink;
@@ -105,7 +105,7 @@
   /* The colours for the main icon in the dark theme */
   :global(.dark) svg {
 
-    
+
     /* The colours for the first wheel */
     --wheel-1-outer-colour: black;
     --wheel-1-inner-colour: #ef432a;
@@ -139,7 +139,7 @@
     --inner-wings-body-colour: #f2753f;
     --inner-wings-accent-colour: black;
 
-    
+
     /* The colours for the frame */
     --frame-colour: #4a4a4b;
     --frame-spacing-colour: #0d0b0c;
@@ -160,7 +160,7 @@
     --frame-bolt-4-outer-colour: #f2753f;
     --frame-bolt-4-inner-colour: black;
 
-    
+
     /* The colours for the liner */
     --liner-colour: #0bc3d3;
     --liner-front-accent-colour: #0a0b89;
@@ -174,14 +174,14 @@
     --toe-flap-colour: black;
     --toe-cap-colour: #dee3ff;
 
-    
+
     /* The colours for the cuff */
     --cuff-colour: #4a4a4b;
     --cuff-inner-edge-colour: #0bc3d3;
     --cuff-screw-colour: black;
     --cuff-spacing-colour: #0a0b89;
 
-    
+
     /* The colours for the straps and buckles */
     --front-strap-1-colour: #dee3ff;
     --front-strap-2-colour: #dee3ff;
@@ -214,7 +214,7 @@
   .wheel-1 > .core {
     fill: var(--wheel-1-core-colour);
   }
-  
+
   .wheel-2 > polygon {
     fill: var(--wheel-2-accent-colour);
   }
@@ -355,8 +355,8 @@
 
 
   /* The styles for the liner flap */
-  
-  .liner-flap > :is(:global(polygon, path)) {
+
+  .liner-flap > :is(polygon, path) {
     fill: var(--liner-flap-colour);
   }
 
@@ -375,7 +375,7 @@
 
 
   /* The styles for the cuff */
-  
+
   .cuff {
     fill: var(--cuff-colour);
   }
@@ -430,7 +430,7 @@
   .top-buckle > .strap {
     fill: var(--top-strap-colour);
   }
-  
+
 </style>
 
 <!-- The HTML for the main icon -->

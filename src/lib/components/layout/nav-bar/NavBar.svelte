@@ -168,10 +168,8 @@
   }
 
   :is(
-      :global(
-        .hamburger-icon:has(input:checked),
-        .nav-bar.checked > .hamburger-icon
-      )
+      .hamburger-icon:has(input:checked),
+      .nav-bar.checked > .hamburger-icon
     )::before {
     rotate: 45deg;
     width: var(--x-width);
@@ -179,17 +177,15 @@
   }
 
   :is(
-      :global(
-        .hamburger-icon:has(input:checked),
-        .nav-bar.checked > .hamburger-icon
-      )
+      .hamburger-icon:has(input:checked),
+      .nav-bar.checked > .hamburger-icon
     )::after {
     rotate: -45deg;
     width: var(--x-width);
     translate: 0 calc(var(--bar-height) / 2);
   }
 
-  :is(:global(.nav-bar:has(.hamburger-icon > input:checked), .nav-bar.checked))
+  :is(.nav-bar:has(.hamburger-icon > input:checked))
     + .sidebar {
     translate: 0;
   }
