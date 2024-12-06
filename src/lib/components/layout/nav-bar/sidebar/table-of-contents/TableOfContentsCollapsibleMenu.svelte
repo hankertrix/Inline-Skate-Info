@@ -79,10 +79,14 @@
 
 <!-- The styles for the collapsible menu -->
 <style>
-  a, li > a, summary > a {
+  a {
     text-decoration: none;
     color: var(--text-colour);
     opacity: var(--text-opacity);
+  }
+
+  a:link {
+    color: var(--text-colour);
   }
 
   summary {
