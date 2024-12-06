@@ -83,8 +83,7 @@
 
 <!-- The styles for the collapsible menu -->
 <style>
-  a,
-  li > a {
+  a {
     text-decoration: none;
     color: var(--text-colour);
     opacity: var(--text-opacity);
@@ -141,6 +140,9 @@
   li > a {
     display: block;
     width: 100%;
+    text-decoration: none;
+    color: var(--text-colour);
+    opacity: var(--text-opacity);
   }
 
   /* The styles when the collapsible is open */
