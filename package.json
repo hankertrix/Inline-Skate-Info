@@ -36,7 +36,6 @@
   "type": "module",
   "dependencies": {
     "qrcode": "^1.5.4",
-    "svelte-preprocess": "^6.0.3",
     "telegraf": "^4.16.3"
   }
 }
