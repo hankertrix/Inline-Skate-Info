@@ -31,8 +31,8 @@
 <!-- The HTML for the page -->
 <main>
   <header>
-    <!-- eslint-disable-next-line svelte/no-at-html-tags -->
     <h1 class="text" id={makeUrlFriendlyString(title)}>
+      <!-- eslint-disable-next-line svelte/no-at-html-tags -->
       {@html addSoftHyphen(title, 16)}
     </h1>
   </header>
@@ -57,6 +57,8 @@
         {@const videos = castAsVideoObject(listOfVideos)}
 
         <section class="recommendation-category">
+          <!-->
+
           <!-- Displays the category -->
           <h3 class="text" id={makeUrlFriendlyString(category)}>{category}</h3>
 
