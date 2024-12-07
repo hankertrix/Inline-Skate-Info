@@ -1,56 +1,66 @@
 {
+  "Acetone (500ml)": {
+    "price": "$8.00",
+    "link": "https://shopee.sg/product/10214/22477083611"
+  },
+
+  "Acetone (520ml) [Shopee]": {
+    "price": "$9.50",
+    "link": "https://shopee.sg/product/54316101/18801123600"
+  },
+
   "Acetone (520ml) [Lazada]": {
     "price": "$9.80",
     "link": "https://www.lazada.sg/products/100-pure-acetone520ml-408g-sg-ready-stock-i2294363160.html"
   },
 
-  "Acetone (520ml) [Shopee]": {
-    "price": "$9.80",
-    "link": "https://shopee.sg/product/54316101/18801123600"
-  },
-
   "Acetone (1L) [Shopee]": {
-    "price": "$17.90",
-    "link": "https://shopee.sg/product/2875608/19368903099"
+    "price": "$15.50",
+    "link": "https://shopee.sg/product/10214/22477083611"
   },
 
   "Acetone (1L) [Lazada]": {
-    "price": "$18.90",
-    "link": "https://www.lazada.sg/products/pure-acetone-1000ml-for-gel-nail-polish-remove-soak-off-solution-i169791771-s220804172.html"
+    "price": "$18.20",
+    "link": "https://www.lazada.sg/products/100-pure-acetone-professional-use-multi-purpose-nail-polish-gel-remover-i2632731902-s16750918883.html"
   },
-  
-  "Acetone (3.785L)": {
-    "price": "$28.90",
+
+  "Acetone (3.75L)": {
+    "price": "$21.90",
+    "link": "https://shopee.sg/product/10214/22477083611"
+  },
+
+  "Acetone (3.785L) [Shopee]": {
+    "price": "$33.80",
     "link": "https://shopee.sg/product/318666676/25357552749"
   },
-  
-  "Acetone (5L) [Lazada]": {
-    "price": "$37.80",
-    "link": "https://www.lazada.sg/products/acetone-i2177056734-s12432372584.html"
+
+  "Acetone (3.785L) [Lazada]": {
+    "price": "$33.80",
+    "link": "https://www.lazada.sg/products/nail-spa-owners-acetone-1-gallon-for-nail-polish-removal-i3158093851-s21487491392.html"
   },
-  
+
   "Acetone (5L) [Shopee]": {
     "price": "$43.00",
     "link": "https://shopee.sg/product/2875608/22867339202"
   },
-  
-  "Acetone (18L)": {
-    "price": "$75.60",
-    "link": "https://www.lazada.sg/products/acetone-i2177056734-s12432372584.html"
+
+  "Acetone (5L) [Lazada]": {
+    "price": "$45.00",
+    "link": "https://www.lazada.sg/products/100-pure-acetone-professional-gel-nail-polish-remover-manicure-pedicure-salon-acetone-i2763407470-s18902567854.html"
   },
 
-  "Isopropyl Alcohol (1L)": {
-    "price": "$12.50",
+  "99% Isopropyl Alcohol (1L)": {
+    "price": "$11.50",
     "link": "https://shopee.sg/ctc_hardware/8694850057"
   },
 
-  "Isopropyl Alcohol (3.785L)": {
-    "price": "$24.19",
+  "99% Isopropyl Alcohol (3.785L)": {
+    "price": "$23.19",
     "link": "https://shopee.sg/ctc_hardware/7857894071"
   },
 
-  "Isopropyl Alcohol (18L)": {
-    "price": "$55.41",
+  "99% Isopropyl Alcohol (18L)": {
+    "price": "$53.41",
     "link": "https://shopee.sg/ctc_hardware/5657893885"
   },
 
@@ -65,13 +75,13 @@
   },
 
   "Lighter Fluid (300ml) [4 Pack]": {
-    "price": "$12.00",
+    "price": "$10.80",
     "link": "https://www.lazada.sg/products/lightzone-universal-butane-fuel-refill-for-lighter-lighter-gas-i1973479448-s10645207890.html"
   },
 
   "3M 5-Way Lubricant (400ml)": {
-    "price": "$9.00",
-    "link": "https://shopee.sg/3mindustrial/7179300475"
+    "price": "$9.50",
+    "link": "https://shopee.sg/product/127821595/7937520022"
   },
 
   "3M 5-Way Lubricant (400ml) (Attached nozzle) [Shopee]": {
@@ -92,5 +102,10 @@
   "3M 5-Way Lubricant (400ml) (Attached nozzle) (2 pack) [Lazada]": {
     "price": "$21.50",
     "link": "https://www.lazada.sg/products/bundle-of-23m-two-way-5-way-spray-lubricant-i327592662-s693964967.html"
+  },
+
+  "Loctite Thread Locker (50ml)": {
+    "price": "$4.11",
+    "link": "https://www.lazada.sg/products/100-genuine-new-styleloctite-243-screw-glue-for-fastening-and-anti-loosening-loctite-241-242-262-263-222-272-277-290-271-thread-locking-adhesive-motorcycle-watch-low-medium-high-strength-high-temperature-resistant-anaerobic-glue-50ml-i2838766917-s19570318494.html"
   }
 }

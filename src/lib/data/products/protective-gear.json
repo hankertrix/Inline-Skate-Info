@@ -3,17 +3,17 @@
     "price": "$24.90",
     "link": "https://www.decathlon.sg/p/skate-helmet-mf-500-black-oxelo-8552048.html"
   },
-  
+
   "Decathlon Skate Helmet MF 500 (White)": {
     "price": "$24.90",
     "link": "https://www.decathlon.sg/p/skate-helmet-mf-500-white-oxelo-8586684.html"
   },
 
   "Decathlon Skate Helmet MF 500 (Grey)": {
-    "price": "$24.90",
+    "price": "Currently on sale for $19.90, usually $24.90",
     "link": "https://www.decathlon.sg/p/skate-helmet-mf-500-grey-oxelo-8737230.html"
   },
-  
+
   "Decathlon Skate Helmet MF 500 (Silver)": {
     "price": "$24.90",
     "link": "https://www.decathlon.sg/p/skate-helmet-mf-500-grey-oxelo-8548126.html"
@@ -23,15 +23,20 @@
     "price": "$24.90",
     "link": "https://www.decathlon.sg/p/skate-helmet-mf-500-khaki-green-oxelo-8737231.html"
   },
-  
+
   "Decathlon Skate Helmet MF 500 (Pink)": {
     "price": "$24.90",
     "link": "https://www.decathlon.sg/p/skate-helmet-oxelo-mf-500-pink-oxelo-8586685.html"
   },
-  
-  "Decathlon Guards": {
-    "price": "Currently on sale for $19.90, usually $29.90",
-    "link": "https://www.decathlon.sg/p/adult-inline-skate-protection-kit-oxelo-fit-500-3-piece-grey-oxelo-8494805.html"
+
+  "Decathlon Guards (Black)": {
+    "price": "$29.90",
+    "link": "https://www.decathlon.sg/p/adult-2-x-3-piece-inline-skate-protection-set-fit500-black-oxelo-8784956.html"
+  },
+
+  "Decathlon Guards (Dark Blue)": {
+    "price": "$29.90",
+    "link": "https://www.decathlon.sg/p/adult-2-x-3-piece-inline-skate-protection-set-fit500-dark-blue-oxelo-8784955.html"
   },
 
   "Flying Eagle Guards": {
