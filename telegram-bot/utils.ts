@@ -185,7 +185,7 @@ export async function loadJsonData(
   //
 
   // Gets the file path
-  let filePath = `${root == null ? root : "./src/lib/"}${path}`;
+  let filePath = `${root != null ? root : "./src/lib/"}${path}`;
 
   // Replace multiple consecutive slashes in the file path with a single slash
   filePath = filePath.replace(/\/{2,}/g, "/");
