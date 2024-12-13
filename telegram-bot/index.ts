@@ -921,6 +921,47 @@ bot.inlineQuery(commandUtils.triskateDiff.regex, async ctx => {
 
 
 
+// Protective gear command
+
+// The handler for the protective gear command
+bot.command([
+  "protective_gear",
+  "protectivegear",
+  "protection",
+  "protect"
+], async ctx => {
+
+  // Generates the text for the list of protective gear
+  const protectiveGearText = await commandUtils.products.generateProductsText(
+    commandUtils.products.ProductTypes.ProtectiveGear
+  );
+
+  // Replies to the user with the list of protective gear
+  await ctxReply(ctx, protectiveGearText);
+});
+
+
+// The inline query handler for the protective gear command
+bot.inlineQuery(commandUtils.products.protectiveGearRegex, async ctx => {
+
+  // Generates the text for the list of protective gear
+  const protectiveGearText = await commandUtils.products.generateProductsText(
+    commandUtils.products.ProductTypes.ProtectiveGear
+  );
+
+  // Replies to the inline query with the list of protective gear
+  await answerInlineQuery(ctx, protectiveGearText);
+});
+
+
+
+
+
+
+
+
+
+
 // Accessories command
 
 // The handler for the accessories command
@@ -962,36 +1003,95 @@ bot.inlineQuery(commandUtils.products.accessoriesRegex, async ctx => {
 
 
 
-// Protective gear command
+// The tools command
 
-// The handler for the protective gear command
+// The handler for the tools command
 bot.command([
-  "protective_gear",
-  "protectivegear",
-  "protection",
-  "protect"
+  "tools",
+  "tool",
+  "inline_skate_tools",
+  "inline_skate_tool",
+  "inline_tools",
+  "inline_tool",
+  "skate_tools",
+  "skate_tool",
+  "inlineskate_tools",
+  "inlineskate_tool",
+  "inlinetools",
+  "inlinetool",
+  "skatetools",
+  "skatetool",
 ], async ctx => {
 
-  // Generates the text for the list of protective gear
-  const protectiveGearText = await commandUtils.products.generateProductsText(
-    commandUtils.products.ProductTypes.ProtectiveGear
+  // Generates the text for the list of tools
+  const toolsText = await commandUtils.products.generateProductsText(
+    commandUtils.products.ProductTypes.Tools
   );
 
-  // Replies to the user with the list of protective gear
-  await ctxReply(ctx, protectiveGearText);
+  // Replies to the user with the list of tools
+  await ctxReply(ctx, toolsText);
 });
 
 
-// The inline query handler for the protective gear command
-bot.inlineQuery(commandUtils.products.protectiveGearRegex, async ctx => {
+// The inline query handler for the tools command
+bot.inlineQuery(commandUtils.products.toolsRegex, async ctx => {
 
-  // Generates the text for the list of protective gear
-  const protectiveGearText = await commandUtils.products.generateProductsText(
-    commandUtils.products.ProductTypes.ProtectiveGear
+  // Generates the text for the list of maintenance items
+  const toolsText = await commandUtils.products.generateProductsText(
+    commandUtils.products.ProductTypes.Tools
   );
 
-  // Replies to the inline query with the list of protective gear
-  await answerInlineQuery(ctx, protectiveGearText);
+  // Replies to the inline query with the list of tools
+  await answerInlineQuery(ctx, toolsText);
+});
+
+
+
+
+
+
+
+
+
+
+// The maintenance items command
+
+// The handler for the maintenance items command
+bot.command([
+  "maintenance_items",
+  "maintenance_item",
+  "maintainance_items",
+  "maintainance_item",
+  "maintainence_items",
+  "maintainence_item",
+  "maintenanceitems",
+  "maintenanceitem",
+  "maintainanceitems",
+  "maintainanceitem",
+  "maintainenceitems",
+  "maintainenceitem"
+], async ctx => {
+
+  // Generates the text for the list of maintenance items
+  const maintenanceItemsText = await commandUtils.products.generateProductsText(
+    commandUtils.products.ProductTypes.MaintenanceItems
+  );
+
+  // Replies to the user with the list of maintenance items
+  await ctxReply(ctx, maintenanceItemsText);
+});
+
+
+// The inline query handler for the maintenance items command
+bot.inlineQuery(commandUtils.products.maintenanceItemsRegex, async ctx => {
+
+  // Generates the text for the list of maintenance items
+  const maintenanceItemsText = await commandUtils.products.generateProductsText(
+    commandUtils.products.ProductTypes.MaintenanceItems
+  );
+
+  // Replies to the inline query with the list of maintenance items
+  await answerInlineQuery(ctx, maintenanceItemsText);
 });
 
 
@@ -1036,55 +1136,6 @@ bot.inlineQuery(commandUtils.products.clothingRegex, async ctx => {
 
   // Replies to the inline query with the list of clothing items
   await answerInlineQuery(ctx, clothingText);
-});
-
-
-
-
-
-
-
-
-
-
-// The maintenance items command
-
-// The handler for the protective gear command
-bot.command([
-  "maintenance_items",
-  "maintenance_item",
-  "maintainance_items",
-  "maintainance_item",
-  "maintainence_items",
-  "maintainence_item",
-  "maintenanceitems",
-  "maintenanceitem",
-  "maintainanceitems",
-  "maintainanceitem",
-  "maintainenceitems",
-  "maintainenceitem"
-], async ctx => {
-
-  // Generates the text for the list of maintenance items
-  const maintenanceItemsText = await commandUtils.products.generateProductsText(
-    commandUtils.products.ProductTypes.MaintenanceItems
-  );
-
-  // Replies to the user with the list of maintenance items
-  await ctxReply(ctx, maintenanceItemsText);
-});
-
-
-// The inline query handler for the maintenance command
-bot.inlineQuery(commandUtils.products.maintenanceItemsRegex, async ctx => {
-
-  // Generates the text for the list of maintenance items
-  const maintenanceItemsText = await commandUtils.products.generateProductsText(
-    commandUtils.products.ProductTypes.MaintenanceItems
-  );
-
-  // Replies to the inline query with the list of maintenance items
-  await answerInlineQuery(ctx, maintenanceItemsText);
 });
 
 

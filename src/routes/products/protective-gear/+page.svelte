@@ -1,11 +1,11 @@
 <!-- The page to display the protective gear you can buy -->
 <script lang="ts" module>
-  import productsJson from '$lib/data/products/protective-gear.json';
+  import productsJson from "$lib/data/products/protective-gear.json";
   export { productsJson };
 </script>
 
 <script lang="ts">
-  import ProductsPage from '$lib/components/pages/products/ProductsPage.svelte';
+  import ProductsPage from "$lib/components/pages/products/ProductsPage.svelte";
 </script>
 
 <!-- The HTML for the page -->

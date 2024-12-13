@@ -133,20 +133,24 @@ function getCommandDict() {
       explanation: "Displays information about the differences between triskates and regular 4-wheeled inline skates."
     },
 
-    "accessories": {
-      explanation: "Displays information about the accessories that you can buy for inline skating."
-    },
-
     "protective_gear": {
       explanation: "Displays information about the protective gear you can buy."
     },
 
-    "clothing": {
-      explanation: "Displays information about the clothing you can buy, which are mostly just socks."
+    "accessories": {
+      explanation: "Displays information about the accessories that you can buy for inline skating."
+    },
+
+    "tools": {
+      explanation: "Displays information about the tools you can buy to have an easier time maintaining your skates."
     },
 
     "maintenance_items": {
       explanation: "Displays information about the maintenance items you might need to maintain your skates."
+    },
+
+    "clothing": {
+      explanation: "Displays information about the clothing you can buy, which are mostly just socks."
     },
 
     "poll": {
@@ -324,9 +328,9 @@ export function generateMsg() {
 
   // The help message for other miscellaneous bot features
   const otherBotFeaturesHelpMsg = `
-  
+
 ${utils.bold("Other Features")}
-  
+
 The bot is also capable of deleting the messages that are sent when a someone joins or leaves the group. All you need to do is to make the bot an admin and give it the permission to delete messages.
 
 `.trim();

@@ -266,6 +266,7 @@ export const PAGES = {
   "Products": {
     "Protective Gear": "",
     "Accessories": "",
+    "Tools": "",
     "Maintenance Items": "",
     "Clothing": "",
   },

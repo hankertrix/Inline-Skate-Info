@@ -59,14 +59,16 @@ to get more details about each command.
   Flying Eagle F5S and the Flying Eagle F6S.
 - `triskate_differences` : Displays information about the differences
   between triskates and regular 4-wheeled inline skates.
-- `accessories` : Displays information about the accessories that
-  you can buy for inline skating.
 - `protective_gear` : Displays information about the protective gear
   you can buy.
-- `clothing` : Displays information about the clothing you can buy,
-  which are mostly just socks.
+- `accessories` : Displays information about the accessories that
+  you can buy for inline skating.
+- `tools`: Displays information about the tools you can buy to have
+  an easier time maintaining your skates.
 - `maintenance_items` : Displays information about the maintenance items
   you might need to maintain your skates.
+- `clothing` : Displays information about the clothing you can buy,
+  which are mostly just socks.
 - `poll` : Gets the bot to send a [@countmeinbot](https://t.me/countmeinbot)
   styled poll message but with only one option called 'Coming'.
 - `trg_msg` : Gets the bot to send the training message
