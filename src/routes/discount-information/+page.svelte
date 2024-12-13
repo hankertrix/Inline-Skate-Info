@@ -13,7 +13,9 @@
   type Props = {
     data: {
       supportedRetailers: {
-        [key: string]: string;
+        [name: string]: {
+          [attribute: string]: string;
+        };
       };
     };
   };
