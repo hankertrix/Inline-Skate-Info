@@ -4,7 +4,7 @@
   "vite_plugin_pagefind": {
     "assets_dir": "static",
     "pagefind_dir": "pagefind",
-    "build_command": "pnpm run build",
+    "build_command": "pnpm build",
     "dev_strategy": "lazy"
   }
 }

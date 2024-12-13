@@ -15,7 +15,7 @@
       supportedRetailers: {
         [key: string]: string;
       };
-    }[];
+    };
   };
 
   // Get the data from the props passed to the page
@@ -23,8 +23,6 @@
 
   // Get the supported retailers
   const { supportedRetailers } = data;
-
-  console.log(supportedRetailers);
 
   // The title for the page
   const title = titlecase(discountInfoJson.title);
