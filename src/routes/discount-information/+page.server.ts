@@ -19,15 +19,22 @@ export const load = async () => {
   // Parse the data into objects
   const jsonData = loadedData.map((data) => JSON.parse(data.toString()));
 
-  // Slice the data to return only the retailers
-  // that have discount information
-  const slicedData = Object.values(retailerData)
-    .entries()
-    .map(([index, metadata]) =>
-      Object.fromEntries(
-        Object.entries(jsonData[index]).slice(...metadata.listSlice)
-      )
+  // Initialise the list containing the sliced data
+  const slicedData = [];
+
+  // Iterate over the metadata of the retailer data
+  for (const [index, metadata] of Object.values(retailerData).entries()) {
+    //
+
+    // Slice the data to return only the retailers
+    // that have a student discount
+    const data = Object.fromEntries(
+      Object.entries(jsonData[index]).slice(...metadata.listSlice)
     );
+
+    // Add the data to the list
+    slicedData.push(data);
+  }
 
   // Merge the objects in the array into one single object
   const mergedData = slicedData.reduce((accumulator, currentRetailer) => {
