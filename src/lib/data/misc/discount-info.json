@@ -15,7 +15,7 @@
   "retailerData": {
 
     "./src/lib/data/places/retailers-in-singapore.json": {
-      "listSlice": [0, 4]
+      "listSlice": [0, 3]
     },
 
     "./src/lib/data/places/online-retailers.json": {
