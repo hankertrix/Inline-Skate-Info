@@ -137,12 +137,12 @@
           <!-- Gets the attribute in titlecase -->
           {@const titleCasedAttribute = titlecase(attribute)}
 
-          <!-- Checks if attribute is either -->
-          <!-- "website" or "mapLink" or "email" -->
+          <!-- Skip if attribute is either -->
+          <!-- "website" or "mapLink" -->
           {#if ["website", "mapLink"].includes(attribute)}
             <!-->
 
-          <!-- Skips the attribute if the attribute is "email" -->
+          <!-- Otherwise, if the attribute is "email" -->
           {:else if ["email"].includes(attribute)}
             <!-->
 
