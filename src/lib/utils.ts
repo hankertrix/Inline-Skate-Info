@@ -6,18 +6,17 @@ const symbolRegex = /[!$%^&*()_+|~=`{}[\]:";'<>?,./]/g;
 // The regular expression to get the file extension
 const fileExtensionRegex = /\.\w*$/;
 
-
 // Function to change the title into a url friendly string
 export function makeUrlFriendlyString(str: string) {
   return str.replace(symbolRegex, "").replaceAll(" ", "-").toLowerCase();
 }
 
-
 // Function to make a string titlecase
 export function titlecase(str: string) {
+  //
 
   // Gets the length of the string
-  const strLen = str.length
+  const strLen = str.length;
 
   // If the length of the string is less than 1, return the string
   if (strLen < 1) return str;
@@ -33,17 +32,20 @@ export function titlecase(str: string) {
 
   // Iterates the string
   for (let i = 1; i < strLen; ++i) {
+    //
 
     // Gets the current character
     const currentChar = str[i];
 
     // Gets the character before the current one
-    const charBefore = str[i-1];
+    const charBefore = str[i - 1];
 
     // If the character before the current one is a space,
     // adds the uppercase version of the current character
     // to the list of characters
-    if (!charBefore.trim()) chars[i] = currentChar.toUpperCase();
+    if (!charBefore.trim()) {
+      chars[i] = currentChar.toUpperCase();
+    }
 
     // Otherwise, just add the current character without changing anything
     else chars[i] = currentChar;
@@ -53,15 +55,14 @@ export function titlecase(str: string) {
   return chars.join("");
 }
 
-
 // Function to convert a file path to a URL
 export function convertFilePathToUrl(filePath: string) {
   return filePath.replace(/^.*\/static/, "").trim();
 }
 
-
 // Function to get the file extension of a file
 export function getFileExtension(path: string) {
+  //
 
   // Gets the match using the regular expression
   const regexMatch = path.match(fileExtensionRegex);
@@ -70,15 +71,15 @@ export function getFileExtension(path: string) {
   if (!regexMatch) return "";
 
   // Otherwise, get the file extension from the regex match array
-  const [fileExtension, ] = regexMatch;
+  const [fileExtension] = regexMatch;
 
   // Return the file extension without the dot
   return fileExtension.slice(1);
 }
 
-
 // Function to get the file name from a file path
 export function getFilenameFromFilePath(filePath: string) {
+  //
 
   // Remove everything from the start of the file path to get the file name
   let filename = filePath.replace(/^.*\//, "");
@@ -93,12 +94,12 @@ export function getFilenameFromFilePath(filePath: string) {
   return titlecase(filename).trim();
 }
 
-
 // Function to get a list of unique filenames from a list of paths
 export function getUniqueFilenamesFromFilePaths(filePaths: string[]) {
+  //
 
   // Gets the list of filenames
-  const filenames = filePaths.map(path => getFilenameFromFilePath(path));
+  const filenames = filePaths.map((path) => getFilenameFromFilePath(path));
 
   // Gets the set of duplicated filenames
   const duplicatedFilenames = new Set(
@@ -109,6 +110,7 @@ export function getUniqueFilenamesFromFilePaths(filePaths: string[]) {
 
   // Iterates over the filenames
   for (const [index, path] of filePaths.entries()) {
+    //
 
     // Gets the filename
     const filename = filenames[index];
@@ -116,9 +118,9 @@ export function getUniqueFilenamesFromFilePaths(filePaths: string[]) {
     // If the filename is inside the set of duplicated filenames,
     // then add the file extension in parentheses
     if (duplicatedFilenames.has(filename)) {
-      filenames[index] = `${filename} (${
-        getFileExtension(path).toUpperCase()
-      })`;
+      filenames[index] = `${filename} (${getFileExtension(
+        path
+      ).toUpperCase()})`;
     }
   }
 
