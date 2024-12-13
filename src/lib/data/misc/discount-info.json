@@ -1,13 +1,15 @@
 {
   "title": "Information about the student discount",
   "messageParts": [
-    "You can only use the student discount at 4 skate shops, namely Inlinex, Mystic Skates, Hvper Sport / HiRoller and Ernsports. Inlinex provides a 15% discount on all non-discounted skates as long as you show them your student card for verification. Mystic Skates provides a 10% discount for every item in their catalogue. This discount is open to all university students in Singapore with a valid matriculation card, a picture of which should be uploaded when filling in their purchase form. Do note that the Mystic Skates catalogue shows the original prices before the student discount is applied. As for Hvper Sport / HiRoller and Ernsports, head down to the shop and show your student card for a discount.",
+    "You can only use the student discount at 4 skate shops, namely Inlinex, Mystic Skates, Hvper Sport / HiRoller and Ernsports. Inlinex provides a 15% discount on all non-discounted skates as long as you show them your matriculation card for verification. Mystic Skates provides a 10% discount for every item in their catalogue. This discount is open to all tertiary students in Singapore with a valid matriculation card, a picture of which should be uploaded when filling in their purchase form. Do note that the Mystic Skates catalogue shows the original prices before the student discount is applied. As for Hvper Sport / HiRoller and Ernsports, head down to the shop and show your matriculation card for a discount.",
     "For the exact details on claiming the student discount, especially for Hvper Sport / HiRoller and Ernsports, you should check with your club's president. It is highly likely that you will have to inform your club's president about your intention to purchase skates from Hvper Sport / HiRoller and Ernsports.",
     "Before heading down to the shops to buy your skates, do call them to check if they have the skates in your size. For Inlinex, you can check the stock on their website before heading down.",
     "Here are the details of the 4 places:"
   ],
 
-  "pdfFiles": ["./static/pdfs/mystic-skates-catalogue.pdf"],
+  "pdfFiles": [
+    "./static/pdfs/mystic-skates-catalogue.pdf"
+  ],
 
   "retailerData": {
 
