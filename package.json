@@ -13,7 +13,7 @@
   },
   "devDependencies": {
     "@sveltejs/adapter-netlify": "^4.4.0",
-    "@sveltejs/kit": "^2.15.0",
+    "@sveltejs/kit": "^2.15.1",
     "@sveltejs/vite-plugin-svelte": "^5.0.3",
     "@types/node": "^22.10.2",
     "@types/qrcode": "^1.5.5",
@@ -30,7 +30,7 @@
     "svelte-check": "^4.1.1",
     "typescript": "^5.7.2",
     "typescript-eslint": "^8.18.2",
-    "vite": "^6.0.5",
+    "vite": "^6.0.6",
     "vite-plugin-pagefind": "^0.3.0"
   },
   "type": "module",
