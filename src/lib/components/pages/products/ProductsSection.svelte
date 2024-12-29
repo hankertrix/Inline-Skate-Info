@@ -81,17 +81,19 @@
         ><a
           href={productObj.link}
           target="_blank"
-          title="Visit the product page">{name} - {productObj.price}</a
-        >
-
-        <!-- Add the product description if it exists -->
-        {#if productObj.description}
-          <!-->
-
-          <!-- eslint-disable-next-line svelte/no-at-html-tags -->
-          <div class="text">{@html productObj.description}</div>
-        {/if}
+          title="Visit the product page">{name}</a
+        ><span class="text">
+          &#20; - {productObj.price}
+        </span>
       </svelte:element>
+
+      <!-- Add the product description if it exists -->
+      {#if productObj.description}
+        <p class="text">
+          <!-- eslint-disable-next-line svelte/no-at-html-tags -->
+          {@html productObj.description}
+        </p>
+      {/if}
     </section>
 
     <!-- Otherwise, the object is a product category -->
