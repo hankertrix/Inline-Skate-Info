@@ -80,7 +80,10 @@
                 </header>
 
                 <div class="details text">
-                  <div><strong>Price: </strong>{skateObj.price}</div>
+                  <div>
+                    <strong>Price: </strong>
+                    {skateObj.price}
+                  </div>
 
                   <!-- eslint-disable-next-line svelte/no-at-html-tags -->
                   <div>{@html skateObj.reason}</div>
