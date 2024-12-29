@@ -8,5 +8,5 @@ export type TableOfContents = Map<string, {
 // The type of the JSON data
 // None of the types I tried got typescript to behave,
 // so I'm setting it as any
-// eslint-disable-next-line  @typescript-eslint/no-explicit-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type JsonData = any;

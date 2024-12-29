@@ -23,7 +23,7 @@
   let { pages, urlStart = "/" }: Props = $props();
 
   // Function to check if a title has any children
-  // eslint-disable-next-line  @typescript-eslint/no-explicit-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   function titleHasChildren(obj: any) {
     return (
       (obj instanceof String || typeof obj !== "string") &&

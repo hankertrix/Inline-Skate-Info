@@ -52,7 +52,7 @@
   const phoneNumRegex = /\+\d+ (?:\d+(?:[- ]\b|\b)){2,}/g;
 
   // The function to check if an object is a place object
-  // eslint-disable-next-line  @typescript-eslint/no-explicit-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   function isPlaceObject(obj: any) {
     //
 
@@ -65,7 +65,7 @@
   }
 
   // Cast an object to a place object
-  // eslint-disable-next-line  @typescript-eslint/no-explicit-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   function castAsPlaceObject(obj: any): Place {
     return obj as Place;
   }

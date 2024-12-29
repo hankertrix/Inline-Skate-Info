@@ -297,7 +297,7 @@ function getModuleString(chatId: number): string | null {
 }
 
 // Function to get the module
-// eslint-disable-next-line  @typescript-eslint/no-explicit-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function getModule(chatId: number, modules: any) {
   //
 
@@ -467,7 +467,7 @@ export function titlecase(str: string) {
 }
 
 // Function to format a string with the arguments given
-// eslint-disable-next-line  @typescript-eslint/no-explicit-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function strFormat(str: string, ...args: any[]) {
   //
 

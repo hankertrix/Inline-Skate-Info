@@ -39,7 +39,7 @@
     // The pagefind highlight class will be a global object when the
     // pagefind highlight script is loaded, hence the expect error and ignore.
     // @ts-expect-error: The PagefindHighlight class will be a global
-    // eslint-disable-next-line  no-undef
+    // eslint-disable-next-line no-undef
     new PagefindHighlight({ highlightParam: PAGEFIND_HIGHLIGHT_PARAM });
   });
 </script>

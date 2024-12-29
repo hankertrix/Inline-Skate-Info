@@ -11,7 +11,7 @@
   // The variable to store the list of headings on the page
   // Eslint is somehow not recognising NodeListOf
   // defined type, hence the line below
-  // eslint-disable-next-line  no-undef
+  // eslint-disable-next-line no-undef
   let headings: NodeListOf<Element> | null = $state(null);
 
   // The variable to store the table of contents object
@@ -20,7 +20,7 @@
   // Function to get the table of contents
   // Eslint is somehow not recognising NodeListOf
   // as a defined type, hence the line below
-  // eslint-disable-next-line  no-undef
+  // eslint-disable-next-line no-undef
   function getTableOfContents(headings: NodeListOf<Element>) {
     //
 

@@ -36,7 +36,7 @@
   }: Props = $props();
 
   // Function to check if an object is a brand object
-  // eslint-disable-next-line  @typescript-eslint/no-explicit-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   function isBrandObject(obj: any) {
     return (
       Object.prototype.hasOwnProperty.call(obj, "link") &&
@@ -45,7 +45,7 @@
   }
 
   // Function to cast an object as a brand object
-  // eslint-disable-next-line  @typescript-eslint/no-explicit-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   function castAsBrandObject(obj: any): Brand {
     return obj as Brand;
   }
