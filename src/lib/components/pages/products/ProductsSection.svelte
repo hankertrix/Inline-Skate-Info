@@ -25,6 +25,7 @@
   type Product = {
     price: string;
     link: string;
+    description?: string;
   };
 
   // Get the variables from the props
@@ -44,7 +45,7 @@
   }
 
   // The function to cast an object as a product object
-  // eslint-disable-next-line  @typescript-eslint/no-explicit-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   function castAsProductObject(obj: any): Product {
     return obj as Product;
   }
@@ -81,11 +82,19 @@
           href={productObj.link}
           target="_blank"
           title="Visit the product page">{name} - {productObj.price}</a
-        ></svelte:element
-      >
+        >
+
+        <!-- Add the product description if it exists -->
+        {#if productObj.description}
+          <!-->
+
+          <!-- eslint-disable-next-line svelte/no-at-html-tags -->
+          <div class="text">{@html productObj.description}</div>
+        {/if}
+      </svelte:element>
     </section>
 
-  <!-- Otherwise, the object is a product category -->
+    <!-- Otherwise, the object is a product category -->
   {:else}
     <section class="product-category">
       <!-->

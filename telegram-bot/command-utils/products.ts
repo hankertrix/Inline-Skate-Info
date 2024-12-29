@@ -53,8 +53,11 @@ export async function generateProductsText(productType: ProductTypes) {
   for (const [item, info] of Object.entries(data) as Array<[string, Product]>) {
     //
 
-    // Gets the text to display for the item
-    const text = `${utils.hyperlink(item, info.link)} - ${info.price}`;
+    // Get the title for the product
+    const title = `${utils.hyperlink(item, info.link)} - ${info.price}`;
+
+    // Get the text for the product
+    const text = `${utils.bold(title)}\n${info.description ? info.description : ""}`.trim();
 
     // Adds the text to the final message list
     finalMsgList.push(text);
