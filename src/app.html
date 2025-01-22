@@ -36,35 +36,43 @@
     />
     <meta name="theme-color" content="#ffffff" />
 
-    <!-- The script to prevent the webpage from flashing -->
+    <!-- The script to load the theme and prevent the webpage from flashing -->
     <script>
       //
 
-      // Gets the theme from the local storage
-      let theme = window.localStorage.getItem("theme");
+      // The function to initialise the theme
+      function initTheme() {
+        //
 
-      // Gets the HTML element
-      const htmlElement = window.document.documentElement;
+        // Gets the theme from the local storage
+        let theme = window.localStorage.getItem("theme");
 
-      // If the theme is found in the local storage,
-      // set the theme to the theme found in the local storage
-      // and exit the function
-      if (theme) {
+        // Gets the HTML element
+        const htmlElement = window.document.documentElement;
+
+        // If the theme is found in the local storage,
+        // set the theme to the theme found in the local storage
+        // and exit the function
+        if (theme) {
+          htmlElement.className = theme;
+          return;
+        }
+
+        // Get the media query for the user's theme
+        const mq = window.matchMedia("(prefers-color-scheme: dark)");
+
+        // Get the theme from the media query
+        theme = mq.matches ? "dark" : "light";
+
+        // Set the class name on the HTML element
         htmlElement.className = theme;
-        return;
+
+        // Store the theme in local storage
+        window.localStorage.setItem("theme", theme);
       }
 
-      // Get the media query for the user's theme
-      const mq = window.matchMedia("(prefers-color-scheme: dark)");
-
-      // Get the theme from the media query
-      theme = mq.matches ? "dark" : "light";
-
-      // Set the class name on the HTML element
-      htmlElement.className = theme;
-
-      // Store the theme in local storage
-      window.localStorage.setItem("theme", theme);
+      // Call the function initialise the theme
+      initTheme();
     </script>
 
     %sveltekit.head%
