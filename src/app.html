@@ -44,25 +44,14 @@
       function initTheme() {
         //
 
-        // Gets the theme from the local storage
-        let theme = window.localStorage.getItem("theme");
-
         // Gets the HTML element
         const htmlElement = window.document.documentElement;
-
-        // If the theme is found in the local storage,
-        // set the theme to the theme found in the local storage
-        // and exit the function
-        if (theme) {
-          htmlElement.className = theme;
-          return;
-        }
 
         // Get the media query for the user's theme
         const mq = window.matchMedia("(prefers-color-scheme: dark)");
 
         // Get the theme from the media query
-        theme = mq.matches ? "dark" : "light";
+        const theme = mq.matches ? "dark" : "light";
 
         // Set the class name on the HTML element
         htmlElement.className = theme;
