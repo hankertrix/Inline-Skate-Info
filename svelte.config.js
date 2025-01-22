@@ -36,7 +36,7 @@ const config = {
           "self",
 
           // Main CSS style for the entire page
-          "sha256-EHFod+1+yJWH4JfktKYKAH7HTu+l8xj88fKU0IUyX/U=",
+          "sha256-DVjIOpTXG5xePW6r2ugbRkW/OhSOWeU36LRR6SqlgQo=",
 
           // Styles for the website icon
           "sha256-GQHiEoT/Yyw7i/CQpbsUjU+CrrV6C6C7U5iq+niceqw=",
