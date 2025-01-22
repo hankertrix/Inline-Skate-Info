@@ -1,57 +1,91 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" class="light">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
 
     <!-- Favicons stuff -->
-    <link rel="apple-touch-icon" sizes="180x180" href="%sveltekit.assets%/favicons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="%sveltekit.assets%/favicons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="%sveltekit.assets%/favicons/favicon-16x16.png">
-    <link rel="manifest" href="%sveltekit.assets%/favicons/site.webmanifest">
-    <link rel="mask-icon" href="%sveltekit.assets%/favicons/safari-pinned-tab.svg" color="#001dd2">
-    <link rel="shortcut icon" href="%sveltekit.assets%/favicons/favicon.ico">
-    <meta name="msapplication-TileColor" content="#00aba9">
-    <meta name="msapplication-config" content="%sveltekit.assets%/favicons/browserconfig.xml">
-    <meta name="theme-color" content="#ffffff">
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="%sveltekit.assets%/favicons/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="%sveltekit.assets%/favicons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="%sveltekit.assets%/favicons/favicon-16x16.png"
+    />
+    <link rel="manifest" href="%sveltekit.assets%/favicons/site.webmanifest" />
+    <link
+      rel="mask-icon"
+      href="%sveltekit.assets%/favicons/safari-pinned-tab.svg"
+      color="#001dd2"
+    />
+    <link rel="shortcut icon" href="%sveltekit.assets%/favicons/favicon.ico" />
+    <meta name="msapplication-TileColor" content="#00aba9" />
+    <meta
+      name="msapplication-config"
+      content="%sveltekit.assets%/favicons/browserconfig.xml"
+    />
+    <meta name="theme-color" content="#ffffff" />
 
     <!-- The script to prevent the webpage from flashing -->
     <script>
+      //
 
       // Gets the theme from the local storage
-      const theme = window.localStorage.getItem("theme");
+      let theme = window.localStorage.getItem("theme");
 
       // Gets the HTML element
       const htmlElement = window.document.documentElement;
 
       // If the theme is found in the local storage,
       // set the theme to the theme found in the local storage
-      if (theme) htmlElement.className = theme;
+      // and exit the function
+      if (theme) {
+        htmlElement.className = theme;
+        return;
+      }
 
-      // Otherwise, set the theme to the light theme
-      else htmlElement.className = "light";
+      // Get the media query for the user's theme
+      const mq = window.matchMedia("(prefers-color-scheme: dark)");
 
+      // Get the theme from the media query
+      theme = mq.matches ? "dark" : "light";
+
+      // Set the class name on the HTML element
+      htmlElement.className = theme;
+
+      // Store the theme in local storage
+      window.localStorage.setItem("theme", theme);
     </script>
-    
+
     %sveltekit.head%
-    
   </head>
   <style>
-
     @font-face {
       font-family: "Oleo Script";
       font-weight: normal;
-      src: url("/fonts/oleo-script-regular.woff2") format("woff2"),
-           url("/fonts/oleo-script-regular.woff") format("woff"),
-           url("/fonts/oleo-script-regular.ttf") format("truetype");
+      src:
+        url("/fonts/oleo-script-regular.woff2") format("woff2"),
+        url("/fonts/oleo-script-regular.woff") format("woff"),
+        url("/fonts/oleo-script-regular.ttf") format("truetype");
     }
 
     @font-face {
       font-family: "Oleo Script";
       font-weight: bold;
-      src: url("/fonts/oleo-script-bold.woff2") format("woff2"),
-           url("/fonts/oleo-script-bold.woff") format("woff"),
-           url("/fonts/oleo-script-bold.ttf") format("truetype");
+      src:
+        url("/fonts/oleo-script-bold.woff2") format("woff2"),
+        url("/fonts/oleo-script-bold.woff") format("woff"),
+        url("/fonts/oleo-script-bold.ttf") format("truetype");
     }
 
     :root {
@@ -105,10 +139,22 @@
       --collapsible-background-colour: #2c2c2c;
     }
 
-    html, body {
+    html,
+    body {
       padding: 0;
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        Segoe UI,
+        Roboto,
+        Oxygen,
+        Ubuntu,
+        Cantarell,
+        Fira Sans,
+        Droid Sans,
+        Helvetica Neue,
+        sans-serif;
       scroll-padding-top: calc(var(--nav-bar-height) + 10px);
 
       /* Colours */
@@ -116,7 +162,8 @@
       color: var(--text-colour);
     }
 
-    nav, footer {
+    nav,
+    footer {
       background-color: var(--accent-colour);
     }
 
@@ -132,13 +179,13 @@
     }
 
     /* Remove the arrow markwr beside the summary element */
-    summary::marker, summary::-webkit-details-marker {
+    summary::marker,
+    summary::-webkit-details-marker {
       display: none;
     }
 
-    
     /* Resize all of the heading elements so that the headings are always bigger than regular text */
-    
+
     h1 {
       font-size: 2.5em;
     }
@@ -163,7 +210,6 @@
       font-size: 1.17em;
     }
 
-    
     .text {
       color: var(--text-colour);
       opacity: var(--text-opacity);
@@ -197,14 +243,14 @@
       color: var(--link-visited-active-colour);
     }
 
-    *, *::after, *::before {
+    *,
+    *::after,
+    *::before {
       box-sizing: border-box;
     }
 
-
     /* Animate when the user has no preference for reduced motion */
     @media (prefers-reduced-motion: no-preference) {
-
       :root {
         --animation-timing: 200ms ease-in-out;
       }
@@ -212,20 +258,15 @@
       html {
         scroll-behavior: smooth;
       }
-
     }
-
 
     /* The styles for mobile devices */
     @media only screen and (max-width: 700px) {
-
       :root {
         --page-left-right-margin: 15px;
         --page-margin: 0 var(--page-left-right-margin);
       }
-
     }
-
   </style>
   <body>
     <div>%sveltekit.body%</div>
