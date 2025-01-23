@@ -1,10 +1,4 @@
 {
   "site": "build",
-  "output_subdir": "pagefind",
-  "vite_plugin_pagefind": {
-    "assets_dir": "static",
-    "pagefind_dir": "pagefind",
-    "build_command": "pnpm build",
-    "dev_strategy": "lazy"
-  }
+  "output_subdir": "pagefind"
 }
