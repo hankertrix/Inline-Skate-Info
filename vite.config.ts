@@ -6,10 +6,10 @@ const config: UserConfig = {
 	plugins: [
 		sveltekit(),
 		pagefind({
-			outputDirectory: "pagefind",
+			outputDirectory: "build",
 			assetsDirectory: "static",
 			bundleDirectory: "pagefind",
-			buildScript: "pnpm build",
+			buildScript: "build",
 			developStrategy: "lazy",
 		}),
 	],
