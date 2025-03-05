@@ -1,26 +1,26 @@
 <!-- The page to display the differences between regular 4-wheeled skates and triskates -->
 <script lang="ts">
-  import { makeUrlFriendlyString } from '$lib/utils';
-  import triskateDiffJson from '$lib/data/differences/triskate-diff.json';
-  import VideoCollapsible from '$lib/components/general/VideoCollapsible.svelte';
+  import { makeUrlFriendlyString } from "$lib/utils";
+  import triskateDiffJson from "$lib/data/differences/triskate-diff.json";
+  import VideoCollapsible from "$lib/components/general/VideoCollapsible.svelte";
 
   // The title for the page
-  const title = 'Comparing Triskates With Regular 4-Wheeled Skates';
+  const title = "Comparing Triskates With Regular 4-Wheeled Skates";
 
   // The heading for the characteristics
-  const characteristicsTitle = 'Characteristics';
+  const characteristicsTitle = "Characteristics";
 
   // The heading for the advantages
-  const advantagesTitle = 'Advantages';
+  const advantagesTitle = "Advantages";
 
   // The heading for the disadvantages
-  const disadvantagesTitle = 'Disadvantages';
+  const disadvantagesTitle = "Disadvantages";
 
   // The heading for the articles
-  const articlesTitle = 'Articles';
+  const articlesTitle = "Articles";
 
   // The heading for the videos
-  const videosTitle = 'Videos';
+  const videosTitle = "Videos";
 </script>
 
 <!-- The headers for the page -->
@@ -40,14 +40,17 @@
 
   <section class="characteristics">
     <header>
-      <h2 class="text" id={makeUrlFriendlyString(characteristicsTitle)}>{characteristicsTitle}</h2>
+      <h2 class="text" id={makeUrlFriendlyString(characteristicsTitle)}>
+        {characteristicsTitle}
+      </h2>
     </header>
 
     <!-- Display the characteristics in an unordered list -->
     <ul class="text">
+      <!-->
 
       <!-- Iterates over all of the characteristics of a triskate -->
-      {#each triskateDiffJson.characteristics as characteristic}
+      {#each triskateDiffJson.characteristics as characteristic (characteristic)}
         <li>{characteristic}</li>
       {/each}
     </ul>
@@ -55,14 +58,15 @@
 
   <section class="advantages">
     <header>
-      <h2 class="text" id={makeUrlFriendlyString(advantagesTitle)}>{advantagesTitle}</h2>
+      <h2 class="text" id={makeUrlFriendlyString(advantagesTitle)}>
+        {advantagesTitle}
+      </h2>
     </header>
 
     <!-- Display the advantages in an unordered list -->
     <ul class="text">
-
       <!-- Iterates over all of the advantages of a triskate -->
-      {#each triskateDiffJson.advantages as advantage}
+      {#each triskateDiffJson.advantages as advantage (advantage)}
         <li>{advantage}</li>
       {/each}
     </ul>
@@ -70,15 +74,17 @@
 
   <section class="disadvantages">
     <header>
-      <h2 class="text" id={makeUrlFriendlyString(disadvantagesTitle)}>{disadvantagesTitle}</h2>
+      <h2 class="text" id={makeUrlFriendlyString(disadvantagesTitle)}>
+        {disadvantagesTitle}
+      </h2>
     </header>
 
     <!-- Display the disadvantages in an unordered list -->
     <ul class="text">
+      <!-->
 
       <!-- Iterates over all of the disadvantages of a triskate -->
-      {#each triskateDiffJson.disadvantages as disadvantage}
-
+      {#each triskateDiffJson.disadvantages as disadvantage (disadvantage)}
         <!-- eslint-disable-next-line svelte/no-at-html-tags -->
         <li>{@html disadvantage}</li>
       {/each}
@@ -87,12 +93,16 @@
 
   <section class="articles">
     <header>
-      <h2 class="text" id={makeUrlFriendlyString(articlesTitle)}>{articlesTitle}</h2>
+      <h2 class="text" id={makeUrlFriendlyString(articlesTitle)}>
+        {articlesTitle}
+      </h2>
     </header>
 
     <section class="article-links">
+      <!-->
+
       <!-- Iterates over all of the articles -->
-      {#each Object.entries(triskateDiffJson.articles) as [title, url]}
+      {#each Object.entries(triskateDiffJson.articles) as [title, url] (url)}
         <a href={url} target="_blank">{title}</a>
       {/each}
     </section>
@@ -100,7 +110,9 @@
 
   <section class="videos">
     <header>
-      <h2 class="text" id={makeUrlFriendlyString(videosTitle)}>{videosTitle}</h2>
+      <h2 class="text" id={makeUrlFriendlyString(videosTitle)}>
+        {videosTitle}
+      </h2>
     </header>
 
     <VideoCollapsible videos={triskateDiffJson.videos} />

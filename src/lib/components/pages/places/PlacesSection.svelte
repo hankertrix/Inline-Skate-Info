@@ -84,7 +84,7 @@
 
 <!-- The HTML for the places section -->
 <!-- Iterates over the places JSON data -->
-{#each Object.entries(placesJson) as [name, obj]}
+{#each Object.entries(placesJson) as [name, obj] (name)}
   <!-->
 
   <!-- Gets the URL friendly string of the place or category name -->
@@ -131,7 +131,7 @@
         <!-->
 
         <!-- Iterates over all of the values in the object -->
-        {#each Object.entries(placeObj) as [attribute, value]}
+        {#each Object.entries(placeObj) as [attribute, value] (value)}
           <!-->
 
           <!-- Gets the attribute in titlecase -->

@@ -37,7 +37,7 @@
     <a href={makeUrlFriendlyString(mainPages[0])}>{mainPages[0]}</a>
     <div></div>
 
-    {#each mainPages.slice(1, mainPages.length - 1) as page}
+    {#each mainPages.slice(1, mainPages.length - 1) as page (page)}
       <a href={makeUrlFriendlyString(page)}>{page}</a>
     {/each}
 

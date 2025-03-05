@@ -47,7 +47,7 @@
       <!-->
 
       <!-- Iterates over the category of recommended skates -->
-      {#each Object.entries(skateRecsJson.recommendations) as [category, [recommendedSkates, listOfVideos]]}
+      {#each Object.entries(skateRecsJson.recommendations) as [category, [recommendedSkates, listOfVideos]] (category)}
         <!-->
 
         <!-- The heading for the videos -->
@@ -66,7 +66,7 @@
             <!-->
 
             <!-- Iterates over the recommended skates -->
-            {#each Object.entries(recommendedSkates) as [name, skateObj], index}
+            {#each Object.entries(recommendedSkates) as [name, skateObj], index (index)}
               <section class="skate-recommendation">
                 <header>
                   <h4 id={makeUrlFriendlyString(name)}>

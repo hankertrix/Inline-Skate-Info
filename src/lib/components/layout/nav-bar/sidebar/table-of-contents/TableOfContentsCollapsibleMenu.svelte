@@ -23,7 +23,7 @@
 
 <!-- The HTML for the collapsible menu -->
 <!-- Iterates over all the titles in the given table of contents -->
-{#each [...tableOfContents.entries()] as [title, { id, children }]}
+{#each [...tableOfContents.entries()] as [title, { id, children }] (id)}
   <!-->
 
   <!-- If the current title has any children -->

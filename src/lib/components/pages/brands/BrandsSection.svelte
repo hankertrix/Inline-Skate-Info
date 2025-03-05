@@ -53,7 +53,7 @@
 
 <!-- The HTML for the brands section -->
 <!-- Iterates over the brands JSON data -->
-{#each Object.entries(brandsJson) as [name, obj]}
+{#each Object.entries(brandsJson) as [name, obj] (name)}
   <!-->
 
   <!-- Gets the URL friendly string of the brands or category name -->

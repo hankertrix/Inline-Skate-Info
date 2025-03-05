@@ -71,7 +71,7 @@
         <!-->
 
         <!-- Iterates over each of the links -->
-        {#each listsJson.links as [title, url]}
+        {#each listsJson.links as [title, url] (url)}
           <!-->
 
           <!-- Display the links -->
@@ -96,7 +96,7 @@
         <!-->
 
         <!-- Iterates over each of the files -->
-        {#each listsJson.files as path, index}
+        {#each listsJson.files as path, index (path)}
           <!-->
 
           <!-- Display the link to the file -->

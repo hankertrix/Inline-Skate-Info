@@ -58,7 +58,7 @@
       <!-->
 
       <!-- Display the results -->
-      {#each results as result}
+      {#each results as result (result)}
         <SearchResult {result} />
       {/each}
     </section>

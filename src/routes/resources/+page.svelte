@@ -1,10 +1,10 @@
 <!-- The landing page for all of the resources -->
 <script lang="ts">
-  import { makeUrlFriendlyString } from '$lib/utils';
-  import { PAGES } from '$lib/constants';
+  import { makeUrlFriendlyString } from "$lib/utils";
+  import { PAGES } from "$lib/constants";
 
   // The page title
-  const title = 'Resources';
+  const title = "Resources";
 
   // The url friendly title
   const urlFriendlyTitle = makeUrlFriendlyString(title);
@@ -16,19 +16,26 @@
 <!-- The headers for the resources page -->
 <svelte:head>
   <title>{title} - Inline Skate Info</title>
-  <meta name="description" content="The landing page for all of the pages containing resources" />
+  <meta
+    name="description"
+    content="The landing page for all of the pages containing resources"
+  />
 </svelte:head>
 
 <!-- The HTML for the resources page -->
 <div class="page-wrapper">
   <header>
     <h1 class="text" id={urlFriendlyTitle}>{title}</h1>
-    <div class="text">Click on one of the links below to view the respective resource!</div>
+    <div class="text">
+      Click on one of the links below to view the respective resource!
+    </div>
   </header>
 
   <main class="links-grid">
+    <!-->
+
     <!-- Iterates over all of the pages with resources -->
-    {#each pagesWithResources as page}
+    {#each pagesWithResources as page (page)}
       <a href={`${urlFriendlyTitle}/${makeUrlFriendlyString(page)}`}>{page}</a>
     {/each}
   </main>

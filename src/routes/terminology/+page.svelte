@@ -23,14 +23,14 @@
   <h1 class="text" id={makeUrlFriendlyString(title)}>{title}</h1>
 
   <!-- Iterates over all the categories inside the JSON file -->
-  {#each Object.entries(terminologyJson) as [categoryName, categoryItems]}
+  {#each Object.entries(terminologyJson) as [categoryName, categoryItems] (categoryName)}
     <section class="category">
 
       <!-- Display the category title -->
       <h2 class="category-title text" id={makeUrlFriendlyString(categoryName)}>{categoryName}</h2>
 
       <!-- Iterates over all the terms and definitions in the category -->
-      {#each Object.entries(categoryItems) as [term, definition]}
+      {#each Object.entries(categoryItems) as [term, definition] (term)}
         <section class="term">
 
           <!-- Display the term and its definition -->

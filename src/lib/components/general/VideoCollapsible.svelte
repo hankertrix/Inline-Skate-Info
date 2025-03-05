@@ -98,7 +98,7 @@
     <!-->
 
     <!-- Iterates over the list of videos -->
-    {#each listOfVideos as [videoInfo, url]}
+    {#each listOfVideos as [videoInfo, url] (url)}
       {@const youtubeId = getYoutubeId(url)}
       {@const youtubeTimestamp = getYoutubeTimestamp(url)}
 

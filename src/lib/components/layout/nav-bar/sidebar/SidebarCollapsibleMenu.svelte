@@ -34,7 +34,7 @@
 
 <!-- The HTML for the collapsible menu -->
 <!-- Iterates over all the titles in the pages object given -->
-{#each Object.entries(pages) as [title, child]}
+{#each Object.entries(pages) as [title, child] (title)}
   {@const urlFriendlyTitle = makeUrlFriendlyString(title)}
   {@const currentUrl = `${urlStart}${urlFriendlyTitle}/`}
 

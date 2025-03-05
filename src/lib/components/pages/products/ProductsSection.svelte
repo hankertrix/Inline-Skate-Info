@@ -53,7 +53,7 @@
 
 <!-- The HTML for the component -->
 <!-- Iterates over the products JSON data -->
-{#each Object.entries(productsJson) as [name, obj]}
+{#each Object.entries(productsJson) as [name, obj] (name)}
   <!-->
 
   <!-- Gets the URL friendly string of the product or category name -->

@@ -53,7 +53,7 @@
 
 <!-- The HTML for the tricks section -->
 <!-- Iterates over each of the items in the tricks JSON given -->
-{#each Object.entries(tricksJson) as [name, obj]}
+{#each Object.entries(tricksJson) as [name, obj] (name)}
   <!-->
 
   <!-- Gets the URL friendly string of the trick or category name -->

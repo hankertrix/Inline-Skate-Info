@@ -1,10 +1,10 @@
 <!-- The page to display the differences between the various inline skate boot types -->
 <script lang="ts">
-  import { makeUrlFriendlyString, titlecase } from '$lib/utils';
-  import data from '$lib/data/differences/boot-types.json';
+  import { makeUrlFriendlyString, titlecase } from "$lib/utils";
+  import data from "$lib/data/differences/boot-types.json";
 
   // The title of the page
-  const title = 'Boot Types';
+  const title = "Boot Types";
 
   // Gets the boot types JSON from the data
   const bootTypesJson = data.bootTypes;
@@ -26,27 +26,37 @@
   </header>
 
   <article>
+    <!-->
+
     <!-- Iterates over the boot types in the JSON -->
-    {#each Object.entries(bootTypesJson) as [bootType, obj]}
+    {#each Object.entries(bootTypesJson) as [bootType, obj] (bootType)}
       <section class="boot-type">
         <h2 class="text" id={makeUrlFriendlyString(bootType)}>{bootType}</h2>
 
         <!-- Iterates over all of the attributes of the object -->
-        {#each Object.entries(obj) as [attribute, info]}
+        {#each Object.entries(obj) as [attribute, info] (info)}
           <section class="attribute">
-            <h4 class="text" id={makeUrlFriendlyString(attribute)}>{titlecase(attribute)}</h4>
+            <h4 class="text" id={makeUrlFriendlyString(attribute)}>
+              {titlecase(attribute)}
+            </h4>
 
             <!-- If the information is a string -->
-            {#if typeof info === 'string'}
+            {#if typeof info === "string"}
+              <!-->
+
               <!-- Display the information in a paragraph -->
               <p class="text">{info}</p>
 
-              <!-- Otherwise, the information is a list of strings -->
+            <!-- Otherwise, the information is a list of strings -->
             {:else}
+              <!-->
+
               <!-- Display the information in an unordered list -->
               <ul class="text">
+                <!-->
+
                 <!-- Iterates over each of the strings inside the list -->
-                {#each info as line}
+                {#each info as line (line)}
                   <li>{line}</li>
                 {/each}
               </ul>

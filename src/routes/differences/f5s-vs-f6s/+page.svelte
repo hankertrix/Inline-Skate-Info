@@ -1,19 +1,19 @@
 <!-- The page to display the differences between the Flying Eagle F5S and F6S -->
 <script lang="ts">
-  import { makeUrlFriendlyString } from '$lib/utils';
-  import flyingEagleDiffJson from '$lib/data/differences/f5s-vs-f6s.json';
+  import { makeUrlFriendlyString } from "$lib/utils";
+  import flyingEagleDiffJson from "$lib/data/differences/f5s-vs-f6s.json";
 
   // The title of the page
-  const title = 'Differences Between The Flying Eagle F5S & F6S';
+  const title = "Differences Between The Flying Eagle F5S & F6S";
 
   // The heading for the similarites
-  const similaritiesHeading = 'Similarities';
+  const similaritiesHeading = "Similarities";
 
   // The heading for the differences
-  const differencesHeading = 'Differences';
+  const differencesHeading = "Differences";
 
   // The heading for the references
-  const referencesHeading = 'References';
+  const referencesHeading = "References";
 </script>
 
 <!-- The headers for the page -->
@@ -33,13 +33,17 @@
 
   <section class="similarities">
     <header>
-      <h2 class="text" id={makeUrlFriendlyString(similaritiesHeading)}>{similaritiesHeading}</h2>
+      <h2 class="text" id={makeUrlFriendlyString(similaritiesHeading)}>
+        {similaritiesHeading}
+      </h2>
     </header>
 
     <!-- Displays the similarities in an unordered list -->
     <ul class="text">
+      <!-->
+
       <!-- Iterates over the similarities -->
-      {#each flyingEagleDiffJson.similarities as similarity}
+      {#each flyingEagleDiffJson.similarities as similarity (similarity)}
         <li>{similarity}</li>
       {/each}
     </ul>
@@ -47,13 +51,17 @@
 
   <section class="differences">
     <header>
-      <h2 class="text" id={makeUrlFriendlyString(differencesHeading)}>{differencesHeading}</h2>
+      <h2 class="text" id={makeUrlFriendlyString(differencesHeading)}>
+        {differencesHeading}
+      </h2>
     </header>
 
     <!-- Display the differences in an unordered list -->
     <ul class="text">
+      <!-->
+
       <!-- Iterates over all of the differences -->
-      {#each flyingEagleDiffJson.differences as difference}
+      {#each flyingEagleDiffJson.differences as difference (difference)}
         <li>{difference}</li>
       {/each}
     </ul>
@@ -61,12 +69,16 @@
 
   <section class="references">
     <header>
-      <h2 class="text" id={makeUrlFriendlyString(referencesHeading)}>{referencesHeading}</h2>
+      <h2 class="text" id={makeUrlFriendlyString(referencesHeading)}>
+        {referencesHeading}
+      </h2>
     </header>
 
     <section class="reference-list">
+      <!-->
+
       <!-- Iterates over all of the references -->
-      {#each flyingEagleDiffJson.references as reference}
+      {#each flyingEagleDiffJson.references as reference (reference)}
         <a href={reference} target="_blank">{reference}</a>
       {/each}
     </section>

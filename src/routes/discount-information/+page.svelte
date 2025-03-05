@@ -52,7 +52,7 @@
     <!-->
 
     <!-- Iterates over all of the message parts -->
-    {#each discountInfoJson.messageParts as messagePart}
+    {#each discountInfoJson.messageParts as messagePart (messagePart)}
       <!-->
 
       <!-- Displays a paragraph for each message part -->
@@ -79,7 +79,7 @@
       <!-->
 
       <!-- Iterates over all the catalogues -->
-      {#each discountInfoJson.pdfFiles as file}
+      {#each discountInfoJson.pdfFiles as file (file)}
         <!-->
 
         <!-- Display the link to the catalogue -->

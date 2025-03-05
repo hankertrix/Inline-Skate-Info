@@ -33,7 +33,7 @@
 
   <main class="links-grid">
     <!-- Iterates over all of the pages with differences -->
-    {#each pagesWithDifferences as page}
+    {#each pagesWithDifferences as page (page)}
       <a href={`${urlFriendlyTitle}/${makeUrlFriendlyString(page)}`}>{page}</a>
     {/each}
   </main>
