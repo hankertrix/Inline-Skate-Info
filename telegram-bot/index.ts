@@ -1596,9 +1596,6 @@ bot.command([
     utils.hyperlink(
       "GitHub", "https://github.com/hankertrix/Inline-Skate-Info"
     ),
-    utils.hyperlink(
-      "Replit", "https://replit.com/@hankertrix/Inline-Skate-Info?v=1"
-    )
   ];
 
   // The message to send to the user
