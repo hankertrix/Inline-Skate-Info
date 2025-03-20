@@ -2,7 +2,7 @@
 
 <!-- The styles for the footer -->
 <style>
-  
+
   .footer {
     position: absolute;
     bottom: 0;
@@ -14,12 +14,12 @@
     font-family: Helvetica;
     padding: 5px 20px;
   }
-  
+
   .symbol {
     display: inline-block;
     transform: scale(-1, 1);
   }
-  
+
   .copyleft {
     font-size: 0.75rem;
     flex-direction: row;
@@ -41,7 +41,7 @@
 
   .icon-wrapper {
     --icon-size: 25px;
-    
+
     display: flex;
     flex-direction: row;
   }
@@ -77,7 +77,7 @@
     .footer {
       padding: 5px 10px;
     }
-    
+
   }
 
   @media only screen and (max-width: 370px) {
@@ -85,7 +85,7 @@
     .rights-notice {
       display: none;
     }
-    
+
   }
 
 </style>
@@ -106,9 +106,6 @@
       </a>
       <a class="github-logo" href="https://github.com/hankertrix/Inline-Skate-Info" target="_blank" title="View the source code on GitHub" rel="noopener noreferrer">
         <img src="/images/github-invertocat-logo.svg" alt="View the source code on GitHub" />
-      </a>
-      <a class="replit-logo" href="https://replit.com/@hankertrix/Inline-Skate-Info?v=1" target="_blank" title="View the source code on Replit" rel="noopener noreferrer">
-        <img src="/images/replit-logo.svg" alt="View the source code on Replit" />
       </a>
     </div>
   </div>
