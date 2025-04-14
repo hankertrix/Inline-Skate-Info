@@ -1,7 +1,7 @@
 // The module that contains the telegraf bot
 
 import type { Context } from "telegraf";
-import type { InlineQueryResult } from "telegraf/types";
+import type { InlineQueryResult, Message } from "telegraf/types";
 import type {
   CreatePollMessageState,
   CreatePollMessageConfig
@@ -1477,7 +1477,10 @@ bot.command([
   });
 
   // The callback function to call when the user has given a valid input
-  async function callback(ctx: Context, input: string) {
+  async function callback(
+    ctx: Context,
+    input: string
+  ): Promise<Message.PhotoMessage> {
 
     // Calls the QR code handler to generate the QR code
     const [, qrCodeDataURL] = await commandUtils.qrCode.handler(input);

@@ -24,7 +24,7 @@
 
   // Function to check if a title has any children
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  function titleHasChildren(obj: any) {
+  function titleHasChildren(obj: any): boolean {
     return (
       (obj instanceof String || typeof obj !== "string") &&
       Object.keys(obj).length > 0

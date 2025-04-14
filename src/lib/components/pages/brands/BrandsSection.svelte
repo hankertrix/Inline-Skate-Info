@@ -36,8 +36,7 @@
   }: Props = $props();
 
   // Function to check if an object is a brand object
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  function isBrandObject(obj: any) {
+  function isBrandObject(obj: unknown): boolean {
     return (
       Object.prototype.hasOwnProperty.call(obj, "link") &&
       Object.prototype.hasOwnProperty.call(obj, "description")

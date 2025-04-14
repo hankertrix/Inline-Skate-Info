@@ -7,12 +7,12 @@ const symbolRegex = /[!$%^&*()_+|~=`{}[\]:";'<>?,./]/g;
 const fileExtensionRegex = /\.\w*$/;
 
 // Function to change the title into a url friendly string
-export function makeUrlFriendlyString(str: string) {
+export function makeUrlFriendlyString(str: string): string {
   return str.replace(symbolRegex, "").replaceAll(" ", "-").toLowerCase();
 }
 
 // Function to make a string titlecase
-export function titlecase(str: string) {
+export function titlecase(str: string): string {
   //
 
   // Gets the length of the string
@@ -56,12 +56,12 @@ export function titlecase(str: string) {
 }
 
 // Function to convert a file path to a URL
-export function convertFilePathToUrl(filePath: string) {
+export function convertFilePathToUrl(filePath: string): string {
   return filePath.replace(/^.*\/static/, "").trim();
 }
 
 // Function to get the file extension of a file
-export function getFileExtension(path: string) {
+export function getFileExtension(path: string): string {
   //
 
   // Gets the match using the regular expression
@@ -78,7 +78,7 @@ export function getFileExtension(path: string) {
 }
 
 // Function to get the file name from a file path
-export function getFilenameFromFilePath(filePath: string) {
+export function getFilenameFromFilePath(filePath: string): string {
   //
 
   // Remove everything from the start of the file path to get the file name
@@ -95,7 +95,7 @@ export function getFilenameFromFilePath(filePath: string) {
 }
 
 // Function to get a list of unique filenames from a list of paths
-export function getUniqueFilenamesFromFilePaths(filePaths: string[]) {
+export function getUniqueFilenamesFromFilePaths(filePaths: string[]): string[] {
   //
 
   // Gets the list of filenames

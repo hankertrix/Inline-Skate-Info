@@ -35,7 +35,9 @@
   const youtubeTimestampRegex = /^.*t=|\s+$/g;
 
   // The function to run a function once
-  function once(fn: ((event: OnClickEvent) => void) | null) {
+  function once(
+    fn: ((event: OnClickEvent) => void) | null
+  ): ((event: OnClickEvent) => void) | null {
     return function (this: typeof fn, event: OnClickEvent) {
       if (fn) fn.call(this, event);
       fn = null;
@@ -43,7 +45,7 @@
   }
 
   // Function to get the ID of a YouTube video
-  function getYoutubeId(youtubeVideoUrl: string) {
+  function getYoutubeId(youtubeVideoUrl: string): string {
     return youtubeVideoUrl.replace(youtubeIdRegex, "").trim();
   }
 
@@ -64,7 +66,7 @@
 
   // Function to load all the embeds inside the video collapsible
   // when the collapsible is opened
-  function loadEmbeds(e: OnClickEvent) {
+  function loadEmbeds(e: OnClickEvent): void {
     //
 
     // Gets the parent element

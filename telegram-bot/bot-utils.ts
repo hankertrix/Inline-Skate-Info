@@ -2,6 +2,7 @@
 
 import type { Context, Types } from "telegraf";
 import type {
+  ReplyKeyboardMarkup,
   InlineKeyboardMarkup,
   InlineQueryResult,
   InputMediaDocument,
@@ -26,22 +27,22 @@ import {
 } from "../config";
 
 // The regular expression to get the message entities (currently HTML tags)
-const messageEntityRegex = /<.+?>/g;
+const messageEntityRegex: RegExp = /<.+?>/g;
 
 // The regular expression to remove the command from the start of the message
-const removeCommandRegex = new RegExp(
+const removeCommandRegex: RegExp = new RegExp(
   String.raw`^\/\w+(?:${utils.regexEscape(BOT_USERNAME)})?`
 );
 
 
 // Function to remove a command from a message
-export function removeCommand(message: string) {
+export function removeCommand(message: string): string {
   return message.replace(removeCommandRegex, "").trim();
 }
 
 
 // Function to get the number of message entities in the message
-function getMessageEntityCount(message: string) {
+function getMessageEntityCount(message: string): number {
 
   // Gets all the message entities in the string
   const matches = message.match(messageEntityRegex);
@@ -62,7 +63,7 @@ function getMsgSegment(
   message: string,
   maxLength: number = MAX_CHARACTERS,
   maxEntity: number = MESSAGE_ENTITY_LIMIT
-) {
+): string {
 
   // Initialise the message segment
   let msgSegment = "";
@@ -131,14 +132,14 @@ function splitMessage(
   message: string,
   maxLength: number = MAX_CHARACTERS,
   maxEntity: number = MESSAGE_ENTITY_LIMIT
-) {
+): string[] {
 
   // If the length of the message with the HTML removed is less than
   // or equal to the maximum length,
   // and the number of message entities in the message
   // doesn't exceed the maximum number of message entities
   if (utils.removeHtml(message).length <= maxLength
-      && getMessageEntityCount(message) <= maxEntity) {
+    && getMessageEntityCount(message) <= maxEntity) {
 
     // Returns the message in a list
     return [message];
@@ -198,7 +199,7 @@ export async function ctxReply(
   ctx: Context,
   reply: string,
   options: Types.ExtraReplyMessage = {}
-) {
+): Promise<void> {
 
   // Iterates the splitted reply
   for (const segment of splitMessage(reply)) {
@@ -216,7 +217,9 @@ export async function ctxReply(
 
 
 // Function to generate the inline keyboard markup
-export function generateInlineKeyboard(buttons: string[]) {
+export function generateInlineKeyboard(
+  buttons: string[]
+): Types.Markup<InlineKeyboardMarkup> {
 
   // The list of inline keyboard buttons
   const inlineKeyboard = [];
@@ -245,10 +248,10 @@ export function generateReplyKeyboard(
     selective?: boolean,
     placeholder?: string
   } = {
-    oneTime: true,
-    resize: true
-  }
-) {
+      oneTime: true,
+      resize: true
+    }
+): Types.Markup<ReplyKeyboardMarkup> {
 
   // Initialise the variable to store the keyboard
   const replyKeyboard = [];
@@ -341,7 +344,7 @@ export async function answerInlineQuery(
   title: string | null = null,
   options: OptionalPropertiesOf<InputMessageContent> = {},
   markup: Types.Markup<InlineKeyboardMarkup> | null = null,
-) {
+): Promise<boolean | void> {
 
   // If the message given is not a list of messages
   if (typeof messages === "string") messages = [messages];
@@ -378,7 +381,7 @@ export async function answerInlineQuery(
     const queryReply = generateInlineQueryReply(
       title, firstMsg, 1, options, null, markup
     );
-    
+
     // Replies to the inline query
     return await ctx.answerInlineQuery(
       [queryReply],
@@ -426,7 +429,7 @@ export async function answerInlineQuery(
 export async function sendDocGroupFromPaths(
   ctx: Context,
   ...paths: string[]
-) {
+): Promise<void> {
 
   // If the list of paths given is empty, immediately exit the function
   if (paths.length < 1) return;
@@ -458,7 +461,7 @@ export async function sendDocGroupFromPaths(
 // Function to handle the commands that generate a message and send files
 export async function messageAndFileCommandHandler(
   ctx: Context, fn: () => Promise<[string, string[]]>
-) {
+): Promise<void> {
 
   // Gets the message and the files
   const [message, files] = await fn() as [string, string[]];
@@ -477,7 +480,7 @@ export async function messageAndFileInlineQueryHandler(
   fn: () => Promise<[string, string[]]>,
   isHyperlinked: boolean = true,
   joiningSection: string = "\n\n"
-) {
+): Promise<void> {
 
   // Gets the message and the files
   const [message, files] = await fn() as [string, string[]];
@@ -500,7 +503,7 @@ export async function messageAndFileInlineQueryHandler(
 
       // Otherwise, returns the URL for the file
       else return fileUrl;
-      
+
     }).join("\n\n")}`;
 
   // Answers the inline query
@@ -509,7 +512,7 @@ export async function messageAndFileInlineQueryHandler(
 
 
 // Function to check whether the user is an admin in a group chat
-export async function isAdmin(ctx: Context) {
+export async function isAdmin(ctx: Context): Promise<boolean> {
 
   // If the admin check option is disabled, immediately return true
   if (!ENABLE_ADMIN_CHECK) return true;
@@ -579,7 +582,7 @@ export async function deleteMessages(
 export function markMessageForDeletion(
   ctx: Scenes.WizardContext,
   ...message_ids: number[]
-) {
+): void {
 
   // Gets the state object
   const state = ctx.wizard.state as { messagesToDelete: number[] };
@@ -602,7 +605,7 @@ export function wrapCallbackWithMessageDeleter(
   callback: (
     ctx: Scenes.WizardContext, input: string
   ) => Promise<void | Message.TextMessage>
-) {
+): (ctx: Scenes.WizardContext, input: string) => void {
 
   // Returns a function that takes the arguments of the callback function
   return async (ctx: Scenes.WizardContext, input: string) => {
@@ -629,8 +632,8 @@ export async function promptUserForInput(
   ctx: Scenes.WizardContext,
   message: string,
   additionalOptions = {}
-) {
-  
+): Promise<Message.TextMessage> {
+
   // Asks the user for an input
   const botMessage = await ctx.reply(
     `${message}\n${EXIT_MESSAGE}`,
@@ -656,7 +659,7 @@ export async function callStep(
   next: () => Promise<void>,
   previous: boolean = false,
   stepIndex: number | null = null
-) {
+): Promise<unknown> {
 
   // If the step index is given
   // and is greater or equal to zero
@@ -697,7 +700,7 @@ export async function callStep(
 
 
 // The function to exit a validator (cancel the ongoing operation)
-export async function exitValidator(ctx: Scenes.WizardContext) {
+export async function exitValidator(ctx: Scenes.WizardContext): Promise<void> {
 
   // Tells the user that the operation has been cancelled
   // and removes any reply keyboard generated
@@ -720,7 +723,7 @@ export const cancelCommand: [
 export function createWizardScene(
   name: string,
   handler: Composer<Scenes.WizardContext>
-) {
+): Scenes.WizardScene<Scenes.WizardContext> {
 
   // Returns the new scene
   return new Scenes.WizardScene<Scenes.WizardContext>(name, handler);

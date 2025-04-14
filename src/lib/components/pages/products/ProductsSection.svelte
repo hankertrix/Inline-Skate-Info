@@ -37,7 +37,7 @@
   }: Props = $props();
 
   // The function to check if an object is a product object
-  function isProductObject(obj: unknown) {
+  function isProductObject(obj: unknown): boolean {
     return (
       Object.prototype.hasOwnProperty.call(obj, "price") &&
       Object.prototype.hasOwnProperty.call(obj, "link")

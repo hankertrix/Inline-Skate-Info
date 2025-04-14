@@ -16,7 +16,8 @@ import { createPollMessageScene } from "./command-utils/poll-message";
 // The wizard scene to validate user input
 
 // The validate handler
-const validateHandler = new Composer<Scenes.WizardContext>();
+const validateHandler: Composer<Scenes.WizardContext> =
+  new Composer<Scenes.WizardContext>();
 
 // Function to handle the cancel command in the scene
 validateHandler.command(...cancelCommand);
@@ -40,7 +41,7 @@ validateHandler.on(filters.message("text"), async ctx => {
   const input = removeCommand(ctx.message.text);
 
   // The default validator to use when no validator is given
-  function defaultValidator(input: string) {
+  function defaultValidator(input: string): boolean {
 
     // Returns true if the input isn't empty and false otherwise
     return !!input;

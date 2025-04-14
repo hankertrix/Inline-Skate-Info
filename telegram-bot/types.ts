@@ -64,3 +64,21 @@ export type Place = {
 export type DateMapping = {
   [day: number]: Date;
 };
+
+// The type representing a skate recommendation
+type SkateRec = {
+  price: string;
+  link: string;
+  reason: string;
+};
+
+// The type representing the skate recommendations JSON data
+export type SkateRecsData = {
+  preface: string;
+  recommendations: {
+    [style: string]: [
+      { [skate: string]: SkateRec },
+      { [video: string]: string },
+    ];
+  };
+};

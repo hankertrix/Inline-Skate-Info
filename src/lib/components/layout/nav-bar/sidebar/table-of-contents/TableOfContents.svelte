@@ -21,7 +21,7 @@
   // Eslint is somehow not recognising NodeListOf
   // as a defined type, hence the line below
   // eslint-disable-next-line no-undef
-  function getTableOfContents(headings: NodeListOf<Element>) {
+  function getTableOfContents(headings: NodeListOf<Element>): TableOfContents {
     //
 
     // The object representing the table of contents

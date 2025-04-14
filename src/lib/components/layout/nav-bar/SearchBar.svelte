@@ -4,7 +4,7 @@
   import { goto } from "$app/navigation";
 
   // The function to handle the submission of the search query
-  function handleSearchSubmit(e: SubmitEvent) {
+  function handleSearchSubmit(e: SubmitEvent): void {
     //
 
     // Prevent the default form submission
@@ -23,7 +23,7 @@
     if (searchQuery.length < 1) return;
 
     // Otherwise, redirects the user to the search page with their query
-    return goto(`/search?q=${searchQuery}`);
+    goto(`/search?q=${searchQuery}`);
   }
 </script>
 

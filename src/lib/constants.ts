@@ -1,45 +1,49 @@
 // Module that contains all the constants
 
 // The function to get the URL of the website
-export function getBasePath() {
-  return process.env.URL ? process.env.URL : "https://inline-skate-info.hankertrix.repl.co";
+export function getBasePath(): string {
+  return process.env.URL
+    ? process.env.URL
+    : "https://inline-skate-info.hankertrix.repl.co";
 }
 
 // The maximum number of characters in a message
-export const MAX_CHARACTERS = 4096;
+export const MAX_CHARACTERS: number = 4096;
 
 // The maximum number of entities in a message
-export const MESSAGE_ENTITY_LIMIT = 200;
+export const MESSAGE_ENTITY_LIMIT: number = 200;
 
 // The cache time for the inline query
-export const CACHE_TIME = 0;
+export const CACHE_TIME: number = 0;
 
 // The spacing between the title and the message
-export const SPACING = "\n\n\n";
+export const SPACING: string = "\n\n\n";
 
 // The spacing between each category
-export const CATEGORY_SPACING = "\n\n\n\n\n";
+export const CATEGORY_SPACING: string = "\n\n\n\n\n";
 
 // The spacing between each label (e.g. address, email, description, etc.)
-export const LABEL_SPACING = "\n";
+export const LABEL_SPACING: string = "\n";
 
 // The exit message to cancel any validator
-export const EXIT_MESSAGE = "Use the /cancel command to cancel this operation.";
+export const EXIT_MESSAGE: string =
+  "Use the /cancel command to cancel this operation.";
 
 // The operation cancelled message
-export const OPERATION_CANCELLED_MSG = "The operation has been cancelled.";
+export const OPERATION_CANCELLED_MSG: string =
+  "The operation has been cancelled.";
 
 // The developer's username
-export const DEV = "@hankertrix";
+export const DEV: string = "@hankertrix";
 
 // The bot's username
-export const BOT_USERNAME = "@inlineskatebot";
+export const BOT_USERNAME: string = "@inlineskatebot";
 
 // The pagefind bundle folder
-export const PAGEFIND_BASE_PATH = "/pagefind";
+export const PAGEFIND_BASE_PATH: string = "/pagefind";
 
 // The pagefind highlight parameter
-export const PAGEFIND_HIGHLIGHT_PARAM = "highlight";
+export const PAGEFIND_HIGHLIGHT_PARAM: string = "highlight";
 
 // The dictionary containing all the zero width characters
 // mapped to the letters of the alphabet.
@@ -48,92 +52,88 @@ export const PAGEFIND_HIGHLIGHT_PARAM = "highlight";
 // This dictionary of characters is to create a zero-width code to check
 // for a specific type of message when answering a callback query.
 export const LETTER_TO_ZERO_WIDTH_CHARS = {
-  A: "\u00AD",       // Soft hyphen
-  B: "\u061C",       // Arabic letter mark
-  C: "\u180E",       // Mongolian vowel separator
-  D: "\u200B",       // Zero width space
-  E: "\u200C",       // Zero width non-joiner
-  F: "\u200D",       // Zero width joiner
-  G: "\uFEFF",       // Zero width non-breaking space
-  H: "\u2060",       // Word joiner
-  I: "\u2061",       // Function application
-  J: "\u2062",       // Invisible times
-  K: "\u2063",       // Invisible separator
-  L: "\u2064",       // Invisible plus
-  M: "\u206A",       // Inhibit symmetric swapping
-  N: "\u206B",       // Activate symmetric swapping
-  O: "\u206C",       // Inhibit arabic form swapping
-  P: "\u206D",       // Activate arabic form swapping
-  Q: "\u206E",       // National digit shapes
-  R: "\u206F",       // Nominal digit shapes
-  S: "\u{1D173}",    // Musical symbol begin beam
-  T: "\u{1D174}",    // Musical symbol end beam
-  U: "\u{1D175}",    // Musical symbol begin tie
-  V: "\u{1D176}",    // Musical symbol end tie
-  W: "\u{1D177}",    // Musical symbol begin slur
-  X: "\u{1D178}",    // Musical symbol end slur
-  Y: "\u{1D179}",    // Musical symbol begin phrase
-  Z: "\u{1D17A}",    // Musical symbol end phrase
-}
+  A: "\u00AD", // Soft hyphen
+  B: "\u061C", // Arabic letter mark
+  C: "\u180E", // Mongolian vowel separator
+  D: "\u200B", // Zero width space
+  E: "\u200C", // Zero width non-joiner
+  F: "\u200D", // Zero width joiner
+  G: "\uFEFF", // Zero width non-breaking space
+  H: "\u2060", // Word joiner
+  I: "\u2061", // Function application
+  J: "\u2062", // Invisible times
+  K: "\u2063", // Invisible separator
+  L: "\u2064", // Invisible plus
+  M: "\u206A", // Inhibit symmetric swapping
+  N: "\u206B", // Activate symmetric swapping
+  O: "\u206C", // Inhibit arabic form swapping
+  P: "\u206D", // Activate arabic form swapping
+  Q: "\u206E", // National digit shapes
+  R: "\u206F", // Nominal digit shapes
+  S: "\u{1D173}", // Musical symbol begin beam
+  T: "\u{1D174}", // Musical symbol end beam
+  U: "\u{1D175}", // Musical symbol begin tie
+  V: "\u{1D176}", // Musical symbol end tie
+  W: "\u{1D177}", // Musical symbol begin slur
+  X: "\u{1D178}", // Musical symbol end slur
+  Y: "\u{1D179}", // Musical symbol begin phrase
+  Z: "\u{1D17A}", // Musical symbol end phrase
+} as const;
 
 // The pages in the website
 export const PAGES = {
+  Terminology: "",
 
-  "Terminology": "",
+  Tricks: {
+    Basics: "",
+    Fundamentals: "",
+    Turns: "",
+    Stops: "",
+    Jumps: "",
 
-  "Tricks": {
-    "Basics": "",
-    "Fundamentals": "",
-    "Turns": "",
-    "Stops": "",
-    "Jumps": "",
-
-    "Slalom": {
-
+    Slalom: {
       "Class A": {
-        "Others": "",
-        "Sitting": "",
-        "Jumps": "",
-        "Wheelings": "",
-        "Spins": "",
+        Others: "",
+        Sitting: "",
+        Jumps: "",
+        Wheelings: "",
+        Spins: "",
       },
 
       "Class B": {
-        "Others": "",
-        "Sitting": "",
-        "Jumps": "",
-        "Wheelings": "",
-        "Spins": "",
+        Others: "",
+        Sitting: "",
+        Jumps: "",
+        Wheelings: "",
+        Spins: "",
       },
 
       "Class C": {
-        "Others": "",
-        "Sitting": "",
-        "Jumps": "",
-        "Wheelings": "",
-        "Spins": "",
+        Others: "",
+        Sitting: "",
+        Jumps: "",
+        Wheelings: "",
+        Spins: "",
       },
 
       "Class D": {
-        "Others": "",
-        "Sitting": "",
-        "Jumps": "",
-        "Wheelings": "",
-        "Spins": "",
+        Others: "",
+        Sitting: "",
+        Jumps: "",
+        Wheelings: "",
+        Spins: "",
       },
 
       "Class E": {
-        "Others": "",
-        "Sitting": "",
-        "Jumps": "",
-        "Wheelings": "",
-        "Spins": "",
-      }
-
+        Others: "",
+        Sitting: "",
+        Jumps: "",
+        Wheelings: "",
+        Spins: "",
+      },
     },
 
-    "Slides": {
-
+    Slides: {
       "Class A": {
         "Family 1": "",
         "Family 2": "",
@@ -169,7 +169,6 @@ export const PAGES = {
         "Family 2": "",
         "Family 4": "",
       },
-
     },
 
     // Re-enable the aggressive tricks once the data for it is complete
@@ -219,24 +218,24 @@ export const PAGES = {
 
     // },
 
-    "Wizard": "",
-    "Misc": "",
+    Wizard: "",
+    Misc: "",
   },
 
-  "Resources": {
+  Resources: {
     "Buying Guides": "",
     "Maintenance Guides": "",
     "Trick Lists": "",
-    "Glossaries": "",
-    "Rulebooks": "",
-    "Misc": "",
+    Glossaries: "",
+    Rulebooks: "",
+    Misc: "",
   },
 
   "Discount Information": "",
 
   "Skate Recommendations": "",
 
-  "Retailers": {
+  Retailers: {
     "Retailers In Singapore": "",
     "Online Retailers": "",
     "Overseas Retailers": "",
@@ -249,25 +248,25 @@ export const PAGES = {
     "Skate Parks": "",
   },
 
-  "Brands": {
+  Brands: {
     "Skate Brands": "",
     "Wheel Brands": "",
     "Frame Brands": "",
     "Liner Brands": "",
   },
 
-  "Differences": {
-    "Triskates": "",
+  Differences: {
+    Triskates: "",
     "FR Skates": "",
     "F5S vs F6S": "",
     "Boot Types": "",
   },
 
-  "Products": {
+  Products: {
     "Protective Gear": "",
-    "Accessories": "",
-    "Tools": "",
+    Accessories: "",
+    Tools: "",
     "Maintenance Items": "",
-    "Clothing": "",
+    Clothing: "",
   },
 } as const;

@@ -6,7 +6,7 @@
   import theme from "$lib/stores/theme";
 
   // Function to change the theme when the theme toggler is clicked
-  function handleClick() {
+  function handleClick(): void {
 
     // Sets the current theme to be opposite of the previous theme
     $theme = $theme === "light" ? "dark" : "light";

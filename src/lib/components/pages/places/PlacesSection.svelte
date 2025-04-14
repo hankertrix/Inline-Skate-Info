@@ -37,7 +37,7 @@
   }: Props = $props();
 
   // The attributes of a place object
-  const PLACE_ATTRIBUTES = [
+  const PLACE_ATTRIBUTES: string[] = [
     "address",
     "hours",
     "price",
@@ -53,7 +53,7 @@
 
   // The function to check if an object is a place object
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  function isPlaceObject(obj: any) {
+  function isPlaceObject(obj: any): boolean {
     //
 
     // Checks if the attributes present in the object
@@ -71,7 +71,7 @@
   }
 
   // Function to create links for phone numbers
-  function createLinkForPhoneNum(str: string) {
+  function createLinkForPhoneNum(str: string): string {
     //
 
     // Replace all phone numbers with the linked version
@@ -153,7 +153,7 @@
             </div>
 
           <!-- If the attribute is "phone" -->
-          {:else if ["phone"].includes(attribute)}
+          {:else if ["phone"].includes(attribute) && typeof value === "string"}
             <!-->
 
             <!-- Displays the email in bold with the email linked -->

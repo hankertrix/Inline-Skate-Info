@@ -16,7 +16,7 @@
   let { tableOfContents }: Props = $props();
 
   // Function to check if a title has any children
-  function titleHasChildren(obj: unknown) {
+  function titleHasChildren(obj: unknown): boolean {
     return obj instanceof Map && obj.size > 0;
   }
 </script>

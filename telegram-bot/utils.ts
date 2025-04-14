@@ -13,13 +13,13 @@ const charToHtmlEntity = {
 } as const;
 
 // The regular expression to get all the non-letters
-const nonLetterRegex = /[^A-Za-z]/g;
+const nonLetterRegex: RegExp = /[^A-Za-z]/g;
 
 // The regular expression to get the file extension
-const fileExtensionRegex = /\.\w*$/;
+const fileExtensionRegex: RegExp = /\.\w*$/;
 
 // Function to check if something is an object
-export function isObject(obj: unknown) {
+export function isObject(obj: unknown): boolean {
   return Object.prototype.toString.call(obj) === "[object Object]";
 }
 
@@ -30,7 +30,7 @@ export function mergeObjects(
   objToMerge: Record<string, unknown>,
   errorOnConflict: boolean = true,
   overwriteBaseObject: boolean = false
-) {
+): Record<string, unknown> {
   //
 
   // Iterates the object to merge
@@ -65,7 +65,9 @@ export function mergeObjects(
 }
 
 // Function to merge a list of objects into a single object
-export function mergeListOfObjects(listOfObjects: Record<string, unknown>[]) {
+export function mergeListOfObjects(
+  listOfObjects: Record<string, unknown>[]
+): Record<string, unknown> {
   //
 
   // Initialise the base object
@@ -96,7 +98,7 @@ export function mergeListOfObjects(listOfObjects: Record<string, unknown>[]) {
   }
 
   // Returns the base object
-  return baseObj;
+  return baseObj as Record<string, unknown>;
 }
 
 // Function to check if two arrays are equal.
@@ -128,7 +130,9 @@ export function arraysAreEqual(
 }
 
 // Function to load all the JSON files in a directory
-export async function loadJsonDirectory(path: string) {
+export async function loadJsonDirectory(
+  path: string
+): Promise<Record<string, unknown>> {
   //
 
   // Inner function that does the actual directory loading
@@ -181,7 +185,7 @@ export async function loadJsonDirectory(path: string) {
 export async function loadJsonData(
   path: string,
   root: string = "./src/lib/data/"
-) {
+): Promise<Record<string, unknown>> {
   //
 
   // Gets the file path
@@ -210,7 +214,7 @@ export async function loadStaticFile(
   path: string,
   file_extension: string,
   root: string = "./static/"
-) {
+): Promise<string> {
   //
 
   // Adds a dot in front of the file extension
@@ -220,9 +224,7 @@ export async function loadStaticFile(
     : `.${file_extension}`;
 
   // Gets the file path
-  const filePath = `${root ? root : "./static/"}${path}${
-    path.endsWith(file_extension) ? "" : file_extension
-  }`;
+  const filePath = `${root ? root : "./static/"}${path}${path.endsWith(file_extension) ? "" : file_extension}`;
 
   // Loads the file
   const file = await readFile(filePath, "utf8");
@@ -232,7 +234,7 @@ export async function loadStaticFile(
 }
 
 // Convert a path to a file in the static folder into a URL
-export function convertStaticFilePathToUrl(path: string) {
+export function convertStaticFilePathToUrl(path: string): string {
   //
 
   // If the path doesn't start with "./static/"
@@ -251,7 +253,7 @@ export function convertStaticFilePathToUrl(path: string) {
 // (the first character after a forward slash "/",
 // the character at the start of the string,
 // as well as everything within brackets is capitalised)
-export function convertToLabel(label: string) {
+export function convertToLabel(label: string): string {
   //
 
   // Capitalise the first character that is after a forward slash
@@ -298,7 +300,7 @@ function getModuleString(chatId: number): string | null {
 
 // Function to get the module
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function getModule(chatId: number, modules: any) {
+export function getModule(chatId: number, modules: any): any {
   //
 
   // Gets the module string
@@ -422,7 +424,7 @@ export function getLastMatchChained(
 }
 
 // Function to make a string titlecase
-export function titlecase(str: string) {
+export function titlecase(str: string): string {
   //
 
   // Gets the length of the string
@@ -468,7 +470,7 @@ export function titlecase(str: string) {
 
 // Function to format a string with the arguments given
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function strFormat(str: string, ...args: any[]) {
+export function strFormat(str: string, ...args: any[]): string {
   //
 
   // If arguments aren't given, return the string passed immediately
@@ -499,7 +501,7 @@ export function strFormat(str: string, ...args: any[]) {
 }
 
 // Function to get the file extension of a file
-export function getFileExtension(path: string) {
+export function getFileExtension(path: string): string {
   //
 
   // Gets the match using the regular expression
@@ -537,7 +539,7 @@ export function getFilenameFromPath(
   path: string,
   removeFileExt: boolean = false,
   formatted: boolean = true
-) {
+): string {
   //
 
   // Initialise the index of the "/" character
@@ -573,7 +575,7 @@ export function getFilenameFromPath(
 }
 
 // Function to get a list of unique filenames from a list of paths
-export function getUniqueFilenamesFromPaths(filePaths: string[]) {
+export function getUniqueFilenamesFromPaths(filePaths: string[]): string[] {
   //
 
   // Gets the list of filenames with the file extension removed
@@ -607,7 +609,7 @@ export function getUniqueFilenamesFromPaths(filePaths: string[]) {
 }
 
 // Function to escape the characters for regular expressions
-export function regexEscape(str: string) {
+export function regexEscape(str: string): string {
   //
 
   // Escapes all the special regex characters in the string
@@ -615,12 +617,12 @@ export function regexEscape(str: string) {
 }
 
 // Function to remove all html tags from the given text
-export function removeHtml(text: string) {
+export function removeHtml(text: string): string {
   return text.replace(/<\/?.*?(?:>|$)/g, "");
 }
 
 // Function to strip HTML characters from the given text
-export function stripHtml(text: string) {
+export function stripHtml(text: string): string {
   return text.replace(
     /[&<>]/g,
 
@@ -631,27 +633,27 @@ export function stripHtml(text: string) {
 }
 
 // Function to make the text a hyperlink using html
-export function hyperlink(text: string, link: string) {
+export function hyperlink(text: string, link: string): string {
   return `<a href="${link}">${text}</a>`;
 }
 
 // Function to make the text monospaced
-export function monospace(text: string) {
+export function monospace(text: string): string {
   return `<code>${text}</code>`;
 }
 
 // Function to italicise the text using html
-export function italicise(text: string) {
+export function italicise(text: string): string {
   return `<i>${text}</i>`;
 }
 
 // Function to make the text bold using html
-export function bold(text: string) {
+export function bold(text: string): string {
   return `<b>${text}</b>`;
 }
 
 // Function to reverse a dictionary
-export function reverseDict(dict: ReversibleDict) {
+export function reverseDict(dict: ReversibleDict): ReversibleDict {
   //
 
   // Initialise the reverse dictionary
@@ -671,7 +673,7 @@ export function reverseDict(dict: ReversibleDict) {
 }
 
 // Function to make the first line of the text given bold
-export function boldFirstLine(text: string) {
+export function boldFirstLine(text: string): string {
   //
 
   // Gets the splitted text
@@ -688,7 +690,7 @@ export function boldFirstLine(text: string) {
 }
 
 // Function to add days to a date
-export function addDays(date: Date, days: number) {
+export function addDays(date: Date, days: number): Date {
   //
 
   // Creates a new date object with the original date
@@ -702,7 +704,7 @@ export function addDays(date: Date, days: number) {
 }
 
 // Function to add hours to a date
-export function addHours(date: Date, hours: number) {
+export function addHours(date: Date, hours: number): Date {
   //
 
   // Creates a new date object with the original date
@@ -719,7 +721,7 @@ export function addHours(date: Date, hours: number) {
 export function getDayStr(
   date: Date,
   format: "narrow" | "short" | "long" = "short"
-) {
+): string {
   // Returns the day as a string
   return Intl.DateTimeFormat("en-SG", {
     weekday: format,
@@ -727,7 +729,7 @@ export function getDayStr(
 }
 
 // Function to get the time as a string from a date
-export function getTimeStr(date: Date) {
+export function getTimeStr(date: Date): string {
   //
 
   // Returns the time as a string
@@ -742,7 +744,7 @@ export function getTimeStr(date: Date) {
 
 // Function to generate a zero-width code
 // from a string consisting of letters only
-export function generateZeroWidthCode(text: string) {
+export function generateZeroWidthCode(text: string): string {
   //
 
   // Removes everything in the string that isn't a letter
