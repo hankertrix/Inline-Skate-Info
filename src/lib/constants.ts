@@ -47,37 +47,107 @@ export const PAGEFIND_HIGHLIGHT_PARAM: string = "highlight";
 
 // The dictionary containing all the zero width characters
 // mapped to the letters of the alphabet.
-// Purposefully left out left to right and right to left marks as those
-// will mess with the formatting of the message in Telegram.
 // This dictionary of characters is to create a zero-width code to check
 // for a specific type of message when answering a callback query.
+// This makes use Unicode tags for the invisible, zero-width characters.
 export const LETTER_TO_ZERO_WIDTH_CHARS = {
-  A: "\u00AD", // Soft hyphen
-  B: "\u061C", // Arabic letter mark
-  C: "\u180E", // Mongolian vowel separator
-  D: "\u200B", // Zero width space
-  E: "\u200C", // Zero width non-joiner
-  F: "\u200D", // Zero width joiner
-  G: "\uFEFF", // Zero width non-breaking space
-  H: "\u2060", // Word joiner
-  I: "\u2061", // Function application
-  J: "\u2062", // Invisible times
-  K: "\u2063", // Invisible separator
-  L: "\u2064", // Invisible plus
-  M: "\u206A", // Inhibit symmetric swapping
-  N: "\u206B", // Activate symmetric swapping
-  O: "\u206C", // Inhibit arabic form swapping
-  P: "\u206D", // Activate arabic form swapping
-  Q: "\u206E", // National digit shapes
-  R: "\u206F", // Nominal digit shapes
-  S: "\u{1D173}", // Musical symbol begin beam
-  T: "\u{1D174}", // Musical symbol end beam
-  U: "\u{1D175}", // Musical symbol begin tie
-  V: "\u{1D176}", // Musical symbol end tie
-  W: "\u{1D177}", // Musical symbol begin slur
-  X: "\u{1D178}", // Musical symbol end slur
-  Y: "\u{1D179}", // Musical symbol begin phrase
-  Z: "\u{1D17A}", // Musical symbol end phrase
+  BEGIN: "\u{E0001}",
+  " ": "\u{E0020}",
+  "!": "\u{E0021}",
+  '"': "\u{E0022}",
+  "#": "\u{E0023}",
+  $: "\u{E0024}",
+  "%": "\u{E0025}",
+  "&": "\u{E0026}",
+  "'": "\u{E0027}",
+  "(": "\u{E0028}",
+  ")": "\u{E0029}",
+  "*": "\u{E002A}",
+  "+": "\u{E002B}",
+  ",": "\u{E002C}",
+  "-": "\u{E002D}",
+  ".": "\u{E002E}",
+  "/": "\u{E002F}",
+  "0": "\u{E0030}",
+  "1": "\u{E0031}",
+  "2": "\u{E0032}",
+  "3": "\u{E0033}",
+  "4": "\u{E0034}",
+  "5": "\u{E0035}",
+  "6": "\u{E0036}",
+  "7": "\u{E0037}",
+  "8": "\u{E0038}",
+  "9": "\u{E0039}",
+  ":": "\u{E003A}",
+  ";": "\u{E003B}",
+  "<": "\u{E003C}",
+  "=": "\u{E003D}",
+  ">": "\u{E003E}",
+  "?": "\u{E003F}",
+  "@": "\u{E0040}",
+  A: "\u{E0041}",
+  B: "\u{E0042}",
+  C: "\u{E0043}",
+  D: "\u{E0044}",
+  E: "\u{E0045}",
+  F: "\u{E0046}",
+  G: "\u{E0047}",
+  H: "\u{E0048}",
+  I: "\u{E0049}",
+  J: "\u{E004A}",
+  K: "\u{E004B}",
+  L: "\u{E004C}",
+  M: "\u{E004D}",
+  N: "\u{E004E}",
+  O: "\u{E004F}",
+  P: "\u{E0050}",
+  Q: "\u{E0051}",
+  R: "\u{E0052}",
+  S: "\u{E0053}",
+  T: "\u{E0054}",
+  U: "\u{E0055}",
+  V: "\u{E0056}",
+  W: "\u{E0057}",
+  X: "\u{E0058}",
+  Y: "\u{E0059}",
+  Z: "\u{E005A}",
+  "[": "\u{E005B}",
+  "\\": "\u{E005C}",
+  "]": "\u{E005D}",
+  "^": "\u{E005E}",
+  _: "\u{E005F}",
+  "`": "\u{E0060}",
+  a: "\u{E0061}",
+  b: "\u{E0062}",
+  c: "\u{E0063}",
+  d: "\u{E0064}",
+  e: "\u{E0065}",
+  f: "\u{E0066}",
+  g: "\u{E0067}",
+  h: "\u{E0068}",
+  i: "\u{E0069}",
+  j: "\u{E006A}",
+  k: "\u{E006B}",
+  l: "\u{E006C}",
+  m: "\u{E006D}",
+  n: "\u{E006E}",
+  o: "\u{E006F}",
+  p: "\u{E0070}",
+  q: "\u{E0071}",
+  r: "\u{E0072}",
+  s: "\u{E0073}",
+  t: "\u{E0074}",
+  u: "\u{E0075}",
+  v: "\u{E0076}",
+  w: "\u{E0077}",
+  x: "\u{E0078}",
+  y: "\u{E0079}",
+  z: "\u{E007A}",
+  "{": "\u{E007B}",
+  "|": "\u{E007C}",
+  "}": "\u{E007D}",
+  "~": "\u{E007E}",
+  END: "\u{E007F}",
 } as const;
 
 // The pages in the website

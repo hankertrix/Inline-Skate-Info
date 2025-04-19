@@ -12,9 +12,6 @@ const charToHtmlEntity = {
   "&": "&amp;",
 } as const;
 
-// The regular expression to get all the non-letters
-const nonLetterRegex: RegExp = /[^A-Za-z]/g;
-
 // The regular expression to get the file extension
 const fileExtensionRegex: RegExp = /\.\w*$/;
 
@@ -223,8 +220,11 @@ export async function loadStaticFile(
     ? file_extension
     : `.${file_extension}`;
 
+  // Get the end of the path
+  const pathEnd = path.endsWith(file_extension) ? "" : file_extension;
+
   // Gets the file path
-  const filePath = `${root ? root : "./static/"}${path}${path.endsWith(file_extension) ? "" : file_extension}`;
+  const filePath = `${root ? root : "./static/"}${path}${pathEnd}`;
 
   // Loads the file
   const file = await readFile(filePath, "utf8");
@@ -722,6 +722,8 @@ export function getDayStr(
   date: Date,
   format: "narrow" | "short" | "long" = "short"
 ): string {
+  //
+
   // Returns the day as a string
   return Intl.DateTimeFormat("en-SG", {
     weekday: format,
@@ -747,12 +749,9 @@ export function getTimeStr(date: Date): string {
 export function generateZeroWidthCode(text: string): string {
   //
 
-  // Removes everything in the string that isn't a letter
-  // of the alphabet
-  text = text.replaceAll(nonLetterRegex, "");
-
   // Initialise the list that contains the zero-width code
-  const codeList: string[] = [];
+  // and add the begin character
+  const codeList: string[] = [LETTER_TO_ZERO_WIDTH_CHARS.BEGIN];
 
   // Iterates over the string
   for (const char of text) {
@@ -768,6 +767,9 @@ export function generateZeroWidthCode(text: string): string {
     // Adds the code character to the list
     codeList.push(codeChar);
   }
+
+  // Add the end character to the list
+  codeList.push(LETTER_TO_ZERO_WIDTH_CHARS.END);
 
   // Returns the list of code characters joined together with an empty string
   return codeList.join("");
