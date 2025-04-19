@@ -14,7 +14,12 @@
   // eslint-disable-next-line no-undef
   let headings: NodeListOf<Element> | null = $state(null);
 
-  // The variable to store the table of contents object
+  // The variable to store the table of contents object.
+  // Somehow eslint is picking up on the error below
+  // despite svelte check stating that the $state
+  // wrapping is necessary for expected behaviour.
+  // Eslint is most probably wrong here, so I'm disabling it.
+  // eslint-disable-next-line svelte/no-unnecessary-state-wrap
   let tableOfContents: TableOfContents = $state(new SvelteMap());
 
   // Function to get the table of contents
