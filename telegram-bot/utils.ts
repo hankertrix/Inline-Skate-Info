@@ -42,9 +42,8 @@ export function mergeObjects(
       // then throw an error to tell the user that a conflict has occurred
       if (errorOnConflict)
         throw new Error(
-          `The key '${
-            key
-          }' exists in both the base object and the object to merge.`
+          `The key '${key}'` +
+          "exists in both the base object and the object to merge."
         );
 
       // If the function is set to overwrite the base object,
@@ -758,11 +757,7 @@ export function generateZeroWidthCode(text: string): string {
     //
 
     // Gets the code character for the character in the string
-    const codeChar = dictGet(
-      LETTER_TO_ZERO_WIDTH_CHARS,
-      char.toUpperCase(),
-      char
-    ) as string;
+    const codeChar = dictGet(LETTER_TO_ZERO_WIDTH_CHARS, char, char) as string;
 
     // Adds the code character to the list
     codeList.push(codeChar);
