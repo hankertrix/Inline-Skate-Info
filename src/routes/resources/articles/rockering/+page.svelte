@@ -122,13 +122,13 @@
     </section>
 
     <section>
-      <h3 id="anti-rocker">Anti rocker (Inverse rocker)</h3>
+      <h3 id="anti-rocker">Anti-rocker (Inverse rocker)</h3>
       <div class="image-wrapper">
-        <img alt="Anti rocker setup" src={antiRocker} />
+        <img alt="Anti-rocker setup" src={antiRocker} />
       </div>
 
       <p>
-        The anti rocker, also known as the inverse rocker, is probably the next
+        The anti-rocker, also known as the inverse rocker, is probably the next
         most common rocker type after the banana rocker. Typically, the middle
         two wheels are far smaller than the first and last wheels, usually with
         sizes of 40 - 50mm. Some skaters will even use wheel cores or hard
@@ -235,7 +235,7 @@
         This setup is not usually used to perform any tricks, as it doesn't
         provide as much manoeuvrability as the full banana rocker, making slalom
         tricks more difficult, while also offering reduced stability compared to
-        the flat and anti rocker setups, making slides more difficult.
+        the flat and anti-rocker setups, making slides more difficult.
       </p>
       <p>
         This setup is often used by urban skaters who are more experienced and

@@ -20,7 +20,7 @@
   // The url for the banana hi lo setup
   const bananaHiLoSetupUrl = `${rockeringUrl}#banana-hi-lo-rocker`;
 
-  // The url for the anti rocker setup
+  // The url for the anti-rocker setup
   const antiRockerSetupUrl = `${rockeringUrl}#anti-rocker`;
 </script>
 
@@ -178,7 +178,7 @@
 
       <p>
         If the smallest wheels are broken, throw them away, or use them in <a
-          href={antiRockerSetupUrl}>an anti rocker setup</a
+          href={antiRockerSetupUrl}>an anti-rocker setup</a
         > as the central two wheels. Otherwise, measure them and write the current
         size on them, and place them into a bag of spare wheels for special occasions
         or specific setups.
