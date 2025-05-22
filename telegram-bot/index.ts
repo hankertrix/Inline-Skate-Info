@@ -34,37 +34,6 @@ bot.use(session());
 // Adds the scene stage to the bot
 bot.use(scenes.stage.middleware());
 
-// The filter to remove scam messages
-bot.on(filters.message("text"), async (ctx) => {
-  //
-
-  // Normalise the message
-  const normalised_message = ctx.message.text
-    .toLowerCase()
-    .replaceAll(/[_-]/g, " ");
-
-  // The list of potential keywords is scam messages
-  const potentialKeywords = [
-    ".railway.app",
-    "redeem.gov.sg",
-    "redeem sg",
-    "redeemsg",
-    "cdc voucher",
-    "sg60 voucher",
-  ];
-
-  // Iterate over the potential keywords
-  for (const keyword of potentialKeywords) {
-    //
-
-    // If the message contains them,
-    // delete the message
-    if (normalised_message.includes(keyword)) {
-      return await deleteMessages(ctx, ctx.message.message_id);
-    }
-  }
-});
-
 // The start command
 
 // The handler for the start command
@@ -1319,6 +1288,37 @@ bot.on(filters.message("new_chat_members"), async (ctx) => {
 // The function to immediately delete messages of people leaving the group
 bot.on(filters.message("left_chat_member"), async (ctx) => {
   await deleteMessages(ctx, ctx.message.message_id);
+});
+
+// The filter to remove scam messages
+bot.on(filters.message("text"), async (ctx) => {
+  //
+
+  // Normalise the message
+  const normalised_message = ctx.message.text
+    .toLowerCase()
+    .replaceAll(/[_-]/g, " ");
+
+  // The list of potential keywords is scam messages
+  const potentialKeywords = [
+    ".railway.app",
+    "redeem.gov.sg",
+    "redeem sg",
+    "redeemsg",
+    "cdc voucher",
+    "sg60 voucher",
+  ];
+
+  // Iterate over the potential keywords
+  for (const keyword of potentialKeywords) {
+    //
+
+    // If the message contains them,
+    // delete the message
+    if (normalised_message.includes(keyword)) {
+      return await deleteMessages(ctx, ctx.message.message_id);
+    }
+  }
 });
 
 // Export the bot as a default export
