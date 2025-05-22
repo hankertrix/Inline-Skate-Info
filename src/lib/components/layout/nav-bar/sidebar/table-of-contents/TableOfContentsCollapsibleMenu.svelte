@@ -83,10 +83,16 @@
 
 <!-- The styles for the collapsible menu -->
 <style>
-  a, a:link, a:visited {
+  a,
+  a:link,
+  a:visited {
     text-decoration: none;
     color: var(--text-colour);
     opacity: var(--text-opacity);
+  }
+
+  a:visited:hover {
+    color: var(--link-hover-colour);
   }
 
   summary {
