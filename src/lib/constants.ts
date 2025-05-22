@@ -293,6 +293,10 @@ export const PAGES = {
   },
 
   Resources: {
+    Articles: {
+      Rockering: "",
+      "Wheel Rotation": "",
+    },
     "Buying Guides": "",
     "Maintenance Guides": "",
     "Trick Lists": "",

@@ -1,10 +1,10 @@
 <!-- The main page of the website -->
 <script lang="ts">
-  import { makeUrlFriendlyString } from '$lib/utils';
-  import { PAGES } from '$lib/constants';
+  import { makeUrlFriendlyString } from "$lib/utils";
+  import { PAGES } from "$lib/constants";
 
   // The title of the page
-  const title = 'Welcome to Inline Skate Info!';
+  const title = "Welcome to Inline Skate Info!";
 
   // The list of main pages in the website
   const mainPages = Object.keys(PAGES);
@@ -13,21 +13,31 @@
 <!-- The headers for the page -->
 <svelte:head>
   <title>Inline Skate Info</title>
-  <meta name="description" content="Quite possibly the ultimate resource for inline skating" />
+  <meta
+    name="description"
+    content="Quite possibly the ultimate resource for inline skating"
+  />
 </svelte:head>
 
 <!-- The HTML for the main page -->
 <div class="main-page-wrapper">
   <header>
-    <h1 class="main-page-title text" id={makeUrlFriendlyString(title)}>{title}</h1>
+    <h1 class="main-page-title text" id={makeUrlFriendlyString(title)}>
+      {title}
+    </h1>
     <div class="description text">
-      Here, you can find most of the information you need to get started with inline skating!
+      Here, you can find most of the information you need to get started with
+      inline skating!
     </div>
     <div class="how-to-use text">
       <div>
-        Click the hamburger icon at the top right hand corner of the screen to open up the sidebar.
+        Click the hamburger icon at the top right hand corner of the screen to
+        open up the sidebar.
       </div>
-      <div>Use the search bar above or click on one of the links below to get started!</div>
+      <div>
+        Use the search bar above or click on one of the links below to get
+        started!
+      </div>
     </div>
   </header>
 
@@ -99,7 +109,6 @@
 
   /* Styles for mobile devices */
   @media only screen and (max-width: 700px) {
-
     .how-to-use {
       margin: 30px 0;
     }

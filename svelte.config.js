@@ -29,7 +29,7 @@ const config = {
           "wasm-unsafe-eval",
 
           // The script in app.html to stop the page from flashing
-          "sha256-igh6+2kzd6C5AbKv2RNaCr6axJslkoleSYgWUDDINvM=",
+          "sha256-d2pQ/3PfzMyNVJrM8tHklReh2FBEi4YJneAGxVKHrtM=",
         ],
 
         "style-src": [

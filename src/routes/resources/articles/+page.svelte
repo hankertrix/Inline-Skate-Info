@@ -1,25 +1,22 @@
-<!-- The landing page for all of the resources -->
+<!-- The landing page for all of the articles -->
 <script lang="ts">
   import { makeUrlFriendlyString } from "$lib/utils";
   import { PAGES } from "$lib/constants";
 
   // The page title
-  const title = "Resources";
+  const title = "Articles";
 
   // The url friendly title
   const urlFriendlyTitle = makeUrlFriendlyString(title);
 
-  // The pages containing resources
-  const pagesWithResources = Object.keys(PAGES[title]);
+  // The pages containing articles
+  const articles = Object.keys(PAGES.Resources[title]);
 </script>
 
 <!-- The headers for the resources page -->
 <svelte:head>
   <title>{title} - Inline Skate Info</title>
-  <meta
-    name="description"
-    content="The landing page for all of the pages containing resources"
-  />
+  <meta name="description" content="The landing page for all of the articles" />
 </svelte:head>
 
 <!-- The HTML for the resources page -->
@@ -27,19 +24,16 @@
   <header>
     <h1 class="text" id={urlFriendlyTitle}>{title}</h1>
     <div class="text">
-      Click on one of the links below to view the respective resource!
+      Click on one of the links below to view the respective article!
     </div>
   </header>
 
   <main class="links">
     <!-->
 
-    <!-- Iterate over all the pages -->
-    {#each pagesWithResources as page (page)}
-      <div class="link">
-        <a href={`${urlFriendlyTitle}/${makeUrlFriendlyString(page)}`}>{page}</a
-        >
-      </div>
+    <!-- Iterates over all of the pages articles -->
+    {#each articles as page (page)}
+      <a href={`${urlFriendlyTitle}/${makeUrlFriendlyString(page)}`}>{page}</a>
     {/each}
   </main>
 </div>
@@ -71,11 +65,9 @@
   .links {
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
-    column-gap: 10px;
-    height: 200px;
-    width: 100%;
-    max-width: 30em;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
     font-family: Oleo Script;
     font-weight: bold;
     font-size: 1.7em;
@@ -85,38 +77,5 @@
     border-radius: 20px;
     padding: 20px;
     margin: 25px 0;
-  }
-
-  .link {
-    flex: 0 0 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .link:nth-child(1),
-  .link:nth-child(2),
-  .link:nth-child(6),
-  .link:nth-child(7) {
-    flex-basis: 50%;
-  }
-
-  .link:nth-child(3),
-  .link:nth-child(4),
-  .link:nth-child(5) {
-    flex-basis: 33%;
-  }
-
-  /* Styles for mobile devices */
-  @media only screen and (max-width: 700px) {
-    .links {
-      flex-wrap: nowrap;
-      gap: 10px;
-      height: auto;
-    }
-
-    .link {
-      flex: 1;
-    }
   }
 </style>

@@ -1,21 +1,11 @@
 {
-  "Acetone (500ml)": {
-    "price": "$8.00",
-    "link": "https://shopee.sg/product/10214/22477083611"
-  },
-
-  "Acetone (520ml) [Shopee]": {
-    "price": "$9.50",
-    "link": "https://shopee.sg/product/54316101/18801123600"
-  },
-
   "Acetone (520ml) [Lazada]": {
     "price": "$9.80",
     "link": "https://www.lazada.sg/products/100-pure-acetone520ml-408g-sg-ready-stock-i2294363160.html"
   },
 
-  "Acetone (1L) [Shopee]": {
-    "price": "$15.50",
+  "Acetone (500ml)": {
+    "price": "$9.90",
     "link": "https://shopee.sg/product/10214/22477083611"
   },
 
@@ -24,8 +14,13 @@
     "link": "https://www.lazada.sg/products/100-pure-acetone-professional-use-multi-purpose-nail-polish-gel-remover-i2632731902-s16750918883.html"
   },
 
+  "Acetone (1L) [Shopee]": {
+    "price": "$18.90",
+    "link": "https://shopee.sg/product/10214/22477083611"
+  },
+
   "Acetone (3.75L)": {
-    "price": "$21.90",
+    "price": "$25.90",
     "link": "https://shopee.sg/product/10214/22477083611"
   },
 
@@ -50,22 +45,22 @@
   },
 
   "99% Isopropyl Alcohol (1L)": {
-    "price": "$11.50",
+    "price": "$12.50",
     "link": "https://shopee.sg/ctc_hardware/8694850057"
   },
 
   "99% Isopropyl Alcohol (3.785L)": {
-    "price": "$23.19",
+    "price": "$24.19",
     "link": "https://shopee.sg/ctc_hardware/7857894071"
   },
 
   "99% Isopropyl Alcohol (18L)": {
-    "price": "$53.41",
+    "price": "$55.41",
     "link": "https://shopee.sg/ctc_hardware/5657893885"
   },
 
   "Lighter Fluid (300ml) [Shopee]": {
-    "price": "$3.45",
+    "price": "$3.44",
     "link": "https://shopee.sg/product/402868325/12305678047"
   },
 
@@ -75,18 +70,13 @@
   },
 
   "Lighter Fluid (300ml) [4 Pack]": {
-    "price": "$10.80",
+    "price": "$10.99",
     "link": "https://www.lazada.sg/products/lightzone-universal-butane-fuel-refill-for-lighter-lighter-gas-i1973479448-s10645207890.html"
   },
 
   "3M 5-Way Lubricant (400ml)": {
-    "price": "$9.50",
-    "link": "https://shopee.sg/product/127821595/7937520022"
-  },
-
-  "3M 5-Way Lubricant (400ml) (Attached nozzle) [Shopee]": {
-    "price": "$10.90",
-    "link": "https://shopee.sg/product/135793716/2050741725"
+    "price": "$8.50",
+    "link": "https://shopee.sg/product/299242500/3349972495"
   },
 
   "3M 5-Way Lubricant (400ml) (Attached nozzle) [Lazada]": {
@@ -94,9 +84,9 @@
     "link": "https://www.lazada.sg/products/3m-two-way-5-way-spray-lubricant-i327594640-s694002212.html"
   },
 
-  "3M 5-Way Lubricant (400ml) (Attached nozzle) (2 pack) [Shopee]": {
-    "price": "$21.50",
-    "link": "https://shopee.sg/product/135793716/2050741714"
+  "3M 5-Way Lubricant (400ml) (Attached nozzle) [Shopee]": {
+    "price": "$10.90",
+    "link": "https://shopee.sg/product/135793716/2050741725"
   },
 
   "3M 5-Way Lubricant (400ml) (Attached nozzle) (2 pack) [Lazada]": {
@@ -104,8 +94,18 @@
     "link": "https://www.lazada.sg/products/bundle-of-23m-two-way-5-way-spray-lubricant-i327592662-s693964967.html"
   },
 
+  "3M 5-Way Lubricant (400ml) (Attached nozzle) (2 pack) [Shopee]": {
+    "price": "$21.50",
+    "link": "https://shopee.sg/product/135793716/2050741714"
+  },
+
+  "Loctite Thread Locker (Counterfeit) (10ml)": {
+    "price": "$1.47",
+    "link": "https://www.lazada.sg/products/1020ml-threadlocker-loctite-243-blue-screw-glue-thread-locking-agent-anaerobic-glue-anti-loose-i3017497125-s20596434121.html"
+  },
+
   "Loctite Thread Locker (50ml)": {
-    "price": "$4.11",
-    "link": "https://www.lazada.sg/products/100-genuine-new-styleloctite-243-screw-glue-for-fastening-and-anti-loosening-loctite-241-242-262-263-222-272-277-290-271-thread-locking-adhesive-motorcycle-watch-low-medium-high-strength-high-temperature-resistant-anaerobic-glue-50ml-i2838766917-s19570318494.html"
+    "price": "$9.30",
+    "link": "https://www.lazada.sg/products/1pcs-50ml-threadlocker-loctite-243-290-222-277-screw-adhesive-anaerobic-anti-loosening-seal-glue-263-270-271-272-277-super-glue-i2622319332-s16677239787.html"
   }
 }

@@ -4,12 +4,5 @@
     "hours": "Open 24 hours",
     "price": "Free",
     "mapLink": "https://goo.gl/maps/BpA8oEmdHPdk3UcMA"
-  },
-  
-  "Hi Roller Indoor Skating Rink": {
-    "address": "1 Pasir Ris Cl, Level 5 E!Hub @ Downtown East #05-104, Singapore 519599",
-    "hours": "Open from 11am - 6pm on weekdays except Fridays, and from 3pm - 10pm on weekends. On Fridays, it is open from 12:30pm - 7:30pm.",
-    "price": "$12 on weekdays and $15 on weekends for a slot, each slot is 2 hours. You can spectate the people in the rink for $5 a slot. Indoor (inside the skating rink) skate rentals are $6 for 2 hours. You can get your tickets <a href=\"https://www.hirollersingapore.com/booknow\">here</a>.",
-    "mapLink": "https://goo.gl/maps/e11eFHa4qET96omv5"
   }
 }
