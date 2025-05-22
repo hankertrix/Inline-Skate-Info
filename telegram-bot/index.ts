@@ -1291,7 +1291,7 @@ bot.on(filters.message("left_chat_member"), async (ctx) => {
 });
 
 // The filter to remove scam messages
-bot.on(filters.message("text"), async (ctx) => {
+bot.on(filters.message("text"), async (ctx, next) => {
   //
 
   // Normalise the message
@@ -1319,6 +1319,9 @@ bot.on(filters.message("text"), async (ctx) => {
       return await deleteMessages(ctx, ctx.message.message_id);
     }
   }
+
+  // If the message is fine, use the next handler to handle it
+  await next();
 });
 
 // Export the bot as a default export
