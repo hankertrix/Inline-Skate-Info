@@ -122,6 +122,8 @@ bot.command(["terminology", "term", "terms"], async (ctx) => {
 
 // The inline query handler for the terminology command
 bot.inlineQuery(commandUtils.terminology.regex, async (ctx) => {
+  //
+  
   // Gets the query text
   const queryText = ctx.inlineQuery.query;
 
@@ -152,6 +154,8 @@ bot.command(["tricks", "trick"], async (ctx) => {
 
 // The inline query handler for the tricks command
 bot.inlineQuery(commandUtils.tricks.regex, async (ctx) => {
+  //
+  
   // Calls the function to get the text for the tricks command
   const [trick, reply] = await commandUtils.tricks.handler(
     ctx.inlineQuery.query
@@ -1303,6 +1307,7 @@ bot.on(filters.message("text"), async (ctx, next) => {
   const potentialKeywords = [
     ".railway.app",
     "redeem.gov.sg",
+    "sg60.gov.sg",
     "redeem sg",
     "redeemsg",
     "cdc voucher",
