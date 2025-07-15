@@ -1,6 +1,7 @@
 <!-- The component to display a category of products, or a single product -->
 <script lang="ts">
   import type { JsonData } from "$lib/types";
+  import ProductsSection from "./ProductsSection.svelte";
   import { makeUrlFriendlyString } from "$lib/utils";
 
   // The interface for the props passed to the component
