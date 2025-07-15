@@ -13,7 +13,7 @@
 <!-- The start of the page -->
 <main class="page-wrapper">
   <h1 id="routes">Routes</h1>
-  <section>
+  <section class="explanation">
     <!-- Convert all the new lines to <br> tags -->
     <!-- eslint-disable-next-line svelte/no-at-html-tags -->
     {@html routesJson.explanation.replace(/\n/g, "<br>")}
@@ -68,11 +68,15 @@
     font-family: Oleo Script;
   }
 
-  article:not(last-child) {
+  .explanation {
     margin-bottom: 5em;
   }
 
-  .difficulty:not(:last-child) {
-    margin-bottom: 10em;
+  article:not(last-child) {
+    margin-bottom: 3em;
+  }
+
+  .difficulty {
+    margin-bottom: 5em;
   }
 </style>
