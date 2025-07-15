@@ -1,12 +1,7 @@
 // The module containing all the utilities for the routes command
 
 import * as utils from "../utils";
-import {
-  BOT_USERNAME,
-  SPACING,
-  CATEGORY_SPACING,
-  LABEL_SPACING,
-} from "$lib/constants";
+import { BOT_USERNAME, SPACING, LABEL_SPACING } from "$lib/constants";
 import { regexEscape } from "../utils";
 import type { ObjectValues, RouteData } from "../types";
 
@@ -89,8 +84,11 @@ function generateRoutesForDifficulty(
       // If the value is empty, or the key is in the list, continue the loop
       if (!value || ["link"].includes(key)) continue;
 
+      // Get the formatted key
+      const formattedKey = utils.bold(`${utils.titlecase(key)}${separator}`);
+
       // Add the property to the route info list
-      routeInfoList.push(`${key}${separator}${value}`);
+      routeInfoList.push(`${formattedKey}${value}`);
     }
 
     // Add the route info to the list of routes
@@ -130,7 +128,7 @@ function generateFullRoutesText(
     if (difficultyRouteList.length < 1) continue;
 
     // Add the difficulty to the route info
-    routesTextList.push(difficultyRouteList.join(CATEGORY_SPACING));
+    routesTextList.push(difficultyRouteList.join(SPACING));
   }
 
   // Return the route info
