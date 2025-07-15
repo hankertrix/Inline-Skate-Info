@@ -14,8 +14,9 @@
 <main class="page-wrapper">
   <h1 id="routes">Routes</h1>
   <section>
+    <!-- Convert all the new lines to <br> tags -->
     <!-- eslint-disable-next-line svelte/no-at-html-tags -->
-    {@html routesJson.explanation}
+    {@html routesJson.explanation.replace(/\n/g, "<br>")}
   </section>
 
   <section class="all-routes">
