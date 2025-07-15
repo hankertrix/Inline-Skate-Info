@@ -39,11 +39,6 @@
         "link": "https://maps.app.goo.gl/TDJn798ND1ewuP35A"
       },
       {
-        "name": "Buona Vista MRT to Esplanade MRT",
-        "distance": "9.6 km",
-        "link": "https://maps.app.goo.gl/4hX1FAHL3rHpzQQu8"
-      },
-      {
         "name": "North Eastern Riverine Loop",
         "distance": "18 km",
         "link": "https://maps.app.goo.gl/9GaEfVChPhj6nF15A"
@@ -54,7 +49,14 @@
         "link": "https://maps.app.goo.gl/LucSY7kCKwxPWVor9"
       }
     ],
-    "advanced": [],
+    "advanced": [
+      {
+        "name": "Buona Vista MRT to Esplanade MRT",
+        "distance": "9.6 km",
+        "link": "https://maps.app.goo.gl/4hX1FAHL3rHpzQQu8",
+        "description": "This route gets its difficulty rating from the huge number of long and unavoidable slopes, as well as the bumpy roads along the Alexandra Canal. The crowds at the Clarke Quay area are not easy to navigate either, especially at night, making this urban pretty difficult."
+      }
+    ],
     "advanced-to-master": [],
     "master": []
   }
