@@ -300,6 +300,7 @@ export const PAGES = {
     "Buying Guides": "",
     "Maintenance Guides": "",
     "Trick Lists": "",
+    Routes: "",
     Glossaries: "",
     Rulebooks: "",
     Misc: "",

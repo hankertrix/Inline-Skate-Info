@@ -4,6 +4,7 @@ export * as help from "./help";
 export * as terminology from "./terminology";
 export * as tricks from "./tricks";
 export * as lists from "./lists";
+export * as routes from "./routes";
 export * as bootTypes from "./boot-types";
 export * as skateRecs from "./skate-recs";
 export * as discountInfo from "./discount-info";

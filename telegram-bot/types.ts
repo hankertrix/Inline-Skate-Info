@@ -82,3 +82,25 @@ export type SkateRecsData = {
     ];
   };
 };
+
+// The type representing a route
+type Route = {
+  name: string;
+  distance: string;
+  link: string;
+  description?: string;
+};
+
+// The type representing the route JSON data
+export type RouteData = {
+  explanation: string;
+  difficulty: {
+    beginner: Route[];
+    "beginner-to-intermediate": Route[];
+    intermediate: Route[];
+    "intermediate-to-advanced": Route[];
+    advanced: Route[];
+    "advanced-to-master": Route[];
+    master: Route[];
+  };
+};

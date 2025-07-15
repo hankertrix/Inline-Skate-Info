@@ -41,9 +41,6 @@
   "rollerblade": "rollerblade / rb",
   "roller blade": "rollerblade / rb",
 
-  "urban": "urban / urban skating",
-  "urban skating": "urban / urban skating",
-
   "softboot": "soft boot",
   "soft-boot": "soft boot",
   "soft_boot": "soft boot",
@@ -51,7 +48,7 @@
   "hardboot": "hard boot",
   "hard-boot": "hard boot",
   "hard_boot": "hard boot",
-  
+
   "carbon": "carbon skates",
   "carbon skate": "carbon skates",
   "carbon-skate": "carbon skates",
@@ -131,7 +128,7 @@
   "practice rails": "p-rail",
   "practise rail": "p-rail",
   "practise rails": "p-rail",
-  
+
   "edge": "edges",
   "edging": "edges",
   "inside edge": "edges",
@@ -159,9 +156,25 @@
   "outer_edge": "edges",
   "outer_edges": "edges",
 
+  "coreing": "coring",
+  "cored": "coring",
+
+  "ferry": "ferrying",
+  "fery": "ferrying",
+  "ferryin": "ferrying",
+  "feryin": "ferrying",
+  "ferrier": "ferrying",
+  "ferried": "ferrying",
+  "farry": "ferrying",
+  "fary": "ferrying",
+  "farryin": "ferrying",
+  "faryin": "ferrying",
+  "farrier": "ferrying",
+  "farried": "ferrying",
 
 
-  
+
+
   "style": "styles of inline skates",
   "styles": "styles of inline skates",
   "style of inline skate": "styles of inline skates",
@@ -390,7 +403,7 @@
 
 
 
-  
+
   "part": "parts of an inline skate",
   "parts": "parts of an inline skate",
   "part of inline skate": "parts of an inline skate",
@@ -479,7 +492,7 @@
 
   "fasten": "fasteners",
   "fastener": "fasteners",
-  
+
   "receivers": "receiver",
   "feed": "receiver",
   "feeder": "receiver",
@@ -509,7 +522,7 @@
   "top velcros": "top strap",
   "top-velcro": "top strap",
   "top-velcros": "top strap",
-  
+
   "mid straps": "mid strap",
   "mid-strap": "mid strap",
   "mid-straps": "mid strap",
@@ -693,7 +706,7 @@
   "snap rings": "c-clip / snap ring",
   "snap-ring": "c-clip / snap ring",
   "snap-rings": "c-clip / snap ring",
-  
+
 
   "spacer": "spacers",
 
@@ -1226,7 +1239,7 @@
   "power stops": "hard stop",
   "power-stop": "hard stop",
   "power-stops": "hard stop",
-  
+
   "carve": "carving",
   "carves": "carving",
   "sharp": "carving",
@@ -1254,7 +1267,7 @@
   "turning tightly": "carving",
   "turning-tightly": "carving",
   "turning_tightly": "carving",
-  
+
   "fakies": "fakie",
   "fakey": "fakie",
   "fakeys": "fakie",
@@ -1267,7 +1280,7 @@
 
   "switches": "switch",
   "switchs": "switch",
-  
+
   "transition": "transition",
   "mohawk transition": "transition",
   "mohawk-transition": "transition",
@@ -1385,5 +1398,5 @@
   "pumping the ramps": "pumping",
   "pumping ramp": "pumping",
   "pumping ramps": "pumping"
-  
+
 }

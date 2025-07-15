@@ -123,7 +123,7 @@ bot.command(["terminology", "term", "terms"], async (ctx) => {
 // The inline query handler for the terminology command
 bot.inlineQuery(commandUtils.terminology.regex, async (ctx) => {
   //
-  
+
   // Gets the query text
   const queryText = ctx.inlineQuery.query;
 
@@ -155,7 +155,7 @@ bot.command(["tricks", "trick"], async (ctx) => {
 // The inline query handler for the tricks command
 bot.inlineQuery(commandUtils.tricks.regex, async (ctx) => {
   //
-  
+
   // Calls the function to get the text for the tricks command
   const [trick, reply] = await commandUtils.tricks.handler(
     ctx.inlineQuery.query
@@ -190,6 +190,40 @@ bot.inlineQuery(commandUtils.lists.trickListsRegex, async (ctx) => {
   await messageAndFileInlineQueryHandler(ctx, () =>
     commandUtils.lists.generateListsText(commandUtils.lists.Lists.TrickLists)
   );
+});
+
+// The routes command
+
+// The handler for the routes command
+bot.command(
+  [
+    "route",
+    "routes",
+    "urban_route",
+    "urban_routes",
+    "urbanroute",
+    "urbanroutes",
+  ],
+  async (ctx) => {
+    //
+
+    // Generate the route information
+    const routesInfo = await commandUtils.routes.handler(ctx.message.text);
+
+    // Reply the user with the routes information
+    await ctxReply(ctx, routesInfo);
+  }
+);
+
+// The handler for the routes inline query
+bot.inlineQuery(commandUtils.routes.routesRegex, async (ctx) => {
+  //
+
+  // Generate the route information
+  const routesInfo = await commandUtils.routes.handler(ctx.inlineQuery.query);
+
+  // Answers the inline query with the text
+  await answerInlineQuery(ctx, routesInfo);
 });
 
 // The rulebooks command

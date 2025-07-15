@@ -69,13 +69,9 @@
   }
 
   .links {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    column-gap: 10px;
-    height: 200px;
-    width: 100%;
-    max-width: 30em;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
     font-family: Oleo Script;
     font-weight: bold;
     font-size: 1.7em;
@@ -87,36 +83,12 @@
     margin: 25px 0;
   }
 
-  .link {
-    flex: 0 0 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .link:nth-child(1),
-  .link:nth-child(2),
-  .link:nth-child(6),
-  .link:nth-child(7) {
-    flex-basis: 50%;
-  }
-
-  .link:nth-child(3),
-  .link:nth-child(4),
-  .link:nth-child(5) {
-    flex-basis: 33%;
-  }
-
   /* Styles for mobile devices */
   @media only screen and (max-width: 700px) {
     .links {
-      flex-wrap: nowrap;
+      display: flex;
+      flex-direction: column;
       gap: 10px;
-      height: auto;
-    }
-
-    .link {
-      flex: 1;
     }
   }
 </style>

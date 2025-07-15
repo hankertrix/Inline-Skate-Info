@@ -1,0 +1,69 @@
+{
+  "explanation": "",
+  "difficulty": {
+    "beginner": [
+      {
+        "name": "Ernsports to Bedok Jetty to Ernsports",
+        "distance": "9.9 km",
+        "link": "https://maps.app.goo.gl/3mbhqrQfptEVeZkx5",
+        "description": ""
+      }
+    ],
+    "beginner-to-intermediate": [
+      {
+        "name": "Ernsports to Stadium MRT",
+        "distance": "6.9 km",
+        "link": "https://maps.app.goo.gl/hv6icLtXdiSa1XgPA",
+        "description": ""
+      },
+      {
+        "name": "West Coast Park to VivoCity",
+        "distance": "9 km",
+        "link": "https://maps.app.goo.gl/m6XQDhnZmTAqesyE7",
+        "description": ""
+      }
+    ],
+    "intermediate": [],
+    "intermediate-to-advanced": [
+      {
+        "name": "Buangkok MRT to Waterway Point",
+        "distance": "7.8 km",
+        "link": "https://maps.app.goo.gl/d7MDpE84oBgRyia28",
+        "description": "This route only gets its difficulty rating due to the beginning section, which is not beginner friendly. Beginners who want to skate this route should instead start <a href='https://maps.app.goo.gl/aXc5wyPNJYcoTScQ8'>here</a>."
+      },
+      {
+        "name": "Buangkok MRT to Waterway Point to Pasir Ris MRT",
+        "distance": "17 km",
+        "link": "https://maps.app.goo.gl/MGNVpBM5ypnwbW96A",
+        "description": ""
+      },
+      {
+        "name": "Buangkok MRT to Pasir Ris MRT",
+        "distance": "19 km",
+        "link": "https://maps.app.goo.gl/TDJn798ND1ewuP35A",
+        "description": ""
+      },
+      {
+        "name": "Buona Vista MRT to Esplanade MRT",
+        "distance": "9.6 km",
+        "link": "https://maps.app.goo.gl/4hX1FAHL3rHpzQQu8",
+        "description": ""
+      },
+      {
+        "name": "North Eastern Riverine Loop",
+        "distance": "18 km",
+        "link": "https://maps.app.goo.gl/9GaEfVChPhj6nF15A",
+        "description": ""
+      },
+      {
+        "name": "Marymount to Jurong East",
+        "distance": "22 km",
+        "link": "https://maps.app.goo.gl/LucSY7kCKwxPWVor9",
+        "description": ""
+      }
+    ],
+    "advanced": [],
+    "advanced-to-master": [],
+    "master": []
+  }
+}
