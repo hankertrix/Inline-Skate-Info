@@ -1,0 +1,849 @@
+#+TITLE: The Physics of Sliding
+#+AUTHOR: Hankertrix
+#+STARTUP: showeverything
+#+OPTIONS: toc:2
+#+LATEX_HEADER: \usepackage{tikz, siunitx}
+#+LATEX_HEADER: \usepackage[margin=2cm]{geometry}
+#+LATEX_HEADER: \usepackage[defaultfam, tabular, lining]{montserrat}
+#+LATEX_HEADER: \usetikzlibrary{arrows.meta, decorations.markings, quotes, angles}
+
+# Set the style for the arrow in the middle of the line
+#+begin_export latex
+\tikzset{
+  middleArrow/.style={
+    postaction=decorate,
+    decoration={markings, mark=at position 0.5 with {\arrow{#1}}}
+  }
+}
+#+end_export
+
+* What is sliding?
+Sliding is getting the wheels on your skates to move across the ground without rolling, but with your skate perpendicular to your direction of motion (like the stopping foot for T-stop) and angled in the same direction as your direction of motion. The latter is the main determinant of what tricks are and aren't a slide. For example, T-stop isn't a slide, because the skate behind is angled backwards, and on the inside edge, which is opposite to your direction of motion. This means you are dragging your wheels behind you, and hence aren't doing a slide. However, if you change the angle of your skates to point in the same direction as your direction of motion, which is forwards, your skate would be on the outside edge. This new trick would be considered a slide, called Barrow.
+
+* Friction (\(f\))
+Friction is the resistive force that resists motion. That means friction will always be acting in the opposite direction to your direction of motion, since it resists motion. Friction is very important for sliding, since sliding is all about overcoming friction.
+
+\begin{center}
+\begin{tikzpicture}
+\fill[blue] (-1, 0) rectangle (1, 2);
+\draw (-2, 0) -- (2, 0) node[right] {Ground};
+\draw[ultra thick, blue, arrows = {-Stealth}] (0, 1) -- (2, 1) node[right] {Direction of motion};
+\draw[ultra thick, red, arrows = {-Stealth}] (0, 0) -- (-2, 0) node[left] {Friction direction};
+\end{tikzpicture}
+\end{center}
+
+** Newton's 3rd law
+Newton's 3rd law is the law that is responsible for the normal contact force experienced by an object, which is in turn responsible for friction. It states that "Whenever one object exerts a force on a second object, the second object exerts an equal and opposite force on the first."
+
+All objects have weight, which means they always have a force acting directly downwards. Because of Newton's 3rd law, which states that the second object exerts an equal and opposite force on the first object, the ground thus exerts a force on the object that is equal to the weight of the object, but in the opposite direction, or directly upwards.
+
+\begin{center}
+\begin{tikzpicture}
+\fill[blue] (-1, 0) rectangle (1, 2);
+\draw (-4, 0) -- (4, 0);
+\node at (0, 0) [below] {Ground};
+\draw[ultra thick, green, arrows = {-Stealth}] (0, 1) -- (0,-2) node[green, below] {Weight};
+\draw[ultra thick, red, arrows = {-Stealth}] (-0.2, 0) -- (-0.2, 3) node[red, above] {Normal contact force};
+\end{tikzpicture}
+\end{center}
+
+#+begin_export latex
+\clearpage
+#+end_export
+
+** Laws of friction
+<<sec:friction-laws>>
+There are 5 laws of friction, which are:
+1. The friction of the moving object is proportional and perpendicular to the normal contact force. As a mathematical expression, this would be:
+   \[f = \mu N\]
+
+   Where:
+   - $f$ is the frictional force exerted on the object.
+   - $\mu$ is the coefficient of friction. It is always less than or equal to 1 (\(\mu \le 1\)).
+   - $N$ is the normal contact force.
+
+2. The friction experienced by an object is dependent on the nature of the surface it is in contact with. In simple terms, it means how much friction an object experiences depends on how rough or smooth the ground is.
+3. Friction is independent of the area of contact as long as there is an area of contact. Basically, as long as the object is in contact with the ground, there is friction. It doesn't matter if the object has a tiny or massive surface area that is in contact with the ground; there is always friction as long as there is contact.
+4. Kinetic friction is independent of velocity. This means that kinetic friction doesn't change, regardless of how fast the object is moving. The object can be moving extremely slowly or extremely fast, but the kinetic friction remains the same. Expressing it in mathematical notation would be:
+
+   \[f_k = \text{constant}\]
+
+   Where:
+   - $f_k$ is the kinetic friction exerted on the object.
+
+5. The coefficient of static friction is greater than the coefficient of kinetic friction. Essentially, this means the friction an object experiences when it is not moving is much greater than the friction it experiences when it is moving. Expressing it in mathematical notation would be:
+
+   \[\mu_s > \mu_k\]
+
+   Where:
+   - $\mu_s$ is the coefficient of friction for *static* friction.
+   - $\mu_k$ is the coefficient of friction for *kinetic* friction.
+
+** Static friction (\(f_s\))
+Static friction is the friction that is experienced by an object that is at rest, or not moving. The formula for static friction is:
+
+\[f_s = \mu_s N\]
+
+Where:
+- $f_s$ is the static friction force exerted on the object.
+- $\mu_s$ is the coefficient of friction for *static* friction.
+- $N$ is the normal contact force.
+
+** Kinetic friction (\(f_k\))
+Kinetic friction is the friction that is experienced by an object that is moving. The formula for kinetic friction is:
+
+\[f_k = \mu_k N = \text{constant}\]
+
+Where:
+- $f_k$ is the kinetic friction force exerted on the object.
+- $\mu_k$ is the coefficient of friction for *kinetic* friction.
+- $N$ is the normal contact force.
+
+** Differences between static and kinetic friction
+<<sec:friction-graph>>
+The main difference between static and kinetic friction is that static friction is always stronger than kinetic friction. Static friction also increases when the force applied is increased, while kinetic friction remains constant no matter the applied force. This property of static friction is important to keep in mind when doing slides.
+
+\begin{center}
+\begin{tikzpicture}
+\node at (0, 0) [anchor=north east] {$0$};
+
+%% Axes
+\draw[thick, -{Stealth}] (0, 0) -- (10, 0) node[right] {Force on the object};
+\draw[thick, -{Stealth}] (0, 0) -- (0, 5) node[above] {Frictional force};
+
+%% Graph for static friction
+\draw[blue, thick] (0, 0) -- (4, 4) node[blue, above=1mm] {Threshold of motion};
+\node at (4, 4) [circle, fill, inner sep=1.5pt] {};
+
+%% Graph for kinetic friction
+\draw[red, thick] (4, 4) -- (4, 3);
+\draw[red, thick] (4, 3) -- node[red, below] {Kinetic friction} (9, 3);
+\end{tikzpicture}
+\end{center}
+
+@@latex: \noindent@@ As you can see from the graph above, static friction increases as the force on the object increases until the threshold of motion, then it decreases and remains constant as kinetic friction. Keep this graph in mind, as it will be important later.
+
+#+begin_export latex
+\clearpage
+#+end_export
+
+** Rolling friction
+<<sec:rolling-friction>>
+When inline skating, most of the time our wheels are rolling instead of sliding. This is an important distinction to make, as the type of friction that is considered in the case of rolling is different from sliding. Although it seems unintuitive, we consider the static friction instead of the kinetic friction in the case of rolling. Why? Let's first consider the case of an object that is not moving.
+
+\begin{center}
+\begin{tikzpicture}
+\fill[blue] (-1, 0) rectangle (1, 2);
+\draw (-2, 0) -- (2, 0) node[right] {Ground};
+\node at (0, 0) [blue, circle, fill, inner sep=2pt] {};
+\node at (0, 0) [blue, below=1mm] {X};
+\end{tikzpicture}
+\end{center}
+
+@@latex: \noindent@@ Focus on the point labelled X. This is the point that we will consider when considering motion. It is clear in this example that since the object is not moving, the point labelled X is also not moving. Hence, for this point X, we should consider static friction as the point is not moving. Let's now consider the case where the object is moving.
+
+\begin{center}
+\begin{tikzpicture}
+\fill[red] (-1, 0) rectangle (1, 2);
+\draw (2, 0) -- (-2, 0) node[left] {Ground};
+\draw[thick, red, ->] (0, 1) -- (2, 1) node[right] {Direction of motion};
+\node at (0, 0) [red, circle, fill, inner sep=2pt] {};
+\node at (0, 0) [red, below=1mm] {X};
+\draw[thick, red, ->] (0, 0) -- (2, 0) node[right] {Direction of motion of point X};
+\end{tikzpicture}
+\end{center}
+
+@@latex: \noindent@@ Once again, focus on the point labelled X. Now it is clear that since the object is moving, the point labelled X is also moving, so we should consider kinetic friction in this case.
+
+#+begin_export latex
+\clearpage
+#+end_export
+
+@@latex: \noindent@@ Now let's consider the case of a rolling object in its 1st second of motion. When \(t = 1\), \(t\) representing time,
+
+\begin{center}
+\begin{tikzpicture}
+
+%% Circle and ground
+\fill[blue] (0, 0) circle (2cm);
+\draw (-4,-2) -- (4,-2) node[right] {Ground};
+
+%% Rolling direction label
+\draw[red, thick, ->] (2.5, 0) arc (0:60:2.5cm) node[midway, right=1mm]{Rolling direction};
+
+%% Point X
+\node at (0,-2) [blue, circle, fill, inner sep=2pt] {};
+\node at (0,-2) [blue, below=1mm] {X};
+\end{tikzpicture}
+\end{center}
+
+@@latex: \noindent@@ In the next second, when \(t = 2\),
+
+\begin{center}
+\begin{tikzpicture}
+
+%% Circle and ground
+\fill[blue] (0, 0) circle (2cm);
+\draw (-4,-2) -- (4,-2) node[right] {Ground};
+
+%% Rolling direction label
+\draw[red, thick, ->] (2.5, 0) arc (0:60:2.5cm) node[midway, right=1mm] {Rolling direction};
+
+%% Point X
+\node at (1,-1.75) [blue, circle, fill, inner sep=2pt] {};
+\node at (1,-1.75) [blue, below=1mm] {X};
+
+%% Point Y
+\node at (0,-2) [purple, circle, fill, inner sep=2pt] {};
+\node at (0,-2) [purple, below=1mm] {Y};
+\end{tikzpicture}
+\end{center}
+
+@@latex: \noindent@@ In the next second, when \(t = 3\),
+
+\begin{center}
+\begin{tikzpicture}
+
+%% Circle and ground
+\fill[blue] (0, 0) circle (2cm);
+\draw (-4,-2) -- (4,-2) node[right] {Ground};
+
+%% Rolling direction label
+\draw[red, thick, ->] (2.5, 0) arc (0:60:2.5cm) node[midway, right=1mm] {Rolling direction};
+
+%% Point X
+\node at (1.75,-1) [blue, circle, fill, inner sep=2pt] {};
+\node at (1.75,-1) [blue, below=1mm] {X};
+
+%% Point Y
+\node at (1,-1.75) [purple, circle, fill, inner sep=2pt] {};
+\node at (1,-1.75) [purple, below=1mm] {Y};
+
+%% Point Z
+\node at (0,-2) [green, circle, fill, inner sep=2pt] {};
+\node at (0,-2) [green, below=1mm] {Z};
+\end{tikzpicture}
+\end{center}
+
+@@latex: \noindent@@ From the series of images above, you can tell that point X is never in motion, and it doesn't move. Instead, as the wheel rolls, point X rolls away and is no longer in contact with the ground. Every second, a new point comes into contact with the ground, which is point Y at \(t = 2\) and point Z at \(t = 3\). Hence, since the points are not moving when they are in contact with the ground, the friction we should consider is static friction. Thus, we consider the static friction in the case of rolling.
+
+#+begin_export latex
+\clearpage
+#+end_export
+
+* Friction and sliding
+Now that we know that our skate wheels are experiencing static friction, and that sliding is about getting past the threshold of motion and entering the zone where kinetic friction applies (refer to section [[sec:friction-graph]]), we can think about how to make this process easier for ourselves.
+
+** Decreasing the angle of the skate to the ground
+<<sec:decrease-angle>>
+The most common advice that you will hear people tell you is probably to bend or sit lower when doing slides. The reason for this is to decrease the angle of the skate to the ground. Let's consider our skates at a high angle to the ground.
+
+\begin{center}
+\begin{tikzpicture}[scale=1.5]
+
+%% The ground
+\draw (-2, 0) -- (2, 0) node[right] {Ground};
+
+%% The sliding direction
+\draw[ultra thick, cyan, -{Stealth}] (-0.5, 0.5) -- node[above=1mm] {Sliding direction} (-2, 0.5);
+
+%% The triangle
+\draw[ultra thick, green, middleArrow=Stealth] (1, 1.73) coordinate (a) -- node[anchor=south east] {$F_w$} (0, 0) coordinate(o);
+\draw (a) -- (1, 0) coordinate (c);
+
+%% The forces on the ground by the wheel
+\draw[ultra thick, dashed, green, -{Stealth}] (0, 0) -- (0, -1.73) node[below] {Resolved \(y\)-component};
+\draw[ultra thick, dashed, green, -{Stealth}] (0, 0) -- (-1, 0) node[label={[align=center]below:Resolved\\\(x\)-component}] {};
+
+%% The forces on the wheel by the ground
+\draw[ultra thick, red, -{Stealth}] (0, 0) -- (0, 1.73) node[above=-4mm, label={[align=center]above:Normal contact force\\$(N)$}] {};
+\draw[ultra thick, red, -{Stealth}] (0, 0) -- (1.4, 0) node[right=8mm, label={[align=center]below:Static friction\\$(\mu_s N)$}] {};
+
+%% The angle
+\draw pic[draw=violet, <->, angle eccentricity=1.2, angle radius=0.5cm] {angle=c--o--a};
+\node[violet] at (0.6, -0.2) {$\alpha = \qty{60}{\degree}$};
+
+\end{tikzpicture}
+\end{center}
+
+@@latex: \noindent@@ Now, let's consider our skates at a much lower angle to the ground.
+
+\begin{center}
+\begin{tikzpicture}[scale=1.5]
+
+%% The ground
+\draw (-2, 0) -- (2, 0) node[right] {Ground};
+
+%% The sliding direction
+\draw[ultra thick, cyan, -{Stealth}] (-0.5, 0.5) -- node[above=1mm] {Sliding direction} (-2, 0.5);
+
+%% The triangle
+\draw[ultra thick, green, middleArrow=Stealth] (1.73, 1) coordinate (a) -- node[above=2mm] {$F_w$} (0, 0) coordinate(o);
+\draw (a) -- (1.73, 0) coordinate (c);
+
+%% The forces on the ground by the wheel
+\draw[ultra thick, dashed, green, -{Stealth}] (0, 0) -- (0, -1) node[below] {Resolved \(y\)-component};
+\draw[ultra thick, dashed, green, -{Stealth}] (0, 0) -- (-1.73, 0) node[below=1mm] {Resolved \(x\)-component};
+
+%% The forces on the wheel by the ground
+\draw[ultra thick, red, -{Stealth}] (0, 0) -- (0, 1) node[above=-4mm, label={[align=center]above:Normal contact force\\$(N)$}] {};
+\draw[ultra thick, red, -{Stealth}] (0, 0) -- (0.8, 0) node[right=3mm, label={[align=center]below:Static friction\\$(\mu_s N)$}] {};
+
+%% The angle
+\draw pic["$\alpha = \qty{30}{\degree}$", violet, draw=violet, <->, angle eccentricity=1.2, angle radius=0.9cm, right] {angle=c--o--a};
+
+\end{tikzpicture}
+\end{center}
+
+@@latex: \noindent@@ As shown in the diagrams above, decreasing the angle of the skate to the ground (\(\alpha\)) decreases the normal contact force (\(N\)) and increases the horizontal component (\(x\)-component) of the force of the wheels on the ground (\(F_w\)).
+
+Notice that when angle \(\alpha = \qty{60}{\degree}\), the horizontal component of \(F_w\) is smaller than the static friction (\(\mu_s N\)), meaning that we cannot overcome the static friction. This is due to the larger vertical component (\(y\)-component) of \(F_w\). Because of Newton's 3rd law, the normal contact force will be larger as well, which results in a larger static friction to overcome, as the static friction is proportional to the normal contact force (\(f_s = \mu_s N\)).
+
+However, when angle \(\alpha = \qty{30}{\degree}\), the horizontal component of \(F_w\) is now larger than the static friction, meaning that we can overcome the static friction. This is due to the vertical component of \(F_w\) being smaller, resulting in less static friction to overcome.
+
+Therefore, to increase the chance of the skates sliding against the ground, the angle of the skates to the ground should be decreased as much as possible.
+
+The safe maximum angle, meaning the maximum angle of the skates to the ground that will always allow a slide to occur, is \(\qty{45}{\degree}\). The reason for this is:
+
+\[\cos \qty{45}{\degree} \ (\text{Horizontal component}) = \sin \qty{45}{\degree} \ (\text{Vertical component}) = \frac{1}{\sqrt{2}}\]
+
+Since the vertical component of \(F_w\) is equal to the normal contact force (\(N\)), and because we know the coefficient of static friction is always less than or equal to 1 (\(\mu_s \le 1\), refer to section [[sec:friction-laws]]), the horizontal component of \(F_w\) will always be larger than the static friction (\(\mu_s N\)). Any angle (\(\alpha\)) smaller than \(\qty{45}{\degree}\) will slide as well, since the horizontal component of \(F_w\) only increases as the angle (\(\alpha\)) decreases.
+
+*** In practical terms
+Practically, this means you should bend your knees as much as possible so that you can decrease your body height, and hence decrease the angle of your skates to the ground. However, you might find that most experienced sliders aren't really bending their knees that much and some have their knees really straight while sliding. The reason for this is that your knees are not the only body part you can adjust to decrease the angle of your skates to the ground. You can also tilt your ankles to achieve the same effect, but that is usually far more difficult to do, so the usual advice is always to bend or sit lower.
+
+** Minimising the force of the wheels on the ground
+<<sec:minimise-force>>
+\begin{center}
+\begin{tikzpicture}
+\node at (0, 0) [anchor=north east] {$0$};
+
+%% Axes
+\draw[thick, -{Stealth}] (0, 0) -- (10, 0) node[right] {Force on the object};
+\draw[thick, -{Stealth}] (0, 0) -- (0, 5) node[above] {Frictional force};
+
+%% Graph for static friction
+\draw[blue, thick] (0, 0) -- (4, 4) node[blue, above=1mm] {Threshold of motion};
+\node at (4, 4) [circle, fill, inner sep=1.5pt] {};
+
+%% Graph for kinetic friction
+\draw[red, thick] (4, 4) -- (4, 3);
+\draw[red, thick] (4, 3) -- node[red, below] {Kinetic friction} (9, 3);
+\end{tikzpicture}
+\end{center}
+
+@@latex: \noindent@@ Remember static friction increasing as the force on the object increases from section [[sec:friction-graph]]? (The graph is also shown above for easy reference.) That is exactly why the force of the wheels on the ground should be minimised. This minimising of force on the wheels on the ground is usually only applicable to the preparation phase of a slide, which is when you would bend or sit lower to enter the slide.
+
+The reason is that the static friction that you experience in this preparation phase will affect how fast you can perform the entry into the slide, also known as the "cut". For basic slides like power slide, acid and soul slide, it does not really matter, as you have one skate that is rolling on the ground. These basic slides are considered stable slides. However, for more advanced slides, which are unstable, such as the parallel or magic slide, where both skates are sliding, it makes a world of difference.
+
+#+begin_export latex
+\clearpage
+#+end_export
+
+*** Newton's 2nd law
+<<sec:newtons-2nd-law>>
+Newton's 2nd law states that "The acceleration of an object depends on the mass of the object and the amount of force applied." As a mathematical expression, this would be:
+
+\[F_{net} = ma\]
+
+Where:
+- $F$ is the net force acting on the object.
+- $m$ is the mass of the object.
+- $a$ is the acceleration of the object.
+
+Importantly, the force acting on the object in the equation is the net force (\(F_{net}\)) acting on the object. What is the difference between a net force and a regular force acting on an object? Let's consider the example of an object moving across the ground.
+
+\begin{center}
+\begin{tikzpicture}
+\draw (-3, 0) -- (3, 0) node[right] {Ground};
+\fill[blue] (-1, 0) rectangle (1, 2);
+\draw[ultra thick, blue, arrows = {-Stealth}] (0, 1) -- (3, 1) node[right] {Forward force ($F$)};
+\draw[ultra thick, red, arrows = {-Stealth}] (0, 0) -- (-2, 0) node[below=1mm] {Friction ($f$)};
+\end{tikzpicture}
+\end{center}
+
+In the diagram above, two forces are acting on the object, a forward force \(F\) and a frictional force \(f\). Each of them is considered a regular force. If we sum up the forces on the object, taking the direction of the forces into consideration, we will have the net force acting on the object. Thus, the net force in this situation would be:
+
+\[F_{net} = F - f\]
+
+Where:
+- The direction to the right is assumed to be positive (\(+\)) and the direction to the left is assumed to be negative (\(-\)).
+- $F_{net}$ is the net force acting on the object.
+- $F$ is the forward force.
+- $f$ is the frictional force.
+
+Applying Newton's 2nd law in this situation would yield us:
+
+\[F_{net} = F - f \quad \text{and} \quad F_{net} = ma\]
+\[F - f = ma\]
+
+Where:
+- $F_{net}$ is the net force acting on the object.
+- $F$ is the forward force.
+- $f$ is the frictional force.
+- $m$ is the mass of the object.
+- $a$ is the acceleration of the object.
+
+#+begin_export latex
+\clearpage
+#+end_export
+
+*** Newton's 2nd law and static friction
+Remember from section [[sec:minimise-force]] that we want to minimise the force of the wheels on the ground, and hence also the static friction, as static friction increases with the force of the wheels on the ground.
+
+Reducing this static friction means that you will face less resistive force when performing the "cut", or the entry to the slide, thus allowing you to accelerate much faster and perform the "cut" at a higher speed. This is thanks to Newton's 2nd law, and the equation that we figured out in section [[sec:newtons-2nd-law]], which looks something like this:
+
+\[F - f_s = ma\]
+
+Where:
+- $F_{net}$ is the net force acting on the object.
+- $F$ is the forward force.
+- $f_s$ is the static frictional force.
+- $m$ is the mass of the object.
+- $a$ is the acceleration of the object.
+
+Let's say \(F = 10\), \(f_s = 5\) and \(m = 1\),
+
+\[10 - 5 = 1a\]
+\[a = \qty{5}{m.s^{-2}}\]
+
+Now if we decrease the static friction (\(f_s\)) to \(\qty{2}{N}\),
+
+\[10 - 2 = 1a\]
+\[a = \qty{8}{m.s^{-2}}\]
+
+We can see that we get a higher acceleration when the static friction is decreased, which means we would be able to perform the "cut" much faster.
+
+#+begin_export latex
+\clearpage
+#+end_export
+
+*** In practical terms
+Practically, this advice is very counterintuitive to what you would automatically do when trying to slide. Instead of pressing down on your skates, which is what most people usually do when they bend their knees to decrease the angle of their skates to the ground (section [[sec:decrease-angle]]), you need to keep your leg muscles as relaxed as possible and try your best not to press down at all.
+
+Most would also think that they will need a lot of additional force to get their wheels to slide, but pressing down on your skates to increase the force of the wheels on the ground will only backfire, as most tend to lose control and over swing, or end up "cutting" too slowly due to the increased static friction.
+
+One way to go about decreasing the force of the wheels on the ground is to think about the default skating position with your knees bent, usually called 11. In this position, your knees are bent, but you aren't purposefully pushing down on your knees. The same applies when bending your knees lower to prepare for a slide. Just keep them as relaxed as you would when you are in the 11 position.
+
+Another way to go about it is to breathe in right before you bend your knees to prepare for a slide, then, as you bend your knees, breathe out at the same time to get your muscles to relax.
+
+This advice is often left out by most experienced sliders, but it is very important to keep it in mind to slide easily.
+
+* Linear momentum
+The linear momentum of an object is defined as the product of its mass and velocity. Expressed mathematically, this is:
+
+\[p = mv\]
+
+Where:
+- $p$ is the linear momentum of the object.
+- $m$ is the mass of the object.
+- $v$ is the velocity of the object.
+
+What does all of that mean? Well, linear momentum refers to the momentum of an object in a straight line path. There is another kind of momentum called angular momentum for rotating objects, but we will not get into that here, as it is irrelevant.
+
+Linear momentum, being a product of the mass and velocity of an object, means that as the mass of the object increases, the momentum also increases. That means a heavier object will have more momentum than a lighter object and vice versa. The definition of linear momentum also tells us that the momentum of an object increases as its velocity increases, which means a fast object has more momentum than a slow object and vice versa.
+
+#+begin_export latex
+\clearpage
+#+end_export
+
+** Deriving the momentum form of Newton's 2nd law
+<<sec:newtons-2nd-law-momentum-derivation>>
+From section [[sec:newtons-2nd-law]], we know Newton's 2nd law is expressed as:
+
+\[F_{net} = ma\]
+
+Where:
+- $F_{net}$ is the net force acting on the object.
+- $m$ is the mass of the object.
+- $a$ is the acceleration of the object.
+
+This has nothing to do with momentum, so we need to adjust the form to make it relevant for momentum.
+
+To do that, we need to think about what acceleration is when you break it down. Acceleration is the change in velocity divided by the time taken for that change in velocity. Expressed mathematically, it is:
+
+\[a = \frac{\Delta v}{t}\]
+
+Where:
+- $a$ is the acceleration of the object.
+- $\Delta v$ is the change in velocity of the object.
+- $t$ is the time taken for the change in velocity.
+
+Let's substitute this equation for acceleration into the equation for Newton's 2nd law:
+
+\[F_{net} = ma\]
+\[a = \frac{\Delta v}{t}\]
+\[F_{net} = m \left(\frac{\Delta v}{t} \right)\]
+\[F_{net} t = m \Delta v \tag{1}\]
+
+The equation is starting to look familiar, \(m \Delta v\) looks quite similar to the equation for linear momentum (\(p = mv\)). The \(\Delta\) symbol, called delta, represents a change. In this case, it represents a change in velocity.
+
+If we think about an object changing its linear momentum, it is unlikely to change its mass over time, since most objects have a fixed weight. Hence, it is the velocity of the object that is changing. Now we have a new equation by thinking about the change in linear momentum, which is:
+
+\[\Delta p = m \Delta v \tag{2}\]
+
+Where:
+- $\Delta p$ is the change in linear momentum of the object.
+- $m$ is the mass of the object.
+- $\Delta v$ is the change in velocity of the object.
+
+#+begin_export latex
+\clearpage
+#+end_export
+
+We can now substitute the new equation we got for the change in linear momentum, equation (\(2\)), into the modified form of Newton's 2nd law, which is equation (\(1\)):
+
+\[F_{net} t = m \Delta v\]
+\[\Delta p = m \Delta v\]
+\[F_{net} t = \Delta p\]
+
+Where:
+- $F_{net}$ is the net force acting on the object.
+- $m$ is the mass of the object.
+- $\Delta v$ is the change in velocity of the object.
+- $\Delta p$ is the change in linear momentum of the object.
+
+What this equation tells us is that the net force acting on the object, multiplied by the time taken for the object to change its velocity, gives us the change in the object's momentum.
+
+** Momentum form of Newton's 2nd law
+<<sec:newtons-2nd-law-momentum>>
+Therefore, from the above section (section [[sec:newtons-2nd-law-momentum-derivation]]), the mathematical expression for the momentum form of Newton's 2nd law is:
+
+\[F_{net} t = \Delta p = m \Delta v\]
+
+Where:
+- $F_{net}$ is the net force acting on the object.
+- $m$ is the mass of the object.
+- $\Delta v$ is the change in velocity of the object.
+- $\Delta p$ is the change in linear momentum of the object.
+
+#+begin_export latex
+\clearpage
+#+end_export
+
+* Linear momentum and sliding
+Now that we know about the momentum form of Newton's 2nd law (section [[sec:newtons-2nd-law-momentum]]), we need to understand its implications when we perform a slide.
+
+** Deriving the change in linear momentum to slide
+<<sec:change-in-momentum-derivation>>
+When inline skating, the wheels on the skate would be rolling and moving in the direction we are moving towards. However, when sliding, you would usually turn your skates such that they are perpendicular to the direction of motion so that you can get the wheels to slide instead of roll.
+
+When you are rolling:
+\begin{center}
+\begin{tikzpicture}
+\fill[blue] (0, -3) ellipse (0.5cm and 1cm);
+\fill[blue] (0, -1) ellipse (0.5cm and 1cm);
+\fill[blue] (0, 1) ellipse (0.5cm and 1cm);
+\fill[blue] (0, 3) ellipse (0.5cm and 1cm);
+\draw[ultra thick, blue, arrows = {-Stealth}] (0, 3) -- (0, 5) node[above] {Rolling direction};
+\end{tikzpicture}
+\end{center}
+
+When you start the slide:
+\begin{center}
+\begin{tikzpicture}
+\fill[blue] (-3,0) ellipse (1cm and 0.5cm);
+\fill[blue] (-1,0) ellipse (1cm and 0.5cm);
+\fill[blue] (1,0) ellipse (1cm and 0.5cm);
+\fill[blue] (3,0) ellipse (1cm and 0.5cm);
+\draw[ultra thick, blue, arrows = {-Stealth}] (3, 0) -- (5, 0) node[right] {Rolling direction};
+\draw[ultra thick, red, arrows = {-Stealth}] (0, 0) -- (0, 2) node[above] {Sliding direction};
+\end{tikzpicture}
+\end{center}
+
+As seen from the above two diagrams, the rolling direction of your wheels is perpendicular to the sliding direction of your wheels. Thus, the initial linear momentum of your wheels when you start the slide is zero.
+
+#+begin_export latex
+\clearpage
+#+end_export
+
+Let's construct an equation to define the initial linear momentum of the wheels when you start the slide:
+
+\[p_i = m v_i\]
+\[p_i = m (0)\]
+\[p_i = 0\]
+
+Where:
+- $p_i$ is the initial linear momentum of the wheels when starting the slide.
+- $m$ is the mass of your body with the skates.
+- $v_i$ is the initial velocity of the wheels when starting the slide.
+
+Let's construct another equation to define the final linear momentum of the wheels when your wheels start sliding across the ground.
+
+\[p_f = m v_f\]
+
+Where:
+- $p_f$ is the final linear momentum of the wheels when they start sliding across the ground.
+- $m$ is the mass of your body with the skates.
+- $v_f$ is the final velocity of the wheels when they start sliding across the ground.
+
+Hence, the change in momentum from when you start the slide until your wheels start sliding across the ground would be:
+
+\[p_f = m v_f\]
+\[p_i = 0\]
+\[\Delta p = p_f - p_i\]
+\[\Delta p = m v_f - 0\]
+\[\Delta p = m v_f\]
+
+Where:
+- $p_f$ is the final linear momentum of the wheels when they start sliding across the ground.
+- $m$ is the mass of your body with the skates.
+- $v_f$ is the final velocity of the wheels when they start sliding across the ground.
+- $p_i$ is the initial linear momentum of the wheels when starting the slide.
+- $\Delta p$ is the change in momentum when you start the slide until your wheels start sliding across the ground.
+
+** Equation for the change in linear momentum to slide
+<<sec:change-in-momentum>>
+From the above section (section [[sec:change-in-momentum-derivation]]), we know that the change in momentum while sliding is:
+
+\[\Delta p = m v_f\]
+
+Where:
+- $\Delta p$ is the change in momentum when you start the slide until your wheels start sliding across the ground.
+- $m$ is the mass of your body with the skates.
+- $v_f$ is the final velocity of the wheels when they start sliding across the ground.
+
+** Deriving the key equation
+<<sec:key-equation-derivation>>
+Now that we have the equation for the change in linear momentum while sliding (section [[sec:change-in-momentum]]), we can substitute it into the momentum form of Newton's 2nd law (section [[sec:newtons-2nd-law-momentum]]) to obtain the key equation that we need:
+
+\[\Delta p = m v_f\]
+\[F_{net} t = \Delta p\]
+\[F_{net} t = m v_f\]
+
+Where:
+- $\Delta p$ is the change in momentum when you start the slide until your wheels start sliding across the ground.
+- $m$ is the mass of your body with the skates.
+- $v_f$ is the final velocity of the wheels when they start sliding across the ground.
+- $F_{net}$ is the net force acting on the ground by the wheels.
+- $t$ is the time taken from the start of the slide to when the wheels are sliding across the ground.
+
+** The key equation
+<<sec:key-equation>>
+From the above section (section [[sec:key-equation-derivation]]), we know that the key equation we need is:
+
+\[F_{net} t = m v_f\]
+
+Where:
+- $F_{net}$ is the net force acting on the ground by the wheels.
+- $t$ is the time taken from the start of the slide to when the wheels are sliding across the ground.
+- $m$ is the mass of your body with the skates.
+- $v_f$ is the final velocity of the wheels when they start sliding across the ground.
+
+** The key equation and sliding
+Now that we have the key equation (section [[sec:key-equation]]), we can use it to explain two of the most commonly given pieces of advice for sliding.
+
+*** Increasing your speed
+<<sec:increase-speed>>
+Most of the time, the standard advice given when you seem to have your sliding position correct is to just go faster. Let's first assume that our velocity (speed) before the slide, when we are rolling, is the same as the velocity we continue to move at after the wheels start sliding, making calculations easier. Basically, we are assuming that there is no change in our overall momentum between rolling before the slide and when the wheels start sliding. With this assumption, then we can substitute \(v_f\), the final velocity of the wheels when they start sliding across the ground, in the key equation with \(v_r\), which is the velocity we are going at before the slide. This would be:
+
+\[F_{net} t = m v_f\]
+\[v_f = v_r\]
+\[F_{net} t = m v_r\]
+
+Where:
+- $F_{net}$ is the net force acting on the ground by the wheels.
+- $t$ is the time taken from the start of the slide to when the wheels are sliding across the ground.
+- $m$ is the mass of your body with the skates.
+- $v_f$ is the final velocity of the wheels when they start sliding across the ground.
+- $v_r$ is the velocity before the slide, when the wheels are still rolling.
+
+With this new equation, we can see that increasing our speed by going faster would increase the net force acting on the ground by the wheels. Let's put in some values to make it easier to understand, by assuming \(t = 2\), \(m = 4\), and \(v_r = 10\),
+
+\[F_{net} t = m v_r\]
+\[F_{net} \times 2 = 4 \times 10\]
+\[F_{net} = 20\]
+
+Now if we increase our speed from \(\qty{10}{m.s^{-1}}\) to \(\qty{20}{m.s^{-1}}\), so \(v_r = 20\),
+
+\[F_{net} t = m v_r\]
+\[F_{net} \times 2 = 4 \times 20\]
+\[F_{net} = 40\]
+
+The net force acting on the ground by the wheels has increased from \(\qty{20}{N}\) to \(\qty{40}{N}\). Let's illustrate this with the diagrams from section [[sec:decrease-angle]].
+
+#+begin_export latex
+\clearpage
+#+end_export
+
+When our speed is 10 (\(v_r = 10\)),
+
+\begin{center}
+\begin{tikzpicture}[scale=1.5]
+
+%% The ground
+\draw (-2, 0) -- (2, 0) node[right] {Ground};
+
+%% The sliding direction
+\draw[ultra thick, cyan, -{Stealth}] (-0.5, 0.5) -- node[above=1mm] {Sliding direction} (-2, 0.5);
+
+%% The triangle
+\draw[ultra thick, green, middleArrow=Stealth] (1.73, 1) coordinate (a) -- node[above=2mm] {$F_w$} (0, 0) coordinate(o);
+\draw (a) -- (1.73, 0) coordinate (c);
+
+%% The forces on the ground by the wheel
+\draw[ultra thick, dashed, green, -{Stealth}] (0, 0) -- (0, -1) node[below] {Resolved \(y\)-component};
+\draw[ultra thick, dashed, green, -{Stealth}] (0, 0) -- (-1.73, 0) node[below=1mm] {Resolved \(x\)-component};
+
+%% The forces on the wheel by the ground
+\draw[ultra thick, red, -{Stealth}] (0, 0) -- (0, 1) node[above=-4mm, label={[align=center]above:Normal contact force\\$(N)$}] {};
+\draw[ultra thick, red, -{Stealth}] (0, 0) -- (0.8, 0) node[right=3mm, label={[align=center]below:Static friction\\$(\mu_s N)$}] {};
+
+%% The angle
+\draw pic["$\alpha = \qty{30}{\degree}$", violet, draw=violet, <->, angle eccentricity=1.2, angle radius=0.9cm, right] {angle=c--o--a};
+
+\end{tikzpicture}
+\end{center}
+
+When our speed is 20 (\(v_r = 20\)),
+
+\begin{center}
+\begin{tikzpicture}[scale=3]
+
+%% The ground
+\draw (-2, 0) -- (2, 0) node[right] {Ground};
+
+%% The sliding direction
+\draw[ultra thick, cyan, -{Stealth}] (-0.5, 0.5) -- node[above=1mm] {Sliding direction} (-2, 0.5);
+
+%% The triangle
+\draw[ultra thick, green, middleArrow=Stealth] (1.73, 1) coordinate (a) -- node[above=2mm] {$F_w$} (0, 0) coordinate(o);
+\draw (a) -- (1.73, 0) coordinate (c);
+
+%% The forces on the ground by the wheel
+\draw[ultra thick, dashed, green, -{Stealth}] (0, 0) -- (0, -1) node[below] {Resolved \(y\)-component};
+\draw[ultra thick, dashed, green, -{Stealth}] (0, 0) -- (-1.73, 0) node[below=1mm] {Resolved \(x\)-component};
+
+%% The forces on the wheel by the ground
+\draw[ultra thick, red, -{Stealth}] (0, 0) -- (0, 1) node[above=-4mm, label={[align=center]above:Normal contact force\\$(N)$}] {};
+\draw[ultra thick, red, -{Stealth}] (0, 0) -- (0.8, 0) node[right=3mm, label={[align=center]below:Static friction\\$(\mu_s N)$}] {};
+
+%% The angle
+\draw pic["$\alpha = \qty{30}{\degree}$", violet, draw=violet, <->, angle eccentricity=1.2, angle radius=0.9cm, anchor=base west] {angle=c--o--a};
+
+\end{tikzpicture}
+\end{center}
+
+From the diagrams above, we can see we have a much larger force (\(F_w\)) to work with, which makes sliding easier and more forgiving. However, notice that the diagrams are just scaled versions of each other, which means the ratio of all the forces involved is the same. This means that you can't substitute decreasing the angle of your skates to the ground with higher speeds, as you will still have the same issue of the static friction (\(\mu_s N\)) being larger than the horizontal component of the force of your wheels on the ground (refer to section [[sec:decrease-angle]]).
+
+#+begin_export latex
+\clearpage
+#+end_export
+
+*** "Cut" faster
+<<sec:cut-faster>>
+"Cutting" faster just means executing the entry to the slide faster. Essentially, you want to get from your initial preparation position for the slide into the final sliding position that you hold in as little time as possible. But why? If we look at the key equation (section [[sec:key-equation]]), there is a time term (\(t\)) inside:
+
+\[F_{net} t = m v_f\]
+
+Where:
+- $F_{net}$ is the net force acting on the ground by the wheels.
+- $t$ is the time taken from the start of the slide to when the wheels are sliding across the ground.
+- $m$ is the mass of your body with the skates.
+- $v_f$ is the final velocity of the wheels when they start sliding across the ground.
+
+Notice that the time term (\(t\)) stands for the time taken from the start of the slide to when the wheels are sliding across the ground. This means that decreasing this time will result in a larger force and vice versa. Let's put in some values to make it easier to understand, by assuming \(m = 4\), \(v_f = 10\) and \(t = 2\),
+
+\[F_{net} t = m v_f\]
+\[F_{net} \times 2 = 4 \times 10\]
+\[F_{net} = 20\]
+
+Now if we decrease the time from \(\qty{2}{s}\) to \(\qty{1}{s}\), so \(t = 1\),
+
+\[F_{net} t = m v_f\]
+\[F_{net} \times 1 = 4 \times 10\]
+\[F_{net} = 40\]
+
+The net force acting on the ground by the wheels has increased from \(\qty{20}{N}\) to \(\qty{40}{N}\). Let's illustrate this again with the diagrams from section [[sec:decrease-angle]].
+
+#+begin_export latex
+\clearpage
+#+end_export
+
+When you take 2 seconds to "cut" (\(t = 2\)),
+
+\begin{center}
+\begin{tikzpicture}[scale=1.5]
+
+%% The ground
+\draw (-2, 0) -- (2, 0) node[right] {Ground};
+
+%% The sliding direction
+\draw[ultra thick, cyan, -{Stealth}] (-0.5, 0.5) -- node[above=1mm] {Sliding direction} (-2, 0.5);
+
+%% The triangle
+\draw[ultra thick, green, middleArrow=Stealth] (1.73, 1) coordinate (a) -- node[above=2mm] {$F_w$} (0, 0) coordinate(o);
+\draw (a) -- (1.73, 0) coordinate (c);
+
+%% The forces on the ground by the wheel
+\draw[ultra thick, dashed, green, -{Stealth}] (0, 0) -- (0, -1) node[below] {Resolved \(y\)-component};
+\draw[ultra thick, dashed, green, -{Stealth}] (0, 0) -- (-1.73, 0) node[below=1mm] {Resolved \(x\)-component};
+
+%% The forces on the wheel by the ground
+\draw[ultra thick, red, -{Stealth}] (0, 0) -- (0, 1) node[above=-4mm, label={[align=center]above:Normal contact force\\$(N)$}] {};
+\draw[ultra thick, red, -{Stealth}] (0, 0) -- (0.8, 0) node[right=3mm, label={[align=center]below:Static friction\\$(\mu_s N)$}] {};
+
+%% The angle
+\draw pic["$\alpha = \qty{30}{\degree}$", violet, draw=violet, <->, angle eccentricity=1.2, angle radius=0.9cm, right] {angle=c--o--a};
+
+\end{tikzpicture}
+\end{center}
+
+When you take 1 second to "cut" (\(t = 1\)),
+
+\begin{center}
+\begin{tikzpicture}[scale=3]
+
+%% The ground
+\draw (-2, 0) -- (2, 0) node[right] {Ground};
+
+%% The sliding direction
+\draw[ultra thick, cyan, -{Stealth}] (-0.5, 0.5) -- node[above=1mm] {Sliding direction} (-2, 0.5);
+
+%% The triangle
+\draw[ultra thick, green, middleArrow=Stealth] (1.73, 1) coordinate (a) -- node[above=2mm] {$F_w$} (0, 0) coordinate(o);
+\draw (a) -- (1.73, 0) coordinate (c);
+
+%% The forces on the ground by the wheel
+\draw[ultra thick, dashed, green, -{Stealth}] (0, 0) -- (0, -1) node[below] {Resolved \(y\)-component};
+\draw[ultra thick, dashed, green, -{Stealth}] (0, 0) -- (-1.73, 0) node[below=1mm] {Resolved \(x\)-component};
+
+%% The forces on the wheel by the ground
+\draw[ultra thick, red, -{Stealth}] (0, 0) -- (0, 1) node[above=-4mm, label={[align=center]above:Normal contact force\\$(N)$}] {};
+\draw[ultra thick, red, -{Stealth}] (0, 0) -- (0.8, 0) node[right=3mm, label={[align=center]below:Static friction\\$(\mu_s N)$}] {};
+
+%% The angle
+\draw pic["$\alpha = \qty{30}{\degree}$", violet, draw=violet, <->, angle eccentricity=1.2, angle radius=0.9cm, anchor=base west] {angle=c--o--a};
+
+\end{tikzpicture}
+\end{center}
+
+Notice that from the above diagrams, we have a much larger force (\(F_w\)) to work with once again, similar to the situation in the previous section ([[sec:increase-speed]]), which makes sliding easier. Once again, the diagrams are just scaled versions of each other, meaning that the ratio of all the involved forces is the same. Similarly, you also cannot substitute decreasing the angle of your skates to the ground with a faster "cut", as you will still face the same issue of static friction (\(\mu_s N\)) being larger than the horizontal component of the force of your wheels on the ground (refer to section [[sec:decrease-angle]]).
+
+Additionally, you should realise that your speed (section [[sec:increase-speed]]) and how fast you "cut" (this section) both affect the force of the wheels on the ground (\(F_w\)), which means if you want to slide at any speed, you will have to practice "cutting" very quickly. This is the proper way to do any slide, as you usually start by sliding at low speeds and then slowly working your way up to the higher speeds, mostly for safety reasons. You will also tend to panic and get anxious when trying to slide at very high speeds when you are not used to it, which greatly increases the chance of messing up your slide and falling.
+
+Practically, this advice means you should move your body into the sliding position as quickly as possible, usually with a sudden motion like a fast kick, jerk, or twist to ensure the slide goes through. This can be terrifying for unstable slides like parallel slide or Ern Sui, but it is necessary if you would like to perform the slide at any speed. Otherwise, you will need relatively high speeds to perform the slide.
+
+#+begin_export latex
+\clearpage
+#+end_export
+
+* Summary
+To sum up, 3 of the most common advice for sliding are explained, namely:
+1. Bend or sit lower, which is explained by friction and resolving the force of the wheels acting on the ground in section [[sec:decrease-angle]]. This is the most important advice to keep in mind, as it is nigh impossible to slide in inline skating without this advice.
+2. Run or skate faster, which is explained by the momentum form of Newton's 2nd law (section [[sec:newtons-2nd-law-momentum]]) transformed into the key equation (section [[sec:key-equation]]) in section [[sec:increase-speed]]:
+
+   \[F_{net} t = \Delta p = m \Delta v \quad \rightarrow \quad F_{net} t = m v_f\]
+
+   Where:
+   - $F_{net}$ is the net force acting on the ground by the wheels.
+   - $t$ is the time taken from the start of the slide to when the wheels are sliding across the ground.
+   - $\Delta p$ is the change in linear momentum of the object.
+   - $m$ is the mass of your body with the skates.
+   - $\Delta v$ is the change in velocity of the wheels from the start of the slide to when the wheels are sliding across the ground.
+   - $v_f$ is the final velocity of the wheels when they start sliding across the ground.
+3. "Cut" faster, which is also explained by the momentum form of Newton's 2nd law (section [[sec:newtons-2nd-law-momentum]]) transformed into the key equation (section [[sec:key-equation]]) in section [[sec:cut-faster]], as shown above.
+
+Additionally, there is one more piece of advice that isn't heard as often, which is to minimise the force of the wheels on the ground. This is explained using a combination of Newton's 2nd law ([[sec:newtons-2nd-law]]) and a property of static friction ([[sec:friction-graph]]). @@latex: \\@@
+
+Hopefully, you found this deep dive into the physics of sliding helpful in understanding how to slide more easily. All the best for your slides!

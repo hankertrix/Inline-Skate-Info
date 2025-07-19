@@ -25,3 +25,6 @@ replit.nix
 
 # Config files
 /.config
+
+# TeX files
+*.tex

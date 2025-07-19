@@ -14,7 +14,7 @@ You can view the resources using either the
 [Telegram bot][bot-link]
 or the [website][website-link].
 
-## [Telegram Bot][bot-link]
+## [Telegram bot][bot-link]
 
 To use the Telegram bot, simply search
 [@inlineskatebot][bot-link] on Telegram
