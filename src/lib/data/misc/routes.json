@@ -16,7 +16,7 @@
       },
       {
         "name": "West Coast Park to VivoCity",
-        "distance": "9 km",
+        "distance": "9.0 km",
         "link": "https://maps.app.goo.gl/m6XQDhnZmTAqesyE7"
       }
     ],
@@ -30,22 +30,22 @@
       },
       {
         "name": "Buangkok MRT to Waterway Point to Pasir Ris MRT",
-        "distance": "17 km",
+        "distance": "17.3 km",
         "link": "https://maps.app.goo.gl/MGNVpBM5ypnwbW96A"
       },
       {
         "name": "Buangkok MRT to Pasir Ris MRT",
-        "distance": "19 km",
+        "distance": "19.3 km",
         "link": "https://maps.app.goo.gl/TDJn798ND1ewuP35A"
       },
       {
         "name": "North Eastern Riverine Loop",
-        "distance": "18 km",
+        "distance": "18.3 km",
         "link": "https://maps.app.goo.gl/9GaEfVChPhj6nF15A"
       },
       {
         "name": "Marymount to Jurong East",
-        "distance": "22 km",
+        "distance": "21.5 km",
         "link": "https://maps.app.goo.gl/LucSY7kCKwxPWVor9"
       }
     ],
@@ -55,9 +55,22 @@
         "distance": "9.6 km",
         "link": "https://maps.app.goo.gl/4hX1FAHL3rHpzQQu8",
         "description": "This route gets its difficulty rating from the huge number of long and unavoidable slopes, as well as the bumpy roads along the Alexandra Canal. The crowds at the Clarke Quay area are not easy to navigate either, especially at night, making this urban pretty difficult."
+      },
+      {
+        "name": "Ernsports to Marina Barrage to Redhill MRT",
+        "distance": "14.8 km",
+        "link": "https://maps.app.goo.gl/hWGjwRKUgxDYRZeX8",
+        "description": "This route includes the difficult section in the Buona Vista MRT to Esplanade MRT route, so the difficulty rating is similar to that. It has a lot of long and unavoidable slopes, and bumpy roads along the Alexandra Canal. The crowds at the Clarke Quay area are not easy to navigate either, especially at night, making this urban pretty difficult."
       }
     ],
     "advanced-to-master": [],
-    "master": []
+    "master": [
+      {
+        "name": "Ernsports to Benjamin Sheares Bridge to Redhill MRT",
+        "distance": "12.8 km",
+        "link": "https://maps.app.goo.gl/WV7RKM2JYm578yP46",
+        "description": "This route is considered master level thanks to the extreme difficulty of Benjamin Sheares Bridge. It has an extremely steep slope which will wear down your wheels till they are nearly unusable, and has death traps in the form of expansion joints made of a rubber-like material covered by sand so they are impossible to see. Be extremely careful when crossing this bridge, it is already difficult to walk across this bridge, skating across would be far tougher."
+      }
+    ]
   }
 }
