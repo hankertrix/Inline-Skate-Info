@@ -18,14 +18,15 @@
         "name": "West Coast Park to VivoCity",
         "distance": "9.0 km",
         "link": "https://maps.app.goo.gl/m6XQDhnZmTAqesyE7"
-      },
-      {
-        "name": "Punggol Coastal Loop",
-        "distance": "11.4 km",
-        "link": "https://maps.app.goo.gl/6DecPqQ6QCJpYyY38"
       }
     ],
-    "intermediate": [],
+    "intermediate": [
+      {
+        "name": "Punggol Coast MRT to Punggol Promenade Riverside Walk to Punggol Point Walk to Punggol Coast MRT",
+        "distance": "11.3 km",
+        "link": "https://maps.app.goo.gl/n9GSaCuuYUSGfybe6"
+      }
+    ],
     "intermediate-to-advanced": [
       {
         "name": "Buangkok MRT to Waterway Point",
@@ -49,11 +50,6 @@
         "link": "https://maps.app.goo.gl/9GaEfVChPhj6nF15A"
       },
       {
-        "name": "Marymount to Jurong East",
-        "distance": "21.5 km",
-        "link": "https://maps.app.goo.gl/LucSY7kCKwxPWVor9"
-      },
-      {
         "name": "GoCycling @ Pasir Ris Town Park to Ernsports",
         "distance": "20.9 km",
         "link": "https://maps.app.goo.gl/dXZTaS1YFEQcyFuH6"
@@ -62,6 +58,11 @@
         "name": "Eastern Coastal Loop modified to include the Eastern Corridor",
         "distance": "18.9 km",
         "link": "https://maps.app.goo.gl/EeFFUTZoWvRUUMK9A"
+      },
+      {
+        "name": "Punggol Coastal Loop",
+        "distance": "11.4 km",
+        "link": "https://maps.app.goo.gl/6DecPqQ6QCJpYyY38"
       }
     ],
     "advanced": [
@@ -76,6 +77,18 @@
         "distance": "14.8 km",
         "link": "https://maps.app.goo.gl/hWGjwRKUgxDYRZeX8",
         "description": "This route includes the difficult section in the Buona Vista MRT to Esplanade MRT route, so the difficulty rating is similar to that. It has a lot of long and unavoidable slopes, and bumpy roads along the Alexandra Canal. The crowds at the Clarke Quay area are not easy to navigate either, especially at night, making this urban pretty difficult."
+      },
+      {
+        "name": "Marymount to Jurong East (via Holland Road)",
+        "distance": "17.4 km",
+        "link": "https://maps.app.goo.gl/AmmnNaRHmh37cWsa6",
+        "description": "Kheam Hock Road has a pretty significant down slope into a sharp 90 turn into a road crossing which you have to be aware of in advance, otherwise, it is not easy to stop in time. It is also extremely dark at night, making it very difficult to see. The Holland Road area is horrible for skating, with undulating paths and massive inclines on side roads, which makes crossing awkward."
+      },
+      {
+        "name": "Marymount to Jurong East (via Commonwealth Avenue)",
+        "distance": "21.5 km",
+        "link": "https://maps.app.goo.gl/LucSY7kCKwxPWVor9",
+        "description": "Lornie Road has a lot of up and down slopes which are pretty big, and can allow you to go at very high speeds. Kheam Hock Road has a pretty significant down slope into a sharp 90 turn into a road crossing which you have to be aware of in advance, otherwise, it is not easy to stop in time. Both Lornie Road and Kheam Hock Road are extremely dark at night, so you have to be extra vigilant of fallen twigs and branches."
       }
     ],
     "advanced-to-master": [],
