@@ -79,7 +79,7 @@
       <!-->
 
       <!-- Iterates over all the catalogues -->
-      {#each discountInfoJson.pdfFiles as file (file)}
+      {#each discountInfoJson.files as file (file)}
         <!-->
 
         <!-- Display the link to the catalogue -->

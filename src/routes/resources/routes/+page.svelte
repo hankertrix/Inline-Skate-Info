@@ -33,7 +33,7 @@
           </h2>
 
           <!-- Iterates over the routes -->
-          {#each routes as route}
+          {#each routes as route (route)}
             <!---->
 
             <article>

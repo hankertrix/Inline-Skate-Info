@@ -30,6 +30,7 @@
     //
 
     // The object representing the table of contents
+    // eslint-disable-next-line svelte/prefer-svelte-reactivity
     const tableOfContents = new Map();
 
     // The level of the first heading

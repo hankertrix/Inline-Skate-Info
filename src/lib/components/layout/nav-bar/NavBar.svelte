@@ -167,7 +167,7 @@
     width: 0;
   }
 
-  :.hamburger-icon:has(input:checked)::before {
+  .hamburger-icon:has(input:checked)::before {
     rotate: 45deg;
     width: var(--x-width);
     translate: 0 calc(var(--bar-height) / -2);
