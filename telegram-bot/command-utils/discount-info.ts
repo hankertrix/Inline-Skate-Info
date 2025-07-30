@@ -15,7 +15,7 @@ type RetailerData = {
 type DiscountInfo = {
   title: string;
   messageParts: string[];
-  pdfFiles: string[];
+  files: string[];
   retailerData: RetailerData;
 };
 
@@ -97,7 +97,7 @@ export async function generateDiscountInfo(): Promise<[string, string[]]> {
   //
 
   // Loads the JSON data containing the discount info
-  const { title, messageParts, pdfFiles, retailerData } =
+  const { title, messageParts, files, retailerData } =
     (await utils.loadJsonData("misc/discount-info")) as DiscountInfo;
 
   // Join the message parts together
@@ -110,6 +110,6 @@ export async function generateDiscountInfo(): Promise<[string, string[]]> {
   const message =
     `${utils.bold(title)}\n\n\n${joinedParts}\n\n\n${details}`.trim();
 
-  // Returns the discount info message and the list of paths to pdf files
-  return [message, pdfFiles];
+  // Returns the discount info message and the list of paths to files
+  return [message, files];
 }
