@@ -104,15 +104,12 @@
 
     display: flex;
     flex-direction: row;
+    gap: 4px;
   }
 
   .icon-wrapper img {
     width: var(--icon-size);
     height: var(--icon-size);
-  }
-
-  .codeberg-logo {
-    margin-right: 4px;
   }
 
   .telegram-bot-wrapper {
