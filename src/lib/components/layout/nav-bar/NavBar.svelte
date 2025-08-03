@@ -128,7 +128,7 @@
     content: "";
     width: var(--bar-width);
     height: var(--bar-height);
-    border-radius: 9999px;
+    border-radius: 100vh;
     background-color: var(--icon-colour);
     opacity: var(--icon-opacity);
     transform-origin: left center;
