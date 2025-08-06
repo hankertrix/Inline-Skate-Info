@@ -1341,7 +1341,7 @@ bot.inlineQuery(commandUtils.payNowQr.regex, async (ctx) => {
     type: "photo",
     id: "PayNow QR Code",
     photo_file_id: qrCodeFileId,
-    caption: message,
+    caption: `PayNow QR: '${message}'`,
   } as InlineQueryResult;
 
   // Answers the inline query
