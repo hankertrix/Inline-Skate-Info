@@ -1327,7 +1327,7 @@ bot.inlineQuery(commandUtils.payNowQr.regex, async (ctx) => {
   const photoMessage = await ctx.telegram.sendPhoto(
     process.env.QR_CODE_GROUP_ID! as string,
     { source: Buffer.from(qrCodeDataURL, "base64") },
-    { caption: message }
+    { caption: `PayNow QR Code: '${message}'` }
   );
 
   // Gets the last photo in the message that was sent
@@ -1341,7 +1341,7 @@ bot.inlineQuery(commandUtils.payNowQr.regex, async (ctx) => {
     type: "photo",
     id: "PayNow QR Code",
     photo_file_id: qrCodeFileId,
-    caption: `PayNow QR: '${message}'`,
+    caption: "PayNow QR Code",
   } as InlineQueryResult;
 
   // Answers the inline query
