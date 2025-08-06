@@ -60,7 +60,7 @@ function getCommandDict() {
 
     routes: {
       explanation: "Provides a list of urban skating routes for you to peruse.",
-      usage: "<difficulty level>",
+      usage: "<difficulty level (optional)>",
       categories: Object.values(DIFFICULTY),
     },
 
