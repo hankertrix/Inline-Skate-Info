@@ -88,6 +88,7 @@ to get more details about each command.
 - `create_rental_msg` : Create a rentals-oriented [@countmeinbot] styled
   poll with custom rental options.
 - `qr_code` : Gets the bot to turn your text into a QR code.
+- `paynow_qr` : Generate a PayNow QR code using your phone number or a UEN.
 - `get_chat_id` : Gets the bot to send the chat ID of the chat.
 - `source` : View the source code for the bot.
 
