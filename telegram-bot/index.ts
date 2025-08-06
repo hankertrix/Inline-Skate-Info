@@ -1220,7 +1220,7 @@ bot.command(["qr_code", "qrcode"], async (ctx) => {
 });
 
 // The inline query handler for the QR code command
-bot.inlineQuery(commandUtils.qrCode.qrCodeRegex, async (ctx) => {
+bot.inlineQuery(commandUtils.qrCode.regex, async (ctx) => {
   //
 
   // Gets the text from the inline query
@@ -1250,6 +1250,96 @@ bot.inlineQuery(commandUtils.qrCode.qrCodeRegex, async (ctx) => {
   const queryReply = {
     type: "photo",
     id: "QR Code",
+    photo_file_id: qrCodeFileId,
+    caption: message,
+  } as InlineQueryResult;
+
+  // Answers the inline query
+  await ctx.answerInlineQuery([queryReply], { cache_time: 2 ** 31 - 1 });
+});
+
+// The PayNow QR code command
+
+// The handler for the PayNow QR code command
+bot.command(
+  ["paynow", "paynow_qr", "paynow_qr_code", "paynowqr", "paynowqrcode"],
+  async (ctx) => {
+    //
+
+    // Gets the message text from the context
+    const msgText = ctx.message.text;
+
+    // Calls the PayNow QR code handler to generate the QR code
+    const [, qrCodeDataURL] = await commandUtils.payNowQr.handler(msgText);
+
+    // If the QR code is generated, reply to the user with the image
+    if (qrCodeDataURL)
+      return await ctx.replyWithPhoto({
+        source: Buffer.from(qrCodeDataURL, "base64"),
+      });
+
+    // The callback function to call when the user has given a valid input
+    async function callback(
+      ctx: Context,
+      input: string
+    ): Promise<Message.PhotoMessage> {
+      //
+
+      // Calls the QR code handler to generate the QR code
+      const [, qrCodeDataURL] = await commandUtils.payNowQr.handler(input);
+
+      // Reply to the user with the image
+      return await ctx.replyWithPhoto({
+        source: Buffer.from(qrCodeDataURL, "base64"),
+      });
+    }
+
+    // Enter the scene to validate user input
+    await ctx.scene.enter("validate", {
+      message: [
+        "Please enter your phone number or UEN without spaces,",
+        "like 81234567, and optionally the amount to pay,",
+        "and whether you would like the QR code to be single use or not",
+        "by including 'single' at the end of the message.",
+        "\nEach of the items should be separated with a space.",
+      ].join(" "),
+      callback: callback,
+    });
+  }
+);
+
+// The inline query handler for the PayNow QR code command
+bot.inlineQuery(commandUtils.payNowQr.regex, async (ctx) => {
+  //
+
+  // Gets the text from the inline query
+  const queryText = ctx.inlineQuery!.query;
+
+  // Call the handler to generate the QR code
+  const [message, qrCodeDataURL] =
+    await commandUtils.payNowQr.handler(queryText);
+
+  // If the QR code isn't generated, exit the function
+  if (!qrCodeDataURL) return;
+
+  // Otherwise, send the QR code to the QR code group
+  // and gets the photo message object
+  const photoMessage = await ctx.telegram.sendPhoto(
+    process.env.QR_CODE_GROUP_ID! as string,
+    { source: Buffer.from(qrCodeDataURL, "base64") },
+    { caption: message }
+  );
+
+  // Gets the last photo in the message that was sent
+  const qrCode = photoMessage.photo.pop();
+
+  // Gets the file id
+  const qrCodeFileId = qrCode!.file_id;
+
+  // Generates the inline query reply
+  const queryReply = {
+    type: "photo",
+    id: "PayNow QR Code",
     photo_file_id: qrCodeFileId,
     caption: message,
   } as InlineQueryResult;

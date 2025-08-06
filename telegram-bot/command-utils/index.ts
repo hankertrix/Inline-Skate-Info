@@ -18,3 +18,4 @@ export * as poll from "./poll-message";
 export * as trainingMsg from "./training-message";
 export * as rentalMsg from "./rental-message";
 export * as qrCode from "./qr-code";
+export * as payNowQr from "./paynow-qr";
