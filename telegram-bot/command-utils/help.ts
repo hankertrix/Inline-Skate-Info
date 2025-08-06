@@ -10,7 +10,7 @@ import { DIFFICULTY } from "./routes";
 type HelpInfo = {
   explanation: string;
   usage?: string;
-  example?: string;
+  examples?: string[];
   categories?: string[];
 };
 
@@ -31,7 +31,7 @@ function getCommandDict() {
     help: {
       explanation: `Displays information about how to use the bot and its commands. You can get the help message for a specific command by entering a bot command after the /help command.`,
       usage: "<bot command (optional)>",
-      example: "/help start",
+      examples: ["start"],
     },
 
     terminology: {
@@ -220,6 +220,12 @@ function getCommandDict() {
         "<amount to pay (optional)>",
         "<single-use (optional)>",
       ].join(" "),
+      examples: [
+        "81234567",
+        "81234567 3.50",
+        "81234567 3.50 single",
+        "81234567 single",
+      ],
     },
 
     get_chat_id: {
@@ -298,15 +304,18 @@ export function getCommandHelpMsg(args: {
       );
     }
 
-    // If the label is "example"
-    else if (label === "example") {
+    // If the label is "examples"
+    else if (label === "examples") {
       //
 
-      // Add the example of how to use the command to the list
+      // Add the examples to the list
       infoList.push(
-        `${utils.bold(
-          utils.titlecase(`${label}:`)
-        )} ${utils.monospace(utils.stripHtml(value as string))}`
+        `${utils.bold(utils.titlecase(`${label}:`))}\n` +
+        (value as string[])
+          .map(
+            (example: string) => `- ${utils.monospace(`/${cmd} ${example}`)}`
+          )
+          .join("\n")
       );
     }
 
@@ -316,11 +325,13 @@ export function getCommandHelpMsg(args: {
 
       // Adds the categories to the list
       infoList.push(
-        `${utils.bold(`Available ${label}:`)}\n${(value as string[])
+        `${utils.bold(`Available ${label}:`)}\n` +
+        (value as string[])
           .map(
-            (category: string) => `- ${utils.monospace(`/${cmd} ${category}`)}`
+            (category: string) =>
+              `- ${utils.monospace(`/${cmd} ${category}`)}`
           )
-          .join("\n")}`
+          .join("\n")
       );
     }
 
