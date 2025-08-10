@@ -27,11 +27,6 @@
         "link": "https://maps.app.goo.gl/VbjasnE45rEwLkYJA"
       },
       {
-        "name": "Ernsports to Funan (through Marina East Drive)",
-        "distance": "10.0 km",
-        "link": "https://maps.app.goo.gl/LdEBbQuWsuDZJcuk6"
-      },
-      {
         "name": "Ernsports to Funan (through Bay East Garden)",
         "distance": "11.2 km",
         "link": "https://maps.app.goo.gl/VC2hG3aMPGhwGfm9A"
@@ -43,6 +38,11 @@
         "distance": "7.8 km",
         "link": "https://maps.app.goo.gl/d7MDpE84oBgRyia28",
         "description": "This route only gets its difficulty rating due to the beginning section, which is not beginner friendly. Beginners who want to skate this route should instead start <a href='https://maps.app.goo.gl/aXc5wyPNJYcoTScQ8'>here</a>."
+      },
+      {
+        "name": "Ernsports to Funan (through Marina East Drive)",
+        "distance": "10.0 km",
+        "link": "https://maps.app.goo.gl/LdEBbQuWsuDZJcuk6"
       },
       {
         "name": "Buangkok MRT to Waterway Point to Pasir Ris MRT",
