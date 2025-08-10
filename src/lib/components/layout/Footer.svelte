@@ -4,7 +4,7 @@
 <footer class="footer">
   <a
     class="copyleft"
-    href="https://codeberg.org/Hanker/Inline-Skate-Info/src/branch/main/LICENSE.txt"
+    href="https://codeberg.org/Hanker/Inline-Skate-Info/src/branch/main/LICENCE.txt"
     target="_blank"
     title="Copyright notice and license"
     rel="noopener noreferrer"
