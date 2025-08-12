@@ -31,7 +31,7 @@
     </div>
     <div class="how-to-use text">
       <div>
-        Click the hamburger icon at the top right hand corner of the screen to
+        Click the hamburger icon at the top left hand corner of the screen to
         open up the sidebar.
       </div>
       <div>
