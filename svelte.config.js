@@ -18,7 +18,6 @@ const config = {
         "manifest-src": ["self"],
         "object-src": ["none"],
         "frame-src": ["https://www.youtube-nocookie.com"],
-        "frame-ancestors": ["none"],
         "form-action": ["none"],
         "base-uri": ["none"],
 
