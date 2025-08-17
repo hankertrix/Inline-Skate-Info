@@ -6,7 +6,7 @@
     class="copyleft"
     href="https://codeberg.org/Hanker/Inline-Skate-Info/src/branch/main/LICENCE.txt"
     target="_blank"
-    title="Copyright notice and license"
+    title="Copyright notice and licence"
     rel="noopener noreferrer"
   >
     <div class="text">
