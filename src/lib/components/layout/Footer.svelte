@@ -10,7 +10,7 @@
     rel="noopener noreferrer"
   >
     <div class="text">
-      Copyleft&nbsp;<span class="symbol">©</span>&#32;2024 Hankertrix.
+      Copyleft&nbsp;<span class="symbol">©</span>&#32;2025 Hankertrix.
       <div class="rights-notice">All Wrongs Reserved.</div>
     </div>
   </a>
