@@ -29,13 +29,13 @@ importers:
         version: 9.34.0
       '@sveltejs/adapter-netlify':
         specifier: ^5.2.3
-        version: 5.2.3(@sveltejs/kit@2.37.0(@sveltejs/vite-plugin-svelte@6.1.3(svelte@5.38.6)(vite@7.1.3(@types/node@24.3.0)))(svelte@5.38.6)(vite@7.1.3(@types/node@24.3.0)))
+        version: 5.2.3(@sveltejs/kit@2.37.0(@sveltejs/vite-plugin-svelte@6.1.3(svelte@5.38.6)(vite@7.1.4(@types/node@24.3.0)))(svelte@5.38.6)(vite@7.1.4(@types/node@24.3.0)))
       '@sveltejs/kit':
         specifier: ^2.37.0
-        version: 2.37.0(@sveltejs/vite-plugin-svelte@6.1.3(svelte@5.38.6)(vite@7.1.3(@types/node@24.3.0)))(svelte@5.38.6)(vite@7.1.3(@types/node@24.3.0))
+        version: 2.37.0(@sveltejs/vite-plugin-svelte@6.1.3(svelte@5.38.6)(vite@7.1.4(@types/node@24.3.0)))(svelte@5.38.6)(vite@7.1.4(@types/node@24.3.0))
       '@sveltejs/vite-plugin-svelte':
         specifier: ^6.1.3
-        version: 6.1.3(svelte@5.38.6)(vite@7.1.3(@types/node@24.3.0))
+        version: 6.1.3(svelte@5.38.6)(vite@7.1.4(@types/node@24.3.0))
       '@types/node':
         specifier: ^24.3.0
         version: 24.3.0
@@ -61,8 +61,8 @@ importers:
         specifier: ^16.3.0
         version: 16.3.0
       pagefind:
-        specifier: ^1.3.0
-        version: 1.3.0
+        specifier: ^1.4.0
+        version: 1.4.0
       prettier:
         specifier: ^3.6.2
         version: 3.6.2
@@ -82,11 +82,11 @@ importers:
         specifier: ^8.41.0
         version: 8.41.0(eslint@9.34.0)(typescript@5.9.2)
       vite:
-        specifier: ^7.1.3
-        version: 7.1.3(@types/node@24.3.0)
+        specifier: ^7.1.4
+        version: 7.1.4(@types/node@24.3.0)
       vite-plugin-pagefind:
         specifier: ^1.0.6
-        version: 1.0.6(vite@7.1.3(@types/node@24.3.0))
+        version: 1.0.6(vite@7.1.4(@types/node@24.3.0))
 
 packages:
 
@@ -344,28 +344,33 @@ packages:
     resolution: {integrity: sha512-oGB+UxlgWcgQkgwo8GcEGwemoTFt3FIO9ababBmaGwXIoBKZ+GTy0pP185beGg7Llih/NSHSV2XAs1lnznocSg==}
     engines: {node: '>= 8'}
 
-  '@pagefind/darwin-arm64@1.3.0':
-    resolution: {integrity: sha512-365BEGl6ChOsauRjyVpBjXybflXAOvoMROw3TucAROHIcdBvXk9/2AmEvGFU0r75+vdQI4LJdJdpH4Y6Yqaj4A==}
+  '@pagefind/darwin-arm64@1.4.0':
+    resolution: {integrity: sha512-2vMqkbv3lbx1Awea90gTaBsvpzgRs7MuSgKDxW0m9oV1GPZCZbZBJg/qL83GIUEN2BFlY46dtUZi54pwH+/pTQ==}
     cpu: [arm64]
     os: [darwin]
 
-  '@pagefind/darwin-x64@1.3.0':
-    resolution: {integrity: sha512-zlGHA23uuXmS8z3XxEGmbHpWDxXfPZ47QS06tGUq0HDcZjXjXHeLG+cboOy828QIV5FXsm9MjfkP5e4ZNbOkow==}
+  '@pagefind/darwin-x64@1.4.0':
+    resolution: {integrity: sha512-e7JPIS6L9/cJfow+/IAqknsGqEPjJnVXGjpGm25bnq+NPdoD3c/7fAwr1OXkG4Ocjx6ZGSCijXEV4ryMcH2E3A==}
     cpu: [x64]
     os: [darwin]
 
-  '@pagefind/linux-arm64@1.3.0':
-    resolution: {integrity: sha512-8lsxNAiBRUk72JvetSBXs4WRpYrQrVJXjlRRnOL6UCdBN9Nlsz0t7hWstRk36+JqHpGWOKYiuHLzGYqYAqoOnQ==}
+  '@pagefind/freebsd-x64@1.4.0':
+    resolution: {integrity: sha512-WcJVypXSZ+9HpiqZjFXMUobfFfZZ6NzIYtkhQ9eOhZrQpeY5uQFqNWLCk7w9RkMUwBv1HAMDW3YJQl/8OqsV0Q==}
+    cpu: [x64]
+    os: [freebsd]
+
+  '@pagefind/linux-arm64@1.4.0':
+    resolution: {integrity: sha512-PIt8dkqt4W06KGmQjONw7EZbhDF+uXI7i0XtRLN1vjCUxM9vGPdtJc2mUyVPevjomrGz5M86M8bqTr6cgDp1Uw==}
     cpu: [arm64]
     os: [linux]
 
-  '@pagefind/linux-x64@1.3.0':
-    resolution: {integrity: sha512-hAvqdPJv7A20Ucb6FQGE6jhjqy+vZ6pf+s2tFMNtMBG+fzcdc91uTw7aP/1Vo5plD0dAOHwdxfkyw0ugal4kcQ==}
+  '@pagefind/linux-x64@1.4.0':
+    resolution: {integrity: sha512-z4oddcWwQ0UHrTHR8psLnVlz6USGJ/eOlDPTDYZ4cI8TK8PgwRUPQZp9D2iJPNIPcS6Qx/E4TebjuGJOyK8Mmg==}
     cpu: [x64]
     os: [linux]
 
-  '@pagefind/windows-x64@1.3.0':
-    resolution: {integrity: sha512-BR1bIRWOMqkf8IoU576YDhij1Wd/Zf2kX/kCI0b2qzCKC8wcc2GQJaaRMCpzvCCrmliO4vtJ6RITp/AnoYUUmQ==}
+  '@pagefind/windows-x64@1.4.0':
+    resolution: {integrity: sha512-NkT+YAdgS2FPCn8mIA9bQhiBs+xmniMGq1LFPDhcFn0+2yIUEiIG06t7bsZlhdjknEQRTSdT7YitP6fC5qwP0g==}
     cpu: [x64]
     os: [win32]
 
@@ -1057,8 +1062,8 @@ packages:
   package-manager-detector@0.2.11:
     resolution: {integrity: sha512-BEnLolu+yuz22S56CU1SUKq3XC3PkwD5wv4ikR4MfGvnRVcmzXR9DwSlW2fEamyTPyXHomBJRzgapeuBvRNzJQ==}
 
-  pagefind@1.3.0:
-    resolution: {integrity: sha512-8KPLGT5g9s+olKMRTU9LFekLizkVIu9tes90O1/aigJ0T5LmyPqTzGJrETnSw3meSYg58YH7JTzhTTW/3z6VAw==}
+  pagefind@1.4.0:
+    resolution: {integrity: sha512-z2kY1mQlL4J8q5EIsQkLzQjilovKzfNVhX8De6oyE6uHpfFtyBaqUpcl/XzJC/4fjD8vBDyh1zolimIcVrCn9g==}
     hasBin: true
 
   parent-module@1.0.1:
@@ -1345,8 +1350,8 @@ packages:
     peerDependencies:
       vite: ^7.0.0
 
-  vite@7.1.3:
-    resolution: {integrity: sha512-OOUi5zjkDxYrKhTV3V7iKsoS37VUM7v40+HuwEmcrsf11Cdx9y3DIr2Px6liIcZFwt3XSRpQvFpL3WVy7ApkGw==}
+  vite@7.1.4:
+    resolution: {integrity: sha512-X5QFK4SGynAeeIt+A7ZWnApdUyHYm+pzv/8/A57LqSGcI88U6R6ipOs3uCesdc6yl7nl+zNO0t8LmqAdXcQihw==}
     engines: {node: ^20.19.0 || >=22.12.0}
     hasBin: true
     peerDependencies:
@@ -1611,19 +1616,22 @@ snapshots:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.19.1
 
-  '@pagefind/darwin-arm64@1.3.0':
+  '@pagefind/darwin-arm64@1.4.0':
     optional: true
 
-  '@pagefind/darwin-x64@1.3.0':
+  '@pagefind/darwin-x64@1.4.0':
     optional: true
 
-  '@pagefind/linux-arm64@1.3.0':
+  '@pagefind/freebsd-x64@1.4.0':
     optional: true
 
-  '@pagefind/linux-x64@1.3.0':
+  '@pagefind/linux-arm64@1.4.0':
     optional: true
 
-  '@pagefind/windows-x64@1.3.0':
+  '@pagefind/linux-x64@1.4.0':
+    optional: true
+
+  '@pagefind/windows-x64@1.4.0':
     optional: true
 
   '@polka/url@1.0.0-next.29': {}
@@ -1697,18 +1705,18 @@ snapshots:
     dependencies:
       acorn: 8.15.0
 
-  '@sveltejs/adapter-netlify@5.2.3(@sveltejs/kit@2.37.0(@sveltejs/vite-plugin-svelte@6.1.3(svelte@5.38.6)(vite@7.1.3(@types/node@24.3.0)))(svelte@5.38.6)(vite@7.1.3(@types/node@24.3.0)))':
+  '@sveltejs/adapter-netlify@5.2.3(@sveltejs/kit@2.37.0(@sveltejs/vite-plugin-svelte@6.1.3(svelte@5.38.6)(vite@7.1.4(@types/node@24.3.0)))(svelte@5.38.6)(vite@7.1.4(@types/node@24.3.0)))':
     dependencies:
       '@iarna/toml': 2.2.5
-      '@sveltejs/kit': 2.37.0(@sveltejs/vite-plugin-svelte@6.1.3(svelte@5.38.6)(vite@7.1.3(@types/node@24.3.0)))(svelte@5.38.6)(vite@7.1.3(@types/node@24.3.0))
+      '@sveltejs/kit': 2.37.0(@sveltejs/vite-plugin-svelte@6.1.3(svelte@5.38.6)(vite@7.1.4(@types/node@24.3.0)))(svelte@5.38.6)(vite@7.1.4(@types/node@24.3.0))
       esbuild: 0.25.9
       set-cookie-parser: 2.7.1
 
-  '@sveltejs/kit@2.37.0(@sveltejs/vite-plugin-svelte@6.1.3(svelte@5.38.6)(vite@7.1.3(@types/node@24.3.0)))(svelte@5.38.6)(vite@7.1.3(@types/node@24.3.0))':
+  '@sveltejs/kit@2.37.0(@sveltejs/vite-plugin-svelte@6.1.3(svelte@5.38.6)(vite@7.1.4(@types/node@24.3.0)))(svelte@5.38.6)(vite@7.1.4(@types/node@24.3.0))':
     dependencies:
       '@standard-schema/spec': 1.0.0
       '@sveltejs/acorn-typescript': 1.0.5(acorn@8.15.0)
-      '@sveltejs/vite-plugin-svelte': 6.1.3(svelte@5.38.6)(vite@7.1.3(@types/node@24.3.0))
+      '@sveltejs/vite-plugin-svelte': 6.1.3(svelte@5.38.6)(vite@7.1.4(@types/node@24.3.0))
       '@types/cookie': 0.6.0
       acorn: 8.15.0
       cookie: 0.6.0
@@ -1721,27 +1729,27 @@ snapshots:
       set-cookie-parser: 2.7.1
       sirv: 3.0.1
       svelte: 5.38.6
-      vite: 7.1.3(@types/node@24.3.0)
+      vite: 7.1.4(@types/node@24.3.0)
 
-  '@sveltejs/vite-plugin-svelte-inspector@5.0.1(@sveltejs/vite-plugin-svelte@6.1.3(svelte@5.38.6)(vite@7.1.3(@types/node@24.3.0)))(svelte@5.38.6)(vite@7.1.3(@types/node@24.3.0))':
+  '@sveltejs/vite-plugin-svelte-inspector@5.0.1(@sveltejs/vite-plugin-svelte@6.1.3(svelte@5.38.6)(vite@7.1.4(@types/node@24.3.0)))(svelte@5.38.6)(vite@7.1.4(@types/node@24.3.0))':
     dependencies:
-      '@sveltejs/vite-plugin-svelte': 6.1.3(svelte@5.38.6)(vite@7.1.3(@types/node@24.3.0))
+      '@sveltejs/vite-plugin-svelte': 6.1.3(svelte@5.38.6)(vite@7.1.4(@types/node@24.3.0))
       debug: 4.4.1
       svelte: 5.38.6
-      vite: 7.1.3(@types/node@24.3.0)
+      vite: 7.1.4(@types/node@24.3.0)
     transitivePeerDependencies:
       - supports-color
 
-  '@sveltejs/vite-plugin-svelte@6.1.3(svelte@5.38.6)(vite@7.1.3(@types/node@24.3.0))':
+  '@sveltejs/vite-plugin-svelte@6.1.3(svelte@5.38.6)(vite@7.1.4(@types/node@24.3.0))':
     dependencies:
-      '@sveltejs/vite-plugin-svelte-inspector': 5.0.1(@sveltejs/vite-plugin-svelte@6.1.3(svelte@5.38.6)(vite@7.1.3(@types/node@24.3.0)))(svelte@5.38.6)(vite@7.1.3(@types/node@24.3.0))
+      '@sveltejs/vite-plugin-svelte-inspector': 5.0.1(@sveltejs/vite-plugin-svelte@6.1.3(svelte@5.38.6)(vite@7.1.4(@types/node@24.3.0)))(svelte@5.38.6)(vite@7.1.4(@types/node@24.3.0))
       debug: 4.4.1
       deepmerge: 4.3.1
       kleur: 4.1.5
       magic-string: 0.30.18
       svelte: 5.38.6
-      vite: 7.1.3(@types/node@24.3.0)
-      vitefu: 1.1.1(vite@7.1.3(@types/node@24.3.0))
+      vite: 7.1.4(@types/node@24.3.0)
+      vitefu: 1.1.1(vite@7.1.4(@types/node@24.3.0))
     transitivePeerDependencies:
       - supports-color
 
@@ -2292,13 +2300,14 @@ snapshots:
     dependencies:
       quansync: 0.2.11
 
-  pagefind@1.3.0:
+  pagefind@1.4.0:
     optionalDependencies:
-      '@pagefind/darwin-arm64': 1.3.0
-      '@pagefind/darwin-x64': 1.3.0
-      '@pagefind/linux-arm64': 1.3.0
-      '@pagefind/linux-x64': 1.3.0
-      '@pagefind/windows-x64': 1.3.0
+      '@pagefind/darwin-arm64': 1.4.0
+      '@pagefind/darwin-x64': 1.4.0
+      '@pagefind/freebsd-x64': 1.4.0
+      '@pagefind/linux-arm64': 1.4.0
+      '@pagefind/linux-x64': 1.4.0
+      '@pagefind/windows-x64': 1.4.0
 
   parent-module@1.0.1:
     dependencies:
@@ -2554,13 +2563,13 @@ snapshots:
 
   util-deprecate@1.0.2: {}
 
-  vite-plugin-pagefind@1.0.6(vite@7.1.3(@types/node@24.3.0)):
+  vite-plugin-pagefind@1.0.6(vite@7.1.4(@types/node@24.3.0)):
     dependencies:
       colorette: 2.0.20
       package-manager-detector: 0.2.11
-      vite: 7.1.3(@types/node@24.3.0)
+      vite: 7.1.4(@types/node@24.3.0)
 
-  vite@7.1.3(@types/node@24.3.0):
+  vite@7.1.4(@types/node@24.3.0):
     dependencies:
       esbuild: 0.25.9
       fdir: 6.5.0(picomatch@4.0.3)
@@ -2572,9 +2581,9 @@ snapshots:
       '@types/node': 24.3.0
       fsevents: 2.3.3
 
-  vitefu@1.1.1(vite@7.1.3(@types/node@24.3.0)):
+  vitefu@1.1.1(vite@7.1.4(@types/node@24.3.0)):
     optionalDependencies:
-      vite: 7.1.3(@types/node@24.3.0)
+      vite: 7.1.4(@types/node@24.3.0)
 
   webidl-conversions@3.0.1: {}
 
