@@ -1,8 +1,15 @@
 // Module to create the training message for NTU
 
 import type { TrainingMessageHandler } from ".";
+import {
+  type PollConfig,
+  DEFAULT_POLL_CONFIG,
+  createConfig,
+  generatePollMessage,
+} from "../poll-message";
 import * as utils from "../../utils";
 import * as trgMsgUtils from "./utils";
+import { deleteMessages } from "../../bot-utils";
 
 // The location of the training
 const trainingLocation = "NTU MPC 1";
@@ -14,15 +21,10 @@ export const trainingDates = [
 ];
 
 // The training message
-const trainingMsg = "👾{last} {day} CCA Training @{location} @{date} 👾";
+const trainingMsg = "👾 CCA Training @ {location} 👾";
 
-// The function to format the training message for NTU
-function formatMsg(
-  date: Date,
-  location: string,
-  trgMsg: string,
-  isLast: boolean
-) {
+// The function to format the date for NTU
+function formatDate(date: Date) {
   //
 
   // Gets the formatted time string
@@ -38,17 +40,41 @@ function formatMsg(
     .format(date)
     .replace(/,/, "");
 
-  // Gets the full date string
+  // Get the full date string
   const fullDateString = `${timeString}, ${dateString}`;
 
-  // Returns the formatted training message
-  return utils.strFormat(trgMsg, {
-    day: utils.getDayStr(date),
-    location: location,
-    date: fullDateString,
-    last: isLast ? " LAST" : "",
-  });
+  // Return the full date string
+  return fullDateString;
 }
+
+// Function to generate the poll options
+function generatePollOptions(trainingDates: string[]) {
+  //
+
+  // Gets the upcoming training dates
+  const upcomingTrainingDates = trgMsgUtils.getUpcomingTrainingDates(
+    trainingDates,
+    2
+  ) as Date[];
+
+  // Returns the poll options
+  return upcomingTrainingDates.map((date) => formatDate(date));
+}
+
+// Function to format the message
+function formatMsg(trainingMsg: string, trainingLocation: string): string {
+  //
+
+  // Format the training message with the location
+  const formattedMsg = utils.strFormat(trainingMsg, {
+    location: trainingLocation,
+  });
+
+  // Return the formatted message
+  return formattedMsg;
+}
+
+// Function to generate the poll message
 
 // Function to handle the training message command for NTU
 export async function handler(
@@ -56,42 +82,47 @@ export async function handler(
 ): ReturnType<TrainingMessageHandler> {
   //
 
-  // The boolean variable to check
-  // if the lowercased message just contains the word "last"
-  const isLast = message.toLowerCase() === "last";
-
-  // If the message passed isn't empty and isn't just the word "last",
-  // then use it instead of the default message
-  if (message && !isLast) return await trgMsgUtils.handleTrgMsg(ctx, message);
-
-  // Gets the upcoming training date
-  const upcomingTrainingDate = trgMsgUtils.getUpcomingTrainingDates(
-    trainingDates
-  ) as Date;
-
-  // Gets the formatted message
-  const formattedMsg = formatMsg(
-    upcomingTrainingDate,
-    trainingLocation,
-    trainingMsg,
-    isLast
+  // Initialise the poll configuration object with the generated poll options
+  const pollConfig = createConfig<PollConfig>(
+    { pollOptions: generatePollOptions(trainingDates) },
+    DEFAULT_POLL_CONFIG
   );
 
-  // Sends the formatted message with the default poll options
-  await trgMsgUtils.handleTrgMsg(ctx, formattedMsg);
+  // Initialise the message to send
+  let msgToSend: string | null;
+
+  // If the message given is empty
+  if (!message) {
+    //
+
+    // Use the default message and format it
+    msgToSend = formatMsg(trainingMsg, trainingLocation);
+  }
+
+  // Otherwise, use the given message
+  else {
+    msgToSend = message;
+  }
+
+  // Generate the training message
+  const { userMessage, callback } = generatePollMessage(msgToSend, pollConfig);
+
+  // Calls the function to send the training message to the user
+  await callback(ctx, userMessage);
+
+  // Try to delete the messages sent by the user
+  return await deleteMessages(ctx, ctx.message.message_id);
 }
 
 // The help text for the NTU command
-export const help =
-  "To use the /trg_msg command, simply type the command " +
-  "and the training message will be sent to the group. " +
-  "You can indicate that the training is the last training for a while " +
-  "by simply typing the word 'last' after the command, like this:\n" +
-  `${utils.monospace(`/trg_msg last`)}` +
-  "\n\n" +
-  "If you would like to change the training message to a custom one, " +
-  "provide the training message after you have typed the command, " +
-  "like this:\n" +
+export const help = [
+  "To use the /trg_msg command, simply type the command ",
+  "and the training message will be sent to the group. ",
+  "\n\n",
+  "If you would like to change the training message to a custom one, ",
+  "provide the training message after you have typed the command, ",
+  "like this:\n",
   `${utils.monospace(
     `/trg_msg ${utils.stripHtml("<custom training message (optional)>")}`
-  )}`;
+  )}`,
+].join("");

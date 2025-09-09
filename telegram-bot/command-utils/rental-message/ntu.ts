@@ -119,7 +119,7 @@ const RENTAL_MSG =
   `Press the ${RENTAL_MSG_CONFIG.tagString} button ` +
   "to indicate that you have paid. " +
   "The higher priced skates are of higher quality, " +
-  "and hence are more expensive. " +
+  "and are hence more expensive. " +
   "First come first served basis!!!";
 
 // Function to create the time portion of the rental message
