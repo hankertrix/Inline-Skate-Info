@@ -22,6 +22,7 @@ const RENTAL_OPTIONS_AND_MAX_AMOUNT = new Map([
   ["Sizes 38 - 41, $5", 3],
   ["Sizes 42 - 45, $5", 3],
   ["Size 37, $7", 1],
+  ["Sizes 35 - 40, $7", 3],
   ["Sizes 38 - 42, $7", 4],
   ["Size 44, $7", 1],
   ["Size 45, $7", 1],
