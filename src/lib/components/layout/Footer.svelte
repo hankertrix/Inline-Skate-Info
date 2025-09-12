@@ -82,8 +82,7 @@
 
   .copyleft {
     font-size: 0.75rem;
-    flex-direction: row;
-    color: inherit;
+    width: fit-content;
     text-decoration: none;
   }
 
