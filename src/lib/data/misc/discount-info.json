@@ -1,7 +1,7 @@
 {
   "title": "Information about the student discount",
   "messageParts": [
-    "You can only use the student discount at 4 skate shops, namely Inlinex, Mystic Skates, Hvper Sport and Ernsports. Inlinex provides a 15% discount on all non-discounted skates as long as you show them your matriculation card for verification. Alternatively, you can use the discount code 'SMUX' on their online store for a 10% discount on all non-discounted items. When buying from Inlinex in person, show the discount poster below to obtain the discount. Hvper Sport provides a catalogue of all discounted skates, and the discount is open to all tertiary students in Singapore. Mystic Skates provides a 10% discount for every item in their catalogue. This discount is open to all tertiary students in Singapore with a valid matriculation card, a picture of which should be uploaded when filling in their purchase form. Do note that the Mystic Skates catalogue shows the original prices before the student discount is applied. As for and Ernsports, head down to the shop and show your matriculation card for a discount.",
+    "You can only use the student discount at 4 skate shops, namely Inlinex, Mystic Skates, Hvper Sport and Ernsports. Inlinex provides a 15% discount on all non-discounted skates as long as you show them your matriculation card for verification. Alternatively, you can use the discount code 'SMUX' on their online store for a 10% discount on all non-discounted items. When buying from Inlinex in person, show the discount poster below to obtain the discount. Hvper Sport provides a catalogue of all discounted skates, and the discount is open to all tertiary students in Singapore. Mystic Skates provides a 10% discount for every item in their catalogue. This discount is open to all tertiary students in Singapore with a valid matriculation card, a picture of which should be uploaded when filling in their purchase form. Do note that the Mystic Skates catalogue shows the original prices before the student discount is applied. As for and Ernsports, they have a 30% discount on all items on their catalogue. You should head down to the shop and show your matriculation card for a discount.",
     "Regarding Hvper Sport's discount catalogue, the Seba High Light series, namely the Seba High Light 80, Seba High Light Carbon and the Seba High Light Carbon Pro, is only discounted when there is a minimum purchase of 4 pairs of the same size. Otherwise, the discount is invalid and you will have to pay full price. Thus, you should bulk order these skates with your friends or club members to take advantage of the pretty deep discount on these 3 models.",
     "For the exact details on claiming the student discount, especially for Hvper Sport and Ernsports, you should check with your club's president. It is highly likely that you will have to inform your club's president about your intention to purchase skates from Hvper Sport and Ernsports.",
     "Before heading down to the shops to buy your skates, do call them to check if they have the skates in your size. For Inlinex, you can check the stock on their website before heading down.",
@@ -11,7 +11,8 @@
   "files": [
     "./static/images/inlinex-discount-poster.jpg",
     "./static/pdfs/hvper-sport-catalogue.pdf",
-    "./static/pdfs/mystic-skates-catalogue.pdf"
+    "./static/pdfs/mystic-skates-catalogue.pdf",
+    "./static/pdfs/ernsports-catalogue.pdf"
   ],
 
   "retailerData": {
