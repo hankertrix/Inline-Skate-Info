@@ -31,7 +31,7 @@
 <form onsubmit={handleSearchSubmit}>
   <input
     class="text"
-    type="text"
+    type="search"
     name="search"
     placeholder="Search..."
     size="1"
@@ -93,6 +93,15 @@
     outline: none;
     background: transparent;
     flex: 1;
+  }
+
+  /*
+  Remove the left inner padding under macOS
+  and the magnifying glass from iOS
+  as there is already one present
+  */
+  input::-webkit-search-decoration {
+    appearance: none;
   }
 
   button {
