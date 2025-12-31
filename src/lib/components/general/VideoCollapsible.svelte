@@ -24,9 +24,9 @@
   let { videos, title = "View the videos" }: Props = $props();
 
   // Initialise the list of videos
-  const listOfVideos: [string, string][] = Array.isArray(videos)
-    ? videos
-    : Object.entries(videos);
+  const listOfVideos: [string, string][] = $derived(
+    Array.isArray(videos) ? videos : Object.entries(videos)
+  );
 
   // The regex to remove everything but the YouTube ID
   const youtubeIdRegex = /^.*\/(?:watch\?v=)?|[?&].+$/g;

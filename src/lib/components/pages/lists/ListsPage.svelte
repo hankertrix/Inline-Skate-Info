@@ -33,10 +33,10 @@
   let { title, description, listsJson }: Props = $props();
 
   // Gets the heading from the JSON data
-  const heading = listsJson.heading;
+  const heading = $derived(listsJson.heading);
 
   // The list of unique filenames
-  const filenames = getUniqueFilenamesFromFilePaths(listsJson.files);
+  const filenames = $derived(getUniqueFilenamesFromFilePaths(listsJson.files));
 </script>
 
 <!-- The headers for the page -->

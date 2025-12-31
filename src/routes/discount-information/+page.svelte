@@ -24,7 +24,7 @@
   const { data }: Props = $props();
 
   // Get the supported retailers
-  const { supportedRetailers } = data;
+  const { supportedRetailers } = $derived(data);
 
   // The title for the page
   const title = titlecase(discountInfoJson.title);
