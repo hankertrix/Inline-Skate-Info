@@ -18,15 +18,15 @@
     "@sveltejs/vite-plugin-svelte": "^7.0.0",
     "@types/node": "^25.6.0",
     "@types/qrcode": "^1.5.6",
-    "globals": "^17.4.0",
-    "pagefind": "^1.5.0",
-    "prettier": "^3.8.2",
+    "globals": "^17.5.0",
+    "pagefind": "^1.5.2",
+    "prettier": "^3.8.3",
     "prettier-plugin-svelte": "^3.5.1",
-    "svelte": "^5.55.3",
+    "svelte": "^5.55.4",
     "svelte-check": "^4.4.6",
     "typescript": "^5.9.3",
     "vite": "^8.0.8",
-    "vite-plugin-pagefind": "^1.1.0"
+    "vite-plugin-pagefind": "^1.1.1"
   },
   "type": "module",
   "dependencies": {
