@@ -1435,8 +1435,13 @@ bot.on(filters.message("text"), async (ctx, next) => {
     "redeem sg",
     "redeemsg",
     "cdc voucher",
+    "cdc.voucher",
     "sg60 voucher",
     "gst voucher",
+    "sgbudget",
+    "sg budget",
+    "our budget",
+    "ourbudget",
   ];
 
   // Iterate over the potential keywords
