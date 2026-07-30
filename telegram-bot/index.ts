@@ -1429,9 +1429,7 @@ bot.on(filters.message("text"), async (ctx, next) => {
 
   // The list of potential keywords is scam messages
   const potentialKeywords = [
-    ".railway.app",
-    "redeem.gov.sg",
-    "sg60.gov.sg",
+    "gov.sg",
     "redeem sg",
     "redeemsg",
     "cdc voucher",
@@ -1442,6 +1440,7 @@ bot.on(filters.message("text"), async (ctx, next) => {
     "sg budget",
     "our budget",
     "ourbudget",
+    "public transport voucher",
   ];
 
   // Iterate over the potential keywords
