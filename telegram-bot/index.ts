@@ -1419,11 +1419,24 @@ bot.on(filters.message("left_chat_member"), async (ctx) => {
 });
 
 // The filter to remove scam messages
-bot.on(filters.message("text"), async (ctx, next) => {
+bot.on(filters.anyOf(
+  filters.message("text"),
+  filters.message("photo"),
+  filters.message("video"),
+  filters.message("document"),
+), async (ctx, next) => {
   //
 
+  // Get the message text
+  const message_text =
+    "text" in ctx.message ? ctx.message.text : ctx.message.caption;
+
+  // If the message text doesn't exist,
+  // call the next handler and exit the function
+  if (message_text == null) return await next();
+
   // Normalise the message
-  const normalised_message = ctx.message.text
+  const normalised_message = message_text
     .toLowerCase()
     .replaceAll(/[_-]/g, " ");
 
