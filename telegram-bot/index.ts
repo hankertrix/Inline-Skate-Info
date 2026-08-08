@@ -1441,6 +1441,7 @@ bot.on(filters.message("text"), async (ctx, next) => {
     "our budget",
     "ourbudget",
     "public transport voucher",
+    "ptvs",
   ];
 
   // Iterate over the potential keywords
