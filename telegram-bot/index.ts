@@ -1447,7 +1447,7 @@ bot.on(filters.anyOf(
     "redeemsg",
     "cdc voucher",
     "cdc.voucher",
-    "sg60 voucher",
+    "sg61 voucher",
     "gst voucher",
     "sgbudget",
     "sg budget",
