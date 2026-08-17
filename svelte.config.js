@@ -11,7 +11,7 @@ const config = {
 		adapter: adapter(),
 		csp: {
 			directives: {
-				"default-src": ["none"],
+				"default-src": ["self"],
 				"img-src": ["self"],
 				"font-src": ["self"],
 				"connect-src": ["self"],
