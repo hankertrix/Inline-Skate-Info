@@ -2,20 +2,20 @@
 
 import type { Types } from "telegraf";
 import type {
-  CallbackQuery,
-  Message,
-  InlineKeyboardButton,
-  InlineKeyboardMarkup,
+	CallbackQuery,
+	Message,
+	InlineKeyboardButton,
+	InlineKeyboardMarkup,
 } from "telegraf/types";
 
 // The dictionary type
 export type Dict<T> = {
-  [key: string | number]: T | Dict<T>;
+	[key: string | number]: T | Dict<T>;
 };
 
 // The type representing a dictionary that can be reversed
 export type ReversibleDict = {
-  [key: string | symbol | number]: string | symbol | number;
+	[key: string | symbol | number]: string | symbol | number;
 };
 
 // The type representing object values
@@ -23,84 +23,84 @@ export type ObjectValues<T> = T[keyof T];
 
 // The type representing the optional properties of a given type
 export type OptionalPropertiesOf<T extends object> = {
-  [K in keyof T as T extends Record<K, T[K]> ? never : K]: T[K];
+	[K in keyof T as T extends Record<K, T[K]> ? never : K]: T[K];
 };
 
 // The type representing a callback query
 export type CbQuery = CallbackQuery & {
-  data: string;
-  message: Message.TextMessage & {
-    reply_markup: {
-      inline_keyboard: InlineKeyboardButton[][];
-    };
-  };
+	data: string;
+	message: Message.TextMessage & {
+		reply_markup: {
+			inline_keyboard: InlineKeyboardButton[][];
+		};
+	};
 };
 
 // The type of the inline keyboard generator function
 export type InlineKeyboardGenerator = (
-  pollOption: string[]
+	pollOption: string[],
 ) => Types.Markup<InlineKeyboardMarkup>;
 
 // The type representing a product
 export type Product = {
-  price: string;
-  link: string;
-  description?: string;
+	price: string;
+	link: string;
+	description?: string;
 };
 
 // The type representing a place
 export type Place = {
-  address?: string;
-  hours?: string;
-  price?: string;
-  phone?: string;
-  email?: string;
-  website?: string;
-  mapLink?: string;
-  description?: string;
+	address?: string;
+	hours?: string;
+	price?: string;
+	phone?: string;
+	email?: string;
+	website?: string;
+	mapLink?: string;
+	description?: string;
 };
 
 // The type representing a date mapping
 export type DateMapping = {
-  [day: number]: Date;
+	[day: number]: Date;
 };
 
 // The type representing a skate recommendation
 type SkateRec = {
-  price: string;
-  link: string;
-  reason: string;
+	price: string;
+	link: string;
+	reason: string;
 };
 
 // The type representing the skate recommendations JSON data
 export type SkateRecsData = {
-  preface: string;
-  recommendations: {
-    [style: string]: [
-      { [skate: string]: SkateRec },
-      { [video: string]: string },
-    ];
-  };
+	preface: string;
+	recommendations: {
+		[style: string]: [
+			{ [skate: string]: SkateRec },
+			{ [video: string]: string },
+		];
+	};
 };
 
 // The type representing a route
 type Route = {
-  name: string;
-  distance: string;
-  link: string;
-  description?: string;
+	name: string;
+	distance: string;
+	link: string;
+	description?: string;
 };
 
 // The type representing the route JSON data
 export type RouteData = {
-  explanation: string;
-  difficulty: {
-    beginner: Route[];
-    "beginner-to-intermediate": Route[];
-    intermediate: Route[];
-    "intermediate-to-advanced": Route[];
-    advanced: Route[];
-    "advanced-to-master": Route[];
-    master: Route[];
-  };
+	explanation: string;
+	difficulty: {
+		beginner: Route[];
+		"beginner-to-intermediate": Route[];
+		intermediate: Route[];
+		"intermediate-to-advanced": Route[];
+		advanced: Route[];
+		"advanced-to-master": Route[];
+		master: Route[];
+	};
 };

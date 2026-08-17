@@ -1,12 +1,16 @@
 {
-  "heading": "Here are some guides to help you with buying your first pair of skates:",
+	"heading": "Here are some guides to help you with buying your first pair of skates:",
 
-  "links": [
-    ["Reddit buyer's guide written by u/nashtanwl", "https://www.reddit.com/r/rollerblading/comments/v4al05/beginners_guide_to_skating_equipment/"],
-    ["Reddit r/rollerblading wiki's buyer's guide", "https://www.reddit.com/r/rollerblading/wiki/buyers_guide/"]
-  ],
+	"links": [
+		[
+			"Reddit buyer's guide written by u/nashtanwl",
+			"https://www.reddit.com/r/rollerblading/comments/v4al05/beginners_guide_to_skating_equipment/"
+		],
+		[
+			"Reddit r/rollerblading wiki's buyer's guide",
+			"https://www.reddit.com/r/rollerblading/wiki/buyers_guide/"
+		]
+	],
 
-  "files": [
-    "./static/pdfs/skate-buying-guide.pdf"
-  ]
+	"files": ["./static/pdfs/skate-buying-guide.pdf"]
 }

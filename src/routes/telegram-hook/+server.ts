@@ -1,59 +1,57 @@
 // Module to handle the request from telegram
 
-import type { RequestHandler } from '@sveltejs/kit';
-import { ENABLE_SETTING_WEBHOOK } from '../../../config';
-import { getBasePath } from '$lib/constants';
-import bot from '../../../telegram-bot';
+import { getBasePath } from "$lib/constants";
+import type { RequestHandler } from "@sveltejs/kit";
+
+import { ENABLE_SETTING_WEBHOOK } from "../../../config";
+import bot from "../../../telegram-bot";
 
 // Function to handle the POST request
 export const POST: RequestHandler = async function ({ request, url }) {
+	// Try block to handle errors
+	try {
+		// Checks if the query is to set a webhook
+		if (
+			url.searchParams.get("setWebhook") === "true" &&
+			ENABLE_SETTING_WEBHOOK
+		) {
+			// Gets the webhook URL
+			const webhookUrl = `${getBasePath()}/telegram-hook?secretHash=${process.env.SECRET_HASH}`;
 
-  // Try block to handle errors
-  try {
+			// Sets the webhook on the bot
+			const isSet = await bot.telegram.setWebhook(webhookUrl);
 
-    // Checks if the query is to set a webhook
-    if (url.searchParams.get('setWebhook') === 'true' && ENABLE_SETTING_WEBHOOK) {
+			// Sets the message to tell me that the webhook has been set
+			const message = isSet
+				? `Webhook URL has been set to ${webhookUrl}.`
+				: "Failed to set the webhook url.";
 
-      // Gets the webhook URL
-      const webhookUrl = `${getBasePath()}/telegram-hook?secretHash=${process.env.SECRET_HASH}`;
+			// Logs the message
+			console.log(message);
+		}
 
-      // Sets the webhook on the bot
-      const isSet = await bot.telegram.setWebhook(webhookUrl);
+		// Otherwise, if the query has a secret hash (telegram update)
+		else if (
+			url.searchParams.get("secretHash") === process.env.SECRET_HASH
+		) {
+			// Gets the body of the request
+			const body = await request.json();
 
-      // Sets the message to tell me that the webhook has been set
-      const message = isSet
-        ? `Webhook URL has been set to ${webhookUrl}.`
-        : 'Failed to set the webhook url.';
+			// Calls the bot's handle update method
+			await bot.handleUpdate(body);
+		}
+	} catch (error) {
+		// Catch the error
+		// If the typescript recognises the error
+		if (error instanceof Error) {
+			// Logs the error string
+			console.error(error.toString());
+		}
 
-      // Logs the message
-      console.log(message);
-    }
+		// Otherwise, just log the error object
+		else console.error(error);
+	}
 
-    // Otherwise, if the query has a secret hash (telegram update)
-    else if (url.searchParams.get('secretHash') === process.env.SECRET_HASH) {
-
-      // Gets the body of the request
-      const body = await request.json();
-
-      // Calls the bot's handle update method
-      await bot.handleUpdate(body);
-    }
-  }
-
-  // Catch the error
-  catch (error) {
-
-    // If the typescript recognises the error
-    if (error instanceof Error) {
-
-      // Logs the error string
-      console.error(error.toString());
-    }
-
-    // Otherwise, just log the error object
-    else console.error(error);
-  }
-
-  // Returns a 200 response to telegram
-  return new Response('200 OK', { status: 200, statusText: 'OK' });
+	// Returns a 200 response to telegram
+	return new Response("200 OK", { status: 200, statusText: "OK" });
 };

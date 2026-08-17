@@ -1,4 +1,4 @@
 {
-  "site": "build",
-  "output_subdir": "pagefind"
+	"site": "build",
+	"output_subdir": "pagefind"
 }

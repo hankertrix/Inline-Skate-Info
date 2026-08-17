@@ -1,16 +1,22 @@
 {
-  "heading": "Here is a list of miscellaneous resources that you can check out:",
+	"heading": "Here is a list of miscellaneous resources that you can check out:",
 
-  "links": [
-    ["Roller School iOS App (Paid)", "https://apps.apple.com/us/app/rollerschool/id962573665"],
-    ["Roller School Android App (Paid)", "https://play.google.com/store/apps/details?id=dv.rollerschool"]
-  ],
+	"links": [
+		[
+			"Roller School iOS App (Paid)",
+			"https://apps.apple.com/us/app/rollerschool/id962573665"
+		],
+		[
+			"Roller School Android App (Paid)",
+			"https://play.google.com/store/apps/details?id=dv.rollerschool"
+		]
+	],
 
-  "files": [
-    "./static/pdfs/the-art-of-falling-by-naomi-grigg.pdf",
-    "./static/epubs/the-art-of-falling-by-naomi-grigg.epub",
-    "./static/pdfs/lets-skate-by-asha-kirkby-2017-version.pdf",
-    "./static/pdfs/the-physics-of-sliding.pdf",
-    "./static/images/slalom-skill-tree.png"
-  ]
+	"files": [
+		"./static/pdfs/the-art-of-falling-by-naomi-grigg.pdf",
+		"./static/epubs/the-art-of-falling-by-naomi-grigg.epub",
+		"./static/pdfs/lets-skate-by-asha-kirkby-2017-version.pdf",
+		"./static/pdfs/the-physics-of-sliding.pdf",
+		"./static/images/slalom-skill-tree.png"
+	]
 }

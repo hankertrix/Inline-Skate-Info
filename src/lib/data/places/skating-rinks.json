@@ -1,8 +1,8 @@
 {
-  "Bishan Park Skating Rink": {
-    "address": "1380 Ang Mo Kio Ave 1, Singapore 569930, inside Bishan-Ang Mo Kio Park",
-    "hours": "Open 24 hours",
-    "price": "Free",
-    "mapLink": "https://goo.gl/maps/BpA8oEmdHPdk3UcMA"
-  }
+	"Bishan Park Skating Rink": {
+		"address": "1380 Ang Mo Kio Ave 1, Singapore 569930, inside Bishan-Ang Mo Kio Park",
+		"hours": "Open 24 hours",
+		"price": "Free",
+		"mapLink": "https://goo.gl/maps/BpA8oEmdHPdk3UcMA"
+	}
 }

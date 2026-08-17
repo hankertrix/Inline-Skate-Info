@@ -1,271 +1,277 @@
 <!doctype html>
 <html lang="en" class="light">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
 
-    <!-- Favicon stuff -->
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="%sveltekit.assets%/favicons/apple-touch-icon.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="%sveltekit.assets%/favicons/favicon-32x32.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="%sveltekit.assets%/favicons/favicon-16x16.png"
-    />
-    <link rel="manifest" href="%sveltekit.assets%/favicons/site.webmanifest" />
-    <link
-      rel="mask-icon"
-      href="%sveltekit.assets%/favicons/safari-pinned-tab.svg"
-      color="#001dd2"
-    />
-    <link rel="shortcut icon" href="%sveltekit.assets%/favicons/favicon.ico" />
-    <meta name="msapplication-TileColor" content="#00aba9" />
-    <meta
-      name="msapplication-config"
-      content="%sveltekit.assets%/favicons/browserconfig.xml"
-    />
-    <meta name="theme-color" content="#ffffff" />
+		<!-- Favicon stuff -->
+		<link
+			rel="apple-touch-icon"
+			sizes="180x180"
+			href="%sveltekit.assets%/favicons/apple-touch-icon.png"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="32x32"
+			href="%sveltekit.assets%/favicons/favicon-32x32.png"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="16x16"
+			href="%sveltekit.assets%/favicons/favicon-16x16.png"
+		/>
+		<link
+			rel="manifest"
+			href="%sveltekit.assets%/favicons/site.webmanifest"
+		/>
+		<link
+			rel="mask-icon"
+			href="%sveltekit.assets%/favicons/safari-pinned-tab.svg"
+			color="#001dd2"
+		/>
+		<link
+			rel="shortcut icon"
+			href="%sveltekit.assets%/favicons/favicon.ico"
+		/>
+		<meta name="msapplication-TileColor" content="#00aba9" />
+		<meta
+			name="msapplication-config"
+			content="%sveltekit.assets%/favicons/browserconfig.xml"
+		/>
+		<meta name="theme-color" content="#ffffff" />
 
-    <!-- The script to load the theme and prevent the webpage from flashing -->
-    <script>
-      //
+		<!-- The script to load the theme and prevent the webpage from flashing -->
+		<script>
+			//
 
-      // The function to initialise the theme
-      function initTheme() {
-        //
+			// The function to initialise the theme
+			function initTheme() {
+				//
 
-        // Gets the HTML element
-        const htmlElement = window.document.documentElement;
+				// Gets the HTML element
+				const htmlElement = window.document.documentElement;
 
-        // Get the media query for the user's theme
-        const mq = window.matchMedia("(prefers-color-scheme: dark)");
+				// Get the media query for the user's theme
+				const mq = window.matchMedia("(prefers-color-scheme: dark)");
 
-        // Get the theme from the media query
-        const theme = mq.matches ? "dark" : "light";
+				// Get the theme from the media query
+				const theme = mq.matches ? "dark" : "light";
 
-        // Set the class name on the HTML element
-        htmlElement.className = theme;
+				// Set the class name on the HTML element
+				htmlElement.className = theme;
 
-        // Store the theme in local storage
-        window.localStorage.setItem("theme", theme);
-      }
+				// Store the theme in local storage
+				window.localStorage.setItem("theme", theme);
+			}
 
-      // Call the function initialise the theme
-      initTheme();
-    </script>
+			// Call the function initialise the theme
+			initTheme();
+		</script>
 
-    %sveltekit.head%
-  </head>
-  <style>
-    @font-face {
-      font-family: "Oleo Script";
-      font-weight: normal;
-      src:
-        url("/fonts/oleo-script-regular.woff2") format("woff2"),
-        url("/fonts/oleo-script-regular.woff") format("woff"),
-        url("/fonts/oleo-script-regular.ttf") format("truetype");
-    }
+		%sveltekit.head%
+	</head>
+	<style>
+		@font-face {
+			font-family: "Oleo Script";
+			font-weight: normal;
+			src:
+				url("/fonts/oleo-script-regular.woff2") format("woff2"),
+				url("/fonts/oleo-script-regular.woff") format("woff"),
+				url("/fonts/oleo-script-regular.ttf") format("truetype");
+		}
 
-    @font-face {
-      font-family: "Oleo Script";
-      font-weight: bold;
-      src:
-        url("/fonts/oleo-script-bold.woff2") format("woff2"),
-        url("/fonts/oleo-script-bold.woff") format("woff"),
-        url("/fonts/oleo-script-bold.ttf") format("truetype");
-    }
+		@font-face {
+			font-family: "Oleo Script";
+			font-weight: bold;
+			src:
+				url("/fonts/oleo-script-bold.woff2") format("woff2"),
+				url("/fonts/oleo-script-bold.woff") format("woff"),
+				url("/fonts/oleo-script-bold.ttf") format("truetype");
+		}
 
-    :root {
-      --footer-height: 3.5rem;
-      --nav-bar-height: 74px;
-      --page-left-right-margin: 65px;
-      --page-margin: 10px var(--page-left-right-margin);
-    }
+		:root {
+			--footer-height: 3.5rem;
+			--nav-bar-height: 74px;
+			--page-left-right-margin: 65px;
+			--page-margin: 10px var(--page-left-right-margin);
+		}
 
-    /* The colours for the light theme */
-    .light {
-      --text-colour: black;
-      --text-opacity: 1;
-      --background-colour: white;
-      --accent-colour: #41e3e5;
-      --accent-hover-colour: #6be9eb;
-      --accent-active-colour: #3dd6d8;
-      --mark-text-colour: black;
-      --mark-background-colour: yellow;
-      --link-colour: #fc0fc0;
-      --link-hover-colour: #ff66cc;
-      --link-active-colour: #ee13a8;
-      --link-visited-colour: #d41590;
-      --link-visited-hover-colour: #e1149c;
-      --link-visited-active-colour: #c71585;
-      --icon-colour: black;
-      --icon-hover-colour: hsl(210 10% 30%);
-      --icon-opacity: 1;
-      --collapsible-background-colour: #f1f1f1;
-    }
+		/* The colours for the light theme */
+		.light {
+			--text-colour: black;
+			--text-opacity: 1;
+			--background-colour: white;
+			--accent-colour: #41e3e5;
+			--accent-hover-colour: #6be9eb;
+			--accent-active-colour: #3dd6d8;
+			--mark-text-colour: black;
+			--mark-background-colour: yellow;
+			--link-colour: #fc0fc0;
+			--link-hover-colour: #ff66cc;
+			--link-active-colour: #ee13a8;
+			--link-visited-colour: #d41590;
+			--link-visited-hover-colour: #e1149c;
+			--link-visited-active-colour: #c71585;
+			--icon-colour: black;
+			--icon-hover-colour: hsl(210 10% 30%);
+			--icon-opacity: 1;
+			--collapsible-background-colour: #f1f1f1;
+		}
 
-    /* The colours for the dark theme */
-    .dark {
-      --text-colour: white;
-      --text-opacity: 0.87;
-      --background-colour: #121212;
-      --accent-colour: #002dff;
-      --accent-hover-colour: #1741ff;
-      --accent-active-colour: #0027e1;
-      --mark-text-colour: #e9e0ef;
-      --mark-background-colour: #5b148a;
-      --link-colour: #ff8e00;
-      --link-hover-colour: #ffa200;
-      --link-active-colour: #ff7a00;
-      --link-visited-colour: #ff5200;
-      --link-visited-hover-colour: #ff6600;
-      --link-visited-active-colour: #ff4000;
-      --icon-colour: #dee3ff;
-      --icon-hover-colour: hsl(210 10% 95%);
-      --icon-opacity: 1;
-      --collapsible-background-colour: #2c2c2c;
-    }
+		/* The colours for the dark theme */
+		.dark {
+			--text-colour: white;
+			--text-opacity: 0.87;
+			--background-colour: #121212;
+			--accent-colour: #002dff;
+			--accent-hover-colour: #1741ff;
+			--accent-active-colour: #0027e1;
+			--mark-text-colour: #e9e0ef;
+			--mark-background-colour: #5b148a;
+			--link-colour: #ff8e00;
+			--link-hover-colour: #ffa200;
+			--link-active-colour: #ff7a00;
+			--link-visited-colour: #ff5200;
+			--link-visited-hover-colour: #ff6600;
+			--link-visited-active-colour: #ff4000;
+			--icon-colour: #dee3ff;
+			--icon-hover-colour: hsl(210 10% 95%);
+			--icon-opacity: 1;
+			--collapsible-background-colour: #2c2c2c;
+		}
 
-    html,
-    body {
-      padding: 0;
-      margin: 0;
-      font-family:
-        -apple-system,
-        BlinkMacSystemFont,
-        Segoe UI,
-        Roboto,
-        Oxygen,
-        Ubuntu,
-        Cantarell,
-        Fira Sans,
-        Droid Sans,
-        Helvetica Neue,
-        sans-serif;
-      scroll-padding-top: calc(var(--nav-bar-height) + 10px);
+		html,
+		body {
+			padding: 0;
+			margin: 0;
+			font-family:
+				-apple-system,
+				BlinkMacSystemFont,
+				Segoe UI,
+				Roboto,
+				Oxygen,
+				Ubuntu,
+				Cantarell,
+				Fira Sans,
+				Droid Sans,
+				Helvetica Neue,
+				sans-serif;
+			scroll-padding-top: calc(var(--nav-bar-height) + 10px);
 
-      /* Colours */
-      background-color: var(--background-colour);
-      color: var(--text-colour);
-    }
+			/* Colours */
+			background-color: var(--background-colour);
+			color: var(--text-colour);
+		}
 
-    nav,
-    footer {
-      background-color: var(--accent-colour);
-    }
+		nav,
+		footer {
+			background-color: var(--accent-colour);
+		}
 
-    mark {
-      color: var(--mark-text-colour);
-      background-color: var(--mark-background-colour);
-      opacity: 1;
-    }
+		mark {
+			color: var(--mark-text-colour);
+			background-color: var(--mark-background-colour);
+			opacity: 1;
+		}
 
-    /* Remove list styling from the summary element */
-    summary {
-      list-style: none;
-    }
+		/* Remove list styling from the summary element */
+		summary {
+			list-style: none;
+		}
 
-    /* Remove the arrow markwr beside the summary element */
-    summary::marker,
-    summary::-webkit-details-marker {
-      display: none;
-    }
+		/* Remove the arrow markwr beside the summary element */
+		summary::marker,
+		summary::-webkit-details-marker {
+			display: none;
+		}
 
-    /* Resize all of the heading elements so that the headings are always bigger than regular text */
+		/* Resize all of the heading elements so that the headings are always bigger than regular text */
 
-    h1 {
-      font-size: 2.5em;
-    }
+		h1 {
+			font-size: 2.5em;
+		}
 
-    h2 {
-      font-size: 2em;
-    }
+		h2 {
+			font-size: 2em;
+		}
 
-    h3 {
-      font-size: 1.67em;
-    }
+		h3 {
+			font-size: 1.67em;
+		}
 
-    h4 {
-      font-size: 1.5em;
-    }
+		h4 {
+			font-size: 1.5em;
+		}
 
-    h5 {
-      font-size: 1.33em;
-    }
+		h5 {
+			font-size: 1.33em;
+		}
 
-    h6 {
-      font-size: 1.17em;
-    }
+		h6 {
+			font-size: 1.17em;
+		}
 
-    .text {
-      color: var(--text-colour);
-      opacity: var(--text-opacity);
-    }
+		.text {
+			color: var(--text-colour);
+			opacity: var(--text-opacity);
+		}
 
-    a {
-      opacity: 1;
-    }
+		a {
+			opacity: 1;
+		}
 
-    a:link {
-      color: var(--link-colour);
-    }
+		a:link {
+			color: var(--link-colour);
+		}
 
-    a:link:hover {
-      color: var(--link-hover-colour);
-    }
+		a:link:hover {
+			color: var(--link-hover-colour);
+		}
 
-    a:link:active {
-      color: var(--link-active-colour);
-    }
+		a:link:active {
+			color: var(--link-active-colour);
+		}
 
-    a:visited {
-      color: var(--link-visited-colour);
-    }
+		a:visited {
+			color: var(--link-visited-colour);
+		}
 
-    a:visited:hover {
-      color: var(--link-visited-hover-colour);
-    }
+		a:visited:hover {
+			color: var(--link-visited-hover-colour);
+		}
 
-    a:visited:active {
-      color: var(--link-visited-active-colour);
-    }
+		a:visited:active {
+			color: var(--link-visited-active-colour);
+		}
 
-    *,
-    *::after,
-    *::before {
-      box-sizing: border-box;
-    }
+		*,
+		*::after,
+		*::before {
+			box-sizing: border-box;
+		}
 
-    /* Animate when the user has no preference for reduced motion */
-    @media (prefers-reduced-motion: no-preference) {
-      :root {
-        --animation-timing: 200ms ease-in-out;
-      }
+		/* Animate when the user has no preference for reduced motion */
+		@media (prefers-reduced-motion: no-preference) {
+			:root {
+				--animation-timing: 200ms ease-in-out;
+			}
 
-      html {
-        scroll-behavior: smooth;
-      }
-    }
+			html {
+				scroll-behavior: smooth;
+			}
+		}
 
-    /* The styles for mobile devices */
-    @media only screen and (max-width: 700px) {
-      :root {
-        --page-left-right-margin: 15px;
-        --page-margin: 0 var(--page-left-right-margin);
-      }
-    }
-  </style>
-  <body>
-    <div>%sveltekit.body%</div>
-  </body>
+		/* The styles for mobile devices */
+		@media only screen and (max-width: 700px) {
+			:root {
+				--page-left-right-margin: 15px;
+				--page-margin: 0 var(--page-left-right-margin);
+			}
+		}
+	</style>
+	<body>
+		<div>%sveltekit.body%</div>
+	</body>
 </html>

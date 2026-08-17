@@ -1,25 +1,26 @@
 // Module to create the training message for NUS
 
-import type { TrainingMessageHandler } from ".";
 import { Scenes, Composer } from "telegraf";
 import * as filters from "telegraf/filters";
-import * as utils from "../../utils";
-import * as trgMsgUtils from "./utils";
+
+import type { TrainingMessageHandler } from ".";
 import {
-  type PollConfig,
-  DEFAULT_POLL_CONFIG,
-  generatePollMessage,
-  createConfig,
-} from "../poll-message";
-import {
-  cancelCommand,
-  createWizardScene,
-  deleteMessages,
-  markMessageForDeletion,
-  wrapCallbackWithMessageDeleter,
-  promptUserForInput,
-  removeCommand,
+	cancelCommand,
+	createWizardScene,
+	deleteMessages,
+	markMessageForDeletion,
+	wrapCallbackWithMessageDeleter,
+	promptUserForInput,
+	removeCommand,
 } from "../../bot-utils";
+import * as utils from "../../utils";
+import {
+	type PollConfig,
+	DEFAULT_POLL_CONFIG,
+	generatePollMessage,
+	createConfig,
+} from "../poll-message";
+import * as trgMsgUtils from "./utils";
 
 // The location of the training
 const trainingLocation = "MPCs 14/15 & 16/17";
@@ -59,8 +60,8 @@ const typeOfWeekRegexStr = "(?:exam|recess|reading|summer|winter)";
 
 // The regular expression to get the week from the message
 const weekRegex = new RegExp(
-  String.raw`${typeOfWeekRegexStr}?[ _-]?(?:weeks?|breaks?)[ _-]?\d*`,
-  "i"
+	String.raw`${typeOfWeekRegexStr}?[ _-]?(?:weeks?|breaks?)[ _-]?\d*`,
+	"i",
 );
 
 // The regular expression to get whether or not
@@ -72,260 +73,266 @@ const sceneName = "nusValidator";
 
 // Function to get the regular expression match in a saner way
 function getRegexMatch(
-  match: RegExpMatchArray | null,
-  defaultValue: string | null = null
+	match: RegExpMatchArray | null,
+	defaultValue: string | null = null,
 ) {
-  //
+	//
 
-  // If the match given is null, immediately return the default value
-  if (!match) {
-    return defaultValue;
-  }
+	// If the match given is null, immediately return the default value
+	if (!match) {
+		return defaultValue;
+	}
 
-  // Otherwise, return the match
-  else return match[0];
+	// Otherwise, return the match
+	else return match[0];
 }
 
 // Function to normalise the week passed
 function normaliseWeek(week: string) {
-  //
+	//
 
-  // Tries to get the type of the week
-  const weekType = getRegexMatch(
-    week.match(new RegExp(typeOfWeekRegexStr, "i")),
-    ""
-  ) as string;
+	// Tries to get the type of the week
+	const weekType = getRegexMatch(
+		week.match(new RegExp(typeOfWeekRegexStr, "i")),
+		"",
+	) as string;
 
-  // Tries to get the week number
-  const weekNum = getRegexMatch(week.match(/\d+/), "");
+	// Tries to get the week number
+	const weekNum = getRegexMatch(week.match(/\d+/), "");
 
-  // Set the middle word to "Break" if the week type is "summer" or "winter"
-  const middleWord = ["summer", "winter"].includes(weekType)
-    ? "Break Week"
-    : "Week";
+	// Set the middle word to "Break" if the week type is "summer" or "winter"
+	const middleWord = ["summer", "winter"].includes(weekType)
+		? "Break Week"
+		: "Week";
 
-  // Create the week string
-  const weekStr = `${utils.titlecase(
-    weekType
-  )} ${middleWord} ${weekNum}`.trim();
+	// Create the week string
+	const weekStr = `${utils.titlecase(
+		weekType,
+	)} ${middleWord} ${weekNum}`.trim();
 
-  // Returns the week string
-  return weekStr;
+	// Returns the week string
+	return weekStr;
 }
 
 // Function to get the username and week number from the message
 function getRequiredArgs(
-  message: string
+	message: string,
 ): [string | null, boolean, string | null] {
-  //
+	//
 
-  // Removes the trailing whitespace from the message
-  message = message.trim();
+	// Removes the trailing whitespace from the message
+	message = message.trim();
 
-  // Tries to get if rentals aren't wanted for the week
-  const noRentals: boolean = !!message.match(noRentalsRegex);
+	// Tries to get if rentals aren't wanted for the week
+	const noRentals: boolean = !!message.match(noRentalsRegex);
 
-  // Tries to get the username from the message
-  const username = getRegexMatch(message.match(usernameRegex));
+	// Tries to get the username from the message
+	const username = getRegexMatch(message.match(usernameRegex));
 
-  // Tries to get the week from the message
-  let week = getRegexMatch(message.match(weekRegex));
+	// Tries to get the week from the message
+	let week = getRegexMatch(message.match(weekRegex));
 
-  // If the week isn't null, normalise the week
-  if (week != null) week = normaliseWeek(week);
+	// If the week isn't null, normalise the week
+	if (week != null) week = normaliseWeek(week);
 
-  // Returns the week, the noRentals boolean and the username
-  return [week, noRentals, username];
+	// Returns the week, the noRentals boolean and the username
+	return [week, noRentals, username];
 }
 
 // Function to generate the training message
 function generateTrgMsg(
-  message: string,
-  location: string,
-  noRentals: boolean,
-  weekType: string,
-  username: string = ""
+	message: string,
+	location: string,
+	noRentals: boolean,
+	weekType: string,
+	username: string = "",
 ) {
-  //
+	//
 
-  // Gets the formatted message
-  const formattedMsg = utils.strFormat(message, {
-    location: location,
-    rentals: noRentals ? "" : rentalMsg,
-    username: username,
-    weekType: weekType,
-  });
+	// Gets the formatted message
+	const formattedMsg = utils.strFormat(message, {
+		location: location,
+		rentals: noRentals ? "" : rentalMsg,
+		username: username,
+		weekType: weekType,
+	});
 
-  // Returns the formatted message
-  return formattedMsg;
+	// Returns the formatted message
+	return formattedMsg;
 }
 
 // Function to format a date
 function formatDate(date: Date) {
-  //
+	//
 
-  // Gets the date string
-  const dateStr = Intl.DateTimeFormat("en-SG", {
-    day: "2-digit",
-    month: "short",
-  }).format(date);
+	// Gets the date string
+	const dateStr = Intl.DateTimeFormat("en-SG", {
+		day: "2-digit",
+		month: "short",
+	}).format(date);
 
-  // Return the formatted date
-  return `${dateStr} (${utils
-    .getDayStr(date)
-    .replace(/Tue/, "Tues")
-    .replace(/Thu/, "Thurs")}) ${utils.getTimeStr(date)} - ${utils.getTimeStr(
-      utils.addHours(date, 3)
-    )}`;
+	// Return the formatted date
+	return `${dateStr} (${utils
+		.getDayStr(date)
+		.replace(/Tue/, "Tues")
+		.replace(
+			/Thu/,
+			"Thurs",
+		)}) ${utils.getTimeStr(date)} - ${utils.getTimeStr(
+		utils.addHours(date, 3),
+	)}`;
 }
 
 // Function to generate the poll options
 function generatePollOptions(trainingDates: string[]) {
-  //
+	//
 
-  // Gets the upcoming training dates
-  const upcomingTrainingDates = trgMsgUtils.getUpcomingTrainingDates(
-    trainingDates,
-    2
-  ) as Date[];
+	// Gets the upcoming training dates
+	const upcomingTrainingDates = trgMsgUtils.getUpcomingTrainingDates(
+		trainingDates,
+		2,
+	) as Date[];
 
-  // Returns the poll options
-  return upcomingTrainingDates.map((date) => formatDate(date));
+	// Returns the poll options
+	return upcomingTrainingDates.map(date => formatDate(date));
 }
 
 // Function to combine generating the training message
 // and the poll options into one
 function createTrainingPollMsg(
-  message: string,
-  location: string,
-  noRentals: boolean,
-  weekType: string,
-  username: string,
-  trainingDates: string[]
+	message: string,
+	location: string,
+	noRentals: boolean,
+	weekType: string,
+	username: string,
+	trainingDates: string[],
 ) {
-  //
+	//
 
-  // Initialise the poll configuration object
-  // with the generated poll options
-  const pollConfig = createConfig<PollConfig>(
-    {
-      pollOptions: generatePollOptions(trainingDates),
-    },
-    DEFAULT_POLL_CONFIG
-  );
+	// Initialise the poll configuration object
+	// with the generated poll options
+	const pollConfig = createConfig<PollConfig>(
+		{
+			pollOptions: generatePollOptions(trainingDates),
+		},
+		DEFAULT_POLL_CONFIG,
+	);
 
-  // Returns the result of the generate poll message
-  return generatePollMessage(
-    generateTrgMsg(message, location, noRentals, weekType, username),
-    pollConfig
-  );
+	// Returns the result of the generate poll message
+	return generatePollMessage(
+		generateTrgMsg(message, location, noRentals, weekType, username),
+		pollConfig,
+	);
 }
 
 // Function to create a training message with a custom message
 function createCustomTrgMsg(message: string, trainingDates: string[]) {
-  //
+	//
 
-  // Initialise the poll configuration object
-  // with the generated poll options
-  const pollConfig = createConfig<PollConfig>(
-    {
-      pollOptions: generatePollOptions(trainingDates),
-    },
-    DEFAULT_POLL_CONFIG
-  );
+	// Initialise the poll configuration object
+	// with the generated poll options
+	const pollConfig = createConfig<PollConfig>(
+		{
+			pollOptions: generatePollOptions(trainingDates),
+		},
+		DEFAULT_POLL_CONFIG,
+	);
 
-  // Returns the result of the generate poll message function
-  return generatePollMessage(message, pollConfig);
+	// Returns the result of the generate poll message function
+	return generatePollMessage(message, pollConfig);
 }
 
 // Function to handle the training message command for NUS
 export async function handler(
-  ...[ctx, msg]: Parameters<TrainingMessageHandler>
+	...[ctx, msg]: Parameters<TrainingMessageHandler>
 ): ReturnType<TrainingMessageHandler> {
-  //
+	//
 
-  // If the message is empty,
-  // immediately enters the scene
-  // to get the required information for the NUS training message
-  if (!msg)
-    return await ctx.scene.enter(sceneName, {
-      messagesToDelete: [],
-    });
+	// If the message is empty,
+	// immediately enters the scene
+	// to get the required information for the NUS training message
+	if (!msg)
+		return await ctx.scene.enter(sceneName, {
+			messagesToDelete: [],
+		});
 
-  // Gets the week, whether or not there are rentals, and the username
-  const [week, noRentals, username] = getRequiredArgs(msg);
+	// Gets the week, whether or not there are rentals, and the username
+	const [week, noRentals, username] = getRequiredArgs(msg);
 
-  // If the message given has a length of more than 50 characters,
-  // it likely means the user wants a custom message
-  if (msg.length > 50) {
-    //
+	// If the message given has a length of more than 50 characters,
+	// it likely means the user wants a custom message
+	if (msg.length > 50) {
+		//
 
-    // Creates a poll message with the custom message,
-    // but with the training dates as options,
-    // like the default training message
-    const { userMessage, callback } = createCustomTrgMsg(msg, trainingDates);
+		// Creates a poll message with the custom message,
+		// but with the training dates as options,
+		// like the default training message
+		const { userMessage, callback } = createCustomTrgMsg(
+			msg,
+			trainingDates,
+		);
 
-    // Calls the callback function to send the message
-    await callback(ctx, userMessage);
+		// Calls the callback function to send the message
+		await callback(ctx, userMessage);
 
-    // Tries to delete the message sent by the user
-    await deleteMessages(ctx, ctx.message.message_id);
-  }
+		// Tries to delete the message sent by the user
+		await deleteMessages(ctx, ctx.message.message_id);
+	}
 
-  // If either the username or the week is null
-  else if (username == null || week == null) {
-    //
+	// If either the username or the week is null
+	else if (username == null || week == null) {
+		//
 
-    // Enter the scene to ask for the required information
-    // to create the training message
-    return await ctx.scene.enter(sceneName, {
-      noRentals: noRentals,
-      weekType: week,
-      username: username,
-      messagesToDelete: [],
-    });
-  }
+		// Enter the scene to ask for the required information
+		// to create the training message
+		return await ctx.scene.enter(sceneName, {
+			noRentals: noRentals,
+			weekType: week,
+			username: username,
+			messagesToDelete: [],
+		});
+	}
 
-  // Otherwise, generates the training message
-  // Type coercion for the week and username variables because typescript
-  // can't understand the above if statement for some reason
-  const { userMessage, callback } = createTrainingPollMsg(
-    trainingMsg,
-    trainingLocation,
-    noRentals,
-    week as string,
-    username as string,
-    trainingDates
-  );
+	// Otherwise, generates the training message
+	// Type coercion for the week and username variables because typescript
+	// can't understand the above if statement for some reason
+	const { userMessage, callback } = createTrainingPollMsg(
+		trainingMsg,
+		trainingLocation,
+		noRentals,
+		week as string,
+		username as string,
+		trainingDates,
+	);
 
-  // Calls the function to send the training message to the user
-  await callback(ctx, userMessage);
+	// Calls the function to send the training message to the user
+	await callback(ctx, userMessage);
 
-  // Tries to delete the message sent by the user
-  await deleteMessages(ctx, ctx.message.message_id);
+	// Tries to delete the message sent by the user
+	await deleteMessages(ctx, ctx.message.message_id);
 }
 
 // The list of examples for the help message
 const helpExamples = [
-  "/trg_msg week 4 @skateRentalIC",
-  "/trg_msg reading week @skateRentalIC",
-  "/trg_msg exam week 1 @skateRentalIC",
-  "/trg_msg recess week @skateRentalIC",
-  "/trg_msg winter week 2 @skateRentalIC",
-  "/trg_msg week 8 no rentals",
-  "/trg_msg summer week 3 no rentals",
+	"/trg_msg week 4 @skateRentalIC",
+	"/trg_msg reading week @skateRentalIC",
+	"/trg_msg exam week 1 @skateRentalIC",
+	"/trg_msg recess week @skateRentalIC",
+	"/trg_msg winter week 2 @skateRentalIC",
+	"/trg_msg week 8 no rentals",
+	"/trg_msg summer week 3 no rentals",
 ];
 
 // The help text for the training message help command
 export const help = `To use the /trg_msg command, you need to provide the week. If there are rentals for the week, you need to provide the username of the person who is in charge of the rentals. Otherwise, you should input the phrase 'no rentals', like this:
 ${utils.monospace(
-  `/trg_msg ${utils.stripHtml(
-    "<week> <username of the person in charge of skate rentals or 'no rentals'>"
-  )}`
+	`/trg_msg ${utils.stripHtml(
+		"<week> <username of the person in charge of skate rentals or 'no rentals'>",
+	)}`,
 )}
 
 Here are some examples:
-${helpExamples.map((example) => ` ${utils.monospace(example)}`).join("\n")}
+${helpExamples.map(example => ` ${utils.monospace(example)}`).join("\n")}
 
 Alternatively, you can write your own training message. The bot will automatically generate the training dates as the poll options. All you need to do is to type your training message after the command, like this:
 ${utils.monospace(`/trg_msg ${utils.stripHtml("<custom training message>")}`)}`;
@@ -339,92 +346,92 @@ const nusValidator = new Composer<Scenes.WizardContext>();
 nusValidator.command(...cancelCommand);
 
 // Function to handle any input the user gives in the scene
-nusValidator.on(filters.message("text"), async (ctx) => {
-  //
+nusValidator.on(filters.message("text"), async ctx => {
+	//
 
-  // Gets the state object
-  const state = ctx.wizard.state as {
-    weekType: string;
-    username: string;
-    noRentals: boolean;
-  };
+	// Gets the state object
+	const state = ctx.wizard.state as {
+		weekType: string;
+		username: string;
+		noRentals: boolean;
+	};
 
-  // Gets the username and the week type from the state object
-  const { weekType, username } = state;
+	// Gets the username and the week type from the state object
+	const { weekType, username } = state;
 
-  // Gets the message from the user and
-  // removes the command from the start of the message,
-  // as well as the bot's username
-  const msg = removeCommand(ctx.message.text);
+	// Gets the message from the user and
+	// removes the command from the start of the message,
+	// as well as the bot's username
+	const msg = removeCommand(ctx.message.text);
 
-  // Gets the given username and the week type from the message
-  const [givenWeekType, noRentals, givenUsername] = getRequiredArgs(msg);
+	// Gets the given username and the week type from the message
+	const [givenWeekType, noRentals, givenUsername] = getRequiredArgs(msg);
 
-  // If the no rentals argument given is true, then set the state to it
-  if (noRentals) state.noRentals = noRentals;
+	// If the no rentals argument given is true, then set the state to it
+	if (noRentals) state.noRentals = noRentals;
 
-  // If there are rentals and the username of the person
-  // in charge of skate rentals isn't already stored
-  if (!state.noRentals && !username) {
-    //
+	// If there are rentals and the username of the person
+	// in charge of skate rentals isn't already stored
+	if (!state.noRentals && !username) {
+		//
 
-    // If the username hasn't been given
-    if (!givenUsername) {
-      //
+		// If the username hasn't been given
+		if (!givenUsername) {
+			//
 
-      // Ask the user for the username and exit the function
-      return await promptUserForInput(
-        ctx,
-        `Please enter the username of the person who is in charge of skate rentals this week. If there are no rentals this week, simply enter the phrase '${utils.monospace("no rentals")}' instead of the username.`
-      );
-    }
+			// Ask the user for the username and exit the function
+			return await promptUserForInput(
+				ctx,
+				`Please enter the username of the person who is in charge of skate rentals this week. If there are no rentals this week, simply enter the phrase '${utils.monospace("no rentals")}' instead of the username.`,
+			);
+		}
 
-    // Otherwise, store the given username
-    else state.username = givenUsername;
-  }
+		// Otherwise, store the given username
+		else state.username = givenUsername;
+	}
 
-  // If the week type hasn't been stored
-  if (!weekType) {
-    //
+	// If the week type hasn't been stored
+	if (!weekType) {
+		//
 
-    // If the week type isn't given
-    if (!givenWeekType) {
-      //
+		// If the week type isn't given
+		if (!givenWeekType) {
+			//
 
-      // Ask the user for the week and exit the function
-      return await promptUserForInput(
-        ctx,
-        "Please enter the week for this week's skate training."
-      );
-    }
+			// Ask the user for the week and exit the function
+			return await promptUserForInput(
+				ctx,
+				"Please enter the week for this week's skate training.",
+			);
+		}
 
-    // Otherwise, store the given week type
-    else state.weekType = givenWeekType;
-  }
+		// Otherwise, store the given week type
+		else state.weekType = givenWeekType;
+	}
 
-  // If both the username and the week type has been given,
-  // calls the function to generate the training message
-  const { userMessage, callback } = createTrainingPollMsg(
-    trainingMsg,
-    trainingLocation,
-    state.noRentals,
-    state.weekType,
-    state.username,
-    trainingDates
-  );
+	// If both the username and the week type has been given,
+	// calls the function to generate the training message
+	const { userMessage, callback } = createTrainingPollMsg(
+		trainingMsg,
+		trainingLocation,
+		state.noRentals,
+		state.weekType,
+		state.username,
+		trainingDates,
+	);
 
-  // Marks the current message sent by the user for deletion
-  markMessageForDeletion(ctx, ctx.message.message_id);
+	// Marks the current message sent by the user for deletion
+	markMessageForDeletion(ctx, ctx.message.message_id);
 
-  // Wrap the callback function with the function to delete messages
-  const wrappedCallback = wrapCallbackWithMessageDeleter(callback);
+	// Wrap the callback function with the function to delete messages
+	const wrappedCallback = wrapCallbackWithMessageDeleter(callback);
 
-  // Calls the function to send the training message
-  // to the user and delete all the messages
-  await wrappedCallback(ctx, userMessage);
+	// Calls the function to send the training message
+	// to the user and delete all the messages
+	await wrappedCallback(ctx, userMessage);
 
-  // Leave the scene
-  await ctx.scene.leave();
+	// Leave the scene
+	await ctx.scene.leave();
 });
 
 // The scene that contains the NUS training message validator

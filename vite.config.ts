@@ -1,6 +1,6 @@
 import { sveltekit } from "@sveltejs/kit/vite";
-import { pagefind } from "vite-plugin-pagefind";
 import type { UserConfig } from "vite";
+import { pagefind } from "vite-plugin-pagefind";
 
 const config: UserConfig = {
 	plugins: [

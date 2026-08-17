@@ -1,11 +1,11 @@
 {
-  "heading": "Here are the official rulebooks for the various types of inline skating:",
+	"heading": "Here are the official rulebooks for the various types of inline skating:",
 
-  "links": [],
+	"links": [],
 
-  "files": [
-    "./static/pdfs/world-skate-inline-freestyle-rulebook-2026.pdf",
-    "./static/pdfs/world-skate-aggressive-inline-skating-rulebook-2025.pdf",
-    "./static/pdfs/world-skate-inline-speed-skating-rulebook-2026.pdf"
-  ]
+	"files": [
+		"./static/pdfs/world-skate-inline-freestyle-rulebook-2026.pdf",
+		"./static/pdfs/world-skate-aggressive-inline-skating-rulebook-2025.pdf",
+		"./static/pdfs/world-skate-inline-speed-skating-rulebook-2026.pdf"
+	]
 }
