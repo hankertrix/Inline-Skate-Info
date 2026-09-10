@@ -1,22 +1,34 @@
 {
 	"title": "Information about the student discount",
 	"messageParts": [
-		"You can only use the student discount at 4 skate shops, namely Inlinex, Mystic Skates, Hvper Sport and Ernsports. Ernsports has a 30% discount on all items on their discount catalogue. You should head down to the shop and show your matriculation card for a discount. Inlinex provides a 15% discount on all non-discounted skates as long as you show them your matriculation card for verification. Alternatively, you can use the discount code 'SMUX' on their online store for a 10% discount on all non-discounted items. When buying from Inlinex in person, show the discount poster below to obtain the discount. Hvper Sport provides a catalogue of all discounted skates, and the discount is open to all tertiary students in Singapore. Mystic Skates provides a 10% discount for every item in their catalogue. This discount is open to all tertiary students in Singapore with a valid matriculation card, a picture of which should be uploaded when filling in their purchase form. Do note that the Mystic Skates catalogue shows the original prices before the student discount is applied.",
-		"For the exact details on claiming the student discount, especially for Hvper Sport and Ernsports, you should check with your club's president. It is highly likely that you will have to inform your club's president about your intention to purchase skates from Hvper Sport and Ernsports.",
+		"You can only use the student discount at 5 skate shops, namely Inlinex, Mystic Skates, Hvper Sport, Ernsports and SkateXtreme. Ernsports has a 30% discount on all items on their discount catalogue. You should head down to the shop and show your matriculation card for a discount. Alternatively, you can also WhatsApp <a href=\"tel:+6597246638\">+65 9724 6638</a> with your skate model and size to check for availability, and mention which skate club you are from.",
+
+		"Inlinex provides a 15% discount on all non-discounted skates as long as you show them your matriculation card for verification. Alternatively, you can use the discount code 'SMUX' on their online store for a 10% discount on all non-discounted items. When buying from Inlinex in person, show the discount poster to obtain the discount. In practice, you will rarely ever get to use the student discount as nearly every item is discounted.",
+
+		"Hvper Sport provides a catalogue of all discounted skates, and the discount is open to all tertiary students in Singapore. You will likely have to order through your club's president as they take in bulk orders for their discount catalogue.",
+
+		"Mystic Skates provides a 10% discount for every item in their catalogue. This discount is open to all tertiary students in Singapore with a valid matriculation card, a picture of which should be uploaded when filling in their purchase form. Do note that the Mystic Skates catalogue shows the original prices before the student discount is applied. You can also refer to the discount catalogue for the discounted prices on the skates they sell. To order, contact Lloyd, <a href=\"tel:+6598173266\">+65 9817 3266</a>, or <a href=\"https://t.me/Lyys9\">@Lyys9</a> on Telegram, with your skate model and size, and mention which skate club you are from.",
+
+		"SkateXtreme offers 20% off the retail prices on the SkateXtreme website, or you can refer to their PDF catalogue, which is a saved version of their website. This discount stacks with existing sale items. To order, WhatsApp <a href=\"tel:+6594523955\">+65 9452 3955</a> with your skate model and size to check for availability, and mention which skate club you are from. This discount is subject to the availability of the skate models and sizes, and is only available to NTU students.",
+
+		"For exact details on claiming the student discount, especially for Hvper Sport, you should check with your club's president. It is highly likely that you will have to inform your club's president about your intention to purchase skates from Hvper Sport.",
+
 		"Before heading down to the shops to buy your skates, do call them to check if they have the skates in your size. For Inlinex, you can check the stock on their website before heading down.",
-		"Here are the details of the 4 places:"
+		"Here are the details of the 5 places:"
 	],
 
 	"files": [
 		"./static/pdfs/ernsports-catalogue.pdf",
 		"./static/images/inlinex-discount-poster.jpg",
 		"./static/pdfs/hvper-sport-catalogue.pdf",
-		"./static/pdfs/mystic-skates-catalogue.pdf"
+		"./static/pdfs/mystic-skates-catalogue.pdf",
+		"./static/pdfs/mystic-skates-discount-catalogue.pdf",
+		"./static/pdfs/skate-xtreme-catalogue.pdf"
 	],
 
 	"retailerData": {
 		"./src/lib/data/places/retailers-in-singapore.json": {
-			"listSlice": [0, 3]
+			"listSlice": [0, 4]
 		},
 
 		"./src/lib/data/places/online-retailers.json": {
