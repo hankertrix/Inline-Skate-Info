@@ -22,10 +22,9 @@ const RENTAL_OPTIONS_AND_MAX_AMOUNT = new Map([
 	["Sizes 42 - 44, $5", 2],
 	["Size 37, $7", 1],
 	["Sizes 38 - 42, $7", 4],
-	["Size 43, $7", 1],
-	["Size 43 (no brake), $7", 1],
+	["Size 43, $7", 2],
 	["Size 44, $7", 1],
-	["Size 45 (no brake), $7", 1],
+	["Size 45, $7", 1],
 ]);
 
 // The format options for the NTU rental message function
@@ -212,19 +211,6 @@ export async function callbackHandler(
 	]: Parameters<RentalMessageCallbackHandler>
 ): ReturnType<RentalMessageCallbackHandler> {
 	//
-
-	// If the text of the callback query is not
-	// one of the poll options, and is not the tag string,
-	// exit the function.
-	//
-	// This is to prevent the bot from screwing up old
-	// rental messages that used a custom callback
-	// handler.
-	if (
-		!RENTAL_MSG_CONFIG.pollOptions.includes(callbackQuery.data) &&
-		callbackQuery.data !== RENTAL_MSG_CONFIG.tagString
-	)
-		return;
 
 	// Calls the default callback handler with the
 	// poll configuration object
