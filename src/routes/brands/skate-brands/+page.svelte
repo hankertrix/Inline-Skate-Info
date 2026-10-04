@@ -1,11 +1,11 @@
 <!-- The page to display all of the skate brands -->
 <script lang="ts" module>
-  import brandsJson from '$lib/data/brands/skate-brands.json';
+  import brandsJson from "#lib/data/brands/skate-brands.json";
   export { brandsJson };
 </script>
 
 <script lang="ts">
-  import BrandsPage from '$lib/components/pages/brands/BrandsPage.svelte';
+  import BrandsPage from "#lib/components/pages/brands/BrandsPage.svelte";
 </script>
 
 <!-- The HTML for the page -->

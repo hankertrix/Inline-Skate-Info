@@ -1,7 +1,7 @@
 // The utility functions for the rental message
 // and create rental message command
 
-import { DEV } from "$lib/constants";
+import { DEV } from "#lib/constants.js";
 import { type Scenes } from "telegraf";
 import type { Message, ParseMode } from "telegraf/types";
 

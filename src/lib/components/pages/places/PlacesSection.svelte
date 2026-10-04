@@ -2,9 +2,9 @@
 <script lang="ts">
   /* eslint-disable svelte/no-at-html-tags */
 
-  import type { JsonData } from "$lib/types";
+  import type { JsonData } from "#lib/types/index.js";
   import PlacesSection from "./PlacesSection.svelte";
-  import { makeUrlFriendlyString, titlecase } from "$lib/utils";
+  import { makeUrlFriendlyString, titlecase } from "#lib/utils.js";
 
   // The interface for the props passed to the component
   interface Props {

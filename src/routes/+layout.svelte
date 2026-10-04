@@ -4,13 +4,13 @@
   //
 
   // Imports the theme
-  import theme from "$lib/stores/theme";
+  import theme from "#lib/stores/theme.js";
 
   // Import all the required components
-  import Footer from "$lib/components/layout/Footer.svelte";
-  import NavBar from "$lib/components/layout/nav-bar/NavBar.svelte";
-  import ScrollUpButton from "$lib/components/layout/ScrollUpButton.svelte";
-  import PagefindHighlightLoader from "$lib/components/general/PagefindHighlightLoader.svelte";
+  import Footer from "#lib/components/layout/Footer.svelte";
+  import NavBar from "#lib/components/layout/nav-bar/NavBar.svelte";
+  import ScrollUpButton from "#lib/components/layout/ScrollUpButton.svelte";
+  import PagefindHighlightLoader from "#lib/components/general/PagefindHighlightLoader.svelte";
 
   // Other imports
   import type { Snippet } from "svelte";

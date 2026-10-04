@@ -5,7 +5,7 @@
     makeUrlFriendlyString,
     convertFilePathToUrl,
     getUniqueFilenamesFromFilePaths,
-  } from "$lib/utils";
+  } from "#lib/utils.js";
 
   // The type of the JSON data in the lists folder
   type ListsJson = {

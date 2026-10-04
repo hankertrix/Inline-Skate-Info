@@ -1,7 +1,7 @@
 <!-- The search page -->
 <script lang="ts">
   import type { PagefindSearchFragment } from "vite-plugin-pagefind/types";
-  import SearchResult from "$lib/components/pages/search/SearchResult.svelte";
+  import SearchResult from "#lib/components/pages/search/SearchResult.svelte";
 
   // The interface for the props passed to the page
   interface Props {

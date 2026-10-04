@@ -1,8 +1,12 @@
 // The module to load the search results for the search page
 
-import { PAGEFIND_BASE_PATH, PAGEFIND_HIGHLIGHT_PARAM } from "$lib/constants";
 import type { LoadEvent } from "@sveltejs/kit";
 import type { Pagefind } from "vite-plugin-pagefind/types";
+
+import {
+	PAGEFIND_BASE_PATH,
+	PAGEFIND_HIGHLIGHT_PARAM,
+} from "#lib/constants.js";
 
 // Don't prerender this page
 export const prerender = false;

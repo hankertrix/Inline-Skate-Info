@@ -2,7 +2,7 @@
 <script lang="ts">
   import TableOfContents from "./table-of-contents/TableOfContents.svelte";
   import SidebarCollapsibleMenu from "./SidebarCollapsibleMenu.svelte";
-  import { PAGES } from "$lib/constants";
+  import { PAGES } from "#lib/constants.js";
 </script>
 
 <!-- The HTML for the side bar -->

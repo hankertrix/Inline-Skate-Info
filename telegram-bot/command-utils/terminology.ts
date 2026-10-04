@@ -1,6 +1,6 @@
 // The module containing all the utilities for the terminology command
 
-import { BOT_USERNAME } from "$lib/constants";
+import { BOT_USERNAME } from "#lib/constants.js";
 
 import * as normaliseData from "../normalise-data";
 import type { Dict } from "../types";

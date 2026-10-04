@@ -1,7 +1,7 @@
 <!-- The collapsible menu that is to be created as part of the table of contents -->
 
 <script lang="ts">
-  import type { TableOfContents } from "$lib/types";
+  import type { TableOfContents } from "#lib/types/index.js";
   import TableOfContentsCollapsibleMenu from "./TableOfContentsCollapsibleMenu.svelte";
 
   // The interface for the props of the collapsible menu

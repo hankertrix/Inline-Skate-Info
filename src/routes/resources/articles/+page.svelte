@@ -1,7 +1,7 @@
 <!-- The landing page for all of the articles -->
 <script lang="ts">
-  import { makeUrlFriendlyString } from "$lib/utils";
-  import { PAGES } from "$lib/constants";
+  import { makeUrlFriendlyString } from "#lib/utils.js";
+  import { PAGES } from "#lib/constants.js";
 
   // The page title
   const title = "Articles";

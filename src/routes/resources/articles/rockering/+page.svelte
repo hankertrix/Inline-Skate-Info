@@ -1,12 +1,12 @@
 <!-- The image imports required for the article -->
 <script lang="ts">
-  import flatRocker from "$lib/assets/images/flat-rocker.gif";
-  import bananaRocker from "$lib/assets/images/banana-rocker.gif";
-  import antiRocker from "$lib/assets/images/anti-rocker.gif";
-  import frontRocker from "$lib/assets/images/front-rocker.gif";
-  import hiLoRocker from "$lib/assets/images/hi-lo-rocker.gif";
-  import bananaHiLoRocker from "$lib/assets/images/banana-hi-lo-rocker.gif";
-  import salomonFskEaRocker from "$lib/assets/images/salomon-fsk-ea-rocker.gif";
+  import flatRocker from "#lib/assets/images/flat-rocker.gif";
+  import bananaRocker from "#lib/assets/images/banana-rocker.gif";
+  import antiRocker from "#lib/assets/images/anti-rocker.gif";
+  import frontRocker from "#lib/assets/images/front-rocker.gif";
+  import hiLoRocker from "#lib/assets/images/hi-lo-rocker.gif";
+  import bananaHiLoRocker from "#lib/assets/images/banana-hi-lo-rocker.gif";
+  import salomonFskEaRocker from "#lib/assets/images/salomon-fsk-ea-rocker.gif";
 
   // The wheel rotation article url
   const wheelRotationUrl = "./wheel-rotation";

@@ -1,8 +1,8 @@
 <!-- The page to display the brands in inline skating -->
 <script lang="ts">
-  import type { JsonData } from "$lib/types";
+  import type { JsonData } from "#lib/types/index.js";
   import BrandsSection from "./BrandsSection.svelte";
-  import { makeUrlFriendlyString } from "$lib/utils";
+  import { makeUrlFriendlyString } from "#lib/utils.js";
 
   // The interface for the props passed to the component
   interface Props {

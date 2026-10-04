@@ -1,20 +1,27 @@
 // Module to handle the request from telegram
 
-import { getBasePath } from "$lib/constants";
 import type { RequestHandler } from "@sveltejs/kit";
+
+import { getBasePath } from "#lib/constants.js";
 
 import { ENABLE_SETTING_WEBHOOK } from "../../../config";
 import bot from "../../../telegram-bot";
 
 // Function to handle the POST request
 export const POST: RequestHandler = async function ({ request, url }) {
+	//
+
 	// Try block to handle errors
 	try {
+		//
+
 		// Checks if the query is to set a webhook
 		if (
 			url.searchParams.get("setWebhook") === "true" &&
 			ENABLE_SETTING_WEBHOOK
 		) {
+			//
+
 			// Gets the webhook URL
 			const webhookUrl = `${getBasePath()}/telegram-hook?secretHash=${process.env.SECRET_HASH}`;
 
@@ -34,17 +41,21 @@ export const POST: RequestHandler = async function ({ request, url }) {
 		else if (
 			url.searchParams.get("secretHash") === process.env.SECRET_HASH
 		) {
+			//
+
 			// Gets the body of the request
 			const body = await request.json();
 
 			// Calls the bot's handle update method
 			await bot.handleUpdate(body);
 		}
+
+	// Catch the error
 	} catch (error) {
-		// Catch the error
-		// If the typescript recognises the error
+		//
+
+		// If the typescript recognises the error, log the error string
 		if (error instanceof Error) {
-			// Logs the error string
 			console.error(error.toString());
 		}
 

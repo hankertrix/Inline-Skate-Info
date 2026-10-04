@@ -4,7 +4,7 @@
 // https://github.com/xkjyeah/paynow-qr-generator/blob/master/src/App.vue
 // https://www.emvco.com/specifications/emv-qr-code-specification-for-payment-systems-emv-qrcps-merchant-presented-mode/
 
-import { BOT_USERNAME } from "$lib/constants";
+import { BOT_USERNAME } from "#lib/constants.js";
 import crc16ccitt from "crc/calculators/crc16ccitt";
 
 import { regexEscape } from "../utils";

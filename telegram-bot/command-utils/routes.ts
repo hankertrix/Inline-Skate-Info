@@ -1,6 +1,6 @@
 // The module containing all the utilities for the routes command
 
-import { BOT_USERNAME, SPACING, LABEL_SPACING } from "$lib/constants";
+import { BOT_USERNAME, SPACING, LABEL_SPACING } from "#lib/constants.js";
 
 import type { ObjectValues, RouteData } from "../types";
 import * as utils from "../utils";

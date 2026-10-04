@@ -1,8 +1,8 @@
 <!-- The page to display the skate recommendations -->
 <script lang="ts">
-  import { makeUrlFriendlyString } from "$lib/utils";
-  import skateRecsJson from "$lib/data/misc/skate-recs.json";
-  import VideoCollapsible from "$lib/components/general/VideoCollapsible.svelte";
+  import { makeUrlFriendlyString } from "#lib/utils.js";
+  import skateRecsJson from "#lib/data/misc/skate-recs.json";
+  import VideoCollapsible from "#lib/components/general/VideoCollapsible.svelte";
 
   // The title for the page
   const title = "Skate Recommendations";

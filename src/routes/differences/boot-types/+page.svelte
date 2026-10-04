@@ -1,7 +1,7 @@
 <!-- The page to display the differences between the various inline skate boot types -->
 <script lang="ts">
-  import { makeUrlFriendlyString, titlecase } from "$lib/utils";
-  import data from "$lib/data/differences/boot-types.json";
+  import { makeUrlFriendlyString, titlecase } from "#lib/utils.js";
+  import data from "#lib/data/differences/boot-types.json";
 
   // The title of the page
   const title = "Boot Types";

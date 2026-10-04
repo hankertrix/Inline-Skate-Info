@@ -1,6 +1,6 @@
 // The module containing all the utilities for the QR code command
 
-import { BOT_USERNAME } from "$lib/constants";
+import { BOT_USERNAME } from "#lib/constants.js";
 
 import { regexEscape } from "../utils";
 

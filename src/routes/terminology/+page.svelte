@@ -1,12 +1,12 @@
 <!-- The page to display the terms used in inline skating -->
 <script lang="ts">
-  import { makeUrlFriendlyString } from '$lib/utils';
+  import { makeUrlFriendlyString } from "#lib/utils.js";
 
   // Import the terminology JSON from the data folder
-  import terminologyJson from '$lib/data/terminology/terminology.json';
+  import terminologyJson from "#lib/data/terminology/terminology.json";
 
   // The title of the page
-  const title = 'Terminology';
+  const title = "Terminology";
 </script>
 
 <!-- The headers for the terminology page -->
@@ -27,7 +27,9 @@
     <section class="category">
 
       <!-- Display the category title -->
-      <h2 class="category-title text" id={makeUrlFriendlyString(categoryName)}>{categoryName}</h2>
+      <h2 class="category-title text" id={makeUrlFriendlyString(categoryName)}>
+        {categoryName}
+      </h2>
 
       <!-- Iterates over all the terms and definitions in the category -->
       {#each Object.entries(categoryItems) as [term, definition] (term)}

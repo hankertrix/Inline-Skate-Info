@@ -3,6 +3,10 @@
 	"version": "0.0.1",
 	"private": true,
 	"type": "module",
+	"imports": {
+		"#lib": "./src/lib/index.js",
+		"#lib/*": "./src/lib/*"
+	},
 	"scripts": {
 		"dev": "vite dev",
 		"build": "cp ./pdf-articles/*.pdf './static/pdfs/' && vite build && pagefind",
@@ -20,8 +24,8 @@
 		"telegraf": "^4.16.3"
 	},
 	"devDependencies": {
-		"@sveltejs/adapter-netlify": "^6.0.4",
-		"@sveltejs/kit": "^2.70.3",
+		"@sveltejs/adapter-netlify": "^7.0.0",
+		"@sveltejs/kit": "^3.0.0",
 		"@sveltejs/vite-plugin-svelte": "^7.3.1",
 		"@types/node": "^26.6.4",
 		"@types/qrcode": "^1.5.6",

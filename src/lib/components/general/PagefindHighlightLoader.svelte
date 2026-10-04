@@ -2,7 +2,10 @@
 <script lang="ts">
   import type { Snippet } from "svelte";
   import { onMount } from "svelte";
-  import { PAGEFIND_BASE_PATH, PAGEFIND_HIGHLIGHT_PARAM } from "$lib/constants";
+  import {
+    PAGEFIND_BASE_PATH,
+    PAGEFIND_HIGHLIGHT_PARAM,
+  } from "#lib/constants.js";
 
   // The interface for the props passed to the component
   interface Props {

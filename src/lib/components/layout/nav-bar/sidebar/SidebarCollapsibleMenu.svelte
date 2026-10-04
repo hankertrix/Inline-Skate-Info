@@ -1,7 +1,7 @@
 <!-- The collapsible menu that is to be created as part of the sidebar -->
 <script lang="ts">
   import SidebarCollapsibleMenu from "./SidebarCollapsibleMenu.svelte";
-  import { makeUrlFriendlyString } from "$lib/utils";
+  import { makeUrlFriendlyString } from "#lib/utils.js";
 
   // The pages type for the pages variable
   type Pages = {
@@ -66,6 +66,7 @@
 
   <!-- If the current title has no children -->
   {:else}
+
     <!-- Displays the current title as a list element -->
     <li>
       <a href={currentUrl} title={`Go to the page called '${title}'`}>{title}</a
@@ -76,7 +77,8 @@
 
 <!-- The styles for the collapsible menu -->
 <style>
-  a, a:link {
+  a,
+  a:link {
     text-decoration: none;
     color: var(--text-colour);
     opacity: var(--text-opacity);

@@ -1,9 +1,9 @@
 <!-- The component to display a category of tricks, or a single trick -->
 <script lang="ts">
-  import type { JsonData } from "$lib/types";
+  import type { JsonData } from "#lib/types/index.js";
   import TricksSection from "./TricksSection.svelte";
-  import VideoCollapsible from "$lib/components/general/VideoCollapsible.svelte";
-  import { makeUrlFriendlyString } from "$lib/utils";
+  import VideoCollapsible from "#lib/components/general/VideoCollapsible.svelte";
+  import { makeUrlFriendlyString } from "#lib/utils.js";
 
   // The type representing a single trick
   type Trick = {

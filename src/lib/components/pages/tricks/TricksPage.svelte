@@ -1,8 +1,8 @@
 <!-- The component to display a page of tricks -->
 <script lang="ts">
-  import type { JsonData } from "$lib/types";
+  import type { JsonData } from "#lib/types/index.js";
   import TricksSection from "./TricksSection.svelte";
-  import { makeUrlFriendlyString } from "$lib/utils";
+  import { makeUrlFriendlyString } from "#lib/utils.js";
 
   // The interface for the props passed to the component
   interface Props {

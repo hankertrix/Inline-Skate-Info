@@ -1,8 +1,8 @@
 <!-- The component to display a category of brands, or single brand -->
 <script lang="ts">
-  import type { JsonData } from "$lib/types";
+  import type { JsonData } from "#lib/types/index.js";
   import BrandsSection from "./BrandsSection.svelte";
-  import { makeUrlFriendlyString } from "$lib/utils";
+  import { makeUrlFriendlyString } from "#lib/utils.js";
 
   // The interface for the props passed to the component
   interface Props {
@@ -85,6 +85,7 @@
   <!-- Otherwise, the object is a category of brands -->
   {:else}
     <section class="brand-category">
+
       <!-- Adds the category title -->
       <svelte:element this={heading} id={urlFriendlyName} class="text"
         >{name}</svelte:element

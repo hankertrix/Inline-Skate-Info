@@ -1,10 +1,10 @@
 <!-- The landing page for all of the differences -->
 <script lang="ts">
-  import { makeUrlFriendlyString } from '$lib/utils';
-  import { PAGES } from '$lib/constants';
+  import { makeUrlFriendlyString } from "#lib/utils.js";
+  import { PAGES } from "#lib/constants.js";
 
   // The page title
-  const title = 'Differences';
+  const title = "Differences";
 
   // The url friendly title
   const urlFriendlyTitle = makeUrlFriendlyString(title);
@@ -27,7 +27,8 @@
   <header>
     <h1 class="text" id={urlFriendlyTitle}>{title}</h1>
     <div class="text">
-      Click on one of the links below to view the page talking about the respective differences!
+      Click on one of the links below to view the page talking about the
+      respective differences!
     </div>
   </header>
 

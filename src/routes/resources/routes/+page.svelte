@@ -1,7 +1,7 @@
 <!-- The page to display the list of routes -->
 <script lang="ts">
-  import routesJson from "$lib/data/misc/routes.json";
-  import { titlecase, makeUrlFriendlyString } from "$lib/utils";
+  import routesJson from "#lib/data/misc/routes.json";
+  import { titlecase, makeUrlFriendlyString } from "#lib/utils.js";
 </script>
 
 <!-- The headers for the list of routes -->

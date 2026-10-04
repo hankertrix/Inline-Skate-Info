@@ -1,6 +1,6 @@
 // The store for the theme
 
-import { browser } from "$app/environment";
+import { browser } from "$app/env";
 import { writable } from "svelte/store";
 
 // The theme type

@@ -1,13 +1,13 @@
 <!-- The page to display the student discount information -->
 <script lang="ts">
-  import PlacesSection from "$lib/components/pages/places/PlacesSection.svelte";
-  import discountInfoJson from "$lib/data/misc/discount-info.json";
+  import PlacesSection from "#lib/components/pages/places/PlacesSection.svelte";
+  import discountInfoJson from "#lib/data/misc/discount-info.json";
   import {
     makeUrlFriendlyString,
     titlecase,
     convertFilePathToUrl,
     getFilenameFromFilePath,
-  } from "$lib/utils";
+  } from "#lib/utils.js";
 
   // The type of the props passed to the page
   type Props = {

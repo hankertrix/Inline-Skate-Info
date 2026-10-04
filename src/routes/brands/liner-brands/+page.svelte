@@ -1,11 +1,11 @@
 <!-- The page to display all of the liner brands -->
 <script lang="ts" module>
-  import brandsJson from '$lib/data/brands/liner-brands.json';
+  import brandsJson from "#lib/data/brands/liner-brands.json";
   export { brandsJson };
 </script>
 
 <script lang="ts">
-  import BrandsPage from '$lib/components/pages/brands/BrandsPage.svelte';
+  import BrandsPage from "#lib/components/pages/brands/BrandsPage.svelte";
 </script>
 
 <!-- The HTML for the page -->

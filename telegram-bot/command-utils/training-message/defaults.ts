@@ -1,6 +1,6 @@
 // The module containing the defaults for the training message
 
-import { DEV } from "$lib/constants";
+import { DEV } from "#lib/constants.js";
 
 import {
 	type CreatePollMessagePrompts,

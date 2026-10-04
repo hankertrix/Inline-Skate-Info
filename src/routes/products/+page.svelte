@@ -5,7 +5,7 @@
   import { productsJson as toolsJson } from "./tools/+page.svelte";
   import { productsJson as maintenanceItemsJson } from "./maintenance-items/+page.svelte";
   import { productsJson as clothingJson } from "./clothing/+page.svelte";
-  import ProductsPage from "$lib/components/pages/products/ProductsPage.svelte";
+  import ProductsPage from "#lib/components/pages/products/ProductsPage.svelte";
 
   // The products JSON to pass to the page
   const productsJson = {

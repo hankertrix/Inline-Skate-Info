@@ -1,8 +1,7 @@
-<!-- The component to generate the table of contents for the side bar -->
 <script lang="ts">
-  import type { TableOfContents } from "$lib/types";
+  import type { TableOfContents } from "#lib/types/index.js";
   import { SvelteMap } from "svelte/reactivity";
-  import { page } from "$app/stores";
+  import { page } from "$app/state";
   import TableOfContentsCollapsibleMenu from "./TableOfContentsCollapsibleMenu.svelte";
 
   // Initialise the previous page url to an empty string
@@ -77,15 +76,12 @@
 
         // Continues the loop
         continue;
-      }
 
       // Otherwise, if the current heading level is lower than that
       // of the first heading level, throw an error
-      else if (currentHeadingLevel < firstHeadingLevel) {
+      } else if (currentHeadingLevel < firstHeadingLevel) {
         throw Error(
-          `Failed to generate table of contents as the heading "${
-            heading.textContent
-          }" has a smaller heading level (` +
+          `Failed to generate table of contents as the heading "${heading.textContent}" has a smaller heading level (` +
             `h${currentHeadingLevel}` +
             `) than the first heading level (${`h${firstHeadingLevel}`}).`
         );
@@ -101,11 +97,10 @@
 
         // Gets the previous heading from the list of previous headings
         previousHeading = previousHeadings[previousHeadingLevel];
-      }
 
       // If the current heading level is the same or
       // less than that of the previous heading
-      else if (currentHeadingLevel <= previousHeadingLevel) {
+      } else if (currentHeadingLevel <= previousHeadingLevel) {
         //
 
         // Initialise the level variable to the current heading level minus 1
@@ -153,7 +148,7 @@
 
     // If the current page url is the same as the previous page url,
     // exit the function
-    if ($page.url.pathname === previousPageUrl) return;
+    if (page.url.pathname === previousPageUrl) return;
 
     // Otherwise, get all the headings in the document
     headings = document.querySelectorAll("h2, h3, h4, h5, h6");
@@ -165,10 +160,11 @@
     });
 
     // Update the previous page url to the current one
-    previousPageUrl = $page.url.pathname;
+    previousPageUrl = page.url.pathname;
   });
 </script>
 
+<!-- The component to generate the table of contents for the side bar -->
 <!-- The HTML for the table of contents -->
 <!-- Displays the table of contents only when the number
 of headings on the page is greater than 2 -->

@@ -1,7 +1,7 @@
 <!-- The page to display the differences between the Flying Eagle F5S and F6S -->
 <script lang="ts">
-  import { makeUrlFriendlyString } from "$lib/utils";
-  import flyingEagleDiffJson from "$lib/data/differences/f5s-vs-f6s.json";
+  import { makeUrlFriendlyString } from "#lib/utils.js";
+  import flyingEagleDiffJson from "#lib/data/differences/f5s-vs-f6s.json";
 
   // The title of the page
   const title = "Differences Between The Flying Eagle F5S & F6S";

@@ -1,12 +1,12 @@
 <!-- The page for all the class C slalom tricks in the jumps category -->
 <script lang="ts" module>
-  import tricksJson from '$lib/data/tricks/slalom/class-C/jumps.json';
+  import tricksJson from "#lib/data/tricks/slalom/class-C/jumps.json";
   export { tricksJson };
 </script>
 
 <script lang="ts">
   // Import the trick page component
-  import TricksPage from '$lib/components/pages/tricks/TricksPage.svelte';
+  import TricksPage from "#lib/components/pages/tricks/TricksPage.svelte";
 </script>
 
 <!-- The HTML for the class C slalom tricks in the jumps category -->

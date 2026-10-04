@@ -145,9 +145,7 @@ export function createPollPortion(pollConfig: Required<PollConfig>) {
 
 		// Adds the lines in the poll option to the list
 		pollPortionList.push(
-			`${pollOptionHeader}\n${utils.stripHtml(
-				pollOptionLines.join("\n"),
-			)}`,
+			`${pollOptionHeader}\n${utils.stripHtml(pollOptionLines.join("\n"))}`,
 		);
 	}
 

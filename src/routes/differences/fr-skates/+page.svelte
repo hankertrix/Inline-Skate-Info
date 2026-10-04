@@ -1,7 +1,7 @@
 <!-- The page to display the differences between the various FR Skates -->
 <script lang="ts">
-  import { makeUrlFriendlyString } from "$lib/utils";
-  import frDiffJson from "$lib/data/differences/fr-diff.json";
+  import { makeUrlFriendlyString } from "#lib/utils.js";
+  import frDiffJson from "#lib/data/differences/fr-diff.json";
 
   // The title of the page
   const title = "Differences Between The Various FR Skates";

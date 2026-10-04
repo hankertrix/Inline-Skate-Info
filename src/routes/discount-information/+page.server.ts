@@ -3,7 +3,7 @@
 
 import fs from "fs/promises";
 
-import discountInfoJson from "$lib/data/misc/discount-info.json";
+import discountInfoJson from "#lib/data/misc/discount-info.json";
 
 // The load function to pass the data to the page
 export const load = async () => {

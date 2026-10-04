@@ -1,8 +1,8 @@
 <!-- The page to display the differences between regular 4-wheeled skates and triskates -->
 <script lang="ts">
-  import { makeUrlFriendlyString } from "$lib/utils";
-  import triskateDiffJson from "$lib/data/differences/triskate-diff.json";
-  import VideoCollapsible from "$lib/components/general/VideoCollapsible.svelte";
+  import { makeUrlFriendlyString } from "#lib/utils.js";
+  import triskateDiffJson from "#lib/data/differences/triskate-diff.json";
+  import VideoCollapsible from "#lib/components/general/VideoCollapsible.svelte";
 
   // The title for the page
   const title = "Comparing Triskates With Regular 4-Wheeled Skates";

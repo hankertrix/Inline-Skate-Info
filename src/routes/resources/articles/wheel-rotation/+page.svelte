@@ -1,12 +1,12 @@
 <!-- The image imports required for the article -->
 <script lang="ts">
-  import wheelRotation1324 from "$lib/assets/images/1-3-and-2-4-wheel-rotation.gif";
-  import wheelRotation4123 from "$lib/assets/images/4-1-2-3-wheel-rotation.gif";
-  import hiLoRotation from "$lib/assets/images/rotation-for-hi-lo-rocker.gif";
-  import bananaHiLoRotation from "$lib/assets/images/rotation-for-banana-hi-lo-rocker.gif";
-  import wheelStack from "$lib/assets/images/wheel-stack.gif";
-  import wheelStackWithNewWheels from "$lib/assets/images/wheel-stack-with-new-wheels.gif";
-  import wheelWearShapes from "$lib/assets/images/wheel-wear-shapes.gif";
+  import wheelRotation1324 from "#lib/assets/images/1-3-and-2-4-wheel-rotation.gif";
+  import wheelRotation4123 from "#lib/assets/images/4-1-2-3-wheel-rotation.gif";
+  import hiLoRotation from "#lib/assets/images/rotation-for-hi-lo-rocker.gif";
+  import bananaHiLoRotation from "#lib/assets/images/rotation-for-banana-hi-lo-rocker.gif";
+  import wheelStack from "#lib/assets/images/wheel-stack.gif";
+  import wheelStackWithNewWheels from "#lib/assets/images/wheel-stack-with-new-wheels.gif";
+  import wheelWearShapes from "#lib/assets/images/wheel-wear-shapes.gif";
 
   // The url to the rockering article
   const rockeringUrl = "./rockering";
@@ -147,8 +147,8 @@
         href={hiLoSetupUrl}>Hi Lo setup</a
       >
       and the <a href={bananaHiLoSetupUrl}>Banana Hi Lo setup</a> respectively. The
-      transition will be gradual if you start from a flat setup, giving you time
-      to adapt to the new behaviour of your skates.
+      transition will be gradual if you start from a flat setup, giving you time to
+      adapt to the new behaviour of your skates.
     </p>
 
     <section>
