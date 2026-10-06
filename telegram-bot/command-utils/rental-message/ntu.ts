@@ -20,7 +20,6 @@ import { DEFAULT_RENTAL_MSG_CONFIG } from "./defaults";
 // The rental options
 const RENTAL_OPTIONS_AND_MAX_AMOUNT = new Map([
 	["Sizes 42 - 44, $5", 2],
-	["Size 37, $7", 1],
 	["Sizes 38 - 42, $7", 4],
 	["Size 43, $7", 2],
 	["Size 44, $7", 1],
