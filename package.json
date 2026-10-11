@@ -24,19 +24,19 @@
 		"telegraf": "^4.16.3"
 	},
 	"devDependencies": {
-		"@sveltejs/adapter-netlify": "^7.0.0",
-		"@sveltejs/kit": "^3.0.0",
+		"@sveltejs/adapter-netlify": "^7.0.1",
+		"@sveltejs/kit": "^3.0.1",
 		"@sveltejs/vite-plugin-svelte": "^7.3.1",
-		"@types/node": "^26.6.4",
+		"@types/node": "^26.6.5",
 		"@types/qrcode": "^1.5.6",
 		"globals": "^17.13.0",
 		"pagefind": "^1.5.2",
-		"prettier": "^3.9.9",
+		"prettier": "^3.9.10",
 		"prettier-plugin-svelte": "^4.1.1",
-		"svelte": "^5.57.1",
+		"svelte": "^5.57.2",
 		"svelte-check": "^4.7.6",
 		"typescript": "^6.0.3",
-		"vite": "^8.3.2",
+		"vite": "^8.3.4",
 		"vite-plugin-pagefind": "^1.1.1"
 	}
 }
