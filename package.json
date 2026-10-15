@@ -37,6 +37,6 @@
 		"svelte-check": "^4.7.6",
 		"typescript": "^6.0.3",
 		"vite": "^8.3.4",
-		"vite-plugin-pagefind": "^1.1.1"
+		"vite-plugin-pagefind": "^1.1.2"
 	}
 }
