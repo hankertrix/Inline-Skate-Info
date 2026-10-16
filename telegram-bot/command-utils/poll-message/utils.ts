@@ -25,11 +25,15 @@ export function createNumberOfPeoplePortion(
 	additionalSubstitutions: { [key: string]: string } = {},
 	maxEntries: number | null = null,
 ) {
+	//
+
 	// Initialise the number format string
 	let numberFormatString: string | null | undefined = null;
 
 	// Switch statement to get the correct format string
 	switch (numberOfPeople) {
+		//
+
 		// The default case, where the number of people
 		// is not 0 or 1
 		default:
@@ -69,6 +73,8 @@ export function createNumberOfPeoplePortion(
 
 	// If the number of remaining slots on the poll option is wanted
 	if (pollConfig.showRemaining) {
+		//
+
 		// Set the number to the absolute value of the number of remaining slots.
 		// This will show the number of people that responded to the poll
 		// when the maximum number of entries is zero instead of the
@@ -99,11 +105,15 @@ export function createNumberOfPeoplePortion(
 
 // Function to create the poll portion of the poll message
 export function createPollPortion(pollConfig: Required<PollConfig>) {
+	//
+
 	// The list to contain the strings in the poll portion
 	const pollPortionList: string[] = [];
 
 	// Iterates over all the poll options
 	for (const [index, pollOption] of pollConfig.pollOptions.entries()) {
+		//
+
 		// The list containing the lines in the poll option
 		// The first line is the poll option header
 		const pollOptionLines: string[] = [];
@@ -120,6 +130,8 @@ export function createPollPortion(pollConfig: Required<PollConfig>) {
 			(pollConfig.numberingStyle && maxEntries < 1) ||
 			pollConfig.preserveLines
 		) {
+			//
+
 			// Set the maximum number of lines to the maximum number of entries
 			// unless the maximum number of entries is less than 1,
 			// then the maximum number of lines is set to 1.
@@ -127,6 +139,8 @@ export function createPollPortion(pollConfig: Required<PollConfig>) {
 
 			// Iterates until the maximum number of lines is hit
 			for (let i = 0; i < maxNumberOfLines; ++i) {
+				//
+
 				// Add the numbering style to the list of poll option lines
 				pollOptionLines.push(
 					`${createNumbering(pollConfig.numberingStyle, i)}`,
@@ -177,13 +191,14 @@ export function generatePollMessage(
 
 	// The callback function
 	async function callback(ctx: Scenes.WizardContext, input: string) {
+		//
+
 		// Bold the first line of the input
 		input = utils.boldFirstLine(input);
 
 		// Sends a poll with the user's input
 		return await ctx.reply(
-			`${input}${pollConfig.pollType}${
-				pollConfig.isSingleChoicePoll ? SINGLE_CHOICE_POLL_MARK : ""
+			`${input}${pollConfig.pollType}${pollConfig.isSingleChoicePoll ? SINGLE_CHOICE_POLL_MARK : ""
 			}${pollConfig.pollSpacing}${pollPortion}`,
 			{
 				parse_mode: "HTML",
