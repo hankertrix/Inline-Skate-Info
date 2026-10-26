@@ -44,15 +44,15 @@ bot.command("start", async ctx => {
 	// The start message
 	const startMsgList = [
 		"Hello! This bot aims to be the ultimate resource " +
-			"for all things inline skating!",
+		"for all things inline skating!",
 
-		`${utils.hyperlink("Here", getBasePath())} is the bot's website if you ` +
-			"prefer to view the information presented here on a website.",
+		`${utils.hyperlink("Here", getBasePath())} is the bot's website ` +
+		"if you prefer to view the information presented here on a website.",
 
 		"If you find that the resource is not ultimate enough, " +
-			"or that the information presented is wrong, inaccurate or outdated, " +
-			`please contact ${DEV}. Please contact ${DEV} as well if you have any` +
-			"feedback, suggestions, enquiries or bug reports.",
+		"or that the information presented is wrong, inaccurate or outdated, " +
+		`please contact ${DEV}. Please contact ${DEV} as well if you have any` +
+		"feedback, suggestions, enquiries or bug reports.",
 
 		"Use the /help command to see what the bot can do.",
 	];
@@ -466,7 +466,8 @@ bot.command(
 		// Gets the skate recommendations
 		const skateRecs = await commandUtils.skateRecs.generateMsg();
 
-		// Iterates each part of the skate recommendations and send it to the user
+		// Iterates each part of the skate recommendations
+		// and send it to the user
 		for (const skateRec of skateRecs) await ctxReply(ctx, skateRec);
 	},
 );
@@ -961,7 +962,8 @@ bot.command(
 		// Initialise the poll configuration object
 		const pollConfig = commandUtils.poll.DEFAULT_POLL_CONFIG;
 
-		// Gets the message and the callback from the generatePollCallback function
+		// Gets the message and the callback from the
+		// generatePollCallback function
 		const { userMessage, callback } = commandUtils.poll.generatePollMessage(
 			message,
 			pollConfig,
@@ -1063,7 +1065,8 @@ bot.command(
 		// Remove the command from the message
 		msg = removeCommand(msg);
 
-		// Gets the training message handler to handle the rental message command
+		// Gets the training message handler
+		// to handle the rental message command
 		await commandUtils.rentalMsg.handler(ctx, msg);
 	},
 );
@@ -1318,8 +1321,8 @@ bot.command(
 			message: [
 				"Please enter your phone number or UEN without spaces,",
 				"like 81234567, and optionally the amount to pay,",
-				"and whether you would like the QR code to be single use or not",
-				"by including 'single' at the end of the message.",
+				"and whether you would like the QR code to be single use ",
+				"or not by including 'single' at the end of the message.",
 				"\nEach of the items should be separated with a space.",
 			].join(" "),
 			callback: callback,
@@ -1476,6 +1479,7 @@ bot.on(
 			"ourbudget",
 			"public transport voucher",
 			"ptvs",
+			"i’d rather pass this one on for free",
 		];
 
 		// Iterate over the potential keywords
